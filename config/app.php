@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'TOURE DISTRIBUTION'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'frontend_url' => env('FRONTEND_URL', env('APP_URL')),
 
     /*
     |--------------------------------------------------------------------------

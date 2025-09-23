@@ -41,6 +41,10 @@ return [
             'provider' => 'users',
         ],
     ],
+    'sanctum' => [
+        'driver' => 'sanctum',
+        'provider' => 'users',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -98,6 +102,23 @@ return [
             'throttle' => 60,
         ],
     ],
+    /*
+    |--------------------------------------------------------------------------
+    | Paramètres de sécurité des mots de passe
+    |--------------------------------------------------------------------------
+    */
+
+    // Durée maximale d'un mot de passe en jours
+    'password_max_age' => env('PASSWORD_MAX_AGE', 90),
+
+    // Nombre maximum de tentatives de connexion avant verrouillage
+    'max_login_attempts' => env('MAX_LOGIN_ATTEMPTS', 5),
+
+    // Durée de verrouillage en minutes
+    'lockout_duration' => env('LOCKOUT_DURATION', 15),
+
+    // Durée de conservation des logs de tentatives de connexion en jours
+    'login_attempts_retention' => env('LOGIN_ATTEMPTS_RETENTION', 30),
 
     /*
     |--------------------------------------------------------------------------
