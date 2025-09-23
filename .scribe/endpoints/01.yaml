@@ -1,0 +1,716 @@
+name: Authentification
+description: 'Gestion des utilisateurs et authentification'
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/register
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Inscription d'un utilisateur"
+      description: "Créer un nouveau compte utilisateur avec validation complète des données et génération automatique d'un token d'authentification"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      firstname:
+        name: firstname
+        description: "Prénom de l'utilisateur (lettres et espaces uniquement)"
+        required: true
+        example: Jean
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      lastname:
+        name: lastname
+        description: 'Nom de famille (lettres et espaces uniquement)'
+        required: true
+        example: DUPONT
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      username:
+        name: username
+        description: "Nom d'utilisateur unique (lettres, chiffres, points, tirets et underscores)"
+        required: true
+        example: jean.dupont
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Adresse email valide et unique'
+        required: true
+        example: jean.dupont@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      phonenumber:
+        name: phonenumber
+        description: 'Numéro de téléphone avec indicatif international (optionnel)'
+        required: false
+        example: '+33612345678'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      poste:
+        name: poste
+        description: "Poste/fonction de l'utilisateur (optionnel)"
+        required: false
+        example: 'Développeur Full-Stack'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Mot de passe (min. 8 caractères, majuscules, minuscules, chiffres, symboles)'
+        required: true
+        example: SecurePass123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Confirmation du mot de passe (doit être identique)'
+        required: true
+        example: SecurePass123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      firstname: Jean
+      lastname: DUPONT
+      username: jean.dupont
+      email: jean.dupont@example.com
+      phonenumber: '+33612345678'
+      poste: 'Développeur Full-Stack'
+      password: SecurePass123!
+      password_confirmation: SecurePass123!
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: '{"success":true,"code":200,"message":"Inscription r\u00e9ussie","data":{"user":{"user_id":"550e8400-e29b-41d4-a716-446655440000","firstname":"Jean","lastname":"DUPONT","username":"jean.dupont","email":"jean.dupont@example.com","is_active":true},"access_token":"1|abcdef123456789...","token_type":"Bearer"}}'
+        headers: []
+        description: 'Inscription réussie'
+        custom: []
+      -
+        status: 422
+        content: '{"success":false,"message":"Erreurs de validation","errors":{"email":["Cet email est d\u00e9j\u00e0 utilis\u00e9."],"username":["Ce nom d''utilisateur est d\u00e9j\u00e0 utilis\u00e9."],"password":["Le mot de passe doit contenir au moins 8 caract\u00e8res."]}}'
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+      -
+        status: 500
+        content: '{"success":false,"message":"Erreur lors de l''inscription","error":"Message d''erreur d\u00e9taill\u00e9"}'
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/login
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Connexion utilisateur'
+      description: 'Authentifier un utilisateur avec email/username et mot de passe. Le compte est verrouillé 15 minutes après 5 tentatives échouées.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      login:
+        name: login
+        description: "Email ou nom d'utilisateur"
+        required: true
+        example: jean.dupont@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Mot de passe'
+        required: true
+        example: SecurePass123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      remember:
+        name: remember
+        description: 'Se souvenir de moi (token longue durée)'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      login: jean.dupont@example.com
+      password: SecurePass123!
+      remember: false
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Connexion r\u00e9ussie","data":{"user":{"user_id":"550e8400-e29b-41d4-a716-446655440000","firstname":"Jean","lastname":"DUPONT","username":"jean.dupont","email":"jean.dupont@example.com","is_active":true,"last_login_at":"2024-01-15 14:30:00"},"access_token":"1|abcdef123456789...","token_type":"Bearer"}}'
+        headers: []
+        description: 'Connexion réussie'
+        custom: []
+      -
+        status: 401
+        content: '{"success":false,"message":"Identifiants incorrects."}'
+        headers: []
+        description: 'Identifiants invalides'
+        custom: []
+      -
+        status: 401
+        content: '{"success":false,"message":"Votre compte a \u00e9t\u00e9 d\u00e9sactiv\u00e9."}'
+        headers: []
+        description: 'Compte désactivé'
+        custom: []
+      -
+        status: 422
+        content: '{"success":false,"message":"Erreurs de validation","errors":{"login":["L''email ou nom d''utilisateur est obligatoire."],"password":["Le mot de passe est obligatoire."]}}'
+        headers: []
+        description: 'Données invalides'
+        custom: []
+      -
+        status: 423
+        content: '{"success":false,"message":"Votre compte est temporairement verrouill\u00e9. R\u00e9essayez plus tard."}'
+        headers: []
+        description: 'Compte verrouillé'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/forgot-password
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mot de passe oublié'
+      description: 'Envoyer un lien de réinitialisation de mot de passe par email. Le lien expire après 24 heures.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Adresse email du compte à réinitialiser'
+        required: true
+        example: jean.dupont@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: jean.dupont@example.com
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Lien de r\u00e9initialisation envoy\u00e9 par email"}'
+        headers: []
+        description: 'Email envoyé avec succès'
+        custom: []
+      -
+        status: 404
+        content: '{"success":false,"message":"Aucun compte actif associ\u00e9 \u00e0 cet email."}'
+        headers: []
+        description: 'Email non trouvé ou compte inactif'
+        custom: []
+      -
+        status: 422
+        content: '{"success":false,"message":"Erreurs de validation","errors":{"email":["L''email est obligatoire.","Aucun compte associ\u00e9 \u00e0 cet email."]}}'
+        headers: []
+        description: 'Email invalide'
+        custom: []
+      -
+        status: 500
+        content: '{"success":false,"message":"Erreur lors de l''envoi du lien","error":"Message d''erreur d\u00e9taill\u00e9"}'
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/reset-password
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Réinitialiser le mot de passe'
+      description: 'Réinitialiser le mot de passe avec le token reçu par email'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Adresse email'
+        required: true
+        example: john@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      token:
+        name: token
+        description: 'Token de réinitialisation'
+        required: true
+        example: abc123...
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Nouveau mot de passe'
+        required: true
+        example: NewSecurePass123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Confirmation du mot de passe'
+        required: true
+        example: NewSecurePass123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: john@example.com
+      token: abc123...
+      password: NewSecurePass123!
+      password_confirmation: NewSecurePass123!
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/auth/check-username/{username}'
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Vérifier disponibilité username'
+      description: "Vérifier si un nom d'utilisateur est disponible pour l'inscription"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      username:
+        name: username
+        description: "Nom d'utilisateur à vérifier"
+        required: true
+        example: jean.dupont
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      username: jean.dupont
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"available":true,"message":"Nom d''utilisateur disponible"}'
+        headers: []
+        description: 'Username disponible'
+        custom: []
+      -
+        status: 200
+        content: '{"success":true,"available":false,"message":"Nom d''utilisateur d\u00e9j\u00e0 pris"}'
+        headers: []
+        description: 'Username indisponible'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/auth/check-email/{email}'
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Vérifier disponibilité email'
+      description: "Vérifier si un email est disponible pour l'inscription"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      email:
+        name: email
+        description: 'Adresse email à vérifier'
+        required: true
+        example: jean.dupont@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      email: jean.dupont@example.com
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"available":true,"message":"Email disponible"}'
+        headers: []
+        description: 'Email disponible'
+        custom: []
+      -
+        status: 200
+        content: '{"success":true,"available":false,"message":"Email d\u00e9j\u00e0 utilis\u00e9"}'
+        headers: []
+        description: 'Email indisponible'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/auth/profile
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Profil utilisateur connecté'
+      description: "Récupérer les informations complètes de l'utilisateur connecté"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"data":{"user_id":"550e8400-e29b-41d4-a716-446655440000","firstname":"Jean","lastname":"DUPONT","username":"jean.dupont","email":"jean.dupont@example.com","phonenumber":"+33612345678","poste":"D\u00e9veloppeur Full-Stack","is_active":true,"email_verified":false,"last_login_at":"2024-01-15 14:30:00","created_at":"2024-01-10 09:15:00"}}'
+        headers: []
+        description: 'Profil récupéré avec succès'
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'Token manquant ou invalide'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Déconnexion utilisateur'
+      description: "Déconnecter l'utilisateur en révoquant son token d'accès actuel"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"D\u00e9connexion r\u00e9ussie"}'
+        headers: []
+        description: 'Déconnexion réussie'
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'Token manquant ou invalide'
+        custom: []
+      -
+        status: 500
+        content: '{"success":false,"message":"Erreur lors de la d\u00e9connexion","error":"Message d''erreur d\u00e9taill\u00e9"}'
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout-all
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Déconnexion globale'
+      description: "Déconnecter l'utilisateur de tous ses appareils en révoquant tous ses tokens d'accès"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"D\u00e9connexion de tous les appareils r\u00e9ussie"}'
+        headers: []
+        description: 'Déconnexion globale réussie'
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'Token manquant ou invalide'
+        custom: []
+      -
+        status: 500
+        content: '{"success":false,"message":"Erreur lors de la d\u00e9connexion globale","error":"Message d''erreur d\u00e9taill\u00e9"}'
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/change-password
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Changer le mot de passe'
+      description: "Changer le mot de passe de l'utilisateur connecté. Révoque tous les autres tokens d'authentification."
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      current_password:
+        name: current_password
+        description: 'Mot de passe actuel'
+        required: true
+        example: OldPass123!
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Nouveau mot de passe (min. 8 caractères, majuscules, minuscules, chiffres, symboles)'
+        required: true
+        example: 'NewSecurePass456#'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Confirmation du nouveau mot de passe'
+        required: true
+        example: 'NewSecurePass456#'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      current_password: OldPass123!
+      password: 'NewSecurePass456#'
+      password_confirmation: 'NewSecurePass456#'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Mot de passe modifi\u00e9 avec succ\u00e8s"}'
+        headers: []
+        description: 'Changement réussi'
+        custom: []
+      -
+        status: 400
+        content: '{"success":false,"message":"Le mot de passe actuel est incorrect."}'
+        headers: []
+        description: 'Mot de passe actuel invalide'
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'Token manquant ou invalide'
+        custom: []
+      -
+        status: 422
+        content: '{"success":false,"message":"Erreurs de validation","errors":{"password":["Le nouveau mot de passe doit \u00eatre diff\u00e9rent de l''ancien."],"password_confirmation":["La confirmation du mot de passe ne correspond pas."]}}'
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -10,6 +10,7 @@ use App\Mail\WelcomeEmail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\ResetPasswordMail;
+use App\Mail\PasswordChangedMail;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -24,6 +25,8 @@ use Knuckles\Scribe\Attributes\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use Knuckles\Scribe\Attributes\BodyParam;
+use Knuckles\Scribe\Attributes\QueryParam;
+use Knuckles\Scribe\Attributes\UrlParam;
 use Knuckles\Scribe\Attributes\ResponseFromApiResource;
 use Illuminate\Validation\Rules\Password as PasswordRule;
 
@@ -33,40 +36,53 @@ class AuthController extends Controller
 {
     /**
      * Inscription d'un nouvel utilisateur
+     * 
+     * Cette route permet de créer un nouveau compte utilisateur avec validation complète des données.
+     * Le mot de passe doit contenir au minimum 8 caractères avec majuscules, minuscules, chiffres et symboles.
      */
     #[Endpoint(
         title: "Inscription d'un utilisateur",
-        description: "Créer un nouveau compte utilisateur avec validation complète des données"
+        description: "Créer un nouveau compte utilisateur avec validation complète des données et génération automatique d'un token d'authentification"
     )]
+    #[BodyParam("firstname", "string", "Prénom de l'utilisateur (lettres et espaces uniquement)", required: true, example: "Jean")]
+    #[BodyParam("lastname", "string", "Nom de famille (lettres et espaces uniquement)", required: true, example: "DUPONT")]
+    #[BodyParam("username", "string", "Nom d'utilisateur unique (lettres, chiffres, points, tirets et underscores)", required: true, example: "jean.dupont")]
+    #[BodyParam("email", "string", "Adresse email valide et unique", required: true, example: "jean.dupont@example.com")]
+    #[BodyParam("phonenumber", "string", "Numéro de téléphone avec indicatif international (optionnel)", required: false, example: "+33612345678")]
+    #[BodyParam("poste", "string", "Poste/fonction de l'utilisateur (optionnel)", required: false, example: "Développeur Full-Stack")]
+    #[BodyParam("password", "string", "Mot de passe (min. 8 caractères, majuscules, minuscules, chiffres, symboles)", required: true, example: "SecurePass123!")]
+    #[BodyParam("password_confirmation", "string", "Confirmation du mot de passe (doit être identique)", required: true, example: "SecurePass123!")]
     #[Response([
         'success' => true,
+        'code' => 200,
         'message' => 'Inscription réussie',
         'data' => [
             'user' => [
                 'user_id' => '550e8400-e29b-41d4-a716-446655440000',
-                'firstname' => 'John',
-                'lastname' => 'DOE',
-                'username' => 'johndoe',
-                'email' => 'john@example.com',
-                'phonenumber' => '+33612345678',
-                'poste' => 'Développeur',
+                'firstname' => 'Jean',
+                'lastname' => 'DUPONT',
+                'username' => 'jean.dupont',
+                'email' => 'jean.dupont@example.com',
                 'is_active' => true,
-                'email_verified' => false,
-                'created_at' => '2024-01-15 10:30:00'
             ],
             'access_token' => '1|abcdef123456789...',
             'token_type' => 'Bearer'
         ]
-    ], 201)]
+    ], 201, "Inscription réussie")]
     #[Response([
         'success' => false,
-        'message' => 'Erreur de validation',
+        'message' => 'Erreurs de validation',
         'errors' => [
             'email' => ['Cet email est déjà utilisé.'],
-            'username' => ['Ce nom d\'utilisateur est déjà pris.']
+            'username' => ['Ce nom d\'utilisateur est déjà utilisé.'],
+            'password' => ['Le mot de passe doit contenir au moins 8 caractères.']
         ]
-    ], 422)]
-
+    ], 422, "Erreurs de validation")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreur lors de l\'inscription',
+        'error' => 'Message d\'erreur détaillé'
+    ], 500, "Erreur serveur")]
     public function register(Request $request): JsonResponse
     {
         try {
@@ -180,23 +196,25 @@ class AuthController extends Controller
     }
 
     /**
-     * Vérifier la disponibilité d'un username
+     * Vérifier la disponibilité d'un nom d'utilisateur
+     * 
+     * Permet de vérifier en temps réel si un nom d'utilisateur est disponible avant la soumission du formulaire d'inscription.
      */
     #[Endpoint(
         title: "Vérifier disponibilité username",
-        description: "Vérifier si un nom d'utilisateur est disponible"
+        description: "Vérifier si un nom d'utilisateur est disponible pour l'inscription"
     )]
+    #[UrlParam("username", "string", "Nom d'utilisateur à vérifier", required: true, example: "jean.dupont")]
     #[Response([
         'success' => true,
         'available' => true,
         'message' => 'Nom d\'utilisateur disponible'
-    ])]
+    ], 200, "Username disponible")]
     #[Response([
         'success' => true,
         'available' => false,
         'message' => 'Nom d\'utilisateur déjà pris'
-    ])]
-
+    ], 200, "Username indisponible")]
     public function checkUsername(string $username): JsonResponse
     {
         $available = !User::where('username', strtolower($username))->exists();
@@ -210,11 +228,24 @@ class AuthController extends Controller
 
     /**
      * Vérifier la disponibilité d'un email
+     * 
+     * Permet de vérifier en temps réel si un email est disponible avant la soumission du formulaire d'inscription.
      */
     #[Endpoint(
         title: "Vérifier disponibilité email",
-        description: "Vérifier si un email est disponible"
+        description: "Vérifier si un email est disponible pour l'inscription"
     )]
+    #[UrlParam("email", "string", "Adresse email à vérifier", required: true, example: "jean.dupont@example.com")]
+    #[Response([
+        'success' => true,
+        'available' => true,
+        'message' => 'Email disponible'
+    ], 200, "Email disponible")]
+    #[Response([
+        'success' => true,
+        'available' => false,
+        'message' => 'Email déjà utilisé'
+    ], 200, "Email indisponible")]
     public function checkEmail(string $email): JsonResponse
     {
         $available = !User::where('email', strtolower($email))->exists();
@@ -228,13 +259,33 @@ class AuthController extends Controller
 
     /**
      * Obtenir le profil de l'utilisateur connecté
+     * 
+     * Récupère toutes les informations du profil de l'utilisateur actuellement authentifié.
      */
     #[Endpoint(
-        title: "Profil utilisateur",
-        description: "Récupérer les informations de l'utilisateur connecté"
+        title: "Profil utilisateur connecté",
+        description: "Récupérer les informations complètes de l'utilisateur connecté"
     )]
-    #[Header("Authorization", "Bearer {token}", "Token d'authentification")]
-    #[ResponseFromApiResource(UserResource::class, User::class)]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[Response([
+        'success' => true,
+        'data' => [
+            'user_id' => '550e8400-e29b-41d4-a716-446655440000',
+            'firstname' => 'Jean',
+            'lastname' => 'DUPONT',
+            'username' => 'jean.dupont',
+            'email' => 'jean.dupont@example.com',
+            'phonenumber' => '+33612345678',
+            'poste' => 'Développeur Full-Stack',
+            'is_active' => true,
+            'email_verified' => false,
+            'last_login_at' => '2024-01-15 14:30:00',
+            'created_at' => '2024-01-10 09:15:00'
+        ]
+    ], 200, "Profil récupéré avec succès")]
+    #[Response([
+        'message' => 'Unauthenticated.'
+    ], 401, "Token manquant ou invalide")]
 
     public function profile(): JsonResponse
     {
@@ -248,14 +299,55 @@ class AuthController extends Controller
 
     /**
      * Connexion utilisateur
+     * 
+     * Authentifie un utilisateur avec son email ou nom d'utilisateur et son mot de passe.
+     * Retourne un token d'accès en cas de succès.
+     * Implémente un système de verrouillage après 5 tentatives échouées.
      */
     #[Endpoint(
         title: "Connexion utilisateur",
-        description: "Authentifier un utilisateur avec email/username et mot de passe"
+        description: "Authentifier un utilisateur avec email/username et mot de passe. Le compte est verrouillé 15 minutes après 5 tentatives échouées."
     )]
-    #[BodyParam("login", "string", "Email ou nom d'utilisateur", required: true, example: "john@example.com")]
+    #[BodyParam("login", "string", "Email ou nom d'utilisateur", required: true, example: "jean.dupont@example.com")]
     #[BodyParam("password", "string", "Mot de passe", required: true, example: "SecurePass123!")]
-    #[BodyParam("remember", "boolean", "Se souvenir de moi", required: false, example: false)]
+    #[BodyParam("remember", "boolean", "Se souvenir de moi (token longue durée)", required: false, example: false)]
+    #[Response([
+        'success' => true,
+        'message' => 'Connexion réussie',
+        'data' => [
+            'user' => [
+                'user_id' => '550e8400-e29b-41d4-a716-446655440000',
+                'firstname' => 'Jean',
+                'lastname' => 'DUPONT',
+                'username' => 'jean.dupont',
+                'email' => 'jean.dupont@example.com',
+                'is_active' => true,
+                'last_login_at' => '2024-01-15 14:30:00',
+            ],
+            'access_token' => '1|abcdef123456789...',
+            'token_type' => 'Bearer'
+        ]
+    ], 200, "Connexion réussie")]
+    #[Response([
+        'success' => false,
+        'message' => 'Identifiants incorrects.'
+    ], 401, "Identifiants invalides")]
+    #[Response([
+        'success' => false,
+        'message' => 'Votre compte a été désactivé.'
+    ], 401, "Compte désactivé")]
+    #[Response([
+        'success' => false,
+        'message' => 'Votre compte est temporairement verrouillé. Réessayez plus tard.'
+    ], 423, "Compte verrouillé")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreurs de validation',
+        'errors' => [
+            'login' => ['L\'email ou nom d\'utilisateur est obligatoire.'],
+            'password' => ['Le mot de passe est obligatoire.']
+        ]
+    ], 422, "Données invalides")]
     public function login(Request $request): JsonResponse
     {
         try {
@@ -374,15 +466,37 @@ class AuthController extends Controller
 
     /**
      * Changement de mot de passe pour utilisateur connecté
+     * 
+     * Permet à un utilisateur authentifié de changer son mot de passe.
+     * Nécessite le mot de passe actuel pour des raisons de sécurité.
      */
     #[Endpoint(
         title: "Changer le mot de passe",
-        description: "Changer le mot de passe de l'utilisateur connecté"
+        description: "Changer le mot de passe de l'utilisateur connecté. Révoque tous les autres tokens d'authentification."
     )]
-    #[Header("Authorization", "Bearer {token}", "Token d'authentification")]
-    #[BodyParam("current_password", "string", "Mot de passe actuel", required: true)]
-    #[BodyParam("password", "string", "Nouveau mot de passe", required: true)]
-    #[BodyParam("password_confirmation", "string", "Confirmation du nouveau mot de passe", required: true)]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[BodyParam("current_password", "string", "Mot de passe actuel", required: true, example: "OldPass123!")]
+    #[BodyParam("password", "string", "Nouveau mot de passe (min. 8 caractères, majuscules, minuscules, chiffres, symboles)", required: true, example: "NewSecurePass456#")]
+    #[BodyParam("password_confirmation", "string", "Confirmation du nouveau mot de passe", required: true, example: "NewSecurePass456#")]
+    #[Response([
+        'success' => true,
+        'message' => 'Mot de passe modifié avec succès'
+    ], 200, "Changement réussi")]
+    #[Response([
+        'success' => false,
+        'message' => 'Le mot de passe actuel est incorrect.'
+    ], 400, "Mot de passe actuel invalide")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreurs de validation',
+        'errors' => [
+            'password' => ['Le nouveau mot de passe doit être différent de l\'ancien.'],
+            'password_confirmation' => ['La confirmation du mot de passe ne correspond pas.']
+        ]
+    ], 422, "Erreurs de validation")]
+    #[Response([
+        'message' => 'Unauthenticated.'
+    ], 401, "Token manquant ou invalide")]
     public function changePassword(Request $request): JsonResponse
     {
         try {
@@ -443,12 +557,26 @@ class AuthController extends Controller
 
     /**
      * Déconnexion utilisateur
+     * 
+     * Déconnecte l'utilisateur en révoquant son token d'accès actuel.
      */
     #[Endpoint(
         title: "Déconnexion utilisateur",
-        description: "Déconnecter l'utilisateur et révoquer son token"
+        description: "Déconnecter l'utilisateur en révoquant son token d'accès actuel"
     )]
-    #[Header("Authorization", "Bearer {token}", "Token d'authentification")]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[Response([
+        'success' => true,
+        'message' => 'Déconnexion réussie'
+    ], 200, "Déconnexion réussie")]
+    #[Response([
+        'message' => 'Unauthenticated.'
+    ], 401, "Token manquant ou invalide")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreur lors de la déconnexion',
+        'error' => 'Message d\'erreur détaillé'
+    ], 500, "Erreur serveur")]
     public function logout(Request $request): JsonResponse
     {
         try {
@@ -472,12 +600,26 @@ class AuthController extends Controller
 
     /**
      * Déconnexion de tous les appareils
+     * 
+     * Déconnecte l'utilisateur de tous ses appareils en révoquant tous ses tokens d'accès.
      */
     #[Endpoint(
         title: "Déconnexion globale",
-        description: "Déconnecter l'utilisateur de tous ses appareils"
+        description: "Déconnecter l'utilisateur de tous ses appareils en révoquant tous ses tokens d'accès"
     )]
-    #[Header("Authorization", "Bearer {token}", "Token d'authentification")]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[Response([
+        'success' => true,
+        'message' => 'Déconnexion de tous les appareils réussie'
+    ], 200, "Déconnexion globale réussie")]
+    #[Response([
+        'message' => 'Unauthenticated.'
+    ], 401, "Token manquant ou invalide")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreur lors de la déconnexion globale',
+        'error' => 'Message d\'erreur détaillé'
+    ], 500, "Erreur serveur")]
     public function logoutAll(Request $request): JsonResponse
     {
         try {
@@ -499,12 +641,35 @@ class AuthController extends Controller
 
     /**
      * Demande de réinitialisation de mot de passe
+     * 
+     * Envoie un email contenant un lien de réinitialisation de mot de passe.
+     * Le token généré expire après 24 heures.
      */
     #[Endpoint(
         title: "Mot de passe oublié",
-        description: "Envoyer un lien de réinitialisation de mot de passe par email"
+        description: "Envoyer un lien de réinitialisation de mot de passe par email. Le lien expire après 24 heures."
     )]
-    #[BodyParam("email", "string", "Adresse email", required: true, example: "john@example.com")]
+    #[BodyParam("email", "string", "Adresse email du compte à réinitialiser", required: true, example: "jean.dupont@example.com")]
+    #[Response([
+        'success' => true,
+        'message' => 'Lien de réinitialisation envoyé par email'
+    ], 200, "Email envoyé avec succès")]
+    #[Response([
+        'success' => false,
+        'message' => 'Aucun compte actif associé à cet email.'
+    ], 404, "Email non trouvé ou compte inactif")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreurs de validation',
+        'errors' => [
+            'email' => ['L\'email est obligatoire.', 'Aucun compte associé à cet email.']
+        ]
+    ], 422, "Email invalide")]
+    #[Response([
+        'success' => false,
+        'message' => 'Erreur lors de l\'envoi du lien',
+        'error' => 'Message d\'erreur détaillé'
+    ], 500, "Erreur serveur")]
     public function forgotPassword(Request $request): JsonResponse
     {
         try {
