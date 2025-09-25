@@ -254,7 +254,7 @@ endpoints:
         name: balance_filter
         description: ''
         required: false
-        example: zero
+        example: positive
         type: string
         enumValues:
           - positive
@@ -274,7 +274,7 @@ endpoints:
       client_type_id: c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a
       is_active: true
       with_client_type: true
-      balance_filter: zero
+      balance_filter: positive
     fileParameters: []
     responses:
       -

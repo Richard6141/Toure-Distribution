@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
 use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\FournisseurController;
+use App\Http\Controllers\ProductCategoryController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -107,4 +108,13 @@ Route::prefix('entrepots')->name('entrepots.')->group(function () {
     Route::patch('/{id}/assign-user', [EntrepotController::class, 'assignUser'])->name('assign-user');
     Route::patch('/{id}/unassign-user', [EntrepotController::class, 'unassignUser'])->name('unassign-user');
     Route::patch('/{id}/change-user', [EntrepotController::class, 'changeUser'])->name('change-user');
+})->middleware('auth:sanctum');
+
+
+Route::prefix('product-categories')->group(function () {
+    Route::get('/', [ProductCategoryController::class, 'index']);      // Liste des catégories
+    Route::post('/', [ProductCategoryController::class, 'store']);     // Création
+    Route::get('{id}', [ProductCategoryController::class, 'show']);    // Détail
+    Route::put('{id}', [ProductCategoryController::class, 'update']);  // Mise à jour
+    Route::delete('{id}', [ProductCategoryController::class, 'destroy']); // Suppression
 })->middleware('auth:sanctum');

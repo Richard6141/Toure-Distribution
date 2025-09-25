@@ -254,6 +254,28 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-product-categories" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="product-categories">
+                    <a href="#product-categories">Product Categories</a>
+                </li>
+                                    <ul id="tocify-subheader-product-categories" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="product-categories-GETapi-product-categories">
+                                <a href="#product-categories-GETapi-product-categories">Afficher toutes les catégories de produits</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="product-categories-POSTapi-product-categories">
+                                <a href="#product-categories-POSTapi-product-categories">Créer une nouvelle catégorie de produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="product-categories-GETapi-product-categories--id-">
+                                <a href="#product-categories-GETapi-product-categories--id-">Afficher une catégorie de produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="product-categories-PUTapi-product-categories--id-">
+                                <a href="#product-categories-PUTapi-product-categories--id-">Mettre à jour une catégorie de produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="product-categories-DELETEapi-product-categories--id-">
+                                <a href="#product-categories-DELETEapi-product-categories--id-">Supprimer une catégorie de produit</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
             </div>
 
     <ul class="toc-footer" id="toc-footer">
@@ -2471,7 +2493,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -2499,7 +2521,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -2529,7 +2551,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -2762,7 +2784,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -2976,7 +2998,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -2998,7 +3020,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -3022,7 +3044,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -3180,7 +3202,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -4184,7 +4206,7 @@ Vous pouvez filtrer par nom, email, code, ville, statut et type de client.</p>
     \"client_type_id\": \"c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a\",
     \"is_active\": true,
     \"with_client_type\": true,
-    \"balance_filter\": \"zero\"
+    \"balance_filter\": \"positive\"
 }"
 </code></pre></div>
 
@@ -4226,7 +4248,7 @@ let body = {
     "client_type_id": "c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a",
     "is_active": true,
     "with_client_type": true,
-    "balance_filter": "zero"
+    "balance_filter": "positive"
 };
 
 fetch(url, {
@@ -4270,7 +4292,7 @@ $response = $client-&gt;get(
             'client_type_id' =&gt; 'c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a',
             'is_active' =&gt; true,
             'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'zero',
+            'balance_filter' =&gt; 'positive',
         ],
     ]
 );
@@ -4658,10 +4680,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="zero"
+               value="positive"
                data-component="body">
     <br>
-<p>Example: <code>zero</code></p>
+<p>Example: <code>positive</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -11159,6 +11181,857 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                <h1 id="product-categories">Product Categories</h1>
+
+    
+
+                                <h2 id="product-categories-GETapi-product-categories">Afficher toutes les catégories de produits</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/product-categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/product-categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/product-categories';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product-categories">
+            <blockquote>
+            <p>Example response (200, Liste des catégories):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;product_category_id&quot;: &quot;uuid&quot;,
+        &quot;label&quot;: &quot;&Eacute;lectronique&quot;,
+        &quot;description&quot;: &quot;Produits high-tech&quot;,
+        &quot;is_active&quot;: true,
+        &quot;created_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product-categories"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-product-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product-categories">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-product-categories" data-method="GET"
+      data-path="api/product-categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product-categories"
+                    onclick="tryItOut('GETapi-product-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product-categories"
+                    onclick="cancelTryOut('GETapi-product-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product-categories"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product-categories</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-product-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-product-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="product-categories-POSTapi-product-categories">Créer une nouvelle catégorie de produit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-product-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/product-categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"Électronique\",
+    \"description\": \"Produits high-tech\",
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/product-categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "Électronique",
+    "description": "Produits high-tech",
+    "is_active": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/product-categories';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'Électronique',
+            'description' =&gt; 'Produits high-tech',
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-product-categories">
+            <blockquote>
+            <p>Example response (201, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;product_category_id&quot;: &quot;uuid&quot;,
+    &quot;label&quot;: &quot;&Eacute;lectronique&quot;,
+    &quot;description&quot;: &quot;Produits high-tech&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-product-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-product-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-product-categories"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-product-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-product-categories">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-product-categories" data-method="POST"
+      data-path="api/product-categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-product-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-product-categories"
+                    onclick="tryItOut('POSTapi-product-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-product-categories"
+                    onclick="cancelTryOut('POSTapi-product-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-product-categories"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/product-categories</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-product-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-product-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="label"                data-endpoint="POSTapi-product-categories"
+               value="Électronique"
+               data-component="body">
+    <br>
+<p>Nom de la catégorie. Example: <code>Électronique</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-product-categories"
+               value="Produits high-tech"
+               data-component="body">
+    <br>
+<p>Description de la catégorie. Example: <code>Produits high-tech</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-product-categories" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="POSTapi-product-categories"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-product-categories" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="POSTapi-product-categories"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif ou non (true/false). Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="product-categories-GETapi-product-categories--id-">Afficher une catégorie de produit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-product-categories--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-product-categories--id-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;product_category_id&quot;: &quot;uuid&quot;,
+    &quot;label&quot;: &quot;&Eacute;lectronique&quot;,
+    &quot;description&quot;: &quot;Produits high-tech&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-product-categories--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-product-categories--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-product-categories--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-product-categories--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-product-categories--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-product-categories--id-" data-method="GET"
+      data-path="api/product-categories/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-product-categories--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-product-categories--id-"
+                    onclick="tryItOut('GETapi-product-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-product-categories--id-"
+                    onclick="cancelTryOut('GETapi-product-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-product-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/product-categories/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-product-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-product-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-product-categories--id-"
+               value="9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4"
+               data-component="url">
+    <br>
+<p>L'UUID de la catégorie. Example: <code>9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="product-categories-PUTapi-product-categories--id-">Mettre à jour une catégorie de produit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-product-categories--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"label\": \"Accessoires\",
+    \"description\": \"Produits dérivés\",
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "label": "Accessoires",
+    "description": "Produits dérivés",
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'label' =&gt; 'Accessoires',
+            'description' =&gt; 'Produits dérivés',
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-product-categories--id-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;product_category_id&quot;: &quot;uuid&quot;,
+    &quot;label&quot;: &quot;Accessoires&quot;,
+    &quot;description&quot;: &quot;Produits d&eacute;riv&eacute;s&quot;,
+    &quot;is_active&quot;: false,
+    &quot;created_at&quot;: &quot;2025-09-24T12:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2025-09-24T12:30:00.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-product-categories--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-product-categories--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-product-categories--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-product-categories--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-product-categories--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-product-categories--id-" data-method="PUT"
+      data-path="api/product-categories/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-product-categories--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-product-categories--id-"
+                    onclick="tryItOut('PUTapi-product-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-product-categories--id-"
+                    onclick="cancelTryOut('PUTapi-product-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-product-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/product-categories/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-product-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-product-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-product-categories--id-"
+               value="9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4"
+               data-component="url">
+    <br>
+<p>L'UUID de la catégorie. Example: <code>9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="label"                data-endpoint="PUTapi-product-categories--id-"
+               value="Accessoires"
+               data-component="body">
+    <br>
+<p>Nom de la catégorie (unique). Example: <code>Accessoires</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-product-categories--id-"
+               value="Produits dérivés"
+               data-component="body">
+    <br>
+<p>Description de la catégorie. Example: <code>Produits dérivés</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-product-categories--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PUTapi-product-categories--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-product-categories--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PUTapi-product-categories--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif ou non (true/false). Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="product-categories-DELETEapi-product-categories--id-">Supprimer une catégorie de produit</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-product-categories--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/product-categories/9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-product-categories--id-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Cat&eacute;gorie supprim&eacute;e avec succ&egrave;s.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-product-categories--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-product-categories--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-product-categories--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-product-categories--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-product-categories--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-product-categories--id-" data-method="DELETE"
+      data-path="api/product-categories/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-product-categories--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-product-categories--id-"
+                    onclick="tryItOut('DELETEapi-product-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-product-categories--id-"
+                    onclick="cancelTryOut('DELETEapi-product-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-product-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/product-categories/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-product-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-product-categories--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-product-categories--id-"
+               value="9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4"
+               data-component="url">
+    <br>
+<p>L'UUID de la catégorie. Example: <code>9a4c8e1f-5b52-4e7d-bc83-0a7c1d0b33f4</code></p>
             </div>
                     </form>
 
