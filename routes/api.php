@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
@@ -117,4 +118,18 @@ Route::prefix('product-categories')->group(function () {
     Route::get('{id}', [ProductCategoryController::class, 'show']);    // Détail
     Route::put('{id}', [ProductCategoryController::class, 'update']);  // Mise à jour
     Route::delete('{id}', [ProductCategoryController::class, 'destroy']); // Suppression
+})->middleware('auth:sanctum');
+
+
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);          // Liste des produits
+    Route::post('/', [ProductController::class, 'store']);         // Création d’un produit
+    Route::get('{id}', [ProductController::class, 'show']);        // Afficher un produit par ID
+    Route::put('{id}', [ProductController::class, 'update']);      // Mise à jour d’un produit
+    Route::delete('{id}', [ProductController::class, 'destroy']);  // Suppression logique (soft delete)
+
+    // Bonus utiles
+    Route::get('category/{categoryId}', [ProductController::class, 'byCategory']); // Produits d’une catégorie
+    Route::get('{id}/restore', [ProductController::class, 'restore']);  // Restaurer un produit supprimé
+    Route::delete('{id}/force', [ProductController::class, 'forceDelete']); // Suppression définitive
 })->middleware('auth:sanctum');
