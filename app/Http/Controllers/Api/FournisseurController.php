@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Fournisseur;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Fournisseurs
@@ -143,18 +144,33 @@ class FournisseurController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'responsable' => 'nullable|string|max:255',
-            'adresse' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:100',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|email|unique:fournisseurs,email',
-            'payment_terms' => 'nullable|string|max:255',
-            'is_active' => 'boolean'
-        ]);
+        $data = $request->all();
 
-        $fournisseur = Fournisseur::create($validated);
+        $rules = [
+            'name'          => 'required|string|max:255',
+            'responsable'   => 'nullable|string|max:255',
+            'adresse'       => 'nullable|string|max:255',
+            'city'          => 'nullable|string|max:100',
+            'phone'         => 'nullable|string|max:20',
+            'email'         => 'nullable|email|unique:fournisseurs,email',
+            'payment_terms' => 'nullable|string|max:255',
+            'is_active'     => 'boolean',
+        ];
+
+        $messages = [
+            'name.required' => 'Le nom est obligatoire.',
+            'email.unique'  => 'Cet email est déjà utilisé.',
+        ];
+
+        // Validation
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Création du fournisseur
+        $fournisseur = Fournisseur::create($validator->validated());
 
         return response()->json($fournisseur, 201);
     }

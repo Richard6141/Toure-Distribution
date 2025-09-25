@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Entrepôts
@@ -149,20 +150,37 @@ class EntrepotController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-        $validated = $request->validate([
+        $data = $request->all();
+
+        $rules = [
             'name' => 'required|string|max:255|unique:entrepots,name',
             'adresse' => 'nullable|string|max:255',
             'is_active' => 'boolean',
-            'user_id' => 'nullable|uuid|exists:users,user_id'
-        ]);
+            'user_id' => 'nullable|uuid|exists:users,user_id',
+        ];
 
-        $entrepot = Entrepot::create($validated);
+        $messages = [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.unique' => 'Ce nom est déjà utilisé.',
+            'user_id.exists' => 'Utilisateur inexistant.',
+        ];
+
+        // Validation
+        $validator = Validator::make($data, $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Création de l'entrepôt
+        $entrepot = Entrepot::create($validator->validated());
 
         // Charger la relation user si elle existe
-        //$entrepot->load('user:user_id,username,email');
+        $entrepot->load('user:user_id,username,email');
 
         return response()->json($entrepot, 201);
     }
+
 
     /**
      * Afficher un entrepôt
