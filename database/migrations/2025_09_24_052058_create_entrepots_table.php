@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('entrepots', function (Blueprint $table) {
             $table->uuid('entrepot_id')->primary();
             $table->string('code')->unique();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('adresse')->nullable();
             $table->boolean('is_active')->default(true);
 

@@ -189,6 +189,40 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-entrepots" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="entrepots">
+                    <a href="#entrepots">Entrepôts</a>
+                </li>
+                                    <ul id="tocify-subheader-entrepots" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="entrepots-GETapi-entrepots">
+                                <a href="#entrepots-GETapi-entrepots">Liste des entrepôts</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-POSTapi-entrepots">
+                                <a href="#entrepots-POSTapi-entrepots">Créer un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-GETapi-entrepots--id-">
+                                <a href="#entrepots-GETapi-entrepots--id-">Afficher un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-PUTapi-entrepots--id-">
+                                <a href="#entrepots-PUTapi-entrepots--id-">Mettre à jour un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-PATCHapi-entrepots--id-">
+                                <a href="#entrepots-PATCHapi-entrepots--id-">Mettre à jour un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-DELETEapi-entrepots--id-">
+                                <a href="#entrepots-DELETEapi-entrepots--id-">Supprimer un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-PATCHapi-entrepots--id--assign-user">
+                                <a href="#entrepots-PATCHapi-entrepots--id--assign-user">Attribuer un responsable à un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-PATCHapi-entrepots--id--unassign-user">
+                                <a href="#entrepots-PATCHapi-entrepots--id--unassign-user">Désattribuer le responsable d'un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-PATCHapi-entrepots--id--change-user">
+                                <a href="#entrepots-PATCHapi-entrepots--id--change-user">Changer le responsable d'un entrepôt</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-fournisseurs" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="fournisseurs">
                     <a href="#fournisseurs">Fournisseurs</a>
@@ -4149,7 +4183,7 @@ Vous pouvez filtrer par nom, email, code, ville, statut et type de client.</p>
     \"city\": \"j\",
     \"client_type_id\": \"c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a\",
     \"is_active\": true,
-    \"with_client_type\": false,
+    \"with_client_type\": true,
     \"balance_filter\": \"zero\"
 }"
 </code></pre></div>
@@ -4191,7 +4225,7 @@ let body = {
     "city": "j",
     "client_type_id": "c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a",
     "is_active": true,
-    "with_client_type": false,
+    "with_client_type": true,
     "balance_filter": "zero"
 };
 
@@ -4235,7 +4269,7 @@ $response = $client-&gt;get(
             'city' =&gt; 'j',
             'client_type_id' =&gt; 'c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a',
             'is_active' =&gt; true,
-            'with_client_type' =&gt; false,
+            'with_client_type' =&gt; true,
             'balance_filter' =&gt; 'zero',
         ],
     ]
@@ -4616,7 +4650,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -6008,7 +6042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -6034,7 +6068,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -6062,7 +6096,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -6247,7 +6281,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -7250,6 +7284,2001 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                <h1 id="entrepots">Entrepôts</h1>
+
+    <p>APIs pour la gestion des entrepôts et l'attribution des responsables</p>
+
+                                <h2 id="entrepots-GETapi-entrepots">Liste des entrepôts</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste paginée des entrepôts avec possibilité de filtrage.</p>
+
+<span id="example-requests-GETapi-entrepots">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/entrepots?page=1&amp;per_page=15&amp;search=Central&amp;is_active=1&amp;user_id=550e8400-e29b-41d4-a716-446655440001&amp;has_user=1&amp;sort_by=name&amp;sort_order=asc&amp;with_user=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "Central",
+    "is_active": "1",
+    "user_id": "550e8400-e29b-41d4-a716-446655440001",
+    "has_user": "1",
+    "sort_by": "name",
+    "sort_order": "asc",
+    "with_user": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'Central',
+            'is_active' =&gt; '1',
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'has_user' =&gt; '1',
+            'sort_by' =&gt; 'name',
+            'sort_order' =&gt; 'asc',
+            'with_user' =&gt; '1',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-entrepots">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;code&quot;: &quot;ENT001&quot;,
+            &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+            &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+            &quot;is_active&quot;: true,
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+            &quot;user&quot;: {
+                &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+                &quot;name&quot;: &quot;Jean Dupont&quot;,
+                &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+            }
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://api.example.com/entrepots?page=1&quot;,
+        &quot;last&quot;: &quot;http://api.example.com/entrepots?page=5&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: &quot;http://api.example.com/entrepots?page=2&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 5,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 15,
+        &quot;total&quot;: 75
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-entrepots" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-entrepots"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-entrepots"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-entrepots" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-entrepots">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-entrepots" data-method="GET"
+      data-path="api/entrepots"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-entrepots', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-entrepots"
+                    onclick="tryItOut('GETapi-entrepots');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-entrepots"
+                    onclick="cancelTryOut('GETapi-entrepots');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-entrepots"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/entrepots</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-entrepots"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-entrepots"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-entrepots"
+               value="1"
+               data-component="query">
+    <br>
+<p>Numéro de la page. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-entrepots"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-entrepots"
+               value="Central"
+               data-component="query">
+    <br>
+<p>Recherche par nom, code ou adresse. Example: <code>Central</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots" style="display: none">
+            <input type="radio" name="is_active"
+                   value="1"
+                   data-endpoint="GETapi-entrepots"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots" style="display: none">
+            <input type="radio" name="is_active"
+                   value="0"
+                   data-endpoint="GETapi-entrepots"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Filtrer par statut actif (true/false). Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="GETapi-entrepots"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="query">
+    <br>
+<p>Filtrer par responsable (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>has_user</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots" style="display: none">
+            <input type="radio" name="has_user"
+                   value="1"
+                   data-endpoint="GETapi-entrepots"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots" style="display: none">
+            <input type="radio" name="has_user"
+                   value="0"
+                   data-endpoint="GETapi-entrepots"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Filtrer les entrepôts avec/sans responsable. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-entrepots"
+               value="name"
+               data-component="query">
+    <br>
+<p>Champ de tri (name, code, created_at). Example: <code>name</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-entrepots"
+               value="asc"
+               data-component="query">
+    <br>
+<p>Ordre de tri (asc, desc). Example: <code>asc</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_user</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots" style="display: none">
+            <input type="radio" name="with_user"
+                   value="1"
+                   data-endpoint="GETapi-entrepots"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots" style="display: none">
+            <input type="radio" name="with_user"
+                   value="0"
+                   data-endpoint="GETapi-entrepots"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du responsable. Example: <code>true</code></p>
+            </div>
+                </form>
+
+                    <h2 id="entrepots-POSTapi-entrepots">Créer un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Crée un nouvel entrepôt dans le système. Le code est généré automatiquement.</p>
+
+<span id="example-requests-POSTapi-entrepots">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/entrepots" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Entrepôt Central\",
+    \"adresse\": \"123 Rue de l\'Industrie\",
+    \"is_active\": true,
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440001\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Entrepôt Central",
+    "adresse": "123 Rue de l'Industrie",
+    "is_active": true,
+    "user_id": "550e8400-e29b-41d4-a716-446655440001"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Entrepôt Central',
+            'adresse' =&gt; '123 Rue de l\'Industrie',
+            'is_active' =&gt; true,
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-entrepots">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT-ABC123&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+    &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;user&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;name&quot;: &quot;Jean Dupont&quot;,
+        &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom est obligatoire.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-entrepots" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-entrepots"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-entrepots"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-entrepots" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-entrepots">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-entrepots" data-method="POST"
+      data-path="api/entrepots"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-entrepots', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-entrepots"
+                    onclick="tryItOut('POSTapi-entrepots');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-entrepots"
+                    onclick="cancelTryOut('POSTapi-entrepots');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-entrepots"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/entrepots</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-entrepots"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-entrepots"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-entrepots"
+               value="Entrepôt Central"
+               data-component="body">
+    <br>
+<p>Nom de l'entrepôt. Example: <code>Entrepôt Central</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="POSTapi-entrepots"
+               value="123 Rue de l'Industrie"
+               data-component="body">
+    <br>
+<p>Adresse de l'entrepôt. Example: <code>123 Rue de l'Industrie</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-entrepots" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="POSTapi-entrepots"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-entrepots" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="POSTapi-entrepots"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif (par défaut: true). Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="POSTapi-entrepots"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID du responsable (optionnel). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+        </form>
+
+                    <h2 id="entrepots-GETapi-entrepots--id-">Afficher un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Récupère les détails d'un entrepôt spécifique.</p>
+
+<span id="example-requests-GETapi-entrepots--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000?with_user=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const params = {
+    "with_user": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'with_user' =&gt; '1',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-entrepots--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT001&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+    &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;user&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;name&quot;: &quot;Jean Dupont&quot;,
+        &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-entrepots--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-entrepots--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-entrepots--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-entrepots--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-entrepots--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-entrepots--id-" data-method="GET"
+      data-path="api/entrepots/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-entrepots--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-entrepots--id-"
+                    onclick="tryItOut('GETapi-entrepots--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-entrepots--id-"
+                    onclick="cancelTryOut('GETapi-entrepots--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-entrepots--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/entrepots/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-entrepots--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_user</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots--id-" style="display: none">
+            <input type="radio" name="with_user"
+                   value="1"
+                   data-endpoint="GETapi-entrepots--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots--id-" style="display: none">
+            <input type="radio" name="with_user"
+                   value="0"
+                   data-endpoint="GETapi-entrepots--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du responsable. Example: <code>true</code></p>
+            </div>
+                </form>
+
+                    <h2 id="entrepots-PUTapi-entrepots--id-">Mettre à jour un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un entrepôt existant. Le code ne peut pas être modifié.</p>
+
+<span id="example-requests-PUTapi-entrepots--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Entrepôt Central\",
+    \"adresse\": \"123 Rue de l\'Industrie\",
+    \"is_active\": true,
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440001\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Entrepôt Central",
+    "adresse": "123 Rue de l'Industrie",
+    "is_active": true,
+    "user_id": "550e8400-e29b-41d4-a716-446655440001"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Entrepôt Central',
+            'adresse' =&gt; '123 Rue de l\'Industrie',
+            'is_active' =&gt; true,
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-entrepots--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT-ABC123&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central Mis &agrave; Jour&quot;,
+    &quot;adresse&quot;: &quot;456 Nouvelle Adresse&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;user&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;name&quot;: &quot;Jean Dupont&quot;,
+        &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-entrepots--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-entrepots--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-entrepots--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-entrepots--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-entrepots--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-entrepots--id-" data-method="PUT"
+      data-path="api/entrepots/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-entrepots--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-entrepots--id-"
+                    onclick="tryItOut('PUTapi-entrepots--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-entrepots--id-"
+                    onclick="cancelTryOut('PUTapi-entrepots--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-entrepots--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/entrepots/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-entrepots--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-entrepots--id-"
+               value="Entrepôt Central"
+               data-component="body">
+    <br>
+<p>Nom de l'entrepôt. Example: <code>Entrepôt Central</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PUTapi-entrepots--id-"
+               value="123 Rue de l'Industrie"
+               data-component="body">
+    <br>
+<p>Adresse de l'entrepôt. Example: <code>123 Rue de l'Industrie</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-entrepots--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PUTapi-entrepots--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-entrepots--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PUTapi-entrepots--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif. Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="PUTapi-entrepots--id-"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID du responsable. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+        </form>
+
+                    <h2 id="entrepots-PATCHapi-entrepots--id-">Mettre à jour un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un entrepôt existant. Le code ne peut pas être modifié.</p>
+
+<span id="example-requests-PATCHapi-entrepots--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Entrepôt Central\",
+    \"adresse\": \"123 Rue de l\'Industrie\",
+    \"is_active\": true,
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440001\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Entrepôt Central",
+    "adresse": "123 Rue de l'Industrie",
+    "is_active": true,
+    "user_id": "550e8400-e29b-41d4-a716-446655440001"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Entrepôt Central',
+            'adresse' =&gt; '123 Rue de l\'Industrie',
+            'is_active' =&gt; true,
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-entrepots--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT-ABC123&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central Mis &agrave; Jour&quot;,
+    &quot;adresse&quot;: &quot;456 Nouvelle Adresse&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;user&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;name&quot;: &quot;Jean Dupont&quot;,
+        &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-entrepots--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-entrepots--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-entrepots--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-entrepots--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-entrepots--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-entrepots--id-" data-method="PATCH"
+      data-path="api/entrepots/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-entrepots--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-entrepots--id-"
+                    onclick="tryItOut('PATCHapi-entrepots--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-entrepots--id-"
+                    onclick="cancelTryOut('PATCHapi-entrepots--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-entrepots--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/entrepots/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-entrepots--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PATCHapi-entrepots--id-"
+               value="Entrepôt Central"
+               data-component="body">
+    <br>
+<p>Nom de l'entrepôt. Example: <code>Entrepôt Central</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PATCHapi-entrepots--id-"
+               value="123 Rue de l'Industrie"
+               data-component="body">
+    <br>
+<p>Adresse de l'entrepôt. Example: <code>123 Rue de l'Industrie</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-entrepots--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PATCHapi-entrepots--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-entrepots--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PATCHapi-entrepots--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif. Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="PATCHapi-entrepots--id-"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID du responsable. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+        </form>
+
+                    <h2 id="entrepots-DELETEapi-entrepots--id-">Supprimer un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Supprime définitivement un entrepôt.</p>
+
+<span id="example-requests-DELETEapi-entrepots--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-entrepots--id-">
+            <blockquote>
+            <p>Example response (204):</p>
+        </blockquote>
+                <pre>
+<code>Empty response</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-entrepots--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-entrepots--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-entrepots--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-entrepots--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-entrepots--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-entrepots--id-" data-method="DELETE"
+      data-path="api/entrepots/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-entrepots--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-entrepots--id-"
+                    onclick="tryItOut('DELETEapi-entrepots--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-entrepots--id-"
+                    onclick="cancelTryOut('DELETEapi-entrepots--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-entrepots--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/entrepots/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-entrepots--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-entrepots--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="entrepots-PATCHapi-entrepots--id--assign-user">Attribuer un responsable à un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Assigne un utilisateur comme responsable d'un entrepôt.</p>
+
+<span id="example-requests-PATCHapi-entrepots--id--assign-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/assign-user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440001\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/assign-user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "550e8400-e29b-41d4-a716-446655440001"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/assign-user';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-entrepots--id--assign-user">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT001&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+    &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;user&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;name&quot;: &quot;Jean Dupont&quot;,
+        &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Cet entrep&ocirc;t a d&eacute;j&agrave; un responsable attribu&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;,
+    &quot;errors&quot;: {
+        &quot;user_id&quot;: [
+            &quot;L&#039;utilisateur s&eacute;lectionn&eacute; n&#039;existe pas.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-entrepots--id--assign-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-entrepots--id--assign-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-entrepots--id--assign-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-entrepots--id--assign-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-entrepots--id--assign-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-entrepots--id--assign-user" data-method="PATCH"
+      data-path="api/entrepots/{id}/assign-user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-entrepots--id--assign-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-entrepots--id--assign-user"
+                    onclick="tryItOut('PATCHapi-entrepots--id--assign-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-entrepots--id--assign-user"
+                    onclick="cancelTryOut('PATCHapi-entrepots--id--assign-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-entrepots--id--assign-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/entrepots/{id}/assign-user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-entrepots--id--assign-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-entrepots--id--assign-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-entrepots--id--assign-user"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="PATCHapi-entrepots--id--assign-user"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID du responsable à attribuer. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+        </form>
+
+                    <h2 id="entrepots-PATCHapi-entrepots--id--unassign-user">Désattribuer le responsable d&#039;un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Retire le responsable assigné à un entrepôt.</p>
+
+<span id="example-requests-PATCHapi-entrepots--id--unassign-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/unassign-user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/unassign-user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/unassign-user';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-entrepots--id--unassign-user">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT001&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+    &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: null,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;user&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Aucun responsable n&#039;est attribu&eacute; &agrave; cet entrep&ocirc;t.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-entrepots--id--unassign-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-entrepots--id--unassign-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-entrepots--id--unassign-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-entrepots--id--unassign-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-entrepots--id--unassign-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-entrepots--id--unassign-user" data-method="PATCH"
+      data-path="api/entrepots/{id}/unassign-user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-entrepots--id--unassign-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-entrepots--id--unassign-user"
+                    onclick="tryItOut('PATCHapi-entrepots--id--unassign-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-entrepots--id--unassign-user"
+                    onclick="cancelTryOut('PATCHapi-entrepots--id--unassign-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-entrepots--id--unassign-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/entrepots/{id}/unassign-user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-entrepots--id--unassign-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-entrepots--id--unassign-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-entrepots--id--unassign-user"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="entrepots-PATCHapi-entrepots--id--change-user">Changer le responsable d&#039;un entrepôt</h2>
+
+<p>
+</p>
+
+<p>Remplace le responsable actuel par un nouveau responsable.</p>
+
+<span id="example-requests-PATCHapi-entrepots--id--change-user">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/change-user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440002\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/change-user"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "550e8400-e29b-41d4-a716-446655440002"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/change-user';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-entrepots--id--change-user">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;ENT001&quot;,
+    &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+    &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+    &quot;is_active&quot;: true,
+    &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;user&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;name&quot;: &quot;Marie Martin&quot;,
+        &quot;email&quot;: &quot;marie.martin@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;,
+    &quot;errors&quot;: {
+        &quot;user_id&quot;: [
+            &quot;L&#039;utilisateur s&eacute;lectionn&eacute; n&#039;existe pas.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-entrepots--id--change-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-entrepots--id--change-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-entrepots--id--change-user"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-entrepots--id--change-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-entrepots--id--change-user">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-entrepots--id--change-user" data-method="PATCH"
+      data-path="api/entrepots/{id}/change-user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-entrepots--id--change-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-entrepots--id--change-user"
+                    onclick="tryItOut('PATCHapi-entrepots--id--change-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-entrepots--id--change-user"
+                    onclick="cancelTryOut('PATCHapi-entrepots--id--change-user');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-entrepots--id--change-user"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/entrepots/{id}/change-user</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-entrepots--id--change-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-entrepots--id--change-user"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-entrepots--id--change-user"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="PATCHapi-entrepots--id--change-user"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>UUID du nouveau responsable. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+        </form>
 
                 <h1 id="fournisseurs">Fournisseurs</h1>
 

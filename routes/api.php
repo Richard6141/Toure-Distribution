@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
+use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\FournisseurController;
 
 Route::get('/user', function (Request $request) {
@@ -85,4 +86,25 @@ Route::prefix('fournisseurs')->name('fournisseurs.')->group(function () {
     // Routes pour la gestion du soft delete
     Route::patch('/{id}/restore', [FournisseurController::class, 'restore'])->name('restore');
     Route::delete('/{id}/force', [FournisseurController::class, 'forceDelete'])->name('force-delete');
+})->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| Entrepôts API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('entrepots')->name('entrepots.')->group(function () {
+    // Routes CRUD standard
+    Route::get('/', [EntrepotController::class, 'index'])->name('index');
+    Route::post('/', [EntrepotController::class, 'store'])->name('store');
+    Route::get('/{id}', [EntrepotController::class, 'show'])->name('show');
+    Route::put('/{id}', [EntrepotController::class, 'update'])->name('update');
+    Route::patch('/{id}', [EntrepotController::class, 'update'])->name('patch');
+    Route::delete('/{id}', [EntrepotController::class, 'destroy'])->name('destroy');
+
+    // Routes pour la gestion des responsables
+    Route::patch('/{id}/assign-user', [EntrepotController::class, 'assignUser'])->name('assign-user');
+    Route::patch('/{id}/unassign-user', [EntrepotController::class, 'unassignUser'])->name('unassign-user');
+    Route::patch('/{id}/change-user', [EntrepotController::class, 'changeUser'])->name('change-user');
 })->middleware('auth:sanctum');

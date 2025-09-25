@@ -33,6 +33,10 @@ class Entrepot extends Model
             if (empty($model->entrepot_id)) {
                 $model->entrepot_id = (string) Str::uuid();
             }
+
+            if (empty($model->code)) {
+                $model->code = 'ENT-' . strtoupper(Str::random(6));
+            }
         });
     }
 
