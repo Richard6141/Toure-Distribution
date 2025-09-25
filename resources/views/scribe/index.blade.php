@@ -189,6 +189,37 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-fournisseurs" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="fournisseurs">
+                    <a href="#fournisseurs">Fournisseurs</a>
+                </li>
+                                    <ul id="tocify-subheader-fournisseurs" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="fournisseurs-GETapi-fournisseurs">
+                                <a href="#fournisseurs-GETapi-fournisseurs">Liste des fournisseurs</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-POSTapi-fournisseurs">
+                                <a href="#fournisseurs-POSTapi-fournisseurs">Créer un fournisseur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-GETapi-fournisseurs--id-">
+                                <a href="#fournisseurs-GETapi-fournisseurs--id-">Afficher un fournisseur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-PUTapi-fournisseurs--id-">
+                                <a href="#fournisseurs-PUTapi-fournisseurs--id-">Mettre à jour un fournisseur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-PATCHapi-fournisseurs--id-">
+                                <a href="#fournisseurs-PATCHapi-fournisseurs--id-">Mettre à jour un fournisseur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-DELETEapi-fournisseurs--id-">
+                                <a href="#fournisseurs-DELETEapi-fournisseurs--id-">Supprimer un fournisseur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-PATCHapi-fournisseurs--id--restore">
+                                <a href="#fournisseurs-PATCHapi-fournisseurs--id--restore">Restaurer un fournisseur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="fournisseurs-DELETEapi-fournisseurs--id--force">
+                                <a href="#fournisseurs-DELETEapi-fournisseurs--id--force">Suppression définitive</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
             </div>
 
     <ul class="toc-footer" id="toc-footer">
@@ -198,7 +229,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 24 September 2025</li>
+        <li>Dernière mise à jour: 25 September 2025</li>
     </ul>
 </div>
 
@@ -2406,7 +2437,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -2434,7 +2465,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -2464,7 +2495,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -2697,7 +2728,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -2911,7 +2942,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -2933,7 +2964,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -2957,7 +2988,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -3115,7 +3146,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -4119,7 +4150,7 @@ Vous pouvez filtrer par nom, email, code, ville, statut et type de client.</p>
     \"client_type_id\": \"c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a\",
     \"is_active\": true,
     \"with_client_type\": false,
-    \"balance_filter\": \"positive\"
+    \"balance_filter\": \"zero\"
 }"
 </code></pre></div>
 
@@ -4161,7 +4192,7 @@ let body = {
     "client_type_id": "c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a",
     "is_active": true,
     "with_client_type": false,
-    "balance_filter": "positive"
+    "balance_filter": "zero"
 };
 
 fetch(url, {
@@ -4205,7 +4236,7 @@ $response = $client-&gt;get(
             'client_type_id' =&gt; 'c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a',
             'is_active' =&gt; true,
             'with_client_type' =&gt; false,
-            'balance_filter' =&gt; 'positive',
+            'balance_filter' =&gt; 'zero',
         ],
     ]
 );
@@ -4593,10 +4624,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
+               value="zero"
                data-component="body">
     <br>
-<p>Example: <code>positive</code></p>
+<p>Example: <code>zero</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -4620,7 +4651,6 @@ L'UUID et le code client sont générés automatiquement si non fournis.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"code\": \"CLI-CUSTOM\",
     \"name_client\": \"John Doe\",
     \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
     \"adresse\": \"123 Rue de la Paix\",
@@ -4629,7 +4659,8 @@ L'UUID et le code client sont générés automatiquement si non fournis.</p>
     \"phonenumber\": \"+229 12 34 56 78\",
     \"credit_limit\": 500000,
     \"current_balance\": 0,
-    \"is_active\": true
+    \"is_active\": true,
+    \"code\": \"CLI-CUSTOM\"
 }"
 </code></pre></div>
 
@@ -4645,7 +4676,6 @@ const headers = {
 };
 
 let body = {
-    "code": "CLI-CUSTOM",
     "name_client": "John Doe",
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "adresse": "123 Rue de la Paix",
@@ -4654,7 +4684,8 @@ let body = {
     "phonenumber": "+229 12 34 56 78",
     "credit_limit": 500000,
     "current_balance": 0,
-    "is_active": true
+    "is_active": true,
+    "code": "CLI-CUSTOM"
 };
 
 fetch(url, {
@@ -4675,7 +4706,6 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'code' =&gt; 'CLI-CUSTOM',
             'name_client' =&gt; 'John Doe',
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'adresse' =&gt; '123 Rue de la Paix',
@@ -4685,6 +4715,7 @@ $response = $client-&gt;post(
             'credit_limit' =&gt; 500000.0,
             'current_balance' =&gt; 0.0,
             'is_active' =&gt; true,
+            'code' =&gt; 'CLI-CUSTOM',
         ],
     ]
 );
@@ -4807,17 +4838,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="POSTapi-clients"
-               value="CLI-CUSTOM"
-               data-component="body">
-    <br>
-<p>optionnel Code client unique. Si non fourni, sera généré automatiquement. Example: <code>CLI-CUSTOM</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
@@ -4926,6 +4946,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>optionnel Statut actif (défaut: true). Example: <code>true</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="POSTapi-clients"
+               value="CLI-CUSTOM"
+               data-component="body">
+    <br>
+<p>optionnel Code client unique. Si non fourni, sera généré automatiquement. Example: <code>CLI-CUSTOM</code></p>
+        </div>
         </form>
 
                     <h2 id="clients-management-GETapi-clients--client_id-">Afficher un client spécifique</h2>
@@ -4945,7 +4976,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -4967,7 +4998,7 @@ const headers = {
 };
 
 let body = {
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -4991,7 +5022,7 @@ $response = $client-&gt;get(
             'with_client_type' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -5157,7 +5188,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -7219,6 +7250,1888 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                <h1 id="fournisseurs">Fournisseurs</h1>
+
+    <p>APIs pour la gestion des fournisseurs</p>
+
+                                <h2 id="fournisseurs-GETapi-fournisseurs">Liste des fournisseurs</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste paginée des fournisseurs avec possibilité de filtrage.</p>
+
+<span id="example-requests-GETapi-fournisseurs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/fournisseurs?page=1&amp;per_page=15&amp;search=ACME&amp;city=Paris&amp;is_active=1&amp;sort_by=name&amp;sort_order=asc&amp;with_trashed=" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "ACME",
+    "city": "Paris",
+    "is_active": "1",
+    "sort_by": "name",
+    "sort_order": "asc",
+    "with_trashed": "0",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'ACME',
+            'city' =&gt; 'Paris',
+            'is_active' =&gt; '1',
+            'sort_by' =&gt; 'name',
+            'sort_order' =&gt; 'asc',
+            'with_trashed' =&gt; '0',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-fournisseurs">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;code&quot;: &quot;FRN-ABC123&quot;,
+            &quot;name&quot;: &quot;ACME Corporation&quot;,
+            &quot;responsable&quot;: &quot;John Doe&quot;,
+            &quot;adresse&quot;: &quot;123 Main Street&quot;,
+            &quot;city&quot;: &quot;Paris&quot;,
+            &quot;phone&quot;: &quot;+33123456789&quot;,
+            &quot;email&quot;: &quot;contact@acme.com&quot;,
+            &quot;payment_terms&quot;: &quot;30 jours&quot;,
+            &quot;is_active&quot;: true,
+            &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+            &quot;deleted_at&quot;: null
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://api.example.com/fournisseurs?page=1&quot;,
+        &quot;last&quot;: &quot;http://api.example.com/fournisseurs?page=10&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: &quot;http://api.example.com/fournisseurs?page=2&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 10,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 15,
+        &quot;total&quot;: 150
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-fournisseurs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-fournisseurs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-fournisseurs"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-fournisseurs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-fournisseurs">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-fournisseurs" data-method="GET"
+      data-path="api/fournisseurs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-fournisseurs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-fournisseurs"
+                    onclick="tryItOut('GETapi-fournisseurs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-fournisseurs"
+                    onclick="cancelTryOut('GETapi-fournisseurs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-fournisseurs"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/fournisseurs</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-fournisseurs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-fournisseurs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-fournisseurs"
+               value="1"
+               data-component="query">
+    <br>
+<p>Numéro de la page. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-fournisseurs"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-fournisseurs"
+               value="ACME"
+               data-component="query">
+    <br>
+<p>Recherche par nom, code ou email. Example: <code>ACME</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="GETapi-fournisseurs"
+               value="Paris"
+               data-component="query">
+    <br>
+<p>Filtrer par ville. Example: <code>Paris</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-fournisseurs" style="display: none">
+            <input type="radio" name="is_active"
+                   value="1"
+                   data-endpoint="GETapi-fournisseurs"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-fournisseurs" style="display: none">
+            <input type="radio" name="is_active"
+                   value="0"
+                   data-endpoint="GETapi-fournisseurs"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Filtrer par statut actif (true/false). Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-fournisseurs"
+               value="name"
+               data-component="query">
+    <br>
+<p>Champ de tri (name, code, created_at). Example: <code>name</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-fournisseurs"
+               value="asc"
+               data-component="query">
+    <br>
+<p>Ordre de tri (asc, desc). Example: <code>asc</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_trashed</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-fournisseurs" style="display: none">
+            <input type="radio" name="with_trashed"
+                   value="1"
+                   data-endpoint="GETapi-fournisseurs"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-fournisseurs" style="display: none">
+            <input type="radio" name="with_trashed"
+                   value="0"
+                   data-endpoint="GETapi-fournisseurs"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les fournisseurs supprimés. Example: <code>false</code></p>
+            </div>
+                </form>
+
+                    <h2 id="fournisseurs-POSTapi-fournisseurs">Créer un fournisseur</h2>
+
+<p>
+</p>
+
+<p>Crée un nouveau fournisseur dans le système.</p>
+
+<span id="example-requests-POSTapi-fournisseurs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/fournisseurs" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"ACME Corporation\",
+    \"responsable\": \"John Doe\",
+    \"adresse\": \"123 Main Street\",
+    \"city\": \"Paris\",
+    \"phone\": \"+33123456789\",
+    \"email\": \"contact@acme.com\",
+    \"payment_terms\": \"30 jours\",
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "ACME Corporation",
+    "responsable": "John Doe",
+    "adresse": "123 Main Street",
+    "city": "Paris",
+    "phone": "+33123456789",
+    "email": "contact@acme.com",
+    "payment_terms": "30 jours",
+    "is_active": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'ACME Corporation',
+            'responsable' =&gt; 'John Doe',
+            'adresse' =&gt; '123 Main Street',
+            'city' =&gt; 'Paris',
+            'phone' =&gt; '+33123456789',
+            'email' =&gt; 'contact@acme.com',
+            'payment_terms' =&gt; '30 jours',
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-fournisseurs">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;FRN-ABC123&quot;,
+    &quot;name&quot;: &quot;ACME Corporation&quot;,
+    &quot;responsable&quot;: &quot;John Doe&quot;,
+    &quot;adresse&quot;: &quot;123 Main Street&quot;,
+    &quot;city&quot;: &quot;Paris&quot;,
+    &quot;phone&quot;: &quot;+33123456789&quot;,
+    &quot;email&quot;: &quot;contact@acme.com&quot;,
+    &quot;payment_terms&quot;: &quot;30 jours&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;deleted_at&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom est obligatoire.&quot;
+        ],
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-fournisseurs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-fournisseurs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-fournisseurs"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-fournisseurs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-fournisseurs">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-fournisseurs" data-method="POST"
+      data-path="api/fournisseurs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-fournisseurs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-fournisseurs"
+                    onclick="tryItOut('POSTapi-fournisseurs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-fournisseurs"
+                    onclick="cancelTryOut('POSTapi-fournisseurs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-fournisseurs"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/fournisseurs</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-fournisseurs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-fournisseurs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-fournisseurs"
+               value="ACME Corporation"
+               data-component="body">
+    <br>
+<p>Nom du fournisseur. Example: <code>ACME Corporation</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>responsable</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="responsable"                data-endpoint="POSTapi-fournisseurs"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>Personne responsable. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="POSTapi-fournisseurs"
+               value="123 Main Street"
+               data-component="body">
+    <br>
+<p>Adresse du fournisseur. Example: <code>123 Main Street</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="POSTapi-fournisseurs"
+               value="Paris"
+               data-component="body">
+    <br>
+<p>Ville. Example: <code>Paris</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-fournisseurs"
+               value="+33123456789"
+               data-component="body">
+    <br>
+<p>Numéro de téléphone. Example: <code>+33123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-fournisseurs"
+               value="contact@acme.com"
+               data-component="body">
+    <br>
+<p>Email (doit être unique). Example: <code>contact@acme.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_terms</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_terms"                data-endpoint="POSTapi-fournisseurs"
+               value="30 jours"
+               data-component="body">
+    <br>
+<p>Conditions de paiement. Example: <code>30 jours</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-fournisseurs" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="POSTapi-fournisseurs"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-fournisseurs" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="POSTapi-fournisseurs"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif (par défaut: true). Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="fournisseurs-GETapi-fournisseurs--id-">Afficher un fournisseur</h2>
+
+<p>
+</p>
+
+<p>Récupère les détails d'un fournisseur spécifique.</p>
+
+<span id="example-requests-GETapi-fournisseurs--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000?with_trashed=" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const params = {
+    "with_trashed": "0",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'with_trashed' =&gt; '0',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-fournisseurs--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;FRN-ABC123&quot;,
+    &quot;name&quot;: &quot;ACME Corporation&quot;,
+    &quot;responsable&quot;: &quot;John Doe&quot;,
+    &quot;adresse&quot;: &quot;123 Main Street&quot;,
+    &quot;city&quot;: &quot;Paris&quot;,
+    &quot;phone&quot;: &quot;+33123456789&quot;,
+    &quot;email&quot;: &quot;contact@acme.com&quot;,
+    &quot;payment_terms&quot;: &quot;30 jours&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;deleted_at&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Fournisseur non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-fournisseurs--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-fournisseurs--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-fournisseurs--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-fournisseurs--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-fournisseurs--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-fournisseurs--id-" data-method="GET"
+      data-path="api/fournisseurs/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-fournisseurs--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-fournisseurs--id-"
+                    onclick="tryItOut('GETapi-fournisseurs--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-fournisseurs--id-"
+                    onclick="cancelTryOut('GETapi-fournisseurs--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-fournisseurs--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/fournisseurs/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-fournisseurs--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_trashed</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-fournisseurs--id-" style="display: none">
+            <input type="radio" name="with_trashed"
+                   value="1"
+                   data-endpoint="GETapi-fournisseurs--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-fournisseurs--id-" style="display: none">
+            <input type="radio" name="with_trashed"
+                   value="0"
+                   data-endpoint="GETapi-fournisseurs--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure même si supprimé. Example: <code>false</code></p>
+            </div>
+                </form>
+
+                    <h2 id="fournisseurs-PUTapi-fournisseurs--id-">Mettre à jour un fournisseur</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un fournisseur existant.</p>
+
+<span id="example-requests-PUTapi-fournisseurs--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"ACME Corporation\",
+    \"responsable\": \"John Doe\",
+    \"adresse\": \"123 Main Street\",
+    \"city\": \"Paris\",
+    \"phone\": \"+33123456789\",
+    \"email\": \"contact@acme.com\",
+    \"payment_terms\": \"30 jours\",
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "ACME Corporation",
+    "responsable": "John Doe",
+    "adresse": "123 Main Street",
+    "city": "Paris",
+    "phone": "+33123456789",
+    "email": "contact@acme.com",
+    "payment_terms": "30 jours",
+    "is_active": true
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'ACME Corporation',
+            'responsable' =&gt; 'John Doe',
+            'adresse' =&gt; '123 Main Street',
+            'city' =&gt; 'Paris',
+            'phone' =&gt; '+33123456789',
+            'email' =&gt; 'contact@acme.com',
+            'payment_terms' =&gt; '30 jours',
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-fournisseurs--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;FRN-ABC123&quot;,
+    &quot;name&quot;: &quot;ACME Corporation Updated&quot;,
+    &quot;responsable&quot;: &quot;Jane Doe&quot;,
+    &quot;adresse&quot;: &quot;456 New Street&quot;,
+    &quot;city&quot;: &quot;Lyon&quot;,
+    &quot;phone&quot;: &quot;+33987654321&quot;,
+    &quot;email&quot;: &quot;contact@acme.com&quot;,
+    &quot;payment_terms&quot;: &quot;45 jours&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;deleted_at&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Fournisseur non trouv&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-fournisseurs--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-fournisseurs--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-fournisseurs--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-fournisseurs--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-fournisseurs--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-fournisseurs--id-" data-method="PUT"
+      data-path="api/fournisseurs/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-fournisseurs--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-fournisseurs--id-"
+                    onclick="tryItOut('PUTapi-fournisseurs--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-fournisseurs--id-"
+                    onclick="cancelTryOut('PUTapi-fournisseurs--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-fournisseurs--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/fournisseurs/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="ACME Corporation"
+               data-component="body">
+    <br>
+<p>Nom du fournisseur. Example: <code>ACME Corporation</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>responsable</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="responsable"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>Personne responsable. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="123 Main Street"
+               data-component="body">
+    <br>
+<p>Adresse du fournisseur. Example: <code>123 Main Street</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="Paris"
+               data-component="body">
+    <br>
+<p>Ville. Example: <code>Paris</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="+33123456789"
+               data-component="body">
+    <br>
+<p>Numéro de téléphone. Example: <code>+33123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="contact@acme.com"
+               data-component="body">
+    <br>
+<p>Email (doit être unique). Example: <code>contact@acme.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_terms</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_terms"                data-endpoint="PUTapi-fournisseurs--id-"
+               value="30 jours"
+               data-component="body">
+    <br>
+<p>Conditions de paiement. Example: <code>30 jours</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-fournisseurs--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PUTapi-fournisseurs--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-fournisseurs--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PUTapi-fournisseurs--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif. Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="fournisseurs-PATCHapi-fournisseurs--id-">Mettre à jour un fournisseur</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un fournisseur existant.</p>
+
+<span id="example-requests-PATCHapi-fournisseurs--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"ACME Corporation\",
+    \"responsable\": \"John Doe\",
+    \"adresse\": \"123 Main Street\",
+    \"city\": \"Paris\",
+    \"phone\": \"+33123456789\",
+    \"email\": \"contact@acme.com\",
+    \"payment_terms\": \"30 jours\",
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "ACME Corporation",
+    "responsable": "John Doe",
+    "adresse": "123 Main Street",
+    "city": "Paris",
+    "phone": "+33123456789",
+    "email": "contact@acme.com",
+    "payment_terms": "30 jours",
+    "is_active": true
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'ACME Corporation',
+            'responsable' =&gt; 'John Doe',
+            'adresse' =&gt; '123 Main Street',
+            'city' =&gt; 'Paris',
+            'phone' =&gt; '+33123456789',
+            'email' =&gt; 'contact@acme.com',
+            'payment_terms' =&gt; '30 jours',
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-fournisseurs--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;FRN-ABC123&quot;,
+    &quot;name&quot;: &quot;ACME Corporation Updated&quot;,
+    &quot;responsable&quot;: &quot;Jane Doe&quot;,
+    &quot;adresse&quot;: &quot;456 New Street&quot;,
+    &quot;city&quot;: &quot;Lyon&quot;,
+    &quot;phone&quot;: &quot;+33987654321&quot;,
+    &quot;email&quot;: &quot;contact@acme.com&quot;,
+    &quot;payment_terms&quot;: &quot;45 jours&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;deleted_at&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Fournisseur non trouv&eacute;.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Les donn&eacute;es fournies ne sont pas valides.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-fournisseurs--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-fournisseurs--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-fournisseurs--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-fournisseurs--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-fournisseurs--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-fournisseurs--id-" data-method="PATCH"
+      data-path="api/fournisseurs/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-fournisseurs--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-fournisseurs--id-"
+                    onclick="tryItOut('PATCHapi-fournisseurs--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-fournisseurs--id-"
+                    onclick="cancelTryOut('PATCHapi-fournisseurs--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-fournisseurs--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/fournisseurs/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="ACME Corporation"
+               data-component="body">
+    <br>
+<p>Nom du fournisseur. Example: <code>ACME Corporation</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>responsable</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="responsable"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>Personne responsable. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="123 Main Street"
+               data-component="body">
+    <br>
+<p>Adresse du fournisseur. Example: <code>123 Main Street</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="Paris"
+               data-component="body">
+    <br>
+<p>Ville. Example: <code>Paris</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="+33123456789"
+               data-component="body">
+    <br>
+<p>Numéro de téléphone. Example: <code>+33123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="contact@acme.com"
+               data-component="body">
+    <br>
+<p>Email (doit être unique). Example: <code>contact@acme.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_terms</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_terms"                data-endpoint="PATCHapi-fournisseurs--id-"
+               value="30 jours"
+               data-component="body">
+    <br>
+<p>Conditions de paiement. Example: <code>30 jours</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-fournisseurs--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PATCHapi-fournisseurs--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-fournisseurs--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PATCHapi-fournisseurs--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif. Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="fournisseurs-DELETEapi-fournisseurs--id-">Supprimer un fournisseur</h2>
+
+<p>
+</p>
+
+<p>Supprime définitivement un fournisseur (soft delete).</p>
+
+<span id="example-requests-DELETEapi-fournisseurs--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-fournisseurs--id-">
+            <blockquote>
+            <p>Example response (204):</p>
+        </blockquote>
+                <pre>
+<code>Empty response</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Fournisseur non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-fournisseurs--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-fournisseurs--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-fournisseurs--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-fournisseurs--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-fournisseurs--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-fournisseurs--id-" data-method="DELETE"
+      data-path="api/fournisseurs/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-fournisseurs--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-fournisseurs--id-"
+                    onclick="tryItOut('DELETEapi-fournisseurs--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-fournisseurs--id-"
+                    onclick="cancelTryOut('DELETEapi-fournisseurs--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-fournisseurs--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/fournisseurs/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-fournisseurs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-fournisseurs--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="fournisseurs-PATCHapi-fournisseurs--id--restore">Restaurer un fournisseur</h2>
+
+<p>
+</p>
+
+<p>Restaure un fournisseur précédemment supprimé.</p>
+
+<span id="example-requests-PATCHapi-fournisseurs--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000/restore" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000/restore"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000/restore';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-fournisseurs--id--restore">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;code&quot;: &quot;FRN-ABC123&quot;,
+    &quot;name&quot;: &quot;ACME Corporation&quot;,
+    &quot;responsable&quot;: &quot;John Doe&quot;,
+    &quot;adresse&quot;: &quot;123 Main Street&quot;,
+    &quot;city&quot;: &quot;Paris&quot;,
+    &quot;phone&quot;: &quot;+33123456789&quot;,
+    &quot;email&quot;: &quot;contact@acme.com&quot;,
+    &quot;payment_terms&quot;: &quot;30 jours&quot;,
+    &quot;is_active&quot;: true,
+    &quot;created_at&quot;: &quot;2023-01-01T00:00:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2023-01-02T00:00:00.000000Z&quot;,
+    &quot;deleted_at&quot;: null
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Fournisseur non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-fournisseurs--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-fournisseurs--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-fournisseurs--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-fournisseurs--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-fournisseurs--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-fournisseurs--id--restore" data-method="PATCH"
+      data-path="api/fournisseurs/{id}/restore"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-fournisseurs--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-fournisseurs--id--restore"
+                    onclick="tryItOut('PATCHapi-fournisseurs--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-fournisseurs--id--restore"
+                    onclick="cancelTryOut('PATCHapi-fournisseurs--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-fournisseurs--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/fournisseurs/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-fournisseurs--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-fournisseurs--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-fournisseurs--id--restore"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="fournisseurs-DELETEapi-fournisseurs--id--force">Suppression définitive</h2>
+
+<p>
+</p>
+
+<p>Supprime définitivement un fournisseur de la base de données.</p>
+
+<span id="example-requests-DELETEapi-fournisseurs--id--force">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000/force" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000/force"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/fournisseurs/550e8400-e29b-41d4-a716-446655440000/force';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-fournisseurs--id--force">
+            <blockquote>
+            <p>Example response (204):</p>
+        </blockquote>
+                <pre>
+<code>Empty response</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Fournisseur non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-fournisseurs--id--force" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-fournisseurs--id--force"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-fournisseurs--id--force"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-fournisseurs--id--force" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-fournisseurs--id--force">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-fournisseurs--id--force" data-method="DELETE"
+      data-path="api/fournisseurs/{id}/force"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-fournisseurs--id--force', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-fournisseurs--id--force"
+                    onclick="tryItOut('DELETEapi-fournisseurs--id--force');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-fournisseurs--id--force"
+                    onclick="cancelTryOut('DELETEapi-fournisseurs--id--force');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-fournisseurs--id--force"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/fournisseurs/{id}/force</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-fournisseurs--id--force"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-fournisseurs--id--force"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-fournisseurs--id--force"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
 
             
 

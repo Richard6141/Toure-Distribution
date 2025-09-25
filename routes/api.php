@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
+use App\Http\Controllers\Api\FournisseurController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -64,4 +65,24 @@ Route::prefix('clients')->group(function () {
     // Routes pour recherche et statistiques
     Route::post('/search', [ClientController::class, 'search'])->name('clients.search');
     Route::get('/statistics/overview', [ClientController::class, 'statistics'])->name('clients.statistics');
+})->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| Fournisseurs API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('fournisseurs')->name('fournisseurs.')->group(function () {
+    // Routes CRUD standard
+    Route::get('/', [FournisseurController::class, 'index'])->name('index');
+    Route::post('/', [FournisseurController::class, 'store'])->name('store');
+    Route::get('/{id}', [FournisseurController::class, 'show'])->name('show');
+    Route::put('/{id}', [FournisseurController::class, 'update'])->name('update');
+    Route::patch('/{id}', [FournisseurController::class, 'update'])->name('patch');
+    Route::delete('/{id}', [FournisseurController::class, 'destroy'])->name('destroy');
+
+    // Routes pour la gestion du soft delete
+    Route::patch('/{id}/restore', [FournisseurController::class, 'restore'])->name('restore');
+    Route::delete('/{id}/force', [FournisseurController::class, 'forceDelete'])->name('force-delete');
 })->middleware('auth:sanctum');

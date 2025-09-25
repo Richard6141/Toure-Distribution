@@ -256,7 +256,7 @@ endpoints:
         name: balance_filter
         description: ''
         required: false
-        example: positive
+        example: zero
         type: string
         enumValues:
           - positive
@@ -276,7 +276,7 @@ endpoints:
       client_type_id: c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a
       is_active: true
       with_client_type: false
-      balance_filter: positive
+      balance_filter: zero
     fileParameters: []
     responses:
       -
@@ -340,16 +340,6 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      code:
-        name: code
-        description: 'optionnel Code client unique. Si non fourni, sera généré automatiquement.'
-        required: false
-        example: CLI-CUSTOM
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
       name_client:
         name: name_client
         description: 'Nom complet du client.'
@@ -440,8 +430,17 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      code:
+        name: code
+        description: 'optionnel Code client unique. Si non fourni, sera généré automatiquement.'
+        required: false
+        example: CLI-CUSTOM
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanBodyParameters:
-      code: CLI-CUSTOM
       name_client: 'John Doe'
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       adresse: '123 Rue de la Paix'
@@ -451,6 +450,7 @@ endpoints:
       credit_limit: 500000.0
       current_balance: 0.0
       is_active: true
+      code: CLI-CUSTOM
     fileParameters: []
     responses:
       -
@@ -546,14 +546,14 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_client_type: true
+      with_client_type: false
     fileParameters: []
     responses:
       -
