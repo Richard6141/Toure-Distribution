@@ -236,7 +236,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -256,7 +256,7 @@ endpoints:
         name: balance_filter
         description: ''
         required: false
-        example: positive
+        example: negative
         type: string
         enumValues:
           - positive
@@ -274,9 +274,9 @@ endpoints:
       code: l
       city: j
       client_type_id: c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a
-      is_active: true
+      is_active: false
       with_client_type: true
-      balance_filter: positive
+      balance_filter: negative
     fileParameters: []
     responses:
       -

@@ -304,14 +304,14 @@ endpoints:
         name: with_clients
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_clients: true
+      with_clients: false
     fileParameters: []
     responses:
       -

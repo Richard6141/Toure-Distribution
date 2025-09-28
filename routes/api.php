@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClientController;
@@ -132,4 +133,27 @@ Route::prefix('products')->group(function () {
     Route::get('category/{categoryId}', [ProductController::class, 'byCategory']); // Produits d’une catégorie
     Route::get('{id}/restore', [ProductController::class, 'restore']);  // Restaurer un produit supprimé
     Route::delete('{id}/force', [ProductController::class, 'forceDelete']); // Suppression définitive
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des stocks
+ * Prefix: /stocks
+ */
+Route::prefix('stocks')->group(function () {
+    Route::get('/', [StockController::class, 'index']);               // Liste des stocks
+    Route::post('/', [StockController::class, 'store']);              // Création d'un stock
+    Route::get('{id}', [StockController::class, 'show']);             // Afficher un stock par ID
+    Route::put('{id}', [StockController::class, 'update']);           // Mise à jour d'un stock
+    Route::delete('{id}', [StockController::class, 'destroy']);       // Suppression logique (soft delete)
+
+    // Routes spécifiques pour la gestion des stocks
+    Route::post('{id}/adjust', [StockController::class, 'adjustQuantity']); // Ajuster la quantité
+    Route::post('{id}/reserve', [StockController::class, 'reserve']);        // Réserver une quantité
+    Route::post('{id}/release', [StockController::class, 'release']);        // Libérer une réservation
+
+    // Bonus utiles
+    Route::get('product/{productId}', [StockController::class, 'byProduct']);    // Stocks d'un produit
+    Route::get('entrepot/{entrepotId}', [StockController::class, 'byEntrepot']); // Stocks d'un entrepôt
+    Route::get('{id}/restore', [StockController::class, 'restore']);             // Restaurer un stock supprimé
+    Route::delete('{id}/force', [StockController::class, 'forceDelete']);        // Suppression définitive
 })->middleware('auth:sanctum');
