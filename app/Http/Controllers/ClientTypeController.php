@@ -93,12 +93,14 @@ class ClientTypeController extends Controller
      * L'UUID est généré automatiquement.
      *
      * @bodyParam label string required Le nom du type de client. Doit être unique. Example: VIP
+     * @bodyParam icon string optionnel Le nom de l'icon. Doit être unique. Example: eye
      * @bodyParam description string optionnel Description du type de client. Example: Client VIP avec services exclusifs
      *
      * @response 201 {
      *   "data": {
      *     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
      *     "label": "VIP",
+     *     "icon": "eye",
      *     "description": "Client VIP avec services exclusifs",
      *     "created_at": "2024-01-15T10:30:00Z",
      *     "updated_at": "2024-01-15T10:30:00Z"
@@ -116,6 +118,7 @@ class ClientTypeController extends Controller
     {
         $validated = $request->validate([
             'label' => 'required|string|max:255|unique:client_types,label',
+            'icon' => 'nullable|string',
             'description' => 'nullable|string|max:1000'
         ], [
             'label.required' => 'Le label est requis',
@@ -216,6 +219,7 @@ class ClientTypeController extends Controller
 
             $validated = $request->validate([
                 'label' => 'sometimes|required|string|max:255|unique:client_types,label,' . $clientType->client_type_id . ',client_type_id',
+                'icon' => 'nullable|string',
                 'description' => 'nullable|string|max:1000'
             ], [
                 'label.unique' => 'Ce label existe déjà',

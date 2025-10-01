@@ -18,6 +18,7 @@ class ClientType extends Model
 
     protected $fillable = [
         'label',
+        'icon',
         'description',
     ];
 

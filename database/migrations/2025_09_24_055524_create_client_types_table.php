@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('client_types', function (Blueprint $table) {
             $table->uuid('client_type_id')->primary();
             $table->string('label')->unique();
+            $table->string('icon')->nullable();
             $table->text('description')->nullable();
 
             $table->timestamps();

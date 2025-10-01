@@ -359,7 +359,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 25 September 2025</li>
+        <li>Dernière mise à jour: 1 October 2025</li>
     </ul>
 </div>
 
@@ -3033,7 +3033,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407" \
+    "http://localhost/api/products/architecto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -3043,7 +3043,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"cost\": 9,
     \"minimum_cost\": 52,
     \"min_stock_level\": 8,
-    \"is_active\": false,
+    \"is_active\": true,
     \"picture\": \"k\"
 }"
 </code></pre></div>
@@ -3051,7 +3051,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407"
+    "http://localhost/api/products/architecto"
 );
 
 const headers = {
@@ -3066,7 +3066,7 @@ let body = {
     "cost": 9,
     "minimum_cost": 52,
     "min_stock_level": 8,
-    "is_active": false,
+    "is_active": true,
     "picture": "k"
 };
 
@@ -3079,7 +3079,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407';
+$url = 'http://localhost/api/products/architecto';
 $response = $client-&gt;put(
     $url,
     [
@@ -3094,7 +3094,7 @@ $response = $client-&gt;put(
             'cost' =&gt; 9,
             'minimum_cost' =&gt; 52,
             'min_stock_level' =&gt; 8,
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
             'picture' =&gt; 'k',
         ],
     ]
@@ -3182,10 +3182,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-products--id-"
-               value="0199818e-7140-7091-9fd7-2dc6b04fd407"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>0199818e-7140-7091-9fd7-2dc6b04fd407</code></p>
+<p>The ID of the product. Example: <code>architecto</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3284,7 +3284,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>picture</code></b>&nbsp;&nbsp;
@@ -3312,14 +3312,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407" \
+    "http://localhost/api/products/architecto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407"
+    "http://localhost/api/products/architecto"
 );
 
 const headers = {
@@ -3335,7 +3335,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407';
+$url = 'http://localhost/api/products/architecto';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3428,10 +3428,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-products--id-"
-               value="0199818e-7140-7091-9fd7-2dc6b04fd407"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>0199818e-7140-7091-9fd7-2dc6b04fd407</code></p>
+<p>The ID of the product. Example: <code>architecto</code></p>
             </div>
                     </form>
 
@@ -3601,14 +3601,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407/restore" \
+    --get "http://localhost/api/products/architecto/restore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407/restore"
+    "http://localhost/api/products/architecto/restore"
 );
 
 const headers = {
@@ -3624,7 +3624,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407/restore';
+$url = 'http://localhost/api/products/architecto/restore';
 $response = $client-&gt;get(
     $url,
     [
@@ -3641,7 +3641,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-products--id--restore">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3653,23 +3653,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;product_id&quot;: &quot;0199818e-7140-7091-9fd7-2dc6b04fd407&quot;,
-        &quot;code&quot;: &quot;PRO-LJ1RSJ&quot;,
-        &quot;name&quot;: &quot;architecto&quot;,
-        &quot;description&quot;: &quot;Eius et animi quos velit et.&quot;,
-        &quot;product_category_id&quot;: &quot;01998171-e647-702c-96ae-064cf0ea53b6&quot;,
-        &quot;unit_price&quot;: &quot;100.00&quot;,
-        &quot;cost&quot;: &quot;200.00&quot;,
-        &quot;minimum_cost&quot;: &quot;150.00&quot;,
-        &quot;min_stock_level&quot;: 16,
-        &quot;is_active&quot;: 0,
-        &quot;picture&quot;: &quot;architecto&quot;,
-        &quot;created_at&quot;: &quot;2025-09-25T15:47:00.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-09-25T15:47:00.000000Z&quot;,
-        &quot;deleted_at&quot;: null
-    },
-    &quot;message&quot;: &quot;Produit restaur&eacute; avec succ&egrave;s&quot;
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Product] architecto&quot;
 }</code>
  </pre>
     </span>
@@ -3749,10 +3733,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-products--id--restore"
-               value="0199818e-7140-7091-9fd7-2dc6b04fd407"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>0199818e-7140-7091-9fd7-2dc6b04fd407</code></p>
+<p>The ID of the product. Example: <code>architecto</code></p>
             </div>
                     </form>
 
@@ -3769,14 +3753,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407/force" \
+    "http://localhost/api/products/architecto/force" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407/force"
+    "http://localhost/api/products/architecto/force"
 );
 
 const headers = {
@@ -3792,7 +3776,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/products/0199818e-7140-7091-9fd7-2dc6b04fd407/force';
+$url = 'http://localhost/api/products/architecto/force';
 $response = $client-&gt;delete(
     $url,
     [
@@ -3885,10 +3869,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-products--id--force"
-               value="0199818e-7140-7091-9fd7-2dc6b04fd407"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the product. Example: <code>0199818e-7140-7091-9fd7-2dc6b04fd407</code></p>
+<p>The ID of the product. Example: <code>architecto</code></p>
             </div>
                     </form>
 
@@ -4375,6 +4359,7 @@ L'UUID est généré automatiquement.</p>
     --header "Accept: application/json" \
     --data "{
     \"label\": \"VIP\",
+    \"icon\": \"eye\",
     \"description\": \"Client VIP avec services exclusifs\"
 }"
 </code></pre></div>
@@ -4392,6 +4377,7 @@ const headers = {
 
 let body = {
     "label": "VIP",
+    "icon": "eye",
     "description": "Client VIP avec services exclusifs"
 };
 
@@ -4414,6 +4400,7 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'label' =&gt; 'VIP',
+            'icon' =&gt; 'eye',
             'description' =&gt; 'Client VIP avec services exclusifs',
         ],
     ]
@@ -4433,6 +4420,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;label&quot;: &quot;VIP&quot;,
+        &quot;icon&quot;: &quot;eye&quot;,
         &quot;description&quot;: &quot;Client VIP avec services exclusifs&quot;,
         &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
         &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
@@ -4535,6 +4523,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Le nom du type de client. Doit être unique. Example: <code>VIP</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="icon"                data-endpoint="POSTapi-client-types"
+               value="eye"
+               data-component="body">
+    <br>
+<p>optionnel Le nom de l'icon. Doit être unique. Example: <code>eye</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -5752,7 +5751,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Récupère la liste de tous les clients avec pagination et filtres optionnels.
-Vous pouvez filtrer par nom, email, code, ville, statut et type de client.</p>
+Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type de client.</p>
 
 <span id="example-requests-GETapi-clients">
 <blockquote>Example request:</blockquote>
@@ -5760,7 +5759,7 @@ Vous pouvez filtrer par nom, email, code, ville, statut et type de client.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;balance_filter=positive" \
+    --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;ifu=1234567890123&amp;marketteur=Marie+Dupont&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;balance_filter=positive" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5771,10 +5770,12 @@ Vous pouvez filtrer par nom, email, code, ville, statut et type de client.</p>
     \"email\": \"rempel.chadrick@example.org\",
     \"code\": \"l\",
     \"city\": \"j\",
-    \"client_type_id\": \"c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a\",
-    \"is_active\": false,
+    \"ifu\": \"n\",
+    \"marketteur\": \"i\",
+    \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
+    \"is_active\": true,
     \"with_client_type\": true,
-    \"balance_filter\": \"negative\"
+    \"balance_filter\": \"zero\"
 }"
 </code></pre></div>
 
@@ -5792,6 +5793,8 @@ const params = {
     "email": "john@example.com",
     "code": "CLI-ABC123",
     "city": "Cotonou",
+    "ifu": "1234567890123",
+    "marketteur": "Marie Dupont",
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "is_active": "1",
     "with_client_type": "1",
@@ -5813,10 +5816,12 @@ let body = {
     "email": "rempel.chadrick@example.org",
     "code": "l",
     "city": "j",
-    "client_type_id": "c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a",
-    "is_active": false,
+    "ifu": "n",
+    "marketteur": "i",
+    "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
+    "is_active": true,
     "with_client_type": true,
-    "balance_filter": "negative"
+    "balance_filter": "zero"
 };
 
 fetch(url, {
@@ -5844,6 +5849,8 @@ $response = $client-&gt;get(
             'email' =&gt; 'john@example.com',
             'code' =&gt; 'CLI-ABC123',
             'city' =&gt; 'Cotonou',
+            'ifu' =&gt; '1234567890123',
+            'marketteur' =&gt; 'Marie Dupont',
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'is_active' =&gt; '1',
             'with_client_type' =&gt; '1',
@@ -5857,10 +5864,12 @@ $response = $client-&gt;get(
             'email' =&gt; 'rempel.chadrick@example.org',
             'code' =&gt; 'l',
             'city' =&gt; 'j',
-            'client_type_id' =&gt; 'c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a',
-            'is_active' =&gt; false,
+            'ifu' =&gt; 'n',
+            'marketteur' =&gt; 'i',
+            'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
+            'is_active' =&gt; true,
             'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'negative',
+            'balance_filter' =&gt; 'zero',
         ],
     ]
 );
@@ -5881,20 +5890,25 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
             &quot;code&quot;: &quot;CLI-ABC123&quot;,
             &quot;name_client&quot;: &quot;John Doe&quot;,
+            &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+            &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
             &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
             &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
             &quot;city&quot;: &quot;Cotonou&quot;,
             &quot;email&quot;: &quot;john.doe@example.com&quot;,
+            &quot;ifu&quot;: &quot;1234567890123&quot;,
             &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
             &quot;credit_limit&quot;: &quot;500000.00&quot;,
             &quot;current_balance&quot;: &quot;150000.00&quot;,
+            &quot;base_reduction&quot;: &quot;5.00&quot;,
             &quot;is_active&quot;: true,
             &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
             &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
             &quot;formatted_credit_limit&quot;: &quot;500 000,00 FCFA&quot;,
             &quot;formatted_current_balance&quot;: &quot;150 000,00 FCFA&quot;,
             &quot;available_credit&quot;: &quot;350000.00&quot;,
-            &quot;formatted_available_credit&quot;: &quot;350 000,00 FCFA&quot;
+            &quot;formatted_available_credit&quot;: &quot;350 000,00 FCFA&quot;,
+            &quot;formatted_base_reduction&quot;: &quot;5,00 %&quot;
         }
     ]
 }</code>
@@ -6001,7 +6015,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="John"
                data-component="query">
     <br>
-<p>Recherche globale (nom, email, code). Example: <code>John</code></p>
+<p>Recherche globale (nom, email, code, IFU, représentant, marketteur). Example: <code>John</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -6046,6 +6060,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="query">
     <br>
 <p>Rechercher par ville. Example: <code>Cotonou</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="GETapi-clients"
+               value="1234567890123"
+               data-component="query">
+    <br>
+<p>Rechercher par numéro IFU. Example: <code>1234567890123</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="GETapi-clients"
+               value="Marie Dupont"
+               data-component="query">
+    <br>
+<p>Rechercher par marketteur. Example: <code>Marie Dupont</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
@@ -6190,15 +6226,37 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Must not be greater than 255 characters. Example: <code>j</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="GETapi-clients"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="GETapi-clients"
+               value="i"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>i</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="client_type_id"                data-endpoint="GETapi-clients"
-               value="c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a"
+               value="51c7cf5e-fac2-3ac6-8ef8-61e6050503af"
                data-component="body">
     <br>
-<p>Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table. Example: <code>c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a</code></p>
+<p>Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table. Example: <code>51c7cf5e-fac2-3ac6-8ef8-61e6050503af</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -6219,7 +6277,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -6248,10 +6306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="negative"
+               value="zero"
                data-component="body">
     <br>
-<p>Example: <code>negative</code></p>
+<p>Example: <code>zero</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -6276,15 +6334,18 @@ L'UUID et le code client sont générés automatiquement si non fournis.</p>
     --header "Accept: application/json" \
     --data "{
     \"name_client\": \"John Doe\",
+    \"name_representant\": \"Jane Smith\",
+    \"marketteur\": \"Marie Dupont\",
     \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
     \"adresse\": \"123 Rue de la Paix\",
     \"city\": \"Cotonou\",
     \"email\": \"john.doe@example.com\",
+    \"ifu\": \"1234567890123\",
     \"phonenumber\": \"+229 12 34 56 78\",
     \"credit_limit\": 500000,
     \"current_balance\": 0,
-    \"is_active\": true,
-    \"code\": \"CLI-CUSTOM\"
+    \"base_reduction\": 5,
+    \"is_active\": true
 }"
 </code></pre></div>
 
@@ -6301,15 +6362,18 @@ const headers = {
 
 let body = {
     "name_client": "John Doe",
+    "name_representant": "Jane Smith",
+    "marketteur": "Marie Dupont",
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "adresse": "123 Rue de la Paix",
     "city": "Cotonou",
     "email": "john.doe@example.com",
+    "ifu": "1234567890123",
     "phonenumber": "+229 12 34 56 78",
     "credit_limit": 500000,
     "current_balance": 0,
-    "is_active": true,
-    "code": "CLI-CUSTOM"
+    "base_reduction": 5,
+    "is_active": true
 };
 
 fetch(url, {
@@ -6331,15 +6395,18 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'name_client' =&gt; 'John Doe',
+            'name_representant' =&gt; 'Jane Smith',
+            'marketteur' =&gt; 'Marie Dupont',
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'adresse' =&gt; '123 Rue de la Paix',
             'city' =&gt; 'Cotonou',
             'email' =&gt; 'john.doe@example.com',
+            'ifu' =&gt; '1234567890123',
             'phonenumber' =&gt; '+229 12 34 56 78',
             'credit_limit' =&gt; 500000.0,
             'current_balance' =&gt; 0.0,
+            'base_reduction' =&gt; 5.0,
             'is_active' =&gt; true,
-            'code' =&gt; 'CLI-CUSTOM',
         ],
     ]
 );
@@ -6357,15 +6424,19 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI-ABC123&quot;,
+        &quot;code&quot;: &quot;CLI00001&quot;,
         &quot;name_client&quot;: &quot;John Doe&quot;,
+        &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+        &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
         &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
         &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
         &quot;city&quot;: &quot;Cotonou&quot;,
         &quot;email&quot;: &quot;john.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;1234567890123&quot;,
         &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
         &quot;credit_limit&quot;: &quot;500000.00&quot;,
         &quot;current_balance&quot;: &quot;0.00&quot;,
+        &quot;base_reduction&quot;: &quot;5.00&quot;,
         &quot;is_active&quot;: true,
         &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
         &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
@@ -6384,8 +6455,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;email&quot;: [
             &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
         ],
-        &quot;code&quot;: [
-            &quot;Ce code client existe d&eacute;j&agrave;&quot;
+        &quot;ifu&quot;: [
+            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
         ]
     }
 }</code>
@@ -6473,6 +6544,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Nom complet du client. Example: <code>John Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_representant"                data-endpoint="POSTapi-clients"
+               value="Jane Smith"
+               data-component="body">
+    <br>
+<p>optionnel Nom du représentant du client. Example: <code>Jane Smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="POSTapi-clients"
+               value="Marie Dupont"
+               data-component="body">
+    <br>
+<p>optionnel Nom du marketteur associé au client. Example: <code>Marie Dupont</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -6517,6 +6610,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optionnel Email unique du client. Example: <code>john.doe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="POSTapi-clients"
+               value="1234567890123"
+               data-component="body">
+    <br>
+<p>optionnel Numéro IFU (Identifiant Fiscal Unique). Example: <code>1234567890123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -6550,6 +6654,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>optionnel Solde actuel (défaut: 0). Example: <code>0</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="base_reduction"                data-endpoint="POSTapi-clients"
+               value="5"
+               data-component="body">
+    <br>
+<p>optionnel Réduction de base en pourcentage (0-100, défaut: 0). Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -6569,17 +6684,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </label>
     <br>
 <p>optionnel Statut actif (défaut: true). Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="POSTapi-clients"
-               value="CLI-CUSTOM"
-               data-component="body">
-    <br>
-<p>optionnel Code client unique. Si non fourni, sera généré automatiquement. Example: <code>CLI-CUSTOM</code></p>
         </div>
         </form>
 
@@ -6664,15 +6768,19 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI-ABC123&quot;,
+        &quot;code&quot;: &quot;CLI00001&quot;,
         &quot;name_client&quot;: &quot;John Doe&quot;,
+        &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+        &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
         &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
         &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
         &quot;city&quot;: &quot;Cotonou&quot;,
         &quot;email&quot;: &quot;john.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;1234567890123&quot;,
         &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
         &quot;credit_limit&quot;: &quot;500000.00&quot;,
         &quot;current_balance&quot;: &quot;150000.00&quot;,
+        &quot;base_reduction&quot;: &quot;5.00&quot;,
         &quot;is_active&quot;: true,
         &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
         &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
@@ -6836,13 +6944,17 @@ Seuls les champs fournis seront mis à jour.</p>
     --data "{
     \"code\": \"CLI-UPDATED\",
     \"name_client\": \"Jane Doe\",
+    \"name_representant\": \"John Smith\",
+    \"marketteur\": \"Pierre Martin\",
     \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
     \"adresse\": \"456 Avenue des Palmiers\",
     \"city\": \"Porto-Novo\",
     \"email\": \"jane.doe@example.com\",
+    \"ifu\": \"9876543210987\",
     \"phonenumber\": \"+229 87 65 43 21\",
     \"credit_limit\": 750000,
     \"current_balance\": 200000,
+    \"base_reduction\": 10,
     \"is_active\": false
 }"
 </code></pre></div>
@@ -6861,13 +6973,17 @@ const headers = {
 let body = {
     "code": "CLI-UPDATED",
     "name_client": "Jane Doe",
+    "name_representant": "John Smith",
+    "marketteur": "Pierre Martin",
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "adresse": "456 Avenue des Palmiers",
     "city": "Porto-Novo",
     "email": "jane.doe@example.com",
+    "ifu": "9876543210987",
     "phonenumber": "+229 87 65 43 21",
     "credit_limit": 750000,
     "current_balance": 200000,
+    "base_reduction": 10,
     "is_active": false
 };
 
@@ -6891,13 +7007,17 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'code' =&gt; 'CLI-UPDATED',
             'name_client' =&gt; 'Jane Doe',
+            'name_representant' =&gt; 'John Smith',
+            'marketteur' =&gt; 'Pierre Martin',
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'adresse' =&gt; '456 Avenue des Palmiers',
             'city' =&gt; 'Porto-Novo',
             'email' =&gt; 'jane.doe@example.com',
+            'ifu' =&gt; '9876543210987',
             'phonenumber' =&gt; '+229 87 65 43 21',
             'credit_limit' =&gt; 750000.0,
             'current_balance' =&gt; 200000.0,
+            'base_reduction' =&gt; 10.0,
             'is_active' =&gt; false,
         ],
     ]
@@ -6918,18 +7038,48 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI-UPDATED&quot;,
         &quot;name_client&quot;: &quot;Jane Doe&quot;,
+        &quot;name_representant&quot;: &quot;John Smith&quot;,
+        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
         &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
         &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
         &quot;city&quot;: &quot;Porto-Novo&quot;,
         &quot;email&quot;: &quot;jane.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;9876543210987&quot;,
         &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
         &quot;credit_limit&quot;: &quot;750000.00&quot;,
         &quot;current_balance&quot;: &quot;200000.00&quot;,
+        &quot;base_reduction&quot;: &quot;10.00&quot;,
         &quot;is_active&quot;: false,
         &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
         &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
     },
     &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
+        ],
+        &quot;ifu&quot;: [
+            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -7038,6 +7188,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Nom complet du client. Example: <code>Jane Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_representant"                data-endpoint="PUTapi-clients--client_id-"
+               value="John Smith"
+               data-component="body">
+    <br>
+<p>Nom du représentant du client. Example: <code>John Smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="PUTapi-clients--client_id-"
+               value="Pierre Martin"
+               data-component="body">
+    <br>
+<p>Nom du marketteur associé. Example: <code>Pierre Martin</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -7082,6 +7254,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Email unique du client. Example: <code>jane.doe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="PUTapi-clients--client_id-"
+               value="9876543210987"
+               data-component="body">
+    <br>
+<p>Numéro IFU unique. Example: <code>9876543210987</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -7113,6 +7296,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Solde actuel. Example: <code>200000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="base_reduction"                data-endpoint="PUTapi-clients--client_id-"
+               value="10"
+               data-component="body">
+    <br>
+<p>Réduction de base en pourcentage (0-100). Example: <code>10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -7157,13 +7351,17 @@ Seuls les champs fournis seront mis à jour.</p>
     --data "{
     \"code\": \"CLI-UPDATED\",
     \"name_client\": \"Jane Doe\",
+    \"name_representant\": \"John Smith\",
+    \"marketteur\": \"Pierre Martin\",
     \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
     \"adresse\": \"456 Avenue des Palmiers\",
     \"city\": \"Porto-Novo\",
     \"email\": \"jane.doe@example.com\",
+    \"ifu\": \"9876543210987\",
     \"phonenumber\": \"+229 87 65 43 21\",
     \"credit_limit\": 750000,
     \"current_balance\": 200000,
+    \"base_reduction\": 10,
     \"is_active\": false
 }"
 </code></pre></div>
@@ -7182,13 +7380,17 @@ const headers = {
 let body = {
     "code": "CLI-UPDATED",
     "name_client": "Jane Doe",
+    "name_representant": "John Smith",
+    "marketteur": "Pierre Martin",
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "adresse": "456 Avenue des Palmiers",
     "city": "Porto-Novo",
     "email": "jane.doe@example.com",
+    "ifu": "9876543210987",
     "phonenumber": "+229 87 65 43 21",
     "credit_limit": 750000,
     "current_balance": 200000,
+    "base_reduction": 10,
     "is_active": false
 };
 
@@ -7212,13 +7414,17 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'code' =&gt; 'CLI-UPDATED',
             'name_client' =&gt; 'Jane Doe',
+            'name_representant' =&gt; 'John Smith',
+            'marketteur' =&gt; 'Pierre Martin',
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'adresse' =&gt; '456 Avenue des Palmiers',
             'city' =&gt; 'Porto-Novo',
             'email' =&gt; 'jane.doe@example.com',
+            'ifu' =&gt; '9876543210987',
             'phonenumber' =&gt; '+229 87 65 43 21',
             'credit_limit' =&gt; 750000.0,
             'current_balance' =&gt; 200000.0,
+            'base_reduction' =&gt; 10.0,
             'is_active' =&gt; false,
         ],
     ]
@@ -7239,18 +7445,48 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI-UPDATED&quot;,
         &quot;name_client&quot;: &quot;Jane Doe&quot;,
+        &quot;name_representant&quot;: &quot;John Smith&quot;,
+        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
         &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
         &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
         &quot;city&quot;: &quot;Porto-Novo&quot;,
         &quot;email&quot;: &quot;jane.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;9876543210987&quot;,
         &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
         &quot;credit_limit&quot;: &quot;750000.00&quot;,
         &quot;current_balance&quot;: &quot;200000.00&quot;,
+        &quot;base_reduction&quot;: &quot;10.00&quot;,
         &quot;is_active&quot;: false,
         &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
         &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
     },
     &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
+        ],
+        &quot;ifu&quot;: [
+            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -7359,6 +7595,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Nom complet du client. Example: <code>Jane Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_representant"                data-endpoint="PATCHapi-clients--client_id-"
+               value="John Smith"
+               data-component="body">
+    <br>
+<p>Nom du représentant du client. Example: <code>John Smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="PATCHapi-clients--client_id-"
+               value="Pierre Martin"
+               data-component="body">
+    <br>
+<p>Nom du marketteur associé. Example: <code>Pierre Martin</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -7403,6 +7661,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Email unique du client. Example: <code>jane.doe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="PATCHapi-clients--client_id-"
+               value="9876543210987"
+               data-component="body">
+    <br>
+<p>Numéro IFU unique. Example: <code>9876543210987</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -7434,6 +7703,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Solde actuel. Example: <code>200000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="base_reduction"                data-endpoint="PATCHapi-clients--client_id-"
+               value="10"
+               data-component="body">
+    <br>
+<p>Réduction de base en pourcentage (0-100). Example: <code>10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -7942,6 +8222,24 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;message&quot;: &quot;Client restaur&eacute; avec succ&egrave;s&quot;
 }</code>
  </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Ce client n&#039;est pas supprim&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
     </span>
 <span id="execution-results-POSTapi-clients--client_id--restore" hidden>
     <blockquote>Received response<span
@@ -8101,6 +8399,15 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;is_active&quot;: false
     },
     &quot;message&quot;: &quot;Statut du client mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -8287,7 +8594,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;previous_balance&quot;: &quot;150000.00&quot;,
         &quot;new_balance&quot;: &quot;200000.00&quot;,
         &quot;amount_added&quot;: &quot;50000.00&quot;,
-        &quot;available_credit&quot;: &quot;300000.00&quot;
+        &quot;available_credit&quot;: &quot;300000.00&quot;,
+        &quot;description&quot;: &quot;Paiement facture&quot;
     },
     &quot;message&quot;: &quot;Solde mis &agrave; jour avec succ&egrave;s&quot;
 }</code>
@@ -8298,7 +8606,22 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Le montant d&eacute;passerait la limite de cr&eacute;dit autoris&eacute;e&quot;
+    &quot;message&quot;: &quot;Le montant d&eacute;passerait la limite de cr&eacute;dit autoris&eacute;e&quot;,
+    &quot;data&quot;: {
+        &quot;current_balance&quot;: &quot;150000.00&quot;,
+        &quot;credit_limit&quot;: &quot;500000.00&quot;,
+        &quot;available_credit&quot;: &quot;350000.00&quot;,
+        &quot;requested_amount&quot;: &quot;400000.00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -8428,7 +8751,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"query\": \"John\",
     \"fields\": [
         \"name_client\",
-        \"email\"
+        \"email\",
+        \"ifu\"
     ],
     \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
     \"is_active\": true,
@@ -8436,6 +8760,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"credit_max\": 1000000,
     \"balance_min\": -50000,
     \"balance_max\": 500000,
+    \"reduction_min\": 0,
+    \"reduction_max\": 20,
     \"page\": 1,
     \"per_page\": 20
 }"
@@ -8456,7 +8782,8 @@ let body = {
     "query": "John",
     "fields": [
         "name_client",
-        "email"
+        "email",
+        "ifu"
     ],
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "is_active": true,
@@ -8464,6 +8791,8 @@ let body = {
     "credit_max": 1000000,
     "balance_min": -50000,
     "balance_max": 500000,
+    "reduction_min": 0,
+    "reduction_max": 20,
     "page": 1,
     "per_page": 20
 };
@@ -8490,6 +8819,7 @@ $response = $client-&gt;post(
             'fields' =&gt; [
                 'name_client',
                 'email',
+                'ifu',
             ],
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'is_active' =&gt; true,
@@ -8497,6 +8827,8 @@ $response = $client-&gt;post(
             'credit_max' =&gt; 1000000.0,
             'balance_min' =&gt; -50000.0,
             'balance_max' =&gt; 500000.0,
+            'reduction_min' =&gt; 0.0,
+            'reduction_max' =&gt; 20.0,
             'page' =&gt; 1,
             'per_page' =&gt; 20,
         ],
@@ -8519,11 +8851,15 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
             &quot;code&quot;: &quot;CLI-ABC123&quot;,
             &quot;name_client&quot;: &quot;John Doe&quot;,
+            &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+            &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
             &quot;email&quot;: &quot;john.doe@example.com&quot;,
+            &quot;ifu&quot;: &quot;1234567890123&quot;,
             &quot;city&quot;: &quot;Cotonou&quot;,
             &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
             &quot;credit_limit&quot;: &quot;500000.00&quot;,
             &quot;current_balance&quot;: &quot;150000.00&quot;,
+            &quot;base_reduction&quot;: &quot;5.00&quot;,
             &quot;is_active&quot;: true
         }
     ],
@@ -8627,7 +8963,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                name="fields[1]"                data-endpoint="POSTapi-clients-search"
                data-component="body">
     <br>
-<p>optionnel Champs à rechercher (name_client, email, code, city, phonenumber).</p>
+<p>optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
@@ -8704,6 +9040,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>optionnel Solde maximal. Example: <code>500000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reduction_min</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reduction_min"                data-endpoint="POSTapi-clients-search"
+               value="0"
+               data-component="body">
+    <br>
+<p>optionnel Réduction de base minimale (%). Example: <code>0</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reduction_max</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reduction_max"                data-endpoint="POSTapi-clients-search"
+               value="20"
+               data-component="body">
+    <br>
+<p>optionnel Réduction de base maximale (%). Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -8799,7 +9157,8 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;total_current_balance&quot;: &quot;12500000.00&quot;,
         &quot;total_available_credit&quot;: &quot;62500000.00&quot;,
         &quot;average_credit_limit&quot;: &quot;500000.00&quot;,
-        &quot;average_current_balance&quot;: &quot;83333.33&quot;
+        &quot;average_current_balance&quot;: &quot;83333.33&quot;,
+        &quot;average_base_reduction&quot;: &quot;5.25&quot;
     }
 }</code>
  </pre>

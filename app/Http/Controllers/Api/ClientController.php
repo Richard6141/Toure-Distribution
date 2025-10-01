@@ -22,15 +22,17 @@ class ClientController extends Controller
      * Liste tous les clients
      *
      * Récupère la liste de tous les clients avec pagination et filtres optionnels.
-     * Vous pouvez filtrer par nom, email, code, ville, statut et type de client.
+     * Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type de client.
      *
      * @queryParam page integer Page à récupérer (pagination). Example: 1
      * @queryParam per_page integer Nombre d'éléments par page (max: 100). Example: 15
-     * @queryParam search string Recherche globale (nom, email, code). Example: John
+     * @queryParam search string Recherche globale (nom, email, code, IFU, représentant, marketteur). Example: John
      * @queryParam name string Rechercher par nom de client. Example: John Doe
      * @queryParam email string Rechercher par email. Example: john@example.com
      * @queryParam code string Rechercher par code client. Example: CLI-ABC123
      * @queryParam city string Rechercher par ville. Example: Cotonou
+     * @queryParam ifu string Rechercher par numéro IFU. Example: 1234567890123
+     * @queryParam marketteur string Rechercher par marketteur. Example: Marie Dupont
      * @queryParam client_type_id string Filtrer par type de client (UUID). Example: 550e8400-e29b-41d4-a716-446655440000
      * @queryParam is_active boolean Filtrer par statut actif. Example: true
      * @queryParam with_client_type boolean Inclure les informations du type de client. Example: true
@@ -42,20 +44,25 @@ class ClientController extends Controller
      *       "client_id": "550e8400-e29b-41d4-a716-446655440000",
      *       "code": "CLI-ABC123",
      *       "name_client": "John Doe",
+     *       "name_representant": "Jane Smith",
+     *       "marketteur": "Marie Dupont",
      *       "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
      *       "adresse": "123 Rue de la Paix",
      *       "city": "Cotonou",
      *       "email": "john.doe@example.com",
+     *       "ifu": "1234567890123",
      *       "phonenumber": "+229 12 34 56 78",
      *       "credit_limit": "500000.00",
      *       "current_balance": "150000.00",
+     *       "base_reduction": "5.00",
      *       "is_active": true,
      *       "created_at": "2024-01-15T10:30:00Z",
      *       "updated_at": "2024-01-15T10:30:00Z",
      *       "formatted_credit_limit": "500 000,00 FCFA",
      *       "formatted_current_balance": "150 000,00 FCFA",
      *       "available_credit": "350000.00",
-     *       "formatted_available_credit": "350 000,00 FCFA"
+     *       "formatted_available_credit": "350 000,00 FCFA",
+     *       "formatted_base_reduction": "5,00 %"
      *     }
      *   ]
      * }
@@ -70,6 +77,8 @@ class ClientController extends Controller
             'email' => 'string|max:255',
             'code' => 'string|max:255',
             'city' => 'string|max:255',
+            'ifu' => 'string|max:255',
+            'marketteur' => 'string|max:255',
             'client_type_id' => 'uuid|exists:client_types,client_type_id',
             'is_active' => 'boolean',
             'with_client_type' => 'boolean',
@@ -84,7 +93,10 @@ class ClientController extends Controller
             $query->where(function ($q) use ($search) {
                 $q->byName($search)
                     ->orWhere->byEmail($search)
-                    ->orWhere->byCode($search);
+                    ->orWhere->byCode($search)
+                    ->orWhere->byIfu($search)
+                    ->orWhere('name_representant', 'like', "%{$search}%")
+                    ->orWhere('marketteur', 'like', "%{$search}%");
             });
         }
 
@@ -103,6 +115,14 @@ class ClientController extends Controller
 
         if (isset($validated['city'])) {
             $query->byCity($validated['city']);
+        }
+
+        if (isset($validated['ifu'])) {
+            $query->byIfu($validated['ifu']);
+        }
+
+        if (isset($validated['marketteur'])) {
+            $query->where('marketteur', 'like', "%{$validated['marketteur']}%");
         }
 
         if (isset($validated['client_type_id'])) {
@@ -149,29 +169,36 @@ class ClientController extends Controller
      * Crée un nouveau client avec les informations fournies.
      * L'UUID et le code client sont générés automatiquement si non fournis.
      *
-     * @bodyParam code string optionnel Code client unique. Si non fourni, sera généré automatiquement. Example: CLI-CUSTOM
      * @bodyParam name_client string required Nom complet du client. Example: John Doe
+     * @bodyParam name_representant string optionnel Nom du représentant du client. Example: Jane Smith
+     * @bodyParam marketteur string optionnel Nom du marketteur associé au client. Example: Marie Dupont
      * @bodyParam client_type_id string optionnel UUID du type de client. Example: 550e8400-e29b-41d4-a716-446655440000
      * @bodyParam adresse string optionnel Adresse du client. Example: 123 Rue de la Paix
      * @bodyParam city string optionnel Ville du client. Example: Cotonou
      * @bodyParam email string optionnel Email unique du client. Example: john.doe@example.com
+     * @bodyParam ifu string optionnel Numéro IFU (Identifiant Fiscal Unique). Example: 1234567890123
      * @bodyParam phonenumber string optionnel Numéro de téléphone. Example: +229 12 34 56 78
      * @bodyParam credit_limit number optionnel Limite de crédit (défaut: 0). Example: 500000
      * @bodyParam current_balance number optionnel Solde actuel (défaut: 0). Example: 0
+     * @bodyParam base_reduction number optionnel Réduction de base en pourcentage (0-100, défaut: 0). Example: 5
      * @bodyParam is_active boolean optionnel Statut actif (défaut: true). Example: true
      *
      * @response 201 {
      *   "data": {
      *     "client_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "code": "CLI-ABC123",
+     *     "code": "CLI00001",
      *     "name_client": "John Doe",
+     *     "name_representant": "Jane Smith",
+     *     "marketteur": "Marie Dupont",
      *     "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
      *     "adresse": "123 Rue de la Paix",
      *     "city": "Cotonou",
      *     "email": "john.doe@example.com",
+     *     "ifu": "1234567890123",
      *     "phonenumber": "+229 12 34 56 78",
      *     "credit_limit": "500000.00",
      *     "current_balance": "0.00",
+     *     "base_reduction": "5.00",
      *     "is_active": true,
      *     "created_at": "2024-01-15T10:30:00Z",
      *     "updated_at": "2024-01-15T10:30:00Z"
@@ -182,29 +209,35 @@ class ClientController extends Controller
      *   "message": "Données de validation échouées",
      *   "errors": {
      *     "email": ["Cette adresse email est déjà utilisée"],
-     *     "code": ["Ce code client existe déjà"]
+     *     "ifu": ["Ce numéro IFU est déjà utilisé"]
      *   }
      * }
      */
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            // on enlève 'code'
             'name_client' => 'required|string|max:255',
+            'name_representant' => 'nullable|string|max:255',
+            'marketteur' => 'nullable|string|max:255',
             'client_type_id' => 'nullable|uuid|exists:client_types,client_type_id',
             'adresse' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:100',
             'email' => 'nullable|email|max:255|unique:clients,email',
+            'ifu' => 'nullable|string|max:50|unique:clients,ifu',
             'phonenumber' => 'nullable|string|max:20',
             'credit_limit' => 'nullable|numeric|min:0|max:999999999999.99',
             'current_balance' => 'nullable|numeric|min:-999999999999.99|max:999999999999.99',
+            'base_reduction' => 'nullable|numeric|min:0|max:100',
             'is_active' => 'boolean'
         ], [
             'name_client.required' => 'Le nom du client est requis',
             'client_type_id.exists' => 'Le type de client sélectionné n\'existe pas',
             'email.unique' => 'Cette adresse email est déjà utilisée',
             'email.email' => 'L\'adresse email doit être valide',
+            'ifu.unique' => 'Ce numéro IFU est déjà utilisé',
             'credit_limit.min' => 'La limite de crédit doit être positive',
+            'base_reduction.min' => 'La réduction de base doit être positive',
+            'base_reduction.max' => 'La réduction de base ne peut pas dépasser 100%',
             'phonenumber.max' => 'Le numéro de téléphone ne peut pas dépasser 20 caractères'
         ]);
 
@@ -228,7 +261,6 @@ class ClientController extends Controller
         ], 201);
     }
 
-
     /**
      * Afficher un client spécifique
      *
@@ -240,15 +272,19 @@ class ClientController extends Controller
      * @response 200 {
      *   "data": {
      *     "client_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "code": "CLI-ABC123",
+     *     "code": "CLI00001",
      *     "name_client": "John Doe",
+     *     "name_representant": "Jane Smith",
+     *     "marketteur": "Marie Dupont",
      *     "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
      *     "adresse": "123 Rue de la Paix",
      *     "city": "Cotonou",
      *     "email": "john.doe@example.com",
+     *     "ifu": "1234567890123",
      *     "phonenumber": "+229 12 34 56 78",
      *     "credit_limit": "500000.00",
      *     "current_balance": "150000.00",
+     *     "base_reduction": "5.00",
      *     "is_active": true,
      *     "created_at": "2024-01-15T10:30:00Z",
      *     "updated_at": "2024-01-15T10:30:00Z"
@@ -292,13 +328,17 @@ class ClientController extends Controller
      * @urlParam client_id string required L'UUID du client. Example: 550e8400-e29b-41d4-a716-446655440000
      * @bodyParam code string Code client unique. Example: CLI-UPDATED
      * @bodyParam name_client string Nom complet du client. Example: Jane Doe
+     * @bodyParam name_representant string Nom du représentant du client. Example: John Smith
+     * @bodyParam marketteur string Nom du marketteur associé. Example: Pierre Martin
      * @bodyParam client_type_id string UUID du type de client. Example: 550e8400-e29b-41d4-a716-446655440000
      * @bodyParam adresse string Adresse du client. Example: 456 Avenue des Palmiers
      * @bodyParam city string Ville du client. Example: Porto-Novo
      * @bodyParam email string Email unique du client. Example: jane.doe@example.com
+     * @bodyParam ifu string Numéro IFU unique. Example: 9876543210987
      * @bodyParam phonenumber string Numéro de téléphone. Example: +229 87 65 43 21
      * @bodyParam credit_limit number Limite de crédit. Example: 750000
      * @bodyParam current_balance number Solde actuel. Example: 200000
+     * @bodyParam base_reduction number Réduction de base en pourcentage (0-100). Example: 10
      * @bodyParam is_active boolean Statut actif. Example: false
      *
      * @response 200 {
@@ -306,18 +346,32 @@ class ClientController extends Controller
      *     "client_id": "550e8400-e29b-41d4-a716-446655440000",
      *     "code": "CLI-UPDATED",
      *     "name_client": "Jane Doe",
+     *     "name_representant": "John Smith",
+     *     "marketteur": "Pierre Martin",
      *     "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
      *     "adresse": "456 Avenue des Palmiers",
      *     "city": "Porto-Novo",
      *     "email": "jane.doe@example.com",
+     *     "ifu": "9876543210987",
      *     "phonenumber": "+229 87 65 43 21",
      *     "credit_limit": "750000.00",
      *     "current_balance": "200000.00",
+     *     "base_reduction": "10.00",
      *     "is_active": false,
      *     "created_at": "2024-01-15T10:30:00Z",
      *     "updated_at": "2024-01-15T11:00:00Z"
      *   },
      *   "message": "Client mis à jour avec succès"
+     * }
+     * @response 404 {
+     *   "message": "Client non trouvé"
+     * }
+     * @response 422 {
+     *   "message": "Données de validation échouées",
+     *   "errors": {
+     *     "email": ["Cette adresse email est déjà utilisée"],
+     *     "ifu": ["Ce numéro IFU est déjà utilisé"]
+     *   }
      * }
      */
     public function update(Request $request, string $client_id): JsonResponse
@@ -328,20 +382,27 @@ class ClientController extends Controller
             $validated = $request->validate([
                 'code' => ['nullable', 'string', 'max:50', Rule::unique('clients', 'code')->ignore($client->client_id, 'client_id')],
                 'name_client' => 'sometimes|required|string|max:255',
+                'name_representant' => 'nullable|string|max:255',
+                'marketteur' => 'nullable|string|max:255',
                 'client_type_id' => 'nullable|uuid|exists:client_types,client_type_id',
                 'adresse' => 'nullable|string|max:255',
                 'city' => 'nullable|string|max:100',
                 'email' => ['nullable', 'email', 'max:255', Rule::unique('clients', 'email')->ignore($client->client_id, 'client_id')],
+                'ifu' => ['nullable', 'string', 'max:50', Rule::unique('clients', 'ifu')->ignore($client->client_id, 'client_id')],
                 'phonenumber' => 'nullable|string|max:20',
                 'credit_limit' => 'nullable|numeric|min:0|max:999999999999.99',
                 'current_balance' => 'nullable|numeric|min:-999999999999.99|max:999999999999.99',
+                'base_reduction' => 'nullable|numeric|min:0|max:100',
                 'is_active' => 'boolean'
             ], [
                 'client_type_id.exists' => 'Le type de client sélectionné n\'existe pas',
                 'email.unique' => 'Cette adresse email est déjà utilisée',
                 'email.email' => 'L\'adresse email doit être valide',
+                'ifu.unique' => 'Ce numéro IFU est déjà utilisé',
                 'code.unique' => 'Ce code client existe déjà',
                 'credit_limit.min' => 'La limite de crédit doit être positive',
+                'base_reduction.min' => 'La réduction de base doit être positive',
+                'base_reduction.max' => 'La réduction de base ne peut pas dépasser 100%',
                 'phonenumber.max' => 'Le numéro de téléphone ne peut pas dépasser 20 caractères'
             ]);
 
@@ -405,6 +466,12 @@ class ClientController extends Controller
      *     "deleted_at": null
      *   },
      *   "message": "Client restauré avec succès"
+     * }
+     * @response 400 {
+     *   "message": "Ce client n'est pas supprimé"
+     * }
+     * @response 404 {
+     *   "message": "Client non trouvé"
      * }
      */
     public function restore(string $client_id): JsonResponse
@@ -491,6 +558,9 @@ class ClientController extends Controller
      *   },
      *   "message": "Statut du client mis à jour avec succès"
      * }
+     * @response 404 {
+     *   "message": "Client non trouvé"
+     * }
      */
     public function toggleStatus(Request $request, string $client_id): JsonResponse
     {
@@ -531,12 +601,22 @@ class ClientController extends Controller
      *     "previous_balance": "150000.00",
      *     "new_balance": "200000.00",
      *     "amount_added": "50000.00",
-     *     "available_credit": "300000.00"
+     *     "available_credit": "300000.00",
+     *     "description": "Paiement facture"
      *   },
      *   "message": "Solde mis à jour avec succès"
      * }
      * @response 400 {
-     *   "message": "Le montant dépasserait la limite de crédit autorisée"
+     *   "message": "Le montant dépasserait la limite de crédit autorisée",
+     *   "data": {
+     *     "current_balance": "150000.00",
+     *     "credit_limit": "500000.00",
+     *     "available_credit": "350000.00",
+     *     "requested_amount": "400000.00"
+     *   }
+     * }
+     * @response 404 {
+     *   "message": "Client non trouvé"
      * }
      */
     public function updateBalance(Request $request, string $client_id): JsonResponse
@@ -607,23 +687,26 @@ class ClientController extends Controller
      *     "total_current_balance": "12500000.00",
      *     "total_available_credit": "62500000.00",
      *     "average_credit_limit": "500000.00",
-     *     "average_current_balance": "83333.33"
+     *     "average_current_balance": "83333.33",
+     *     "average_base_reduction": "5.25"
      *   }
      * }
      */
     public function statistics(): JsonResponse
     {
         $stats = [
-            /* 'total_clients' => Client::count(),
+            'total_clients' => Client::count(),
+            'active_clients' => Client::active()->count(),
             'inactive_clients' => Client::inactive()->count(),
             'deleted_clients' => Client::onlyTrashed()->count(),
             'clients_with_positive_balance' => Client::withPositiveBalance()->count(),
-            'clients_with_negative_balance' => Client::withNegativeBalance()->count(), */
+            'clients_with_negative_balance' => Client::withNegativeBalance()->count(),
             'clients_with_zero_balance' => Client::where('current_balance', 0)->count(),
             'total_credit_limit' => Client::sum('credit_limit'),
             'total_current_balance' => Client::sum('current_balance'),
             'average_credit_limit' => Client::avg('credit_limit'),
-            'average_current_balance' => Client::avg('current_balance')
+            'average_current_balance' => Client::avg('current_balance'),
+            'average_base_reduction' => Client::avg('base_reduction')
         ];
 
         // Calculer le crédit disponible total
@@ -635,6 +718,7 @@ class ClientController extends Controller
         $stats['total_available_credit'] = number_format($stats['total_available_credit'], 2, '.', '');
         $stats['average_credit_limit'] = number_format($stats['average_credit_limit'] ?? 0, 2, '.', '');
         $stats['average_current_balance'] = number_format($stats['average_current_balance'] ?? 0, 2, '.', '');
+        $stats['average_base_reduction'] = number_format($stats['average_base_reduction'] ?? 0, 2, '.', '');
 
         return response()->json([
             'data' => $stats
@@ -647,13 +731,15 @@ class ClientController extends Controller
      * Recherche avancée de clients avec de multiples critères.
      *
      * @bodyParam query string required Terme de recherche. Example: John
-     * @bodyParam fields array optionnel Champs à rechercher (name_client, email, code, city, phonenumber). Example: ["name_client", "email"]
+     * @bodyParam fields array optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur). Example: ["name_client", "email", "ifu"]
      * @bodyParam client_type_id string optionnel Filtrer par type de client. Example: 550e8400-e29b-41d4-a716-446655440000
      * @bodyParam is_active boolean optionnel Filtrer par statut. Example: true
      * @bodyParam credit_min number optionnel Limite de crédit minimale. Example: 100000
      * @bodyParam credit_max number optionnel Limite de crédit maximale. Example: 1000000
      * @bodyParam balance_min number optionnel Solde minimal. Example: -50000
      * @bodyParam balance_max number optionnel Solde maximal. Example: 500000
+     * @bodyParam reduction_min number optionnel Réduction de base minimale (%). Example: 0
+     * @bodyParam reduction_max number optionnel Réduction de base maximale (%). Example: 20
      * @bodyParam page integer optionnel Page à récupérer. Example: 1
      * @bodyParam per_page integer optionnel Éléments par page. Example: 20
      *
@@ -663,11 +749,15 @@ class ClientController extends Controller
      *       "client_id": "550e8400-e29b-41d4-a716-446655440000",
      *       "code": "CLI-ABC123",
      *       "name_client": "John Doe",
+     *       "name_representant": "Jane Smith",
+     *       "marketteur": "Marie Dupont",
      *       "email": "john.doe@example.com",
+     *       "ifu": "1234567890123",
      *       "city": "Cotonou",
      *       "phonenumber": "+229 12 34 56 78",
      *       "credit_limit": "500000.00",
      *       "current_balance": "150000.00",
+     *       "base_reduction": "5.00",
      *       "is_active": true
      *     }
      *   ],
@@ -682,20 +772,22 @@ class ClientController extends Controller
     {
         $validated = $request->validate([
             'query' => 'required|string|min:1|max:255',
-            'fields' => 'array|in:name_client,email,code,city,phonenumber',
+            'fields' => 'array|in:name_client,email,code,city,phonenumber,ifu,name_representant,marketteur',
             'client_type_id' => 'nullable|uuid|exists:client_types,client_type_id',
             'is_active' => 'boolean',
             'credit_min' => 'nullable|numeric|min:0',
             'credit_max' => 'nullable|numeric|min:0',
             'balance_min' => 'nullable|numeric',
             'balance_max' => 'nullable|numeric',
+            'reduction_min' => 'nullable|numeric|min:0|max:100',
+            'reduction_max' => 'nullable|numeric|min:0|max:100',
             'page' => 'integer|min:1',
             'per_page' => 'integer|min:1|max:100'
         ]);
 
         $query = Client::query();
         $searchQuery = $validated['query'];
-        $searchFields = $validated['fields'] ?? ['name_client', 'email', 'code'];
+        $searchFields = $validated['fields'] ?? ['name_client', 'email', 'code', 'ifu'];
 
         // Recherche dans les champs spécifiés
         $query->where(function ($q) use ($searchQuery, $searchFields) {
@@ -731,6 +823,14 @@ class ClientController extends Controller
 
         if (isset($validated['balance_max'])) {
             $query->where('current_balance', '<=', $validated['balance_max']);
+        }
+
+        if (isset($validated['reduction_min'])) {
+            $query->where('base_reduction', '>=', $validated['reduction_min']);
+        }
+
+        if (isset($validated['reduction_max'])) {
+            $query->where('base_reduction', '<=', $validated['reduction_max']);
         }
 
         $perPage = $validated['per_page'] ?? 20;

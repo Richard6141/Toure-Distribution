@@ -19,7 +19,7 @@ endpoints:
       title: 'Liste tous les clients'
       description: |-
         Récupère la liste de tous les clients avec pagination et filtres optionnels.
-        Vous pouvez filtrer par nom, email, code, ville, statut et type de client.
+        Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type de client.
       authenticated: false
       deprecated: false
       custom: []
@@ -51,7 +51,7 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Recherche globale (nom, email, code).'
+        description: 'Recherche globale (nom, email, code, IFU, représentant, marketteur).'
         required: false
         example: John
         type: string
@@ -94,6 +94,26 @@ endpoints:
         description: 'Rechercher par ville.'
         required: false
         example: Cotonou
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      ifu:
+        name: ifu
+        description: 'Rechercher par numéro IFU.'
+        required: false
+        example: '1234567890123'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'Rechercher par marketteur.'
+        required: false
+        example: 'Marie Dupont'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -147,6 +167,8 @@ endpoints:
       email: john@example.com
       code: CLI-ABC123
       city: Cotonou
+      ifu: '1234567890123'
+      marketteur: 'Marie Dupont'
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       is_active: true
       with_client_type: true
@@ -222,11 +244,31 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      ifu:
+        name: ifu
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: i
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
       client_type_id:
         name: client_type_id
         description: 'Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table.'
         required: false
-        example: c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a
+        example: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -236,7 +278,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -256,7 +298,7 @@ endpoints:
         name: balance_filter
         description: ''
         required: false
-        example: negative
+        example: zero
         type: string
         enumValues:
           - positive
@@ -273,10 +315,12 @@ endpoints:
       email: rempel.chadrick@example.org
       code: l
       city: j
-      client_type_id: c3b6b42e-3a0f-3935-b28d-cb767f8a2a0a
-      is_active: false
+      ifu: 'n'
+      marketteur: i
+      client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
+      is_active: true
       with_client_type: true
-      balance_filter: negative
+      balance_filter: zero
     fileParameters: []
     responses:
       -
@@ -288,20 +332,25 @@ endpoints:
                 "client_id": "550e8400-e29b-41d4-a716-446655440000",
                 "code": "CLI-ABC123",
                 "name_client": "John Doe",
+                "name_representant": "Jane Smith",
+                "marketteur": "Marie Dupont",
                 "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
                 "adresse": "123 Rue de la Paix",
                 "city": "Cotonou",
                 "email": "john.doe@example.com",
+                "ifu": "1234567890123",
                 "phonenumber": "+229 12 34 56 78",
                 "credit_limit": "500000.00",
                 "current_balance": "150000.00",
+                "base_reduction": "5.00",
                 "is_active": true,
                 "created_at": "2024-01-15T10:30:00Z",
                 "updated_at": "2024-01-15T10:30:00Z",
                 "formatted_credit_limit": "500 000,00 FCFA",
                 "formatted_current_balance": "150 000,00 FCFA",
                 "available_credit": "350000.00",
-                "formatted_available_credit": "350 000,00 FCFA"
+                "formatted_available_credit": "350 000,00 FCFA",
+                "formatted_base_reduction": "5,00 %"
               }
             ]
           }
@@ -350,6 +399,26 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      name_representant:
+        name: name_representant
+        description: 'optionnel Nom du représentant du client.'
+        required: false
+        example: 'Jane Smith'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'optionnel Nom du marketteur associé au client.'
+        required: false
+        example: 'Marie Dupont'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       client_type_id:
         name: client_type_id
         description: 'optionnel UUID du type de client.'
@@ -390,6 +459,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
+      ifu:
+        name: ifu
+        description: 'optionnel Numéro IFU (Identifiant Fiscal Unique).'
+        required: false
+        example: '1234567890123'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       phonenumber:
         name: phonenumber
         description: 'optionnel Numéro de téléphone.'
@@ -420,6 +499,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
+      base_reduction:
+        name: base_reduction
+        description: 'optionnel Réduction de base en pourcentage (0-100, défaut: 0).'
+        required: false
+        example: 5.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       is_active:
         name: is_active
         description: 'optionnel Statut actif (défaut: true).'
@@ -430,27 +519,20 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      code:
-        name: code
-        description: 'optionnel Code client unique. Si non fourni, sera généré automatiquement.'
-        required: false
-        example: CLI-CUSTOM
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanBodyParameters:
       name_client: 'John Doe'
+      name_representant: 'Jane Smith'
+      marketteur: 'Marie Dupont'
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       adresse: '123 Rue de la Paix'
       city: Cotonou
       email: john.doe@example.com
+      ifu: '1234567890123'
       phonenumber: '+229 12 34 56 78'
       credit_limit: 500000.0
       current_balance: 0.0
+      base_reduction: 5.0
       is_active: true
-      code: CLI-CUSTOM
     fileParameters: []
     responses:
       -
@@ -459,15 +541,19 @@ endpoints:
           {
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "code": "CLI-ABC123",
+              "code": "CLI00001",
               "name_client": "John Doe",
+              "name_representant": "Jane Smith",
+              "marketteur": "Marie Dupont",
               "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
               "adresse": "123 Rue de la Paix",
               "city": "Cotonou",
               "email": "john.doe@example.com",
+              "ifu": "1234567890123",
               "phonenumber": "+229 12 34 56 78",
               "credit_limit": "500000.00",
               "current_balance": "0.00",
+              "base_reduction": "5.00",
               "is_active": true,
               "created_at": "2024-01-15T10:30:00Z",
               "updated_at": "2024-01-15T10:30:00Z"
@@ -484,7 +570,7 @@ endpoints:
             "message": "Données de validation échouées",
             "errors": {
               "email": ["Cette adresse email est déjà utilisée"],
-              "code": ["Ce code client existe déjà"]
+              "ifu": ["Ce numéro IFU est déjà utilisé"]
             }
           }
         headers: []
@@ -562,15 +648,19 @@ endpoints:
           {
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "code": "CLI-ABC123",
+              "code": "CLI00001",
               "name_client": "John Doe",
+              "name_representant": "Jane Smith",
+              "marketteur": "Marie Dupont",
               "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
               "adresse": "123 Rue de la Paix",
               "city": "Cotonou",
               "email": "john.doe@example.com",
+              "ifu": "1234567890123",
               "phonenumber": "+229 12 34 56 78",
               "credit_limit": "500000.00",
               "current_balance": "150000.00",
+              "base_reduction": "5.00",
               "is_active": true,
               "created_at": "2024-01-15T10:30:00Z",
               "updated_at": "2024-01-15T10:30:00Z"
@@ -651,6 +741,26 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      name_representant:
+        name: name_representant
+        description: 'Nom du représentant du client.'
+        required: false
+        example: 'John Smith'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'Nom du marketteur associé.'
+        required: false
+        example: 'Pierre Martin'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       client_type_id:
         name: client_type_id
         description: 'UUID du type de client.'
@@ -691,6 +801,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      ifu:
+        name: ifu
+        description: 'Numéro IFU unique.'
+        required: false
+        example: '9876543210987'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       phonenumber:
         name: phonenumber
         description: 'Numéro de téléphone.'
@@ -721,6 +841,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      base_reduction:
+        name: base_reduction
+        description: 'Réduction de base en pourcentage (0-100).'
+        required: false
+        example: 10.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       is_active:
         name: is_active
         description: 'Statut actif.'
@@ -734,13 +864,17 @@ endpoints:
     cleanBodyParameters:
       code: CLI-UPDATED
       name_client: 'Jane Doe'
+      name_representant: 'John Smith'
+      marketteur: 'Pierre Martin'
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       adresse: '456 Avenue des Palmiers'
       city: Porto-Novo
       email: jane.doe@example.com
+      ifu: '9876543210987'
       phonenumber: '+229 87 65 43 21'
       credit_limit: 750000.0
       current_balance: 200000.0
+      base_reduction: 10.0
       is_active: false
     fileParameters: []
     responses:
@@ -752,18 +886,44 @@ endpoints:
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI-UPDATED",
               "name_client": "Jane Doe",
+              "name_representant": "John Smith",
+              "marketteur": "Pierre Martin",
               "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
               "adresse": "456 Avenue des Palmiers",
               "city": "Porto-Novo",
               "email": "jane.doe@example.com",
+              "ifu": "9876543210987",
               "phonenumber": "+229 87 65 43 21",
               "credit_limit": "750000.00",
               "current_balance": "200000.00",
+              "base_reduction": "10.00",
               "is_active": false,
               "created_at": "2024-01-15T10:30:00Z",
               "updated_at": "2024-01-15T11:00:00Z"
             },
             "message": "Client mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Client non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Données de validation échouées",
+            "errors": {
+              "email": ["Cette adresse email est déjà utilisée"],
+              "ifu": ["Ce numéro IFU est déjà utilisé"]
+            }
           }
         headers: []
         description: ''
@@ -831,6 +991,26 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      name_representant:
+        name: name_representant
+        description: 'Nom du représentant du client.'
+        required: false
+        example: 'John Smith'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'Nom du marketteur associé.'
+        required: false
+        example: 'Pierre Martin'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       client_type_id:
         name: client_type_id
         description: 'UUID du type de client.'
@@ -871,6 +1051,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      ifu:
+        name: ifu
+        description: 'Numéro IFU unique.'
+        required: false
+        example: '9876543210987'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       phonenumber:
         name: phonenumber
         description: 'Numéro de téléphone.'
@@ -901,6 +1091,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      base_reduction:
+        name: base_reduction
+        description: 'Réduction de base en pourcentage (0-100).'
+        required: false
+        example: 10.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       is_active:
         name: is_active
         description: 'Statut actif.'
@@ -914,13 +1114,17 @@ endpoints:
     cleanBodyParameters:
       code: CLI-UPDATED
       name_client: 'Jane Doe'
+      name_representant: 'John Smith'
+      marketteur: 'Pierre Martin'
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       adresse: '456 Avenue des Palmiers'
       city: Porto-Novo
       email: jane.doe@example.com
+      ifu: '9876543210987'
       phonenumber: '+229 87 65 43 21'
       credit_limit: 750000.0
       current_balance: 200000.0
+      base_reduction: 10.0
       is_active: false
     fileParameters: []
     responses:
@@ -932,18 +1136,44 @@ endpoints:
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI-UPDATED",
               "name_client": "Jane Doe",
+              "name_representant": "John Smith",
+              "marketteur": "Pierre Martin",
               "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
               "adresse": "456 Avenue des Palmiers",
               "city": "Porto-Novo",
               "email": "jane.doe@example.com",
+              "ifu": "9876543210987",
               "phonenumber": "+229 87 65 43 21",
               "credit_limit": "750000.00",
               "current_balance": "200000.00",
+              "base_reduction": "10.00",
               "is_active": false,
               "created_at": "2024-01-15T10:30:00Z",
               "updated_at": "2024-01-15T11:00:00Z"
             },
             "message": "Client mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Client non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Données de validation échouées",
+            "errors": {
+              "email": ["Cette adresse email est déjà utilisée"],
+              "ifu": ["Ce numéro IFU est déjà utilisé"]
+            }
           }
         headers: []
         description: ''
@@ -1189,6 +1419,24 @@ endpoints:
         headers: []
         description: ''
         custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Ce client n'est pas supprimé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Client non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -1253,6 +1501,15 @@ endpoints:
               "is_active": false
             },
             "message": "Statut du client mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Client non trouvé"
           }
         headers: []
         description: ''
@@ -1332,7 +1589,8 @@ endpoints:
               "previous_balance": "150000.00",
               "new_balance": "200000.00",
               "amount_added": "50000.00",
-              "available_credit": "300000.00"
+              "available_credit": "300000.00",
+              "description": "Paiement facture"
             },
             "message": "Solde mis à jour avec succès"
           }
@@ -1343,7 +1601,22 @@ endpoints:
         status: 400
         content: |-
           {
-            "message": "Le montant dépasserait la limite de crédit autorisée"
+            "message": "Le montant dépasserait la limite de crédit autorisée",
+            "data": {
+              "current_balance": "150000.00",
+              "credit_limit": "500000.00",
+              "available_credit": "350000.00",
+              "requested_amount": "400000.00"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Client non trouvé"
           }
         headers: []
         description: ''
@@ -1390,11 +1663,12 @@ endpoints:
         custom: []
       fields:
         name: fields
-        description: 'optionnel Champs à rechercher (name_client, email, code, city, phonenumber).'
+        description: 'optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).'
         required: false
         example:
           - name_client
           - email
+          - ifu
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -1460,6 +1734,26 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
+      reduction_min:
+        name: reduction_min
+        description: 'optionnel Réduction de base minimale (%).'
+        required: false
+        example: 0.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      reduction_max:
+        name: reduction_max
+        description: 'optionnel Réduction de base maximale (%).'
+        required: false
+        example: 20.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       page:
         name: page
         description: 'optionnel Page à récupérer.'
@@ -1485,12 +1779,15 @@ endpoints:
       fields:
         - name_client
         - email
+        - ifu
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       is_active: true
       credit_min: 100000.0
       credit_max: 1000000.0
       balance_min: -50000.0
       balance_max: 500000.0
+      reduction_min: 0.0
+      reduction_max: 20.0
       page: 1
       per_page: 20
     fileParameters: []
@@ -1504,11 +1801,15 @@ endpoints:
                 "client_id": "550e8400-e29b-41d4-a716-446655440000",
                 "code": "CLI-ABC123",
                 "name_client": "John Doe",
+                "name_representant": "Jane Smith",
+                "marketteur": "Marie Dupont",
                 "email": "john.doe@example.com",
+                "ifu": "1234567890123",
                 "city": "Cotonou",
                 "phonenumber": "+229 12 34 56 78",
                 "credit_limit": "500000.00",
                 "current_balance": "150000.00",
+                "base_reduction": "5.00",
                 "is_active": true
               }
             ],
@@ -1570,7 +1871,8 @@ endpoints:
               "total_current_balance": "12500000.00",
               "total_available_credit": "62500000.00",
               "average_credit_limit": "500000.00",
-              "average_current_balance": "83333.33"
+              "average_current_balance": "83333.33",
+              "average_base_reduction": "5.25"
             }
           }
         headers: []
