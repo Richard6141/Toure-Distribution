@@ -38,6 +38,9 @@ class Product extends Model
             if (empty($model->product_id)) {
                 $model->product_id = (string) Str::uuid();
             }
+            if (empty($model->code)) {
+                $model->code = 'PRO-' . strtoupper(Str::random(6));
+            }
         });
     }
 

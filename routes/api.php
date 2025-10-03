@@ -50,7 +50,12 @@ Route::prefix('client-types')->group(function () {
 })->middleware('auth:sanctum');
 
 Route::prefix('clients')->group(function () {
-    // Routes CRUD principales
+    // ✅ Routes avec segments FIXES en premier
+    Route::get('/trashed/list', [ClientController::class, 'trashed'])->name('clients.trashed');
+    Route::get('/statistics/overview', [ClientController::class, 'statistics'])->name('clients.statistics');
+    Route::post('/search', [ClientController::class, 'search'])->name('clients.search');
+
+    // ✅ Routes CRUD principales (avec paramètres dynamiques)
     Route::get('/', [ClientController::class, 'index'])->name('clients.index');
     Route::post('/', [ClientController::class, 'store'])->name('clients.store');
     Route::get('/{client_id}', [ClientController::class, 'show'])->name('clients.show');
@@ -58,18 +63,12 @@ Route::prefix('clients')->group(function () {
     Route::patch('/{client_id}', [ClientController::class, 'update'])->name('clients.patch');
     Route::delete('/{client_id}', [ClientController::class, 'destroy'])->name('clients.destroy');
 
-    // Routes pour gestion soft delete
-    Route::get('/trashed/list', [ClientController::class, 'trashed'])->name('clients.trashed');
+    // ✅ Routes pour gestion soft delete et actions spéciales
     Route::post('/{client_id}/restore', [ClientController::class, 'restore'])->name('clients.restore');
-
-    // Routes pour actions spéciales
     Route::patch('/{client_id}/toggle-status', [ClientController::class, 'toggleStatus'])->name('clients.toggle-status');
     Route::patch('/{client_id}/update-balance', [ClientController::class, 'updateBalance'])->name('clients.update-balance');
-
-    // Routes pour recherche et statistiques
-    Route::post('/search', [ClientController::class, 'search'])->name('clients.search');
-    Route::get('/statistics/overview', [ClientController::class, 'statistics'])->name('clients.statistics');
 })->middleware('auth:sanctum');
+/*
 
 /*
 |--------------------------------------------------------------------------

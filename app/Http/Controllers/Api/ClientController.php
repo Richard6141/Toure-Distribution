@@ -299,7 +299,6 @@ class ClientController extends Controller
         $validated = $request->validate([
             'with_client_type' => 'boolean'
         ]);
-
         try {
             $query = Client::where('client_id', $client_id);
 
