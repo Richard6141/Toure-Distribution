@@ -17,7 +17,66 @@ use Illuminate\Support\Facades\DB;
 class StockMovementController extends Controller
 {
     /**
-     * Afficher la liste des mouvements de stock
+     * @group Stock Movements
+     * 
+     * Récupère la liste des mouvements de stock avec leurs détails
+     * 
+     * @queryParam movement_type_id string Filtrer par type de mouvement. Example: uuid
+     * @queryParam statut string Filtrer par statut (pending, completed, cancelled). Example: pending
+     * @queryParam entrepot_from_id string Filtrer par entrepôt source. Example: uuid
+     * @queryParam entrepot_to_id string Filtrer par entrepôt destination. Example: uuid
+     * @queryParam client_id string Filtrer par client. Example: uuid
+     * @queryParam fournisseur_id string Filtrer par fournisseur. Example: uuid
+     * @queryParam search string Rechercher par référence. Example: MV-2024-001
+     * @queryParam date_from date Filtrer par date de début. Example: 2024-01-01
+     * @queryParam date_to date Filtrer par date de fin. Example: 2024-12-31
+     * @queryParam sort_by string Champ de tri. Example: created_at
+     * @queryParam sort_order string Ordre de tri (asc, desc). Example: desc
+     * @queryParam per_page integer Nombre d'éléments par page. Example: 15
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "data": [
+     *       {
+     *         "stock_movement_id": "uuid",
+     *         "reference": "MV-2024-001",
+     *         "movement_type_id": "uuid",
+     *         "entrepot_from_id": "uuid",
+     *         "entrepot_to_id": "uuid",
+     *         "fournisseur_id": "uuid",
+     *         "client_id": "uuid",
+     *         "statut": "pending",
+     *         "note": "Note optionnelle",
+     *         "user_id": "uuid",
+     *         "created_at": "2024-01-01 10:00:00",
+     *         "updated_at": "2024-01-01 10:00:00",
+     *         "movement_type": {
+     *           "stock_movement_type_id": "uuid",
+     *           "name": "Réception",
+     *           "direction": "in"
+     *         },
+     *         "details_count": 2,
+     *         "details": [
+     *           {
+     *             "stock_movement_detail_id": "uuid",
+     *             "product_id": "uuid",
+     *             "quantity": 10,
+     *             "product": {
+     *               "product_id": "uuid",
+     *               "name": "Produit A",
+     *               "sku": "PROD-A-001"
+     *             }
+     *           }
+     *         ]
+     *       }
+     *     ],
+     *     "current_page": 1,
+     *     "per_page": 15,
+     *     "total": 1
+     *   },
+     *   "message": "Mouvements de stock récupérés avec succès"
+     * }
      */
     public function index(Request $request): JsonResponse
     {
@@ -92,7 +151,68 @@ class StockMovementController extends Controller
     }
 
     /**
-     * Créer un nouveau mouvement de stock
+     * @group Stock Movements
+     * 
+     * Crée un nouveau mouvement de stock avec ses détails
+     * 
+     * @bodyParam reference string required Référence unique du mouvement. Example: MV-2024-001
+     * @bodyParam movement_type_id string required ID du type de mouvement. Example: uuid
+     * @bodyParam entrepot_from_id string ID de l'entrepôt source (optionnel pour les transferts). Example: uuid
+     * @bodyParam entrepot_to_id string ID de l'entrepôt destination (optionnel pour les réceptions). Example: uuid
+     * @bodyParam fournisseur_id string ID du fournisseur (optionnel). Example: uuid
+     * @bodyParam client_id string ID du client (optionnel). Example: uuid
+     * @bodyParam statut string required Statut du mouvement (pending, completed, cancelled). Example: pending
+     * @bodyParam note string Note optionnelle. Example: Note sur le mouvement
+     * @bodyParam user_id string required ID de l'utilisateur. Example: uuid
+     * @bodyParam details array required Détails du mouvement (minimum 1). Example: [{"product_id": "uuid", "quantity": 10}]
+     * @bodyParam details.*.product_id string required ID du produit. Example: uuid
+     * @bodyParam details.*.quantity integer required Quantité (minimum 1). Example: 10
+     * 
+     * @response 201 {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "uuid",
+     *     "reference": "MV-2024-001",
+     *     "movement_type_id": "uuid",
+     *     "entrepot_from_id": "uuid",
+     *     "entrepot_to_id": "uuid",
+     *     "fournisseur_id": "uuid",
+     *     "client_id": "uuid",
+     *     "statut": "pending",
+     *     "note": "Note sur le mouvement",
+     *     "user_id": "uuid",
+     *     "created_at": "2024-01-01 10:00:00",
+     *     "updated_at": "2024-01-01 10:00:00",
+     *     "movement_type": {
+     *       "stock_movement_type_id": "uuid",
+     *       "name": "Réception",
+     *       "direction": "in"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "uuid",
+     *         "product_id": "uuid",
+     *         "quantity": 10,
+     *         "product": {
+     *           "product_id": "uuid",
+     *           "name": "Produit A",
+     *           "sku": "PROD-A-001"
+     *         }
+     *       }
+     *     ]
+     *   },
+     *   "message": "Mouvement de stock créé avec succès"
+     * }
+     * 
+     * @response 422 {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "reference": ["La référence est obligatoire."],
+     *     "movement_type_id": ["Le type de mouvement est obligatoire."],
+     *     "details": ["Les détails du mouvement sont obligatoires."]
+     *   }
+     * }
      */
     public function store(Request $request): JsonResponse
     {
@@ -379,7 +499,41 @@ class StockMovementController extends Controller
     }
 
     /**
-     * Changer le statut d'un mouvement de stock
+     * @group Stock Movements
+     * 
+     * Met à jour le statut d'un mouvement de stock
+     * 
+     * @urlParam id string required ID du mouvement de stock. Example: uuid
+     * @bodyParam statut string required Nouveau statut (pending, completed, cancelled). Example: completed
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "uuid",
+     *     "reference": "MV-2024-001",
+     *     "statut": "completed",
+     *     "movement_type": {
+     *       "stock_movement_type_id": "uuid",
+     *       "name": "Réception",
+     *       "direction": "in"
+     *     },
+     *     "details": []
+     *   },
+     *   "message": "Statut du mouvement de stock mis à jour avec succès"
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Mouvement de stock non trouvé"
+     * }
+     * 
+     * @response 422 {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "statut": ["Le statut est obligatoire."]
+     *   }
+     * }
      */
     public function updateStatus(Request $request, string $id): JsonResponse
     {
