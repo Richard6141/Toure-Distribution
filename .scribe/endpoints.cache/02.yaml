@@ -109,7 +109,7 @@ endpoints:
         name: with_clients
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -119,7 +119,7 @@ endpoints:
       page: 16
       per_page: 22
       search: g
-      with_clients: true
+      with_clients: false
     fileParameters: []
     responses:
       -
@@ -318,14 +318,14 @@ endpoints:
         name: with_clients
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_clients: false
+      with_clients: true
     fileParameters: []
     responses:
       -
