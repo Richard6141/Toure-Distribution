@@ -10,6 +10,9 @@ use App\Http\Controllers\ClientTypeController;
 use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\StockMovementTypeController;
+use App\Http\Controllers\StockMovementController;
+use App\Http\Controllers\StockMovementDetailController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -155,4 +158,62 @@ Route::prefix('stocks')->group(function () {
     Route::get('entrepot/{entrepotId}', [StockController::class, 'byEntrepot']); // Stocks d'un entrepôt
     Route::get('{id}/restore', [StockController::class, 'restore']);             // Restaurer un stock supprimé
     Route::delete('{id}/force', [StockController::class, 'forceDelete']);        // Suppression définitive
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des types de mouvements de stock
+ * Prefix: /stock-movement-types
+ */
+Route::prefix('stock-movement-types')->group(function () {
+    Route::get('/', [StockMovementTypeController::class, 'index']);               // Liste des types
+    Route::post('/', [StockMovementTypeController::class, 'store']);              // Création d'un type
+    Route::get('/{id}', [StockMovementTypeController::class, 'show']);            // Afficher un type par ID
+    Route::put('/{id}', [StockMovementTypeController::class, 'update']);          // Mise à jour d'un type
+    Route::patch('/{id}', [StockMovementTypeController::class, 'update']);        // Mise à jour partielle d'un type
+    Route::delete('/{id}', [StockMovementTypeController::class, 'destroy']);      // Suppression logique (soft delete)
+    
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [StockMovementTypeController::class, 'trashed']); // Liste des types supprimés
+    Route::post('/{id}/restore', [StockMovementTypeController::class, 'restore']); // Restaurer un type supprimé
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des mouvements de stock
+ * Prefix: /stock-movements
+ */
+Route::prefix('stock-movements')->group(function () {
+    Route::get('/', [StockMovementController::class, 'index']);                   // Liste des mouvements
+    Route::post('/', [StockMovementController::class, 'store']);                  // Création d'un mouvement
+    Route::get('/{id}', [StockMovementController::class, 'show']);                // Afficher un mouvement par ID
+    Route::put('/{id}', [StockMovementController::class, 'update']);              // Mise à jour d'un mouvement
+    Route::patch('/{id}', [StockMovementController::class, 'update']);            // Mise à jour partielle d'un mouvement
+    Route::delete('/{id}', [StockMovementController::class, 'destroy']);          // Suppression logique (soft delete)
+    
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [StockMovementController::class, 'trashed']);     // Liste des mouvements supprimés
+    Route::post('/{id}/restore', [StockMovementController::class, 'restore']);    // Restaurer un mouvement supprimé
+    
+    // Routes spéciales
+    Route::patch('/{id}/update-status', [StockMovementController::class, 'updateStatus']); // Changer le statut
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des détails de mouvements de stock
+ * Prefix: /stock-movement-details
+ */
+Route::prefix('stock-movement-details')->group(function () {
+    Route::get('/', [StockMovementDetailController::class, 'index']);             // Liste des détails
+    Route::post('/', [StockMovementDetailController::class, 'store']);            // Création d'un détail
+    Route::get('/{id}', [StockMovementDetailController::class, 'show']);          // Afficher un détail par ID
+    Route::put('/{id}', [StockMovementDetailController::class, 'update']);        // Mise à jour d'un détail
+    Route::patch('/{id}', [StockMovementDetailController::class, 'update']);      // Mise à jour partielle d'un détail
+    Route::delete('/{id}', [StockMovementDetailController::class, 'destroy']);    // Suppression logique (soft delete)
+    
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [StockMovementDetailController::class, 'trashed']); // Liste des détails supprimés
+    Route::post('/{id}/restore', [StockMovementDetailController::class, 'restore']); // Restaurer un détail supprimé
+    
+    // Routes spéciales
+    Route::get('/stock-movement/{stockMovementId}', [StockMovementDetailController::class, 'byStockMovement']); // Détails d'un mouvement
+    Route::get('/product/{productId}', [StockMovementDetailController::class, 'byProduct']); // Détails d'un produit
 })->middleware('auth:sanctum');
