@@ -13,7 +13,50 @@ use Illuminate\Support\Str;
 class StockMovementDetailController extends Controller
 {
     /**
-     * Afficher la liste des détails de mouvements de stock
+     * @group Stock Movement Details
+     * 
+     * Récupère la liste des détails de mouvements de stock
+     * 
+     * @queryParam stock_movement_id string Filtrer par mouvement de stock. Example: uuid
+     * @queryParam product_id string Filtrer par produit. Example: uuid
+     * @queryParam quantity_min integer Filtrer par quantité minimale. Example: 1
+     * @queryParam quantity_max integer Filtrer par quantité maximale. Example: 100
+     * @queryParam sort_by string Champ de tri. Example: created_at
+     * @queryParam sort_order string Ordre de tri (asc, desc). Example: desc
+     * @queryParam per_page integer Nombre d'éléments par page. Example: 15
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "data": [
+     *       {
+     *         "stock_movement_detail_id": "uuid",
+     *         "stock_movement_id": "uuid",
+     *         "product_id": "uuid",
+     *         "quantity": 10,
+     *         "created_at": "2024-01-01 10:00:00",
+     *         "updated_at": "2024-01-01 10:00:00",
+     *         "stock_movement": {
+     *           "stock_movement_id": "uuid",
+     *           "reference": "MV-2024-001",
+     *           "movement_type": {
+     *             "name": "Réception",
+     *             "direction": "in"
+     *           }
+     *         },
+     *         "product": {
+     *           "product_id": "uuid",
+     *           "name": "Produit A",
+     *           "sku": "PROD-A-001"
+     *         }
+     *       }
+     *     ],
+     *     "current_page": 1,
+     *     "per_page": 15,
+     *     "total": 1
+     *   },
+     *   "message": "Détails de mouvements de stock récupérés avec succès"
+     * }
      */
     public function index(Request $request): JsonResponse
     {
@@ -64,7 +107,54 @@ class StockMovementDetailController extends Controller
     }
 
     /**
-     * Créer un nouveau détail de mouvement de stock
+     * @group Stock Movement Details
+     * 
+     * Crée un nouveau détail de mouvement de stock
+     * 
+     * @bodyParam stock_movement_id string required ID du mouvement de stock. Example: uuid
+     * @bodyParam product_id string required ID du produit. Example: uuid
+     * @bodyParam quantity integer required Quantité (minimum 1). Example: 10
+     * 
+     * @response 201 {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_detail_id": "uuid",
+     *     "stock_movement_id": "uuid",
+     *     "product_id": "uuid",
+     *     "quantity": 10,
+     *     "created_at": "2024-01-01 10:00:00",
+     *     "updated_at": "2024-01-01 10:00:00",
+     *     "stock_movement": {
+     *       "stock_movement_id": "uuid",
+     *       "reference": "MV-2024-001",
+     *       "movement_type": {
+     *         "name": "Réception",
+     *         "direction": "in"
+     *       }
+     *     },
+     *     "product": {
+     *       "product_id": "uuid",
+     *       "name": "Produit A",
+     *       "sku": "PROD-A-001"
+     *     }
+     *   },
+     *   "message": "Détail de mouvement de stock créé avec succès"
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Mouvement de stock non trouvé"
+     * }
+     * 
+     * @response 422 {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "stock_movement_id": ["Le mouvement de stock est obligatoire."],
+     *     "product_id": ["Le produit est obligatoire."],
+     *     "quantity": ["La quantité est obligatoire."]
+     *   }
+     * }
      */
     public function store(Request $request): JsonResponse
     {
@@ -300,13 +390,47 @@ class StockMovementDetailController extends Controller
     }
 
     /**
-     * Obtenir les détails d'un mouvement de stock spécifique
+     * @group Stock Movement Details
+     * 
+     * Récupère tous les détails d'un mouvement de stock spécifique
+     * 
+     * @urlParam stockMovementId string required ID du mouvement de stock. Example: uuid
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "data": [
+     *       {
+     *         "stock_movement_detail_id": "uuid",
+     *         "stock_movement_id": "uuid",
+     *         "product_id": "uuid",
+     *         "quantity": 10,
+     *         "created_at": "2024-01-01 10:00:00",
+     *         "updated_at": "2024-01-01 10:00:00",
+     *         "product": {
+     *           "product_id": "uuid",
+     *           "name": "Produit A",
+     *           "sku": "PROD-A-001"
+     *         }
+     *       }
+     *     ],
+     *     "current_page": 1,
+     *     "per_page": 15,
+     *     "total": 1
+     *   },
+     *   "message": "Détails du mouvement de stock récupérés avec succès"
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Mouvement de stock non trouvé"
+     * }
      */
     public function byStockMovement(string $stockMovementId): JsonResponse
     {
         try {
             $stockMovement = StockMovement::find($stockMovementId);
-            
+
             if (!$stockMovement) {
                 return response()->json([
                     'success' => false,
@@ -333,13 +457,50 @@ class StockMovementDetailController extends Controller
     }
 
     /**
-     * Obtenir les détails d'un produit spécifique
+     * @group Stock Movement Details
+     * 
+     * Récupère tous les détails de mouvements pour un produit spécifique
+     * 
+     * @urlParam productId string required ID du produit. Example: uuid
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "data": [
+     *       {
+     *         "stock_movement_detail_id": "uuid",
+     *         "stock_movement_id": "uuid",
+     *         "product_id": "uuid",
+     *         "quantity": 10,
+     *         "created_at": "2024-01-01 10:00:00",
+     *         "updated_at": "2024-01-01 10:00:00",
+     *         "stock_movement": {
+     *           "stock_movement_id": "uuid",
+     *           "reference": "MV-2024-001",
+     *           "movement_type": {
+     *             "name": "Réception",
+     *             "direction": "in"
+     *           }
+     *         }
+     *       }
+     *     ],
+     *     "current_page": 1,
+     *     "per_page": 15,
+     *     "total": 1
+     *   },
+     *   "message": "Détails de mouvements du produit récupérés avec succès"
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Produit non trouvé"
+     * }
      */
     public function byProduct(string $productId): JsonResponse
     {
         try {
             $product = Product::find($productId);
-            
+
             if (!$product) {
                 return response()->json([
                     'success' => false,

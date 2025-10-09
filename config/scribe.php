@@ -169,6 +169,9 @@ return [
         // Ordre personnalisé des groupes
         'order' => [
             'Authentification',
+            'Stock Movement Types',
+            'Stock Movements',
+            'Stock Movement Details',
             'Utilisateurs',
             'Produits',
             'Commandes',
