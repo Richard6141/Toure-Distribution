@@ -430,7 +430,6 @@ class StockMovementDetailController extends Controller
     {
         try {
             $stockMovement = StockMovement::find($stockMovementId);
-
             if (!$stockMovement) {
                 return response()->json([
                     'success' => false,
@@ -500,7 +499,6 @@ class StockMovementDetailController extends Controller
     {
         try {
             $product = Product::find($productId);
-
             if (!$product) {
                 return response()->json([
                     'success' => false,
