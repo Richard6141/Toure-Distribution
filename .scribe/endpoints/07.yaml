@@ -1,4 +1,4 @@
-name: Produits
+name: 'Gestion des Produits'
 description: ''
 endpoints:
   -
@@ -6,16 +6,17 @@ endpoints:
       - GET
     uri: api/products
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Lister tous les produits'
-      description: ''
-      authenticated: false
+      description: 'Récupère la liste complète de tous les produits avec leurs catégories associées.'
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -32,30 +33,97 @@ endpoints:
           {
             "data": [
               {
-                "product_id": "uuid",
+                "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
                 "code": "PRO-ABC123",
-                "name": "Produit Exemple",
-                "description": "Description du produit",
-                "unit_price": 1500.50,
-                "cost": 1200,
-                "minimum_cost": 1000,
-                "min_stock_level": 10,
+                "name": "Laptop Dell XPS 15",
+                "description": "Ordinateur portable haute performance avec écran 15 pouces",
+                "unit_price": 1500000.00,
+                "cost": 1200000.00,
+                "minimum_cost": 1000000.00,
+                "min_stock_level": 5,
                 "is_active": true,
-                "picture": "image.jpg",
-                "product_category_id": "uuid",
+                "picture": "laptop-dell-xps.jpg",
+                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "created_at": "2025-01-16T14:20:00.000000Z",
+                "updated_at": "2025-01-16T14:20:00.000000Z",
+                "deleted_at": null,
                 "category": {
-                  "product_category_id": "uuid",
-                  "label": "Catégorie Exemple"
+                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                  "label": "Informatique",
+                  "description": "Équipements informatiques"
+                }
+              }
+            ],
+            "message": "Produits de la catégorie"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "data": [],
+            "message": "Produits de la catégorie"
+          }
+        headers: []
+        description: 'Aucun produit dans la catégorie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }2025-01-15T10:30:00.000000Z",
+                "updated_at": "2025-01-15T10:30:00.000000Z",
+                "deleted_at": null,
+                "category": {
+                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                  "label": "Informatique",
+                  "description": "Équipements informatiques"
+                }
+              },
+              {
+                "product_id": "7d3e1c9b-2a4d-5e6f-7g8h-9i0j1k2l3m4n",
+                "code": "PRO-XYZ789",
+                "name": "Souris sans fil Logitech",
+                "description": "Souris ergonomique sans fil",
+                "unit_price": 25000.00,
+                "cost": 18000.00,
+                "minimum_cost": 15000.00,
+                "min_stock_level": 20,
+                "is_active": true,
+                "picture": "souris-logitech.jpg",
+                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "created_at": "2025-01-16T14:20:00.000000Z",
+                "updated_at": "2025-01-16T14:20:00.000000Z",
+                "deleted_at": null,
+                "category": {
+                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                  "label": "Informatique",
+                  "description": "Équipements informatiques"
                 }
               }
             ],
             "message": "Liste des produits"
           }
         headers: []
-        description: ''
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -65,16 +133,19 @@ endpoints:
       - POST
     uri: api/products
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Créer un nouveau produit'
-      description: ''
-      authenticated: false
+      description: |-
+        Crée un nouveau produit dans le système. Le code produit est généré automatiquement
+        si non fourni (format: PRO-XXXXXX où X est un caractère aléatoire).
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -84,104 +155,115 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Nom du produit. Exemple: "Produit Exemple"'
+        description: 'Nom du produit (max 255 caractères, doit être unique).'
         required: true
-        example: architecto
+        example: '"Laptop Dell XPS 15"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       description:
         name: description
-        description: 'Description du produit. Exemple: "Description du produit"'
+        description: 'optional Description détaillée du produit.'
         required: false
-        example: 'Eius et animi quos velit et.'
+        example: '"Ordinateur portable haute performance avec processeur Intel i7"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       product_category_id:
         name: product_category_id
-        description: 'ID de la catégorie. Exemple: "uuid"'
+        description: 'UUID de la catégorie du produit (doit exister dans product_categories).'
         required: true
-        example: architecto
-        type: uuid
+        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       unit_price:
         name: unit_price
-        description: 'Prix unitaire. Exemple: 1500.50'
+        description: 'Prix de vente unitaire (doit être >= 0).'
         required: true
-        example: architecto
+        example: '1500000.00'
         type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       cost:
         name: cost
-        description: 'Coût du produit. Exemple: 1200'
+        description: "optional Coût d'achat du produit (doit être >= 0)."
         required: false
-        example: architecto
+        example: '1200000.00'
         type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       minimum_cost:
         name: minimum_cost
-        description: 'Coût minimum. Exemple: 1000'
+        description: 'optional Coût minimum acceptable (doit être >= 0).'
         required: false
-        example: architecto
+        example: '1000000.00'
         type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       min_stock_level:
         name: min_stock_level
-        description: 'Quantité minimale en stock. Exemple: 10'
+        description: 'optional Quantité minimale en stock déclenchant une alerte (doit être >= 0).'
         required: false
-        example: 16
+        example: 5
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       is_active:
         name: is_active
-        description: 'Produit actif ou non. Exemple: true'
+        description: 'optional Indique si le produit est actif (par défaut: true).'
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       picture:
         name: picture
-        description: 'URL ou nom de l''image. Exemple: "image.jpg"'
+        description: 'optional URL ou nom du fichier image (max 255 caractères).'
         required: false
-        example: architecto
+        example: '"laptop-dell-xps.jpg"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
+      image:
+        name: image
+        description: "optional Alternative pour l'image du produit."
+        required: false
+        example: '"image.jpg"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanBodyParameters:
-      name: architecto
-      description: 'Eius et animi quos velit et.'
-      product_category_id: architecto
-      unit_price: architecto
-      cost: architecto
-      minimum_cost: architecto
-      min_stock_level: 16
-      is_active: false
-      picture: architecto
+      name: '"Laptop Dell XPS 15"'
+      description: '"Ordinateur portable haute performance avec processeur Intel i7"'
+      product_category_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+      unit_price: '1500000.00'
+      cost: '1200000.00'
+      minimum_cost: '1000000.00'
+      min_stock_level: 5
+      is_active: true
+      picture: '"laptop-dell-xps.jpg"'
+      image: '"image.jpg"'
     fileParameters: []
     responses:
       -
@@ -189,42 +271,90 @@ endpoints:
         content: |-
           {
             "data": {
-              "product_id": "uuid",
-              "code": "PRO-ABC123",
-              "name": "Produit Exemple",
-              "description": "Description du produit",
-              "unit_price": 1500.50,
-              "cost": 1200,
-              "minimum_cost": 1000,
-              "min_stock_level": 10,
+              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "code": "PRO-A7B9C2",
+              "name": "Laptop Dell XPS 15",
+              "description": "Ordinateur portable haute performance avec processeur Intel i7",
+              "unit_price": 1500000.00,
+              "cost": 1200000.00,
+              "minimum_cost": 1000000.00,
+              "min_stock_level": 5,
               "is_active": true,
-              "picture": "image.jpg",
-              "product_category_id": "uuid",
+              "picture": "laptop-dell-xps.jpg",
+              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "deleted_at": null,
               "category": {
-                "product_category_id": "uuid",
-                "label": "Catégorie Exemple"
+                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "label": "Informatique",
+                "description": "Équipements informatiques"
               }
             },
             "message": "Produit créé avec succès"
           }
         headers: []
-        description: ''
+        description: 'Produit créé avec succès'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
         custom: []
       -
         status: 422
         content: |-
           {
-            "message": "Les données sont invalides",
             "errors": {
-              "name": ["Le nom du produit est obligatoire", "Ce nom existe déjà"],
-              "product_category_id": ["La catégorie est obligatoire"]
+              "name": [
+                "Le nom du produit est obligatoire"
+              ],
+              "product_category_id": [
+                "La catégorie est obligatoire"
+              ],
+              "unit_price": [
+                "Le prix unitaire est obligatoire"
+              ]
             }
           }
         headers: []
-        description: ''
+        description: 'Erreurs de validation'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": [
+                "Ce nom de produit existe déjà"
+              ]
+            }
+          }
+        headers: []
+        description: 'Nom de produit déjà existant'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "product_category_id": [
+                "La catégorie sélectionnée n'existe pas"
+              ]
+            }
+          }
+        headers: []
+        description: 'Catégorie invalide'
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -234,31 +364,32 @@ endpoints:
       - GET
     uri: 'api/products/{id}'
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Afficher un produit par ID'
-      description: ''
-      authenticated: false
+      description: "Récupère les détails complets d'un produit spécifique avec sa catégorie."
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the product.'
+        description: 'UUID du produit à afficher.'
         required: true
-        example: architecto
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -266,19 +397,58 @@ endpoints:
     fileParameters: []
     responses:
       -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "code": "PRO-ABC123",
+              "name": "Laptop Dell XPS 15",
+              "description": "Ordinateur portable haute performance",
+              "unit_price": 1500000.00,
+              "cost": 1200000.00,
+              "minimum_cost": 1000000.00,
+              "min_stock_level": 5,
+              "is_active": true,
+              "picture": "laptop-dell-xps.jpg",
+              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "deleted_at": null,
+              "category": {
+                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "label": "Informatique",
+                "description": "Équipements informatiques"
+              }
+            },
+            "message": "Détail du produit"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Product] architecto"
+            "message": "No query results for model [App\\Models\\Product] 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
           }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        headers: []
+        description: 'Produit non trouvé'
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -288,137 +458,219 @@ endpoints:
       - PUT
     uri: 'api/products/{id}'
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour un produit'
-      description: ''
-      authenticated: false
+      description: |-
+        Met à jour les informations d'un produit existant. Tous les champs sont requis sauf indication contraire.
+        Le nom du produit doit rester unique (sauf pour le produit lui-même).
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the product.'
+        description: 'UUID du produit à mettre à jour.'
         required: true
-        example: architecto
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         name: name
-        description: ''
-        required: false
-        example: null
+        description: 'Nouveau nom du produit (max 255 caractères, doit être unique).'
+        required: true
+        example: '"Laptop Dell XPS 15 - Édition 2025"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       description:
         name: description
-        description: ''
+        description: 'optional Nouvelle description du produit.'
         required: false
-        example: 'Eius et animi quos velit et.'
+        example: '"Ordinateur portable avec écran OLED"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       product_category_id:
         name: product_category_id
-        description: 'Must be a valid UUID. The <code>product_category_id</code> of an existing record in the product_categories table.'
+        description: 'UUID de la catégorie (doit exister).'
         required: true
-        example: 21c4122b-d554-3723-966c-6d723ea5293f
+        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       unit_price:
         name: unit_price
-        description: 'Must be at least 0.'
+        description: 'Nouveau prix unitaire (>= 0).'
         required: true
-        example: 37
-        type: number
+        example: '1600000.00'
+        type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       cost:
         name: cost
-        description: 'Must be at least 0.'
+        description: "optional Nouveau coût d'achat (>= 0)."
         required: false
-        example: 9
-        type: number
+        example: '1300000.00'
+        type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       minimum_cost:
         name: minimum_cost
-        description: 'Must be at least 0.'
+        description: 'optional Nouveau coût minimum (>= 0).'
         required: false
-        example: 52
-        type: number
+        example: '1100000.00'
+        type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       min_stock_level:
         name: min_stock_level
-        description: 'Must be at least 0.'
+        description: 'optional Nouveau niveau de stock minimum (>= 0).'
         required: false
-        example: 8
+        example: 3
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       is_active:
         name: is_active
-        description: ''
+        description: 'optional Statut actif/inactif.'
         required: false
         example: true
         type: boolean
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       picture:
         name: picture
-        description: 'Must not be greater than 255 characters.'
+        description: 'optional Nouvelle image (max 255 caractères).'
         required: false
-        example: k
+        example: '"laptop-dell-xps-2025.jpg"'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
+      image:
+        name: image
+        description: "optional Alternative pour l'image."
+        required: false
+        example: '"image.jpg"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanBodyParameters:
-      description: 'Eius et animi quos velit et.'
-      product_category_id: 21c4122b-d554-3723-966c-6d723ea5293f
-      unit_price: 37
-      cost: 9
-      minimum_cost: 52
-      min_stock_level: 8
+      name: '"Laptop Dell XPS 15 - Édition 2025"'
+      description: '"Ordinateur portable avec écran OLED"'
+      product_category_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+      unit_price: '1600000.00'
+      cost: '1300000.00'
+      minimum_cost: '1100000.00'
+      min_stock_level: 3
       is_active: true
-      picture: k
+      picture: '"laptop-dell-xps-2025.jpg"'
+      image: '"image.jpg"'
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "code": "PRO-ABC123",
+              "name": "Laptop Dell XPS 15 - Édition 2025",
+              "description": "Ordinateur portable avec écran OLED",
+              "unit_price": 1600000.00,
+              "cost": 1300000.00,
+              "minimum_cost": 1100000.00,
+              "min_stock_level": 3,
+              "is_active": true,
+              "picture": "laptop-dell-xps-2025.jpg",
+              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T15:45:00.000000Z",
+              "deleted_at": null,
+              "category": {
+                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "label": "Informatique",
+                "description": "Équipements informatiques"
+              }
+            },
+            "message": "Produit mis à jour avec succès"
+          }
+        headers: []
+        description: 'Mise à jour réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Product]"
+          }
+        headers: []
+        description: 'Produit non trouvé'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": [
+                "Ce nom de produit existe déjà"
+              ],
+              "unit_price": [
+                "Le prix unitaire est obligatoire"
+              ]
+            }
+          }
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -428,73 +680,34 @@ endpoints:
       - DELETE
     uri: 'api/products/{id}'
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Supprimer un produit (soft delete)'
-      description: ''
-      authenticated: false
+      description: |-
+        Effectue une suppression logique (soft delete) du produit. Le produit n'est pas supprimé
+        de la base de données mais marqué comme supprimé. Il peut être restauré ultérieurement.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the product.'
+        description: 'UUID du produit à supprimer.'
         required: true
-        example: architecto
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/products/category/{categoryId}'
-    metadata:
-      groupName: Produits
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lister les produits par catégorie'
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      categoryId:
-        name: categoryId
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      categoryId: architecto
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -503,15 +716,36 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[],"message":"Produits de la cat\u00e9gorie"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        content: |-
+          {
+            "message": "Produit supprimé avec succès"
+          }
+        headers: []
+        description: 'Suppression réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Product]"
+          }
+        headers: []
+        description: 'Produit non trouvé'
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -521,31 +755,34 @@ endpoints:
       - GET
     uri: 'api/products/{id}/restore'
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Restaurer un produit supprimé'
-      description: ''
-      authenticated: false
+      description: |-
+        Restaure un produit qui a été supprimé logiquement (soft delete).
+        Le produit redevient actif et visible dans les listes.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the product.'
+        description: 'UUID du produit à restaurer.'
         required: true
-        example: architecto
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -553,19 +790,53 @@ endpoints:
     fileParameters: []
     responses:
       -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "code": "PRO-ABC123",
+              "name": "Laptop Dell XPS 15",
+              "description": "Ordinateur portable haute performance",
+              "unit_price": 1500000.00,
+              "cost": 1200000.00,
+              "minimum_cost": 1000000.00,
+              "min_stock_level": 5,
+              "is_active": true,
+              "picture": "laptop-dell-xps.jpg",
+              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T16:20:00.000000Z",
+              "deleted_at": null
+            },
+            "message": "Produit restauré avec succès"
+          }
+        headers: []
+        description: 'Restauration réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Product] architecto"
+            "message": "No query results for model [App\\Models\\Product]"
           }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        headers: []
+        description: 'Produit non trouvé'
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -575,39 +846,72 @@ endpoints:
       - DELETE
     uri: 'api/products/{id}/force'
     metadata:
-      groupName: Produits
+      groupName: 'Gestion des Produits'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Supprimer définitivement un produit'
-      description: ''
-      authenticated: false
+      description: |-
+        Supprime définitivement un produit de la base de données (force delete).
+        Cette action est irréversible. Le produit ne pourra plus être restauré.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the product.'
+        description: 'UUID du produit à supprimer définitivement.'
         required: true
-        example: architecto
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Produit supprimé définitivement"
+          }
+        headers: []
+        description: 'Suppression définitive réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Product]"
+          }
+        headers: []
+        description: 'Produit non trouvé'
+        custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null

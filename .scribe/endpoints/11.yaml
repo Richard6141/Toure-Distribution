@@ -1,16 +1,16 @@
-name: 'Stock Movement Details'
+name: 'Stock Movements'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/stock-movement-details
+    uri: api/stock-movements
     metadata:
-      groupName: 'Stock Movement Details'
+      groupName: 'Stock Movements'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Récupère la liste des détails de mouvements de stock'
+      title: 'Récupère la liste des mouvements de stock avec leurs détails'
       description: ''
       authenticated: false
       deprecated: false
@@ -21,9 +21,9 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      stock_movement_id:
-        name: stock_movement_id
-        description: 'Filtrer par mouvement de stock.'
+      movement_type_id:
+        name: movement_type_id
+        description: 'Filtrer par type de mouvement.'
         required: false
         example: uuid
         type: string
@@ -31,9 +31,19 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      product_id:
-        name: product_id
-        description: 'Filtrer par produit.'
+      statut:
+        name: statut
+        description: 'Filtrer par statut (pending, completed, cancelled).'
+        required: false
+        example: pending
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      entrepot_from_id:
+        name: entrepot_from_id
+        description: 'Filtrer par entrepôt source.'
         required: false
         example: uuid
         type: string
@@ -41,22 +51,62 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      quantity_min:
-        name: quantity_min
-        description: 'Filtrer par quantité minimale.'
+      entrepot_to_id:
+        name: entrepot_to_id
+        description: 'Filtrer par entrepôt destination.'
         required: false
-        example: 1
-        type: integer
+        example: uuid
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      quantity_max:
-        name: quantity_max
-        description: 'Filtrer par quantité maximale.'
+      client_id:
+        name: client_id
+        description: 'Filtrer par client.'
         required: false
-        example: 100
-        type: integer
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      fournisseur_id:
+        name: fournisseur_id
+        description: 'Filtrer par fournisseur.'
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Rechercher par référence.'
+        required: false
+        example: MV-2024-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_from:
+        name: date_from
+        description: 'date Filtrer par date de début.'
+        required: false
+        example: '2024-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_to:
+        name: date_to
+        description: 'date Filtrer par date de fin.'
+        required: false
+        example: '2024-12-31'
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
@@ -92,10 +142,15 @@ endpoints:
         nullable: false
         custom: []
     cleanQueryParameters:
-      stock_movement_id: uuid
-      product_id: uuid
-      quantity_min: 1
-      quantity_max: 100
+      movement_type_id: uuid
+      statut: pending
+      entrepot_from_id: uuid
+      entrepot_to_id: uuid
+      client_id: uuid
+      fournisseur_id: uuid
+      search: MV-2024-001
+      date_from: '2024-01-01'
+      date_to: '2024-12-31'
       sort_by: created_at
       sort_order: desc
       per_page: 15
@@ -111,32 +166,43 @@ endpoints:
             "data": {
               "data": [
                 {
-                  "stock_movement_detail_id": "uuid",
                   "stock_movement_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
+                  "reference": "MV-2024-001",
+                  "movement_type_id": "uuid",
+                  "entrepot_from_id": "uuid",
+                  "entrepot_to_id": "uuid",
+                  "fournisseur_id": "uuid",
+                  "client_id": "uuid",
+                  "statut": "pending",
+                  "note": "Note optionnelle",
+                  "user_id": "uuid",
                   "created_at": "2024-01-01 10:00:00",
                   "updated_at": "2024-01-01 10:00:00",
-                  "stock_movement": {
-                    "stock_movement_id": "uuid",
-                    "reference": "MV-2024-001",
-                    "movement_type": {
-                      "name": "Réception",
-                      "direction": "in"
-                    }
+                  "movement_type": {
+                    "stock_movement_type_id": "uuid",
+                    "name": "Réception",
+                    "direction": "in"
                   },
-                  "product": {
-                    "product_id": "uuid",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
+                  "details_count": 2,
+                  "details": [
+                    {
+                      "stock_movement_detail_id": "uuid",
+                      "product_id": "uuid",
+                      "quantity": 10,
+                      "product": {
+                        "product_id": "uuid",
+                        "name": "Produit A",
+                        "sku": "PROD-A-001"
+                      }
+                    }
+                  ]
                 }
               ],
               "current_page": 1,
               "per_page": 15,
               "total": 1
             },
-            "message": "Détails de mouvements de stock récupérés avec succès"
+            "message": "Mouvements de stock récupérés avec succès"
           }
         headers: []
         description: ''
@@ -150,13 +216,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/stock-movement-details
+    uri: api/stock-movements
     metadata:
-      groupName: 'Stock Movement Details'
+      groupName: 'Stock Movements'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Crée un nouveau détail de mouvement de stock'
+      title: 'Crée un nouveau mouvement de stock avec ses détails'
       description: ''
       authenticated: false
       deprecated: false
@@ -169,9 +235,19 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      stock_movement_id:
-        name: stock_movement_id
-        description: 'ID du mouvement de stock.'
+      reference:
+        name: reference
+        description: 'Référence unique du mouvement.'
+        required: true
+        example: MV-2024-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      movement_type_id:
+        name: movement_type_id
+        description: 'ID du type de mouvement.'
         required: true
         example: uuid
         type: string
@@ -179,8 +255,91 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      product_id:
-        name: product_id
+      entrepot_from_id:
+        name: entrepot_from_id
+        description: "ID de l'entrepôt source (optionnel pour les transferts)."
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      entrepot_to_id:
+        name: entrepot_to_id
+        description: "ID de l'entrepôt destination (optionnel pour les réceptions)."
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      fournisseur_id:
+        name: fournisseur_id
+        description: 'ID du fournisseur (optionnel).'
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      client_id:
+        name: client_id
+        description: 'ID du client (optionnel).'
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: 'Statut du mouvement (pending, completed, cancelled).'
+        required: true
+        example: pending
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Note optionnelle.'
+        required: false
+        example: 'Note sur le mouvement'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      user_id:
+        name: user_id
+        description: "ID de l'utilisateur."
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      details:
+        name: details
+        description: 'Détails du mouvement (minimum 1).'
+        required: true
+        example:
+          -
+            product_id: uuid
+            quantity: 10
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details.*.product_id':
+        name: 'details.*.product_id'
         description: 'ID du produit.'
         required: true
         example: uuid
@@ -189,8 +348,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      quantity:
-        name: quantity
+      'details.*.quantity':
+        name: 'details.*.quantity'
         description: 'Quantité (minimum 1).'
         required: true
         example: 10
@@ -200,9 +359,19 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      stock_movement_id: uuid
-      product_id: uuid
-      quantity: 10
+      reference: MV-2024-001
+      movement_type_id: uuid
+      entrepot_from_id: uuid
+      entrepot_to_id: uuid
+      fournisseur_id: uuid
+      client_id: uuid
+      statut: pending
+      note: 'Note sur le mouvement'
+      user_id: uuid
+      details:
+        -
+          product_id: uuid
+          quantity: 10
     fileParameters: []
     responses:
       -
@@ -211,27 +380,126 @@ endpoints:
           {
             "success": true,
             "data": {
-              "stock_movement_detail_id": "uuid",
               "stock_movement_id": "uuid",
-              "product_id": "uuid",
-              "quantity": 10,
+              "reference": "MV-2024-001",
+              "movement_type_id": "uuid",
+              "entrepot_from_id": "uuid",
+              "entrepot_to_id": "uuid",
+              "fournisseur_id": "uuid",
+              "client_id": "uuid",
+              "statut": "pending",
+              "note": "Note sur le mouvement",
+              "user_id": "uuid",
               "created_at": "2024-01-01 10:00:00",
               "updated_at": "2024-01-01 10:00:00",
-              "stock_movement": {
-                "stock_movement_id": "uuid",
-                "reference": "MV-2024-001",
-                "movement_type": {
-                  "name": "Réception",
-                  "direction": "in"
-                }
+              "movement_type": {
+                "stock_movement_type_id": "uuid",
+                "name": "Réception",
+                "direction": "in"
               },
-              "product": {
-                "product_id": "uuid",
-                "name": "Produit A",
-                "sku": "PROD-A-001"
-              }
+              "details": [
+                {
+                  "stock_movement_detail_id": "uuid",
+                  "product_id": "uuid",
+                  "quantity": 10,
+                  "product": {
+                    "product_id": "uuid",
+                    "name": "Produit A",
+                    "sku": "PROD-A-001"
+                  }
+                }
+              ]
             },
-            "message": "Détail de mouvement de stock créé avec succès"
+            "message": "Mouvement de stock créé avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "reference": ["La référence est obligatoire."],
+              "movement_type_id": ["Le type de mouvement est obligatoire."],
+              "details": ["Les détails du mouvement sont obligatoires."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/stock-movements/{id}/update-status'
+    metadata:
+      groupName: 'Stock Movements'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Met à jour le statut d'un mouvement de stock"
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      statut:
+        name: statut
+        description: 'Nouveau statut (pending, completed, cancelled).'
+        required: true
+        example: completed
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      statut: completed
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_id": "uuid",
+              "reference": "MV-2024-001",
+              "statut": "completed",
+              "movement_type": {
+                "stock_movement_type_id": "uuid",
+                "name": "Réception",
+                "direction": "in"
+              },
+              "details": []
+            },
+            "message": "Statut du mouvement de stock mis à jour avec succès"
           }
         headers: []
         description: ''
@@ -253,177 +521,8 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "stock_movement_id": ["Le mouvement de stock est obligatoire."],
-              "product_id": ["Le produit est obligatoire."],
-              "quantity": ["La quantité est obligatoire."]
+              "statut": ["Le statut est obligatoire."]
             }
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/stock-movement-details/stock-movement/{stockMovementId}'
-    metadata:
-      groupName: 'Stock Movement Details'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Récupère tous les détails d'un mouvement de stock spécifique"
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      stockMovementId:
-        name: stockMovementId
-        description: 'ID du mouvement de stock.'
-        required: true
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      stockMovementId: uuid
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "data": [
-                {
-                  "stock_movement_detail_id": "uuid",
-                  "stock_movement_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
-                  "created_at": "2024-01-01 10:00:00",
-                  "updated_at": "2024-01-01 10:00:00",
-                  "product": {
-                    "product_id": "uuid",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
-                }
-              ],
-              "current_page": 1,
-              "per_page": 15,
-              "total": 1
-            },
-            "message": "Détails du mouvement de stock récupérés avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/stock-movement-details/product/{productId}'
-    metadata:
-      groupName: 'Stock Movement Details'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Récupère tous les détails de mouvements pour un produit spécifique'
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      productId:
-        name: productId
-        description: 'ID du produit.'
-        required: true
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      productId: uuid
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "data": [
-                {
-                  "stock_movement_detail_id": "uuid",
-                  "stock_movement_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
-                  "created_at": "2024-01-01 10:00:00",
-                  "updated_at": "2024-01-01 10:00:00",
-                  "stock_movement": {
-                    "stock_movement_id": "uuid",
-                    "reference": "MV-2024-001",
-                    "movement_type": {
-                      "name": "Réception",
-                      "direction": "in"
-                    }
-                  }
-                }
-              ],
-              "current_page": 1,
-              "per_page": 15,
-              "total": 1
-            },
-            "message": "Détails de mouvements du produit récupérés avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Produit non trouvé"
           }
         headers: []
         description: ''

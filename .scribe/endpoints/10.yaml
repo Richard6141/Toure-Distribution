@@ -1,16 +1,16 @@
-name: 'Stock Movements'
+name: 'Stock Movement Types'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/stock-movements
+    uri: api/stock-movement-types
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Stock Movement Types'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Récupère la liste des mouvements de stock avec leurs détails'
+      title: 'Récupère la liste des types de mouvements de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -21,61 +21,11 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'Filtrer par type de mouvement.'
+      direction:
+        name: direction
+        description: 'Filtrer par direction (in, out, transfer).'
         required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      statut:
-        name: statut
-        description: 'Filtrer par statut (pending, completed, cancelled).'
-        required: false
-        example: pending
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      entrepot_from_id:
-        name: entrepot_from_id
-        description: 'Filtrer par entrepôt source.'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      entrepot_to_id:
-        name: entrepot_to_id
-        description: 'Filtrer par entrepôt destination.'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      client_id:
-        name: client_id
-        description: 'Filtrer par client.'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      fournisseur_id:
-        name: fournisseur_id
-        description: 'Filtrer par fournisseur.'
-        required: false
-        example: uuid
+        example: in
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -83,29 +33,9 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Rechercher par référence.'
+        description: 'Rechercher par nom.'
         required: false
-        example: MV-2024-001
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_from:
-        name: date_from
-        description: 'date Filtrer par date de début.'
-        required: false
-        example: '2024-01-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_to:
-        name: date_to
-        description: 'date Filtrer par date de fin.'
-        required: false
-        example: '2024-12-31'
+        example: Réception
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -142,15 +72,8 @@ endpoints:
         nullable: false
         custom: []
     cleanQueryParameters:
-      movement_type_id: uuid
-      statut: pending
-      entrepot_from_id: uuid
-      entrepot_to_id: uuid
-      client_id: uuid
-      fournisseur_id: uuid
-      search: MV-2024-001
-      date_from: '2024-01-01'
-      date_to: '2024-12-31'
+      direction: in
+      search: Réception
       sort_by: created_at
       sort_order: desc
       per_page: 15
@@ -166,43 +89,30 @@ endpoints:
             "data": {
               "data": [
                 {
-                  "stock_movement_id": "uuid",
-                  "reference": "MV-2024-001",
-                  "movement_type_id": "uuid",
-                  "entrepot_from_id": "uuid",
-                  "entrepot_to_id": "uuid",
-                  "fournisseur_id": "uuid",
-                  "client_id": "uuid",
-                  "statut": "pending",
-                  "note": "Note optionnelle",
-                  "user_id": "uuid",
+                  "stock_movement_type_id": "uuid",
+                  "name": "Réception",
+                  "direction": "in",
                   "created_at": "2024-01-01 10:00:00",
                   "updated_at": "2024-01-01 10:00:00",
-                  "movement_type": {
-                    "stock_movement_type_id": "uuid",
-                    "name": "Réception",
-                    "direction": "in"
-                  },
-                  "details_count": 2,
-                  "details": [
-                    {
-                      "stock_movement_detail_id": "uuid",
-                      "product_id": "uuid",
-                      "quantity": 10,
-                      "product": {
-                        "product_id": "uuid",
-                        "name": "Produit A",
-                        "sku": "PROD-A-001"
-                      }
-                    }
-                  ]
+                  "stock_movements_count": 5
                 }
               ],
               "current_page": 1,
               "per_page": 15,
               "total": 1
             },
-            "message": "Mouvements de stock récupérés avec succès"
+            "message": "Types de mouvements de stock récupérés avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la récupération des types de mouvements de stock",
+            "error": "Message d'erreur"
           }
         headers: []
         description: ''
@@ -216,13 +126,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/stock-movements
+    uri: api/stock-movement-types
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Stock Movement Types'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Crée un nouveau mouvement de stock avec ses détails'
+      title: 'Crée un nouveau type de mouvement de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -235,143 +145,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      reference:
-        name: reference
-        description: 'Référence unique du mouvement.'
+      name:
+        name: name
+        description: 'Nom du type de mouvement.'
         required: true
-        example: MV-2024-001
+        example: Réception
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      movement_type_id:
-        name: movement_type_id
-        description: 'ID du type de mouvement.'
+      direction:
+        name: direction
+        description: 'Direction du mouvement (in, out, transfer).'
         required: true
-        example: uuid
+        example: in
         type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      entrepot_from_id:
-        name: entrepot_from_id
-        description: "ID de l'entrepôt source (optionnel pour les transferts)."
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      entrepot_to_id:
-        name: entrepot_to_id
-        description: "ID de l'entrepôt destination (optionnel pour les réceptions)."
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      fournisseur_id:
-        name: fournisseur_id
-        description: 'ID du fournisseur (optionnel).'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      client_id:
-        name: client_id
-        description: 'ID du client (optionnel).'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      statut:
-        name: statut
-        description: 'Statut du mouvement (pending, completed, cancelled).'
-        required: true
-        example: pending
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      note:
-        name: note
-        description: 'Note optionnelle.'
-        required: false
-        example: 'Note sur le mouvement'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      user_id:
-        name: user_id
-        description: "ID de l'utilisateur."
-        required: true
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      details:
-        name: details
-        description: 'Détails du mouvement (minimum 1).'
-        required: true
-        example:
-          -
-            product_id: uuid
-            quantity: 10
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details.*.product_id':
-        name: 'details.*.product_id'
-        description: 'ID du produit.'
-        required: true
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details.*.quantity':
-        name: 'details.*.quantity'
-        description: 'Quantité (minimum 1).'
-        required: true
-        example: 10
-        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      reference: MV-2024-001
-      movement_type_id: uuid
-      entrepot_from_id: uuid
-      entrepot_to_id: uuid
-      fournisseur_id: uuid
-      client_id: uuid
-      statut: pending
-      note: 'Note sur le mouvement'
-      user_id: uuid
-      details:
-        -
-          product_id: uuid
-          quantity: 10
+      name: Réception
+      direction: in
     fileParameters: []
     responses:
       -
@@ -380,37 +176,13 @@ endpoints:
           {
             "success": true,
             "data": {
-              "stock_movement_id": "uuid",
-              "reference": "MV-2024-001",
-              "movement_type_id": "uuid",
-              "entrepot_from_id": "uuid",
-              "entrepot_to_id": "uuid",
-              "fournisseur_id": "uuid",
-              "client_id": "uuid",
-              "statut": "pending",
-              "note": "Note sur le mouvement",
-              "user_id": "uuid",
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
               "created_at": "2024-01-01 10:00:00",
-              "updated_at": "2024-01-01 10:00:00",
-              "movement_type": {
-                "stock_movement_type_id": "uuid",
-                "name": "Réception",
-                "direction": "in"
-              },
-              "details": [
-                {
-                  "stock_movement_detail_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
-                  "product": {
-                    "product_id": "uuid",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
-                }
-              ]
+              "updated_at": "2024-01-01 10:00:00"
             },
-            "message": "Mouvement de stock créé avec succès"
+            "message": "Type de mouvement de stock créé avec succès"
           }
         headers: []
         description: ''
@@ -422,9 +194,182 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "reference": ["La référence est obligatoire."],
-              "movement_type_id": ["Le type de mouvement est obligatoire."],
-              "details": ["Les détails du mouvement sont obligatoires."]
+              "name": ["Le nom du type de mouvement est obligatoire."],
+              "direction": ["La direction est obligatoire."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Récupère un type de mouvement de stock spécifique'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00",
+              "stock_movements_count": 5
+            },
+            "message": "Type de mouvement de stock récupéré avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Met à jour un type de mouvement de stock'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom du type de mouvement.'
+        required: true
+        example: Réception
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      direction:
+        name: direction
+        description: 'Direction du mouvement (in, out, transfer).'
+        required: true
+        example: in
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Réception
+      direction: in
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
+            },
+            "message": "Type de mouvement de stock mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "name": ["Le nom du type de mouvement est obligatoire."]
             }
           }
         headers: []
@@ -439,13 +384,13 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/stock-movements/{id}/update-status'
+    uri: 'api/stock-movement-types/{id}'
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Stock Movement Types'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: "Met à jour le statut d'un mouvement de stock"
+      title: 'Met à jour un type de mouvement de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -456,7 +401,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'ID du mouvement de stock.'
+        description: 'ID du type de mouvement de stock.'
         required: true
         example: uuid
         type: string
@@ -469,18 +414,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      statut:
-        name: statut
-        description: 'Nouveau statut (pending, completed, cancelled).'
+      name:
+        name: name
+        description: 'Nom du type de mouvement.'
         required: true
-        example: completed
+        example: Réception
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      direction:
+        name: direction
+        description: 'Direction du mouvement (in, out, transfer).'
+        required: true
+        example: in
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      statut: completed
+      name: Réception
+      direction: in
     fileParameters: []
     responses:
       -
@@ -489,17 +445,13 @@ endpoints:
           {
             "success": true,
             "data": {
-              "stock_movement_id": "uuid",
-              "reference": "MV-2024-001",
-              "statut": "completed",
-              "movement_type": {
-                "stock_movement_type_id": "uuid",
-                "name": "Réception",
-                "direction": "in"
-              },
-              "details": []
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
             },
-            "message": "Statut du mouvement de stock mis à jour avec succès"
+            "message": "Type de mouvement de stock mis à jour avec succès"
           }
         headers: []
         description: ''
@@ -509,7 +461,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Mouvement de stock non trouvé"
+            "message": "Type de mouvement de stock non trouvé"
           }
         headers: []
         description: ''
@@ -521,8 +473,205 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "statut": ["Le statut est obligatoire."]
+              "name": ["Le nom du type de mouvement est obligatoire."]
             }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprime un type de mouvement de stock (soft delete)'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Type de mouvement de stock supprimé avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/stock-movement-types/trashed/list
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Récupère la liste des types de mouvements de stock supprimés'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "data": [
+                {
+                  "stock_movement_type_id": "uuid",
+                  "name": "Réception",
+                  "direction": "in",
+                  "created_at": "2024-01-01 10:00:00",
+                  "updated_at": "2024-01-01 10:00:00",
+                  "deleted_at": "2024-01-01 12:00:00"
+                }
+              ],
+              "current_page": 1,
+              "per_page": 15,
+              "total": 1
+            },
+            "message": "Types de mouvements de stock supprimés récupérés avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/stock-movement-types/{id}/restore'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaure un type de mouvement de stock supprimé'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
+            },
+            "message": "Type de mouvement de stock restauré avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "Ce type de mouvement de stock n'est pas supprimé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
           }
         headers: []
         description: ''
