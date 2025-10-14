@@ -51,7 +51,7 @@ class Paiement extends Model
     /** Relation avec la facture */
     public function facture()
     {
-        return $this->belongsTo(Facture::class, 'facture_id', 'id');
+        return $this->belongsTo(Facture::class, 'facture_id', 'facture_id');
     }
 
     /** Relation avec le client */
@@ -63,6 +63,12 @@ class Paiement extends Model
     /** Relation avec le mode de paiement */
     public function paymentMethod()
     {
-        return $this->belongsTo(PaymentMethod::class, 'payment_method_id', 'id');
+        return $this->belongsTo(PaymentMethod::class, 'payment_method_id', 'payment_method_id');
+    }
+
+    /** Relation avec l'utilisateur qui a enregistré le paiement */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

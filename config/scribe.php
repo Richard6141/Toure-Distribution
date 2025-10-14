@@ -169,6 +169,10 @@ return [
         // Ordre personnalisé des groupes
         'order' => [
             'Authentification',
+            'Clients Management',
+            'Payment Methods Management',
+            'Invoices Management',
+            'Payments Management',
             'Stock Movement Types',
             'Stock Movements',
             'Stock Movement Details',

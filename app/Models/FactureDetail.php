@@ -39,7 +39,7 @@ class FactureDetail extends Model
      */
     public function facture()
     {
-        return $this->belongsTo(Facture::class, 'facture_id', 'id');
+        return $this->belongsTo(Facture::class, 'facture_id', 'facture_id');
     }
 
     /**

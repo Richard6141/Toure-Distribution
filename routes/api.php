@@ -13,6 +13,9 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\StockMovementTypeController;
 use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\StockMovementDetailController;
+use App\Http\Controllers\Api\PaymentMethodController;
+use App\Http\Controllers\Api\FactureController;
+use App\Http\Controllers\Api\PaiementController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -213,4 +216,70 @@ Route::prefix('stock-movement-details')->group(function () {
     // Routes spéciales
     Route::get('/stock-movement/{stockMovementId}', [StockMovementDetailController::class, 'byStockMovement']); // Détails d'un mouvement
     Route::get('/product/{productId}', [StockMovementDetailController::class, 'byProduct']); // Détails d'un produit
+})->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| Payment Methods API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('payment-methods')->name('payment-methods.')->group(function () {
+    // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
+    Route::get('/statistics/overview', [PaymentMethodController::class, 'statistics'])->name('statistics');
+    
+    // Routes CRUD standard
+    Route::get('/', [PaymentMethodController::class, 'index'])->name('index');
+    Route::post('/', [PaymentMethodController::class, 'store'])->name('store');
+    Route::get('/{id}', [PaymentMethodController::class, 'show'])->name('show');
+    Route::put('/{id}', [PaymentMethodController::class, 'update'])->name('update');
+    Route::patch('/{id}', [PaymentMethodController::class, 'update'])->name('patch');
+    Route::delete('/{id}', [PaymentMethodController::class, 'destroy'])->name('destroy');
+
+    // Routes pour actions spéciales
+    Route::patch('/{id}/toggle-status', [PaymentMethodController::class, 'toggleStatus'])->name('toggle-status');
+})->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| Invoices (Factures) API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('factures')->name('factures.')->group(function () {
+    // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
+    Route::get('/statistics/overview', [FactureController::class, 'statistics'])->name('statistics');
+    
+    // Routes CRUD standard
+    Route::get('/', [FactureController::class, 'index'])->name('index');
+    Route::post('/', [FactureController::class, 'store'])->name('store');
+    Route::get('/{id}', [FactureController::class, 'show'])->name('show');
+    Route::put('/{id}', [FactureController::class, 'update'])->name('update');
+    Route::patch('/{id}', [FactureController::class, 'update'])->name('patch');
+    Route::delete('/{id}', [FactureController::class, 'destroy'])->name('destroy');
+
+    // Routes pour actions spéciales
+    Route::patch('/{id}/update-status', [FactureController::class, 'updateStatus'])->name('update-status');
+})->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| Payments (Paiements) API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('paiements')->name('paiements.')->group(function () {
+    // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
+    Route::get('/statistics/overview', [PaiementController::class, 'statistics'])->name('statistics');
+    
+    // Routes CRUD standard
+    Route::get('/', [PaiementController::class, 'index'])->name('index');
+    Route::post('/', [PaiementController::class, 'store'])->name('store');
+    Route::get('/{id}', [PaiementController::class, 'show'])->name('show');
+    Route::put('/{id}', [PaiementController::class, 'update'])->name('update');
+    Route::patch('/{id}', [PaiementController::class, 'update'])->name('patch');
+    Route::delete('/{id}', [PaiementController::class, 'destroy'])->name('destroy');
+
+    // Routes pour actions spéciales
+    Route::patch('/{id}/update-status', [PaiementController::class, 'updateStatus'])->name('update-status');
 })->middleware('auth:sanctum');
