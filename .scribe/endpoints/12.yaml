@@ -1,5 +1,5 @@
 name: 'Stock Movement Details'
-description: 'Récupère la liste des détails de mouvements de stock'
+description: ''
 endpoints:
   -
     httpMethods:
@@ -7,10 +7,10 @@ endpoints:
     uri: api/stock-movement-details
     metadata:
       groupName: 'Stock Movement Details'
-      groupDescription: 'Récupère la liste des détails de mouvements de stock'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Récupère la liste des détails de mouvements de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -138,9 +138,6 @@ endpoints:
             },
             "message": "Détails de mouvements de stock récupérés avec succès"
           }
-          =======
-          Afficher la liste des détails de mouvements de stock
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -156,10 +153,10 @@ endpoints:
     uri: api/stock-movement-details
     metadata:
       groupName: 'Stock Movement Details'
-      groupDescription: 'Crée un nouveau détail de mouvement de stock'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Crée un nouveau détail de mouvement de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -261,9 +258,6 @@ endpoints:
               "quantity": ["La quantité est obligatoire."]
             }
           }
-          =======
-          Créer un nouveau détail de mouvement de stock
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
