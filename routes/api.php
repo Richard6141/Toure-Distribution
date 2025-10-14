@@ -41,18 +41,20 @@ Route::prefix('auth')->name('auth.')->group(function () {
     });
 });
 
-Route::prefix('client-types')->group(function () {
-    // Routes CRUD principales
-    Route::get('/', [ClientTypeController::class, 'index'])->name('client-types.index');
-    Route::post('/', [ClientTypeController::class, 'store'])->name('client-types.store');
-    Route::get('/{client_type_id}', [ClientTypeController::class, 'show'])->name('client-types.show');
-    Route::put('/{client_type_id}', [ClientTypeController::class, 'update'])->name('client-types.update');
-    Route::patch('/{client_type_id}', [ClientTypeController::class, 'update'])->name('client-types.patch');
-    Route::delete('/{client_type_id}', [ClientTypeController::class, 'destroy'])->name('client-types.destroy');
+Route::prefix('client-types')->name('client-types.')->group(function () {
+    // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
+    Route::get('/trashed/list', [ClientTypeController::class, 'trashed'])->name('trashed');
+
+    // Routes CRUD standard
+    Route::get('/', [ClientTypeController::class, 'index'])->name('index');
+    Route::post('/', [ClientTypeController::class, 'store'])->name('store');
+    Route::get('/{client_type_id}', [ClientTypeController::class, 'show'])->name('show');
+    Route::put('/{client_type_id}', [ClientTypeController::class, 'update'])->name('update');
+    Route::patch('/{client_type_id}', [ClientTypeController::class, 'update'])->name('patch');
+    Route::delete('/{client_type_id}', [ClientTypeController::class, 'destroy'])->name('destroy');
 
     // Routes pour gestion soft delete
-    Route::get('/trashed/list', [ClientTypeController::class, 'trashed'])->name('client-types.trashed');
-    Route::post('/{client_type_id}/restore', [ClientTypeController::class, 'restore'])->name('client-types.restore');
+    Route::post('/{client_type_id}/restore', [ClientTypeController::class, 'restore'])->name('restore');
 })->middleware('auth:sanctum');
 
 Route::prefix('clients')->group(function () {
@@ -230,7 +232,7 @@ Route::prefix('stock-movement-details')->group(function () {
 Route::prefix('payment-methods')->name('payment-methods.')->group(function () {
     // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
     Route::get('/statistics/overview', [PaymentMethodController::class, 'statistics'])->name('statistics');
-    
+
     // Routes CRUD standard
     Route::get('/', [PaymentMethodController::class, 'index'])->name('index');
     Route::post('/', [PaymentMethodController::class, 'store'])->name('store');
@@ -252,7 +254,7 @@ Route::prefix('payment-methods')->name('payment-methods.')->group(function () {
 Route::prefix('factures')->name('factures.')->group(function () {
     // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
     Route::get('/statistics/overview', [FactureController::class, 'statistics'])->name('statistics');
-    
+
     // Routes CRUD standard
     Route::get('/', [FactureController::class, 'index'])->name('index');
     Route::post('/', [FactureController::class, 'store'])->name('store');
@@ -274,7 +276,7 @@ Route::prefix('factures')->name('factures.')->group(function () {
 Route::prefix('paiements')->name('paiements.')->group(function () {
     // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
     Route::get('/statistics/overview', [PaiementController::class, 'statistics'])->name('statistics');
-    
+
     // Routes CRUD standard
     Route::get('/', [PaiementController::class, 'index'])->name('index');
     Route::post('/', [PaiementController::class, 'store'])->name('store');

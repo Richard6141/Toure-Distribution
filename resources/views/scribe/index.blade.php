@@ -105,34 +105,170 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-clients-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="clients-management">
+                    <a href="#clients-management">Clients Management</a>
+                </li>
+                                    <ul id="tocify-subheader-clients-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients-trashed-list">
+                                <a href="#clients-management-GETapi-clients-trashed-list">Lister les clients supprimés</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients-statistics-overview">
+                                <a href="#clients-management-GETapi-clients-statistics-overview">Statistiques des clients</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-POSTapi-clients-search">
+                                <a href="#clients-management-POSTapi-clients-search">Rechercher des clients</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients">
+                                <a href="#clients-management-GETapi-clients">Liste tous les clients</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-POSTapi-clients">
+                                <a href="#clients-management-POSTapi-clients">Créer un nouveau client</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients--client_id-">
+                                <a href="#clients-management-GETapi-clients--client_id-">Afficher un client spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-PUTapi-clients--client_id-">
+                                <a href="#clients-management-PUTapi-clients--client_id-">Mettre à jour un client</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-PATCHapi-clients--client_id-">
+                                <a href="#clients-management-PATCHapi-clients--client_id-">Mettre à jour un client</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-DELETEapi-clients--client_id-">
+                                <a href="#clients-management-DELETEapi-clients--client_id-">Supprimer un client</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-POSTapi-clients--client_id--restore">
+                                <a href="#clients-management-POSTapi-clients--client_id--restore">Restaurer un client supprimé</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-PATCHapi-clients--client_id--toggle-status">
+                                <a href="#clients-management-PATCHapi-clients--client_id--toggle-status">Activer/Désactiver un client</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="clients-management-PATCHapi-clients--client_id--update-balance">
+                                <a href="#clients-management-PATCHapi-clients--client_id--update-balance">Mettre à jour le solde d'un client</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-payment-methods-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="payment-methods-management">
+                    <a href="#payment-methods-management">Payment Methods Management</a>
+                </li>
+                                    <ul id="tocify-subheader-payment-methods-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="payment-methods-management-GETapi-payment-methods-statistics-overview">
+                                <a href="#payment-methods-management-GETapi-payment-methods-statistics-overview">Statistiques des méthodes de paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-GETapi-payment-methods">
+                                <a href="#payment-methods-management-GETapi-payment-methods">Liste toutes les méthodes de paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-POSTapi-payment-methods">
+                                <a href="#payment-methods-management-POSTapi-payment-methods">Créer une nouvelle méthode de paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-GETapi-payment-methods--id-">
+                                <a href="#payment-methods-management-GETapi-payment-methods--id-">Afficher une méthode de paiement spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-PUTapi-payment-methods--id-">
+                                <a href="#payment-methods-management-PUTapi-payment-methods--id-">Mettre à jour une méthode de paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-PATCHapi-payment-methods--id-">
+                                <a href="#payment-methods-management-PATCHapi-payment-methods--id-">Mettre à jour une méthode de paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-DELETEapi-payment-methods--id-">
+                                <a href="#payment-methods-management-DELETEapi-payment-methods--id-">Supprimer une méthode de paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payment-methods-management-PATCHapi-payment-methods--id--toggle-status">
+                                <a href="#payment-methods-management-PATCHapi-payment-methods--id--toggle-status">Activer/Désactiver une méthode de paiement</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-invoices-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="invoices-management">
+                    <a href="#invoices-management">Invoices Management</a>
+                </li>
+                                    <ul id="tocify-subheader-invoices-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="invoices-management-GETapi-factures-statistics-overview">
+                                <a href="#invoices-management-GETapi-factures-statistics-overview">Statistiques des factures</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-GETapi-factures">
+                                <a href="#invoices-management-GETapi-factures">Liste toutes les factures</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-POSTapi-factures">
+                                <a href="#invoices-management-POSTapi-factures">Créer une nouvelle facture</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-GETapi-factures--id-">
+                                <a href="#invoices-management-GETapi-factures--id-">Afficher une facture spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-PUTapi-factures--id-">
+                                <a href="#invoices-management-PUTapi-factures--id-">Mettre à jour une facture</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-PATCHapi-factures--id-">
+                                <a href="#invoices-management-PATCHapi-factures--id-">Mettre à jour une facture</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-DELETEapi-factures--id-">
+                                <a href="#invoices-management-DELETEapi-factures--id-">Supprimer une facture</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="invoices-management-PATCHapi-factures--id--update-status">
+                                <a href="#invoices-management-PATCHapi-factures--id--update-status">Changer le statut d'une facture</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-payments-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="payments-management">
+                    <a href="#payments-management">Payments Management</a>
+                </li>
+                                    <ul id="tocify-subheader-payments-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="payments-management-GETapi-paiements-statistics-overview">
+                                <a href="#payments-management-GETapi-paiements-statistics-overview">Statistiques des paiements</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-GETapi-paiements">
+                                <a href="#payments-management-GETapi-paiements">Liste tous les paiements</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-POSTapi-paiements">
+                                <a href="#payments-management-POSTapi-paiements">Créer un nouveau paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-GETapi-paiements--id-">
+                                <a href="#payments-management-GETapi-paiements--id-">Afficher un paiement spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-PUTapi-paiements--id-">
+                                <a href="#payments-management-PUTapi-paiements--id-">Mettre à jour un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-PATCHapi-paiements--id-">
+                                <a href="#payments-management-PATCHapi-paiements--id-">Mettre à jour un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-DELETEapi-paiements--id-">
+                                <a href="#payments-management-DELETEapi-paiements--id-">Supprimer un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-PATCHapi-paiements--id--update-status">
+                                <a href="#payments-management-PATCHapi-paiements--id--update-status">Changer le statut d'un paiement</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-stock-movement-types" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="stock-movement-types">
                     <a href="#stock-movement-types">Stock Movement Types</a>
                 </li>
                                     <ul id="tocify-subheader-stock-movement-types" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="stock-movement-types-GETapi-stock-movement-types">
-                                <a href="#stock-movement-types-GETapi-stock-movement-types">Récupère la liste des types de mouvements de stock</a>
+                                <a href="#stock-movement-types-GETapi-stock-movement-types"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-POSTapi-stock-movement-types">
-                                <a href="#stock-movement-types-POSTapi-stock-movement-types">Crée un nouveau type de mouvement de stock</a>
+                                <a href="#stock-movement-types-POSTapi-stock-movement-types"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-GETapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-GETapi-stock-movement-types--id-">Récupère un type de mouvement de stock spécifique</a>
+                                <a href="#stock-movement-types-GETapi-stock-movement-types--id-"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-PUTapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-PUTapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</a>
+                                <a href="#stock-movement-types-PUTapi-stock-movement-types--id-"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-PATCHapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-PATCHapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</a>
+                                <a href="#stock-movement-types-PATCHapi-stock-movement-types--id-"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-DELETEapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-DELETEapi-stock-movement-types--id-">Supprime un type de mouvement de stock (soft delete)</a>
+                                <a href="#stock-movement-types-DELETEapi-stock-movement-types--id-"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-GETapi-stock-movement-types-trashed-list">
-                                <a href="#stock-movement-types-GETapi-stock-movement-types-trashed-list">Récupère la liste des types de mouvements de stock supprimés</a>
+                                <a href="#stock-movement-types-GETapi-stock-movement-types-trashed-list"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-POSTapi-stock-movement-types--id--restore">
-                                <a href="#stock-movement-types-POSTapi-stock-movement-types--id--restore">Restaure un type de mouvement de stock supprimé</a>
+                                <a href="#stock-movement-types-POSTapi-stock-movement-types--id--restore"><<<<<<< HEAD</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -158,10 +294,10 @@
                 </li>
                                     <ul id="tocify-subheader-stock-movement-details" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="stock-movement-details-GETapi-stock-movement-details">
-                                <a href="#stock-movement-details-GETapi-stock-movement-details">Récupère la liste des détails de mouvements de stock</a>
+                                <a href="#stock-movement-details-GETapi-stock-movement-details"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-details-POSTapi-stock-movement-details">
-                                <a href="#stock-movement-details-POSTapi-stock-movement-details">Crée un nouveau détail de mouvement de stock</a>
+                                <a href="#stock-movement-details-POSTapi-stock-movement-details"><<<<<<< HEAD</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-details-GETapi-stock-movement-details-stock-movement--stockMovementId-">
                                 <a href="#stock-movement-details-GETapi-stock-movement-details-stock-movement--stockMovementId-">Récupère tous les détails d'un mouvement de stock spécifique</a>
@@ -255,49 +391,6 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="client-types-management-POSTapi-client-types--client_type_id--restore">
                                 <a href="#client-types-management-POSTapi-client-types--client_type_id--restore">Restaurer un type de client supprimé (soft delete)</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
-                    <ul id="tocify-header-clients-management" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="clients-management">
-                    <a href="#clients-management">Clients Management</a>
-                </li>
-                                    <ul id="tocify-subheader-clients-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients-trashed-list">
-                                <a href="#clients-management-GETapi-clients-trashed-list">Lister les clients supprimés</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients-statistics-overview">
-                                <a href="#clients-management-GETapi-clients-statistics-overview">Statistiques des clients</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-POSTapi-clients-search">
-                                <a href="#clients-management-POSTapi-clients-search">Rechercher des clients</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients">
-                                <a href="#clients-management-GETapi-clients">Liste tous les clients</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-POSTapi-clients">
-                                <a href="#clients-management-POSTapi-clients">Créer un nouveau client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-GETapi-clients--client_id-">
-                                <a href="#clients-management-GETapi-clients--client_id-">Afficher un client spécifique</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-PUTapi-clients--client_id-">
-                                <a href="#clients-management-PUTapi-clients--client_id-">Mettre à jour un client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-PATCHapi-clients--client_id-">
-                                <a href="#clients-management-PATCHapi-clients--client_id-">Mettre à jour un client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-DELETEapi-clients--client_id-">
-                                <a href="#clients-management-DELETEapi-clients--client_id-">Supprimer un client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-POSTapi-clients--client_id--restore">
-                                <a href="#clients-management-POSTapi-clients--client_id--restore">Restaurer un client supprimé</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-PATCHapi-clients--client_id--toggle-status">
-                                <a href="#clients-management-PATCHapi-clients--client_id--toggle-status">Activer/Désactiver un client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="clients-management-PATCHapi-clients--client_id--update-balance">
-                                <a href="#clients-management-PATCHapi-clients--client_id--update-balance">Mettre à jour le solde d'un client</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -468,7 +561,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 13 October 2025</li>
+        <li>Dernière mise à jour: 14 October 2025</li>
     </ul>
 </div>
 
@@ -2507,11 +2600,9665 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                <h1 id="clients-management">Clients Management</h1>
+
+    <p>APIs pour gérer les clients</p>
+
+                                <h2 id="clients-management-GETapi-clients-trashed-list">Lister les clients supprimés</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste des clients supprimés (soft delete).</p>
+
+<span id="example-requests-GETapi-clients-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/trashed/list?page=1&amp;per_page=15&amp;with_client_type=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"page\": 16,
+    \"per_page\": 22,
+    \"with_client_type\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/trashed/list"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "with_client_type": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "page": 16,
+    "per_page": 22,
+    "with_client_type": false
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'with_client_type' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'page' =&gt; 16,
+            'per_page' =&gt; 22,
+            'with_client_type' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients-trashed-list">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;code&quot;: &quot;CLI-DEL123&quot;,
+            &quot;name_client&quot;: &quot;Client Supprim&eacute;&quot;,
+            &quot;email&quot;: &quot;deleted@example.com&quot;,
+            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;deleted_at&quot;: &quot;2024-01-15T12:00:00Z&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients-trashed-list" data-method="GET"
+      data-path="api/clients/trashed/list"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients-trashed-list"
+                    onclick="tryItOut('GETapi-clients-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients-trashed-list"
+                    onclick="cancelTryOut('GETapi-clients-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-clients-trashed-list"
+               value="1"
+               data-component="query">
+    <br>
+<p>Page à récupérer. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-clients-trashed-list"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page. Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="1"
+                   data-endpoint="GETapi-clients-trashed-list"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="0"
+                   data-endpoint="GETapi-clients-trashed-list"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du type de client. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-clients-trashed-list"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-clients-trashed-list"
+               value="22"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="true"
+                   data-endpoint="GETapi-clients-trashed-list"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="false"
+                   data-endpoint="GETapi-clients-trashed-list"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-GETapi-clients-statistics-overview">Statistiques des clients</h2>
+
+<p>
+</p>
+
+<p>Récupère des statistiques générales sur les clients.</p>
+
+<span id="example-requests-GETapi-clients-statistics-overview">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/statistics/overview" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/statistics/overview"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/statistics/overview';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients-statistics-overview">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;total_clients&quot;: 150,
+        &quot;active_clients&quot;: 120,
+        &quot;inactive_clients&quot;: 30,
+        &quot;deleted_clients&quot;: 5,
+        &quot;clients_with_positive_balance&quot;: 80,
+        &quot;clients_with_negative_balance&quot;: 25,
+        &quot;clients_with_zero_balance&quot;: 45,
+        &quot;total_credit_limit&quot;: &quot;75000000.00&quot;,
+        &quot;total_current_balance&quot;: &quot;12500000.00&quot;,
+        &quot;total_available_credit&quot;: &quot;62500000.00&quot;,
+        &quot;average_credit_limit&quot;: &quot;500000.00&quot;,
+        &quot;average_current_balance&quot;: &quot;83333.33&quot;,
+        &quot;average_base_reduction&quot;: &quot;5.25&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients-statistics-overview" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients-statistics-overview"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients-statistics-overview"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients-statistics-overview" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients-statistics-overview">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients-statistics-overview" data-method="GET"
+      data-path="api/clients/statistics/overview"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-statistics-overview', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients-statistics-overview"
+                    onclick="tryItOut('GETapi-clients-statistics-overview');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients-statistics-overview"
+                    onclick="cancelTryOut('GETapi-clients-statistics-overview');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients-statistics-overview"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/statistics/overview</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="clients-management-POSTapi-clients-search">Rechercher des clients</h2>
+
+<p>
+</p>
+
+<p>Recherche avancée de clients avec de multiples critères.</p>
+
+<span id="example-requests-POSTapi-clients-search">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/clients/search" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"query\": \"John\",
+    \"fields\": [
+        \"name_client\",
+        \"email\",
+        \"ifu\"
+    ],
+    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"is_active\": true,
+    \"credit_min\": 100000,
+    \"credit_max\": 1000000,
+    \"balance_min\": -50000,
+    \"balance_max\": 500000,
+    \"reduction_min\": 0,
+    \"reduction_max\": 20,
+    \"page\": 1,
+    \"per_page\": 20
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/search"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "query": "John",
+    "fields": [
+        "name_client",
+        "email",
+        "ifu"
+    ],
+    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "is_active": true,
+    "credit_min": 100000,
+    "credit_max": 1000000,
+    "balance_min": -50000,
+    "balance_max": 500000,
+    "reduction_min": 0,
+    "reduction_max": 20,
+    "page": 1,
+    "per_page": 20
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/search';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'query' =&gt; 'John',
+            'fields' =&gt; [
+                'name_client',
+                'email',
+                'ifu',
+            ],
+            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'is_active' =&gt; true,
+            'credit_min' =&gt; 100000.0,
+            'credit_max' =&gt; 1000000.0,
+            'balance_min' =&gt; -50000.0,
+            'balance_max' =&gt; 500000.0,
+            'reduction_min' =&gt; 0.0,
+            'reduction_max' =&gt; 20.0,
+            'page' =&gt; 1,
+            'per_page' =&gt; 20,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-clients-search">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;code&quot;: &quot;CLI-ABC123&quot;,
+            &quot;name_client&quot;: &quot;John Doe&quot;,
+            &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+            &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
+            &quot;email&quot;: &quot;john.doe@example.com&quot;,
+            &quot;ifu&quot;: &quot;1234567890123&quot;,
+            &quot;city&quot;: &quot;Cotonou&quot;,
+            &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+            &quot;credit_limit&quot;: &quot;500000.00&quot;,
+            &quot;current_balance&quot;: &quot;150000.00&quot;,
+            &quot;base_reduction&quot;: &quot;5.00&quot;,
+            &quot;is_active&quot;: true
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;total&quot;: 1,
+        &quot;per_page&quot;: 20,
+        &quot;current_page&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-clients-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-clients-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-clients-search"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-clients-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-clients-search">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-clients-search" data-method="POST"
+      data-path="api/clients/search"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-clients-search"
+                    onclick="tryItOut('POSTapi-clients-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-clients-search"
+                    onclick="cancelTryOut('POSTapi-clients-search');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-clients-search"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/clients/search</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-clients-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-clients-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>query</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="query"                data-endpoint="POSTapi-clients-search"
+               value="John"
+               data-component="body">
+    <br>
+<p>Terme de recherche. Example: <code>John</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fields</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fields[0]"                data-endpoint="POSTapi-clients-search"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="fields[1]"                data-endpoint="POSTapi-clients-search"
+               data-component="body">
+    <br>
+<p>optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_type_id"                data-endpoint="POSTapi-clients-search"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>optionnel Filtrer par type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-clients-search" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="POSTapi-clients-search"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-clients-search" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="POSTapi-clients-search"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optionnel Filtrer par statut. Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>credit_min</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="credit_min"                data-endpoint="POSTapi-clients-search"
+               value="100000"
+               data-component="body">
+    <br>
+<p>optionnel Limite de crédit minimale. Example: <code>100000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>credit_max</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="credit_max"                data-endpoint="POSTapi-clients-search"
+               value="1000000"
+               data-component="body">
+    <br>
+<p>optionnel Limite de crédit maximale. Example: <code>1000000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>balance_min</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="balance_min"                data-endpoint="POSTapi-clients-search"
+               value="-50000"
+               data-component="body">
+    <br>
+<p>optionnel Solde minimal. Example: <code>-50000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>balance_max</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="balance_max"                data-endpoint="POSTapi-clients-search"
+               value="500000"
+               data-component="body">
+    <br>
+<p>optionnel Solde maximal. Example: <code>500000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reduction_min</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reduction_min"                data-endpoint="POSTapi-clients-search"
+               value="0"
+               data-component="body">
+    <br>
+<p>optionnel Réduction de base minimale (%). Example: <code>0</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reduction_max</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reduction_max"                data-endpoint="POSTapi-clients-search"
+               value="20"
+               data-component="body">
+    <br>
+<p>optionnel Réduction de base maximale (%). Example: <code>20</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="POSTapi-clients-search"
+               value="1"
+               data-component="body">
+    <br>
+<p>optionnel Page à récupérer. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="POSTapi-clients-search"
+               value="20"
+               data-component="body">
+    <br>
+<p>optionnel Éléments par page. Example: <code>20</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-GETapi-clients">Liste tous les clients</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste de tous les clients avec pagination et filtres optionnels.
+Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type de client.</p>
+
+<span id="example-requests-GETapi-clients">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;ifu=1234567890123&amp;marketteur=Marie+Dupont&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;balance_filter=positive" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"page\": 16,
+    \"per_page\": 22,
+    \"search\": \"g\",
+    \"name\": \"z\",
+    \"email\": \"rempel.chadrick@example.org\",
+    \"code\": \"l\",
+    \"city\": \"j\",
+    \"ifu\": \"n\",
+    \"marketteur\": \"i\",
+    \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
+    \"is_active\": false,
+    \"with_client_type\": true,
+    \"balance_filter\": \"positive\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "John",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "code": "CLI-ABC123",
+    "city": "Cotonou",
+    "ifu": "1234567890123",
+    "marketteur": "Marie Dupont",
+    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "is_active": "1",
+    "with_client_type": "1",
+    "balance_filter": "positive",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "page": 16,
+    "per_page": 22,
+    "search": "g",
+    "name": "z",
+    "email": "rempel.chadrick@example.org",
+    "code": "l",
+    "city": "j",
+    "ifu": "n",
+    "marketteur": "i",
+    "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
+    "is_active": false,
+    "with_client_type": true,
+    "balance_filter": "positive"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'John',
+            'name' =&gt; 'John Doe',
+            'email' =&gt; 'john@example.com',
+            'code' =&gt; 'CLI-ABC123',
+            'city' =&gt; 'Cotonou',
+            'ifu' =&gt; '1234567890123',
+            'marketteur' =&gt; 'Marie Dupont',
+            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'is_active' =&gt; '1',
+            'with_client_type' =&gt; '1',
+            'balance_filter' =&gt; 'positive',
+        ],
+        'json' =&gt; [
+            'page' =&gt; 16,
+            'per_page' =&gt; 22,
+            'search' =&gt; 'g',
+            'name' =&gt; 'z',
+            'email' =&gt; 'rempel.chadrick@example.org',
+            'code' =&gt; 'l',
+            'city' =&gt; 'j',
+            'ifu' =&gt; 'n',
+            'marketteur' =&gt; 'i',
+            'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
+            'is_active' =&gt; false,
+            'with_client_type' =&gt; true,
+            'balance_filter' =&gt; 'positive',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;code&quot;: &quot;CLI-ABC123&quot;,
+            &quot;name_client&quot;: &quot;John Doe&quot;,
+            &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+            &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
+            &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
+            &quot;city&quot;: &quot;Cotonou&quot;,
+            &quot;email&quot;: &quot;john.doe@example.com&quot;,
+            &quot;ifu&quot;: &quot;1234567890123&quot;,
+            &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+            &quot;credit_limit&quot;: &quot;500000.00&quot;,
+            &quot;current_balance&quot;: &quot;150000.00&quot;,
+            &quot;base_reduction&quot;: &quot;5.00&quot;,
+            &quot;is_active&quot;: true,
+            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;formatted_credit_limit&quot;: &quot;500 000,00 FCFA&quot;,
+            &quot;formatted_current_balance&quot;: &quot;150 000,00 FCFA&quot;,
+            &quot;available_credit&quot;: &quot;350000.00&quot;,
+            &quot;formatted_available_credit&quot;: &quot;350 000,00 FCFA&quot;,
+            &quot;formatted_base_reduction&quot;: &quot;5,00 %&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients" data-method="GET"
+      data-path="api/clients"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients"
+                    onclick="tryItOut('GETapi-clients');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients"
+                    onclick="cancelTryOut('GETapi-clients');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-clients"
+               value="1"
+               data-component="query">
+    <br>
+<p>Page à récupérer (pagination). Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-clients"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max: 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-clients"
+               value="John"
+               data-component="query">
+    <br>
+<p>Recherche globale (nom, email, code, IFU, représentant, marketteur). Example: <code>John</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="GETapi-clients"
+               value="John Doe"
+               data-component="query">
+    <br>
+<p>Rechercher par nom de client. Example: <code>John Doe</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="GETapi-clients"
+               value="john@example.com"
+               data-component="query">
+    <br>
+<p>Rechercher par email. Example: <code>john@example.com</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="GETapi-clients"
+               value="CLI-ABC123"
+               data-component="query">
+    <br>
+<p>Rechercher par code client. Example: <code>CLI-ABC123</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="GETapi-clients"
+               value="Cotonou"
+               data-component="query">
+    <br>
+<p>Rechercher par ville. Example: <code>Cotonou</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="GETapi-clients"
+               value="1234567890123"
+               data-component="query">
+    <br>
+<p>Rechercher par numéro IFU. Example: <code>1234567890123</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="GETapi-clients"
+               value="Marie Dupont"
+               data-component="query">
+    <br>
+<p>Rechercher par marketteur. Example: <code>Marie Dupont</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_type_id"                data-endpoint="GETapi-clients"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="query">
+    <br>
+<p>Filtrer par type de client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="is_active"
+                   value="1"
+                   data-endpoint="GETapi-clients"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="is_active"
+                   value="0"
+                   data-endpoint="GETapi-clients"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Filtrer par statut actif. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="1"
+                   data-endpoint="GETapi-clients"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="0"
+                   data-endpoint="GETapi-clients"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du type de client. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="balance_filter"                data-endpoint="GETapi-clients"
+               value="positive"
+               data-component="query">
+    <br>
+<p>Filtrer par solde (positive, negative, zero). Example: <code>positive</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-clients"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-clients"
+               value="22"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-clients"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="GETapi-clients"
+               value="z"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="GETapi-clients"
+               value="rempel.chadrick@example.org"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>rempel.chadrick@example.org</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="GETapi-clients"
+               value="l"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>l</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="GETapi-clients"
+               value="j"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>j</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="GETapi-clients"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="GETapi-clients"
+               value="i"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>i</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_type_id"                data-endpoint="GETapi-clients"
+               value="51c7cf5e-fac2-3ac6-8ef8-61e6050503af"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table. Example: <code>51c7cf5e-fac2-3ac6-8ef8-61e6050503af</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="GETapi-clients"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="GETapi-clients"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="true"
+                   data-endpoint="GETapi-clients"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="false"
+                   data-endpoint="GETapi-clients"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="balance_filter"                data-endpoint="GETapi-clients"
+               value="positive"
+               data-component="body">
+    <br>
+<p>Example: <code>positive</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-POSTapi-clients">Créer un nouveau client</h2>
+
+<p>
+</p>
+
+<p>Crée un nouveau client avec les informations fournies.
+L'UUID et le code client sont générés automatiquement si non fournis.</p>
+
+<span id="example-requests-POSTapi-clients">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/clients" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name_client\": \"John Doe\",
+    \"name_representant\": \"Jane Smith\",
+    \"marketteur\": \"Marie Dupont\",
+    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"adresse\": \"123 Rue de la Paix\",
+    \"city\": \"Cotonou\",
+    \"email\": \"john.doe@example.com\",
+    \"ifu\": \"1234567890123\",
+    \"phonenumber\": \"+229 12 34 56 78\",
+    \"credit_limit\": 500000,
+    \"current_balance\": 0,
+    \"base_reduction\": 5,
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name_client": "John Doe",
+    "name_representant": "Jane Smith",
+    "marketteur": "Marie Dupont",
+    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "adresse": "123 Rue de la Paix",
+    "city": "Cotonou",
+    "email": "john.doe@example.com",
+    "ifu": "1234567890123",
+    "phonenumber": "+229 12 34 56 78",
+    "credit_limit": 500000,
+    "current_balance": 0,
+    "base_reduction": 5,
+    "is_active": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name_client' =&gt; 'John Doe',
+            'name_representant' =&gt; 'Jane Smith',
+            'marketteur' =&gt; 'Marie Dupont',
+            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'adresse' =&gt; '123 Rue de la Paix',
+            'city' =&gt; 'Cotonou',
+            'email' =&gt; 'john.doe@example.com',
+            'ifu' =&gt; '1234567890123',
+            'phonenumber' =&gt; '+229 12 34 56 78',
+            'credit_limit' =&gt; 500000.0,
+            'current_balance' =&gt; 0.0,
+            'base_reduction' =&gt; 5.0,
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-clients">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;code&quot;: &quot;CLI00001&quot;,
+        &quot;name_client&quot;: &quot;John Doe&quot;,
+        &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+        &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
+        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
+        &quot;city&quot;: &quot;Cotonou&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;1234567890123&quot;,
+        &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+        &quot;credit_limit&quot;: &quot;500000.00&quot;,
+        &quot;current_balance&quot;: &quot;0.00&quot;,
+        &quot;base_reduction&quot;: &quot;5.00&quot;,
+        &quot;is_active&quot;: true,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Client cr&eacute;&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
+        ],
+        &quot;ifu&quot;: [
+            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-clients" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-clients"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-clients"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-clients" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-clients">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-clients" data-method="POST"
+      data-path="api/clients"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-clients"
+                    onclick="tryItOut('POSTapi-clients');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-clients"
+                    onclick="cancelTryOut('POSTapi-clients');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-clients"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/clients</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name_client"                data-endpoint="POSTapi-clients"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>Nom complet du client. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_representant"                data-endpoint="POSTapi-clients"
+               value="Jane Smith"
+               data-component="body">
+    <br>
+<p>optionnel Nom du représentant du client. Example: <code>Jane Smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="POSTapi-clients"
+               value="Marie Dupont"
+               data-component="body">
+    <br>
+<p>optionnel Nom du marketteur associé au client. Example: <code>Marie Dupont</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_type_id"                data-endpoint="POSTapi-clients"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>optionnel UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="POSTapi-clients"
+               value="123 Rue de la Paix"
+               data-component="body">
+    <br>
+<p>optionnel Adresse du client. Example: <code>123 Rue de la Paix</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="POSTapi-clients"
+               value="Cotonou"
+               data-component="body">
+    <br>
+<p>optionnel Ville du client. Example: <code>Cotonou</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-clients"
+               value="john.doe@example.com"
+               data-component="body">
+    <br>
+<p>optionnel Email unique du client. Example: <code>john.doe@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="POSTapi-clients"
+               value="1234567890123"
+               data-component="body">
+    <br>
+<p>optionnel Numéro IFU (Identifiant Fiscal Unique). Example: <code>1234567890123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phonenumber"                data-endpoint="POSTapi-clients"
+               value="+229 12 34 56 78"
+               data-component="body">
+    <br>
+<p>optionnel Numéro de téléphone. Example: <code>+229 12 34 56 78</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="credit_limit"                data-endpoint="POSTapi-clients"
+               value="500000"
+               data-component="body">
+    <br>
+<p>optionnel Limite de crédit (défaut: 0). Example: <code>500000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="current_balance"                data-endpoint="POSTapi-clients"
+               value="0"
+               data-component="body">
+    <br>
+<p>optionnel Solde actuel (défaut: 0). Example: <code>0</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="base_reduction"                data-endpoint="POSTapi-clients"
+               value="5"
+               data-component="body">
+    <br>
+<p>optionnel Réduction de base en pourcentage (0-100, défaut: 0). Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-clients" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="POSTapi-clients"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-clients" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="POSTapi-clients"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optionnel Statut actif (défaut: true). Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-GETapi-clients--client_id-">Afficher un client spécifique</h2>
+
+<p>
+</p>
+
+<p>Récupère les détails d'un client par son ID.</p>
+
+<span id="example-requests-GETapi-clients--client_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000?with_client_type=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"with_client_type\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const params = {
+    "with_client_type": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "with_client_type": true
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'with_client_type' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'with_client_type' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients--client_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;code&quot;: &quot;CLI00001&quot;,
+        &quot;name_client&quot;: &quot;John Doe&quot;,
+        &quot;name_representant&quot;: &quot;Jane Smith&quot;,
+        &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
+        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
+        &quot;city&quot;: &quot;Cotonou&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;1234567890123&quot;,
+        &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+        &quot;credit_limit&quot;: &quot;500000.00&quot;,
+        &quot;current_balance&quot;: &quot;150000.00&quot;,
+        &quot;base_reduction&quot;: &quot;5.00&quot;,
+        &quot;is_active&quot;: true,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients--client_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients--client_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients--client_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients--client_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients--client_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients--client_id-" data-method="GET"
+      data-path="api/clients/{client_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients--client_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients--client_id-"
+                    onclick="tryItOut('GETapi-clients--client_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients--client_id-"
+                    onclick="cancelTryOut('GETapi-clients--client_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients--client_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/{client_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="GETapi-clients--client_id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients--client_id-" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="1"
+                   data-endpoint="GETapi-clients--client_id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients--client_id-" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="0"
+                   data-endpoint="GETapi-clients--client_id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du type de client. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients--client_id-" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="true"
+                   data-endpoint="GETapi-clients--client_id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients--client_id-" style="display: none">
+            <input type="radio" name="with_client_type"
+                   value="false"
+                   data-endpoint="GETapi-clients--client_id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-PUTapi-clients--client_id-">Mettre à jour un client</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un client existant.
+Seuls les champs fournis seront mis à jour.</p>
+
+<span id="example-requests-PUTapi-clients--client_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"code\": \"CLI-UPDATED\",
+    \"name_client\": \"Jane Doe\",
+    \"name_representant\": \"John Smith\",
+    \"marketteur\": \"Pierre Martin\",
+    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"adresse\": \"456 Avenue des Palmiers\",
+    \"city\": \"Porto-Novo\",
+    \"email\": \"jane.doe@example.com\",
+    \"ifu\": \"9876543210987\",
+    \"phonenumber\": \"+229 87 65 43 21\",
+    \"credit_limit\": 750000,
+    \"current_balance\": 200000,
+    \"base_reduction\": 10,
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "code": "CLI-UPDATED",
+    "name_client": "Jane Doe",
+    "name_representant": "John Smith",
+    "marketteur": "Pierre Martin",
+    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "adresse": "456 Avenue des Palmiers",
+    "city": "Porto-Novo",
+    "email": "jane.doe@example.com",
+    "ifu": "9876543210987",
+    "phonenumber": "+229 87 65 43 21",
+    "credit_limit": 750000,
+    "current_balance": 200000,
+    "base_reduction": 10,
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'code' =&gt; 'CLI-UPDATED',
+            'name_client' =&gt; 'Jane Doe',
+            'name_representant' =&gt; 'John Smith',
+            'marketteur' =&gt; 'Pierre Martin',
+            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'adresse' =&gt; '456 Avenue des Palmiers',
+            'city' =&gt; 'Porto-Novo',
+            'email' =&gt; 'jane.doe@example.com',
+            'ifu' =&gt; '9876543210987',
+            'phonenumber' =&gt; '+229 87 65 43 21',
+            'credit_limit' =&gt; 750000.0,
+            'current_balance' =&gt; 200000.0,
+            'base_reduction' =&gt; 10.0,
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-clients--client_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;code&quot;: &quot;CLI-UPDATED&quot;,
+        &quot;name_client&quot;: &quot;Jane Doe&quot;,
+        &quot;name_representant&quot;: &quot;John Smith&quot;,
+        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
+        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
+        &quot;city&quot;: &quot;Porto-Novo&quot;,
+        &quot;email&quot;: &quot;jane.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;9876543210987&quot;,
+        &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
+        &quot;credit_limit&quot;: &quot;750000.00&quot;,
+        &quot;current_balance&quot;: &quot;200000.00&quot;,
+        &quot;base_reduction&quot;: &quot;10.00&quot;,
+        &quot;is_active&quot;: false,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
+        ],
+        &quot;ifu&quot;: [
+            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-clients--client_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-clients--client_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-clients--client_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-clients--client_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-clients--client_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-clients--client_id-" data-method="PUT"
+      data-path="api/clients/{client_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-clients--client_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-clients--client_id-"
+                    onclick="tryItOut('PUTapi-clients--client_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-clients--client_id-"
+                    onclick="cancelTryOut('PUTapi-clients--client_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-clients--client_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/clients/{client_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PUTapi-clients--client_id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="PUTapi-clients--client_id-"
+               value="CLI-UPDATED"
+               data-component="body">
+    <br>
+<p>Code client unique. Example: <code>CLI-UPDATED</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_client"                data-endpoint="PUTapi-clients--client_id-"
+               value="Jane Doe"
+               data-component="body">
+    <br>
+<p>Nom complet du client. Example: <code>Jane Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_representant"                data-endpoint="PUTapi-clients--client_id-"
+               value="John Smith"
+               data-component="body">
+    <br>
+<p>Nom du représentant du client. Example: <code>John Smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="PUTapi-clients--client_id-"
+               value="Pierre Martin"
+               data-component="body">
+    <br>
+<p>Nom du marketteur associé. Example: <code>Pierre Martin</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_type_id"                data-endpoint="PUTapi-clients--client_id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PUTapi-clients--client_id-"
+               value="456 Avenue des Palmiers"
+               data-component="body">
+    <br>
+<p>Adresse du client. Example: <code>456 Avenue des Palmiers</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="PUTapi-clients--client_id-"
+               value="Porto-Novo"
+               data-component="body">
+    <br>
+<p>Ville du client. Example: <code>Porto-Novo</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="PUTapi-clients--client_id-"
+               value="jane.doe@example.com"
+               data-component="body">
+    <br>
+<p>Email unique du client. Example: <code>jane.doe@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="PUTapi-clients--client_id-"
+               value="9876543210987"
+               data-component="body">
+    <br>
+<p>Numéro IFU unique. Example: <code>9876543210987</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phonenumber"                data-endpoint="PUTapi-clients--client_id-"
+               value="+229 87 65 43 21"
+               data-component="body">
+    <br>
+<p>Numéro de téléphone. Example: <code>+229 87 65 43 21</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="credit_limit"                data-endpoint="PUTapi-clients--client_id-"
+               value="750000"
+               data-component="body">
+    <br>
+<p>Limite de crédit. Example: <code>750000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="current_balance"                data-endpoint="PUTapi-clients--client_id-"
+               value="200000"
+               data-component="body">
+    <br>
+<p>Solde actuel. Example: <code>200000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="base_reduction"                data-endpoint="PUTapi-clients--client_id-"
+               value="10"
+               data-component="body">
+    <br>
+<p>Réduction de base en pourcentage (0-100). Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-clients--client_id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PUTapi-clients--client_id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-clients--client_id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PUTapi-clients--client_id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif. Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-PATCHapi-clients--client_id-">Mettre à jour un client</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un client existant.
+Seuls les champs fournis seront mis à jour.</p>
+
+<span id="example-requests-PATCHapi-clients--client_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"code\": \"CLI-UPDATED\",
+    \"name_client\": \"Jane Doe\",
+    \"name_representant\": \"John Smith\",
+    \"marketteur\": \"Pierre Martin\",
+    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"adresse\": \"456 Avenue des Palmiers\",
+    \"city\": \"Porto-Novo\",
+    \"email\": \"jane.doe@example.com\",
+    \"ifu\": \"9876543210987\",
+    \"phonenumber\": \"+229 87 65 43 21\",
+    \"credit_limit\": 750000,
+    \"current_balance\": 200000,
+    \"base_reduction\": 10,
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "code": "CLI-UPDATED",
+    "name_client": "Jane Doe",
+    "name_representant": "John Smith",
+    "marketteur": "Pierre Martin",
+    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "adresse": "456 Avenue des Palmiers",
+    "city": "Porto-Novo",
+    "email": "jane.doe@example.com",
+    "ifu": "9876543210987",
+    "phonenumber": "+229 87 65 43 21",
+    "credit_limit": 750000,
+    "current_balance": 200000,
+    "base_reduction": 10,
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'code' =&gt; 'CLI-UPDATED',
+            'name_client' =&gt; 'Jane Doe',
+            'name_representant' =&gt; 'John Smith',
+            'marketteur' =&gt; 'Pierre Martin',
+            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'adresse' =&gt; '456 Avenue des Palmiers',
+            'city' =&gt; 'Porto-Novo',
+            'email' =&gt; 'jane.doe@example.com',
+            'ifu' =&gt; '9876543210987',
+            'phonenumber' =&gt; '+229 87 65 43 21',
+            'credit_limit' =&gt; 750000.0,
+            'current_balance' =&gt; 200000.0,
+            'base_reduction' =&gt; 10.0,
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-clients--client_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;code&quot;: &quot;CLI-UPDATED&quot;,
+        &quot;name_client&quot;: &quot;Jane Doe&quot;,
+        &quot;name_representant&quot;: &quot;John Smith&quot;,
+        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
+        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
+        &quot;city&quot;: &quot;Porto-Novo&quot;,
+        &quot;email&quot;: &quot;jane.doe@example.com&quot;,
+        &quot;ifu&quot;: &quot;9876543210987&quot;,
+        &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
+        &quot;credit_limit&quot;: &quot;750000.00&quot;,
+        &quot;current_balance&quot;: &quot;200000.00&quot;,
+        &quot;base_reduction&quot;: &quot;10.00&quot;,
+        &quot;is_active&quot;: false,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
+        ],
+        &quot;ifu&quot;: [
+            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-clients--client_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-clients--client_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-clients--client_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-clients--client_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-clients--client_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-clients--client_id-" data-method="PATCH"
+      data-path="api/clients/{client_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-clients--client_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-clients--client_id-"
+                    onclick="tryItOut('PATCHapi-clients--client_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-clients--client_id-"
+                    onclick="cancelTryOut('PATCHapi-clients--client_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-clients--client_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/clients/{client_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PATCHapi-clients--client_id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="PATCHapi-clients--client_id-"
+               value="CLI-UPDATED"
+               data-component="body">
+    <br>
+<p>Code client unique. Example: <code>CLI-UPDATED</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_client"                data-endpoint="PATCHapi-clients--client_id-"
+               value="Jane Doe"
+               data-component="body">
+    <br>
+<p>Nom complet du client. Example: <code>Jane Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name_representant"                data-endpoint="PATCHapi-clients--client_id-"
+               value="John Smith"
+               data-component="body">
+    <br>
+<p>Nom du représentant du client. Example: <code>John Smith</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="marketteur"                data-endpoint="PATCHapi-clients--client_id-"
+               value="Pierre Martin"
+               data-component="body">
+    <br>
+<p>Nom du marketteur associé. Example: <code>Pierre Martin</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_type_id"                data-endpoint="PATCHapi-clients--client_id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PATCHapi-clients--client_id-"
+               value="456 Avenue des Palmiers"
+               data-component="body">
+    <br>
+<p>Adresse du client. Example: <code>456 Avenue des Palmiers</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="PATCHapi-clients--client_id-"
+               value="Porto-Novo"
+               data-component="body">
+    <br>
+<p>Ville du client. Example: <code>Porto-Novo</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="PATCHapi-clients--client_id-"
+               value="jane.doe@example.com"
+               data-component="body">
+    <br>
+<p>Email unique du client. Example: <code>jane.doe@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ifu"                data-endpoint="PATCHapi-clients--client_id-"
+               value="9876543210987"
+               data-component="body">
+    <br>
+<p>Numéro IFU unique. Example: <code>9876543210987</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phonenumber"                data-endpoint="PATCHapi-clients--client_id-"
+               value="+229 87 65 43 21"
+               data-component="body">
+    <br>
+<p>Numéro de téléphone. Example: <code>+229 87 65 43 21</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="credit_limit"                data-endpoint="PATCHapi-clients--client_id-"
+               value="750000"
+               data-component="body">
+    <br>
+<p>Limite de crédit. Example: <code>750000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="current_balance"                data-endpoint="PATCHapi-clients--client_id-"
+               value="200000"
+               data-component="body">
+    <br>
+<p>Solde actuel. Example: <code>200000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="base_reduction"                data-endpoint="PATCHapi-clients--client_id-"
+               value="10"
+               data-component="body">
+    <br>
+<p>Réduction de base en pourcentage (0-100). Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-clients--client_id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PATCHapi-clients--client_id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-clients--client_id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PATCHapi-clients--client_id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif. Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-DELETEapi-clients--client_id-">Supprimer un client</h2>
+
+<p>
+</p>
+
+<p>Supprime un client (soft delete).
+Le client sera marqué comme supprimé mais restera dans la base de données.</p>
+
+<span id="example-requests-DELETEapi-clients--client_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-clients--client_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client supprim&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-clients--client_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-clients--client_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-clients--client_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-clients--client_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-clients--client_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-clients--client_id-" data-method="DELETE"
+      data-path="api/clients/{client_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-clients--client_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-clients--client_id-"
+                    onclick="tryItOut('DELETEapi-clients--client_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-clients--client_id-"
+                    onclick="cancelTryOut('DELETEapi-clients--client_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-clients--client_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/clients/{client_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-clients--client_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="DELETEapi-clients--client_id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="clients-management-POSTapi-clients--client_id--restore">Restaurer un client supprimé</h2>
+
+<p>
+</p>
+
+<p>Restaure un client qui a été supprimé avec soft delete.</p>
+
+<span id="example-requests-POSTapi-clients--client_id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-clients--client_id--restore">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;code&quot;: &quot;CLI-ABC123&quot;,
+        &quot;name_client&quot;: &quot;John Doe&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Client restaur&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Ce client n&#039;est pas supprim&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-clients--client_id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-clients--client_id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-clients--client_id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-clients--client_id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-clients--client_id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-clients--client_id--restore" data-method="POST"
+      data-path="api/clients/{client_id}/restore"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients--client_id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-clients--client_id--restore"
+                    onclick="tryItOut('POSTapi-clients--client_id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-clients--client_id--restore"
+                    onclick="cancelTryOut('POSTapi-clients--client_id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-clients--client_id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/clients/{client_id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-clients--client_id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-clients--client_id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="POSTapi-clients--client_id--restore"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="clients-management-PATCHapi-clients--client_id--toggle-status">Activer/Désactiver un client</h2>
+
+<p>
+</p>
+
+<p>Change le statut actif d'un client.</p>
+
+<span id="example-requests-PATCHapi-clients--client_id--toggle-status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-clients--client_id--toggle-status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;is_active&quot;: false
+    },
+    &quot;message&quot;: &quot;Statut du client mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-clients--client_id--toggle-status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-clients--client_id--toggle-status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-clients--client_id--toggle-status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-clients--client_id--toggle-status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-clients--client_id--toggle-status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-clients--client_id--toggle-status" data-method="PATCH"
+      data-path="api/clients/{client_id}/toggle-status"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-clients--client_id--toggle-status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-clients--client_id--toggle-status"
+                    onclick="tryItOut('PATCHapi-clients--client_id--toggle-status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-clients--client_id--toggle-status"
+                    onclick="cancelTryOut('PATCHapi-clients--client_id--toggle-status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-clients--client_id--toggle-status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/clients/{client_id}/toggle-status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-clients--client_id--toggle-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-clients--client_id--toggle-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PATCHapi-clients--client_id--toggle-status"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+                <label data-endpoint="PATCHapi-clients--client_id--toggle-status" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PATCHapi-clients--client_id--toggle-status"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-clients--client_id--toggle-status" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PATCHapi-clients--client_id--toggle-status"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Nouveau statut actif. Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="clients-management-PATCHapi-clients--client_id--update-balance">Mettre à jour le solde d&#039;un client</h2>
+
+<p>
+</p>
+
+<p>Ajoute ou soustrait un montant au solde actuel du client.</p>
+
+<span id="example-requests-PATCHapi-clients--client_id--update-balance">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": 50000,
+    \"description\": \"Paiement facture\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": 50000,
+    "description": "Paiement facture"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'amount' =&gt; 50000.0,
+            'description' =&gt; 'Paiement facture',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-clients--client_id--update-balance">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;previous_balance&quot;: &quot;150000.00&quot;,
+        &quot;new_balance&quot;: &quot;200000.00&quot;,
+        &quot;amount_added&quot;: &quot;50000.00&quot;,
+        &quot;available_credit&quot;: &quot;300000.00&quot;,
+        &quot;description&quot;: &quot;Paiement facture&quot;
+    },
+    &quot;message&quot;: &quot;Solde mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Le montant d&eacute;passerait la limite de cr&eacute;dit autoris&eacute;e&quot;,
+    &quot;data&quot;: {
+        &quot;current_balance&quot;: &quot;150000.00&quot;,
+        &quot;credit_limit&quot;: &quot;500000.00&quot;,
+        &quot;available_credit&quot;: &quot;350000.00&quot;,
+        &quot;requested_amount&quot;: &quot;400000.00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-clients--client_id--update-balance" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-clients--client_id--update-balance"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-clients--client_id--update-balance"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-clients--client_id--update-balance" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-clients--client_id--update-balance">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-clients--client_id--update-balance" data-method="PATCH"
+      data-path="api/clients/{client_id}/update-balance"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-clients--client_id--update-balance', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-clients--client_id--update-balance"
+                    onclick="tryItOut('PATCHapi-clients--client_id--update-balance');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-clients--client_id--update-balance"
+                    onclick="cancelTryOut('PATCHapi-clients--client_id--update-balance');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-clients--client_id--update-balance"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/clients/{client_id}/update-balance</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-clients--client_id--update-balance"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-clients--client_id--update-balance"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PATCHapi-clients--client_id--update-balance"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="PATCHapi-clients--client_id--update-balance"
+               value="50000"
+               data-component="body">
+    <br>
+<p>Montant à ajouter (positif) ou soustraire (négatif). Example: <code>50000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PATCHapi-clients--client_id--update-balance"
+               value="Paiement facture"
+               data-component="body">
+    <br>
+<p>optionnel Description de l'opération. Example: <code>Paiement facture</code></p>
+        </div>
+        </form>
+
+                <h1 id="payment-methods-management">Payment Methods Management</h1>
+
+    <p>APIs pour gérer les méthodes de paiement</p>
+
+                                <h2 id="payment-methods-management-GETapi-payment-methods-statistics-overview">Statistiques des méthodes de paiement</h2>
+
+<p>
+</p>
+
+<p>Récupère des statistiques sur les méthodes de paiement.</p>
+
+<span id="example-requests-GETapi-payment-methods-statistics-overview">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/payment-methods/statistics/overview" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods/statistics/overview"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods/statistics/overview';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-payment-methods-statistics-overview">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;total_payment_methods&quot;: 5,
+        &quot;active_payment_methods&quot;: 4,
+        &quot;inactive_payment_methods&quot;: 1,
+        &quot;most_used_payment_method&quot;: {
+            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;name&quot;: &quot;Esp&egrave;ces&quot;,
+            &quot;usage_count&quot;: 125
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-payment-methods-statistics-overview" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-payment-methods-statistics-overview"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-payment-methods-statistics-overview"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-payment-methods-statistics-overview" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-payment-methods-statistics-overview">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-payment-methods-statistics-overview" data-method="GET"
+      data-path="api/payment-methods/statistics/overview"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-payment-methods-statistics-overview', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-payment-methods-statistics-overview"
+                    onclick="tryItOut('GETapi-payment-methods-statistics-overview');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-payment-methods-statistics-overview"
+                    onclick="cancelTryOut('GETapi-payment-methods-statistics-overview');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-payment-methods-statistics-overview"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/payment-methods/statistics/overview</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-payment-methods-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-payment-methods-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="payment-methods-management-GETapi-payment-methods">Liste toutes les méthodes de paiement</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste de toutes les méthodes de paiement avec pagination et filtres optionnels.</p>
+
+<span id="example-requests-GETapi-payment-methods">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/payment-methods?page=1&amp;per_page=15&amp;search=Esp%C3%A8ces&amp;is_active=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"page\": 16,
+    \"per_page\": 22,
+    \"search\": \"g\",
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "Espèces",
+    "is_active": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "page": 16,
+    "per_page": 22,
+    "search": "g",
+    "is_active": true
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'Espèces',
+            'is_active' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'page' =&gt; 16,
+            'per_page' =&gt; 22,
+            'search' =&gt; 'g',
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-payment-methods">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;name&quot;: &quot;Esp&egrave;ces&quot;,
+            &quot;is_active&quot;: true,
+            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+        },
+        {
+            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;name&quot;: &quot;Carte bancaire&quot;,
+            &quot;is_active&quot;: true,
+            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-payment-methods" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-payment-methods"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-payment-methods"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-payment-methods" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-payment-methods">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-payment-methods" data-method="GET"
+      data-path="api/payment-methods"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-payment-methods', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-payment-methods"
+                    onclick="tryItOut('GETapi-payment-methods');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-payment-methods"
+                    onclick="cancelTryOut('GETapi-payment-methods');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-payment-methods"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/payment-methods</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-payment-methods"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-payment-methods"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-payment-methods"
+               value="1"
+               data-component="query">
+    <br>
+<p>Page à récupérer (pagination). Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-payment-methods"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max: 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-payment-methods"
+               value="Espèces"
+               data-component="query">
+    <br>
+<p>Recherche par nom de méthode de paiement. Example: <code>Espèces</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-payment-methods" style="display: none">
+            <input type="radio" name="is_active"
+                   value="1"
+                   data-endpoint="GETapi-payment-methods"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-payment-methods" style="display: none">
+            <input type="radio" name="is_active"
+                   value="0"
+                   data-endpoint="GETapi-payment-methods"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Filtrer par statut actif. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-payment-methods"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-payment-methods"
+               value="22"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-payment-methods"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-payment-methods" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="GETapi-payment-methods"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-payment-methods" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="GETapi-payment-methods"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payment-methods-management-POSTapi-payment-methods">Créer une nouvelle méthode de paiement</h2>
+
+<p>
+</p>
+
+<p>Crée une nouvelle méthode de paiement avec les informations fournies.</p>
+
+<span id="example-requests-POSTapi-payment-methods">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/payment-methods" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Mobile Money\",
+    \"is_active\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Mobile Money",
+    "is_active": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Mobile Money',
+            'is_active' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-payment-methods">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;name&quot;: &quot;Mobile Money&quot;,
+        &quot;is_active&quot;: true,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+    },
+    &quot;message&quot;: &quot;M&eacute;thode de paiement cr&eacute;&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom de la m&eacute;thode de paiement est requis&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-payment-methods" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-payment-methods"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-payment-methods"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-payment-methods" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-payment-methods">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-payment-methods" data-method="POST"
+      data-path="api/payment-methods"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-payment-methods', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-payment-methods"
+                    onclick="tryItOut('POSTapi-payment-methods');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-payment-methods"
+                    onclick="cancelTryOut('POSTapi-payment-methods');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-payment-methods"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/payment-methods</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-payment-methods"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-payment-methods"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-payment-methods"
+               value="Mobile Money"
+               data-component="body">
+    <br>
+<p>Nom de la méthode de paiement. Example: <code>Mobile Money</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-payment-methods" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="POSTapi-payment-methods"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-payment-methods" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="POSTapi-payment-methods"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optionnel Statut actif de la méthode (défaut: true). Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payment-methods-management-GETapi-payment-methods--id-">Afficher une méthode de paiement spécifique</h2>
+
+<p>
+</p>
+
+<p>Récupère les détails d'une méthode de paiement par son ID.</p>
+
+<span id="example-requests-GETapi-payment-methods--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-payment-methods--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;name&quot;: &quot;Mobile Money&quot;,
+        &quot;is_active&quot;: true,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;M&eacute;thode de paiement non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-payment-methods--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-payment-methods--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-payment-methods--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-payment-methods--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-payment-methods--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-payment-methods--id-" data-method="GET"
+      data-path="api/payment-methods/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-payment-methods--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-payment-methods--id-"
+                    onclick="tryItOut('GETapi-payment-methods--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-payment-methods--id-"
+                    onclick="cancelTryOut('GETapi-payment-methods--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-payment-methods--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/payment-methods/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-payment-methods--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="payment-methods-management-PUTapi-payment-methods--id-">Mettre à jour une méthode de paiement</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'une méthode de paiement existante.</p>
+
+<span id="example-requests-PUTapi-payment-methods--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Carte de crédit\",
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Carte de crédit",
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Carte de crédit',
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-payment-methods--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;name&quot;: &quot;Carte de cr&eacute;dit&quot;,
+        &quot;is_active&quot;: false,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;M&eacute;thode de paiement mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;M&eacute;thode de paiement non trouv&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Cette m&eacute;thode de paiement existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-payment-methods--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-payment-methods--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-payment-methods--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-payment-methods--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-payment-methods--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-payment-methods--id-" data-method="PUT"
+      data-path="api/payment-methods/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-payment-methods--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-payment-methods--id-"
+                    onclick="tryItOut('PUTapi-payment-methods--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-payment-methods--id-"
+                    onclick="cancelTryOut('PUTapi-payment-methods--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-payment-methods--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/payment-methods/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-payment-methods--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-payment-methods--id-"
+               value="Carte de crédit"
+               data-component="body">
+    <br>
+<p>Nom de la méthode de paiement. Example: <code>Carte de crédit</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-payment-methods--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PUTapi-payment-methods--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-payment-methods--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PUTapi-payment-methods--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif de la méthode. Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payment-methods-management-PATCHapi-payment-methods--id-">Mettre à jour une méthode de paiement</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'une méthode de paiement existante.</p>
+
+<span id="example-requests-PATCHapi-payment-methods--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Carte de crédit\",
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Carte de crédit",
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'Carte de crédit',
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-payment-methods--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;name&quot;: &quot;Carte de cr&eacute;dit&quot;,
+        &quot;is_active&quot;: false,
+        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;M&eacute;thode de paiement mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;M&eacute;thode de paiement non trouv&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Cette m&eacute;thode de paiement existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-payment-methods--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-payment-methods--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-payment-methods--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-payment-methods--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-payment-methods--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-payment-methods--id-" data-method="PATCH"
+      data-path="api/payment-methods/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-payment-methods--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-payment-methods--id-"
+                    onclick="tryItOut('PATCHapi-payment-methods--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-payment-methods--id-"
+                    onclick="cancelTryOut('PATCHapi-payment-methods--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-payment-methods--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/payment-methods/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-payment-methods--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PATCHapi-payment-methods--id-"
+               value="Carte de crédit"
+               data-component="body">
+    <br>
+<p>Nom de la méthode de paiement. Example: <code>Carte de crédit</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-payment-methods--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PATCHapi-payment-methods--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-payment-methods--id-" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PATCHapi-payment-methods--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Statut actif de la méthode. Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payment-methods-management-DELETEapi-payment-methods--id-">Supprimer une méthode de paiement</h2>
+
+<p>
+</p>
+
+<p>Supprime définitivement une méthode de paiement.
+Attention: Cette action est irréversible.</p>
+
+<span id="example-requests-DELETEapi-payment-methods--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-payment-methods--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;M&eacute;thode de paiement supprim&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Impossible de supprimer cette m&eacute;thode de paiement car elle est utilis&eacute;e dans des paiements existants&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;M&eacute;thode de paiement non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-payment-methods--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-payment-methods--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-payment-methods--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-payment-methods--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-payment-methods--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-payment-methods--id-" data-method="DELETE"
+      data-path="api/payment-methods/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-payment-methods--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-payment-methods--id-"
+                    onclick="tryItOut('DELETEapi-payment-methods--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-payment-methods--id-"
+                    onclick="cancelTryOut('DELETEapi-payment-methods--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-payment-methods--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/payment-methods/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-payment-methods--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-payment-methods--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="payment-methods-management-PATCHapi-payment-methods--id--toggle-status">Activer/Désactiver une méthode de paiement</h2>
+
+<p>
+</p>
+
+<p>Change le statut actif d'une méthode de paiement.</p>
+
+<span id="example-requests-PATCHapi-payment-methods--id--toggle-status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000/toggle-status" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"is_active\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000/toggle-status"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "is_active": false
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/payment-methods/550e8400-e29b-41d4-a716-446655440000/toggle-status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'is_active' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-payment-methods--id--toggle-status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;is_active&quot;: false
+    },
+    &quot;message&quot;: &quot;Statut de la m&eacute;thode de paiement mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;M&eacute;thode de paiement non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-payment-methods--id--toggle-status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-payment-methods--id--toggle-status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-payment-methods--id--toggle-status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-payment-methods--id--toggle-status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-payment-methods--id--toggle-status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-payment-methods--id--toggle-status" data-method="PATCH"
+      data-path="api/payment-methods/{id}/toggle-status"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-payment-methods--id--toggle-status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-payment-methods--id--toggle-status"
+                    onclick="tryItOut('PATCHapi-payment-methods--id--toggle-status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-payment-methods--id--toggle-status"
+                    onclick="cancelTryOut('PATCHapi-payment-methods--id--toggle-status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-payment-methods--id--toggle-status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/payment-methods/{id}/toggle-status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-payment-methods--id--toggle-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-payment-methods--id--toggle-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-payment-methods--id--toggle-status"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+                <label data-endpoint="PATCHapi-payment-methods--id--toggle-status" style="display: none">
+            <input type="radio" name="is_active"
+                   value="true"
+                   data-endpoint="PATCHapi-payment-methods--id--toggle-status"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-payment-methods--id--toggle-status" style="display: none">
+            <input type="radio" name="is_active"
+                   value="false"
+                   data-endpoint="PATCHapi-payment-methods--id--toggle-status"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Nouveau statut actif. Example: <code>false</code></p>
+        </div>
+        </form>
+
+                <h1 id="invoices-management">Invoices Management</h1>
+
+    <p>APIs pour gérer les factures et leurs détails</p>
+
+                                <h2 id="invoices-management-GETapi-factures-statistics-overview">Statistiques des factures</h2>
+
+<p>
+</p>
+
+<p>Récupère des statistiques sur les factures.</p>
+
+<span id="example-requests-GETapi-factures-statistics-overview">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/factures/statistics/overview?date_from=2025-01-01&amp;date_to=2025-12-31" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"date_from\": \"2025-10-14T08:54:39\",
+    \"date_to\": \"2051-11-07\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures/statistics/overview"
+);
+
+const params = {
+    "date_from": "2025-01-01",
+    "date_to": "2025-12-31",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "date_from": "2025-10-14T08:54:39",
+    "date_to": "2051-11-07"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures/statistics/overview';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'date_from' =&gt; '2025-01-01',
+            'date_to' =&gt; '2025-12-31',
+        ],
+        'json' =&gt; [
+            'date_from' =&gt; '2025-10-14T08:54:39',
+            'date_to' =&gt; '2051-11-07',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-factures-statistics-overview">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;total_factures&quot;: 150,
+        &quot;factures_pending&quot;: 30,
+        &quot;factures_paid&quot;: 100,
+        &quot;factures_partially_paid&quot;: 15,
+        &quot;factures_cancelled&quot;: 3,
+        &quot;factures_overdue&quot;: 2,
+        &quot;total_amount&quot;: &quot;15000000.00&quot;,
+        &quot;total_paid&quot;: &quot;12000000.00&quot;,
+        &quot;total_pending&quot;: &quot;3000000.00&quot;,
+        &quot;average_invoice_amount&quot;: &quot;100000.00&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-factures-statistics-overview" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-factures-statistics-overview"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-factures-statistics-overview"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-factures-statistics-overview" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-factures-statistics-overview">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-factures-statistics-overview" data-method="GET"
+      data-path="api/factures/statistics/overview"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-factures-statistics-overview', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-factures-statistics-overview"
+                    onclick="tryItOut('GETapi-factures-statistics-overview');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-factures-statistics-overview"
+                    onclick="cancelTryOut('GETapi-factures-statistics-overview');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-factures-statistics-overview"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/factures/statistics/overview</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-factures-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-factures-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
+               value="2025-01-01"
+               data-component="query">
+    <br>
+<p>date Statistiques à partir de cette date. Example: <code>2025-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
+               value="2025-12-31"
+               data-component="query">
+    <br>
+<p>date Statistiques jusqu'à cette date. Example: <code>2025-12-31</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
+               value="2025-10-14T08:54:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
+               value="2051-11-07"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-07</code></p>
+        </div>
+        </form>
+
+                    <h2 id="invoices-management-GETapi-factures">Liste toutes les factures</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste de toutes les factures avec pagination et filtres optionnels.</p>
+
+<span id="example-requests-GETapi-factures">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/factures?page=1&amp;per_page=15&amp;search=FACT-2025&amp;client_id=550e8400-e29b-41d4-a716-446655440000&amp;statut=paid&amp;date_from=2025-01-01&amp;date_to=2025-12-31&amp;with_client=1&amp;with_details=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"page\": 16,
+    \"per_page\": 22,
+    \"search\": \"g\",
+    \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
+    \"statut\": \"partially_paid\",
+    \"date_from\": \"2025-10-14T08:54:39\",
+    \"date_to\": \"2051-11-07\",
+    \"with_client\": false,
+    \"with_details\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "FACT-2025",
+    "client_id": "550e8400-e29b-41d4-a716-446655440000",
+    "statut": "paid",
+    "date_from": "2025-01-01",
+    "date_to": "2025-12-31",
+    "with_client": "1",
+    "with_details": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "page": 16,
+    "per_page": 22,
+    "search": "g",
+    "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
+    "statut": "partially_paid",
+    "date_from": "2025-10-14T08:54:39",
+    "date_to": "2051-11-07",
+    "with_client": false,
+    "with_details": true
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'FACT-2025',
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'statut' =&gt; 'paid',
+            'date_from' =&gt; '2025-01-01',
+            'date_to' =&gt; '2025-12-31',
+            'with_client' =&gt; '1',
+            'with_details' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'page' =&gt; 16,
+            'per_page' =&gt; 22,
+            'search' =&gt; 'g',
+            'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
+            'statut' =&gt; 'partially_paid',
+            'date_from' =&gt; '2025-10-14T08:54:39',
+            'date_to' =&gt; '2051-11-07',
+            'with_client' =&gt; false,
+            'with_details' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-factures">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
+            &quot;reference&quot;: &quot;REF-001&quot;,
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;facture_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+            &quot;due_date&quot;: &quot;2025-02-15&quot;,
+            &quot;montant_ht&quot;: &quot;100000.00&quot;,
+            &quot;taxe_rate&quot;: &quot;18.00&quot;,
+            &quot;transport_cost&quot;: &quot;5000.00&quot;,
+            &quot;discount_amount&quot;: &quot;2000.00&quot;,
+            &quot;total_amount&quot;: &quot;121000.00&quot;,
+            &quot;paid_amount&quot;: &quot;121000.00&quot;,
+            &quot;statut&quot;: &quot;paid&quot;,
+            &quot;delivery_adresse&quot;: &quot;123 Rue de la Paix, Cotonou&quot;,
+            &quot;note&quot;: &quot;Livraison express&quot;,
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;created_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-factures" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-factures"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-factures"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-factures" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-factures">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-factures" data-method="GET"
+      data-path="api/factures"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-factures', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-factures"
+                    onclick="tryItOut('GETapi-factures');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-factures"
+                    onclick="cancelTryOut('GETapi-factures');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-factures"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/factures</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-factures"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-factures"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-factures"
+               value="1"
+               data-component="query">
+    <br>
+<p>Page à récupérer (pagination). Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-factures"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max: 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-factures"
+               value="FACT-2025"
+               data-component="query">
+    <br>
+<p>Recherche par numéro de facture ou référence. Example: <code>FACT-2025</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="GETapi-factures"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="query">
+    <br>
+<p>Filtrer par client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-factures"
+               value="paid"
+               data-component="query">
+    <br>
+<p>Filtrer par statut (pending, paid, partially_paid, cancelled, overdue). Example: <code>paid</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-factures"
+               value="2025-01-01"
+               data-component="query">
+    <br>
+<p>date Factures à partir de cette date. Example: <code>2025-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-factures"
+               value="2025-12-31"
+               data-component="query">
+    <br>
+<p>date Factures jusqu'à cette date. Example: <code>2025-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_client"
+                   value="1"
+                   data-endpoint="GETapi-factures"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_client"
+                   value="0"
+                   data-endpoint="GETapi-factures"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du client. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_details"
+                   value="1"
+                   data-endpoint="GETapi-factures"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_details"
+                   value="0"
+                   data-endpoint="GETapi-factures"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les détails de la facture. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-factures"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-factures"
+               value="22"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-factures"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="GETapi-factures"
+               value="c90237e9-ced5-3af6-88ea-84aeaa148878"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>client_id</code> of an existing record in the clients table. Example: <code>c90237e9-ced5-3af6-88ea-84aeaa148878</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-factures"
+               value="partially_paid"
+               data-component="body">
+    <br>
+<p>Example: <code>partially_paid</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-factures"
+               value="2025-10-14T08:54:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-factures"
+               value="2051-11-07"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-07</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_client"
+                   value="true"
+                   data-endpoint="GETapi-factures"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_client"
+                   value="false"
+                   data-endpoint="GETapi-factures"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_details"
+                   value="true"
+                   data-endpoint="GETapi-factures"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures" style="display: none">
+            <input type="radio" name="with_details"
+                   value="false"
+                   data-endpoint="GETapi-factures"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="invoices-management-POSTapi-factures">Créer une nouvelle facture</h2>
+
+<p>
+</p>
+
+<p>Crée une nouvelle facture avec ses détails.
+Le numéro de facture est généré automatiquement.</p>
+
+<span id="example-requests-POSTapi-factures">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/factures" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"reference\": \"REF-2025-001\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"facture_date\": \"2025-01-15 10:30:00\",
+    \"due_date\": \"2025-02-15\",
+    \"taxe_rate\": 18,
+    \"transport_cost\": 5000,
+    \"discount_amount\": 2000,
+    \"delivery_adresse\": \"123 Rue de la Paix, Cotonou\",
+    \"note\": \"Livraison express\",
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"details\": [
+        \"architecto\"
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "reference": "REF-2025-001",
+    "client_id": "550e8400-e29b-41d4-a716-446655440000",
+    "facture_date": "2025-01-15 10:30:00",
+    "due_date": "2025-02-15",
+    "taxe_rate": 18,
+    "transport_cost": 5000,
+    "discount_amount": 2000,
+    "delivery_adresse": "123 Rue de la Paix, Cotonou",
+    "note": "Livraison express",
+    "user_id": "550e8400-e29b-41d4-a716-446655440001",
+    "details": [
+        "architecto"
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'reference' =&gt; 'REF-2025-001',
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'facture_date' =&gt; '2025-01-15 10:30:00',
+            'due_date' =&gt; '2025-02-15',
+            'taxe_rate' =&gt; 18.0,
+            'transport_cost' =&gt; 5000.0,
+            'discount_amount' =&gt; 2000.0,
+            'delivery_adresse' =&gt; '123 Rue de la Paix, Cotonou',
+            'note' =&gt; 'Livraison express',
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'details' =&gt; [
+                'architecto',
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-factures">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
+        &quot;reference&quot;: &quot;REF-2025-001&quot;,
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;facture_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;due_date&quot;: &quot;2025-02-15&quot;,
+        &quot;montant_ht&quot;: &quot;100000.00&quot;,
+        &quot;taxe_rate&quot;: &quot;18.00&quot;,
+        &quot;transport_cost&quot;: &quot;5000.00&quot;,
+        &quot;discount_amount&quot;: &quot;2000.00&quot;,
+        &quot;total_amount&quot;: &quot;121000.00&quot;,
+        &quot;paid_amount&quot;: &quot;0.00&quot;,
+        &quot;statut&quot;: &quot;pending&quot;,
+        &quot;delivery_adresse&quot;: &quot;123 Rue de la Paix, Cotonou&quot;,
+        &quot;note&quot;: &quot;Livraison express&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;details&quot;: [
+            {
+                &quot;facture_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440004&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;prix_unitaire&quot;: &quot;10000.00&quot;,
+                &quot;montant_total&quot;: &quot;99500.00&quot;,
+                &quot;taxe_rate&quot;: &quot;18.00&quot;,
+                &quot;discount_amount&quot;: &quot;500.00&quot;
+            }
+        ]
+    },
+    &quot;message&quot;: &quot;Facture cr&eacute;&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;client_id&quot;: [
+            &quot;Le client s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ],
+        &quot;details&quot;: [
+            &quot;Les d&eacute;tails de la facture sont requis&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-factures" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-factures"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-factures"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-factures" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-factures">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-factures" data-method="POST"
+      data-path="api/factures"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-factures', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-factures"
+                    onclick="tryItOut('POSTapi-factures');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-factures"
+                    onclick="cancelTryOut('POSTapi-factures');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-factures"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/factures</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-factures"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-factures"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reference</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reference"                data-endpoint="POSTapi-factures"
+               value="REF-2025-001"
+               data-component="body">
+    <br>
+<p>optionnel Référence personnalisée de la facture. Example: <code>REF-2025-001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="POSTapi-factures"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>facture_date</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="facture_date"                data-endpoint="POSTapi-factures"
+               value="2025-01-15 10:30:00"
+               data-component="body">
+    <br>
+<p>optionnel Date de la facture (défaut: maintenant). Example: <code>2025-01-15 10:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="POSTapi-factures"
+               value="2025-02-15"
+               data-component="body">
+    <br>
+<p>optionnel Date d'échéance. Example: <code>2025-02-15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>taxe_rate</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="taxe_rate"                data-endpoint="POSTapi-factures"
+               value="18"
+               data-component="body">
+    <br>
+<p>optionnel Taux de taxe en pourcentage (défaut: 0). Example: <code>18</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transport_cost</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="transport_cost"                data-endpoint="POSTapi-factures"
+               value="5000"
+               data-component="body">
+    <br>
+<p>optionnel Coût de transport (défaut: 0). Example: <code>5000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>discount_amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="discount_amount"                data-endpoint="POSTapi-factures"
+               value="2000"
+               data-component="body">
+    <br>
+<p>optionnel Montant de réduction (défaut: 0). Example: <code>2000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>delivery_adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="delivery_adresse"                data-endpoint="POSTapi-factures"
+               value="123 Rue de la Paix, Cotonou"
+               data-component="body">
+    <br>
+<p>optionnel Adresse de livraison. Example: <code>123 Rue de la Paix, Cotonou</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-factures"
+               value="Livraison express"
+               data-component="body">
+    <br>
+<p>optionnel Note ou commentaire. Example: <code>Livraison express</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="POSTapi-factures"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID de l'utilisateur créant la facture. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Détails de la facture (lignes de produits).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="POSTapi-factures"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantite"                data-endpoint="POSTapi-factures"
+               value="10"
+               data-component="body">
+    <br>
+<p>Quantité du produit. Example: <code>10</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>prix_unitaire</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.prix_unitaire"                data-endpoint="POSTapi-factures"
+               value="10000"
+               data-component="body">
+    <br>
+<p>Prix unitaire. Example: <code>10000</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>taxe_rate</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.taxe_rate"                data-endpoint="POSTapi-factures"
+               value="18"
+               data-component="body">
+    <br>
+<p>optionnel Taux de taxe pour ce produit (défaut: 0). Example: <code>18</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>discount_amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.discount_amount"                data-endpoint="POSTapi-factures"
+               value="500"
+               data-component="body">
+    <br>
+<p>optionnel Réduction pour ce produit (défaut: 0). Example: <code>500</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="invoices-management-GETapi-factures--id-">Afficher une facture spécifique</h2>
+
+<p>
+</p>
+
+<p>Récupère les détails d'une facture par son ID.</p>
+
+<span id="example-requests-GETapi-factures--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000?with_client=1&amp;with_details=1&amp;with_payments=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"with_client\": false,
+    \"with_details\": false,
+    \"with_payments\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const params = {
+    "with_client": "1",
+    "with_details": "1",
+    "with_payments": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "with_client": false,
+    "with_details": false,
+    "with_payments": true
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'with_client' =&gt; '1',
+            'with_details' =&gt; '1',
+            'with_payments' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'with_client' =&gt; false,
+            'with_details' =&gt; false,
+            'with_payments' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-factures--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
+        &quot;reference&quot;: &quot;REF-2025-001&quot;,
+        &quot;client&quot;: {
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;name_client&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;john@example.com&quot;
+        },
+        &quot;facture_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;due_date&quot;: &quot;2025-02-15&quot;,
+        &quot;total_amount&quot;: &quot;121000.00&quot;,
+        &quot;paid_amount&quot;: &quot;50000.00&quot;,
+        &quot;statut&quot;: &quot;partially_paid&quot;,
+        &quot;details&quot;: [],
+        &quot;payments&quot;: []
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Facture non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-factures--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-factures--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-factures--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-factures--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-factures--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-factures--id-" data-method="GET"
+      data-path="api/factures/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-factures--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-factures--id-"
+                    onclick="tryItOut('GETapi-factures--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-factures--id-"
+                    onclick="cancelTryOut('GETapi-factures--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-factures--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/factures/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-factures--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="1"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="0"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du client. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_details"
+                   value="1"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_details"
+                   value="0"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les détails de la facture. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_payments"
+                   value="1"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_payments"
+                   value="0"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les paiements associés. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="true"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="false"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_details"
+                   value="true"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_details"
+                   value="false"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_payments"
+                   value="true"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-factures--id-" style="display: none">
+            <input type="radio" name="with_payments"
+                   value="false"
+                   data-endpoint="GETapi-factures--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="invoices-management-PUTapi-factures--id-">Mettre à jour une facture</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'une facture existante.
+Note: Les détails de la facture doivent être mis à jour séparément.</p>
+
+<span id="example-requests-PUTapi-factures--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"reference\": \"REF-2025-001-UPDATED\",
+    \"due_date\": \"2025-03-15\",
+    \"taxe_rate\": 20,
+    \"transport_cost\": 7000,
+    \"discount_amount\": 3000,
+    \"delivery_adresse\": \"456 Avenue des Palmiers\",
+    \"note\": \"Livraison urgente\",
+    \"statut\": \"paid\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "reference": "REF-2025-001-UPDATED",
+    "due_date": "2025-03-15",
+    "taxe_rate": 20,
+    "transport_cost": 7000,
+    "discount_amount": 3000,
+    "delivery_adresse": "456 Avenue des Palmiers",
+    "note": "Livraison urgente",
+    "statut": "paid"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'reference' =&gt; 'REF-2025-001-UPDATED',
+            'due_date' =&gt; '2025-03-15',
+            'taxe_rate' =&gt; 20.0,
+            'transport_cost' =&gt; 7000.0,
+            'discount_amount' =&gt; 3000.0,
+            'delivery_adresse' =&gt; '456 Avenue des Palmiers',
+            'note' =&gt; 'Livraison urgente',
+            'statut' =&gt; 'paid',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-factures--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
+        &quot;reference&quot;: &quot;REF-2025-001-UPDATED&quot;,
+        &quot;statut&quot;: &quot;paid&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Facture mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Facture non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-factures--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-factures--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-factures--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-factures--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-factures--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-factures--id-" data-method="PUT"
+      data-path="api/factures/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-factures--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-factures--id-"
+                    onclick="tryItOut('PUTapi-factures--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-factures--id-"
+                    onclick="cancelTryOut('PUTapi-factures--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-factures--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/factures/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-factures--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reference</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reference"                data-endpoint="PUTapi-factures--id-"
+               value="REF-2025-001-UPDATED"
+               data-component="body">
+    <br>
+<p>Référence de la facture. Example: <code>REF-2025-001-UPDATED</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="PUTapi-factures--id-"
+               value="2025-03-15"
+               data-component="body">
+    <br>
+<p>Date d'échéance. Example: <code>2025-03-15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>taxe_rate</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="taxe_rate"                data-endpoint="PUTapi-factures--id-"
+               value="20"
+               data-component="body">
+    <br>
+<p>Taux de taxe. Example: <code>20</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transport_cost</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="transport_cost"                data-endpoint="PUTapi-factures--id-"
+               value="7000"
+               data-component="body">
+    <br>
+<p>Coût de transport. Example: <code>7000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>discount_amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="discount_amount"                data-endpoint="PUTapi-factures--id-"
+               value="3000"
+               data-component="body">
+    <br>
+<p>Montant de réduction. Example: <code>3000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>delivery_adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="delivery_adresse"                data-endpoint="PUTapi-factures--id-"
+               value="456 Avenue des Palmiers"
+               data-component="body">
+    <br>
+<p>Adresse de livraison. Example: <code>456 Avenue des Palmiers</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-factures--id-"
+               value="Livraison urgente"
+               data-component="body">
+    <br>
+<p>Note ou commentaire. Example: <code>Livraison urgente</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PUTapi-factures--id-"
+               value="paid"
+               data-component="body">
+    <br>
+<p>Statut de la facture (pending, paid, partially_paid, cancelled, overdue). Example: <code>paid</code></p>
+        </div>
+        </form>
+
+                    <h2 id="invoices-management-PATCHapi-factures--id-">Mettre à jour une facture</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'une facture existante.
+Note: Les détails de la facture doivent être mis à jour séparément.</p>
+
+<span id="example-requests-PATCHapi-factures--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"reference\": \"REF-2025-001-UPDATED\",
+    \"due_date\": \"2025-03-15\",
+    \"taxe_rate\": 20,
+    \"transport_cost\": 7000,
+    \"discount_amount\": 3000,
+    \"delivery_adresse\": \"456 Avenue des Palmiers\",
+    \"note\": \"Livraison urgente\",
+    \"statut\": \"paid\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "reference": "REF-2025-001-UPDATED",
+    "due_date": "2025-03-15",
+    "taxe_rate": 20,
+    "transport_cost": 7000,
+    "discount_amount": 3000,
+    "delivery_adresse": "456 Avenue des Palmiers",
+    "note": "Livraison urgente",
+    "statut": "paid"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'reference' =&gt; 'REF-2025-001-UPDATED',
+            'due_date' =&gt; '2025-03-15',
+            'taxe_rate' =&gt; 20.0,
+            'transport_cost' =&gt; 7000.0,
+            'discount_amount' =&gt; 3000.0,
+            'delivery_adresse' =&gt; '456 Avenue des Palmiers',
+            'note' =&gt; 'Livraison urgente',
+            'statut' =&gt; 'paid',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-factures--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
+        &quot;reference&quot;: &quot;REF-2025-001-UPDATED&quot;,
+        &quot;statut&quot;: &quot;paid&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Facture mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Facture non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-factures--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-factures--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-factures--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-factures--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-factures--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-factures--id-" data-method="PATCH"
+      data-path="api/factures/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-factures--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-factures--id-"
+                    onclick="tryItOut('PATCHapi-factures--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-factures--id-"
+                    onclick="cancelTryOut('PATCHapi-factures--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-factures--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/factures/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-factures--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reference</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reference"                data-endpoint="PATCHapi-factures--id-"
+               value="REF-2025-001-UPDATED"
+               data-component="body">
+    <br>
+<p>Référence de la facture. Example: <code>REF-2025-001-UPDATED</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="due_date"                data-endpoint="PATCHapi-factures--id-"
+               value="2025-03-15"
+               data-component="body">
+    <br>
+<p>Date d'échéance. Example: <code>2025-03-15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>taxe_rate</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="taxe_rate"                data-endpoint="PATCHapi-factures--id-"
+               value="20"
+               data-component="body">
+    <br>
+<p>Taux de taxe. Example: <code>20</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transport_cost</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="transport_cost"                data-endpoint="PATCHapi-factures--id-"
+               value="7000"
+               data-component="body">
+    <br>
+<p>Coût de transport. Example: <code>7000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>discount_amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="discount_amount"                data-endpoint="PATCHapi-factures--id-"
+               value="3000"
+               data-component="body">
+    <br>
+<p>Montant de réduction. Example: <code>3000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>delivery_adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="delivery_adresse"                data-endpoint="PATCHapi-factures--id-"
+               value="456 Avenue des Palmiers"
+               data-component="body">
+    <br>
+<p>Adresse de livraison. Example: <code>456 Avenue des Palmiers</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-factures--id-"
+               value="Livraison urgente"
+               data-component="body">
+    <br>
+<p>Note ou commentaire. Example: <code>Livraison urgente</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-factures--id-"
+               value="paid"
+               data-component="body">
+    <br>
+<p>Statut de la facture (pending, paid, partially_paid, cancelled, overdue). Example: <code>paid</code></p>
+        </div>
+        </form>
+
+                    <h2 id="invoices-management-DELETEapi-factures--id-">Supprimer une facture</h2>
+
+<p>
+</p>
+
+<p>Supprime une facture et tous ses détails.
+Cette action est irréversible.</p>
+
+<span id="example-requests-DELETEapi-factures--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-factures--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Facture supprim&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Impossible de supprimer une facture d&eacute;j&agrave; pay&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Facture non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-factures--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-factures--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-factures--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-factures--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-factures--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-factures--id-" data-method="DELETE"
+      data-path="api/factures/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-factures--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-factures--id-"
+                    onclick="tryItOut('DELETEapi-factures--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-factures--id-"
+                    onclick="cancelTryOut('DELETEapi-factures--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-factures--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/factures/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-factures--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-factures--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="invoices-management-PATCHapi-factures--id--update-status">Changer le statut d&#039;une facture</h2>
+
+<p>
+</p>
+
+<p>Met à jour le statut d'une facture.</p>
+
+<span id="example-requests-PATCHapi-factures--id--update-status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000/update-status" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"statut\": \"cancelled\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000/update-status"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "statut": "cancelled"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures/550e8400-e29b-41d4-a716-446655440000/update-status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'statut' =&gt; 'cancelled',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-factures--id--update-status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;statut&quot;: &quot;cancelled&quot;
+    },
+    &quot;message&quot;: &quot;Statut de la facture mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Facture non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-factures--id--update-status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-factures--id--update-status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-factures--id--update-status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-factures--id--update-status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-factures--id--update-status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-factures--id--update-status" data-method="PATCH"
+      data-path="api/factures/{id}/update-status"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-factures--id--update-status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-factures--id--update-status"
+                    onclick="tryItOut('PATCHapi-factures--id--update-status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-factures--id--update-status"
+                    onclick="cancelTryOut('PATCHapi-factures--id--update-status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-factures--id--update-status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/factures/{id}/update-status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-factures--id--update-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-factures--id--update-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-factures--id--update-status"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID de la facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-factures--id--update-status"
+               value="cancelled"
+               data-component="body">
+    <br>
+<p>Nouveau statut (pending, paid, partially_paid, cancelled, overdue). Example: <code>cancelled</code></p>
+        </div>
+        </form>
+
+                <h1 id="payments-management">Payments Management</h1>
+
+    <p>APIs pour gérer les paiements des factures</p>
+
+                                <h2 id="payments-management-GETapi-paiements-statistics-overview">Statistiques des paiements</h2>
+
+<p>
+</p>
+
+<p>Récupère des statistiques sur les paiements.</p>
+
+<span id="example-requests-GETapi-paiements-statistics-overview">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiements/statistics/overview?date_from=2025-01-01&amp;date_to=2025-12-31" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"date_from\": \"2025-10-14T08:54:39\",
+    \"date_to\": \"2051-11-07\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/statistics/overview"
+);
+
+const params = {
+    "date_from": "2025-01-01",
+    "date_to": "2025-12-31",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "date_from": "2025-10-14T08:54:39",
+    "date_to": "2051-11-07"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/statistics/overview';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'date_from' =&gt; '2025-01-01',
+            'date_to' =&gt; '2025-12-31',
+        ],
+        'json' =&gt; [
+            'date_from' =&gt; '2025-10-14T08:54:39',
+            'date_to' =&gt; '2051-11-07',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiements-statistics-overview">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;total_paiements&quot;: 250,
+        &quot;paiements_completed&quot;: 200,
+        &quot;paiements_pending&quot;: 30,
+        &quot;paiements_failed&quot;: 15,
+        &quot;paiements_refunded&quot;: 5,
+        &quot;total_amount&quot;: &quot;12000000.00&quot;,
+        &quot;average_payment_amount&quot;: &quot;48000.00&quot;,
+        &quot;payments_by_method&quot;: [
+            {
+                &quot;payment_method&quot;: &quot;Esp&egrave;ces&quot;,
+                &quot;count&quot;: 150,
+                &quot;total_amount&quot;: &quot;7000000.00&quot;
+            },
+            {
+                &quot;payment_method&quot;: &quot;Mobile Money&quot;,
+                &quot;count&quot;: 100,
+                &quot;total_amount&quot;: &quot;5000000.00&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiements-statistics-overview" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiements-statistics-overview"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiements-statistics-overview"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiements-statistics-overview" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiements-statistics-overview">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiements-statistics-overview" data-method="GET"
+      data-path="api/paiements/statistics/overview"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiements-statistics-overview', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiements-statistics-overview"
+                    onclick="tryItOut('GETapi-paiements-statistics-overview');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiements-statistics-overview"
+                    onclick="cancelTryOut('GETapi-paiements-statistics-overview');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiements-statistics-overview"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiements/statistics/overview</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiements-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiements-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
+               value="2025-01-01"
+               data-component="query">
+    <br>
+<p>date Statistiques à partir de cette date. Example: <code>2025-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
+               value="2025-12-31"
+               data-component="query">
+    <br>
+<p>date Statistiques jusqu'à cette date. Example: <code>2025-12-31</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
+               value="2025-10-14T08:54:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
+               value="2051-11-07"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-07</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-GETapi-paiements">Liste tous les paiements</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste de tous les paiements avec pagination et filtres optionnels.</p>
+
+<span id="example-requests-GETapi-paiements">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiements?page=1&amp;per_page=15&amp;search=PAY-2025&amp;facture_id=550e8400-e29b-41d4-a716-446655440000&amp;client_id=550e8400-e29b-41d4-a716-446655440001&amp;payment_method_id=550e8400-e29b-41d4-a716-446655440002&amp;statut=completed&amp;date_from=2025-01-01&amp;date_to=2025-12-31&amp;with_facture=1&amp;with_client=1&amp;with_payment_method=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"page\": 16,
+    \"per_page\": 22,
+    \"search\": \"g\",
+    \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
+    \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
+    \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-14T08:54:39\",
+    \"date_to\": \"2051-11-07\",
+    \"with_facture\": true,
+    \"with_client\": false,
+    \"with_payment_method\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "PAY-2025",
+    "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+    "client_id": "550e8400-e29b-41d4-a716-446655440001",
+    "payment_method_id": "550e8400-e29b-41d4-a716-446655440002",
+    "statut": "completed",
+    "date_from": "2025-01-01",
+    "date_to": "2025-12-31",
+    "with_facture": "1",
+    "with_client": "1",
+    "with_payment_method": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "page": 16,
+    "per_page": 22,
+    "search": "g",
+    "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
+    "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
+    "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
+    "statut": "failed",
+    "date_from": "2025-10-14T08:54:39",
+    "date_to": "2051-11-07",
+    "with_facture": true,
+    "with_client": false,
+    "with_payment_method": false
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'PAY-2025',
+            'facture_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'payment_method_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+            'statut' =&gt; 'completed',
+            'date_from' =&gt; '2025-01-01',
+            'date_to' =&gt; '2025-12-31',
+            'with_facture' =&gt; '1',
+            'with_client' =&gt; '1',
+            'with_payment_method' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'page' =&gt; 16,
+            'per_page' =&gt; 22,
+            'search' =&gt; 'g',
+            'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
+            'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
+            'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-14T08:54:39',
+            'date_to' =&gt; '2051-11-07',
+            'with_facture' =&gt; true,
+            'with_client' =&gt; false,
+            'with_payment_method' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiements">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
+            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+            &quot;amount&quot;: &quot;50000.00&quot;,
+            &quot;payment_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+            &quot;note&quot;: &quot;Paiement partiel&quot;,
+            &quot;statut&quot;: &quot;completed&quot;,
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440004&quot;,
+            &quot;created_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00Z&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 1
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiements" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiements"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiements"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiements" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiements">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiements" data-method="GET"
+      data-path="api/paiements"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiements', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiements"
+                    onclick="tryItOut('GETapi-paiements');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiements"
+                    onclick="cancelTryOut('GETapi-paiements');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiements"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiements</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-paiements"
+               value="1"
+               data-component="query">
+    <br>
+<p>Page à récupérer (pagination). Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-paiements"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max: 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-paiements"
+               value="PAY-2025"
+               data-component="query">
+    <br>
+<p>Recherche par référence de paiement. Example: <code>PAY-2025</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>facture_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="facture_id"                data-endpoint="GETapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="query">
+    <br>
+<p>Filtrer par facture (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="GETapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="query">
+    <br>
+<p>Filtrer par client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>payment_method_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_method_id"                data-endpoint="GETapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="query">
+    <br>
+<p>Filtrer par méthode de paiement (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-paiements"
+               value="completed"
+               data-component="query">
+    <br>
+<p>Filtrer par statut (pending, completed, failed, refunded). Example: <code>completed</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-paiements"
+               value="2025-01-01"
+               data-component="query">
+    <br>
+<p>date Paiements à partir de cette date. Example: <code>2025-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-paiements"
+               value="2025-12-31"
+               data-component="query">
+    <br>
+<p>date Paiements jusqu'à cette date. Example: <code>2025-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="1"
+                   data-endpoint="GETapi-paiements"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="0"
+                   data-endpoint="GETapi-paiements"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations de la facture. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_client"
+                   value="1"
+                   data-endpoint="GETapi-paiements"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_client"
+                   value="0"
+                   data-endpoint="GETapi-paiements"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du client. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="1"
+                   data-endpoint="GETapi-paiements"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="0"
+                   data-endpoint="GETapi-paiements"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations de la méthode de paiement. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-paiements"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-paiements"
+               value="22"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-paiements"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>facture_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="facture_id"                data-endpoint="GETapi-paiements"
+               value="c90237e9-ced5-3af6-88ea-84aeaa148878"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>facture_id</code> of an existing record in the factures table. Example: <code>c90237e9-ced5-3af6-88ea-84aeaa148878</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="GETapi-paiements"
+               value="a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>client_id</code> of an existing record in the clients table. Example: <code>a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_method_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_method_id"                data-endpoint="GETapi-paiements"
+               value="21c4122b-d554-3723-966c-6d723ea5293f"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>payment_method_id</code> of an existing record in the payment_methods table. Example: <code>21c4122b-d554-3723-966c-6d723ea5293f</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-paiements"
+               value="failed"
+               data-component="body">
+    <br>
+<p>Example: <code>failed</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-paiements"
+               value="2025-10-14T08:54:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-paiements"
+               value="2051-11-07"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-07</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="true"
+                   data-endpoint="GETapi-paiements"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="false"
+                   data-endpoint="GETapi-paiements"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_client"
+                   value="true"
+                   data-endpoint="GETapi-paiements"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_client"
+                   value="false"
+                   data-endpoint="GETapi-paiements"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="true"
+                   data-endpoint="GETapi-paiements"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="false"
+                   data-endpoint="GETapi-paiements"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-POSTapi-paiements">Créer un nouveau paiement</h2>
+
+<p>
+</p>
+
+<p>Enregistre un nouveau paiement pour une facture.
+Le montant payé de la facture sera automatiquement mis à jour.
+La référence du paiement est générée automatiquement.</p>
+
+<span id="example-requests-POSTapi-paiements">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/paiements" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"facture_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"payment_method_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"amount\": 50000,
+    \"payment_date\": \"2025-01-15 10:30:00\",
+    \"note\": \"Paiement en espèces\",
+    \"statut\": \"completed\",
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440003\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+    "client_id": "550e8400-e29b-41d4-a716-446655440001",
+    "payment_method_id": "550e8400-e29b-41d4-a716-446655440002",
+    "amount": 50000,
+    "payment_date": "2025-01-15 10:30:00",
+    "note": "Paiement en espèces",
+    "statut": "completed",
+    "user_id": "550e8400-e29b-41d4-a716-446655440003"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'facture_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'payment_method_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+            'amount' =&gt; 50000.0,
+            'payment_date' =&gt; '2025-01-15 10:30:00',
+            'note' =&gt; 'Paiement en espèces',
+            'statut' =&gt; 'completed',
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440003',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-paiements">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
+        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+        &quot;amount&quot;: &quot;50000.00&quot;,
+        &quot;payment_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;note&quot;: &quot;Paiement en esp&egrave;ces&quot;,
+        &quot;statut&quot;: &quot;completed&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440004&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;facture&quot;: {
+            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
+            &quot;total_amount&quot;: &quot;100000.00&quot;,
+            &quot;paid_amount&quot;: &quot;50000.00&quot;,
+            &quot;statut&quot;: &quot;partially_paid&quot;
+        }
+    },
+    &quot;message&quot;: &quot;Paiement enregistr&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Le montant du paiement d&eacute;passe le solde restant de la facture&quot;,
+    &quot;data&quot;: {
+        &quot;facture_total&quot;: &quot;100000.00&quot;,
+        &quot;already_paid&quot;: &quot;80000.00&quot;,
+        &quot;remaining&quot;: &quot;20000.00&quot;,
+        &quot;attempted_payment&quot;: &quot;30000.00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;errors&quot;: {
+        &quot;facture_id&quot;: [
+            &quot;La facture s&eacute;lectionn&eacute;e n&#039;existe pas&quot;
+        ],
+        &quot;amount&quot;: [
+            &quot;Le montant est requis&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-paiements" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-paiements"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-paiements"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-paiements" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-paiements">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-paiements" data-method="POST"
+      data-path="api/paiements"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-paiements', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-paiements"
+                    onclick="tryItOut('POSTapi-paiements');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-paiements"
+                    onclick="cancelTryOut('POSTapi-paiements');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-paiements"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/paiements</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-paiements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-paiements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>facture_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="facture_id"                data-endpoint="POSTapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>UUID de la facture à payer. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="POSTapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_method_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_method_id"                data-endpoint="POSTapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="POSTapi-paiements"
+               value="50000"
+               data-component="body">
+    <br>
+<p>Montant du paiement. Example: <code>50000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_date</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_date"                data-endpoint="POSTapi-paiements"
+               value="2025-01-15 10:30:00"
+               data-component="body">
+    <br>
+<p>optionnel Date du paiement (défaut: maintenant). Example: <code>2025-01-15 10:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-paiements"
+               value="Paiement en espèces"
+               data-component="body">
+    <br>
+<p>optionnel Note ou commentaire sur le paiement. Example: <code>Paiement en espèces</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="POSTapi-paiements"
+               value="completed"
+               data-component="body">
+    <br>
+<p>optionnel Statut du paiement (pending, completed, failed, refunded, défaut: completed). Example: <code>completed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="POSTapi-paiements"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID de l'utilisateur enregistrant le paiement. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-GETapi-paiements--id-">Afficher un paiement spécifique</h2>
+
+<p>
+</p>
+
+<p>Récupère les détails d'un paiement par son ID.</p>
+
+<span id="example-requests-GETapi-paiements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000?with_facture=1&amp;with_client=1&amp;with_payment_method=1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"with_facture\": true,
+    \"with_client\": true,
+    \"with_payment_method\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const params = {
+    "with_facture": "1",
+    "with_client": "1",
+    "with_payment_method": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "with_facture": true,
+    "with_client": true,
+    "with_payment_method": false
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'with_facture' =&gt; '1',
+            'with_client' =&gt; '1',
+            'with_payment_method' =&gt; '1',
+        ],
+        'json' =&gt; [
+            'with_facture' =&gt; true,
+            'with_client' =&gt; true,
+            'with_payment_method' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
+        &quot;facture&quot;: {
+            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;
+        },
+        &quot;client&quot;: {
+            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;name_client&quot;: &quot;John Doe&quot;
+        },
+        &quot;payment_method&quot;: {
+            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+            &quot;name&quot;: &quot;Esp&egrave;ces&quot;
+        },
+        &quot;amount&quot;: &quot;50000.00&quot;,
+        &quot;payment_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+        &quot;statut&quot;: &quot;completed&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiements--id-" data-method="GET"
+      data-path="api/paiements/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiements--id-"
+                    onclick="tryItOut('GETapi-paiements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiements--id-"
+                    onclick="cancelTryOut('GETapi-paiements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-paiements--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="1"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="0"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations de la facture. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="1"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="0"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations du client. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="1"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="0"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations de la méthode de paiement. Example: <code>true</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="true"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_facture"
+                   value="false"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="true"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_client"
+                   value="false"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="true"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-paiements--id-" style="display: none">
+            <input type="radio" name="with_payment_method"
+                   value="false"
+                   data-endpoint="GETapi-paiements--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-PUTapi-paiements--id-">Mettre à jour un paiement</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un paiement existant.
+Note: La modification du montant recalculera le statut de la facture.</p>
+
+<span id="example-requests-PUTapi-paiements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": 60000,
+    \"payment_date\": \"2025-01-16 10:30:00\",
+    \"note\": \"Paiement rectifié\",
+    \"statut\": \"completed\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": 60000,
+    "payment_date": "2025-01-16 10:30:00",
+    "note": "Paiement rectifié",
+    "statut": "completed"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'amount' =&gt; 60000.0,
+            'payment_date' =&gt; '2025-01-16 10:30:00',
+            'note' =&gt; 'Paiement rectifié',
+            'statut' =&gt; 'completed',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-paiements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
+        &quot;amount&quot;: &quot;60000.00&quot;,
+        &quot;statut&quot;: &quot;completed&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Paiement mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-paiements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-paiements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-paiements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-paiements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-paiements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-paiements--id-" data-method="PUT"
+      data-path="api/paiements/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-paiements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-paiements--id-"
+                    onclick="tryItOut('PUTapi-paiements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-paiements--id-"
+                    onclick="cancelTryOut('PUTapi-paiements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-paiements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/paiements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-paiements--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="PUTapi-paiements--id-"
+               value="60000"
+               data-component="body">
+    <br>
+<p>Nouveau montant du paiement. Example: <code>60000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_date</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_date"                data-endpoint="PUTapi-paiements--id-"
+               value="2025-01-16 10:30:00"
+               data-component="body">
+    <br>
+<p>Date du paiement. Example: <code>2025-01-16 10:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-paiements--id-"
+               value="Paiement rectifié"
+               data-component="body">
+    <br>
+<p>Note ou commentaire. Example: <code>Paiement rectifié</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PUTapi-paiements--id-"
+               value="completed"
+               data-component="body">
+    <br>
+<p>Statut du paiement (pending, completed, failed, refunded). Example: <code>completed</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-PATCHapi-paiements--id-">Mettre à jour un paiement</h2>
+
+<p>
+</p>
+
+<p>Met à jour les informations d'un paiement existant.
+Note: La modification du montant recalculera le statut de la facture.</p>
+
+<span id="example-requests-PATCHapi-paiements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": 60000,
+    \"payment_date\": \"2025-01-16 10:30:00\",
+    \"note\": \"Paiement rectifié\",
+    \"statut\": \"completed\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": 60000,
+    "payment_date": "2025-01-16 10:30:00",
+    "note": "Paiement rectifié",
+    "statut": "completed"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'amount' =&gt; 60000.0,
+            'payment_date' =&gt; '2025-01-16 10:30:00',
+            'note' =&gt; 'Paiement rectifié',
+            'statut' =&gt; 'completed',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-paiements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
+        &quot;amount&quot;: &quot;60000.00&quot;,
+        &quot;statut&quot;: &quot;completed&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T11:00:00Z&quot;
+    },
+    &quot;message&quot;: &quot;Paiement mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-paiements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-paiements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-paiements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-paiements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-paiements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-paiements--id-" data-method="PATCH"
+      data-path="api/paiements/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-paiements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-paiements--id-"
+                    onclick="tryItOut('PATCHapi-paiements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-paiements--id-"
+                    onclick="cancelTryOut('PATCHapi-paiements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-paiements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/paiements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-paiements--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="PATCHapi-paiements--id-"
+               value="60000"
+               data-component="body">
+    <br>
+<p>Nouveau montant du paiement. Example: <code>60000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_date</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_date"                data-endpoint="PATCHapi-paiements--id-"
+               value="2025-01-16 10:30:00"
+               data-component="body">
+    <br>
+<p>Date du paiement. Example: <code>2025-01-16 10:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-paiements--id-"
+               value="Paiement rectifié"
+               data-component="body">
+    <br>
+<p>Note ou commentaire. Example: <code>Paiement rectifié</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-paiements--id-"
+               value="completed"
+               data-component="body">
+    <br>
+<p>Statut du paiement (pending, completed, failed, refunded). Example: <code>completed</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-DELETEapi-paiements--id-">Supprimer un paiement</h2>
+
+<p>
+</p>
+
+<p>Supprime un paiement et met à jour le montant payé de la facture associée.
+Cette action est irréversible.</p>
+
+<span id="example-requests-DELETEapi-paiements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-paiements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Paiement supprim&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-paiements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-paiements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-paiements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-paiements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-paiements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-paiements--id-" data-method="DELETE"
+      data-path="api/paiements/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-paiements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-paiements--id-"
+                    onclick="tryItOut('DELETEapi-paiements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-paiements--id-"
+                    onclick="cancelTryOut('DELETEapi-paiements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-paiements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/paiements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-paiements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-paiements--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="payments-management-PATCHapi-paiements--id--update-status">Changer le statut d&#039;un paiement</h2>
+
+<p>
+</p>
+
+<p>Met à jour le statut d'un paiement et recalcule le montant payé de la facture.</p>
+
+<span id="example-requests-PATCHapi-paiements--id--update-status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000/update-status" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"statut\": \"refunded\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000/update-status"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "statut": "refunded"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000/update-status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'statut' =&gt; 'refunded',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-paiements--id--update-status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;statut&quot;: &quot;refunded&quot;
+    },
+    &quot;message&quot;: &quot;Statut du paiement mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-paiements--id--update-status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-paiements--id--update-status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-paiements--id--update-status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-paiements--id--update-status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-paiements--id--update-status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-paiements--id--update-status" data-method="PATCH"
+      data-path="api/paiements/{id}/update-status"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-paiements--id--update-status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-paiements--id--update-status"
+                    onclick="tryItOut('PATCHapi-paiements--id--update-status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-paiements--id--update-status"
+                    onclick="cancelTryOut('PATCHapi-paiements--id--update-status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-paiements--id--update-status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/paiements/{id}/update-status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-paiements--id--update-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-paiements--id--update-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-paiements--id--update-status"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-paiements--id--update-status"
+               value="refunded"
+               data-component="body">
+    <br>
+<p>Nouveau statut (pending, completed, failed, refunded). Example: <code>refunded</code></p>
+        </div>
+        </form>
+
                 <h1 id="stock-movement-types">Stock Movement Types</h1>
 
-    
+    <p>Récupère la liste des types de mouvements de stock</p>
 
-                                <h2 id="stock-movement-types-GETapi-stock-movement-types">Récupère la liste des types de mouvements de stock</h2>
+                                <h2 id="stock-movement-types-GETapi-stock-movement-types">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -2611,10 +12358,13 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration des types de mouvements de stock&quot;,
-    &quot;error&quot;: &quot;Message d&#039;erreur&quot;
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration des types de mouvements de stock&quot;,
+  &quot;error&quot;: &quot;Message d&#039;erreur&quot;
+}
+=======
+Afficher la liste des types de mouvements de stock
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-types" hidden>
@@ -2744,7 +12494,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="stock-movement-types-POSTapi-stock-movement-types">Crée un nouveau type de mouvement de stock</h2>
+                    <h2 id="stock-movement-types-POSTapi-stock-movement-types">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -2834,17 +12584,16 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;name&quot;: [
-            &quot;Le nom du type de mouvement est obligatoire.&quot;
-        ],
-        &quot;direction&quot;: [
-            &quot;La direction est obligatoire.&quot;
-        ]
-    }
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Erreur de validation&quot;,
+  &quot;errors&quot;: {
+    &quot;name&quot;: [&quot;Le nom du type de mouvement est obligatoire.&quot;],
+    &quot;direction&quot;: [&quot;La direction est obligatoire.&quot;]
+  }
+}
+=======
+Cr&eacute;er un nouveau type de mouvement de stock
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-POSTapi-stock-movement-types" hidden>
@@ -2941,7 +12690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movement-types-GETapi-stock-movement-types--id-">Récupère un type de mouvement de stock spécifique</h2>
+                    <h2 id="stock-movement-types-GETapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -3017,9 +12766,12 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
+}
+=======
+Afficher un type de mouvement de stock sp&eacute;cifique
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-types--id-" hidden>
@@ -3105,7 +12857,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="stock-movement-types-PUTapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</h2>
+                    <h2 id="stock-movement-types-PUTapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -3205,14 +12957,15 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;name&quot;: [
-            &quot;Le nom du type de mouvement est obligatoire.&quot;
-        ]
-    }
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Erreur de validation&quot;,
+  &quot;errors&quot;: {
+    &quot;name&quot;: [&quot;Le nom du type de mouvement est obligatoire.&quot;]
+  }
+}
+=======
+Mettre &agrave; jour un type de mouvement de stock
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-PUTapi-stock-movement-types--id-" hidden>
@@ -3321,7 +13074,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movement-types-PATCHapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</h2>
+                    <h2 id="stock-movement-types-PATCHapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -3421,14 +13174,15 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;name&quot;: [
-            &quot;Le nom du type de mouvement est obligatoire.&quot;
-        ]
-    }
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Erreur de validation&quot;,
+  &quot;errors&quot;: {
+    &quot;name&quot;: [&quot;Le nom du type de mouvement est obligatoire.&quot;]
+  }
+}
+=======
+Mettre &agrave; jour un type de mouvement de stock
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-PATCHapi-stock-movement-types--id-" hidden>
@@ -3537,7 +13291,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movement-types-DELETEapi-stock-movement-types--id-">Supprime un type de mouvement de stock (soft delete)</h2>
+                    <h2 id="stock-movement-types-DELETEapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -3605,9 +13359,12 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
+}
+=======
+Supprimer un type de mouvement de stock (soft delete)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-DELETEapi-stock-movement-types--id-" hidden>
@@ -3693,7 +13450,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="stock-movement-types-GETapi-stock-movement-types-trashed-list">Récupère la liste des types de mouvements de stock supprimés</h2>
+                    <h2 id="stock-movement-types-GETapi-stock-movement-types-trashed-list">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -3751,24 +13508,27 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;data&quot;: [
-            {
-                &quot;stock_movement_type_id&quot;: &quot;uuid&quot;,
-                &quot;name&quot;: &quot;R&eacute;ception&quot;,
-                &quot;direction&quot;: &quot;in&quot;,
-                &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-                &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-                &quot;deleted_at&quot;: &quot;2024-01-01 12:00:00&quot;
-            }
-        ],
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 15,
-        &quot;total&quot;: 1
-    },
-    &quot;message&quot;: &quot;Types de mouvements de stock supprim&eacute;s r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
-}</code>
+  &quot;success&quot;: true,
+  &quot;data&quot;: {
+    &quot;data&quot;: [
+      {
+        &quot;stock_movement_type_id&quot;: &quot;uuid&quot;,
+        &quot;name&quot;: &quot;R&eacute;ception&quot;,
+        &quot;direction&quot;: &quot;in&quot;,
+        &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
+        &quot;deleted_at&quot;: &quot;2024-01-01 12:00:00&quot;
+      }
+    ],
+    &quot;current_page&quot;: 1,
+    &quot;per_page&quot;: 15,
+    &quot;total&quot;: 1
+  },
+  &quot;message&quot;: &quot;Types de mouvements de stock supprim&eacute;s r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}
+=======
+Lister les types de mouvements de stock supprim&eacute;s
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-types-trashed-list" hidden>
@@ -3842,7 +13602,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="stock-movement-types-POSTapi-stock-movement-types--id--restore">Restaure un type de mouvement de stock supprimé</h2>
+                    <h2 id="stock-movement-types-POSTapi-stock-movement-types--id--restore">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -3917,9 +13677,12 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Ce type de mouvement de stock n&#039;est pas supprim&eacute;&quot;
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Ce type de mouvement de stock n&#039;est pas supprim&eacute;&quot;
+}
+=======
+Restaurer un type de mouvement de stock supprim&eacute;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
             <blockquote>
             <p>Example response (404):</p>
@@ -4962,9 +14725,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="stock-movement-details">Stock Movement Details</h1>
 
-    
+    <p>Récupère la liste des détails de mouvements de stock</p>
 
-                                <h2 id="stock-movement-details-GETapi-stock-movement-details">Récupère la liste des détails de mouvements de stock</h2>
+                                <h2 id="stock-movement-details-GETapi-stock-movement-details">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -5043,37 +14806,40 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;data&quot;: [
-            {
-                &quot;stock_movement_detail_id&quot;: &quot;uuid&quot;,
-                &quot;stock_movement_id&quot;: &quot;uuid&quot;,
-                &quot;product_id&quot;: &quot;uuid&quot;,
-                &quot;quantity&quot;: 10,
-                &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-                &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-                &quot;stock_movement&quot;: {
-                    &quot;stock_movement_id&quot;: &quot;uuid&quot;,
-                    &quot;reference&quot;: &quot;MV-2024-001&quot;,
-                    &quot;movement_type&quot;: {
-                        &quot;name&quot;: &quot;R&eacute;ception&quot;,
-                        &quot;direction&quot;: &quot;in&quot;
-                    }
-                },
-                &quot;product&quot;: {
-                    &quot;product_id&quot;: &quot;uuid&quot;,
-                    &quot;name&quot;: &quot;Produit A&quot;,
-                    &quot;sku&quot;: &quot;PROD-A-001&quot;
-                }
-            }
-        ],
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 15,
-        &quot;total&quot;: 1
-    },
-    &quot;message&quot;: &quot;D&eacute;tails de mouvements de stock r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
-}</code>
+  &quot;success&quot;: true,
+  &quot;data&quot;: {
+    &quot;data&quot;: [
+      {
+        &quot;stock_movement_detail_id&quot;: &quot;uuid&quot;,
+        &quot;stock_movement_id&quot;: &quot;uuid&quot;,
+        &quot;product_id&quot;: &quot;uuid&quot;,
+        &quot;quantity&quot;: 10,
+        &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
+        &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
+        &quot;stock_movement&quot;: {
+          &quot;stock_movement_id&quot;: &quot;uuid&quot;,
+          &quot;reference&quot;: &quot;MV-2024-001&quot;,
+          &quot;movement_type&quot;: {
+            &quot;name&quot;: &quot;R&eacute;ception&quot;,
+            &quot;direction&quot;: &quot;in&quot;
+          }
+        },
+        &quot;product&quot;: {
+          &quot;product_id&quot;: &quot;uuid&quot;,
+          &quot;name&quot;: &quot;Produit A&quot;,
+          &quot;sku&quot;: &quot;PROD-A-001&quot;
+        }
+      }
+    ],
+    &quot;current_page&quot;: 1,
+    &quot;per_page&quot;: 15,
+    &quot;total&quot;: 1
+  },
+  &quot;message&quot;: &quot;D&eacute;tails de mouvements de stock r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}
+=======
+Afficher la liste des d&eacute;tails de mouvements de stock
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-details" hidden>
@@ -5225,7 +14991,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="stock-movement-details-POSTapi-stock-movement-details">Crée un nouveau détail de mouvement de stock</h2>
+                    <h2 id="stock-movement-details-POSTapi-stock-movement-details">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
 
 <p>
 </p>
@@ -5342,20 +15108,17 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;stock_movement_id&quot;: [
-            &quot;Le mouvement de stock est obligatoire.&quot;
-        ],
-        &quot;product_id&quot;: [
-            &quot;Le produit est obligatoire.&quot;
-        ],
-        &quot;quantity&quot;: [
-            &quot;La quantit&eacute; est obligatoire.&quot;
-        ]
-    }
-}</code>
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Erreur de validation&quot;,
+  &quot;errors&quot;: {
+    &quot;stock_movement_id&quot;: [&quot;Le mouvement de stock est obligatoire.&quot;],
+    &quot;product_id&quot;: [&quot;Le produit est obligatoire.&quot;],
+    &quot;quantity&quot;: [&quot;La quantit&eacute; est obligatoire.&quot;]
+  }
+}
+=======
+Cr&eacute;er un nouveau d&eacute;tail de mouvement de stock
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
  </pre>
     </span>
 <span id="execution-results-POSTapi-stock-movement-details" hidden>
@@ -7888,7 +17651,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -7916,7 +17679,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -7946,7 +17709,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -8179,7 +17942,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -9583,3499 +19346,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                     </form>
-
-                <h1 id="clients-management">Clients Management</h1>
-
-    <p>APIs pour gérer les clients</p>
-
-                                <h2 id="clients-management-GETapi-clients-trashed-list">Lister les clients supprimés</h2>
-
-<p>
-</p>
-
-<p>Récupère la liste des clients supprimés (soft delete).</p>
-
-<span id="example-requests-GETapi-clients-trashed-list">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/trashed/list?page=1&amp;per_page=15&amp;with_client_type=1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"page\": 16,
-    \"per_page\": 22,
-    \"with_client_type\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/trashed/list"
-);
-
-const params = {
-    "page": "1",
-    "per_page": "15",
-    "with_client_type": "1",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "page": 16,
-    "per_page": 22,
-    "with_client_type": false
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/trashed/list';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'page' =&gt; '1',
-            'per_page' =&gt; '15',
-            'with_client_type' =&gt; '1',
-        ],
-        'json' =&gt; [
-            'page' =&gt; 16,
-            'per_page' =&gt; 22,
-            'with_client_type' =&gt; false,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-clients-trashed-list">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;code&quot;: &quot;CLI-DEL123&quot;,
-            &quot;name_client&quot;: &quot;Client Supprim&eacute;&quot;,
-            &quot;email&quot;: &quot;deleted@example.com&quot;,
-            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;deleted_at&quot;: &quot;2024-01-15T12:00:00Z&quot;
-        }
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-clients-trashed-list" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-clients-trashed-list"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-clients-trashed-list"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-clients-trashed-list" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-clients-trashed-list">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-clients-trashed-list" data-method="GET"
-      data-path="api/clients/trashed/list"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-trashed-list', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-clients-trashed-list"
-                    onclick="tryItOut('GETapi-clients-trashed-list');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-clients-trashed-list"
-                    onclick="cancelTryOut('GETapi-clients-trashed-list');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-clients-trashed-list"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/clients/trashed/list</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-clients-trashed-list"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-clients-trashed-list"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-clients-trashed-list"
-               value="1"
-               data-component="query">
-    <br>
-<p>Page à récupérer. Example: <code>1</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-clients-trashed-list"
-               value="15"
-               data-component="query">
-    <br>
-<p>Nombre d'éléments par page. Example: <code>15</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="1"
-                   data-endpoint="GETapi-clients-trashed-list"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="0"
-                   data-endpoint="GETapi-clients-trashed-list"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations du type de client. Example: <code>true</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-clients-trashed-list"
-               value="16"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-clients-trashed-list"
-               value="22"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="true"
-                   data-endpoint="GETapi-clients-trashed-list"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="false"
-                   data-endpoint="GETapi-clients-trashed-list"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>false</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-GETapi-clients-statistics-overview">Statistiques des clients</h2>
-
-<p>
-</p>
-
-<p>Récupère des statistiques générales sur les clients.</p>
-
-<span id="example-requests-GETapi-clients-statistics-overview">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/statistics/overview" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/statistics/overview"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/statistics/overview';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-clients-statistics-overview">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;total_clients&quot;: 150,
-        &quot;active_clients&quot;: 120,
-        &quot;inactive_clients&quot;: 30,
-        &quot;deleted_clients&quot;: 5,
-        &quot;clients_with_positive_balance&quot;: 80,
-        &quot;clients_with_negative_balance&quot;: 25,
-        &quot;clients_with_zero_balance&quot;: 45,
-        &quot;total_credit_limit&quot;: &quot;75000000.00&quot;,
-        &quot;total_current_balance&quot;: &quot;12500000.00&quot;,
-        &quot;total_available_credit&quot;: &quot;62500000.00&quot;,
-        &quot;average_credit_limit&quot;: &quot;500000.00&quot;,
-        &quot;average_current_balance&quot;: &quot;83333.33&quot;,
-        &quot;average_base_reduction&quot;: &quot;5.25&quot;
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-clients-statistics-overview" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-clients-statistics-overview"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-clients-statistics-overview"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-clients-statistics-overview" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-clients-statistics-overview">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-clients-statistics-overview" data-method="GET"
-      data-path="api/clients/statistics/overview"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-statistics-overview', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-clients-statistics-overview"
-                    onclick="tryItOut('GETapi-clients-statistics-overview');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-clients-statistics-overview"
-                    onclick="cancelTryOut('GETapi-clients-statistics-overview');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-clients-statistics-overview"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/clients/statistics/overview</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-clients-statistics-overview"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-clients-statistics-overview"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="clients-management-POSTapi-clients-search">Rechercher des clients</h2>
-
-<p>
-</p>
-
-<p>Recherche avancée de clients avec de multiples critères.</p>
-
-<span id="example-requests-POSTapi-clients-search">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/clients/search" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"query\": \"John\",
-    \"fields\": [
-        \"name_client\",
-        \"email\",
-        \"ifu\"
-    ],
-    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"is_active\": true,
-    \"credit_min\": 100000,
-    \"credit_max\": 1000000,
-    \"balance_min\": -50000,
-    \"balance_max\": 500000,
-    \"reduction_min\": 0,
-    \"reduction_max\": 20,
-    \"page\": 1,
-    \"per_page\": 20
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/search"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "query": "John",
-    "fields": [
-        "name_client",
-        "email",
-        "ifu"
-    ],
-    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "is_active": true,
-    "credit_min": 100000,
-    "credit_max": 1000000,
-    "balance_min": -50000,
-    "balance_max": 500000,
-    "reduction_min": 0,
-    "reduction_max": 20,
-    "page": 1,
-    "per_page": 20
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/search';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'query' =&gt; 'John',
-            'fields' =&gt; [
-                'name_client',
-                'email',
-                'ifu',
-            ],
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'is_active' =&gt; true,
-            'credit_min' =&gt; 100000.0,
-            'credit_max' =&gt; 1000000.0,
-            'balance_min' =&gt; -50000.0,
-            'balance_max' =&gt; 500000.0,
-            'reduction_min' =&gt; 0.0,
-            'reduction_max' =&gt; 20.0,
-            'page' =&gt; 1,
-            'per_page' =&gt; 20,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-clients-search">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;code&quot;: &quot;CLI-ABC123&quot;,
-            &quot;name_client&quot;: &quot;John Doe&quot;,
-            &quot;name_representant&quot;: &quot;Jane Smith&quot;,
-            &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
-            &quot;email&quot;: &quot;john.doe@example.com&quot;,
-            &quot;ifu&quot;: &quot;1234567890123&quot;,
-            &quot;city&quot;: &quot;Cotonou&quot;,
-            &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
-            &quot;credit_limit&quot;: &quot;500000.00&quot;,
-            &quot;current_balance&quot;: &quot;150000.00&quot;,
-            &quot;base_reduction&quot;: &quot;5.00&quot;,
-            &quot;is_active&quot;: true
-        }
-    ],
-    &quot;meta&quot;: {
-        &quot;total&quot;: 1,
-        &quot;per_page&quot;: 20,
-        &quot;current_page&quot;: 1
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-clients-search" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-clients-search"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-clients-search"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-clients-search" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-clients-search">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-clients-search" data-method="POST"
-      data-path="api/clients/search"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients-search', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-clients-search"
-                    onclick="tryItOut('POSTapi-clients-search');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-clients-search"
-                    onclick="cancelTryOut('POSTapi-clients-search');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-clients-search"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/clients/search</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-clients-search"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-clients-search"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>query</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="query"                data-endpoint="POSTapi-clients-search"
-               value="John"
-               data-component="body">
-    <br>
-<p>Terme de recherche. Example: <code>John</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fields</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="fields[0]"                data-endpoint="POSTapi-clients-search"
-               data-component="body">
-        <input type="text" style="display: none"
-               name="fields[1]"                data-endpoint="POSTapi-clients-search"
-               data-component="body">
-    <br>
-<p>optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).</p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="POSTapi-clients-search"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>optionnel Filtrer par type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-clients-search" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="POSTapi-clients-search"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-clients-search" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="POSTapi-clients-search"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>optionnel Filtrer par statut. Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>credit_min</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="credit_min"                data-endpoint="POSTapi-clients-search"
-               value="100000"
-               data-component="body">
-    <br>
-<p>optionnel Limite de crédit minimale. Example: <code>100000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>credit_max</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="credit_max"                data-endpoint="POSTapi-clients-search"
-               value="1000000"
-               data-component="body">
-    <br>
-<p>optionnel Limite de crédit maximale. Example: <code>1000000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>balance_min</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="balance_min"                data-endpoint="POSTapi-clients-search"
-               value="-50000"
-               data-component="body">
-    <br>
-<p>optionnel Solde minimal. Example: <code>-50000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>balance_max</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="balance_max"                data-endpoint="POSTapi-clients-search"
-               value="500000"
-               data-component="body">
-    <br>
-<p>optionnel Solde maximal. Example: <code>500000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>reduction_min</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="reduction_min"                data-endpoint="POSTapi-clients-search"
-               value="0"
-               data-component="body">
-    <br>
-<p>optionnel Réduction de base minimale (%). Example: <code>0</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>reduction_max</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="reduction_max"                data-endpoint="POSTapi-clients-search"
-               value="20"
-               data-component="body">
-    <br>
-<p>optionnel Réduction de base maximale (%). Example: <code>20</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="POSTapi-clients-search"
-               value="1"
-               data-component="body">
-    <br>
-<p>optionnel Page à récupérer. Example: <code>1</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="POSTapi-clients-search"
-               value="20"
-               data-component="body">
-    <br>
-<p>optionnel Éléments par page. Example: <code>20</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-GETapi-clients">Liste tous les clients</h2>
-
-<p>
-</p>
-
-<p>Récupère la liste de tous les clients avec pagination et filtres optionnels.
-Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type de client.</p>
-
-<span id="example-requests-GETapi-clients">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;ifu=1234567890123&amp;marketteur=Marie+Dupont&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;balance_filter=positive" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"page\": 16,
-    \"per_page\": 22,
-    \"search\": \"g\",
-    \"name\": \"z\",
-    \"email\": \"rempel.chadrick@example.org\",
-    \"code\": \"l\",
-    \"city\": \"j\",
-    \"ifu\": \"n\",
-    \"marketteur\": \"i\",
-    \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": false,
-    \"with_client_type\": false,
-    \"balance_filter\": \"positive\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients"
-);
-
-const params = {
-    "page": "1",
-    "per_page": "15",
-    "search": "John",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "code": "CLI-ABC123",
-    "city": "Cotonou",
-    "ifu": "1234567890123",
-    "marketteur": "Marie Dupont",
-    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "is_active": "1",
-    "with_client_type": "1",
-    "balance_filter": "positive",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "page": 16,
-    "per_page": 22,
-    "search": "g",
-    "name": "z",
-    "email": "rempel.chadrick@example.org",
-    "code": "l",
-    "city": "j",
-    "ifu": "n",
-    "marketteur": "i",
-    "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": false,
-    "with_client_type": false,
-    "balance_filter": "positive"
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'page' =&gt; '1',
-            'per_page' =&gt; '15',
-            'search' =&gt; 'John',
-            'name' =&gt; 'John Doe',
-            'email' =&gt; 'john@example.com',
-            'code' =&gt; 'CLI-ABC123',
-            'city' =&gt; 'Cotonou',
-            'ifu' =&gt; '1234567890123',
-            'marketteur' =&gt; 'Marie Dupont',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'is_active' =&gt; '1',
-            'with_client_type' =&gt; '1',
-            'balance_filter' =&gt; 'positive',
-        ],
-        'json' =&gt; [
-            'page' =&gt; 16,
-            'per_page' =&gt; 22,
-            'search' =&gt; 'g',
-            'name' =&gt; 'z',
-            'email' =&gt; 'rempel.chadrick@example.org',
-            'code' =&gt; 'l',
-            'city' =&gt; 'j',
-            'ifu' =&gt; 'n',
-            'marketteur' =&gt; 'i',
-            'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; false,
-            'with_client_type' =&gt; false,
-            'balance_filter' =&gt; 'positive',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-clients">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;code&quot;: &quot;CLI-ABC123&quot;,
-            &quot;name_client&quot;: &quot;John Doe&quot;,
-            &quot;name_representant&quot;: &quot;Jane Smith&quot;,
-            &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
-            &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-            &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
-            &quot;city&quot;: &quot;Cotonou&quot;,
-            &quot;email&quot;: &quot;john.doe@example.com&quot;,
-            &quot;ifu&quot;: &quot;1234567890123&quot;,
-            &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
-            &quot;credit_limit&quot;: &quot;500000.00&quot;,
-            &quot;current_balance&quot;: &quot;150000.00&quot;,
-            &quot;base_reduction&quot;: &quot;5.00&quot;,
-            &quot;is_active&quot;: true,
-            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;formatted_credit_limit&quot;: &quot;500 000,00 FCFA&quot;,
-            &quot;formatted_current_balance&quot;: &quot;150 000,00 FCFA&quot;,
-            &quot;available_credit&quot;: &quot;350000.00&quot;,
-            &quot;formatted_available_credit&quot;: &quot;350 000,00 FCFA&quot;,
-            &quot;formatted_base_reduction&quot;: &quot;5,00 %&quot;
-        }
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-clients" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-clients"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-clients"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-clients" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-clients">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-clients" data-method="GET"
-      data-path="api/clients"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-clients"
-                    onclick="tryItOut('GETapi-clients');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-clients"
-                    onclick="cancelTryOut('GETapi-clients');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-clients"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/clients</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-clients"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-clients"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-clients"
-               value="1"
-               data-component="query">
-    <br>
-<p>Page à récupérer (pagination). Example: <code>1</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-clients"
-               value="15"
-               data-component="query">
-    <br>
-<p>Nombre d'éléments par page (max: 100). Example: <code>15</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-clients"
-               value="John"
-               data-component="query">
-    <br>
-<p>Recherche globale (nom, email, code, IFU, représentant, marketteur). Example: <code>John</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="GETapi-clients"
-               value="John Doe"
-               data-component="query">
-    <br>
-<p>Rechercher par nom de client. Example: <code>John Doe</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-clients"
-               value="john@example.com"
-               data-component="query">
-    <br>
-<p>Rechercher par email. Example: <code>john@example.com</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="GETapi-clients"
-               value="CLI-ABC123"
-               data-component="query">
-    <br>
-<p>Rechercher par code client. Example: <code>CLI-ABC123</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="GETapi-clients"
-               value="Cotonou"
-               data-component="query">
-    <br>
-<p>Rechercher par ville. Example: <code>Cotonou</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ifu"                data-endpoint="GETapi-clients"
-               value="1234567890123"
-               data-component="query">
-    <br>
-<p>Rechercher par numéro IFU. Example: <code>1234567890123</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="marketteur"                data-endpoint="GETapi-clients"
-               value="Marie Dupont"
-               data-component="query">
-    <br>
-<p>Rechercher par marketteur. Example: <code>Marie Dupont</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="GETapi-clients"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="query">
-    <br>
-<p>Filtrer par type de client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="1"
-                   data-endpoint="GETapi-clients"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="0"
-                   data-endpoint="GETapi-clients"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Filtrer par statut actif. Example: <code>true</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="1"
-                   data-endpoint="GETapi-clients"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="0"
-                   data-endpoint="GETapi-clients"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations du type de client. Example: <code>true</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
-               data-component="query">
-    <br>
-<p>Filtrer par solde (positive, negative, zero). Example: <code>positive</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-clients"
-               value="16"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-clients"
-               value="22"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-clients"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="GETapi-clients"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-clients"
-               value="rempel.chadrick@example.org"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>rempel.chadrick@example.org</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="GETapi-clients"
-               value="l"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>l</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="GETapi-clients"
-               value="j"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>j</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ifu"                data-endpoint="GETapi-clients"
-               value="n"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>n</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="marketteur"                data-endpoint="GETapi-clients"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="GETapi-clients"
-               value="51c7cf5e-fac2-3ac6-8ef8-61e6050503af"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table. Example: <code>51c7cf5e-fac2-3ac6-8ef8-61e6050503af</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>false</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="true"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="false"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>false</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
-               data-component="body">
-    <br>
-<p>Example: <code>positive</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-POSTapi-clients">Créer un nouveau client</h2>
-
-<p>
-</p>
-
-<p>Crée un nouveau client avec les informations fournies.
-L'UUID et le code client sont générés automatiquement si non fournis.</p>
-
-<span id="example-requests-POSTapi-clients">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/clients" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name_client\": \"John Doe\",
-    \"name_representant\": \"Jane Smith\",
-    \"marketteur\": \"Marie Dupont\",
-    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"adresse\": \"123 Rue de la Paix\",
-    \"city\": \"Cotonou\",
-    \"email\": \"john.doe@example.com\",
-    \"ifu\": \"1234567890123\",
-    \"phonenumber\": \"+229 12 34 56 78\",
-    \"credit_limit\": 500000,
-    \"current_balance\": 0,
-    \"base_reduction\": 5,
-    \"is_active\": true
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name_client": "John Doe",
-    "name_representant": "Jane Smith",
-    "marketteur": "Marie Dupont",
-    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "adresse": "123 Rue de la Paix",
-    "city": "Cotonou",
-    "email": "john.doe@example.com",
-    "ifu": "1234567890123",
-    "phonenumber": "+229 12 34 56 78",
-    "credit_limit": 500000,
-    "current_balance": 0,
-    "base_reduction": 5,
-    "is_active": true
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'name_client' =&gt; 'John Doe',
-            'name_representant' =&gt; 'Jane Smith',
-            'marketteur' =&gt; 'Marie Dupont',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'adresse' =&gt; '123 Rue de la Paix',
-            'city' =&gt; 'Cotonou',
-            'email' =&gt; 'john.doe@example.com',
-            'ifu' =&gt; '1234567890123',
-            'phonenumber' =&gt; '+229 12 34 56 78',
-            'credit_limit' =&gt; 500000.0,
-            'current_balance' =&gt; 0.0,
-            'base_reduction' =&gt; 5.0,
-            'is_active' =&gt; true,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-clients">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI00001&quot;,
-        &quot;name_client&quot;: &quot;John Doe&quot;,
-        &quot;name_representant&quot;: &quot;Jane Smith&quot;,
-        &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
-        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
-        &quot;city&quot;: &quot;Cotonou&quot;,
-        &quot;email&quot;: &quot;john.doe@example.com&quot;,
-        &quot;ifu&quot;: &quot;1234567890123&quot;,
-        &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
-        &quot;credit_limit&quot;: &quot;500000.00&quot;,
-        &quot;current_balance&quot;: &quot;0.00&quot;,
-        &quot;base_reduction&quot;: &quot;5.00&quot;,
-        &quot;is_active&quot;: true,
-        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Client cr&eacute;&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
-    &quot;errors&quot;: {
-        &quot;email&quot;: [
-            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
-        ],
-        &quot;ifu&quot;: [
-            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-clients" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-clients"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-clients"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-clients" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-clients">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-clients" data-method="POST"
-      data-path="api/clients"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-clients"
-                    onclick="tryItOut('POSTapi-clients');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-clients"
-                    onclick="cancelTryOut('POSTapi-clients');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-clients"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/clients</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-clients"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-clients"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="name_client"                data-endpoint="POSTapi-clients"
-               value="John Doe"
-               data-component="body">
-    <br>
-<p>Nom complet du client. Example: <code>John Doe</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name_representant"                data-endpoint="POSTapi-clients"
-               value="Jane Smith"
-               data-component="body">
-    <br>
-<p>optionnel Nom du représentant du client. Example: <code>Jane Smith</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="marketteur"                data-endpoint="POSTapi-clients"
-               value="Marie Dupont"
-               data-component="body">
-    <br>
-<p>optionnel Nom du marketteur associé au client. Example: <code>Marie Dupont</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="POSTapi-clients"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>optionnel UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="adresse"                data-endpoint="POSTapi-clients"
-               value="123 Rue de la Paix"
-               data-component="body">
-    <br>
-<p>optionnel Adresse du client. Example: <code>123 Rue de la Paix</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="POSTapi-clients"
-               value="Cotonou"
-               data-component="body">
-    <br>
-<p>optionnel Ville du client. Example: <code>Cotonou</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-clients"
-               value="john.doe@example.com"
-               data-component="body">
-    <br>
-<p>optionnel Email unique du client. Example: <code>john.doe@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ifu"                data-endpoint="POSTapi-clients"
-               value="1234567890123"
-               data-component="body">
-    <br>
-<p>optionnel Numéro IFU (Identifiant Fiscal Unique). Example: <code>1234567890123</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="phonenumber"                data-endpoint="POSTapi-clients"
-               value="+229 12 34 56 78"
-               data-component="body">
-    <br>
-<p>optionnel Numéro de téléphone. Example: <code>+229 12 34 56 78</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="credit_limit"                data-endpoint="POSTapi-clients"
-               value="500000"
-               data-component="body">
-    <br>
-<p>optionnel Limite de crédit (défaut: 0). Example: <code>500000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="current_balance"                data-endpoint="POSTapi-clients"
-               value="0"
-               data-component="body">
-    <br>
-<p>optionnel Solde actuel (défaut: 0). Example: <code>0</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="base_reduction"                data-endpoint="POSTapi-clients"
-               value="5"
-               data-component="body">
-    <br>
-<p>optionnel Réduction de base en pourcentage (0-100, défaut: 0). Example: <code>5</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="POSTapi-clients"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="POSTapi-clients"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>optionnel Statut actif (défaut: true). Example: <code>true</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-GETapi-clients--client_id-">Afficher un client spécifique</h2>
-
-<p>
-</p>
-
-<p>Récupère les détails d'un client par son ID.</p>
-
-<span id="example-requests-GETapi-clients--client_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000?with_client_type=1" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"with_client_type\": true
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
-);
-
-const params = {
-    "with_client_type": "1",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "with_client_type": true
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'with_client_type' =&gt; '1',
-        ],
-        'json' =&gt; [
-            'with_client_type' =&gt; true,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-clients--client_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI00001&quot;,
-        &quot;name_client&quot;: &quot;John Doe&quot;,
-        &quot;name_representant&quot;: &quot;Jane Smith&quot;,
-        &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
-        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;adresse&quot;: &quot;123 Rue de la Paix&quot;,
-        &quot;city&quot;: &quot;Cotonou&quot;,
-        &quot;email&quot;: &quot;john.doe@example.com&quot;,
-        &quot;ifu&quot;: &quot;1234567890123&quot;,
-        &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
-        &quot;credit_limit&quot;: &quot;500000.00&quot;,
-        &quot;current_balance&quot;: &quot;150000.00&quot;,
-        &quot;base_reduction&quot;: &quot;5.00&quot;,
-        &quot;is_active&quot;: true,
-        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-clients--client_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-clients--client_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-clients--client_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-clients--client_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-clients--client_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-clients--client_id-" data-method="GET"
-      data-path="api/clients/{client_id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients--client_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-clients--client_id-"
-                    onclick="tryItOut('GETapi-clients--client_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-clients--client_id-"
-                    onclick="cancelTryOut('GETapi-clients--client_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-clients--client_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/clients/{client_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="GETapi-clients--client_id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients--client_id-" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="1"
-                   data-endpoint="GETapi-clients--client_id-"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients--client_id-" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="0"
-                   data-endpoint="GETapi-clients--client_id-"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations du type de client. Example: <code>true</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients--client_id-" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="true"
-                   data-endpoint="GETapi-clients--client_id-"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients--client_id-" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="false"
-                   data-endpoint="GETapi-clients--client_id-"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>true</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-PUTapi-clients--client_id-">Mettre à jour un client</h2>
-
-<p>
-</p>
-
-<p>Met à jour les informations d'un client existant.
-Seuls les champs fournis seront mis à jour.</p>
-
-<span id="example-requests-PUTapi-clients--client_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"code\": \"CLI-UPDATED\",
-    \"name_client\": \"Jane Doe\",
-    \"name_representant\": \"John Smith\",
-    \"marketteur\": \"Pierre Martin\",
-    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"adresse\": \"456 Avenue des Palmiers\",
-    \"city\": \"Porto-Novo\",
-    \"email\": \"jane.doe@example.com\",
-    \"ifu\": \"9876543210987\",
-    \"phonenumber\": \"+229 87 65 43 21\",
-    \"credit_limit\": 750000,
-    \"current_balance\": 200000,
-    \"base_reduction\": 10,
-    \"is_active\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "code": "CLI-UPDATED",
-    "name_client": "Jane Doe",
-    "name_representant": "John Smith",
-    "marketteur": "Pierre Martin",
-    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "adresse": "456 Avenue des Palmiers",
-    "city": "Porto-Novo",
-    "email": "jane.doe@example.com",
-    "ifu": "9876543210987",
-    "phonenumber": "+229 87 65 43 21",
-    "credit_limit": 750000,
-    "current_balance": 200000,
-    "base_reduction": 10,
-    "is_active": false
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
-$response = $client-&gt;put(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'code' =&gt; 'CLI-UPDATED',
-            'name_client' =&gt; 'Jane Doe',
-            'name_representant' =&gt; 'John Smith',
-            'marketteur' =&gt; 'Pierre Martin',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'adresse' =&gt; '456 Avenue des Palmiers',
-            'city' =&gt; 'Porto-Novo',
-            'email' =&gt; 'jane.doe@example.com',
-            'ifu' =&gt; '9876543210987',
-            'phonenumber' =&gt; '+229 87 65 43 21',
-            'credit_limit' =&gt; 750000.0,
-            'current_balance' =&gt; 200000.0,
-            'base_reduction' =&gt; 10.0,
-            'is_active' =&gt; false,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-clients--client_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI-UPDATED&quot;,
-        &quot;name_client&quot;: &quot;Jane Doe&quot;,
-        &quot;name_representant&quot;: &quot;John Smith&quot;,
-        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
-        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
-        &quot;city&quot;: &quot;Porto-Novo&quot;,
-        &quot;email&quot;: &quot;jane.doe@example.com&quot;,
-        &quot;ifu&quot;: &quot;9876543210987&quot;,
-        &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
-        &quot;credit_limit&quot;: &quot;750000.00&quot;,
-        &quot;current_balance&quot;: &quot;200000.00&quot;,
-        &quot;base_reduction&quot;: &quot;10.00&quot;,
-        &quot;is_active&quot;: false,
-        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
-    &quot;errors&quot;: {
-        &quot;email&quot;: [
-            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
-        ],
-        &quot;ifu&quot;: [
-            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTapi-clients--client_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-clients--client_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-clients--client_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-clients--client_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-clients--client_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-clients--client_id-" data-method="PUT"
-      data-path="api/clients/{client_id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-clients--client_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-clients--client_id-"
-                    onclick="tryItOut('PUTapi-clients--client_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-clients--client_id-"
-                    onclick="cancelTryOut('PUTapi-clients--client_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-clients--client_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/clients/{client_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="PUTapi-clients--client_id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="PUTapi-clients--client_id-"
-               value="CLI-UPDATED"
-               data-component="body">
-    <br>
-<p>Code client unique. Example: <code>CLI-UPDATED</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name_client"                data-endpoint="PUTapi-clients--client_id-"
-               value="Jane Doe"
-               data-component="body">
-    <br>
-<p>Nom complet du client. Example: <code>Jane Doe</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name_representant"                data-endpoint="PUTapi-clients--client_id-"
-               value="John Smith"
-               data-component="body">
-    <br>
-<p>Nom du représentant du client. Example: <code>John Smith</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="marketteur"                data-endpoint="PUTapi-clients--client_id-"
-               value="Pierre Martin"
-               data-component="body">
-    <br>
-<p>Nom du marketteur associé. Example: <code>Pierre Martin</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="PUTapi-clients--client_id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="adresse"                data-endpoint="PUTapi-clients--client_id-"
-               value="456 Avenue des Palmiers"
-               data-component="body">
-    <br>
-<p>Adresse du client. Example: <code>456 Avenue des Palmiers</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="PUTapi-clients--client_id-"
-               value="Porto-Novo"
-               data-component="body">
-    <br>
-<p>Ville du client. Example: <code>Porto-Novo</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="PUTapi-clients--client_id-"
-               value="jane.doe@example.com"
-               data-component="body">
-    <br>
-<p>Email unique du client. Example: <code>jane.doe@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ifu"                data-endpoint="PUTapi-clients--client_id-"
-               value="9876543210987"
-               data-component="body">
-    <br>
-<p>Numéro IFU unique. Example: <code>9876543210987</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="phonenumber"                data-endpoint="PUTapi-clients--client_id-"
-               value="+229 87 65 43 21"
-               data-component="body">
-    <br>
-<p>Numéro de téléphone. Example: <code>+229 87 65 43 21</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="credit_limit"                data-endpoint="PUTapi-clients--client_id-"
-               value="750000"
-               data-component="body">
-    <br>
-<p>Limite de crédit. Example: <code>750000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="current_balance"                data-endpoint="PUTapi-clients--client_id-"
-               value="200000"
-               data-component="body">
-    <br>
-<p>Solde actuel. Example: <code>200000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="base_reduction"                data-endpoint="PUTapi-clients--client_id-"
-               value="10"
-               data-component="body">
-    <br>
-<p>Réduction de base en pourcentage (0-100). Example: <code>10</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="PUTapi-clients--client_id-" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="PUTapi-clients--client_id-"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="PUTapi-clients--client_id-" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="PUTapi-clients--client_id-"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Statut actif. Example: <code>false</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-PATCHapi-clients--client_id-">Mettre à jour un client</h2>
-
-<p>
-</p>
-
-<p>Met à jour les informations d'un client existant.
-Seuls les champs fournis seront mis à jour.</p>
-
-<span id="example-requests-PATCHapi-clients--client_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"code\": \"CLI-UPDATED\",
-    \"name_client\": \"Jane Doe\",
-    \"name_representant\": \"John Smith\",
-    \"marketteur\": \"Pierre Martin\",
-    \"client_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"adresse\": \"456 Avenue des Palmiers\",
-    \"city\": \"Porto-Novo\",
-    \"email\": \"jane.doe@example.com\",
-    \"ifu\": \"9876543210987\",
-    \"phonenumber\": \"+229 87 65 43 21\",
-    \"credit_limit\": 750000,
-    \"current_balance\": 200000,
-    \"base_reduction\": 10,
-    \"is_active\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "code": "CLI-UPDATED",
-    "name_client": "Jane Doe",
-    "name_representant": "John Smith",
-    "marketteur": "Pierre Martin",
-    "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "adresse": "456 Avenue des Palmiers",
-    "city": "Porto-Novo",
-    "email": "jane.doe@example.com",
-    "ifu": "9876543210987",
-    "phonenumber": "+229 87 65 43 21",
-    "credit_limit": 750000,
-    "current_balance": 200000,
-    "base_reduction": 10,
-    "is_active": false
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'code' =&gt; 'CLI-UPDATED',
-            'name_client' =&gt; 'Jane Doe',
-            'name_representant' =&gt; 'John Smith',
-            'marketteur' =&gt; 'Pierre Martin',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'adresse' =&gt; '456 Avenue des Palmiers',
-            'city' =&gt; 'Porto-Novo',
-            'email' =&gt; 'jane.doe@example.com',
-            'ifu' =&gt; '9876543210987',
-            'phonenumber' =&gt; '+229 87 65 43 21',
-            'credit_limit' =&gt; 750000.0,
-            'current_balance' =&gt; 200000.0,
-            'base_reduction' =&gt; 10.0,
-            'is_active' =&gt; false,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-clients--client_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI-UPDATED&quot;,
-        &quot;name_client&quot;: &quot;Jane Doe&quot;,
-        &quot;name_representant&quot;: &quot;John Smith&quot;,
-        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
-        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
-        &quot;city&quot;: &quot;Porto-Novo&quot;,
-        &quot;email&quot;: &quot;jane.doe@example.com&quot;,
-        &quot;ifu&quot;: &quot;9876543210987&quot;,
-        &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
-        &quot;credit_limit&quot;: &quot;750000.00&quot;,
-        &quot;current_balance&quot;: &quot;200000.00&quot;,
-        &quot;base_reduction&quot;: &quot;10.00&quot;,
-        &quot;is_active&quot;: false,
-        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
-    &quot;errors&quot;: {
-        &quot;email&quot;: [
-            &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
-        ],
-        &quot;ifu&quot;: [
-            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-clients--client_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-clients--client_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-clients--client_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-clients--client_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-clients--client_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-clients--client_id-" data-method="PATCH"
-      data-path="api/clients/{client_id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-clients--client_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-clients--client_id-"
-                    onclick="tryItOut('PATCHapi-clients--client_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-clients--client_id-"
-                    onclick="cancelTryOut('PATCHapi-clients--client_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-clients--client_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/clients/{client_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="PATCHapi-clients--client_id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="PATCHapi-clients--client_id-"
-               value="CLI-UPDATED"
-               data-component="body">
-    <br>
-<p>Code client unique. Example: <code>CLI-UPDATED</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name_client</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name_client"                data-endpoint="PATCHapi-clients--client_id-"
-               value="Jane Doe"
-               data-component="body">
-    <br>
-<p>Nom complet du client. Example: <code>Jane Doe</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name_representant</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name_representant"                data-endpoint="PATCHapi-clients--client_id-"
-               value="John Smith"
-               data-component="body">
-    <br>
-<p>Nom du représentant du client. Example: <code>John Smith</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="marketteur"                data-endpoint="PATCHapi-clients--client_id-"
-               value="Pierre Martin"
-               data-component="body">
-    <br>
-<p>Nom du marketteur associé. Example: <code>Pierre Martin</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="PATCHapi-clients--client_id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="adresse"                data-endpoint="PATCHapi-clients--client_id-"
-               value="456 Avenue des Palmiers"
-               data-component="body">
-    <br>
-<p>Adresse du client. Example: <code>456 Avenue des Palmiers</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="PATCHapi-clients--client_id-"
-               value="Porto-Novo"
-               data-component="body">
-    <br>
-<p>Ville du client. Example: <code>Porto-Novo</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="PATCHapi-clients--client_id-"
-               value="jane.doe@example.com"
-               data-component="body">
-    <br>
-<p>Email unique du client. Example: <code>jane.doe@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ifu"                data-endpoint="PATCHapi-clients--client_id-"
-               value="9876543210987"
-               data-component="body">
-    <br>
-<p>Numéro IFU unique. Example: <code>9876543210987</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="phonenumber"                data-endpoint="PATCHapi-clients--client_id-"
-               value="+229 87 65 43 21"
-               data-component="body">
-    <br>
-<p>Numéro de téléphone. Example: <code>+229 87 65 43 21</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="credit_limit"                data-endpoint="PATCHapi-clients--client_id-"
-               value="750000"
-               data-component="body">
-    <br>
-<p>Limite de crédit. Example: <code>750000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="current_balance"                data-endpoint="PATCHapi-clients--client_id-"
-               value="200000"
-               data-component="body">
-    <br>
-<p>Solde actuel. Example: <code>200000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="base_reduction"                data-endpoint="PATCHapi-clients--client_id-"
-               value="10"
-               data-component="body">
-    <br>
-<p>Réduction de base en pourcentage (0-100). Example: <code>10</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="PATCHapi-clients--client_id-" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="PATCHapi-clients--client_id-"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="PATCHapi-clients--client_id-" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="PATCHapi-clients--client_id-"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Statut actif. Example: <code>false</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-DELETEapi-clients--client_id-">Supprimer un client</h2>
-
-<p>
-</p>
-
-<p>Supprime un client (soft delete).
-Le client sera marqué comme supprimé mais restera dans la base de données.</p>
-
-<span id="example-requests-DELETEapi-clients--client_id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000';
-$response = $client-&gt;delete(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-clients--client_id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client supprim&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEapi-clients--client_id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-clients--client_id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-clients--client_id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-clients--client_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-clients--client_id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-clients--client_id-" data-method="DELETE"
-      data-path="api/clients/{client_id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-clients--client_id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-clients--client_id-"
-                    onclick="tryItOut('DELETEapi-clients--client_id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-clients--client_id-"
-                    onclick="cancelTryOut('DELETEapi-clients--client_id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-clients--client_id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/clients/{client_id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-clients--client_id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="DELETEapi-clients--client_id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="clients-management-POSTapi-clients--client_id--restore">Restaurer un client supprimé</h2>
-
-<p>
-</p>
-
-<p>Restaure un client qui a été supprimé avec soft delete.</p>
-
-<span id="example-requests-POSTapi-clients--client_id--restore">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-clients--client_id--restore">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;code&quot;: &quot;CLI-ABC123&quot;,
-        &quot;name_client&quot;: &quot;John Doe&quot;,
-        &quot;deleted_at&quot;: null
-    },
-    &quot;message&quot;: &quot;Client restaur&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Ce client n&#039;est pas supprim&eacute;&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-clients--client_id--restore" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-clients--client_id--restore"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-clients--client_id--restore"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-clients--client_id--restore" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-clients--client_id--restore">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-clients--client_id--restore" data-method="POST"
-      data-path="api/clients/{client_id}/restore"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients--client_id--restore', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-clients--client_id--restore"
-                    onclick="tryItOut('POSTapi-clients--client_id--restore');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-clients--client_id--restore"
-                    onclick="cancelTryOut('POSTapi-clients--client_id--restore');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-clients--client_id--restore"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/clients/{client_id}/restore</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-clients--client_id--restore"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-clients--client_id--restore"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="POSTapi-clients--client_id--restore"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="clients-management-PATCHapi-clients--client_id--toggle-status">Activer/Désactiver un client</h2>
-
-<p>
-</p>
-
-<p>Change le statut actif d'un client.</p>
-
-<span id="example-requests-PATCHapi-clients--client_id--toggle-status">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"is_active\": false
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "is_active": false
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'is_active' =&gt; false,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-clients--client_id--toggle-status">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;is_active&quot;: false
-    },
-    &quot;message&quot;: &quot;Statut du client mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-clients--client_id--toggle-status" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-clients--client_id--toggle-status"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-clients--client_id--toggle-status"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-clients--client_id--toggle-status" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-clients--client_id--toggle-status">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-clients--client_id--toggle-status" data-method="PATCH"
-      data-path="api/clients/{client_id}/toggle-status"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-clients--client_id--toggle-status', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-clients--client_id--toggle-status"
-                    onclick="tryItOut('PATCHapi-clients--client_id--toggle-status');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-clients--client_id--toggle-status"
-                    onclick="cancelTryOut('PATCHapi-clients--client_id--toggle-status');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-clients--client_id--toggle-status"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/clients/{client_id}/toggle-status</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-clients--client_id--toggle-status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-clients--client_id--toggle-status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="PATCHapi-clients--client_id--toggle-status"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
- &nbsp;
-                <label data-endpoint="PATCHapi-clients--client_id--toggle-status" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="PATCHapi-clients--client_id--toggle-status"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="PATCHapi-clients--client_id--toggle-status" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="PATCHapi-clients--client_id--toggle-status"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Nouveau statut actif. Example: <code>false</code></p>
-        </div>
-        </form>
-
-                    <h2 id="clients-management-PATCHapi-clients--client_id--update-balance">Mettre à jour le solde d&#039;un client</h2>
-
-<p>
-</p>
-
-<p>Ajoute ou soustrait un montant au solde actuel du client.</p>
-
-<span id="example-requests-PATCHapi-clients--client_id--update-balance">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"amount\": 50000,
-    \"description\": \"Paiement facture\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "amount": 50000,
-    "description": "Paiement facture"
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; [
-            'amount' =&gt; 50000.0,
-            'description' =&gt; 'Paiement facture',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-clients--client_id--update-balance">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;previous_balance&quot;: &quot;150000.00&quot;,
-        &quot;new_balance&quot;: &quot;200000.00&quot;,
-        &quot;amount_added&quot;: &quot;50000.00&quot;,
-        &quot;available_credit&quot;: &quot;300000.00&quot;,
-        &quot;description&quot;: &quot;Paiement facture&quot;
-    },
-    &quot;message&quot;: &quot;Solde mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Le montant d&eacute;passerait la limite de cr&eacute;dit autoris&eacute;e&quot;,
-    &quot;data&quot;: {
-        &quot;current_balance&quot;: &quot;150000.00&quot;,
-        &quot;credit_limit&quot;: &quot;500000.00&quot;,
-        &quot;available_credit&quot;: &quot;350000.00&quot;,
-        &quot;requested_amount&quot;: &quot;400000.00&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-clients--client_id--update-balance" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-clients--client_id--update-balance"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-clients--client_id--update-balance"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-clients--client_id--update-balance" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-clients--client_id--update-balance">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-clients--client_id--update-balance" data-method="PATCH"
-      data-path="api/clients/{client_id}/update-balance"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-clients--client_id--update-balance', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-clients--client_id--update-balance"
-                    onclick="tryItOut('PATCHapi-clients--client_id--update-balance');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-clients--client_id--update-balance"
-                    onclick="cancelTryOut('PATCHapi-clients--client_id--update-balance');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-clients--client_id--update-balance"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/clients/{client_id}/update-balance</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-clients--client_id--update-balance"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-clients--client_id--update-balance"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="PATCHapi-clients--client_id--update-balance"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="url">
-    <br>
-<p>L'UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="amount"                data-endpoint="PATCHapi-clients--client_id--update-balance"
-               value="50000"
-               data-component="body">
-    <br>
-<p>Montant à ajouter (positif) ou soustraire (négatif). Example: <code>50000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="description"                data-endpoint="PATCHapi-clients--client_id--update-balance"
-               value="Paiement facture"
-               data-component="body">
-    <br>
-<p>optionnel Description de l'opération. Example: <code>Paiement facture</code></p>
-        </div>
-        </form>
 
                 <h1 id="entrepots">Entrepôts</h1>
 

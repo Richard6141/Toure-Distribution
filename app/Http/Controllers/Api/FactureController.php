@@ -127,7 +127,7 @@ class FactureController extends Controller
      * Créer une nouvelle facture
      *
      * Crée une nouvelle facture avec ses détails.
-     * Le numéro de facture est généré automatiquement.
+     * Le numéro de facture (facture_number) est généré automatiquement.
      *
      * @bodyParam reference string optionnel Référence personnalisée de la facture. Example: REF-2025-001
      * @bodyParam client_id string required UUID du client. Example: 550e8400-e29b-41d4-a716-446655440000
@@ -138,7 +138,7 @@ class FactureController extends Controller
      * @bodyParam discount_amount number optionnel Montant de réduction (défaut: 0). Example: 2000
      * @bodyParam delivery_adresse string optionnel Adresse de livraison. Example: 123 Rue de la Paix, Cotonou
      * @bodyParam note string optionnel Note ou commentaire. Example: Livraison express
-     * @bodyParam user_id string required UUID de l'utilisateur créant la facture. Example: 550e8400-e29b-41d4-a716-446655440001
+     * @bodyParam user_id string required UUID de l'utilisateur créant la facture. Idéalement l'utilisateur connecté.Example: 550e8400-e29b-41d4-a716-446655440001
      * @bodyParam details array required Détails de la facture (lignes de produits).
      * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440002
      * @bodyParam details[].quantite number required Quantité du produit. Example: 10
@@ -200,7 +200,7 @@ class FactureController extends Controller
             'discount_amount' => 'nullable|numeric|min:0',
             'delivery_adresse' => 'nullable|string|max:500',
             'note' => 'nullable|string|max:1000',
-            'user_id' => 'required|uuid|exists:users,id',
+            'user_id' => 'required|uuid|exists:users,user_id',
             'details' => 'required|array|min:1',
             'details.*.product_id' => 'required|uuid|exists:products,product_id',
             'details.*.quantite' => 'required|numeric|min:0.01',
@@ -231,12 +231,19 @@ class FactureController extends Controller
             $taxeRate = $validated['taxe_rate'] ?? 0;
             $transportCost = $validated['transport_cost'] ?? 0;
             $discountAmount = $validated['discount_amount'] ?? 0;
-            
+
             $totalAmount = ($montantHT * (1 + $taxeRate / 100)) + $transportCost - $discountAmount;
+
+            // Générer le numéro de facture automatiquement
+            $factureNumber = $this->generateFactureNumber();
+
+            // Générer la référence si elle n'est pas fournie
+            $reference = $validated['reference'] ?? $this->generateReference();
 
             // Créer la facture
             $facture = Facture::create([
-                'reference' => $validated['reference'] ?? null,
+                'facture_number' => $factureNumber,
+                'reference' => $reference,
                 'client_id' => $validated['client_id'],
                 'facture_date' => $validated['facture_date'] ?? now(),
                 'due_date' => $validated['due_date'] ?? null,
@@ -272,7 +279,6 @@ class FactureController extends Controller
                 'data' => $facture,
                 'message' => 'Facture créée avec succès'
             ], 201);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
@@ -280,6 +286,69 @@ class FactureController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+
+    /**
+     * Génère une référence unique
+     * Format: REF-YYYY-NNNNN (ex: REF-2025-00001)
+     *
+     * @return string
+     */
+    private function generateReference(): string
+    {
+        $prefix = 'REF';
+        $year = date('Y');
+
+        // Récupérer la dernière facture avec une référence de l'année en cours
+        $lastFacture = Facture::withTrashed()
+            ->where('reference', 'like', "{$prefix}-{$year}-%")
+            ->orderBy('reference', 'desc')
+            ->lockForUpdate()
+            ->first();
+
+        if ($lastFacture) {
+            // Extraire le numéro de la dernière référence
+            $lastNumber = (int) substr($lastFacture->reference, -5);
+            $newNumber = $lastNumber + 1;
+        } else {
+            // Première référence de l'année
+            $newNumber = 1;
+        }
+
+        // Format: REF-YYYY-NNNNN (5 chiffres)
+        return sprintf('%s-%s-%05d', $prefix, $year, $newNumber);
+    }
+
+    /**
+     * Génère un numéro de facture unique
+     * Format: FACT-YYYY-NNNNN (ex: FACT-2025-00001)
+     *
+     * @return string
+     */
+    private function generateFactureNumber(): string
+    {
+        $prefix = 'FACT';
+        $year = date('Y');
+
+        // Récupérer la dernière facture de l'année en cours
+        $lastFacture = Facture::withTrashed()
+            ->where('facture_number', 'like', "{$prefix}-{$year}-%")
+            ->orderBy('facture_number', 'desc')
+            ->lockForUpdate() // Verrouillage pour éviter les doublons en cas de requêtes simultanées
+            ->first();
+
+        if ($lastFacture) {
+            // Extraire le numéro de la dernière facture
+            $lastNumber = (int) substr($lastFacture->facture_number, -5);
+            $newNumber = $lastNumber + 1;
+        } else {
+            // Première facture de l'année
+            $newNumber = 1;
+        }
+
+        // Format: FACT-YYYY-NNNNN (5 chiffres)
+        return sprintf('%s-%s-%05d', $prefix, $year, $newNumber);
     }
 
     /**
@@ -355,6 +424,7 @@ class FactureController extends Controller
      *
      * Met à jour les informations d'une facture existante.
      * Note: Les détails de la facture doivent être mis à jour séparément.
+     * Le numéro de facture (facture_number) ne peut pas être modifié.
      *
      * @urlParam id string required L'UUID de la facture. Example: 550e8400-e29b-41d4-a716-446655440000
      * @bodyParam reference string Référence de la facture. Example: REF-2025-001-UPDATED
@@ -401,7 +471,7 @@ class FactureController extends Controller
                 $taxeRate = $validated['taxe_rate'] ?? $facture->taxe_rate;
                 $transportCost = $validated['transport_cost'] ?? $facture->transport_cost;
                 $discountAmount = $validated['discount_amount'] ?? $facture->discount_amount;
-                
+
                 $validated['total_amount'] = ($facture->montant_ht * (1 + $taxeRate / 100)) + $transportCost - $discountAmount;
             }
 
@@ -452,7 +522,7 @@ class FactureController extends Controller
             try {
                 // Supprimer les détails
                 $facture->details()->delete();
-                
+
                 // Supprimer la facture
                 $facture->delete();
 
@@ -465,7 +535,6 @@ class FactureController extends Controller
                 DB::rollBack();
                 throw $e;
             }
-
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Facture non trouvée'

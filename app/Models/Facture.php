@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Facture extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, SoftDeletes;
 
     protected $table = 'factures';
 
@@ -87,15 +88,17 @@ class Facture extends Model
         static::creating(function ($facture) {
             // Format : FACT-2025-00001
             $prefix = 'FACT-' . date('Y') . '-';
-            $lastFacture = self::orderBy('created_at', 'desc')->first();
-            
+            $lastFacture = self::withTrashed()
+                ->orderBy('created_at', 'desc')
+                ->first();
+
             $nextNumber = $lastFacture
                 ? ((int) substr($lastFacture->facture_number, -5)) + 1
                 : 1;
 
             $facture->facture_number = $prefix . str_pad($nextNumber, 5, '0', STR_PAD_LEFT);
 
-            // Si la date n’est pas précisée, on la met à la date du jour
+            // Si la date n'est pas précisée, on la met à la date du jour
             if (!$facture->facture_date) {
                 $facture->facture_date = now();
             }
