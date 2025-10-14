@@ -278,22 +278,37 @@
                 </li>
                                     <ul id="tocify-subheader-stock-movements" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="stock-movements-GETapi-stock-movements">
-                                <a href="#stock-movements-GETapi-stock-movements">Récupère la liste des mouvements de stock avec leurs détails</a>
+                                <a href="#stock-movements-GETapi-stock-movements">GET api/stock-movements</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements">
-                                <a href="#stock-movements-POSTapi-stock-movements">Crée un mouvement de stock générique (pour les cas non couverts par les endpoints spécialisés)
-
-Cette endpoint est une alternative générique aux endpoints spécialisés (transfert/réception). 
-Préférez utiliser storeWarehouseTransfer() ou storeSupplierReceipt() quand applicable.</a>
+                                <a href="#stock-movements-POSTapi-stock-movements">POST api/stock-movements</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movements-GETapi-stock-movements--id-">
-                                <a href="#stock-movements-GETapi-stock-movements--id-">Récupère les détails d'un mouvement de stock spécifique</a>
+                                <a href="#stock-movements-GETapi-stock-movements--id-">GET api/stock-movements/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="stock-movements-PUTapi-stock-movements--id-">
+                                <a href="#stock-movements-PUTapi-stock-movements--id-">PUT api/stock-movements/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="stock-movements-PATCHapi-stock-movements--id-">
+                                <a href="#stock-movements-PATCHapi-stock-movements--id-">PATCH api/stock-movements/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="stock-movements-DELETEapi-stock-movements--id-">
+                                <a href="#stock-movements-DELETEapi-stock-movements--id-">DELETE api/stock-movements/{id}</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements-transfer-warehouse">
-                                <a href="#stock-movements-POSTapi-stock-movements-transfer-warehouse">Crée un transfert de stock entre deux entrepôts</a>
+                                <a href="#stock-movements-POSTapi-stock-movements-transfer-warehouse">POST api/stock-movements/transfer/warehouse</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements-receipt-supplier">
-                                <a href="#stock-movements-POSTapi-stock-movements-receipt-supplier">Crée une réception de stock depuis un fournisseur vers un entrepôt</a>
+                                <a href="#stock-movements-POSTapi-stock-movements-receipt-supplier">POST api/stock-movements/receipt/supplier</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="stock-movements-GETapi-stock-movements-trashed-list">
+                                <a href="#stock-movements-GETapi-stock-movements-trashed-list">GET api/stock-movements/trashed/list</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements--id--restore">
+                                <a href="#stock-movements-POSTapi-stock-movements--id--restore">POST api/stock-movements/{id}/restore</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="stock-movements-PATCHapi-stock-movements--id--update-status">
+                                <a href="#stock-movements-PATCHapi-stock-movements--id--update-status">PATCH api/stock-movements/{id}/update-status</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -333,24 +348,6 @@ Préférez utiliser storeWarehouseTransfer() ou storeSupplierReceipt() quand app
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
                                 <a href="#endpoints-GETapi-user">GET api/user</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-stock-movements--id-">
-                                <a href="#endpoints-PUTapi-stock-movements--id-">Mettre à jour un mouvement de stock</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-stock-movements--id-">
-                                <a href="#endpoints-PATCHapi-stock-movements--id-">Mettre à jour un mouvement de stock</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-stock-movements--id-">
-                                <a href="#endpoints-DELETEapi-stock-movements--id-">Supprimer un mouvement de stock (soft delete)</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-stock-movements-trashed-list">
-                                <a href="#endpoints-GETapi-stock-movements-trashed-list">Lister les mouvements de stock supprimés</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-stock-movements--id--restore">
-                                <a href="#endpoints-POSTapi-stock-movements--id--restore">Restaurer un mouvement de stock supprimé</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-stock-movements--id--update-status">
-                                <a href="#endpoints-PATCHapi-stock-movements--id--update-status">Met à jour le statut d'un mouvement de stock</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-stock-movement-details--id-">
                                 <a href="#endpoints-GETapi-stock-movement-details--id-">Afficher un détail de mouvement de stock spécifique</a>
@@ -3407,7 +3404,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": false,
-    \"with_client_type\": false,
+    \"with_client_type\": true,
     \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
@@ -3453,7 +3450,7 @@ let body = {
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": false,
-    "with_client_type": false,
+    "with_client_type": true,
     "balance_filter": "negative"
 };
 
@@ -3501,7 +3498,7 @@ $response = $client-&gt;get(
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; false,
-            'with_client_type' =&gt; false,
+            'with_client_type' =&gt; true,
             'balance_filter' =&gt; 'negative',
         ],
     ]
@@ -3931,7 +3928,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -4337,7 +4334,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -4359,7 +4356,7 @@ const headers = {
 };
 
 let body = {
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -4383,7 +4380,7 @@ $response = $client-&gt;get(
             'with_client_type' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -4553,7 +4550,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -7732,7 +7729,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-14T18:24:34\",
+    \"date_from\": \"2025-10-14T18:36:17\",
     \"date_to\": \"2051-11-07\"
 }"
 </code></pre></div>
@@ -7756,7 +7753,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-14T18:24:34",
+    "date_from": "2025-10-14T18:36:17",
     "date_to": "2051-11-07"
 };
 
@@ -7782,7 +7779,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-14T18:24:34',
+            'date_from' =&gt; '2025-10-14T18:36:17',
             'date_to' =&gt; '2051-11-07',
         ],
     ]
@@ -7913,10 +7910,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-14T18:24:34"
+               value="2025-10-14T18:36:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:24:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T18:36:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -7953,10 +7950,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"statut\": \"overdue\",
-    \"date_from\": \"2025-10-14T18:24:34\",
+    \"date_from\": \"2025-10-14T18:36:17\",
     \"date_to\": \"2051-11-07\",
-    \"with_client\": false,
-    \"with_details\": true
+    \"with_client\": true,
+    \"with_details\": false
 }"
 </code></pre></div>
 
@@ -7991,10 +7988,10 @@ let body = {
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "statut": "overdue",
-    "date_from": "2025-10-14T18:24:34",
+    "date_from": "2025-10-14T18:36:17",
     "date_to": "2051-11-07",
-    "with_client": false,
-    "with_details": true
+    "with_client": true,
+    "with_details": false
 };
 
 fetch(url, {
@@ -8031,10 +8028,10 @@ $response = $client-&gt;get(
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'statut' =&gt; 'overdue',
-            'date_from' =&gt; '2025-10-14T18:24:34',
+            'date_from' =&gt; '2025-10-14T18:36:17',
             'date_to' =&gt; '2051-11-07',
-            'with_client' =&gt; false,
-            'with_details' =&gt; true,
+            'with_client' =&gt; true,
+            'with_details' =&gt; false,
         ],
     ]
 );
@@ -8333,10 +8330,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-14T18:24:34"
+               value="2025-10-14T18:36:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:24:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T18:36:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8368,7 +8365,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -8389,7 +8386,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -8819,7 +8816,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_client\": true,
     \"with_details\": false,
-    \"with_payments\": true
+    \"with_payments\": false
 }"
 </code></pre></div>
 
@@ -8845,7 +8842,7 @@ const headers = {
 let body = {
     "with_client": true,
     "with_details": false,
-    "with_payments": true
+    "with_payments": false
 };
 
 fetch(url, {
@@ -8873,7 +8870,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_client' =&gt; true,
             'with_details' =&gt; false,
-            'with_payments' =&gt; true,
+            'with_payments' =&gt; false,
         ],
     ]
 );
@@ -9125,7 +9122,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -10066,7 +10063,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-14T18:24:34\",
+    \"date_from\": \"2025-10-14T18:36:17\",
     \"date_to\": \"2051-11-07\"
 }"
 </code></pre></div>
@@ -10090,7 +10087,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-14T18:24:34",
+    "date_from": "2025-10-14T18:36:17",
     "date_to": "2051-11-07"
 };
 
@@ -10116,7 +10113,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-14T18:24:34',
+            'date_from' =&gt; '2025-10-14T18:36:17',
             'date_to' =&gt; '2051-11-07',
         ],
     ]
@@ -10256,10 +10253,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-14T18:24:34"
+               value="2025-10-14T18:36:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:24:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T18:36:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10297,12 +10294,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"failed\",
-    \"date_from\": \"2025-10-14T18:24:34\",
+    \"statut\": \"completed\",
+    \"date_from\": \"2025-10-14T18:36:17\",
     \"date_to\": \"2051-11-07\",
     \"with_facture\": false,
     \"with_client\": false,
-    \"with_payment_method\": false
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -10341,12 +10338,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "failed",
-    "date_from": "2025-10-14T18:24:34",
+    "statut": "completed",
+    "date_from": "2025-10-14T18:36:17",
     "date_to": "2051-11-07",
     "with_facture": false,
     "with_client": false,
-    "with_payment_method": false
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -10387,12 +10384,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'failed',
-            'date_from' =&gt; '2025-10-14T18:24:34',
+            'statut' =&gt; 'completed',
+            'date_from' =&gt; '2025-10-14T18:36:17',
             'date_to' =&gt; '2051-11-07',
             'with_facture' =&gt; false,
             'with_client' =&gt; false,
-            'with_payment_method' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -10737,10 +10734,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="failed"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>failed</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -10750,10 +10747,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-14T18:24:34"
+               value="2025-10-14T18:36:17"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:24:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T18:36:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10827,7 +10824,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -11160,7 +11157,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_facture\": true,
     \"with_client\": true,
-    \"with_payment_method\": false
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -11186,7 +11183,7 @@ const headers = {
 let body = {
     "with_facture": true,
     "with_client": true,
-    "with_payment_method": false
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -11214,7 +11211,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
-            'with_payment_method' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -11468,7 +11465,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -13777,9 +13774,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     
 
-                                <h2 id="stock-movements-GETapi-stock-movements">Récupère la liste des mouvements de stock avec leurs détails</h2>
+                                <h2 id="stock-movements-GETapi-stock-movements">GET api/stock-movements</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -13790,7 +13788,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/stock-movements?movement_type_id=uuid&amp;statut=pending&amp;entrepot_from_id=uuid&amp;entrepot_to_id=uuid&amp;client_id=uuid&amp;fournisseur_id=uuid&amp;search=MV-2024-001&amp;date_from=2024-01-01&amp;date_to=2024-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;per_page=15" \
+    --get "http://localhost/api/stock-movements?movement_type_id=550e8400-e29b-41d4-a716-446655440000&amp;statut=pending&amp;entrepot_from_id=550e8400-e29b-41d4-a716-446655440001&amp;entrepot_to_id=550e8400-e29b-41d4-a716-446655440002&amp;client_id=550e8400-e29b-41d4-a716-446655440101&amp;fournisseur_id=550e8400-e29b-41d4-a716-446655440100&amp;search=MV-2024&amp;date_from=2024-01-01&amp;date_to=2024-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;per_page=15" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -13801,13 +13800,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const params = {
-    "movement_type_id": "uuid",
+    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "statut": "pending",
-    "entrepot_from_id": "uuid",
-    "entrepot_to_id": "uuid",
-    "client_id": "uuid",
-    "fournisseur_id": "uuid",
-    "search": "MV-2024-001",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "search": "MV-2024",
     "date_from": "2024-01-01",
     "date_to": "2024-12-31",
     "sort_by": "created_at",
@@ -13818,6 +13817,7 @@ Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -13835,17 +13835,18 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'movement_type_id' =&gt; 'uuid',
+            'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'statut' =&gt; 'pending',
-            'entrepot_from_id' =&gt; 'uuid',
-            'entrepot_to_id' =&gt; 'uuid',
-            'client_id' =&gt; 'uuid',
-            'fournisseur_id' =&gt; 'uuid',
-            'search' =&gt; 'MV-2024-001',
+            'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+            'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+            'search' =&gt; 'MV-2024',
             'date_from' =&gt; '2024-01-01',
             'date_to' =&gt; '2024-12-31',
             'sort_by' =&gt; 'created_at',
@@ -13870,56 +13871,27 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;data&quot;: [
             {
-                &quot;stock_movement_id&quot;: &quot;uuid&quot;,
+                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
                 &quot;reference&quot;: &quot;MV-2024-00001&quot;,
-                &quot;movement_type_id&quot;: &quot;uuid&quot;,
-                &quot;entrepot_from_id&quot;: &quot;uuid&quot;,
-                &quot;entrepot_to_id&quot;: &quot;uuid&quot;,
-                &quot;fournisseur_id&quot;: null,
-                &quot;client_id&quot;: null,
+                &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
                 &quot;statut&quot;: &quot;pending&quot;,
-                &quot;note&quot;: &quot;Note optionnelle&quot;,
-                &quot;user_id&quot;: &quot;uuid&quot;,
-                &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-                &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-                &quot;movement_type&quot;: {
-                    &quot;stock_movement_type_id&quot;: &quot;uuid&quot;,
-                    &quot;name&quot;: &quot;Transfert&quot;,
-                    &quot;direction&quot;: &quot;transfer&quot;
-                },
-                &quot;entrepot_from&quot;: {
-                    &quot;entrepot_id&quot;: &quot;uuid&quot;,
-                    &quot;name&quot;: &quot;Entrep&ocirc;t A&quot;
-                },
-                &quot;entrepot_to&quot;: {
-                    &quot;entrepot_id&quot;: &quot;uuid&quot;,
-                    &quot;name&quot;: &quot;Entrep&ocirc;t B&quot;
-                },
-                &quot;fournisseur&quot;: null,
-                &quot;user&quot;: {
-                    &quot;user_id&quot;: &quot;uuid&quot;,
-                    &quot;name&quot;: &quot;John Doe&quot;
-                },
-                &quot;details&quot;: [
-                    {
-                        &quot;stock_movement_detail_id&quot;: &quot;uuid&quot;,
-                        &quot;product_id&quot;: &quot;uuid&quot;,
-                        &quot;quantity&quot;: 10,
-                        &quot;product&quot;: {
-                            &quot;product_id&quot;: &quot;uuid&quot;,
-                            &quot;name&quot;: &quot;Produit A&quot;,
-                            &quot;sku&quot;: &quot;PROD-A-001&quot;
-                        }
-                    }
-                ]
+                &quot;created_at&quot;: &quot;2024-01-15 14:30:00&quot;
             }
         ],
         &quot;current_page&quot;: 1,
         &quot;per_page&quot;: 15,
-        &quot;total&quot;: 1,
-        &quot;last_page&quot;: 1
+        &quot;total&quot;: 1
     },
     &quot;message&quot;: &quot;Mouvements de stock r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
             <blockquote>
@@ -13930,7 +13902,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration des mouvements de stock&quot;,
-    &quot;error&quot;: &quot;Message d&#039;erreur&quot;
+    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -13951,7 +13923,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-stock-movements" data-method="GET"
       data-path="api/stock-movements"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -13982,6 +13954,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -14010,10 +13993,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="movement_type_id"                data-endpoint="GETapi-stock-movements"
-               value="uuid"
+               value="550e8400-e29b-41d4-a716-446655440000"
                data-component="query">
     <br>
-<p>Filtrer par type de mouvement. Example: <code>uuid</code></p>
+<p>Filtrer par type de mouvement (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -14024,7 +14007,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="pending"
                data-component="query">
     <br>
-<p>Filtrer par statut (pending, completed, cancelled). Example: <code>pending</code></p>
+<p>Filtrer par statut du mouvement. Example: <code>pending</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
@@ -14032,10 +14015,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="entrepot_from_id"                data-endpoint="GETapi-stock-movements"
-               value="uuid"
+               value="550e8400-e29b-41d4-a716-446655440001"
                data-component="query">
     <br>
-<p>Filtrer par entrepôt source. Example: <code>uuid</code></p>
+<p>Filtrer par entrepôt source (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
@@ -14043,10 +14026,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="entrepot_to_id"                data-endpoint="GETapi-stock-movements"
-               value="uuid"
+               value="550e8400-e29b-41d4-a716-446655440002"
                data-component="query">
     <br>
-<p>Filtrer par entrepôt destination. Example: <code>uuid</code></p>
+<p>Filtrer par entrepôt destination (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
@@ -14054,10 +14037,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="client_id"                data-endpoint="GETapi-stock-movements"
-               value="uuid"
+               value="550e8400-e29b-41d4-a716-446655440101"
                data-component="query">
     <br>
-<p>Filtrer par client. Example: <code>uuid</code></p>
+<p>Filtrer par client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
@@ -14065,10 +14048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="fournisseur_id"                data-endpoint="GETapi-stock-movements"
-               value="uuid"
+               value="550e8400-e29b-41d4-a716-446655440100"
                data-component="query">
     <br>
-<p>Filtrer par fournisseur. Example: <code>uuid</code></p>
+<p>Filtrer par fournisseur (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
@@ -14076,10 +14059,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="search"                data-endpoint="GETapi-stock-movements"
-               value="MV-2024-001"
+               value="MV-2024"
                data-component="query">
     <br>
-<p>Rechercher par référence. Example: <code>MV-2024-001</code></p>
+<p>Rechercher par numéro de référence. Example: <code>MV-2024</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
@@ -14090,7 +14073,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2024-01-01"
                data-component="query">
     <br>
-<p>date Filtrer par date de début. Example: <code>2024-01-01</code></p>
+<p>date Filtrer par date de début (YYYY-MM-DD). Example: <code>2024-01-01</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -14101,7 +14084,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2024-12-31"
                data-component="query">
     <br>
-<p>date Filtrer par date de fin. Example: <code>2024-12-31</code></p>
+<p>date Filtrer par date de fin (YYYY-MM-DD). Example: <code>2024-12-31</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
@@ -14112,7 +14095,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="created_at"
                data-component="query">
     <br>
-<p>Champ de tri. Example: <code>created_at</code></p>
+<p>Champ sur lequel trier. Example: <code>created_at</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
@@ -14123,7 +14106,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="desc"
                data-component="query">
     <br>
-<p>Ordre de tri (asc, desc). Example: <code>desc</code></p>
+<p>Ordre de tri (asc/desc). Example: <code>desc</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
@@ -14138,12 +14121,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="stock-movements-POSTapi-stock-movements">Crée un mouvement de stock générique (pour les cas non couverts par les endpoints spécialisés)
-
-Cette endpoint est une alternative générique aux endpoints spécialisés (transfert/réception). 
-Préférez utiliser storeWarehouseTransfer() ou storeSupplierReceipt() quand applicable.</h2>
+                    <h2 id="stock-movements-POSTapi-stock-movements">POST api/stock-movements</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -14155,6 +14136,7 @@ Préférez utiliser storeWarehouseTransfer() ou storeSupplierReceipt() quand app
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/stock-movements" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -14180,6 +14162,7 @@ Préférez utiliser storeWarehouseTransfer() ou storeSupplierReceipt() quand app
 );
 
 const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -14213,6 +14196,7 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -14259,27 +14243,17 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
-        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
-        &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-        &quot;fournisseur_id&quot;: null,
-        &quot;client_id&quot;: null,
-        &quot;statut&quot;: &quot;pending&quot;,
-        &quot;note&quot;: &quot;Mouvement g&eacute;n&eacute;rique&quot;,
-        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-        &quot;created_at&quot;: &quot;2024-01-15 16:20:00&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15 16:20:00&quot;,
-        &quot;movement_type&quot;: {
-            &quot;stock_movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;name&quot;: &quot;Transfert&quot;,
-            &quot;direction&quot;: &quot;transfer&quot;
-        },
-        &quot;details&quot;: []
-    },
+    &quot;data&quot;: {},
     &quot;message&quot;: &quot;Mouvement de stock cr&eacute;&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
             <blockquote>
@@ -14290,25 +14264,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;movement_type_id&quot;: [
-            &quot;Le champ movement_type_id est obligatoire.&quot;
-        ],
-        &quot;details&quot;: [
-            &quot;Le champ details est obligatoire.&quot;
-        ]
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (500):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur lors de la cr&eacute;ation du mouvement de stock&quot;,
-    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
+    &quot;errors&quot;: {}
 }</code>
  </pre>
     </span>
@@ -14329,7 +14285,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-stock-movements" data-method="POST"
       data-path="api/stock-movements"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -14359,6 +14315,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/stock-movements</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -14402,7 +14369,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440001"
                data-component="body">
     <br>
-<p>optionnel UUID de l'entrepôt source (requis pour les transferts). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+<p>optionnel UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
@@ -14413,7 +14380,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440002"
                data-component="body">
     <br>
-<p>optionnel UUID de l'entrepôt destination (requis pour les réceptions/transferts). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+<p>optionnel UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
@@ -14424,7 +14391,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440100"
                data-component="body">
     <br>
-<p>optionnel UUID du fournisseur (pour les réceptions). Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+<p>optionnel UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
@@ -14435,7 +14402,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440101"
                data-component="body">
     <br>
-<p>optionnel UUID du client (pour les sorties). Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+<p>optionnel UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -14483,9 +14450,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movements-GETapi-stock-movements--id-">Récupère les détails d&#039;un mouvement de stock spécifique</h2>
+                    <h2 id="stock-movements-GETapi-stock-movements--id-">GET api/stock-movements/{id}</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -14497,6 +14465,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -14507,6 +14476,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -14524,6 +14494,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -14546,49 +14517,19 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
         &quot;reference&quot;: &quot;MV-2024-00003&quot;,
         &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-        &quot;fournisseur_id&quot;: null,
-        &quot;client_id&quot;: null,
         &quot;statut&quot;: &quot;pending&quot;,
-        &quot;note&quot;: &quot;Note optionnelle&quot;,
-        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-        &quot;created_at&quot;: &quot;2024-01-15 16:20:00&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15 16:20:00&quot;,
-        &quot;movement_type&quot;: {
-            &quot;stock_movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;name&quot;: &quot;Transfert&quot;,
-            &quot;direction&quot;: &quot;transfer&quot;
-        },
-        &quot;entrepot_from&quot;: {
-            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-            &quot;name&quot;: &quot;Entrep&ocirc;t A&quot;
-        },
-        &quot;entrepot_to&quot;: {
-            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-            &quot;name&quot;: &quot;Entrep&ocirc;t B&quot;
-        },
-        &quot;fournisseur&quot;: null,
-        &quot;client&quot;: null,
-        &quot;user&quot;: {
-            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-            &quot;name&quot;: &quot;Jean Dupont&quot;
-        },
-        &quot;details&quot;: [
-            {
-                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440031&quot;,
-                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
-                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-                &quot;quantity&quot;: 20,
-                &quot;product&quot;: {
-                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-                    &quot;name&quot;: &quot;Produit A&quot;,
-                    &quot;sku&quot;: &quot;PROD-A-001&quot;
-                }
-            }
-        ]
+        &quot;details&quot;: []
     },
     &quot;message&quot;: &quot;Mouvement de stock r&eacute;cup&eacute;r&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
             <blockquote>
@@ -14599,17 +14540,6 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (500):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration du mouvement de stock&quot;,
-    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -14630,7 +14560,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-stock-movements--id-" data-method="GET"
       data-path="api/stock-movements/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -14660,6 +14590,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/stock-movements/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements--id-"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -14696,9 +14637,908 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="stock-movements-POSTapi-stock-movements-transfer-warehouse">Crée un transfert de stock entre deux entrepôts</h2>
+                    <h2 id="stock-movements-PUTapi-stock-movements--id-">PUT api/stock-movements/{id}</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-stock-movements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
+    \"statut\": \"pending\",
+    \"note\": \"Note mise à jour\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 15
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
+);
+
+const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "statut": "pending",
+    "note": "Note mise à jour",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 15
+        }
+    ]
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        15,
+                    ],
+                ],
+            ],
+            [
+                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+                'statut' =&gt; 'pending',
+                'note' =&gt; 'Note mise à jour',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-stock-movements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
+        &quot;statut&quot;: &quot;completed&quot;,
+        &quot;details&quot;: []
+    },
+    &quot;message&quot;: &quot;Mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-stock-movements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-stock-movements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-stock-movements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-stock-movements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-stock-movements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-stock-movements--id-" data-method="PUT"
+      data-path="api/stock-movements/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-stock-movements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-stock-movements--id-"
+                    onclick="tryItOut('PUTapi-stock-movements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-stock-movements--id-"
+                    onclick="cancelTryOut('PUTapi-stock-movements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-stock-movements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/stock-movements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-stock-movements--id-"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock à mettre à jour. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>UUID du type de mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>optionnel UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>optionnel UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="body">
+    <br>
+<p>optionnel UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440101"
+               data-component="body">
+    <br>
+<p>optionnel UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PUTapi-stock-movements--id-"
+               value="pending"
+               data-component="body">
+    <br>
+<p>Statut du mouvement (pending, completed, cancelled). Example: <code>pending</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-stock-movements--id-"
+               value="Note mise à jour"
+               data-component="body">
+    <br>
+<p>optionnel Note descriptive. Example: <code>Note mise à jour</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Tableau contenant les nouveaux détails du mouvement (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="PUTapi-stock-movements--id-"
+               value="15"
+               data-component="body">
+    <br>
+<p>Quantité (minimum 1). Example: <code>15</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="stock-movements-PATCHapi-stock-movements--id-">PATCH api/stock-movements/{id}</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-stock-movements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
+    \"statut\": \"pending\",
+    \"note\": \"Note mise à jour\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 15
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
+);
+
+const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "statut": "pending",
+    "note": "Note mise à jour",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 15
+        }
+    ]
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        15,
+                    ],
+                ],
+            ],
+            [
+                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+                'statut' =&gt; 'pending',
+                'note' =&gt; 'Note mise à jour',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-stock-movements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
+        &quot;statut&quot;: &quot;completed&quot;,
+        &quot;details&quot;: []
+    },
+    &quot;message&quot;: &quot;Mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-stock-movements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-stock-movements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-stock-movements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-stock-movements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-stock-movements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-stock-movements--id-" data-method="PATCH"
+      data-path="api/stock-movements/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-stock-movements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-stock-movements--id-"
+                    onclick="tryItOut('PATCHapi-stock-movements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-stock-movements--id-"
+                    onclick="cancelTryOut('PATCHapi-stock-movements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-stock-movements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/stock-movements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-stock-movements--id-"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock à mettre à jour. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>UUID du type de mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>optionnel UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>optionnel UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="body">
+    <br>
+<p>optionnel UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440101"
+               data-component="body">
+    <br>
+<p>optionnel UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="pending"
+               data-component="body">
+    <br>
+<p>Statut du mouvement (pending, completed, cancelled). Example: <code>pending</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="Note mise à jour"
+               data-component="body">
+    <br>
+<p>optionnel Note descriptive. Example: <code>Note mise à jour</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Tableau contenant les nouveaux détails du mouvement (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="15"
+               data-component="body">
+    <br>
+<p>Quantité (minimum 1). Example: <code>15</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="stock-movements-DELETEapi-stock-movements--id-">DELETE api/stock-movements/{id}</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-stock-movements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
+);
+
+const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-stock-movements--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Mouvement de stock supprim&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-stock-movements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-stock-movements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-stock-movements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-stock-movements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-stock-movements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-stock-movements--id-" data-method="DELETE"
+      data-path="api/stock-movements/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-stock-movements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-stock-movements--id-"
+                    onclick="tryItOut('DELETEapi-stock-movements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-stock-movements--id-"
+                    onclick="cancelTryOut('DELETEapi-stock-movements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-stock-movements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/stock-movements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-stock-movements--id-"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock à supprimer. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="stock-movements-POSTapi-stock-movements-transfer-warehouse">POST api/stock-movements/transfer/warehouse</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -14710,6 +15550,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/stock-movements/transfer/warehouse" \
+    --header "Authorization: required Bearer token au format \&amp;quot;Bearer {token}\&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -14721,10 +15562,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
             \"quantity\": 10
-        },
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440004\",
-            \"quantity\": 5
         }
     ]
 }"
@@ -14737,6 +15574,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "required Bearer token au format &amp;quot;Bearer {token}&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -14750,10 +15588,6 @@ let body = {
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
             "quantity": 10
-        },
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440004",
-            "quantity": 5
         }
     ]
 };
@@ -14772,24 +15606,22 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
             $o = [
-                clone (($p = &amp;\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-                clone $p['stdClass'],
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
             ],
             null,
             [
                 'stdClass' =&gt; [
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
-                        '550e8400-e29b-41d4-a716-446655440004',
                     ],
                     'quantity' =&gt; [
                         10,
-                        5,
                     ],
                 ],
             ],
@@ -14800,7 +15632,6 @@ $response = $client-&gt;post(
                 'note' =&gt; 'Transfert urgent vers l\'entrepôt B',
                 'details' =&gt; [
                     $o[0],
-                    $o[1],
                 ],
             ],
             []
@@ -14848,8 +15679,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         },
         &quot;user&quot;: {
             &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-            &quot;name&quot;: &quot;Jean Dupont&quot;,
-            &quot;email&quot;: &quot;jean@example.com&quot;
+            &quot;name&quot;: &quot;Jean Dupont&quot;
         },
         &quot;details&quot;: [
             {
@@ -14869,13 +15699,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Un ou plusieurs entrep&ocirc;ts n&#039;existent pas&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
             <blockquote>
@@ -14917,7 +15746,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-stock-movements-transfer-warehouse" data-method="POST"
       data-path="api/stock-movements/transfer/warehouse"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -14947,6 +15776,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/stock-movements/transfer/warehouse</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -15049,9 +15889,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movements-POSTapi-stock-movements-receipt-supplier">Crée une réception de stock depuis un fournisseur vers un entrepôt</h2>
+                    <h2 id="stock-movements-POSTapi-stock-movements-receipt-supplier">POST api/stock-movements/receipt/supplier</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -15063,6 +15904,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/stock-movements/receipt/supplier" \
+    --header "Authorization: required Bearer token au format \&amp;quot;Bearer {token}\&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -15074,10 +15916,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
             \"quantity\": 50
-        },
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440004\",
-            \"quantity\": 30
         }
     ]
 }"
@@ -15090,6 +15928,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "required Bearer token au format &amp;quot;Bearer {token}&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -15103,10 +15942,6 @@ let body = {
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
             "quantity": 50
-        },
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440004",
-            "quantity": 30
         }
     ]
 };
@@ -15125,24 +15960,22 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
             $o = [
-                clone (($p = &amp;\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-                clone $p['stdClass'],
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
             ],
             null,
             [
                 'stdClass' =&gt; [
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
-                        '550e8400-e29b-41d4-a716-446655440004',
                     ],
                     'quantity' =&gt; [
                         50,
-                        30,
                     ],
                 ],
             ],
@@ -15153,7 +15986,6 @@ $response = $client-&gt;post(
                 'note' =&gt; 'Réception commande #PO-2024-001',
                 'details' =&gt; [
                     $o[0],
-                    $o[1],
                 ],
             ],
             []
@@ -15197,18 +16029,15 @@ print_r(json_decode((string) $body));</code></pre></div>
         },
         &quot;fournisseur&quot;: {
             &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
-            &quot;name&quot;: &quot;Fournisseur XYZ&quot;,
-            &quot;contact&quot;: &quot;contact@fournisseur.com&quot;
+            &quot;name&quot;: &quot;Fournisseur XYZ&quot;
         },
         &quot;user&quot;: {
             &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-            &quot;name&quot;: &quot;Marie Martin&quot;,
-            &quot;email&quot;: &quot;marie@example.com&quot;
+            &quot;name&quot;: &quot;Marie Martin&quot;
         },
         &quot;details&quot;: [
             {
                 &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440021&quot;,
-                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
                 &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
                 &quot;quantity&quot;: 50,
                 &quot;product&quot;: {
@@ -15223,13 +16052,12 @@ print_r(json_decode((string) $body));</code></pre></div>
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Le fournisseur n&#039;existe pas&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
             <blockquote>
@@ -15246,12 +16074,6 @@ print_r(json_decode((string) $body));</code></pre></div>
         ],
         &quot;fournisseur_id&quot;: [
             &quot;Le champ fournisseur_id est obligatoire.&quot;
-        ],
-        &quot;entrepot_to_id&quot;: [
-            &quot;Le champ entrepot_to_id doit exister dans la table entrepots.&quot;
-        ],
-        &quot;details&quot;: [
-            &quot;Le champ details doit contenir au moins 1 &eacute;l&eacute;ment.&quot;
         ]
     }
 }</code>
@@ -15274,7 +16096,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-stock-movements-receipt-supplier" data-method="POST"
       data-path="api/stock-movements/receipt/supplier"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -15304,6 +16126,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/stock-movements/receipt/supplier</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -15403,6 +16236,565 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Quantité reçue (minimum 1). Example: <code>50</code></p>
                     </div>
                                     </details>
+        </div>
+        </form>
+
+                    <h2 id="stock-movements-GETapi-stock-movements-trashed-list">GET api/stock-movements/trashed/list</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-stock-movements-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/stock-movements/trashed/list" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/trashed/list"
+);
+
+const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-stock-movements-trashed-list">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;data&quot;: [],
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 0
+    },
+    &quot;message&quot;: &quot;Mouvements de stock supprim&eacute;s r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-stock-movements-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-stock-movements-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-stock-movements-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-stock-movements-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-stock-movements-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-stock-movements-trashed-list" data-method="GET"
+      data-path="api/stock-movements/trashed/list"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-stock-movements-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-stock-movements-trashed-list"
+                    onclick="tryItOut('GETapi-stock-movements-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-stock-movements-trashed-list"
+                    onclick="cancelTryOut('GETapi-stock-movements-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-stock-movements-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/stock-movements/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements-trashed-list"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-stock-movements-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-stock-movements-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="stock-movements-POSTapi-stock-movements--id--restore">POST api/stock-movements/{id}/restore</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-stock-movements--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030/restore" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030/restore"
+);
+
+const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030/restore';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-stock-movements--id--restore">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Mouvement de stock restaur&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-stock-movements--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-stock-movements--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-stock-movements--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-stock-movements--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-stock-movements--id--restore" data-method="POST"
+      data-path="api/stock-movements/{id}/restore"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-stock-movements--id--restore"
+                    onclick="tryItOut('POSTapi-stock-movements--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-stock-movements--id--restore"
+                    onclick="cancelTryOut('POSTapi-stock-movements--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-stock-movements--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/stock-movements/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements--id--restore"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-stock-movements--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-stock-movements--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-stock-movements--id--restore"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock à restaurer. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="stock-movements-PATCHapi-stock-movements--id--update-status">PATCH api/stock-movements/{id}/update-status</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-stock-movements--id--update-status">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030/update-status" \
+    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"statut\": \"completed\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030/update-status"
+);
+
+const headers = {
+    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "statut": "completed"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030/update-status';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'statut' =&gt; 'completed',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-stock-movements--id--update-status">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
+        &quot;statut&quot;: &quot;completed&quot;,
+        &quot;details&quot;: []
+    },
+    &quot;message&quot;: &quot;Statut du mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-stock-movements--id--update-status" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-stock-movements--id--update-status"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-stock-movements--id--update-status"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-stock-movements--id--update-status" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-stock-movements--id--update-status">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-stock-movements--id--update-status" data-method="PATCH"
+      data-path="api/stock-movements/{id}/update-status"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-stock-movements--id--update-status', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-stock-movements--id--update-status"
+                    onclick="tryItOut('PATCHapi-stock-movements--id--update-status');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-stock-movements--id--update-status"
+                    onclick="cancelTryOut('PATCHapi-stock-movements--id--update-status');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-stock-movements--id--update-status"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/stock-movements/{id}/update-status</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-stock-movements--id--update-status"
+               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-stock-movements--id--update-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-stock-movements--id--update-status"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-stock-movements--id--update-status"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-stock-movements--id--update-status"
+               value="completed"
+               data-component="body">
+    <br>
+<p>Nouveau statut (pending, completed, cancelled). Example: <code>completed</code></p>
         </div>
         </form>
 
@@ -16565,861 +17957,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-PUTapi-stock-movements--id-">Mettre à jour un mouvement de stock</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-PUTapi-stock-movements--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/stock-movements/architecto" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/architecto"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/architecto';
-$response = $client-&gt;put(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-stock-movements--id-">
-</span>
-<span id="execution-results-PUTapi-stock-movements--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-stock-movements--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-stock-movements--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-stock-movements--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-stock-movements--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-stock-movements--id-" data-method="PUT"
-      data-path="api/stock-movements/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-stock-movements--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-stock-movements--id-"
-                    onclick="tryItOut('PUTapi-stock-movements--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-stock-movements--id-"
-                    onclick="cancelTryOut('PUTapi-stock-movements--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-stock-movements--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/stock-movements/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the stock movement. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="endpoints-PATCHapi-stock-movements--id-">Mettre à jour un mouvement de stock</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-PATCHapi-stock-movements--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/stock-movements/architecto" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/architecto"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/architecto';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-stock-movements--id-">
-</span>
-<span id="execution-results-PATCHapi-stock-movements--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-stock-movements--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-stock-movements--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-stock-movements--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-stock-movements--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-stock-movements--id-" data-method="PATCH"
-      data-path="api/stock-movements/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-stock-movements--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-stock-movements--id-"
-                    onclick="tryItOut('PATCHapi-stock-movements--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-stock-movements--id-"
-                    onclick="cancelTryOut('PATCHapi-stock-movements--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-stock-movements--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/stock-movements/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the stock movement. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="endpoints-DELETEapi-stock-movements--id-">Supprimer un mouvement de stock (soft delete)</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-DELETEapi-stock-movements--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/stock-movements/architecto" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/architecto"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/architecto';
-$response = $client-&gt;delete(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEapi-stock-movements--id-">
-</span>
-<span id="execution-results-DELETEapi-stock-movements--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-stock-movements--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-stock-movements--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-stock-movements--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-stock-movements--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-stock-movements--id-" data-method="DELETE"
-      data-path="api/stock-movements/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-stock-movements--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-stock-movements--id-"
-                    onclick="tryItOut('DELETEapi-stock-movements--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-stock-movements--id-"
-                    onclick="cancelTryOut('DELETEapi-stock-movements--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-stock-movements--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/stock-movements/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="DELETEapi-stock-movements--id-"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the stock movement. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="endpoints-GETapi-stock-movements-trashed-list">Lister les mouvements de stock supprimés</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-stock-movements-trashed-list">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/stock-movements/trashed/list" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/trashed/list"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/trashed/list';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-stock-movements-trashed-list">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;data&quot;: [],
-        &quot;first_page_url&quot;: &quot;http://localhost/api/stock-movements/trashed/list?page=1&quot;,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;last_page_url&quot;: &quot;http://localhost/api/stock-movements/trashed/list?page=1&quot;,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;http://localhost/api/stock-movements/trashed/list?page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;next_page_url&quot;: null,
-        &quot;path&quot;: &quot;http://localhost/api/stock-movements/trashed/list&quot;,
-        &quot;per_page&quot;: 15,
-        &quot;prev_page_url&quot;: null,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
-    },
-    &quot;message&quot;: &quot;Mouvements de stock supprim&eacute;s r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-stock-movements-trashed-list" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-stock-movements-trashed-list"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-stock-movements-trashed-list"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-stock-movements-trashed-list" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-stock-movements-trashed-list">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-stock-movements-trashed-list" data-method="GET"
-      data-path="api/stock-movements/trashed/list"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-stock-movements-trashed-list', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-stock-movements-trashed-list"
-                    onclick="tryItOut('GETapi-stock-movements-trashed-list');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-stock-movements-trashed-list"
-                    onclick="cancelTryOut('GETapi-stock-movements-trashed-list');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-stock-movements-trashed-list"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/stock-movements/trashed/list</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-stock-movements-trashed-list"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-stock-movements-trashed-list"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-POSTapi-stock-movements--id--restore">Restaurer un mouvement de stock supprimé</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTapi-stock-movements--id--restore">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/stock-movements/architecto/restore" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/architecto/restore"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/architecto/restore';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-stock-movements--id--restore">
-</span>
-<span id="execution-results-POSTapi-stock-movements--id--restore" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-stock-movements--id--restore"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements--id--restore"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-stock-movements--id--restore" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-stock-movements--id--restore">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-stock-movements--id--restore" data-method="POST"
-      data-path="api/stock-movements/{id}/restore"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements--id--restore', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-stock-movements--id--restore"
-                    onclick="tryItOut('POSTapi-stock-movements--id--restore');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-stock-movements--id--restore"
-                    onclick="cancelTryOut('POSTapi-stock-movements--id--restore');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-stock-movements--id--restore"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/stock-movements/{id}/restore</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-stock-movements--id--restore"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-stock-movements--id--restore"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="POSTapi-stock-movements--id--restore"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the stock movement. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="endpoints-PATCHapi-stock-movements--id--update-status">Met à jour le statut d&#039;un mouvement de stock</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-PATCHapi-stock-movements--id--update-status">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/stock-movements/architecto/update-status" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/architecto/update-status"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/architecto/update-status';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-stock-movements--id--update-status">
-</span>
-<span id="execution-results-PATCHapi-stock-movements--id--update-status" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-stock-movements--id--update-status"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-stock-movements--id--update-status"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-stock-movements--id--update-status" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-stock-movements--id--update-status">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-stock-movements--id--update-status" data-method="PATCH"
-      data-path="api/stock-movements/{id}/update-status"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-stock-movements--id--update-status', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-stock-movements--id--update-status"
-                    onclick="tryItOut('PATCHapi-stock-movements--id--update-status');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-stock-movements--id--update-status"
-                    onclick="cancelTryOut('PATCHapi-stock-movements--id--update-status');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-stock-movements--id--update-status"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/stock-movements/{id}/update-status</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-stock-movements--id--update-status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-stock-movements--id--update-status"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PATCHapi-stock-movements--id--update-status"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the stock movement. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
                     <h2 id="endpoints-GETapi-stock-movement-details--id-">Afficher un détail de mouvement de stock spécifique</h2>
 
 <p>
@@ -18531,7 +19068,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -18559,7 +19096,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -18589,7 +19126,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -18822,7 +19359,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
