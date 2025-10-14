@@ -247,28 +247,28 @@
                 </li>
                                     <ul id="tocify-subheader-stock-movement-types" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="stock-movement-types-GETapi-stock-movement-types">
-                                <a href="#stock-movement-types-GETapi-stock-movement-types"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-GETapi-stock-movement-types">Récupère la liste des types de mouvements de stock</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-POSTapi-stock-movement-types">
-                                <a href="#stock-movement-types-POSTapi-stock-movement-types"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-POSTapi-stock-movement-types">Crée un nouveau type de mouvement de stock</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-GETapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-GETapi-stock-movement-types--id-"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-GETapi-stock-movement-types--id-">Récupère un type de mouvement de stock spécifique</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-PUTapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-PUTapi-stock-movement-types--id-"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-PUTapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-PATCHapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-PATCHapi-stock-movement-types--id-"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-PATCHapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-DELETEapi-stock-movement-types--id-">
-                                <a href="#stock-movement-types-DELETEapi-stock-movement-types--id-"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-DELETEapi-stock-movement-types--id-">Supprime un type de mouvement de stock (soft delete)</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-GETapi-stock-movement-types-trashed-list">
-                                <a href="#stock-movement-types-GETapi-stock-movement-types-trashed-list"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-GETapi-stock-movement-types-trashed-list">Récupère la liste des types de mouvements de stock supprimés</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movement-types-POSTapi-stock-movement-types--id--restore">
-                                <a href="#stock-movement-types-POSTapi-stock-movement-types--id--restore"><<<<<<< HEAD</a>
+                                <a href="#stock-movement-types-POSTapi-stock-movement-types--id--restore">Restaure un type de mouvement de stock supprimé</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -368,7 +368,10 @@
                     <a href="#client-types-management">Client Types Management</a>
                 </li>
                                     <ul id="tocify-subheader-client-types-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="client-types-management-GETapi-client-types">
+                                                    <li class="tocify-item level-2" data-unique="client-types-management-GETapi-client-types-trashed-list">
+                                <a href="#client-types-management-GETapi-client-types-trashed-list">Lister les types de clients supprimés</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="client-types-management-GETapi-client-types">
                                 <a href="#client-types-management-GETapi-client-types">Liste tous les types de clients</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="client-types-management-POSTapi-client-types">
@@ -385,9 +388,6 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="client-types-management-DELETEapi-client-types--client_type_id-">
                                 <a href="#client-types-management-DELETEapi-client-types--client_type_id-">Supprimer un type de client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="client-types-management-GETapi-client-types-trashed-list">
-                                <a href="#client-types-management-GETapi-client-types-trashed-list">Lister les types de clients supprimés</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="client-types-management-POSTapi-client-types--client_type_id--restore">
                                 <a href="#client-types-management-POSTapi-client-types--client_type_id--restore">Restaurer un type de client supprimé (soft delete)</a>
@@ -3398,8 +3398,8 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": false,
-    \"with_client_type\": true,
-    \"balance_filter\": \"positive\"
+    \"with_client_type\": false,
+    \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
 
@@ -3444,8 +3444,8 @@ let body = {
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": false,
-    "with_client_type": true,
-    "balance_filter": "positive"
+    "with_client_type": false,
+    "balance_filter": "negative"
 };
 
 fetch(url, {
@@ -3492,8 +3492,8 @@ $response = $client-&gt;get(
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; false,
-            'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'positive',
+            'with_client_type' =&gt; false,
+            'balance_filter' =&gt; 'negative',
         ],
     ]
 );
@@ -3922,7 +3922,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -3930,10 +3930,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
+               value="negative"
                data-component="body">
     <br>
-<p>Example: <code>positive</code></p>
+<p>Example: <code>negative</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -6259,7 +6259,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": true
+    \"is_active\": false
 }"
 </code></pre></div>
 
@@ -6287,7 +6287,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": true
+    "is_active": false
 };
 
 fetch(url, {
@@ -6317,7 +6317,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; true,
+            'is_active' =&gt; false,
         ],
     ]
 );
@@ -6534,7 +6534,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -7723,7 +7723,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-14T08:54:39\",
+    \"date_from\": \"2025-10-14T15:54:26\",
     \"date_to\": \"2051-11-07\"
 }"
 </code></pre></div>
@@ -7747,7 +7747,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-14T08:54:39",
+    "date_from": "2025-10-14T15:54:26",
     "date_to": "2051-11-07"
 };
 
@@ -7773,7 +7773,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-14T08:54:39',
+            'date_from' =&gt; '2025-10-14T15:54:26',
             'date_to' =&gt; '2051-11-07',
         ],
     ]
@@ -7904,10 +7904,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-14T08:54:39"
+               value="2025-10-14T15:54:26"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T15:54:26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -7943,8 +7943,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"partially_paid\",
-    \"date_from\": \"2025-10-14T08:54:39\",
+    \"statut\": \"overdue\",
+    \"date_from\": \"2025-10-14T15:54:26\",
     \"date_to\": \"2051-11-07\",
     \"with_client\": false,
     \"with_details\": true
@@ -7981,8 +7981,8 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "partially_paid",
-    "date_from": "2025-10-14T08:54:39",
+    "statut": "overdue",
+    "date_from": "2025-10-14T15:54:26",
     "date_to": "2051-11-07",
     "with_client": false,
     "with_details": true
@@ -8021,8 +8021,8 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'partially_paid',
-            'date_from' =&gt; '2025-10-14T08:54:39',
+            'statut' =&gt; 'overdue',
+            'date_from' =&gt; '2025-10-14T15:54:26',
             'date_to' =&gt; '2051-11-07',
             'with_client' =&gt; false,
             'with_details' =&gt; true,
@@ -8311,10 +8311,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="partially_paid"
+               value="overdue"
                data-component="body">
     <br>
-<p>Example: <code>partially_paid</code></p>
+<p>Example: <code>overdue</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -8324,10 +8324,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-14T08:54:39"
+               value="2025-10-14T15:54:26"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T15:54:26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8390,7 +8390,7 @@ Must be one of:
 </p>
 
 <p>Crée une nouvelle facture avec ses détails.
-Le numéro de facture est généré automatiquement.</p>
+Le numéro de facture (facture_number) est généré automatiquement.</p>
 
 <span id="example-requests-POSTapi-factures">
 <blockquote>Example request:</blockquote>
@@ -8721,7 +8721,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440001"
                data-component="body">
     <br>
-<p>UUID de l'utilisateur créant la facture. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+<p>UUID de l'utilisateur créant la facture. Idéalement l'utilisateur connecté. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
         <details>
@@ -8810,7 +8810,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_client\": false,
     \"with_details\": false,
-    \"with_payments\": true
+    \"with_payments\": false
 }"
 </code></pre></div>
 
@@ -8836,7 +8836,7 @@ const headers = {
 let body = {
     "with_client": false,
     "with_details": false,
-    "with_payments": true
+    "with_payments": false
 };
 
 fetch(url, {
@@ -8864,7 +8864,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_client' =&gt; false,
             'with_details' =&gt; false,
-            'with_payments' =&gt; true,
+            'with_payments' =&gt; false,
         ],
     ]
 );
@@ -9116,7 +9116,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -9126,7 +9126,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Met à jour les informations d'une facture existante.
-Note: Les détails de la facture doivent être mis à jour séparément.</p>
+Note: Les détails de la facture doivent être mis à jour séparément.
+Le numéro de facture (facture_number) ne peut pas être modifié.</p>
 
 <span id="example-requests-PUTapi-factures--id-">
 <blockquote>Example request:</blockquote>
@@ -9410,7 +9411,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Met à jour les informations d'une facture existante.
-Note: Les détails de la facture doivent être mis à jour séparément.</p>
+Note: Les détails de la facture doivent être mis à jour séparément.
+Le numéro de facture (facture_number) ne peut pas être modifié.</p>
 
 <span id="example-requests-PATCHapi-factures--id-">
 <blockquote>Example request:</blockquote>
@@ -10055,7 +10057,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-14T08:54:39\",
+    \"date_from\": \"2025-10-14T15:54:26\",
     \"date_to\": \"2051-11-07\"
 }"
 </code></pre></div>
@@ -10079,7 +10081,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-14T08:54:39",
+    "date_from": "2025-10-14T15:54:26",
     "date_to": "2051-11-07"
 };
 
@@ -10105,7 +10107,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-14T08:54:39',
+            'date_from' =&gt; '2025-10-14T15:54:26',
             'date_to' =&gt; '2051-11-07',
         ],
     ]
@@ -10245,10 +10247,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-14T08:54:39"
+               value="2025-10-14T15:54:26"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T15:54:26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10286,11 +10288,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"failed\",
-    \"date_from\": \"2025-10-14T08:54:39\",
+    \"statut\": \"refunded\",
+    \"date_from\": \"2025-10-14T15:54:26\",
     \"date_to\": \"2051-11-07\",
     \"with_facture\": true,
-    \"with_client\": false,
+    \"with_client\": true,
     \"with_payment_method\": false
 }"
 </code></pre></div>
@@ -10330,11 +10332,11 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "failed",
-    "date_from": "2025-10-14T08:54:39",
+    "statut": "refunded",
+    "date_from": "2025-10-14T15:54:26",
     "date_to": "2051-11-07",
     "with_facture": true,
-    "with_client": false,
+    "with_client": true,
     "with_payment_method": false
 };
 
@@ -10376,11 +10378,11 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'failed',
-            'date_from' =&gt; '2025-10-14T08:54:39',
+            'statut' =&gt; 'refunded',
+            'date_from' =&gt; '2025-10-14T15:54:26',
             'date_to' =&gt; '2051-11-07',
             'with_facture' =&gt; true,
-            'with_client' =&gt; false,
+            'with_client' =&gt; true,
             'with_payment_method' =&gt; false,
         ],
     ]
@@ -10726,10 +10728,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="failed"
+               value="refunded"
                data-component="body">
     <br>
-<p>Example: <code>failed</code></p>
+<p>Example: <code>refunded</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -10739,10 +10741,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-14T08:54:39"
+               value="2025-10-14T15:54:26"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T08:54:39</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T15:54:26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10795,7 +10797,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -11148,8 +11150,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"with_facture\": true,
-    \"with_client\": true,
-    \"with_payment_method\": false
+    \"with_client\": false,
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -11174,8 +11176,8 @@ const headers = {
 
 let body = {
     "with_facture": true,
-    "with_client": true,
-    "with_payment_method": false
+    "with_client": false,
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -11202,8 +11204,8 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'with_facture' =&gt; true,
-            'with_client' =&gt; true,
-            'with_payment_method' =&gt; false,
+            'with_client' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -11436,7 +11438,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -11457,7 +11459,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -12256,9 +12258,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="stock-movement-types">Stock Movement Types</h1>
 
-    <p>Récupère la liste des types de mouvements de stock</p>
+    
 
-                                <h2 id="stock-movement-types-GETapi-stock-movement-types">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                                <h2 id="stock-movement-types-GETapi-stock-movement-types">Récupère la liste des types de mouvements de stock</h2>
 
 <p>
 </p>
@@ -12358,13 +12360,10 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration des types de mouvements de stock&quot;,
-  &quot;error&quot;: &quot;Message d&#039;erreur&quot;
-}
-=======
-Afficher la liste des types de mouvements de stock
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration des types de mouvements de stock&quot;,
+    &quot;error&quot;: &quot;Message d&#039;erreur&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-types" hidden>
@@ -12494,7 +12493,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="stock-movement-types-POSTapi-stock-movement-types">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-POSTapi-stock-movement-types">Crée un nouveau type de mouvement de stock</h2>
 
 <p>
 </p>
@@ -12584,16 +12583,17 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Erreur de validation&quot;,
-  &quot;errors&quot;: {
-    &quot;name&quot;: [&quot;Le nom du type de mouvement est obligatoire.&quot;],
-    &quot;direction&quot;: [&quot;La direction est obligatoire.&quot;]
-  }
-}
-=======
-Cr&eacute;er un nouveau type de mouvement de stock
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom du type de mouvement est obligatoire.&quot;
+        ],
+        &quot;direction&quot;: [
+            &quot;La direction est obligatoire.&quot;
+        ]
+    }
+}</code>
  </pre>
     </span>
 <span id="execution-results-POSTapi-stock-movement-types" hidden>
@@ -12690,7 +12690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movement-types-GETapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-GETapi-stock-movement-types--id-">Récupère un type de mouvement de stock spécifique</h2>
 
 <p>
 </p>
@@ -12766,12 +12766,9 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
-}
-=======
-Afficher un type de mouvement de stock sp&eacute;cifique
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-types--id-" hidden>
@@ -12857,7 +12854,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="stock-movement-types-PUTapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-PUTapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</h2>
 
 <p>
 </p>
@@ -12957,15 +12954,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Erreur de validation&quot;,
-  &quot;errors&quot;: {
-    &quot;name&quot;: [&quot;Le nom du type de mouvement est obligatoire.&quot;]
-  }
-}
-=======
-Mettre &agrave; jour un type de mouvement de stock
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom du type de mouvement est obligatoire.&quot;
+        ]
+    }
+}</code>
  </pre>
     </span>
 <span id="execution-results-PUTapi-stock-movement-types--id-" hidden>
@@ -13074,7 +13070,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movement-types-PATCHapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-PATCHapi-stock-movement-types--id-">Met à jour un type de mouvement de stock</h2>
 
 <p>
 </p>
@@ -13174,15 +13170,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Erreur de validation&quot;,
-  &quot;errors&quot;: {
-    &quot;name&quot;: [&quot;Le nom du type de mouvement est obligatoire.&quot;]
-  }
-}
-=======
-Mettre &agrave; jour un type de mouvement de stock
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom du type de mouvement est obligatoire.&quot;
+        ]
+    }
+}</code>
  </pre>
     </span>
 <span id="execution-results-PATCHapi-stock-movement-types--id-" hidden>
@@ -13291,7 +13286,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="stock-movement-types-DELETEapi-stock-movement-types--id-">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-DELETEapi-stock-movement-types--id-">Supprime un type de mouvement de stock (soft delete)</h2>
 
 <p>
 </p>
@@ -13359,12 +13354,9 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
-}
-=======
-Supprimer un type de mouvement de stock (soft delete)
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Type de mouvement de stock non trouv&eacute;&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-DELETEapi-stock-movement-types--id-" hidden>
@@ -13450,7 +13442,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="stock-movement-types-GETapi-stock-movement-types-trashed-list">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-GETapi-stock-movement-types-trashed-list">Récupère la liste des types de mouvements de stock supprimés</h2>
 
 <p>
 </p>
@@ -13508,27 +13500,24 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: true,
-  &quot;data&quot;: {
-    &quot;data&quot;: [
-      {
-        &quot;stock_movement_type_id&quot;: &quot;uuid&quot;,
-        &quot;name&quot;: &quot;R&eacute;ception&quot;,
-        &quot;direction&quot;: &quot;in&quot;,
-        &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
-        &quot;deleted_at&quot;: &quot;2024-01-01 12:00:00&quot;
-      }
-    ],
-    &quot;current_page&quot;: 1,
-    &quot;per_page&quot;: 15,
-    &quot;total&quot;: 1
-  },
-  &quot;message&quot;: &quot;Types de mouvements de stock supprim&eacute;s r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
-}
-=======
-Lister les types de mouvements de stock supprim&eacute;s
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;data&quot;: [
+            {
+                &quot;stock_movement_type_id&quot;: &quot;uuid&quot;,
+                &quot;name&quot;: &quot;R&eacute;ception&quot;,
+                &quot;direction&quot;: &quot;in&quot;,
+                &quot;created_at&quot;: &quot;2024-01-01 10:00:00&quot;,
+                &quot;updated_at&quot;: &quot;2024-01-01 10:00:00&quot;,
+                &quot;deleted_at&quot;: &quot;2024-01-01 12:00:00&quot;
+            }
+        ],
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 1
+    },
+    &quot;message&quot;: &quot;Types de mouvements de stock supprim&eacute;s r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-stock-movement-types-trashed-list" hidden>
@@ -13602,7 +13591,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="stock-movement-types-POSTapi-stock-movement-types--id--restore">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h2>
+                    <h2 id="stock-movement-types-POSTapi-stock-movement-types--id--restore">Restaure un type de mouvement de stock supprimé</h2>
 
 <p>
 </p>
@@ -13677,12 +13666,9 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-  &quot;success&quot;: false,
-  &quot;message&quot;: &quot;Ce type de mouvement de stock n&#039;est pas supprim&eacute;&quot;
-}
-=======
-Restaurer un type de mouvement de stock supprim&eacute;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1c81847c9bdb851e44db291266c5769bded4c228</code>
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Ce type de mouvement de stock n&#039;est pas supprim&eacute;&quot;
+}</code>
  </pre>
             <blockquote>
             <p>Example response (404):</p>
@@ -17630,7 +17616,221 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     <p>APIs pour gérer les types de clients</p>
 
-                                <h2 id="client-types-management-GETapi-client-types">Liste tous les types de clients</h2>
+                                <h2 id="client-types-management-GETapi-client-types-trashed-list">Lister les types de clients supprimés</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste des types de clients supprimés (soft delete).</p>
+
+<span id="example-requests-GETapi-client-types-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/client-types/trashed/list?page=1&amp;per_page=15" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"page\": 16,
+    \"per_page\": 22
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/client-types/trashed/list"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "page": 16,
+    "per_page": 22
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/client-types/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+        ],
+        'json' =&gt; [
+            'page' =&gt; 16,
+            'per_page' =&gt; 22,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-client-types-trashed-list">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;label&quot;: &quot;Ancien Premium&quot;,
+            &quot;description&quot;: &quot;Type de client supprim&eacute;&quot;,
+            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+            &quot;deleted_at&quot;: &quot;2024-01-15T12:00:00Z&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-client-types-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-client-types-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-client-types-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-client-types-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-client-types-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-client-types-trashed-list" data-method="GET"
+      data-path="api/client-types/trashed/list"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-client-types-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-client-types-trashed-list"
+                    onclick="tryItOut('GETapi-client-types-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-client-types-trashed-list"
+                    onclick="cancelTryOut('GETapi-client-types-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-client-types-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/client-types/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-client-types-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-client-types-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-client-types-trashed-list"
+               value="1"
+               data-component="query">
+    <br>
+<p>Page à récupérer. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-client-types-trashed-list"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page. Example: <code>15</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-client-types-trashed-list"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-client-types-trashed-list"
+               value="22"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
+        </div>
+        </form>
+
+                    <h2 id="client-types-management-GETapi-client-types">Liste tous les types de clients</h2>
 
 <p>
 </p>
@@ -17651,7 +17851,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -17679,7 +17879,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -17709,7 +17909,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -17942,7 +18142,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -18171,7 +18371,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -18193,7 +18393,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -18217,7 +18417,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -18375,7 +18575,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -18970,220 +19170,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                     </form>
-
-                    <h2 id="client-types-management-GETapi-client-types-trashed-list">Lister les types de clients supprimés</h2>
-
-<p>
-</p>
-
-<p>Récupère la liste des types de clients supprimés (soft delete).</p>
-
-<span id="example-requests-GETapi-client-types-trashed-list">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/client-types/trashed/list?page=1&amp;per_page=15" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"page\": 16,
-    \"per_page\": 22
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/client-types/trashed/list"
-);
-
-const params = {
-    "page": "1",
-    "per_page": "15",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "page": 16,
-    "per_page": 22
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/client-types/trashed/list';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'page' =&gt; '1',
-            'per_page' =&gt; '15',
-        ],
-        'json' =&gt; [
-            'page' =&gt; 16,
-            'per_page' =&gt; 22,
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-client-types-trashed-list">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;label&quot;: &quot;Ancien Premium&quot;,
-            &quot;description&quot;: &quot;Type de client supprim&eacute;&quot;,
-            &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;deleted_at&quot;: &quot;2024-01-15T12:00:00Z&quot;
-        }
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-client-types-trashed-list" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-client-types-trashed-list"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-client-types-trashed-list"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-client-types-trashed-list" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-client-types-trashed-list">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-client-types-trashed-list" data-method="GET"
-      data-path="api/client-types/trashed/list"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-client-types-trashed-list', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-client-types-trashed-list"
-                    onclick="tryItOut('GETapi-client-types-trashed-list');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-client-types-trashed-list"
-                    onclick="cancelTryOut('GETapi-client-types-trashed-list');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-client-types-trashed-list"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/client-types/trashed/list</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-client-types-trashed-list"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-client-types-trashed-list"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-client-types-trashed-list"
-               value="1"
-               data-component="query">
-    <br>
-<p>Page à récupérer. Example: <code>1</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-client-types-trashed-list"
-               value="15"
-               data-component="query">
-    <br>
-<p>Nombre d'éléments par page. Example: <code>15</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-client-types-trashed-list"
-               value="16"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-client-types-trashed-list"
-               value="22"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
-        </div>
-        </form>
 
                     <h2 id="client-types-management-POSTapi-client-types--client_type_id--restore">Restaurer un type de client supprimé (soft delete)</h2>
 

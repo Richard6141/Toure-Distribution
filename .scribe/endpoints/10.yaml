@@ -1,5 +1,5 @@
 name: 'Stock Movement Types'
-description: 'Récupère la liste des types de mouvements de stock'
+description: ''
 endpoints:
   -
     httpMethods:
@@ -7,10 +7,10 @@ endpoints:
     uri: api/stock-movement-types
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Récupère la liste des types de mouvements de stock'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Récupère la liste des types de mouvements de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -114,9 +114,6 @@ endpoints:
             "message": "Erreur lors de la récupération des types de mouvements de stock",
             "error": "Message d'erreur"
           }
-          =======
-          Afficher la liste des types de mouvements de stock
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -132,10 +129,10 @@ endpoints:
     uri: api/stock-movement-types
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Crée un nouveau type de mouvement de stock'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Crée un nouveau type de mouvement de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -201,9 +198,6 @@ endpoints:
               "direction": ["La direction est obligatoire."]
             }
           }
-          =======
-          Créer un nouveau type de mouvement de stock
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -219,10 +213,10 @@ endpoints:
     uri: 'api/stock-movement-types/{id}'
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Récupère un type de mouvement de stock spécifique'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Récupère un type de mouvement de stock spécifique'
       description: ''
       authenticated: false
       deprecated: false
@@ -274,9 +268,6 @@ endpoints:
             "success": false,
             "message": "Type de mouvement de stock non trouvé"
           }
-          =======
-          Afficher un type de mouvement de stock spécifique
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -292,10 +283,10 @@ endpoints:
     uri: 'api/stock-movement-types/{id}'
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Met à jour un type de mouvement de stock'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Met à jour un type de mouvement de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -381,9 +372,6 @@ endpoints:
               "name": ["Le nom du type de mouvement est obligatoire."]
             }
           }
-          =======
-          Mettre à jour un type de mouvement de stock
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -399,10 +387,10 @@ endpoints:
     uri: 'api/stock-movement-types/{id}'
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Met à jour un type de mouvement de stock'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Met à jour un type de mouvement de stock'
       description: ''
       authenticated: false
       deprecated: false
@@ -488,9 +476,6 @@ endpoints:
               "name": ["Le nom du type de mouvement est obligatoire."]
             }
           }
-          =======
-          Mettre à jour un type de mouvement de stock
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -506,10 +491,10 @@ endpoints:
     uri: 'api/stock-movement-types/{id}'
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Supprime un type de mouvement de stock (soft delete)'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Supprime un type de mouvement de stock (soft delete)'
       description: ''
       authenticated: false
       deprecated: false
@@ -553,9 +538,6 @@ endpoints:
             "success": false,
             "message": "Type de mouvement de stock non trouvé"
           }
-          =======
-          Supprimer un type de mouvement de stock (soft delete)
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -571,10 +553,10 @@ endpoints:
     uri: api/stock-movement-types/trashed/list
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Récupère la liste des types de mouvements de stock supprimés'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Récupère la liste des types de mouvements de stock supprimés'
       description: ''
       authenticated: false
       deprecated: false
@@ -612,9 +594,6 @@ endpoints:
             },
             "message": "Types de mouvements de stock supprimés récupérés avec succès"
           }
-          =======
-          Lister les types de mouvements de stock supprimés
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
@@ -630,10 +609,10 @@ endpoints:
     uri: 'api/stock-movement-types/{id}/restore'
     metadata:
       groupName: 'Stock Movement Types'
-      groupDescription: 'Restaure un type de mouvement de stock supprimé'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: '<<<<<<< HEAD'
+      title: 'Restaure un type de mouvement de stock supprimé'
       description: ''
       authenticated: false
       deprecated: false
@@ -684,9 +663,6 @@ endpoints:
             "success": false,
             "message": "Ce type de mouvement de stock n'est pas supprimé"
           }
-          =======
-          Restaurer un type de mouvement de stock supprimé
-          >>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
         headers: []
         description: ''
         custom: []
