@@ -7,15 +7,15 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
+use App\Http\Controllers\Api\FactureController;
 use App\Http\Controllers\Api\EntrepotController;
+use App\Http\Controllers\Api\PaiementController;
+use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
-use App\Http\Controllers\StockMovementTypeController;
-use App\Http\Controllers\StockMovementController;
-use App\Http\Controllers\StockMovementDetailController;
 use App\Http\Controllers\Api\PaymentMethodController;
-use App\Http\Controllers\Api\FactureController;
-use App\Http\Controllers\Api\PaiementController;
+use App\Http\Controllers\StockMovementTypeController;
+use App\Http\Controllers\StockMovementDetailController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -187,19 +187,116 @@ Route::prefix('stock-movement-types')->group(function () {
  * Prefix: /stock-movements
  */
 Route::prefix('stock-movements')->group(function () {
-    Route::get('/', [StockMovementController::class, 'index']);                   // Liste des mouvements
-    Route::post('/', [StockMovementController::class, 'store']);                  // Création d'un mouvement
-    Route::get('/{id}', [StockMovementController::class, 'show']);                // Afficher un mouvement par ID
-    Route::put('/{id}', [StockMovementController::class, 'update']);              // Mise à jour d'un mouvement
-    Route::patch('/{id}', [StockMovementController::class, 'update']);            // Mise à jour partielle d'un mouvement
-    Route::delete('/{id}', [StockMovementController::class, 'destroy']);          // Suppression logique (soft delete)
 
-    // Routes pour gestion soft delete
-    Route::get('/trashed/list', [StockMovementController::class, 'trashed']);     // Liste des mouvements supprimés
-    Route::post('/{id}/restore', [StockMovementController::class, 'restore']);    // Restaurer un mouvement supprimé
+    // ============================================
+    // ENDPOINTS PRINCIPAUX (CRUD)
+    // ============================================
 
-    // Routes spéciales
-    Route::patch('/{id}/update-status', [StockMovementController::class, 'updateStatus']); // Changer le statut
+    /**
+     * GET /stock-movements
+     * Récupère la liste paginée de tous les mouvements de stock
+     * Supporte les filtres et le tri
+     */
+    Route::get('/', [StockMovementController::class, 'index'])
+        ->name('stock-movements.index');
+
+    /**
+     * POST /stock-movements
+     * Crée un mouvement de stock générique
+     * Préférer les endpoints spécialisés quand possible
+     */
+    Route::post('/', [StockMovementController::class, 'store'])
+        ->name('stock-movements.store');
+
+    /**
+     * GET /stock-movements/{id}
+     * Récupère les détails complets d'un mouvement de stock
+     * Inclut les relations (type, entrepôts, fournisseur, détails, produits)
+     */
+    Route::get('/{id}', [StockMovementController::class, 'show'])
+        ->name('stock-movements.show');
+
+    /**
+     * PUT /stock-movements/{id}
+     * Met à jour entièrement un mouvement de stock
+     * Remplace tous les champs et les détails
+     */
+    Route::put('/{id}', [StockMovementController::class, 'update'])
+        ->name('stock-movements.update');
+
+    /**
+     * PATCH /stock-movements/{id}
+     * Mise à jour partielle d'un mouvement de stock
+     * Permet de mettre à jour seulement certains champs
+     */
+    Route::patch('/{id}', [StockMovementController::class, 'update'])
+        ->name('stock-movements.update-partial');
+
+    /**
+     * DELETE /stock-movements/{id}
+     * Supprime logiquement (soft delete) un mouvement de stock
+     * Les données restent en base de données avec un timestamp deleted_at
+     */
+    Route::delete('/{id}', [StockMovementController::class, 'destroy'])
+        ->name('stock-movements.destroy');
+
+    // ============================================
+    // ENDPOINTS SPÉCIALISÉS (CAS D'USAGE MÉTIER)
+    // ============================================
+
+    /**
+     * POST /stock-movements/transfer/warehouse
+     * Crée un transfert de stock entre deux entrepôts
+     * 
+     * Cas d'usage: Transfert d'un entrepôt à un autre
+     * Requiert: movement_type_id, entrepot_from_id, entrepot_to_id, details[]
+     */
+    Route::post('/transfer/warehouse', [StockMovementController::class, 'storeWarehouseTransfer'])
+        ->name('stock-movements.transfer.warehouse');
+
+    /**
+     * POST /stock-movements/receipt/supplier
+     * Crée une réception de stock depuis un fournisseur
+     * 
+     * Cas d'usage: Réception de marchandise d'un fournisseur vers un entrepôt
+     * Requiert: movement_type_id, fournisseur_id, entrepot_to_id, details[]
+     */
+    Route::post('/receipt/supplier', [StockMovementController::class, 'storeSupplierReceipt'])
+        ->name('stock-movements.receipt.supplier');
+
+    // ============================================
+    // ENDPOINTS DE GESTION DES SUPPESSIONS
+    // ============================================
+
+    /**
+     * GET /stock-movements/trashed/list
+     * Récupère la liste paginée des mouvements supprimés (soft delete)
+     * Inclut tous les détails et les relations
+     */
+    Route::get('/trashed/list', [StockMovementController::class, 'trashed'])
+        ->name('stock-movements.trashed');
+
+    /**
+     * POST /stock-movements/{id}/restore
+     * Restaure un mouvement de stock supprimé
+     * Retire le timestamp deleted_at
+     */
+    Route::post('/{id}/restore', [StockMovementController::class, 'restore'])
+        ->name('stock-movements.restore');
+
+    // ============================================
+    // ENDPOINTS DE GESTION DU STATUT
+    // ============================================
+
+    /**
+     * PATCH /stock-movements/{id}/update-status
+     * Met à jour uniquement le statut d'un mouvement de stock
+     * Statuts possibles: pending, completed, cancelled
+     * 
+     * Endpoint dédié pour les changements de statut sans modifier les autres données
+     */
+    Route::patch('/{id}/update-status', [StockMovementController::class, 'updateStatus'])
+        ->name('stock-movements.update-status');
 })->middleware('auth:sanctum');
 
 /**
