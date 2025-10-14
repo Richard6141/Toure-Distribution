@@ -54,6 +54,30 @@ class Facture extends Model
     }
 
     /**
+     * Relation avec les détails de la facture
+     */
+    public function details()
+    {
+        return $this->hasMany(FactureDetail::class, 'facture_id', 'facture_id');
+    }
+
+    /**
+     * Relation avec les paiements
+     */
+    public function paiements()
+    {
+        return $this->hasMany(Paiement::class, 'facture_id', 'facture_id');
+    }
+
+    /**
+     * Relation avec l'utilisateur qui a créé la facture
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
      * Génère automatiquement le numéro de facture avant la création
      */
     protected static function boot()
