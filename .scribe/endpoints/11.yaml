@@ -1,4 +1,4 @@
-name: 'Stock Movements'
+name: 'Gestion des Mouvements de Stock'
 description: ''
 endpoints:
   -
@@ -6,35 +6,37 @@ endpoints:
       - GET
     uri: api/stock-movements
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: |-
+        Récupère la liste paginée de tous les mouvements de stock avec leurs détails complets.
+        Cette endpoint supporte le filtrage avancé, la recherche et le tri.
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'Filtrer par type de mouvement (UUID).'
+      movement_type:
+        name: movement_type
+        description: 'Filtrer par type de mouvement Entrée (in), Sortie (out), Transfert (transfer).'
         required: false
-        example: 550e8400-e29b-41d4-a716-446655440000
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       statut:
         name: statut
-        description: 'Filtrer par statut du mouvement.'
+        description: 'Filtrer par statut (pending, completed, cancelled).'
         required: false
         example: pending
         type: string
@@ -114,9 +116,9 @@ endpoints:
         custom: []
       sort_by:
         name: sort_by
-        description: 'Champ sur lequel trier.'
+        description: 'Champ sur lequel trier (défaut: created_at).'
         required: false
-        example: created_at
+        example: reference
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -124,7 +126,7 @@ endpoints:
         custom: []
       sort_order:
         name: sort_order
-        description: 'Ordre de tri (asc/desc).'
+        description: 'Ordre de tri: asc ou desc (défaut: desc).'
         required: false
         example: desc
         type: string
@@ -134,16 +136,16 @@ endpoints:
         custom: []
       per_page:
         name: per_page
-        description: "Nombre d'éléments par page."
+        description: "Nombre d'éléments par page (défaut: 15)."
         required: false
-        example: 15
+        example: 20
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanQueryParameters:
-      movement_type_id: 550e8400-e29b-41d4-a716-446655440000
+      movement_type: architecto
       statut: pending
       entrepot_from_id: 550e8400-e29b-41d4-a716-446655440001
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
@@ -152,9 +154,9 @@ endpoints:
       search: MV-2024
       date_from: '2024-01-01'
       date_to: '2024-12-31'
-      sort_by: created_at
+      sort_by: reference
       sort_order: desc
-      per_page: 15
+      per_page: 20
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -169,9 +171,8 @@ endpoints:
                 {
                   "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
                   "reference": "MV-2024-00001",
-                  "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-                  "statut": "pending",
-                  "created_at": "2024-01-15 14:30:00"
+                  "movement_type": "transfert",
+                  "statut": "pending"
                 }
               ],
               "current_page": 1,
@@ -181,7 +182,7 @@ endpoints:
             "message": "Mouvements de stock récupérés avec succès"
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 401
@@ -190,18 +191,7 @@ endpoints:
             "message": "Unauthenticated."
           }
         headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur lors de la récupération des mouvements de stock",
-            "error": "Message d'erreur détaillé"
-          }
-        headers: []
-        description: ''
+        description: 'Non authentifié'
         custom: []
     responseFields: []
     auth:
@@ -217,17 +207,17 @@ endpoints:
       - POST
     uri: api/stock-movements
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: "Crée un mouvement de stock avec des paramètres flexibles. Il est recommandé d'utiliser"
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -235,11 +225,11 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'UUID du type de mouvement.'
+      movement_type:
+        name: movement_type
+        description: 'nom du mouvement saisi manuellement.'
         required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
+        example: Entré
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -247,7 +237,7 @@ endpoints:
         custom: []
       entrepot_from_id:
         name: entrepot_from_id
-        description: "optionnel UUID de l'entrepôt source."
+        description: "optional UUID de l'entrepôt source."
         required: false
         example: 550e8400-e29b-41d4-a716-446655440001
         type: string
@@ -257,7 +247,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "optionnel UUID de l'entrepôt destination."
+        description: "optional UUID de l'entrepôt destination."
         required: false
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -267,7 +257,7 @@ endpoints:
         custom: []
       fournisseur_id:
         name: fournisseur_id
-        description: 'optionnel UUID du fournisseur.'
+        description: 'optional UUID du fournisseur.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440100
         type: string
@@ -277,7 +267,7 @@ endpoints:
         custom: []
       client_id:
         name: client_id
-        description: 'optionnel UUID du client.'
+        description: 'optional UUID du client.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440101
         type: string
@@ -287,9 +277,9 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optionnel Note descriptive du mouvement.'
+        description: 'optional Note descriptive (max 1000 caractères).'
         required: false
-        example: 'Mouvement générique'
+        example: '"Mouvement standard"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -297,7 +287,7 @@ endpoints:
         custom: []
       details:
         name: details
-        description: 'Tableau contenant les détails du mouvement (minimum 1 produit).'
+        description: 'Tableau des produits (minimum 1).'
         required: true
         example:
           -
@@ -329,12 +319,12 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      movement_type_id: 550e8400-e29b-41d4-a716-446655440000
+      movement_type: Entré
       entrepot_from_id: 550e8400-e29b-41d4-a716-446655440001
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
       fournisseur_id: 550e8400-e29b-41d4-a716-446655440100
       client_id: 550e8400-e29b-41d4-a716-446655440101
-      note: 'Mouvement générique'
+      note: '"Mouvement standard"'
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -346,28 +336,21 @@ endpoints:
         content: |-
           {
             "success": true,
-            "data": {},
+            "data": {
+              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
+              "reference": "MV-2024-00003",
+              "statut": "pending"
+            },
             "message": "Mouvement de stock créé avec succès"
           }
         headers: []
-        description: ''
+        description: 'Mouvement créé'
         custom: []
       -
         status: 401
         content: |-
           {
             "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {}
           }
         headers: []
         description: ''
@@ -386,23 +369,23 @@ endpoints:
       - GET
     uri: 'api/stock-movements/{id}'
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: "Récupère les détails complets d'un mouvement de stock spécifique avec toutes ses relations."
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du mouvement de stock à récupérer.'
+        description: 'UUID du mouvement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440030
         type: string
@@ -426,14 +409,12 @@ endpoints:
             "data": {
               "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
               "reference": "MV-2024-00003",
-              "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-              "statut": "pending",
-              "details": []
+              "statut": "pending"
             },
             "message": "Mouvement de stock récupéré avec succès"
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 401
@@ -468,23 +449,23 @@ endpoints:
       - PUT
     uri: 'api/stock-movements/{id}'
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.'
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du mouvement de stock à mettre à jour.'
+        description: 'UUID du mouvement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440030
         type: string
@@ -497,19 +478,19 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'UUID du type de mouvement.'
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
+      movement_type:
+        name: movement_type
+        description: ''
+        required: false
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       entrepot_from_id:
         name: entrepot_from_id
-        description: "optionnel UUID de l'entrepôt source."
+        description: 'optional UUID source.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440001
         type: string
@@ -519,7 +500,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "optionnel UUID de l'entrepôt destination."
+        description: 'optional UUID destination.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -529,7 +510,7 @@ endpoints:
         custom: []
       fournisseur_id:
         name: fournisseur_id
-        description: 'optionnel UUID du fournisseur.'
+        description: 'optional UUID fournisseur.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440100
         type: string
@@ -539,7 +520,7 @@ endpoints:
         custom: []
       client_id:
         name: client_id
-        description: 'optionnel UUID du client.'
+        description: 'optional UUID client.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440101
         type: string
@@ -549,7 +530,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'Statut du mouvement (pending, completed, cancelled).'
+        description: 'Statut (pending, completed, cancelled).'
         required: true
         example: pending
         type: string
@@ -559,9 +540,9 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optionnel Note descriptive.'
+        description: 'optional Note.'
         required: false
-        example: 'Note mise à jour'
+        example: '"Note mise à jour"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -569,7 +550,7 @@ endpoints:
         custom: []
       details:
         name: details
-        description: 'Tableau contenant les nouveaux détails du mouvement (minimum 1).'
+        description: 'Nouveaux détails (minimum 1).'
         required: true
         example:
           -
@@ -582,7 +563,7 @@ endpoints:
         custom: []
       'details[].product_id':
         name: 'details[].product_id'
-        description: 'UUID du produit.'
+        description: 'UUID produit.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440003
         type: string
@@ -601,13 +582,13 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      movement_type_id: 550e8400-e29b-41d4-a716-446655440000
+      movement_type: architecto
       entrepot_from_id: 550e8400-e29b-41d4-a716-446655440001
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
       fournisseur_id: 550e8400-e29b-41d4-a716-446655440100
       client_id: 550e8400-e29b-41d4-a716-446655440101
       statut: pending
-      note: 'Note mise à jour'
+      note: '"Note mise à jour"'
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -619,32 +600,17 @@ endpoints:
         content: |-
           {
             "success": true,
-            "data": {
-              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-              "reference": "MV-2024-00003",
-              "statut": "completed",
-              "details": []
-            },
+            "data": {},
             "message": "Mouvement de stock mis à jour avec succès"
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 401
         content: |-
           {
             "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
           }
         headers: []
         description: ''
@@ -663,23 +629,23 @@ endpoints:
       - PATCH
     uri: 'api/stock-movements/{id}'
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.'
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du mouvement de stock à mettre à jour.'
+        description: 'UUID du mouvement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440030
         type: string
@@ -692,19 +658,19 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'UUID du type de mouvement.'
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
+      movement_type:
+        name: movement_type
+        description: ''
+        required: false
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       entrepot_from_id:
         name: entrepot_from_id
-        description: "optionnel UUID de l'entrepôt source."
+        description: 'optional UUID source.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440001
         type: string
@@ -714,7 +680,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "optionnel UUID de l'entrepôt destination."
+        description: 'optional UUID destination.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -724,7 +690,7 @@ endpoints:
         custom: []
       fournisseur_id:
         name: fournisseur_id
-        description: 'optionnel UUID du fournisseur.'
+        description: 'optional UUID fournisseur.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440100
         type: string
@@ -734,7 +700,7 @@ endpoints:
         custom: []
       client_id:
         name: client_id
-        description: 'optionnel UUID du client.'
+        description: 'optional UUID client.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440101
         type: string
@@ -744,7 +710,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'Statut du mouvement (pending, completed, cancelled).'
+        description: 'Statut (pending, completed, cancelled).'
         required: true
         example: pending
         type: string
@@ -754,9 +720,9 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optionnel Note descriptive.'
+        description: 'optional Note.'
         required: false
-        example: 'Note mise à jour'
+        example: '"Note mise à jour"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -764,7 +730,7 @@ endpoints:
         custom: []
       details:
         name: details
-        description: 'Tableau contenant les nouveaux détails du mouvement (minimum 1).'
+        description: 'Nouveaux détails (minimum 1).'
         required: true
         example:
           -
@@ -777,7 +743,7 @@ endpoints:
         custom: []
       'details[].product_id':
         name: 'details[].product_id'
-        description: 'UUID du produit.'
+        description: 'UUID produit.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440003
         type: string
@@ -796,13 +762,13 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      movement_type_id: 550e8400-e29b-41d4-a716-446655440000
+      movement_type: architecto
       entrepot_from_id: 550e8400-e29b-41d4-a716-446655440001
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
       fournisseur_id: 550e8400-e29b-41d4-a716-446655440100
       client_id: 550e8400-e29b-41d4-a716-446655440101
       statut: pending
-      note: 'Note mise à jour'
+      note: '"Note mise à jour"'
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -814,107 +780,17 @@ endpoints:
         content: |-
           {
             "success": true,
-            "data": {
-              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-              "reference": "MV-2024-00003",
-              "statut": "completed",
-              "details": []
-            },
+            "data": {},
             "message": "Mouvement de stock mis à jour avec succès"
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 401
         content: |-
           {
             "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/stock-movements/{id}'
-    metadata:
-      groupName: 'Stock Movements'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID du mouvement de stock à supprimer.'
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440030
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 550e8400-e29b-41d4-a716-446655440030
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Mouvement de stock supprimé avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
           }
         headers: []
         description: ''
@@ -933,17 +809,19 @@ endpoints:
       - POST
     uri: api/stock-movements/transfer/warehouse
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: |-
+        Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
+        La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -951,11 +829,11 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'UUID du type de mouvement (direction: transfer).'
+      movement_type:
+        name: movement_type
+        description: 'Type de mouvement saisi manuellement.'
         required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
+        example: transfert
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -973,7 +851,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "UUID de l'entrepôt destination (doit être différent de entrepot_from_id)."
+        description: "UUID de l'entrepôt destination."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -983,9 +861,9 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optionnel Note descriptive du transfert.'
+        description: 'optional Note descriptive du transfert (max 1000 caractères).'
         required: false
-        example: "Transfert urgent vers l'entrepôt B"
+        example: '"Transfert urgent"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -993,7 +871,7 @@ endpoints:
         custom: []
       details:
         name: details
-        description: 'Tableau contenant les détails du mouvement (minimum 1 produit).'
+        description: 'Tableau des produits à transférer (minimum 1).'
         required: true
         example:
           -
@@ -1016,7 +894,7 @@ endpoints:
         custom: []
       'details[].quantity':
         name: 'details[].quantity'
-        description: 'Quantité à transférer (minimum 1).'
+        description: 'Quantité (minimum 1).'
         required: true
         example: 10
         type: integer
@@ -1025,10 +903,10 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      movement_type_id: 550e8400-e29b-41d4-a716-446655440000
+      movement_type: transfert
       entrepot_from_id: 550e8400-e29b-41d4-a716-446655440001
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
-      note: "Transfert urgent vers l'entrepôt B"
+      note: '"Transfert urgent"'
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -1043,51 +921,12 @@ endpoints:
             "data": {
               "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
               "reference": "MV-2024-00001",
-              "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-              "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-              "fournisseur_id": null,
-              "client_id": null,
-              "statut": "pending",
-              "note": "Transfert urgent vers l'entrepôt B",
-              "user_id": "550e8400-e29b-41d4-a716-446655440099",
-              "created_at": "2024-01-15 14:30:00",
-              "updated_at": "2024-01-15 14:30:00",
-              "movement_type": {
-                "stock_movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-                "name": "Transfert",
-                "direction": "transfer"
-              },
-              "entrepot_from": {
-                "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
-                "name": "Entrepôt A"
-              },
-              "entrepot_to": {
-                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
-                "name": "Entrepôt B"
-              },
-              "user": {
-                "user_id": "550e8400-e29b-41d4-a716-446655440099",
-                "name": "Jean Dupont"
-              },
-              "details": [
-                {
-                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
-                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
-                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                  "quantity": 10,
-                  "product": {
-                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
-                }
-              ]
+              "statut": "pending"
             },
             "message": "Transfert entre entrepôts créé avec succès"
           }
         headers: []
-        description: ''
+        description: 'Transfert créé'
         custom: []
       -
         status: 401
@@ -1104,14 +943,10 @@ endpoints:
           {
             "success": false,
             "message": "Erreur de validation",
-            "errors": {
-              "entrepot_from_id": ["Le champ entrepot_from_id est obligatoire."],
-              "entrepot_to_id": ["Le champ entrepot_to_id doit être différent du champ entrepot_from_id."],
-              "details": ["Le champ details est obligatoire."]
-            }
+            "errors": {}
           }
         headers: []
-        description: ''
+        description: 'Erreurs de validation'
         custom: []
     responseFields: []
     auth:
@@ -1127,17 +962,19 @@ endpoints:
       - POST
     uri: api/stock-movements/receipt/supplier
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Gestion des Mouvements de Stock'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: |-
+        Crée un nouveau mouvement de réception de marchandise en provenance d'un fournisseur.
+        Cette opération augmente le stock dans l'entrepôt de destination.
       description: ''
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1145,11 +982,11 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      movement_type_id:
-        name: movement_type_id
-        description: 'UUID du type de mouvement (direction: in).'
+      movement_type:
+        name: movement_type
+        description: 'Type de mouvement saisi manuellement.'
         required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
+        example: entrée
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -1167,7 +1004,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "UUID de l'entrepôt destination (où sera stockée la marchandise)."
+        description: "UUID de l'entrepôt de destination."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -1177,9 +1014,9 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optionnel Note descriptive de la réception (ex: numéro de bon de commande).'
+        description: 'optional Note descriptive (ex: numéro de bon de commande).'
         required: false
-        example: 'Réception commande #PO-2024-001'
+        example: '"Réception commande #PO-2024-001"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -1187,7 +1024,7 @@ endpoints:
         custom: []
       details:
         name: details
-        description: 'Tableau contenant les détails du mouvement (minimum 1 produit).'
+        description: 'Tableau des produits reçus (minimum 1).'
         required: true
         example:
           -
@@ -1200,7 +1037,7 @@ endpoints:
         custom: []
       'details[].product_id':
         name: 'details[].product_id'
-        description: 'UUID du produit reçu.'
+        description: 'UUID du produit.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440003
         type: string
@@ -1219,10 +1056,10 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      movement_type_id: 550e8400-e29b-41d4-a716-446655440000
+      movement_type: entrée
       fournisseur_id: 550e8400-e29b-41d4-a716-446655440100
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
-      note: 'Réception commande #PO-2024-001'
+      note: '"Réception commande #PO-2024-001"'
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -1237,50 +1074,12 @@ endpoints:
             "data": {
               "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
               "reference": "MV-2024-00002",
-              "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-              "entrepot_from_id": null,
-              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-              "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-              "client_id": null,
-              "statut": "pending",
-              "note": "Réception commande #PO-2024-001",
-              "user_id": "550e8400-e29b-41d4-a716-446655440099",
-              "created_at": "2024-01-15 15:45:00",
-              "updated_at": "2024-01-15 15:45:00",
-              "movement_type": {
-                "stock_movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-                "name": "Réception",
-                "direction": "in"
-              },
-              "entrepot_to": {
-                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
-                "name": "Entrepôt Principal"
-              },
-              "fournisseur": {
-                "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-                "name": "Fournisseur XYZ"
-              },
-              "user": {
-                "user_id": "550e8400-e29b-41d4-a716-446655440099",
-                "name": "Marie Martin"
-              },
-              "details": [
-                {
-                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440021",
-                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                  "quantity": 50,
-                  "product": {
-                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
-                }
-              ]
+              "statut": "pending"
             },
             "message": "Réception de fournisseur créée avec succès"
           }
         headers: []
-        description: ''
+        description: 'Réception créée'
         custom: []
       -
         status: 401
@@ -1297,245 +1096,10 @@ endpoints:
           {
             "success": false,
             "message": "Erreur de validation",
-            "errors": {
-              "movement_type_id": ["Le champ movement_type_id doit exister dans la table stock_movement_types."],
-              "fournisseur_id": ["Le champ fournisseur_id est obligatoire."]
-            }
+            "errors": {}
           }
         headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/stock-movements/trashed/list
-    metadata:
-      groupName: 'Stock Movements'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "data": [],
-              "current_page": 1,
-              "per_page": 15,
-              "total": 0
-            },
-            "message": "Mouvements de stock supprimés récupérés avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/stock-movements/{id}/restore'
-    metadata:
-      groupName: 'Stock Movements'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID du mouvement de stock à restaurer.'
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440030
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 550e8400-e29b-41d4-a716-446655440030
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-              "reference": "MV-2024-00003",
-              "deleted_at": null
-            },
-            "message": "Mouvement de stock restauré avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PATCH
-    uri: 'api/stock-movements/{id}/update-status'
-    metadata:
-      groupName: 'Stock Movements'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID du mouvement de stock.'
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440030
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 550e8400-e29b-41d4-a716-446655440030
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      statut:
-        name: statut
-        description: 'Nouveau statut (pending, completed, cancelled).'
-        required: true
-        example: completed
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      statut: completed
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-              "reference": "MV-2024-00003",
-              "statut": "completed",
-              "details": []
-            },
-            "message": "Statut du mouvement de stock mis à jour avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
-          }
-        headers: []
-        description: ''
+        description: 'Erreurs de validation'
         custom: []
     responseFields: []
     auth:

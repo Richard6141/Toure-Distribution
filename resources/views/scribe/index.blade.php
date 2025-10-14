@@ -277,29 +277,8 @@
                     <a href="#stock-movements">Stock Movements</a>
                 </li>
                                     <ul id="tocify-subheader-stock-movements" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="stock-movements-GETapi-stock-movements">
-                                <a href="#stock-movements-GETapi-stock-movements">GET api/stock-movements</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements">
-                                <a href="#stock-movements-POSTapi-stock-movements">POST api/stock-movements</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-GETapi-stock-movements--id-">
-                                <a href="#stock-movements-GETapi-stock-movements--id-">GET api/stock-movements/{id}</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-PUTapi-stock-movements--id-">
-                                <a href="#stock-movements-PUTapi-stock-movements--id-">PUT api/stock-movements/{id}</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-PATCHapi-stock-movements--id-">
-                                <a href="#stock-movements-PATCHapi-stock-movements--id-">PATCH api/stock-movements/{id}</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-DELETEapi-stock-movements--id-">
+                                                    <li class="tocify-item level-2" data-unique="stock-movements-DELETEapi-stock-movements--id-">
                                 <a href="#stock-movements-DELETEapi-stock-movements--id-">DELETE api/stock-movements/{id}</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements-transfer-warehouse">
-                                <a href="#stock-movements-POSTapi-stock-movements-transfer-warehouse">POST api/stock-movements/transfer/warehouse</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="stock-movements-POSTapi-stock-movements-receipt-supplier">
-                                <a href="#stock-movements-POSTapi-stock-movements-receipt-supplier">POST api/stock-movements/receipt/supplier</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="stock-movements-GETapi-stock-movements-trashed-list">
                                 <a href="#stock-movements-GETapi-stock-movements-trashed-list">GET api/stock-movements/trashed/list</a>
@@ -462,6 +441,37 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="fournisseurs-DELETEapi-fournisseurs--id--force">
                                 <a href="#fournisseurs-DELETEapi-fournisseurs--id--force">Suppression définitive</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-gestion-des-mouvements-de-stock" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-mouvements-de-stock">
+                    <a href="#gestion-des-mouvements-de-stock">Gestion des Mouvements de Stock</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-mouvements-de-stock" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-GETapi-stock-movements">
+                                <a href="#gestion-des-mouvements-de-stock-GETapi-stock-movements">Récupère la liste paginée de tous les mouvements de stock avec leurs détails complets.
+Cette endpoint supporte le filtrage avancé, la recherche et le tri.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements">
+                                <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements">Crée un mouvement de stock avec des paramètres flexibles. Il est recommandé d'utiliser</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-GETapi-stock-movements--id-">
+                                <a href="#gestion-des-mouvements-de-stock-GETapi-stock-movements--id-">Récupère les détails complets d'un mouvement de stock spécifique avec toutes ses relations.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-PUTapi-stock-movements--id-">
+                                <a href="#gestion-des-mouvements-de-stock-PUTapi-stock-movements--id-">Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-PATCHapi-stock-movements--id-">
+                                <a href="#gestion-des-mouvements-de-stock-PATCHapi-stock-movements--id-">Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements-transfer-warehouse">
+                                <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements-transfer-warehouse">Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
+La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements-receipt-supplier">
+                                <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements-receipt-supplier">Crée un nouveau mouvement de réception de marchandise en provenance d'un fournisseur.
+Cette opération augmente le stock dans l'entrepôt de destination.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -2629,7 +2639,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": false
+    \"with_client_type\": true
 }"
 </code></pre></div>
 
@@ -2655,7 +2665,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": false
+    "with_client_type": true
 };
 
 fetch(url, {
@@ -2683,7 +2693,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; false,
+            'with_client_type' =&gt; true,
         ],
     ]
 );
@@ -2868,7 +2878,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -3403,8 +3413,8 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": false,
-    \"with_client_type\": true,
+    \"is_active\": true,
+    \"with_client_type\": false,
     \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
@@ -3449,8 +3459,8 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": false,
-    "with_client_type": true,
+    "is_active": true,
+    "with_client_type": false,
     "balance_filter": "negative"
 };
 
@@ -3497,8 +3507,8 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; false,
-            'with_client_type' =&gt; true,
+            'is_active' =&gt; true,
+            'with_client_type' =&gt; false,
             'balance_filter' =&gt; 'negative',
         ],
     ]
@@ -3907,7 +3917,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -3928,7 +3938,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -7729,7 +7739,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-14T18:43:54\",
+    \"date_from\": \"2025-10-14T23:13:25\",
     \"date_to\": \"2051-11-07\"
 }"
 </code></pre></div>
@@ -7753,7 +7763,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-14T18:43:54",
+    "date_from": "2025-10-14T23:13:25",
     "date_to": "2051-11-07"
 };
 
@@ -7779,7 +7789,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-14T18:43:54',
+            'date_from' =&gt; '2025-10-14T23:13:25',
             'date_to' =&gt; '2051-11-07',
         ],
     ]
@@ -7910,10 +7920,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-14T18:43:54"
+               value="2025-10-14T23:13:25"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:43:54</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T23:13:25</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -7949,11 +7959,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"overdue\",
-    \"date_from\": \"2025-10-14T18:43:54\",
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-14T23:13:25\",
     \"date_to\": \"2051-11-07\",
     \"with_client\": true,
-    \"with_details\": false
+    \"with_details\": true
 }"
 </code></pre></div>
 
@@ -7987,11 +7997,11 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "overdue",
-    "date_from": "2025-10-14T18:43:54",
+    "statut": "pending",
+    "date_from": "2025-10-14T23:13:25",
     "date_to": "2051-11-07",
     "with_client": true,
-    "with_details": false
+    "with_details": true
 };
 
 fetch(url, {
@@ -8027,11 +8037,11 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'overdue',
-            'date_from' =&gt; '2025-10-14T18:43:54',
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-14T23:13:25',
             'date_to' =&gt; '2051-11-07',
             'with_client' =&gt; true,
-            'with_details' =&gt; false,
+            'with_details' =&gt; true,
         ],
     ]
 );
@@ -8317,10 +8327,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="overdue"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>overdue</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -8330,10 +8340,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-14T18:43:54"
+               value="2025-10-14T23:13:25"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:43:54</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T23:13:25</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8386,7 +8396,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -10063,7 +10073,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-14T18:43:54\",
+    \"date_from\": \"2025-10-14T23:13:26\",
     \"date_to\": \"2051-11-07\"
 }"
 </code></pre></div>
@@ -10087,7 +10097,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-14T18:43:54",
+    "date_from": "2025-10-14T23:13:26",
     "date_to": "2051-11-07"
 };
 
@@ -10113,7 +10123,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-14T18:43:54',
+            'date_from' =&gt; '2025-10-14T23:13:26',
             'date_to' =&gt; '2051-11-07',
         ],
     ]
@@ -10253,10 +10263,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-14T18:43:54"
+               value="2025-10-14T23:13:26"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:43:54</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T23:13:26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10294,8 +10304,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-14T18:43:54\",
+    \"statut\": \"completed\",
+    \"date_from\": \"2025-10-14T23:13:26\",
     \"date_to\": \"2051-11-07\",
     \"with_facture\": true,
     \"with_client\": true,
@@ -10338,8 +10348,8 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "refunded",
-    "date_from": "2025-10-14T18:43:54",
+    "statut": "completed",
+    "date_from": "2025-10-14T23:13:26",
     "date_to": "2051-11-07",
     "with_facture": true,
     "with_client": true,
@@ -10384,8 +10394,8 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-14T18:43:54',
+            'statut' =&gt; 'completed',
+            'date_from' =&gt; '2025-10-14T23:13:26',
             'date_to' =&gt; '2051-11-07',
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
@@ -10734,10 +10744,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="refunded"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>refunded</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -10747,10 +10757,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-14T18:43:54"
+               value="2025-10-14T23:13:26"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-14T18:43:54</code></p>
+<p>Must be a valid date. Example: <code>2025-10-14T23:13:26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -13774,1588 +13784,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     
 
-                                <h2 id="stock-movements-GETapi-stock-movements">GET api/stock-movements</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-stock-movements">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/stock-movements?movement_type_id=550e8400-e29b-41d4-a716-446655440000&amp;statut=pending&amp;entrepot_from_id=550e8400-e29b-41d4-a716-446655440001&amp;entrepot_to_id=550e8400-e29b-41d4-a716-446655440002&amp;client_id=550e8400-e29b-41d4-a716-446655440101&amp;fournisseur_id=550e8400-e29b-41d4-a716-446655440100&amp;search=MV-2024&amp;date_from=2024-01-01&amp;date_to=2024-12-31&amp;sort_by=created_at&amp;sort_order=desc&amp;per_page=15" \
-    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements"
-);
-
-const params = {
-    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "statut": "pending",
-    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "client_id": "550e8400-e29b-41d4-a716-446655440101",
-    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-    "search": "MV-2024",
-    "date_from": "2024-01-01",
-    "date_to": "2024-12-31",
-    "sort_by": "created_at",
-    "sort_order": "desc",
-    "per_page": "15",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'query' =&gt; [
-            'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'statut' =&gt; 'pending',
-            'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
-            'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
-            'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
-            'search' =&gt; 'MV-2024',
-            'date_from' =&gt; '2024-01-01',
-            'date_to' =&gt; '2024-12-31',
-            'sort_by' =&gt; 'created_at',
-            'sort_order' =&gt; 'desc',
-            'per_page' =&gt; '15',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-stock-movements">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;data&quot;: [
-            {
-                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
-                &quot;reference&quot;: &quot;MV-2024-00001&quot;,
-                &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-                &quot;statut&quot;: &quot;pending&quot;,
-                &quot;created_at&quot;: &quot;2024-01-15 14:30:00&quot;
-            }
-        ],
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 15,
-        &quot;total&quot;: 1
-    },
-    &quot;message&quot;: &quot;Mouvements de stock r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (500):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur lors de la r&eacute;cup&eacute;ration des mouvements de stock&quot;,
-    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-stock-movements" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-stock-movements"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-stock-movements"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-stock-movements" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-stock-movements">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-stock-movements" data-method="GET"
-      data-path="api/stock-movements"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-stock-movements', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-stock-movements"
-                    onclick="tryItOut('GETapi-stock-movements');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-stock-movements"
-                    onclick="cancelTryOut('GETapi-stock-movements');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-stock-movements"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/stock-movements</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements"
-               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-stock-movements"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-stock-movements"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="movement_type_id"                data-endpoint="GETapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="query">
-    <br>
-<p>Filtrer par type de mouvement (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="statut"                data-endpoint="GETapi-stock-movements"
-               value="pending"
-               data-component="query">
-    <br>
-<p>Filtrer par statut du mouvement. Example: <code>pending</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_from_id"                data-endpoint="GETapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440001"
-               data-component="query">
-    <br>
-<p>Filtrer par entrepôt source (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_to_id"                data-endpoint="GETapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440002"
-               data-component="query">
-    <br>
-<p>Filtrer par entrepôt destination (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="GETapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440101"
-               data-component="query">
-    <br>
-<p>Filtrer par client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="fournisseur_id"                data-endpoint="GETapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440100"
-               data-component="query">
-    <br>
-<p>Filtrer par fournisseur (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-stock-movements"
-               value="MV-2024"
-               data-component="query">
-    <br>
-<p>Rechercher par numéro de référence. Example: <code>MV-2024</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="date_from"                data-endpoint="GETapi-stock-movements"
-               value="2024-01-01"
-               data-component="query">
-    <br>
-<p>date Filtrer par date de début (YYYY-MM-DD). Example: <code>2024-01-01</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="date_to"                data-endpoint="GETapi-stock-movements"
-               value="2024-12-31"
-               data-component="query">
-    <br>
-<p>date Filtrer par date de fin (YYYY-MM-DD). Example: <code>2024-12-31</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_by"                data-endpoint="GETapi-stock-movements"
-               value="created_at"
-               data-component="query">
-    <br>
-<p>Champ sur lequel trier. Example: <code>created_at</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="sort_order"                data-endpoint="GETapi-stock-movements"
-               value="desc"
-               data-component="query">
-    <br>
-<p>Ordre de tri (asc/desc). Example: <code>desc</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-stock-movements"
-               value="15"
-               data-component="query">
-    <br>
-<p>Nombre d'éléments par page. Example: <code>15</code></p>
-            </div>
-                </form>
-
-                    <h2 id="stock-movements-POSTapi-stock-movements">POST api/stock-movements</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-stock-movements">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/stock-movements" \
-    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
-    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
-    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
-    \"note\": \"Mouvement générique\",
-    \"details\": [
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 20
-        }
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements"
-);
-
-const headers = {
-    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-    "client_id": "550e8400-e29b-41d4-a716-446655440101",
-    "note": "Mouvement générique",
-    "details": [
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 20
-        }
-    ]
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-            $o = [
-                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-            ],
-            null,
-            [
-                'stdClass' =&gt; [
-                    'product_id' =&gt; [
-                        '550e8400-e29b-41d4-a716-446655440003',
-                    ],
-                    'quantity' =&gt; [
-                        20,
-                    ],
-                ],
-            ],
-            [
-                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
-                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
-                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
-                'note' =&gt; 'Mouvement générique',
-                'details' =&gt; [
-                    $o[0],
-                ],
-            ],
-            []
-        ),
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-stock-movements">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {},
-    &quot;message&quot;: &quot;Mouvement de stock cr&eacute;&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {}
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-stock-movements" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-stock-movements"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-stock-movements" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-stock-movements">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-stock-movements" data-method="POST"
-      data-path="api/stock-movements"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-stock-movements"
-                    onclick="tryItOut('POSTapi-stock-movements');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-stock-movements"
-                    onclick="cancelTryOut('POSTapi-stock-movements');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-stock-movements"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/stock-movements</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements"
-               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-stock-movements"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-stock-movements"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="movement_type_id"                data-endpoint="POSTapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_from_id"                data-endpoint="POSTapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440001"
-               data-component="body">
-    <br>
-<p>optionnel UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_to_id"                data-endpoint="POSTapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440002"
-               data-component="body">
-    <br>
-<p>optionnel UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="fournisseur_id"                data-endpoint="POSTapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440100"
-               data-component="body">
-    <br>
-<p>optionnel UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="POSTapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440101"
-               data-component="body">
-    <br>
-<p>optionnel UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="note"                data-endpoint="POSTapi-stock-movements"
-               value="Mouvement générique"
-               data-component="body">
-    <br>
-<p>optionnel Note descriptive du mouvement. Example: <code>Mouvement générique</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-        <details>
-            <summary style="padding-bottom: 10px;">
-                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
-<br>
-<p>Tableau contenant les détails du mouvement (minimum 1 produit).</p>
-            </summary>
-                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.product_id"                data-endpoint="POSTapi-stock-movements"
-               value="550e8400-e29b-41d4-a716-446655440003"
-               data-component="body">
-    <br>
-<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements"
-               value="20"
-               data-component="body">
-    <br>
-<p>Quantité (minimum 1). Example: <code>20</code></p>
-                    </div>
-                                    </details>
-        </div>
-        </form>
-
-                    <h2 id="stock-movements-GETapi-stock-movements--id-">GET api/stock-movements/{id}</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-stock-movements--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
-    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
-);
-
-const headers = {
-    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-stock-movements--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
-        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
-        &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;statut&quot;: &quot;pending&quot;,
-        &quot;details&quot;: []
-    },
-    &quot;message&quot;: &quot;Mouvement de stock r&eacute;cup&eacute;r&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-stock-movements--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-stock-movements--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-stock-movements--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-stock-movements--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-stock-movements--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-stock-movements--id-" data-method="GET"
-      data-path="api/stock-movements/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-stock-movements--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-stock-movements--id-"
-                    onclick="tryItOut('GETapi-stock-movements--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-stock-movements--id-"
-                    onclick="cancelTryOut('GETapi-stock-movements--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-stock-movements--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/stock-movements/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements--id-"
-               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440030"
-               data-component="url">
-    <br>
-<p>UUID du mouvement de stock à récupérer. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="stock-movements-PUTapi-stock-movements--id-">PUT api/stock-movements/{id}</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PUTapi-stock-movements--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
-    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
-    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
-    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
-    \"statut\": \"pending\",
-    \"note\": \"Note mise à jour\",
-    \"details\": [
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 15
-        }
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
-);
-
-const headers = {
-    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-    "client_id": "550e8400-e29b-41d4-a716-446655440101",
-    "statut": "pending",
-    "note": "Note mise à jour",
-    "details": [
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 15
-        }
-    ]
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
-$response = $client-&gt;put(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-            $o = [
-                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-            ],
-            null,
-            [
-                'stdClass' =&gt; [
-                    'product_id' =&gt; [
-                        '550e8400-e29b-41d4-a716-446655440003',
-                    ],
-                    'quantity' =&gt; [
-                        15,
-                    ],
-                ],
-            ],
-            [
-                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
-                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
-                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
-                'statut' =&gt; 'pending',
-                'note' =&gt; 'Note mise à jour',
-                'details' =&gt; [
-                    $o[0],
-                ],
-            ],
-            []
-        ),
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTapi-stock-movements--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
-        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
-        &quot;statut&quot;: &quot;completed&quot;,
-        &quot;details&quot;: []
-    },
-    &quot;message&quot;: &quot;Mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTapi-stock-movements--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-stock-movements--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-stock-movements--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-stock-movements--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-stock-movements--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-stock-movements--id-" data-method="PUT"
-      data-path="api/stock-movements/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-stock-movements--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-stock-movements--id-"
-                    onclick="tryItOut('PUTapi-stock-movements--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-stock-movements--id-"
-                    onclick="cancelTryOut('PUTapi-stock-movements--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-stock-movements--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/stock-movements/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-stock-movements--id-"
-               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440030"
-               data-component="url">
-    <br>
-<p>UUID du mouvement de stock à mettre à jour. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="movement_type_id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_from_id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440001"
-               data-component="body">
-    <br>
-<p>optionnel UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_to_id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440002"
-               data-component="body">
-    <br>
-<p>optionnel UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="fournisseur_id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440100"
-               data-component="body">
-    <br>
-<p>optionnel UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440101"
-               data-component="body">
-    <br>
-<p>optionnel UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="statut"                data-endpoint="PUTapi-stock-movements--id-"
-               value="pending"
-               data-component="body">
-    <br>
-<p>Statut du mouvement (pending, completed, cancelled). Example: <code>pending</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="note"                data-endpoint="PUTapi-stock-movements--id-"
-               value="Note mise à jour"
-               data-component="body">
-    <br>
-<p>optionnel Note descriptive. Example: <code>Note mise à jour</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-        <details>
-            <summary style="padding-bottom: 10px;">
-                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
-<br>
-<p>Tableau contenant les nouveaux détails du mouvement (minimum 1).</p>
-            </summary>
-                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.product_id"                data-endpoint="PUTapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440003"
-               data-component="body">
-    <br>
-<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="PUTapi-stock-movements--id-"
-               value="15"
-               data-component="body">
-    <br>
-<p>Quantité (minimum 1). Example: <code>15</code></p>
-                    </div>
-                                    </details>
-        </div>
-        </form>
-
-                    <h2 id="stock-movements-PATCHapi-stock-movements--id-">PATCH api/stock-movements/{id}</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PATCHapi-stock-movements--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
-    --header "Authorization: required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
-    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
-    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
-    \"statut\": \"pending\",
-    \"note\": \"Note mise à jour\",
-    \"details\": [
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 15
-        }
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
-);
-
-const headers = {
-    "Authorization": "required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-    "client_id": "550e8400-e29b-41d4-a716-446655440101",
-    "statut": "pending",
-    "note": "Note mise à jour",
-    "details": [
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 15
-        }
-    ]
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
-$response = $client-&gt;patch(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-            $o = [
-                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-            ],
-            null,
-            [
-                'stdClass' =&gt; [
-                    'product_id' =&gt; [
-                        '550e8400-e29b-41d4-a716-446655440003',
-                    ],
-                    'quantity' =&gt; [
-                        15,
-                    ],
-                ],
-            ],
-            [
-                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
-                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
-                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
-                'statut' =&gt; 'pending',
-                'note' =&gt; 'Note mise à jour',
-                'details' =&gt; [
-                    $o[0],
-                ],
-            ],
-            []
-        ),
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-PATCHapi-stock-movements--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
-        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
-        &quot;statut&quot;: &quot;completed&quot;,
-        &quot;details&quot;: []
-    },
-    &quot;message&quot;: &quot;Mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PATCHapi-stock-movements--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-stock-movements--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-stock-movements--id-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PATCHapi-stock-movements--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-stock-movements--id-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PATCHapi-stock-movements--id-" data-method="PATCH"
-      data-path="api/stock-movements/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-stock-movements--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-stock-movements--id-"
-                    onclick="tryItOut('PATCHapi-stock-movements--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-stock-movements--id-"
-                    onclick="cancelTryOut('PATCHapi-stock-movements--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-stock-movements--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/stock-movements/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-stock-movements--id-"
-               value="required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440030"
-               data-component="url">
-    <br>
-<p>UUID du mouvement de stock à mettre à jour. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="movement_type_id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_from_id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440001"
-               data-component="body">
-    <br>
-<p>optionnel UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_to_id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440002"
-               data-component="body">
-    <br>
-<p>optionnel UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="fournisseur_id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440100"
-               data-component="body">
-    <br>
-<p>optionnel UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440101"
-               data-component="body">
-    <br>
-<p>optionnel UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="statut"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="pending"
-               data-component="body">
-    <br>
-<p>Statut du mouvement (pending, completed, cancelled). Example: <code>pending</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="note"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="Note mise à jour"
-               data-component="body">
-    <br>
-<p>optionnel Note descriptive. Example: <code>Note mise à jour</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-        <details>
-            <summary style="padding-bottom: 10px;">
-                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
-<br>
-<p>Tableau contenant les nouveaux détails du mouvement (minimum 1).</p>
-            </summary>
-                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.product_id"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="550e8400-e29b-41d4-a716-446655440003"
-               data-component="body">
-    <br>
-<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="PATCHapi-stock-movements--id-"
-               value="15"
-               data-component="body">
-    <br>
-<p>Quantité (minimum 1). Example: <code>15</code></p>
-                    </div>
-                                    </details>
-        </div>
-        </form>
-
-                    <h2 id="stock-movements-DELETEapi-stock-movements--id-">DELETE api/stock-movements/{id}</h2>
+                                <h2 id="stock-movements-DELETEapi-stock-movements--id-">DELETE api/stock-movements/{id}</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -15534,710 +13963,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID du mouvement de stock à supprimer. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
             </div>
                     </form>
-
-                    <h2 id="stock-movements-POSTapi-stock-movements-transfer-warehouse">POST api/stock-movements/transfer/warehouse</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-stock-movements-transfer-warehouse">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/stock-movements/transfer/warehouse" \
-    --header "Authorization: required Bearer token au format \&amp;quot;Bearer {token}\&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
-    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"note\": \"Transfert urgent vers l\'entrepôt B\",
-    \"details\": [
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 10
-        }
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/transfer/warehouse"
-);
-
-const headers = {
-    "Authorization": "required Bearer token au format &amp;quot;Bearer {token}&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "note": "Transfert urgent vers l'entrepôt B",
-    "details": [
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 10
-        }
-    ]
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/transfer/warehouse';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-            $o = [
-                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-            ],
-            null,
-            [
-                'stdClass' =&gt; [
-                    'product_id' =&gt; [
-                        '550e8400-e29b-41d4-a716-446655440003',
-                    ],
-                    'quantity' =&gt; [
-                        10,
-                    ],
-                ],
-            ],
-            [
-                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
-                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'note' =&gt; 'Transfert urgent vers l\'entrepôt B',
-                'details' =&gt; [
-                    $o[0],
-                ],
-            ],
-            []
-        ),
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-stock-movements-transfer-warehouse">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
-        &quot;reference&quot;: &quot;MV-2024-00001&quot;,
-        &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-        &quot;fournisseur_id&quot;: null,
-        &quot;client_id&quot;: null,
-        &quot;statut&quot;: &quot;pending&quot;,
-        &quot;note&quot;: &quot;Transfert urgent vers l&#039;entrep&ocirc;t B&quot;,
-        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-        &quot;created_at&quot;: &quot;2024-01-15 14:30:00&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15 14:30:00&quot;,
-        &quot;movement_type&quot;: {
-            &quot;stock_movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;name&quot;: &quot;Transfert&quot;,
-            &quot;direction&quot;: &quot;transfer&quot;
-        },
-        &quot;entrepot_from&quot;: {
-            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-            &quot;name&quot;: &quot;Entrep&ocirc;t A&quot;
-        },
-        &quot;entrepot_to&quot;: {
-            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-            &quot;name&quot;: &quot;Entrep&ocirc;t B&quot;
-        },
-        &quot;user&quot;: {
-            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-            &quot;name&quot;: &quot;Jean Dupont&quot;
-        },
-        &quot;details&quot;: [
-            {
-                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440011&quot;,
-                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
-                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-                &quot;quantity&quot;: 10,
-                &quot;product&quot;: {
-                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-                    &quot;name&quot;: &quot;Produit A&quot;,
-                    &quot;sku&quot;: &quot;PROD-A-001&quot;
-                }
-            }
-        ]
-    },
-    &quot;message&quot;: &quot;Transfert entre entrep&ocirc;ts cr&eacute;&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;entrepot_from_id&quot;: [
-            &quot;Le champ entrepot_from_id est obligatoire.&quot;
-        ],
-        &quot;entrepot_to_id&quot;: [
-            &quot;Le champ entrepot_to_id doit &ecirc;tre diff&eacute;rent du champ entrepot_from_id.&quot;
-        ],
-        &quot;details&quot;: [
-            &quot;Le champ details est obligatoire.&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-stock-movements-transfer-warehouse" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-stock-movements-transfer-warehouse"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements-transfer-warehouse"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-stock-movements-transfer-warehouse" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-stock-movements-transfer-warehouse">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-stock-movements-transfer-warehouse" data-method="POST"
-      data-path="api/stock-movements/transfer/warehouse"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements-transfer-warehouse', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-stock-movements-transfer-warehouse"
-                    onclick="tryItOut('POSTapi-stock-movements-transfer-warehouse');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-stock-movements-transfer-warehouse"
-                    onclick="cancelTryOut('POSTapi-stock-movements-transfer-warehouse');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-stock-movements-transfer-warehouse"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/stock-movements/transfer/warehouse</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="movement_type_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de mouvement (direction: transfer). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_from_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="550e8400-e29b-41d4-a716-446655440001"
-               data-component="body">
-    <br>
-<p>UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_to_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="550e8400-e29b-41d4-a716-446655440002"
-               data-component="body">
-    <br>
-<p>UUID de l'entrepôt destination (doit être différent de entrepot_from_id). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="note"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="Transfert urgent vers l'entrepôt B"
-               data-component="body">
-    <br>
-<p>optionnel Note descriptive du transfert. Example: <code>Transfert urgent vers l'entrepôt B</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-        <details>
-            <summary style="padding-bottom: 10px;">
-                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
-<br>
-<p>Tableau contenant les détails du mouvement (minimum 1 produit).</p>
-            </summary>
-                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.product_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="550e8400-e29b-41d4-a716-446655440003"
-               data-component="body">
-    <br>
-<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value="10"
-               data-component="body">
-    <br>
-<p>Quantité à transférer (minimum 1). Example: <code>10</code></p>
-                    </div>
-                                    </details>
-        </div>
-        </form>
-
-                    <h2 id="stock-movements-POSTapi-stock-movements-receipt-supplier">POST api/stock-movements/receipt/supplier</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-stock-movements-receipt-supplier">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/stock-movements/receipt/supplier" \
-    --header "Authorization: required Bearer token au format \&amp;quot;Bearer {token}\&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"movement_type_id\": \"550e8400-e29b-41d4-a716-446655440000\",
-    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
-    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"note\": \"Réception commande #PO-2024-001\",
-    \"details\": [
-        {
-            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 50
-        }
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/stock-movements/receipt/supplier"
-);
-
-const headers = {
-    "Authorization": "required Bearer token au format &amp;quot;Bearer {token}&amp;quot;. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "note": "Réception commande #PO-2024-001",
-    "details": [
-        {
-            "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 50
-        }
-    ]
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/stock-movements/receipt/supplier';
-$response = $client-&gt;post(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-            $o = [
-                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
-            ],
-            null,
-            [
-                'stdClass' =&gt; [
-                    'product_id' =&gt; [
-                        '550e8400-e29b-41d4-a716-446655440003',
-                    ],
-                    'quantity' =&gt; [
-                        50,
-                    ],
-                ],
-            ],
-            [
-                'movement_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
-                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'note' =&gt; 'Réception commande #PO-2024-001',
-                'details' =&gt; [
-                    $o[0],
-                ],
-            ],
-            []
-        ),
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-stock-movements-receipt-supplier">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;data&quot;: {
-        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
-        &quot;reference&quot;: &quot;MV-2024-00002&quot;,
-        &quot;movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;entrepot_from_id&quot;: null,
-        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-        &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
-        &quot;client_id&quot;: null,
-        &quot;statut&quot;: &quot;pending&quot;,
-        &quot;note&quot;: &quot;R&eacute;ception commande #PO-2024-001&quot;,
-        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-        &quot;created_at&quot;: &quot;2024-01-15 15:45:00&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15 15:45:00&quot;,
-        &quot;movement_type&quot;: {
-            &quot;stock_movement_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;name&quot;: &quot;R&eacute;ception&quot;,
-            &quot;direction&quot;: &quot;in&quot;
-        },
-        &quot;entrepot_to&quot;: {
-            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-            &quot;name&quot;: &quot;Entrep&ocirc;t Principal&quot;
-        },
-        &quot;fournisseur&quot;: {
-            &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
-            &quot;name&quot;: &quot;Fournisseur XYZ&quot;
-        },
-        &quot;user&quot;: {
-            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440099&quot;,
-            &quot;name&quot;: &quot;Marie Martin&quot;
-        },
-        &quot;details&quot;: [
-            {
-                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440021&quot;,
-                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-                &quot;quantity&quot;: 50,
-                &quot;product&quot;: {
-                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-                    &quot;name&quot;: &quot;Produit A&quot;,
-                    &quot;sku&quot;: &quot;PROD-A-001&quot;
-                }
-            }
-        ]
-    },
-    &quot;message&quot;: &quot;R&eacute;ception de fournisseur cr&eacute;&eacute;e avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;movement_type_id&quot;: [
-            &quot;Le champ movement_type_id doit exister dans la table stock_movement_types.&quot;
-        ],
-        &quot;fournisseur_id&quot;: [
-            &quot;Le champ fournisseur_id est obligatoire.&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTapi-stock-movements-receipt-supplier" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-stock-movements-receipt-supplier"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements-receipt-supplier"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-stock-movements-receipt-supplier" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-stock-movements-receipt-supplier">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-stock-movements-receipt-supplier" data-method="POST"
-      data-path="api/stock-movements/receipt/supplier"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements-receipt-supplier', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-stock-movements-receipt-supplier"
-                    onclick="tryItOut('POSTapi-stock-movements-receipt-supplier');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-stock-movements-receipt-supplier"
-                    onclick="cancelTryOut('POSTapi-stock-movements-receipt-supplier');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-stock-movements-receipt-supplier"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/stock-movements/receipt/supplier</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
-               data-component="header">
-    <br>
-<p>Example: <code>required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>movement_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="movement_type_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="550e8400-e29b-41d4-a716-446655440000"
-               data-component="body">
-    <br>
-<p>UUID du type de mouvement (direction: in). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="fournisseur_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="550e8400-e29b-41d4-a716-446655440100"
-               data-component="body">
-    <br>
-<p>UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="entrepot_to_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="550e8400-e29b-41d4-a716-446655440002"
-               data-component="body">
-    <br>
-<p>UUID de l'entrepôt destination (où sera stockée la marchandise). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="note"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="Réception commande #PO-2024-001"
-               data-component="body">
-    <br>
-<p>optionnel Note descriptive de la réception (ex: numéro de bon de commande). Example: <code>Réception commande #PO-2024-001</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-        <details>
-            <summary style="padding-bottom: 10px;">
-                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
-<small>string[]</small>&nbsp;
- &nbsp;
-<br>
-<p>Tableau contenant les détails du mouvement (minimum 1 produit).</p>
-            </summary>
-                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.product_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="550e8400-e29b-41d4-a716-446655440003"
-               data-component="body">
-    <br>
-<p>UUID du produit reçu. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value="50"
-               data-component="body">
-    <br>
-<p>Quantité reçue (minimum 1). Example: <code>50</code></p>
-                    </div>
-                                    </details>
-        </div>
-        </form>
 
                     <h2 id="stock-movements-GETapi-stock-movements-trashed-list">GET api/stock-movements/trashed/list</h2>
 
@@ -19588,7 +17313,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -19610,7 +17335,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -19634,7 +17359,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -19792,7 +17517,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -24426,6 +22151,2153 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                     </form>
+
+                <h1 id="gestion-des-mouvements-de-stock">Gestion des Mouvements de Stock</h1>
+
+    
+
+                                <h2 id="gestion-des-mouvements-de-stock-GETapi-stock-movements">Récupère la liste paginée de tous les mouvements de stock avec leurs détails complets.
+Cette endpoint supporte le filtrage avancé, la recherche et le tri.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-stock-movements">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/stock-movements?movement_type=architecto&amp;statut=pending&amp;entrepot_from_id=550e8400-e29b-41d4-a716-446655440001&amp;entrepot_to_id=550e8400-e29b-41d4-a716-446655440002&amp;client_id=550e8400-e29b-41d4-a716-446655440101&amp;fournisseur_id=550e8400-e29b-41d4-a716-446655440100&amp;search=MV-2024&amp;date_from=2024-01-01&amp;date_to=2024-12-31&amp;sort_by=reference&amp;sort_order=desc&amp;per_page=20" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements"
+);
+
+const params = {
+    "movement_type": "architecto",
+    "statut": "pending",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "search": "MV-2024",
+    "date_from": "2024-01-01",
+    "date_to": "2024-12-31",
+    "sort_by": "reference",
+    "sort_order": "desc",
+    "per_page": "20",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'movement_type' =&gt; 'architecto',
+            'statut' =&gt; 'pending',
+            'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+            'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+            'search' =&gt; 'MV-2024',
+            'date_from' =&gt; '2024-01-01',
+            'date_to' =&gt; '2024-12-31',
+            'sort_by' =&gt; 'reference',
+            'sort_order' =&gt; 'desc',
+            'per_page' =&gt; '20',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-stock-movements">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;data&quot;: [
+            {
+                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+                &quot;reference&quot;: &quot;MV-2024-00001&quot;,
+                &quot;movement_type&quot;: &quot;transfert&quot;,
+                &quot;statut&quot;: &quot;pending&quot;
+            }
+        ],
+        &quot;current_page&quot;: 1,
+        &quot;per_page&quot;: 15,
+        &quot;total&quot;: 1
+    },
+    &quot;message&quot;: &quot;Mouvements de stock r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-stock-movements" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-stock-movements"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-stock-movements"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-stock-movements" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-stock-movements">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-stock-movements" data-method="GET"
+      data-path="api/stock-movements"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-stock-movements', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-stock-movements"
+                    onclick="tryItOut('GETapi-stock-movements');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-stock-movements"
+                    onclick="cancelTryOut('GETapi-stock-movements');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-stock-movements"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/stock-movements</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-stock-movements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-stock-movements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>movement_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type"                data-endpoint="GETapi-stock-movements"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Filtrer par type de mouvement Entrée (in), Sortie (out), Transfert (transfer). Example: <code>architecto</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-stock-movements"
+               value="pending"
+               data-component="query">
+    <br>
+<p>Filtrer par statut (pending, completed, cancelled). Example: <code>pending</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="GETapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="query">
+    <br>
+<p>Filtrer par entrepôt source (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="GETapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="query">
+    <br>
+<p>Filtrer par entrepôt destination (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="GETapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440101"
+               data-component="query">
+    <br>
+<p>Filtrer par client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="GETapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="query">
+    <br>
+<p>Filtrer par fournisseur (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-stock-movements"
+               value="MV-2024"
+               data-component="query">
+    <br>
+<p>Rechercher par numéro de référence. Example: <code>MV-2024</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_from"                data-endpoint="GETapi-stock-movements"
+               value="2024-01-01"
+               data-component="query">
+    <br>
+<p>date Filtrer par date de début (YYYY-MM-DD). Example: <code>2024-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_to"                data-endpoint="GETapi-stock-movements"
+               value="2024-12-31"
+               data-component="query">
+    <br>
+<p>date Filtrer par date de fin (YYYY-MM-DD). Example: <code>2024-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-stock-movements"
+               value="reference"
+               data-component="query">
+    <br>
+<p>Champ sur lequel trier (défaut: created_at). Example: <code>reference</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-stock-movements"
+               value="desc"
+               data-component="query">
+    <br>
+<p>Ordre de tri: asc ou desc (défaut: desc). Example: <code>desc</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-stock-movements"
+               value="20"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (défaut: 15). Example: <code>20</code></p>
+            </div>
+                </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements">Crée un mouvement de stock avec des paramètres flexibles. Il est recommandé d&#039;utiliser</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-stock-movements">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/stock-movements" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type\": \"Entré\",
+    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
+    \"note\": \"\\\"Mouvement standard\\\"\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 20
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type": "Entré",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "note": "\"Mouvement standard\"",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 20
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        20,
+                    ],
+                ],
+            ],
+            [
+                'movement_type' =&gt; 'Entré',
+                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+                'note' =&gt; '"Mouvement standard"',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-stock-movements">
+            <blockquote>
+            <p>Example response (201, Mouvement créé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
+        &quot;statut&quot;: &quot;pending&quot;
+    },
+    &quot;message&quot;: &quot;Mouvement de stock cr&eacute;&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-stock-movements" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-stock-movements"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-stock-movements" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-stock-movements">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-stock-movements" data-method="POST"
+      data-path="api/stock-movements"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-stock-movements"
+                    onclick="tryItOut('POSTapi-stock-movements');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-stock-movements"
+                    onclick="cancelTryOut('POSTapi-stock-movements');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-stock-movements"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/stock-movements</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-stock-movements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-stock-movements"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type"                data-endpoint="POSTapi-stock-movements"
+               value="Entré"
+               data-component="body">
+    <br>
+<p>nom du mouvement saisi manuellement. Example: <code>Entré</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="POSTapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>optional UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="POSTapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>optional UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="POSTapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="body">
+    <br>
+<p>optional UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="POSTapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440101"
+               data-component="body">
+    <br>
+<p>optional UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-stock-movements"
+               value=""Mouvement standard""
+               data-component="body">
+    <br>
+<p>optional Note descriptive (max 1000 caractères). Example: <code>"Mouvement standard"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Tableau des produits (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="POSTapi-stock-movements"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements"
+               value="20"
+               data-component="body">
+    <br>
+<p>Quantité (minimum 1). Example: <code>20</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-GETapi-stock-movements--id-">Récupère les détails complets d&#039;un mouvement de stock spécifique avec toutes ses relations.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-stock-movements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-stock-movements--id-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440030&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00003&quot;,
+        &quot;statut&quot;: &quot;pending&quot;
+    },
+    &quot;message&quot;: &quot;Mouvement de stock r&eacute;cup&eacute;r&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Mouvement de stock non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-stock-movements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-stock-movements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-stock-movements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-stock-movements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-stock-movements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-stock-movements--id-" data-method="GET"
+      data-path="api/stock-movements/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-stock-movements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-stock-movements--id-"
+                    onclick="tryItOut('GETapi-stock-movements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-stock-movements--id-"
+                    onclick="cancelTryOut('GETapi-stock-movements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-stock-movements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/stock-movements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-stock-movements--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-PUTapi-stock-movements--id-">Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-stock-movements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type\": \"architecto\",
+    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
+    \"statut\": \"pending\",
+    \"note\": \"\\\"Note mise à jour\\\"\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 15
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type": "architecto",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "statut": "pending",
+    "note": "\"Note mise à jour\"",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 15
+        }
+    ]
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        15,
+                    ],
+                ],
+            ],
+            [
+                'movement_type' =&gt; 'architecto',
+                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+                'statut' =&gt; 'pending',
+                'note' =&gt; '"Note mise à jour"',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-stock-movements--id-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {},
+    &quot;message&quot;: &quot;Mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-stock-movements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-stock-movements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-stock-movements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-stock-movements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-stock-movements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-stock-movements--id-" data-method="PUT"
+      data-path="api/stock-movements/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-stock-movements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-stock-movements--id-"
+                    onclick="tryItOut('PUTapi-stock-movements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-stock-movements--id-"
+                    onclick="cancelTryOut('PUTapi-stock-movements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-stock-movements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/stock-movements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-stock-movements--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type"                data-endpoint="PUTapi-stock-movements--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>optional UUID source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>optional UUID destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="body">
+    <br>
+<p>optional UUID fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440101"
+               data-component="body">
+    <br>
+<p>optional UUID client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PUTapi-stock-movements--id-"
+               value="pending"
+               data-component="body">
+    <br>
+<p>Statut (pending, completed, cancelled). Example: <code>pending</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-stock-movements--id-"
+               value=""Note mise à jour""
+               data-component="body">
+    <br>
+<p>optional Note. Example: <code>"Note mise à jour"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Nouveaux détails (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="PUTapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="PUTapi-stock-movements--id-"
+               value="15"
+               data-component="body">
+    <br>
+<p>Quantité (minimum 1). Example: <code>15</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-PATCHapi-stock-movements--id-">Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-stock-movements--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type\": \"architecto\",
+    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440101\",
+    \"statut\": \"pending\",
+    \"note\": \"\\\"Note mise à jour\\\"\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 15
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type": "architecto",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "client_id": "550e8400-e29b-41d4-a716-446655440101",
+    "statut": "pending",
+    "note": "\"Note mise à jour\"",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 15
+        }
+    ]
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440030';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        15,
+                    ],
+                ],
+            ],
+            [
+                'movement_type' =&gt; 'architecto',
+                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+                'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440101',
+                'statut' =&gt; 'pending',
+                'note' =&gt; '"Note mise à jour"',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-stock-movements--id-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {},
+    &quot;message&quot;: &quot;Mouvement de stock mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-stock-movements--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-stock-movements--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-stock-movements--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-stock-movements--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-stock-movements--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-stock-movements--id-" data-method="PATCH"
+      data-path="api/stock-movements/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-stock-movements--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-stock-movements--id-"
+                    onclick="tryItOut('PATCHapi-stock-movements--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-stock-movements--id-"
+                    onclick="cancelTryOut('PATCHapi-stock-movements--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-stock-movements--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/stock-movements/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-stock-movements--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440030"
+               data-component="url">
+    <br>
+<p>UUID du mouvement. Example: <code>550e8400-e29b-41d4-a716-446655440030</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>optional UUID source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>optional UUID destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="body">
+    <br>
+<p>optional UUID fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440101"
+               data-component="body">
+    <br>
+<p>optional UUID client. Example: <code>550e8400-e29b-41d4-a716-446655440101</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="pending"
+               data-component="body">
+    <br>
+<p>Statut (pending, completed, cancelled). Example: <code>pending</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-stock-movements--id-"
+               value=""Note mise à jour""
+               data-component="body">
+    <br>
+<p>optional Note. Example: <code>"Note mise à jour"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Nouveaux détails (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="PATCHapi-stock-movements--id-"
+               value="15"
+               data-component="body">
+    <br>
+<p>Quantité (minimum 1). Example: <code>15</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements-transfer-warehouse">Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
+La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-stock-movements-transfer-warehouse">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/stock-movements/transfer/warehouse" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type\": \"transfert\",
+    \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"note\": \"\\\"Transfert urgent\\\"\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 10
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/transfer/warehouse"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type": "transfert",
+    "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "note": "\"Transfert urgent\"",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 10
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/transfer/warehouse';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        10,
+                    ],
+                ],
+            ],
+            [
+                'movement_type' =&gt; 'transfert',
+                'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'note' =&gt; '"Transfert urgent"',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-stock-movements-transfer-warehouse">
+            <blockquote>
+            <p>Example response (201, Transfert créé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00001&quot;,
+        &quot;statut&quot;: &quot;pending&quot;
+    },
+    &quot;message&quot;: &quot;Transfert entre entrep&ocirc;ts cr&eacute;&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {}
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-stock-movements-transfer-warehouse" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-stock-movements-transfer-warehouse"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements-transfer-warehouse"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-stock-movements-transfer-warehouse" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-stock-movements-transfer-warehouse">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-stock-movements-transfer-warehouse" data-method="POST"
+      data-path="api/stock-movements/transfer/warehouse"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements-transfer-warehouse', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-stock-movements-transfer-warehouse"
+                    onclick="tryItOut('POSTapi-stock-movements-transfer-warehouse');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-stock-movements-transfer-warehouse"
+                    onclick="cancelTryOut('POSTapi-stock-movements-transfer-warehouse');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-stock-movements-transfer-warehouse"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/stock-movements/transfer/warehouse</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="transfert"
+               data-component="body">
+    <br>
+<p>Type de mouvement saisi manuellement. Example: <code>transfert</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_from_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_from_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID de l'entrepôt source. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value=""Transfert urgent""
+               data-component="body">
+    <br>
+<p>optional Note descriptive du transfert (max 1000 caractères). Example: <code>"Transfert urgent"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Tableau des produits à transférer (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               value="10"
+               data-component="body">
+    <br>
+<p>Quantité (minimum 1). Example: <code>10</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements-receipt-supplier">Crée un nouveau mouvement de réception de marchandise en provenance d&#039;un fournisseur.
+Cette opération augmente le stock dans l&#039;entrepôt de destination.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-stock-movements-receipt-supplier">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/stock-movements/receipt/supplier" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"movement_type\": \"entrée\",
+    \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
+    \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"note\": \"\\\"Réception commande #PO-2024-001\\\"\",
+    \"details\": [
+        {
+            \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
+            \"quantity\": 50
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/receipt/supplier"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "movement_type": "entrée",
+    "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+    "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+    "note": "\"Réception commande #PO-2024-001\"",
+    "details": [
+        {
+            "product_id": "550e8400-e29b-41d4-a716-446655440003",
+            "quantity": 50
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/receipt/supplier';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'product_id' =&gt; [
+                        '550e8400-e29b-41d4-a716-446655440003',
+                    ],
+                    'quantity' =&gt; [
+                        50,
+                    ],
+                ],
+            ],
+            [
+                'movement_type' =&gt; 'entrée',
+                'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
+                'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+                'note' =&gt; '"Réception commande #PO-2024-001"',
+                'details' =&gt; [
+                    $o[0],
+                ],
+            ],
+            []
+        ),
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-stock-movements-receipt-supplier">
+            <blockquote>
+            <p>Example response (201, Réception créée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00002&quot;,
+        &quot;statut&quot;: &quot;pending&quot;
+    },
+    &quot;message&quot;: &quot;R&eacute;ception de fournisseur cr&eacute;&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {}
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-stock-movements-receipt-supplier" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-stock-movements-receipt-supplier"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements-receipt-supplier"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-stock-movements-receipt-supplier" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-stock-movements-receipt-supplier">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-stock-movements-receipt-supplier" data-method="POST"
+      data-path="api/stock-movements/receipt/supplier"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements-receipt-supplier', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-stock-movements-receipt-supplier"
+                    onclick="tryItOut('POSTapi-stock-movements-receipt-supplier');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-stock-movements-receipt-supplier"
+                    onclick="cancelTryOut('POSTapi-stock-movements-receipt-supplier');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-stock-movements-receipt-supplier"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/stock-movements/receipt/supplier</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movement_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="movement_type"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="entrée"
+               data-component="body">
+    <br>
+<p>Type de mouvement saisi manuellement. Example: <code>entrée</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>fournisseur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="fournisseur_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="550e8400-e29b-41d4-a716-446655440100"
+               data-component="body">
+    <br>
+<p>UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_to_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>UUID de l'entrepôt de destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value=""Réception commande #PO-2024-001""
+               data-component="body">
+    <br>
+<p>optional Note descriptive (ex: numéro de bon de commande). Example: <code>"Réception commande #PO-2024-001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Tableau des produits reçus (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               value="50"
+               data-component="body">
+    <br>
+<p>Quantité reçue (minimum 1). Example: <code>50</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
 
                 <h1 id="gestion-des-produits">Gestion des Produits</h1>
 

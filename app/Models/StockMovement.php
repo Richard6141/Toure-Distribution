@@ -17,7 +17,7 @@ class StockMovement extends Model
 
     protected $fillable = [
         'reference',
-        'movement_type_id',
+        'movement_type',
         'entrepot_from_id',
         'entrepot_to_id',
         'fournisseur_id',
@@ -36,10 +36,7 @@ class StockMovement extends Model
         });
     }
 
-    public function movementType()
-    {
-        return $this->belongsTo(StockMovementType::class, 'movement_type_id', 'stock_movement_type_id');
-    }
+   
 
     public function entrepotFrom()
     {
@@ -64,5 +61,9 @@ class StockMovement extends Model
     public function details()
     {
         return $this->hasMany(StockMovementDetail::class, 'stock_movement_id', 'stock_movement_id');
+    }
+    public function fournisseur()
+    {
+        return $this->belongsTo(Fournisseur::class, 'fournisseur_id', 'fournisseur_id');
     }
 }

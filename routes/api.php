@@ -182,7 +182,10 @@ Route::prefix('stock-movement-types')->group(function () {
     Route::post('/{id}/restore', [StockMovementTypeController::class, 'restore']); // Restaurer un type supprimé
 })->middleware('auth:sanctum');
 
-
+/**
+ * Routes pour la gestion des mouvements de stock
+ * Prefix: /stock-movements
+ */
 Route::prefix('stock-movements')->group(function () {
 
 

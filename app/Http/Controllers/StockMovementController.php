@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\StockMovement;
-use App\Models\StockMovementType;
 use App\Models\Entrepot;
 use App\Models\Client;
 use App\Models\Fournisseur;
@@ -14,21 +13,55 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @group Gestion des Mouvements de Stock
+ * 
+ 
+ * APIs pour gérer les mouvements de stock du système (transferts, réceptions, expéditions).
+ * 
+ * **Authentification requise**: Toutes les routes nécessitent un Bearer Token.
+ * 
+ * Pour obtenir un token, l'utilisateur doit d'abord s'authentifier via l'endpoint de connexion.
+ * 
+ * **Header requis pour toutes les requêtes:**
+ * ```
+ * Authorization: Bearer {votre_token}
+ * Content-Type: application/json
+ * Accept: application/json
+ * ```
+ * 
+ * **Exemple de token:**
+ * ```
+ * Authorization: Bearer 1|abc123xyz456def789ghi012jkl345mno678pqr901stu234
+ * ```
+ * 
+ * **Types de mouvements de stock:**
+ * - **Transfert (transfer)**: Déplacement entre deux entrepôts
+ * - **Réception (in)**: Entrée de stock depuis un fournisseur
+ * - **Expédition (out)**: Sortie de stock vers un client
+ * 
+ * **Statuts des mouvements:**
+ * - **pending**: En attente de traitement
+ * - **completed**: Terminé et validé
+ * - **cancelled**: Annulé
+ */
 class StockMovementController extends Controller
 {
     /**
-     * @group Stock Movements
+     * @title Lister tous les mouvements de stock
+     * 
      * @authenticated
+     * @group Gestion des Mouvements de Stock
      * 
-     * Récupère la liste paginée de tous les mouvements de stock
+     * Récupère la liste paginée de tous les mouvements de stock avec leurs détails complets.
+     * Cette endpoint supporte le filtrage avancé, la recherche et le tri.
      * 
-     * Cette endpoint retourne tous les mouvements de stock avec leurs détails complets.
-     * Elle supporte le filtrage, la recherche et le tri avancé.
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
      * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @queryParam movement_type_id string Filtrer par type de mouvement (UUID). Example: 550e8400-e29b-41d4-a716-446655440000
-     * @queryParam statut string Filtrer par statut du mouvement. Example: pending
+     * @queryParam movement_type string Filtrer par type de mouvement Entrée (in), Sortie (out), Transfert (transfer). 
+     * @queryParam statut string Filtrer par statut (pending, completed, cancelled). Example: pending
      * @queryParam entrepot_from_id string Filtrer par entrepôt source (UUID). Example: 550e8400-e29b-41d4-a716-446655440001
      * @queryParam entrepot_to_id string Filtrer par entrepôt destination (UUID). Example: 550e8400-e29b-41d4-a716-446655440002
      * @queryParam client_id string Filtrer par client (UUID). Example: 550e8400-e29b-41d4-a716-446655440101
@@ -36,20 +69,19 @@ class StockMovementController extends Controller
      * @queryParam search string Rechercher par numéro de référence. Example: MV-2024
      * @queryParam date_from date Filtrer par date de début (YYYY-MM-DD). Example: 2024-01-01
      * @queryParam date_to date Filtrer par date de fin (YYYY-MM-DD). Example: 2024-12-31
-     * @queryParam sort_by string Champ sur lequel trier. Example: created_at
-     * @queryParam sort_order string Ordre de tri (asc/desc). Example: desc
-     * @queryParam per_page integer Nombre d'éléments par page. Example: 15
+     * @queryParam sort_by string Champ sur lequel trier (défaut: created_at). Example: reference
+     * @queryParam sort_order string Ordre de tri: asc ou desc (défaut: desc). Example: desc
+     * @queryParam per_page integer Nombre d'éléments par page (défaut: 15). Example: 20
      * 
-     * @response 200 {
+     * @response 200 scenario="Succès" {
      *   "success": true,
      *   "data": {
      *     "data": [
      *       {
      *         "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
      *         "reference": "MV-2024-00001",
-     *         "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *         "statut": "pending",
-     *         "created_at": "2024-01-15 14:30:00"
+     *         "movement_type": "transfert",
+     *         "statut": "pending"
      *       }
      *     ],
      *     "current_page": 1,
@@ -59,23 +91,17 @@ class StockMovementController extends Controller
      *   "message": "Mouvements de stock récupérés avec succès"
      * }
      * 
-     * @response 401 {
+     * @response 401 scenario="Non authentifié" {
      *   "message": "Unauthenticated."
-     * }
-     * 
-     * @response 500 {
-     *   "success": false,
-     *   "message": "Erreur lors de la récupération des mouvements de stock",
-     *   "error": "Message d'erreur détaillé"
      * }
      */
     public function index(Request $request): JsonResponse
     {
         try {
-            $query = StockMovement::with(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+            $query = StockMovement::with(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
 
-            if ($request->has('movement_type_id')) {
-                $query->where('movement_type_id', $request->movement_type_id);
+            if ($request->has('movement_type')) {
+                $query->where('movement_type', $request->movement_type);
             }
 
             if ($request->has('statut')) {
@@ -132,115 +158,51 @@ class StockMovementController extends Controller
     }
 
     /**
-     * @group Stock Movements
+     * @title Créer un transfert de stock entre entrepôts
+     * 
      * @authenticated
+     * @group Gestion des Mouvements de Stock
      * 
-     * Crée un transfert de stock entre deux entrepôts
-     * 
-     * Cette endpoint permet de créer un mouvement de transfert entre deux entrepôts.
+     * Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
      * La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
      * 
-     * **Comment inclure le Bearer Token :**
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
      * 
-     * Ajoutez l'en-tête Authorization à votre requête :
-     * ```
-     * Authorization: Bearer YOUR_API_TOKEN_HERE
-     * ```
-     * 
-     * Exemple complet avec cURL :
-     * ```bash
-     * curl -X POST http://votre-api.com/api/stock-movements/transfer/warehouse \
-     *   -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-     *   -H "Content-Type: application/json" \
-     *   -d '{
-     *     "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-     *     "note": "Transfert urgent",
-     *     "details": [
-     *       {"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 10}
-     *     ]
-     *   }'
-     * ```
-     * 
-     * @header Authorization required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @bodyParam movement_type_id string required UUID du type de mouvement (direction: transfer). Example: 550e8400-e29b-41d4-a716-446655440000
+     * @bodyParam movement_type string required Type de mouvement saisi manuellement. Example: transfert
      * @bodyParam entrepot_from_id string required UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
-     * @bodyParam entrepot_to_id string required UUID de l'entrepôt destination (doit être différent de entrepot_from_id). Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam note string optionnel Note descriptive du transfert. Example: Transfert urgent vers l'entrepôt B
-     * @bodyParam details array required Tableau contenant les détails du mouvement (minimum 1 produit). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 10}]
+     * @bodyParam entrepot_to_id string required UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam note string optional Note descriptive du transfert (max 1000 caractères). Example: "Transfert urgent"
+     * @bodyParam details array required Tableau des produits à transférer (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 10}]
      * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantity integer required Quantité à transférer (minimum 1). Example: 10
+     * @bodyParam details[].quantity integer required Quantité (minimum 1). Example: 10
      * 
-     * @response 201 {
+     * @response 201 scenario="Transfert créé" {
      *   "success": true,
      *   "data": {
      *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
      *     "reference": "MV-2024-00001",
-     *     "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
-     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-     *     "fournisseur_id": null,
-     *     "client_id": null,
-     *     "statut": "pending",
-     *     "note": "Transfert urgent vers l'entrepôt B",
-     *     "user_id": "550e8400-e29b-41d4-a716-446655440099",
-     *     "created_at": "2024-01-15 14:30:00",
-     *     "updated_at": "2024-01-15 14:30:00",
-     *     "movement_type": {
-     *       "stock_movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *       "name": "Transfert",
-     *       "direction": "transfer"
-     *     },
-     *     "entrepot_from": {
-     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
-     *       "name": "Entrepôt A"
-     *     },
-     *     "entrepot_to": {
-     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
-     *       "name": "Entrepôt B"
-     *     },
-     *     "user": {
-     *       "user_id": "550e8400-e29b-41d4-a716-446655440099",
-     *       "name": "Jean Dupont"
-     *     },
-     *     "details": [
-     *       {
-     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
-     *         "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
-     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
-     *         "quantity": 10,
-     *         "product": {
-     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
-     *           "name": "Produit A",
-     *           "sku": "PROD-A-001"
-     *         }
-     *       }
-     *     ]
+     *     "statut": "pending"
      *   },
      *   "message": "Transfert entre entrepôts créé avec succès"
      * }
      * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
-     * }
-     * 
-     * @response 422 {
+     * @response 422 scenario="Erreurs de validation" {
      *   "success": false,
      *   "message": "Erreur de validation",
-     *   "errors": {
-     *     "entrepot_from_id": ["Le champ entrepot_from_id est obligatoire."],
-     *     "entrepot_to_id": ["Le champ entrepot_to_id doit être différent du champ entrepot_from_id."],
-     *     "details": ["Le champ details est obligatoire."]
-     *   }
+     *   "errors": {}
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
      * }
      */
     public function storeWarehouseTransfer(Request $request): JsonResponse
     {
         try {
             $validator = Validator::make($request->all(), [
-                'movement_type_id' => 'required|uuid|exists:stock_movement_types,stock_movement_type_id',
+                'movement_type' => 'required|string|max:50',
                 'entrepot_from_id' => 'required|uuid|exists:entrepots,entrepot_id',
                 'entrepot_to_id' => 'required|uuid|exists:entrepots,entrepot_id|different:entrepot_from_id',
                 'note' => 'nullable|string|max:1000',
@@ -257,52 +219,40 @@ class StockMovementController extends Controller
                 ], 422);
             }
 
-            $movementType = StockMovementType::find($request->movement_type_id);
-            if ($movementType->direction !== 'transfer') {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Le type de mouvement doit être un transfert (transfer)'
-                ], 422);
-            }
-
             DB::beginTransaction();
 
-            try {
-                $reference = $this->generateReference();
+            $reference = $this->generateReference();
 
-                $stockMovement = StockMovement::create([
-                    'stock_movement_id' => (string) Str::uuid(),
-                    'reference' => $reference,
-                    'movement_type_id' => $request->movement_type_id,
-                    'entrepot_from_id' => $request->entrepot_from_id,
-                    'entrepot_to_id' => $request->entrepot_to_id,
-                    'statut' => 'pending',
-                    'note' => $request->note,
-                    'user_id' => auth()->user()->user_id ?? null
+            $stockMovement = StockMovement::create([
+                'stock_movement_id' => (string) Str::uuid(),
+                'movement_type' => $request->movement_type,
+                'reference' => $reference,
+                'entrepot_from_id' => $request->entrepot_from_id,
+                'entrepot_to_id' => $request->entrepot_to_id,
+                'statut' => 'pending',
+                'note' => $request->note,
+                'user_id' => auth()->user()->user_id ?? null
+            ]);
+
+            foreach ($request->details as $detail) {
+                $stockMovement->details()->create([
+                    'stock_movement_detail_id' => (string) Str::uuid(),
+                    'product_id' => $detail['product_id'],
+                    'quantity' => $detail['quantity']
                 ]);
-
-                foreach ($request->details as $detail) {
-                    $stockMovement->details()->create([
-                        'stock_movement_detail_id' => (string) Str::uuid(),
-                        'product_id' => $detail['product_id'],
-                        'quantity' => $detail['quantity']
-                    ]);
-                }
-
-                DB::commit();
-
-                $stockMovement->load(['movementType', 'entrepotFrom', 'entrepotTo', 'user', 'details.product']);
-
-                return response()->json([
-                    'success' => true,
-                    'data' => $stockMovement,
-                    'message' => 'Transfert entre entrepôts créé avec succès'
-                ], 201);
-            } catch (\Exception $e) {
-                DB::rollBack();
-                throw $e;
             }
+
+            DB::commit();
+
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'user', 'details.product']);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovement,
+                'message' => 'Transfert entre entrepôts créé avec succès'
+            ], 201);
         } catch (\Exception $e) {
+            DB::rollBack();
             return response()->json([
                 'success' => false,
                 'message' => 'Erreur lors de la création du transfert',
@@ -312,112 +262,51 @@ class StockMovementController extends Controller
     }
 
     /**
-     * @group Stock Movements
+     * @title Créer une réception de stock depuis un fournisseur
+     * 
      * @authenticated
+     * @group Gestion des Mouvements de Stock
      * 
-     * Crée une réception de stock depuis un fournisseur vers un entrepôt
+     * Crée un nouveau mouvement de réception de marchandise en provenance d'un fournisseur.
+     * Cette opération augmente le stock dans l'entrepôt de destination.
      * 
-     * Cette endpoint permet de créer un mouvement de réception de marchandise en provenance d'un fournisseur.
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
      * 
-     * **Comment inclure le Bearer Token :**
-     * 
-     * Ajoutez l'en-tête Authorization à votre requête :
-     * ```
-     * Authorization: Bearer YOUR_API_TOKEN_HERE
-     * ```
-     * 
-     * Exemple complet avec cURL :
-     * ```bash
-     * curl -X POST http://votre-api.com/api/stock-movements/receipt/supplier \
-     *   -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." \
-     *   -H "Content-Type: application/json" \
-     *   -d '{
-     *     "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-     *     "note": "Réception commande #PO-2024-001",
-     *     "details": [
-     *       {"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 50}
-     *     ]
-     *   }'
-     * ```
-     * 
-     * @header Authorization required Bearer token au format "Bearer {token}". Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @bodyParam movement_type_id string required UUID du type de mouvement (direction: in). Example: 550e8400-e29b-41d4-a716-446655440000
+     * @bodyParam movement_type string required Type de mouvement saisi manuellement. Example: entrée
      * @bodyParam fournisseur_id string required UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
-     * @bodyParam entrepot_to_id string required UUID de l'entrepôt destination (où sera stockée la marchandise). Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam note string optionnel Note descriptive de la réception (ex: numéro de bon de commande). Example: Réception commande #PO-2024-001
-     * @bodyParam details array required Tableau contenant les détails du mouvement (minimum 1 produit). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 50}]
-     * @bodyParam details[].product_id string required UUID du produit reçu. Example: 550e8400-e29b-41d4-a716-446655440003
+     * @bodyParam entrepot_to_id string required UUID de l'entrepôt de destination. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam note string optional Note descriptive (ex: numéro de bon de commande). Example: "Réception commande #PO-2024-001"
+     * @bodyParam details array required Tableau des produits reçus (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 50}]
+     * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
      * @bodyParam details[].quantity integer required Quantité reçue (minimum 1). Example: 50
      * 
-     * @response 201 {
+     * @response 201 scenario="Réception créée" {
      *   "success": true,
      *   "data": {
      *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
      *     "reference": "MV-2024-00002",
-     *     "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "entrepot_from_id": null,
-     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-     *     "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-     *     "client_id": null,
-     *     "statut": "pending",
-     *     "note": "Réception commande #PO-2024-001",
-     *     "user_id": "550e8400-e29b-41d4-a716-446655440099",
-     *     "created_at": "2024-01-15 15:45:00",
-     *     "updated_at": "2024-01-15 15:45:00",
-     *     "movement_type": {
-     *       "stock_movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *       "name": "Réception",
-     *       "direction": "in"
-     *     },
-     *     "entrepot_to": {
-     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
-     *       "name": "Entrepôt Principal"
-     *     },
-     *     "fournisseur": {
-     *       "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
-     *       "name": "Fournisseur XYZ"
-     *     },
-     *     "user": {
-     *       "user_id": "550e8400-e29b-41d4-a716-446655440099",
-     *       "name": "Marie Martin"
-     *     },
-     *     "details": [
-     *       {
-     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440021",
-     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
-     *         "quantity": 50,
-     *         "product": {
-     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
-     *           "name": "Produit A",
-     *           "sku": "PROD-A-001"
-     *         }
-     *       }
-     *     ]
+     *     "statut": "pending"
      *   },
      *   "message": "Réception de fournisseur créée avec succès"
      * }
      * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
-     * }
-     * 
-     * @response 422 {
+     * @response 422 scenario="Erreurs de validation" {
      *   "success": false,
      *   "message": "Erreur de validation",
-     *   "errors": {
-     *     "movement_type_id": ["Le champ movement_type_id doit exister dans la table stock_movement_types."],
-     *     "fournisseur_id": ["Le champ fournisseur_id est obligatoire."]
-     *   }
+     *   "errors": {}
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
      * }
      */
     public function storeSupplierReceipt(Request $request): JsonResponse
     {
         try {
             $validator = Validator::make($request->all(), [
-                'movement_type_id' => 'required|uuid|exists:stock_movement_types,stock_movement_type_id',
+                'movement_type' => 'required|string|max:50',
                 'fournisseur_id' => 'required|uuid|exists:fournisseurs,fournisseur_id',
                 'entrepot_to_id' => 'required|uuid|exists:entrepots,entrepot_id',
                 'note' => 'nullable|string|max:1000',
@@ -434,52 +323,40 @@ class StockMovementController extends Controller
                 ], 422);
             }
 
-            $movementType = StockMovementType::find($request->movement_type_id);
-            if ($movementType->direction !== 'in') {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Le type de mouvement doit être une entrée (in)'
-                ], 422);
-            }
-
             DB::beginTransaction();
 
-            try {
-                $reference = $this->generateReference();
+            $reference = $this->generateReference();
 
-                $stockMovement = StockMovement::create([
-                    'stock_movement_id' => (string) Str::uuid(),
-                    'reference' => $reference,
-                    'movement_type_id' => $request->movement_type_id,
-                    'fournisseur_id' => $request->fournisseur_id,
-                    'entrepot_to_id' => $request->entrepot_to_id,
-                    'statut' => 'pending',
-                    'note' => $request->note,
-                    'user_id' => auth()->user()->user_id ?? null
+            $stockMovement = StockMovement::create([
+                'stock_movement_id' => (string) Str::uuid(),
+                'reference' => $reference,
+                'movement_type' => $request->movement_type,
+                'fournisseur_id' => $request->fournisseur_id,
+                'entrepot_to_id' => $request->entrepot_to_id,
+                'statut' => 'pending',
+                'note' => $request->note,
+                'user_id' => auth()->user()->user_id ?? null
+            ]);
+
+            foreach ($request->details as $detail) {
+                $stockMovement->details()->create([
+                    'stock_movement_detail_id' => (string) Str::uuid(),
+                    'product_id' => $detail['product_id'],
+                    'quantity' => $detail['quantity']
                 ]);
-
-                foreach ($request->details as $detail) {
-                    $stockMovement->details()->create([
-                        'stock_movement_detail_id' => (string) Str::uuid(),
-                        'product_id' => $detail['product_id'],
-                        'quantity' => $detail['quantity']
-                    ]);
-                }
-
-                DB::commit();
-
-                $stockMovement->load(['movementType', 'entrepotTo', 'fournisseur', 'user', 'details.product']);
-
-                return response()->json([
-                    'success' => true,
-                    'data' => $stockMovement,
-                    'message' => 'Réception de fournisseur créée avec succès'
-                ], 201);
-            } catch (\Exception $e) {
-                DB::rollBack();
-                throw $e;
             }
+
+            DB::commit();
+
+            $stockMovement->load(['entrepotTo', 'fournisseur', 'user', 'details.product']);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovement,
+                'message' => 'Réception de fournisseur créée avec succès'
+            ], 201);
         } catch (\Exception $e) {
+            DB::rollBack();
             return response()->json([
                 'success' => false,
                 'message' => 'Erreur lors de la création de la réception',
@@ -488,48 +365,49 @@ class StockMovementController extends Controller
         }
     }
 
+
     /**
-     * @group Stock Movements
+     * @title Créer un mouvement de stock générique
+     * 
      * @authenticated
+     * @group Gestion des Mouvements de Stock
      * 
-     * Crée un mouvement de stock générique
+     * Crée un mouvement de stock avec des paramètres flexibles. Il est recommandé d'utiliser
+     *@Description les endpoints spécialisés (`storeWarehouseTransfer` ou `storeSupplierReceipt`) pour plus de clarté.
      * 
-     * Cette endpoint est une alternative générique aux endpoints spécialisés.
-     * Préférez utiliser `storeWarehouseTransfer()` ou `storeSupplierReceipt()` quand applicable.
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
      * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @bodyParam movement_type_id string required UUID du type de mouvement. Example: 550e8400-e29b-41d4-a716-446655440000
-     * @bodyParam entrepot_from_id string optionnel UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
-     * @bodyParam entrepot_to_id string optionnel UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam fournisseur_id string optionnel UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
-     * @bodyParam client_id string optionnel UUID du client. Example: 550e8400-e29b-41d4-a716-446655440101
-     * @bodyParam note string optionnel Note descriptive du mouvement. Example: Mouvement générique
-     * @bodyParam details array required Tableau contenant les détails du mouvement (minimum 1 produit). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 20}]
+     * @bodyParam movement_type string required  nom du mouvement saisi manuellement. Example: Entré
+     * @bodyParam entrepot_from_id string optional UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
+     * @bodyParam entrepot_to_id string optional UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam fournisseur_id string optional UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
+     * @bodyParam client_id string optional UUID du client. Example: 550e8400-e29b-41d4-a716-446655440101
+     * @bodyParam note string optional Note descriptive (max 1000 caractères). Example: "Mouvement standard"
+     * @bodyParam details array required Tableau des produits (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 20}]
      * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
      * @bodyParam details[].quantity integer required Quantité (minimum 1). Example: 20
      * 
-     * @response 201 {
+     * @response 201 scenario="Mouvement créé" {
      *   "success": true,
-     *   "data": {},
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
+     *     "reference": "MV-2024-00003",
+     *     "statut": "pending"
+     *   },
      *   "message": "Mouvement de stock créé avec succès"
      * }
      * 
      * @response 401 {
      *   "message": "Unauthenticated."
      * }
-     * 
-     * @response 422 {
-     *   "success": false,
-     *   "message": "Erreur de validation",
-     *   "errors": {}
-     * }
      */
     public function store(Request $request): JsonResponse
     {
         try {
             $validator = Validator::make($request->all(), [
-                'movement_type_id' => 'required|exists:stock_movement_types,stock_movement_type_id',
+                'movement_type' => 'nullable|string|max:20',
                 'entrepot_from_id' => 'nullable|exists:entrepots,entrepot_id',
                 'entrepot_to_id' => 'nullable|exists:entrepots,entrepot_id',
                 'fournisseur_id' => 'nullable|exists:fournisseurs,fournisseur_id',
@@ -556,7 +434,7 @@ class StockMovementController extends Controller
                 $stockMovement = StockMovement::create([
                     'stock_movement_id' => (string) Str::uuid(),
                     'reference' => $reference,
-                    'movement_type_id' => $request->movement_type_id,
+                    'movement_type' => $request->movement_type,
                     'entrepot_from_id' => $request->entrepot_from_id,
                     'entrepot_to_id' => $request->entrepot_to_id,
                     'fournisseur_id' => $request->fournisseur_id,
@@ -576,7 +454,7 @@ class StockMovementController extends Controller
 
                 DB::commit();
 
-                $stockMovement->load(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+                $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
 
                 return response()->json([
                     'success' => true,
@@ -597,40 +475,42 @@ class StockMovementController extends Controller
     }
 
     /**
-     * @group Stock Movements
+     * @title Afficher un mouvement de stock par ID
+     * 
      * @authenticated
+     * @group Gestion des Mouvements de Stock
      * 
-     * Récupère les détails complets d'un mouvement de stock
+     * Récupère les détails complets d'un mouvement de stock spécifique avec toutes ses relations.
      * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
      * 
-     * @urlParam id string required UUID du mouvement de stock à récupérer. Example: 550e8400-e29b-41d4-a716-446655440030
+     * @urlParam id string required UUID du mouvement. Example: 550e8400-e29b-41d4-a716-446655440030
      * 
-     * @response 200 {
+     * @response 200 scenario="Succès" {
      *   "success": true,
      *   "data": {
      *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
      *     "reference": "MV-2024-00003",
-     *     "movement_type_id": "550e8400-e29b-41d4-a716-446655440000",
-     *     "statut": "pending",
-     *     "details": []
+     *     "statut": "pending"
      *   },
      *   "message": "Mouvement de stock récupéré avec succès"
-     * }
-     * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
      * }
      * 
      * @response 404 {
      *   "success": false,
      *   "message": "Mouvement de stock non trouvé"
      * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
      */
     public function show(string $id): JsonResponse
     {
         try {
-            $stockMovement = StockMovement::with(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product'])
+            $stockMovement = StockMovement::with(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product'])
                 ->find($id);
 
             if (!$stockMovement) {
@@ -655,45 +535,38 @@ class StockMovementController extends Controller
     }
 
     /**
-     * @group Stock Movements
+     * @title Mettre à jour un mouvement de stock (remplacement complet)
+     * 
      * @authenticated
+     * @group Gestion des Mouvements de Stock
      * 
-     * Met à jour entièrement un mouvement de stock (PUT)
+     * Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.
      * 
-     * Cette endpoint remplace tous les champs et détails du mouvement.
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
      * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+     * @urlParam id string required UUID du mouvement. Example: 550e8400-e29b-41d4-a716-446655440030
      * 
-     * @urlParam id string required UUID du mouvement de stock à mettre à jour. Example: 550e8400-e29b-41d4-a716-446655440030
-     * @bodyParam movement_type_id string required UUID du type de mouvement. Example: 550e8400-e29b-41d4-a716-446655440000
-     * @bodyParam entrepot_from_id string optionnel UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
-     * @bodyParam entrepot_to_id string optionnel UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam fournisseur_id string optionnel UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
-     * @bodyParam client_id string optionnel UUID du client. Example: 550e8400-e29b-41d4-a716-446655440101
-     * @bodyParam statut string required Statut du mouvement (pending, completed, cancelled). Example: pending
-     * @bodyParam note string optionnel Note descriptive. Example: Note mise à jour
-     * @bodyParam details array required Tableau contenant les nouveaux détails du mouvement (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 15}]
-     * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
+     * @bodyParam movement_type string 
+     * @bodyParam entrepot_from_id string optional UUID source. Example: 550e8400-e29b-41d4-a716-446655440001
+     * @bodyParam entrepot_to_id string optional UUID destination. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam fournisseur_id string optional UUID fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
+     * @bodyParam client_id string optional UUID client. Example: 550e8400-e29b-41d4-a716-446655440101
+     * @bodyParam statut string required Statut (pending, completed, cancelled). Example: pending
+     * @bodyParam note string optional Note. Example: "Note mise à jour"
+     * @bodyParam details array required Nouveaux détails (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 15}]
+     * @bodyParam details[].product_id string required UUID produit. Example: 550e8400-e29b-41d4-a716-446655440003
      * @bodyParam details[].quantity integer required Quantité (minimum 1). Example: 15
      * 
-     * @response 200 {
+     * @response 200 scenario="Succès" {
      *   "success": true,
-     *   "data": {
-     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-     *     "reference": "MV-2024-00003",
-     *     "statut": "completed",
-     *     "details": []
-     *   },
+     *   "data": {},
      *   "message": "Mouvement de stock mis à jour avec succès"
      * }
      * 
      * @response 401 {
      *   "message": "Unauthenticated."
-     * }
-     * 
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Mouvement de stock non trouvé"
      * }
      */
     public function update(Request $request, string $id): JsonResponse
@@ -709,7 +582,7 @@ class StockMovementController extends Controller
             }
 
             $validator = Validator::make($request->all(), [
-                'movement_type_id' => 'required|exists:stock_movement_types,stock_movement_type_id',
+                'movement_type' => 'nullable|string|max:20',
                 'entrepot_from_id' => 'nullable|exists:entrepots,entrepot_id',
                 'entrepot_to_id' => 'nullable|exists:entrepots,entrepot_id',
                 'fournisseur_id' => 'nullable|exists:fournisseurs,fournisseur_id',
@@ -733,7 +606,7 @@ class StockMovementController extends Controller
 
             try {
                 $stockMovement->update([
-                    'movement_type_id' => $request->movement_type_id,
+                    'movement_type' => $request->movement_type,
                     'entrepot_from_id' => $request->entrepot_from_id,
                     'entrepot_to_id' => $request->entrepot_to_id,
                     'fournisseur_id' => $request->fournisseur_id,
@@ -754,7 +627,7 @@ class StockMovementController extends Controller
 
                 DB::commit();
 
-                $stockMovement->load(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+                $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
 
                 return response()->json([
                     'success' => true,
@@ -778,9 +651,9 @@ class StockMovementController extends Controller
      * @group Stock Movements
      * @authenticated
      * 
-     * Met à jour uniquement le statut d'un mouvement de stock
+     *@title Met à jour uniquement le statut d'un mouvement de stock
      * 
-     * Cette endpoint est dédiée au changement de statut sans modifier les autres données.
+     *@description Cette endpoint est dédiée au changement de statut sans modifier les autres données.
      * 
      * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
      * 
@@ -833,7 +706,7 @@ class StockMovementController extends Controller
 
             $stockMovement->update(['statut' => $request->statut]);
 
-            $stockMovement->load(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
 
             return response()->json([
                 'success' => true,
@@ -853,10 +726,9 @@ class StockMovementController extends Controller
      * @group Stock Movements
      * @authenticated
      * 
-     * Supprime logiquement un mouvement de stock (soft delete)
+     * @title Supprime logiquement un mouvement de stock (soft delete)
      * 
-     * Le mouvement n'est pas physiquement supprimé de la base de données,
-     * mais marqué comme supprimé avec un timestamp deleted_at.
+     * @description Le mouvement n'est pas physiquement supprimé de la base de données, mais marqué comme supprimé avec un timestamp deleted_at.
      * 
      * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
      * 
@@ -907,7 +779,7 @@ class StockMovementController extends Controller
      * @group Stock Movements
      * @authenticated
      * 
-     * Restaure un mouvement de stock supprimé
+     *  @title Restaure un mouvement de stock supprimé
      * 
      * Récupère un mouvement qui a été supprimé via soft delete.
      * 
@@ -955,7 +827,7 @@ class StockMovementController extends Controller
 
             $stockMovement->restore();
 
-            $stockMovement->load(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
 
             return response()->json([
                 'success' => true,
@@ -975,7 +847,7 @@ class StockMovementController extends Controller
      * @group Stock Movements
      * @authenticated
      * 
-     * Récupère la liste des mouvements de stock supprimés
+     *  @title Récupère la liste des mouvements de stock supprimés
      * 
      * Retourne tous les mouvements marqués comme supprimés (soft delete).
      * 
@@ -1000,7 +872,7 @@ class StockMovementController extends Controller
     {
         try {
             $stockMovements = StockMovement::onlyTrashed()
-                ->with(['movementType', 'entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product'])
+                ->with(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product'])
                 ->paginate(15);
 
             return response()->json([
