@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 class StockMovementTypeController extends Controller
 {
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Récupère la liste des types de mouvements de stock
@@ -46,6 +47,9 @@ class StockMovementTypeController extends Controller
      *   "message": "Erreur lors de la récupération des types de mouvements de stock",
      *   "error": "Message d'erreur"
      * }
+=======
+     * Afficher la liste des types de mouvements de stock
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function index(Request $request): JsonResponse
     {
@@ -86,6 +90,7 @@ class StockMovementTypeController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Crée un nouveau type de mouvement de stock
@@ -113,6 +118,9 @@ class StockMovementTypeController extends Controller
      *     "direction": ["La direction est obligatoire."]
      *   }
      * }
+=======
+     * Créer un nouveau type de mouvement de stock
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function store(Request $request): JsonResponse
     {
@@ -151,6 +159,7 @@ class StockMovementTypeController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Récupère un type de mouvement de stock spécifique
@@ -174,6 +183,9 @@ class StockMovementTypeController extends Controller
      *   "success": false,
      *   "message": "Type de mouvement de stock non trouvé"
      * }
+=======
+     * Afficher un type de mouvement de stock spécifique
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function show(string $id): JsonResponse
     {
@@ -202,6 +214,7 @@ class StockMovementTypeController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Met à jour un type de mouvement de stock
@@ -234,6 +247,9 @@ class StockMovementTypeController extends Controller
      *     "name": ["Le nom du type de mouvement est obligatoire."]
      *   }
      * }
+=======
+     * Mettre à jour un type de mouvement de stock
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function update(Request $request, string $id): JsonResponse
     {
@@ -280,6 +296,7 @@ class StockMovementTypeController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Supprime un type de mouvement de stock (soft delete)
@@ -295,6 +312,9 @@ class StockMovementTypeController extends Controller
      *   "success": false,
      *   "message": "Type de mouvement de stock non trouvé"
      * }
+=======
+     * Supprimer un type de mouvement de stock (soft delete)
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function destroy(string $id): JsonResponse
     {
@@ -324,6 +344,7 @@ class StockMovementTypeController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Restaure un type de mouvement de stock supprimé
@@ -351,6 +372,9 @@ class StockMovementTypeController extends Controller
      *   "success": false,
      *   "message": "Ce type de mouvement de stock n'est pas supprimé"
      * }
+=======
+     * Restaurer un type de mouvement de stock supprimé
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function restore(string $id): JsonResponse
     {
@@ -388,6 +412,7 @@ class StockMovementTypeController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Types
      * 
      * Récupère la liste des types de mouvements de stock supprimés
@@ -411,6 +436,9 @@ class StockMovementTypeController extends Controller
      *   },
      *   "message": "Types de mouvements de stock supprimés récupérés avec succès"
      * }
+=======
+     * Lister les types de mouvements de stock supprimés
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function trashed(): JsonResponse
     {

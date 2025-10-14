@@ -171,6 +171,7 @@ Route::prefix('stock-movement-types')->group(function () {
     Route::put('/{id}', [StockMovementTypeController::class, 'update']);          // Mise à jour d'un type
     Route::patch('/{id}', [StockMovementTypeController::class, 'update']);        // Mise à jour partielle d'un type
     Route::delete('/{id}', [StockMovementTypeController::class, 'destroy']);      // Suppression logique (soft delete)
+
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [StockMovementTypeController::class, 'trashed']); // Liste des types supprimés
     Route::post('/{id}/restore', [StockMovementTypeController::class, 'restore']); // Restaurer un type supprimé
@@ -191,6 +192,7 @@ Route::prefix('stock-movements')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [StockMovementController::class, 'trashed']);     // Liste des mouvements supprimés
     Route::post('/{id}/restore', [StockMovementController::class, 'restore']);    // Restaurer un mouvement supprimé
+
     // Routes spéciales
     Route::patch('/{id}/update-status', [StockMovementController::class, 'updateStatus']); // Changer le statut
 })->middleware('auth:sanctum');
@@ -210,6 +212,7 @@ Route::prefix('stock-movement-details')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [StockMovementDetailController::class, 'trashed']); // Liste des détails supprimés
     Route::post('/{id}/restore', [StockMovementDetailController::class, 'restore']); // Restaurer un détail supprimé
+
     // Routes spéciales
     Route::get('/stock-movement/{stockMovementId}', [StockMovementDetailController::class, 'byStockMovement']); // Détails d'un mouvement
     Route::get('/product/{productId}', [StockMovementDetailController::class, 'byProduct']); // Détails d'un produit

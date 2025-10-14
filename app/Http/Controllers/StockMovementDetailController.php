@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 class StockMovementDetailController extends Controller
 {
     /**
+<<<<<<< HEAD
      * @group Stock Movement Details
      * 
      * Récupère la liste des détails de mouvements de stock
@@ -57,6 +58,9 @@ class StockMovementDetailController extends Controller
      *   },
      *   "message": "Détails de mouvements de stock récupérés avec succès"
      * }
+=======
+     * Afficher la liste des détails de mouvements de stock
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function index(Request $request): JsonResponse
     {
@@ -107,6 +111,7 @@ class StockMovementDetailController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @group Stock Movement Details
      * 
      * Crée un nouveau détail de mouvement de stock
@@ -155,6 +160,9 @@ class StockMovementDetailController extends Controller
      *     "quantity": ["La quantité est obligatoire."]
      *   }
      * }
+=======
+     * Créer un nouveau détail de mouvement de stock
+>>>>>>> 1c81847c9bdb851e44db291266c5769bded4c228
      */
     public function store(Request $request): JsonResponse
     {
