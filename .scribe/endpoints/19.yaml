@@ -1,0 +1,1037 @@
+name: 'Gestion des Commandes'
+description: |-
+
+  API pour gérer les commandes d'achat auprès des fournisseurs.
+  Toutes les routes nécessitent une authentification via Sanctum.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/commandes
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des commandes'
+      description: 'Récupère la liste paginée de toutes les commandes avec leurs fournisseurs.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Rechercher par numéro de commande.'
+        required: false
+        example: CMD-2025-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: 'Filtrer par statut (en_attente, validee, en_cours, livree, partiellement_livree, annulee).'
+        required: false
+        example: en_attente
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      fournisseur_id:
+        name: fournisseur_id
+        description: 'Filtrer par ID du fournisseur.'
+        required: false
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_achat_debut:
+        name: date_achat_debut
+        description: "date Filtrer par date d'achat minimum (format: Y-m-d)."
+        required: false
+        example: '2025-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_achat_fin:
+        name: date_achat_fin
+        description: "date Filtrer par date d'achat maximum (format: Y-m-d)."
+        required: false
+        example: '2025-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant_min:
+        name: montant_min
+        description: 'numeric Filtrer par montant minimum.'
+        required: false
+        example: '1000'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant_max:
+        name: montant_max
+        description: 'numeric Filtrer par montant maximum.'
+        required: false
+        example: '50000'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      en_retard:
+        name: en_retard
+        description: 'Afficher uniquement les commandes en retard (1 ou 0).'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+      search: CMD-2025-001
+      status: en_attente
+      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      date_achat_debut: '2025-01-01'
+      date_achat_fin: '2025-12-31'
+      montant_min: '1000'
+      montant_max: '50000'
+      en_retard: true
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des commandes récupérée avec succès",
+            "data": {
+              "current_page": 1,
+              "data": [
+                {
+                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "numero_commande": "CMD-2025-0001",
+                  "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "date_achat": "2025-01-15",
+                  "date_livraison_prevue": "2025-02-15",
+                  "date_livraison_effective": null,
+                  "montant": "25000.00",
+                  "status": "en_attente",
+                  "note": "Commande urgente",
+                  "created_at": "2025-01-15T10:30:00.000000Z",
+                  "updated_at": "2025-01-15T10:30:00.000000Z",
+                  "fournisseur": {
+                    "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                    "code": "FOUR001",
+                    "name": "Fournisseur ABC",
+                    "email": "contact@fournisseur-abc.com",
+                    "phone": "+229 97 00 00 00"
+                  }
+                }
+              ],
+              "first_page_url": "http://localhost/api/commandes?page=1",
+              "from": 1,
+              "last_page": 3,
+              "per_page": 15,
+              "to": 15,
+              "total": 45
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/commandes
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une commande'
+      description: |-
+        Enregistre une nouvelle commande d'achat dans le système.
+        Le numéro de commande est généré automatiquement au format CMD-YYYY-0001.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      fournisseur_id:
+        name: fournisseur_id
+        description: "L'UUID du fournisseur."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_achat:
+        name: date_achat
+        description: "La date d'achat (format: Y-m-d)."
+        required: true
+        example: '2025-01-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_livraison_prevue:
+        name: date_livraison_prevue
+        description: 'La date de livraison prévue (format: Y-m-d).'
+        required: true
+        example: '2025-02-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_livraison_effective:
+        name: date_livraison_effective
+        description: 'La date de livraison effective (format: Y-m-d).'
+        required: false
+        example: '2025-02-10'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      montant:
+        name: montant
+        description: 'Le montant total de la commande.'
+        required: true
+        example: '25000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: 'Le statut de la commande (en_attente, validee, en_cours, livree, partiellement_livree, annulee). Par défaut: en_attente.'
+        required: false
+        example: en_attente
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations sur la commande.'
+        required: false
+        example: 'Commande urgente'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      date_achat: '2025-01-15'
+      date_livraison_prevue: '2025-02-15'
+      date_livraison_effective: '2025-02-10'
+      montant: '25000.00'
+      status: en_attente
+      note: 'Commande urgente'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Commande créée avec succès",
+            "data": {
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_commande": "CMD-2025-0001",
+              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "date_achat": "2025-01-15",
+              "date_livraison_prevue": "2025-02-15",
+              "date_livraison_effective": null,
+              "montant": "25000.00",
+              "status": "en_attente",
+              "note": "Commande urgente",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "fournisseur": {
+                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "code": "FOUR001",
+                "name": "Fournisseur ABC",
+                "email": "contact@fournisseur-abc.com"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "fournisseur_id": [
+                "Le fournisseur sélectionné n'existe pas"
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher une commande'
+      description: "Récupère les détails d'une commande spécifique avec son fournisseur."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détails de la commande récupérés avec succès",
+            "data": {
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_commande": "CMD-2025-0001",
+              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "date_achat": "2025-01-15",
+              "date_livraison_prevue": "2025-02-15",
+              "date_livraison_effective": null,
+              "montant": "25000.00",
+              "status": "en_attente",
+              "note": "Commande urgente",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "is_en_attente": true,
+              "is_livree": false,
+              "is_en_retard": false,
+              "fournisseur": {
+                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "code": "FOUR001",
+                "name": "Fournisseur ABC",
+                "responsable": "Jean Dupont",
+                "email": "contact@fournisseur-abc.com",
+                "phone": "+229 97 00 00 00",
+                "adresse": "123 Rue Principale",
+                "city": "Cotonou"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une commande'
+      description: |-
+        Met à jour les informations d'une commande existante.
+        Note: Le numéro de commande ne peut pas être modifié.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      fournisseur_id:
+        name: fournisseur_id
+        description: "L'UUID du fournisseur."
+        required: false
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_achat:
+        name: date_achat
+        description: "La date d'achat (format: Y-m-d)."
+        required: false
+        example: '2025-01-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_livraison_prevue:
+        name: date_livraison_prevue
+        description: 'La date de livraison prévue (format: Y-m-d).'
+        required: false
+        example: '2025-02-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_livraison_effective:
+        name: date_livraison_effective
+        description: 'La date de livraison effective (format: Y-m-d).'
+        required: false
+        example: '2025-02-10'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      montant:
+        name: montant
+        description: 'Le montant total de la commande.'
+        required: false
+        example: '25000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: 'Le statut de la commande.'
+        required: false
+        example: livree
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations sur la commande.'
+        required: false
+        example: 'Livraison effectuée avec succès'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      date_achat: '2025-01-15'
+      date_livraison_prevue: '2025-02-15'
+      date_livraison_effective: '2025-02-10'
+      montant: '25000.00'
+      status: livree
+      note: 'Livraison effectuée avec succès'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Commande mise à jour avec succès",
+            "data": {
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_commande": "CMD-2025-0001",
+              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "date_achat": "2025-01-15",
+              "date_livraison_prevue": "2025-02-15",
+              "date_livraison_effective": "2025-02-10",
+              "montant": "25000.00",
+              "status": "livree",
+              "note": "Livraison effectuée avec succès",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-02-10T14:30:00.000000Z",
+              "fournisseur": {
+                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "code": "FOUR001",
+                "name": "Fournisseur ABC"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une commande'
+      description: |-
+        Met à jour les informations d'une commande existante.
+        Note: Le numéro de commande ne peut pas être modifié.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      fournisseur_id:
+        name: fournisseur_id
+        description: "L'UUID du fournisseur."
+        required: false
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_achat:
+        name: date_achat
+        description: "La date d'achat (format: Y-m-d)."
+        required: false
+        example: '2025-01-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_livraison_prevue:
+        name: date_livraison_prevue
+        description: 'La date de livraison prévue (format: Y-m-d).'
+        required: false
+        example: '2025-02-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_livraison_effective:
+        name: date_livraison_effective
+        description: 'La date de livraison effective (format: Y-m-d).'
+        required: false
+        example: '2025-02-10'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      montant:
+        name: montant
+        description: 'Le montant total de la commande.'
+        required: false
+        example: '25000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: 'Le statut de la commande.'
+        required: false
+        example: livree
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations sur la commande.'
+        required: false
+        example: 'Livraison effectuée avec succès'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      date_achat: '2025-01-15'
+      date_livraison_prevue: '2025-02-15'
+      date_livraison_effective: '2025-02-10'
+      montant: '25000.00'
+      status: livree
+      note: 'Livraison effectuée avec succès'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Commande mise à jour avec succès",
+            "data": {
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_commande": "CMD-2025-0001",
+              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "date_achat": "2025-01-15",
+              "date_livraison_prevue": "2025-02-15",
+              "date_livraison_effective": "2025-02-10",
+              "montant": "25000.00",
+              "status": "livree",
+              "note": "Livraison effectuée avec succès",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-02-10T14:30:00.000000Z",
+              "fournisseur": {
+                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "code": "FOUR001",
+                "name": "Fournisseur ABC"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer une commande'
+      description: |-
+        Effectue une suppression logique (soft delete) d'une commande.
+        La commande reste dans la base mais est marquée comme supprimée.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Commande supprimée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/commandes/trashed/list
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des commandes supprimées'
+      description: 'Récupère la liste paginée de toutes les commandes supprimées (soft deleted).'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des commandes supprimées récupérée avec succès",
+            "data": {
+              "current_page": 1,
+              "data": [
+                {
+                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "numero_commande": "CMD-2025-0001",
+                  "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "date_achat": "2025-01-15",
+                  "montant": "25000.00",
+                  "status": "annulee",
+                  "created_at": "2025-01-15T10:30:00.000000Z",
+                  "updated_at": "2025-01-15T10:30:00.000000Z",
+                  "deleted_at": "2025-01-20T14:30:00.000000Z",
+                  "fournisseur": {
+                    "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                    "code": "FOUR001",
+                    "name": "Fournisseur ABC"
+                  }
+                }
+              ],
+              "first_page_url": "http://localhost/api/commandes/trashed/list?page=1",
+              "from": 1,
+              "last_page": 1,
+              "per_page": 15,
+              "to": 3,
+              "total": 3
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/commandes/{id}/restore'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaurer une commande supprimée'
+      description: 'Restaure une commande précédemment supprimée (soft deleted).'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la commande supprimée."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Commande restaurée avec succès",
+            "data": {
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_commande": "CMD-2025-0001",
+              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "date_achat": "2025-01-15",
+              "date_livraison_prevue": "2025-02-15",
+              "montant": "25000.00",
+              "status": "en_attente",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "deleted_at": null,
+              "fournisseur": {
+                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "code": "FOUR001",
+                "name": "Fournisseur ABC"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande supprimée non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []

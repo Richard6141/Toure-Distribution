@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models;
-
+use App\Models\Commande;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Fournisseur extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasUuids, SoftDeletes;
 
     protected $table = 'fournisseurs';
     protected $primaryKey = 'fournisseur_id';
@@ -38,5 +39,21 @@ class Fournisseur extends Model
                 $model->code = 'FRN-' . strtoupper(Str::random(6));
             }
         });
+    }
+
+    /**
+     * Relation avec les commandes
+     */
+    public function commandes(): HasMany
+    {
+        return $this->hasMany(Commande::class, 'fournisseur_id', 'fournisseur_id');
+    }
+
+    /**
+     * Scope pour obtenir uniquement les fournisseurs actifs
+     */
+    public function scopeActifs($query)
+    {
+        return $query->where('is_active', true);
     }
 }

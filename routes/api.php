@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\CamionController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
 use App\Http\Controllers\Api\FactureController;
+use App\Http\Controllers\Api\CommandeController;
 use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\PaiementController;
 use App\Http\Controllers\Api\ChauffeurController;
@@ -347,4 +348,21 @@ Route::prefix('camions')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [CamionController::class, 'trashed']); // Liste des camions supprimés
     Route::post('/{id}/restore', [CamionController::class, 'restore']); // Restaurer un camion supprimé
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des commandes d'achat
+ * Prefix: /commandes
+ */
+Route::prefix('commandes')->group(function () {
+    Route::get('/', [CommandeController::class, 'index']);               // Liste des commandes
+    Route::post('/', [CommandeController::class, 'store']);              // Création d'une commande
+    Route::get('/{id}', [CommandeController::class, 'show']);            // Afficher une commande par ID
+    Route::put('/{id}', [CommandeController::class, 'update']);          // Mise à jour d'une commande
+    Route::patch('/{id}', [CommandeController::class, 'update']);        // Mise à jour partielle d'une commande
+    Route::delete('/{id}', [CommandeController::class, 'destroy']);      // Suppression logique (soft delete)
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [CommandeController::class, 'trashed']); // Liste des commandes supprimées
+    Route::post('/{id}/restore', [CommandeController::class, 'restore']); // Restaurer une commande supprimée
 })->middleware('auth:sanctum');
