@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+use App\Models\DetailCommande;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
@@ -50,5 +51,21 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id', 'product_category_id');
+    }
+
+    /**
+     * Relation avec les détails de commandes
+     */
+    public function detailCommandes()
+    {
+        return $this->hasMany(DetailCommande::class, 'product_id', 'product_id');
+    }
+
+    /**
+     * Scope pour obtenir uniquement les produits actifs
+     */
+    public function scopeActifs($query)
+    {
+        return $query->where('is_active', true);
     }
 }

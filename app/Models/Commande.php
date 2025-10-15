@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Fournisseur;
+use App\Models\DetailCommande;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -195,5 +196,21 @@ class Commande extends Model
     public function scopeMontantMax($query, $montant)
     {
         return $query->where('montant', '<=', $montant);
+    }
+
+    /**
+     * Relation avec les détails de commande
+     */
+    public function details()
+    {
+        return $this->hasMany(DetailCommande::class, 'commande_id', 'commande_id');
+    }
+
+    /**
+     * Calcule le montant total de la commande basé sur les détails
+     */
+    public function calculerMontantTotal(): float
+    {
+        return $this->details()->sum('sous_total');
     }
 }

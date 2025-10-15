@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\StockMovementTypeController;
+use App\Http\Controllers\Api\DetailCommandeController;
 use App\Http\Controllers\StockMovementDetailController;
 
 Route::get('/user', function (Request $request) {
@@ -365,4 +366,23 @@ Route::prefix('commandes')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [CommandeController::class, 'trashed']); // Liste des commandes supprimées
     Route::post('/{id}/restore', [CommandeController::class, 'restore']); // Restaurer une commande supprimée
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des détails de commandes
+ * Prefix: /detail-commandes
+ */
+Route::prefix('detail-commandes')->group(function () {
+    Route::get('/', [DetailCommandeController::class, 'index']);                         // Liste des détails
+    Route::post('/', [DetailCommandeController::class, 'store']);                        // Créer un détail
+    Route::post('/multiple', [DetailCommandeController::class, 'storeMultiple']);        // Créer plusieurs détails
+    Route::get('/commande/{commandeId}', [DetailCommandeController::class, 'getByCommande']); // Détails d'une commande
+    Route::get('/{id}', [DetailCommandeController::class, 'show']);                      // Afficher un détail
+    Route::put('/{id}', [DetailCommandeController::class, 'update']);                    // Mettre à jour un détail
+    Route::patch('/{id}', [DetailCommandeController::class, 'update']);                  // Mise à jour partielle
+    Route::delete('/{id}', [DetailCommandeController::class, 'destroy']);                // Supprimer un détail
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [DetailCommandeController::class, 'trashed']);           // Liste des détails supprimés
+    Route::post('/{id}/restore', [DetailCommandeController::class, 'restore']);          // Restaurer un détail
 })->middleware('auth:sanctum');

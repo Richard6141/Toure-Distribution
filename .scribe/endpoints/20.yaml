@@ -1,0 +1,993 @@
+name: 'Gestion des Détails de Commandes'
+description: |-
+
+  API pour gérer les lignes de produits (détails) des commandes d'achat.
+  Toutes les routes nécessitent une authentification via Sanctum.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/detail-commandes
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des détails de commandes'
+      description: 'Récupère la liste paginée de tous les détails de commandes avec leurs produits.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      commande_id:
+        name: commande_id
+        description: 'Filtrer par ID de commande.'
+        required: false
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      product_id:
+        name: product_id
+        description: 'Filtrer par ID de produit.'
+        required: false
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des détails de commandes récupérée avec succès",
+            "data": {
+              "current_page": 1,
+              "data": [
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00",
+                  "created_at": "2025-01-15T10:30:00.000000Z",
+                  "updated_at": "2025-01-15T10:30:00.000000Z",
+                  "commande": {
+                    "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                    "numero_commande": "CMD-2025-0001",
+                    "date_achat": "2025-01-15"
+                  },
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "code": "PROD001",
+                    "name": "Produit ABC",
+                    "unit_price": "2500.00"
+                  }
+                }
+              ],
+              "first_page_url": "http://localhost/api/detail-commandes?page=1",
+              "from": 1,
+              "last_page": 2,
+              "per_page": 15,
+              "to": 15,
+              "total": 30
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/detail-commandes
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer un détail de commande'
+      description: 'Ajoute une ligne de produit à une commande existante.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      product_id:
+        name: product_id
+        description: "L'UUID du produit."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
+        required: true
+        example: '2500.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      quantite: 10
+      prix_unitaire: '2500.00'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande créé avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001"
+              },
+              "product": {
+                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                "code": "PROD001",
+                "name": "Produit ABC"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "commande_id": [
+                "La commande sélectionnée n'existe pas"
+              ],
+              "product_id": [
+                "Le produit sélectionné n'existe pas"
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/detail-commandes/multiple
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer plusieurs détails de commande en une seule fois'
+      description: 'Ajoute plusieurs lignes de produits à une commande existante.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      details:
+        name: details
+        description: 'Liste des détails à ajouter.'
+        required: true
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'details[].product_id':
+        name: 'details[].product_id'
+        description: "L'UUID du produit."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details[].quantite':
+        name: 'details[].quantite'
+        description: 'La quantité commandée.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details[].prix_unitaire':
+        name: 'details[].prix_unitaire'
+        description: 'Le prix unitaire.'
+        required: true
+        example: '2500.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      details:
+        - architecto
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "3 détails de commande créés avec succès",
+            "data": {
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "details_count": 3,
+              "total": "75000.00",
+              "details": [
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00"
+                }
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/detail-commandes/commande/{commandeId}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Liste des détails d'une commande spécifique"
+      description: "Récupère tous les détails (lignes de produits) d'une commande donnée."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      commandeId:
+        name: commandeId
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      commandeId: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détails de la commande récupérés avec succès",
+            "data": {
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                "numero_commande": "CMD-2025-0001",
+                "date_achat": "2025-01-15",
+                "montant": "50000.00"
+              },
+              "details": [
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00",
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "code": "PROD001",
+                    "name": "Produit ABC"
+                  }
+                },
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                  "quantite": 5,
+                  "prix_unitaire": "5000.00",
+                  "sous_total": "25000.00",
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                    "code": "PROD002",
+                    "name": "Produit XYZ"
+                  }
+                }
+              ],
+              "total": "50000.00"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/detail-commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher un détail de commande'
+      description: "Récupère les informations d'une ligne de commande spécifique."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID du détail de commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande récupéré avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001",
+                "date_achat": "2025-01-15"
+              },
+              "product": {
+                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                "code": "PROD001",
+                "name": "Produit ABC",
+                "unit_price": "2500.00"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Détail de commande non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/detail-commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour un détail de commande'
+      description: "Modifie la quantité ou le prix unitaire d'une ligne de commande."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID du détail de commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
+        required: false
+        example: '2300.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      quantite: 15
+      prix_unitaire: '2300.00'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande mis à jour avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 15,
+              "prix_unitaire": "2300.00",
+              "sous_total": "34500.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T14:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Détail de commande non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/detail-commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour un détail de commande'
+      description: "Modifie la quantité ou le prix unitaire d'une ligne de commande."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID du détail de commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
+        required: false
+        example: '2300.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      quantite: 15
+      prix_unitaire: '2300.00'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande mis à jour avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 15,
+              "prix_unitaire": "2300.00",
+              "sous_total": "34500.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T14:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Détail de commande non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/detail-commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer un détail de commande'
+      description: "Effectue une suppression logique (soft delete) d'une ligne de commande."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID du détail de commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande supprimé avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Détail de commande non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/detail-commandes/trashed/list
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des détails supprimés'
+      description: 'Récupère la liste paginée de tous les détails de commandes supprimés.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des détails supprimés récupérée avec succès",
+            "data": {
+              "current_page": 1,
+              "data": [],
+              "total": 0
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/detail-commandes/{id}/restore'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaurer un détail supprimé'
+      description: 'Restaure un détail de commande précédemment supprimé.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID du détail supprimé."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande restauré avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "deleted_at": null
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Détail supprimé non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
