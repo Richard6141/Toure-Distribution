@@ -53,7 +53,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-15T11:51:56'
+        example: '2025-10-15T22:09:04'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -70,7 +70,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-15T11:51:56'
+      date_from: '2025-10-15T22:09:04'
       date_to: '2051-11-08'
     fileParameters: []
     responses:
@@ -282,7 +282,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-15T11:51:56'
+        example: '2025-10-15T22:09:04'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -302,7 +302,7 @@ endpoints:
         name: with_client
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -312,7 +312,7 @@ endpoints:
         name: with_details
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -324,10 +324,10 @@ endpoints:
       search: g
       client_id: c90237e9-ced5-3af6-88ea-84aeaa148878
       statut: overdue
-      date_from: '2025-10-15T11:51:56'
+      date_from: '2025-10-15T22:09:04'
       date_to: '2051-11-08'
-      with_client: false
-      with_details: true
+      with_client: true
+      with_details: false
     fileParameters: []
     responses:
       -
@@ -704,7 +704,7 @@ endpoints:
         name: with_client
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -714,7 +714,7 @@ endpoints:
         name: with_details
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -724,16 +724,16 @@ endpoints:
         name: with_payments
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_client: true
-      with_details: false
-      with_payments: false
+      with_client: false
+      with_details: true
+      with_payments: true
     fileParameters: []
     responses:
       -

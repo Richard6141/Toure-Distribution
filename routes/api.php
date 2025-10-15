@@ -10,6 +10,7 @@ use App\Http\Controllers\ClientTypeController;
 use App\Http\Controllers\Api\FactureController;
 use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\PaiementController;
+use App\Http\Controllers\Api\ChauffeurController;
 use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
@@ -313,4 +314,20 @@ Route::prefix('paiements')->name('paiements.')->group(function () {
 
     // Routes pour actions spéciales
     Route::patch('/{id}/update-status', [PaiementController::class, 'updateStatus'])->name('update-status');
+})->middleware('auth:sanctum');
+/**
+ * Routes pour la gestion des chauffeurs
+ * Prefix: /chauffeurs
+ */
+Route::prefix('chauffeurs')->group(function () {
+    Route::get('/', [ChauffeurController::class, 'index']);               // Liste des chauffeurs
+    Route::post('/', [ChauffeurController::class, 'store']);              // Création d'un chauffeur
+    Route::get('/{id}', [ChauffeurController::class, 'show']);            // Afficher un chauffeur par ID
+    Route::put('/{id}', [ChauffeurController::class, 'update']);          // Mise à jour d'un chauffeur
+    Route::patch('/{id}', [ChauffeurController::class, 'update']);        // Mise à jour partielle d'un chauffeur
+    Route::delete('/{id}', [ChauffeurController::class, 'destroy']);      // Suppression logique (soft delete)
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [ChauffeurController::class, 'trashed']); // Liste des chauffeurs supprimés
+    Route::post('/{id}/restore', [ChauffeurController::class, 'restore']); // Restaurer un chauffeur supprimé
 })->middleware('auth:sanctum');
