@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CamionController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
 use App\Http\Controllers\Api\FactureController;
@@ -330,4 +331,20 @@ Route::prefix('chauffeurs')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [ChauffeurController::class, 'trashed']); // Liste des chauffeurs supprimés
     Route::post('/{id}/restore', [ChauffeurController::class, 'restore']); // Restaurer un chauffeur supprimé
+})->middleware('auth:sanctum');
+/**
+ * Routes pour la gestion des camions
+ * Prefix: /camions
+ */
+Route::prefix('camions')->group(function () {
+    Route::get('/', [CamionController::class, 'index']);               // Liste des camions
+    Route::post('/', [CamionController::class, 'store']);              // Création d'un camion
+    Route::get('/{id}', [CamionController::class, 'show']);            // Afficher un camion par ID
+    Route::put('/{id}', [CamionController::class, 'update']);          // Mise à jour d'un camion
+    Route::patch('/{id}', [CamionController::class, 'update']);        // Mise à jour partielle d'un camion
+    Route::delete('/{id}', [CamionController::class, 'destroy']);      // Suppression logique (soft delete)
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [CamionController::class, 'trashed']); // Liste des camions supprimés
+    Route::post('/{id}/restore', [CamionController::class, 'restore']); // Restaurer un camion supprimé
 })->middleware('auth:sanctum');
