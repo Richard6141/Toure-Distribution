@@ -294,7 +294,7 @@ endpoints:
         example:
           -
             product_id: 550e8400-e29b-41d4-a716-446655440003
-            quantity: 20
+            quantite: 20
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -310,8 +310,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      'details[].quantity':
-        name: 'details[].quantity'
+      'details[].quantite':
+        name: 'details[].quantite'
         description: 'Quantité (minimum 1).'
         required: true
         example: 20
@@ -330,7 +330,7 @@ endpoints:
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
-          quantity: 20
+          quantite: 20
     fileParameters: []
     responses:
       -
@@ -557,7 +557,7 @@ endpoints:
         example:
           -
             product_id: 550e8400-e29b-41d4-a716-446655440003
-            quantity: 15
+            quantite: 15
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -573,8 +573,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      'details[].quantity':
-        name: 'details[].quantity'
+      'details[].quantite':
+        name: 'details[].quantite'
         description: 'Quantité (minimum 1).'
         required: true
         example: 15
@@ -594,7 +594,7 @@ endpoints:
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
-          quantity: 15
+          quantite: 15
     fileParameters: []
     responses:
       -
@@ -737,7 +737,7 @@ endpoints:
         example:
           -
             product_id: 550e8400-e29b-41d4-a716-446655440003
-            quantity: 15
+            quantite: 15
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -753,8 +753,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      'details[].quantity':
-        name: 'details[].quantity'
+      'details[].quantite':
+        name: 'details[].quantite'
         description: 'Quantité (minimum 1).'
         required: true
         example: 15
@@ -774,7 +774,7 @@ endpoints:
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
-          quantity: 15
+          quantite: 15
     fileParameters: []
     responses:
       -
@@ -878,7 +878,7 @@ endpoints:
         example:
           -
             product_id: 550e8400-e29b-41d4-a716-446655440003
-            quantity: 10
+            quantite: 10
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -894,8 +894,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      'details[].quantity':
-        name: 'details[].quantity'
+      'details[].quantite':
+        name: 'details[].quantite'
         description: 'Quantité (minimum 1).'
         required: true
         example: 10
@@ -912,7 +912,7 @@ endpoints:
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
-          quantity: 10
+          quantite: 10
     fileParameters: []
     responses:
       -
@@ -1031,7 +1031,7 @@ endpoints:
         example:
           -
             product_id: 550e8400-e29b-41d4-a716-446655440003
-            quantity: 50
+            quantite: 50
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -1047,8 +1047,8 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      'details[].quantity':
-        name: 'details[].quantity'
+      'details[].quantite':
+        name: 'details[].quantite'
         description: 'Quantité reçue (minimum 1).'
         required: true
         example: 50
@@ -1065,7 +1065,7 @@ endpoints:
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
-          quantity: 50
+          quantite: 50
     fileParameters: []
     responses:
       -

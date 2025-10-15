@@ -3415,7 +3415,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": false,
     \"with_client_type\": true,
-    \"balance_filter\": \"positive\"
+    \"balance_filter\": \"zero\"
 }"
 </code></pre></div>
 
@@ -3461,7 +3461,7 @@ let body = {
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": false,
     "with_client_type": true,
-    "balance_filter": "positive"
+    "balance_filter": "zero"
 };
 
 fetch(url, {
@@ -3509,7 +3509,7 @@ $response = $client-&gt;get(
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; false,
             'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'positive',
+            'balance_filter' =&gt; 'zero',
         ],
     ]
 );
@@ -3946,10 +3946,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
+               value="zero"
                data-component="body">
     <br>
-<p>Example: <code>positive</code></p>
+<p>Example: <code>zero</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -7739,7 +7739,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-15T09:49:52\",
+    \"date_from\": \"2025-10-15T10:20:52\",
     \"date_to\": \"2051-11-08\"
 }"
 </code></pre></div>
@@ -7763,7 +7763,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-15T09:49:52",
+    "date_from": "2025-10-15T10:20:52",
     "date_to": "2051-11-08"
 };
 
@@ -7789,7 +7789,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-15T09:49:52',
+            'date_from' =&gt; '2025-10-15T10:20:52',
             'date_to' =&gt; '2051-11-08',
         ],
     ]
@@ -7920,10 +7920,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-15T09:49:52"
+               value="2025-10-15T10:20:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T09:49:52</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -7960,7 +7960,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"statut\": \"paid\",
-    \"date_from\": \"2025-10-15T09:49:52\",
+    \"date_from\": \"2025-10-15T10:20:52\",
     \"date_to\": \"2051-11-08\",
     \"with_client\": true,
     \"with_details\": true
@@ -7998,7 +7998,7 @@ let body = {
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "statut": "paid",
-    "date_from": "2025-10-15T09:49:52",
+    "date_from": "2025-10-15T10:20:52",
     "date_to": "2051-11-08",
     "with_client": true,
     "with_details": true
@@ -8038,7 +8038,7 @@ $response = $client-&gt;get(
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'statut' =&gt; 'paid',
-            'date_from' =&gt; '2025-10-15T09:49:52',
+            'date_from' =&gt; '2025-10-15T10:20:52',
             'date_to' =&gt; '2051-11-08',
             'with_client' =&gt; true,
             'with_details' =&gt; true,
@@ -8340,10 +8340,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-15T09:49:52"
+               value="2025-10-15T10:20:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T09:49:52</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8824,9 +8824,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_details\": true,
-    \"with_payments\": false
+    \"with_payments\": true
 }"
 </code></pre></div>
 
@@ -8850,9 +8850,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": true,
+    "with_client": false,
     "with_details": true,
-    "with_payments": false
+    "with_payments": true
 };
 
 fetch(url, {
@@ -8878,9 +8878,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_details' =&gt; true,
-            'with_payments' =&gt; false,
+            'with_payments' =&gt; true,
         ],
     ]
 );
@@ -9090,7 +9090,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -9132,7 +9132,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -10073,7 +10073,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-15T09:49:53\",
+    \"date_from\": \"2025-10-15T10:20:52\",
     \"date_to\": \"2051-11-08\"
 }"
 </code></pre></div>
@@ -10097,7 +10097,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-15T09:49:53",
+    "date_from": "2025-10-15T10:20:52",
     "date_to": "2051-11-08"
 };
 
@@ -10123,7 +10123,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-15T09:49:53',
+            'date_from' =&gt; '2025-10-15T10:20:52',
             'date_to' =&gt; '2051-11-08',
         ],
     ]
@@ -10263,10 +10263,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-15T09:49:53"
+               value="2025-10-15T10:20:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T09:49:53</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10304,12 +10304,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"completed\",
-    \"date_from\": \"2025-10-15T09:49:53\",
+    \"statut\": \"refunded\",
+    \"date_from\": \"2025-10-15T10:20:52\",
     \"date_to\": \"2051-11-08\",
-    \"with_facture\": true,
-    \"with_client\": false,
-    \"with_payment_method\": false
+    \"with_facture\": false,
+    \"with_client\": true,
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -10348,12 +10348,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "completed",
-    "date_from": "2025-10-15T09:49:53",
+    "statut": "refunded",
+    "date_from": "2025-10-15T10:20:52",
     "date_to": "2051-11-08",
-    "with_facture": true,
-    "with_client": false,
-    "with_payment_method": false
+    "with_facture": false,
+    "with_client": true,
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -10394,12 +10394,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'completed',
-            'date_from' =&gt; '2025-10-15T09:49:53',
+            'statut' =&gt; 'refunded',
+            'date_from' =&gt; '2025-10-15T10:20:52',
             'date_to' =&gt; '2051-11-08',
-            'with_facture' =&gt; true,
-            'with_client' =&gt; false,
-            'with_payment_method' =&gt; false,
+            'with_facture' =&gt; false,
+            'with_client' =&gt; true,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -10744,10 +10744,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="completed"
+               value="refunded"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>refunded</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -10757,10 +10757,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-15T09:49:53"
+               value="2025-10-15T10:20:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T09:49:53</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10792,7 +10792,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -10813,7 +10813,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -10834,7 +10834,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -11165,7 +11165,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": false,
+    \"with_facture\": true,
     \"with_client\": false,
     \"with_payment_method\": false
 }"
@@ -11191,7 +11191,7 @@ const headers = {
 };
 
 let body = {
-    "with_facture": false,
+    "with_facture": true,
     "with_client": false,
     "with_payment_method": false
 };
@@ -11219,7 +11219,7 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; false,
+            'with_facture' =&gt; true,
             'with_client' =&gt; false,
             'with_payment_method' =&gt; false,
         ],
@@ -11433,7 +11433,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -16793,7 +16793,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -16821,7 +16821,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -16851,7 +16851,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -17084,7 +17084,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -22520,7 +22520,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 20
+            \"quantite\": 20
         }
     ]
 }"
@@ -22548,7 +22548,7 @@ let body = {
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 20
+            "quantite": 20
         }
     ]
 };
@@ -22581,7 +22581,7 @@ $response = $client-&gt;post(
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
                     ],
-                    'quantity' =&gt; [
+                    'quantite' =&gt; [
                         20,
                     ],
                 ],
@@ -22800,11 +22800,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements"
+               step="any"               name="details.0.quantite"                data-endpoint="POSTapi-stock-movements"
                value="20"
                data-component="body">
     <br>
@@ -23028,7 +23028,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 15
+            \"quantite\": 15
         }
     ]
 }"
@@ -23057,7 +23057,7 @@ let body = {
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 15
+            "quantite": 15
         }
     ]
 };
@@ -23090,7 +23090,7 @@ $response = $client-&gt;put(
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
                     ],
-                    'quantity' =&gt; [
+                    'quantite' =&gt; [
                         15,
                     ],
                 ],
@@ -23329,11 +23329,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="PUTapi-stock-movements--id-"
+               step="any"               name="details.0.quantite"                data-endpoint="PUTapi-stock-movements--id-"
                value="15"
                data-component="body">
     <br>
@@ -23372,7 +23372,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 15
+            \"quantite\": 15
         }
     ]
 }"
@@ -23401,7 +23401,7 @@ let body = {
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 15
+            "quantite": 15
         }
     ]
 };
@@ -23434,7 +23434,7 @@ $response = $client-&gt;patch(
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
                     ],
-                    'quantity' =&gt; [
+                    'quantite' =&gt; [
                         15,
                     ],
                 ],
@@ -23673,11 +23673,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="PATCHapi-stock-movements--id-"
+               step="any"               name="details.0.quantite"                data-endpoint="PATCHapi-stock-movements--id-"
                value="15"
                data-component="body">
     <br>
@@ -23714,7 +23714,7 @@ La référence du mouvement est générée automatiquement au format MV-YYYY-XXX
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 10
+            \"quantite\": 10
         }
     ]
 }"
@@ -23740,7 +23740,7 @@ let body = {
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 10
+            "quantite": 10
         }
     ]
 };
@@ -23773,7 +23773,7 @@ $response = $client-&gt;post(
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
                     ],
-                    'quantity' =&gt; [
+                    'quantite' =&gt; [
                         10,
                     ],
                 ],
@@ -23979,11 +23979,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+               step="any"               name="details.0.quantite"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
                value="10"
                data-component="body">
     <br>
@@ -24020,7 +24020,7 @@ Cette opération augmente le stock dans l&#039;entrepôt de destination.</h2>
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
-            \"quantity\": 50
+            \"quantite\": 50
         }
     ]
 }"
@@ -24046,7 +24046,7 @@ let body = {
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
-            "quantity": 50
+            "quantite": 50
         }
     ]
 };
@@ -24079,7 +24079,7 @@ $response = $client-&gt;post(
                     'product_id' =&gt; [
                         '550e8400-e29b-41d4-a716-446655440003',
                     ],
-                    'quantity' =&gt; [
+                    'quantite' =&gt; [
                         50,
                     ],
                 ],
@@ -24285,11 +24285,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="details.0.quantity"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
+               step="any"               name="details.0.quantite"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
                value="50"
                data-component="body">
     <br>
