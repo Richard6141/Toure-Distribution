@@ -605,6 +605,115 @@ class StockMovementController extends Controller
         }
     }
 
+
+    /**
+     * @title Créer un mouvement de stock générique
+     * 
+     * @authenticated
+     * @group Gestion des Mouvements de Stock
+     * 
+     * Crée un mouvement de stock avec des paramètres flexibles. Il est recommandé d'utiliser
+     *@Description les endpoints spécialisés (`storeWarehouseTransfer` ou `storeSupplierReceipt`) pour plus de clarté.
+     * 
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
+     * 
+     * @bodyParam movement_type string required  nom du mouvement saisi manuellement. Example: Entré
+     * @bodyParam entrepot_from_id string optional UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
+     * @bodyParam entrepot_to_id string optional UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam fournisseur_id string optional UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
+     * @bodyParam client_id string optional UUID du client. Example: 550e8400-e29b-41d4-a716-446655440101
+     * @bodyParam note string optional Note descriptive (max 1000 caractères). Example: "Mouvement standard"
+     * @bodyParam details array required Tableau des produits (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 20}]
+     * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
+     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 20
+     * 
+     * @response 201 scenario="Mouvement créé" {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
+     *     "reference": "MV-2024-00003",
+     *     "statut": "pending"
+     *   },
+     *   "message": "Mouvement de stock créé avec succès"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     */
+    public function store(Request $request): JsonResponse
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'movement_type' => 'nullable|string|max:20',
+                'entrepot_from_id' => 'nullable|exists:entrepots,entrepot_id',
+                'entrepot_to_id' => 'nullable|exists:entrepots,entrepot_id',
+                'fournisseur_id' => 'nullable|exists:fournisseurs,fournisseur_id',
+                'client_id' => 'nullable|exists:clients,client_id',
+                'note' => 'nullable|string|max:1000',
+                'details' => 'required|array|min:1',
+                'details.*.product_id' => 'required|exists:products,product_id',
+                'details.*.quantite' => 'required|integer|min:1'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erreur de validation',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            DB::beginTransaction();
+
+            try {
+                $reference = $this->generateReference();
+
+                $stockMovement = StockMovement::create([
+                    'stock_movement_id' => (string) Str::uuid(),
+                    'reference' => $reference,
+                    'movement_type' => $request->movement_type,
+                    'entrepot_from_id' => $request->entrepot_from_id,
+                    'entrepot_to_id' => $request->entrepot_to_id,
+                    'fournisseur_id' => $request->fournisseur_id,
+                    'client_id' => $request->client_id,
+                    'statut' => 'pending',
+                    'note' => $request->note,
+                    'user_id' => auth()->user()->user_id ?? null
+                ]);
+
+                foreach ($request->details as $detail) {
+                    $stockMovement->details()->create([
+                        'stock_movement_detail_id' => (string) Str::uuid(),
+                        'product_id' => $detail['product_id'],
+                        'quantite' => $detail['quantite']
+                    ]);
+                }
+
+                DB::commit();
+
+                $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+
+                return response()->json([
+                    'success' => true,
+                    'data' => $stockMovement,
+                    'message' => 'Mouvement de stock créé avec succès'
+                ], 201);
+            } catch (\Exception $e) {
+                DB::rollBack();
+                throw $e;
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la création du mouvement de stock',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
     /**
      * @title Afficher un mouvement de stock par ID
      * 
@@ -663,6 +772,383 @@ class StockMovementController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+    /**
+     * @title Mettre à jour un mouvement de stock (remplacement complet)
+     * 
+     * @authenticated
+     * @group Gestion des Mouvements de Stock
+     * 
+     * Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.
+     * 
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
+     * 
+     * @urlParam id string required UUID du mouvement. Example: 550e8400-e29b-41d4-a716-446655440030
+     * 
+     * @bodyParam movement_type string 
+     * @bodyParam entrepot_from_id string optional UUID source. Example: 550e8400-e29b-41d4-a716-446655440001
+     * @bodyParam entrepot_to_id string optional UUID destination. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam fournisseur_id string optional UUID fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
+     * @bodyParam client_id string optional UUID client. Example: 550e8400-e29b-41d4-a716-446655440101
+     * @bodyParam statut string required Statut (pending, completed, cancelled). Example: pending
+     * @bodyParam note string optional Note. Example: "Note mise à jour"
+     * @bodyParam details array required Nouveaux détails (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 15}]
+     * @bodyParam details[].product_id string required UUID produit. Example: 550e8400-e29b-41d4-a716-446655440003
+     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 15
+     * 
+     * @response 200 scenario="Succès" {
+     *   "success": true,
+     *   "data": {},
+     *   "message": "Mouvement de stock mis à jour avec succès"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     */
+    public function update(Request $request, string $id): JsonResponse
+    {
+        try {
+            $stockMovement = StockMovement::find($id);
+
+            if (!$stockMovement) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Mouvement de stock non trouvé'
+                ], 404);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'movement_type' => 'nullable|string|max:20',
+                'entrepot_from_id' => 'nullable|exists:entrepots,entrepot_id',
+                'entrepot_to_id' => 'nullable|exists:entrepots,entrepot_id',
+                'fournisseur_id' => 'nullable|exists:fournisseurs,fournisseur_id',
+                'client_id' => 'nullable|exists:clients,client_id',
+                'statut' => 'required|in:pending,completed,cancelled',
+                'note' => 'nullable|string|max:1000',
+                'details' => 'required|array|min:1',
+                'details.*.product_id' => 'required|exists:products,product_id',
+                'details.*.quantite' => 'required|integer|min:1'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erreur de validation',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            DB::beginTransaction();
+
+            try {
+                $stockMovement->update([
+                    'movement_type' => $request->movement_type,
+                    'entrepot_from_id' => $request->entrepot_from_id,
+                    'entrepot_to_id' => $request->entrepot_to_id,
+                    'fournisseur_id' => $request->fournisseur_id,
+                    'client_id' => $request->client_id,
+                    'statut' => $request->statut,
+                    'note' => $request->note
+                ]);
+
+                $stockMovement->details()->delete();
+
+                foreach ($request->details as $detail) {
+                    $stockMovement->details()->create([
+                        'stock_movement_detail_id' => (string) Str::uuid(),
+                        'product_id' => $detail['product_id'],
+                        'quantite' => $detail['quantite']
+                    ]);
+                }
+
+                DB::commit();
+
+                $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+
+                return response()->json([
+                    'success' => true,
+                    'data' => $stockMovement,
+                    'message' => 'Mouvement de stock mis à jour avec succès'
+                ]);
+            } catch (\Exception $e) {
+                DB::rollBack();
+                throw $e;
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la mise à jour du mouvement de stock',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @group Stock Movements
+     * @authenticated
+     * 
+     *@title Met à jour uniquement le statut d'un mouvement de stock
+     * 
+     *@description Cette endpoint est dédiée au changement de statut sans modifier les autres données.
+     * 
+     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+     * 
+     * @urlParam id string required UUID du mouvement de stock. Example: 550e8400-e29b-41d4-a716-446655440030
+     * @bodyParam statut string required Nouveau statut (pending, completed, cancelled). Example: completed
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
+     *     "reference": "MV-2024-00003",
+     *     "statut": "completed",
+     *     "details": []
+     *   },
+     *   "message": "Statut du mouvement de stock mis à jour avec succès"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Mouvement de stock non trouvé"
+     * }
+     */
+    public function updateStatus(Request $request, string $id): JsonResponse
+    {
+        try {
+            $stockMovement = StockMovement::find($id);
+
+            if (!$stockMovement) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Mouvement de stock non trouvé'
+                ], 404);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'statut' => 'required|in:pending,completed,cancelled'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erreur de validation',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            $stockMovement->update(['statut' => $request->statut]);
+
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovement,
+                'message' => 'Statut du mouvement de stock mis à jour avec succès'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la mise à jour du statut',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @group Stock Movements
+     * @authenticated
+     * 
+     * @title Supprime logiquement un mouvement de stock (soft delete)
+     * 
+     * @description Le mouvement n'est pas physiquement supprimé de la base de données, mais marqué comme supprimé avec un timestamp deleted_at.
+     * 
+     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+     * 
+     * @urlParam id string required UUID du mouvement de stock à supprimer. Example: 550e8400-e29b-41d4-a716-446655440030
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Mouvement de stock supprimé avec succès"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Mouvement de stock non trouvé"
+     * }
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        try {
+            $stockMovement = StockMovement::find($id);
+
+            if (!$stockMovement) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Mouvement de stock non trouvé'
+                ], 404);
+            }
+
+            $stockMovement->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Mouvement de stock supprimé avec succès'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la suppression du mouvement de stock',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @group Stock Movements
+     * @authenticated
+     * 
+     *  @title Restaure un mouvement de stock supprimé
+     * 
+     * Récupère un mouvement qui a été supprimé via soft delete.
+     * 
+     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+     * 
+     * @urlParam id string required UUID du mouvement de stock à restaurer. Example: 550e8400-e29b-41d4-a716-446655440030
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
+     *     "reference": "MV-2024-00003",
+     *     "deleted_at": null
+     *   },
+     *   "message": "Mouvement de stock restauré avec succès"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     * 
+     * @response 404 {
+     *   "success": false,
+     *   "message": "Mouvement de stock non trouvé"
+     * }
+     */
+    public function restore(string $id): JsonResponse
+    {
+        try {
+            $stockMovement = StockMovement::withTrashed()->find($id);
+
+            if (!$stockMovement) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Mouvement de stock non trouvé'
+                ], 404);
+            }
+
+            if (!$stockMovement->trashed()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Ce mouvement de stock n\'est pas supprimé'
+                ], 400);
+            }
+
+            $stockMovement->restore();
+
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovement,
+                'message' => 'Mouvement de stock restauré avec succès'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la restauration du mouvement de stock',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @group Stock Movements
+     * @authenticated
+     * 
+     *  @title Récupère la liste des mouvements de stock supprimés
+     * 
+     * Retourne tous les mouvements marqués comme supprimés (soft delete).
+     * 
+     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "data": {
+     *     "data": [],
+     *     "current_page": 1,
+     *     "per_page": 15,
+     *     "total": 0
+     *   },
+     *   "message": "Mouvements de stock supprimés récupérés avec succès"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     */
+    public function trashed(): JsonResponse
+    {
+        try {
+            $stockMovements = StockMovement::onlyTrashed()
+                ->with(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product'])
+                ->paginate(15);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovements,
+                'message' => 'Mouvements de stock supprimés récupérés avec succès'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la récupération des mouvements de stock supprimés',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Génère une référence unique pour le mouvement au format MV-YYYY-XXXXX
+     */
+    private function generateReference(): string
+    {
+        $year = date('Y');
+        $prefix = "MV-{$year}-";
+
+        $lastMovement = StockMovement::where('reference', 'like', "{$prefix}%")
+            ->orderBy('reference', 'desc')
+            ->first();
+
+        if ($lastMovement) {
+            $lastNumber = (int) substr($lastMovement->reference, strlen($prefix));
+            $newNumber = str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
+        } else {
+            $newNumber = '00001';
+        }
+
+        return $prefix . $newNumber;
     }
 
     /**
@@ -913,307 +1399,5 @@ class StockMovementController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
-    }
-
-    /**
-     * @title Mettre à jour un mouvement de stock (remplacement complet)
-     * 
-     * @authenticated
-     * @group Gestion des Mouvements de Stock
-     * 
-     * Met à jour complètement un mouvement de stock (PUT). Remplace tous les champs et détails.
-     * 
-     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
-     * @header Content-Type required application/json
-     * @header Accept required application/json
-     * 
-     * @urlParam id string required UUID du mouvement. Example: 550e8400-e29b-41d4-a716-446655440030
-     * 
-     * @bodyParam movement_type string 
-     * @bodyParam entrepot_from_id string optional UUID source. Example: 550e8400-e29b-41d4-a716-446655440001
-     * @bodyParam entrepot_to_id string optional UUID destination. Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam fournisseur_id string optional UUID fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
-     * @bodyParam client_id string optional UUID client. Example: 550e8400-e29b-41d4-a716-446655440101
-     * @bodyParam statut string required Statut (pending, completed, cancelled). Example: pending
-     * @bodyParam note string optional Note. Example: "Note mise à jour"
-     * @bodyParam details array required Nouveaux détails (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 15}]
-     * @bodyParam details[].product_id string required UUID produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 15
-     * 
-     * @response 200 scenario="Succès" {
-     *   "success": true,
-     *   "data": {},
-     *   "message": "Mouvement de stock mis à jour avec succès"
-     * }
-     * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
-     * }
-     */
-    public function update(Request $request, string $id): JsonResponse
-    {
-        try {
-            $stockMovement = StockMovement::find($id);
-
-            if (!$stockMovement) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Mouvement de stock non trouvé'
-                ], 404);
-            }
-
-            $validator = Validator::make($request->all(), [
-                'movement_type' => 'nullable|string|max:20',
-                'entrepot_from_id' => 'nullable|exists:entrepots,entrepot_id',
-                'entrepot_to_id' => 'nullable|exists:entrepots,entrepot_id',
-                'fournisseur_id' => 'nullable|exists:fournisseurs,fournisseur_id',
-                'client_id' => 'nullable|exists:clients,client_id',
-                'statut' => 'required|in:pending,completed,cancelled',
-                'note' => 'nullable|string|max:1000',
-                'details' => 'required|array|min:1',
-                'details.*.product_id' => 'required|exists:products,product_id',
-                'details.*.quantite' => 'required|integer|min:1'
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Erreur de validation',
-                    'errors' => $validator->errors()
-                ], 422);
-            }
-
-            DB::beginTransaction();
-
-            try {
-                $stockMovement->update([
-                    'movement_type' => $request->movement_type,
-                    'entrepot_from_id' => $request->entrepot_from_id,
-                    'entrepot_to_id' => $request->entrepot_to_id,
-                    'fournisseur_id' => $request->fournisseur_id,
-                    'client_id' => $request->client_id,
-                    'statut' => $request->statut,
-                    'note' => $request->note
-                ]);
-
-                $stockMovement->details()->delete();
-
-                foreach ($request->details as $detail) {
-                    $stockMovement->details()->create([
-                        'stock_movement_detail_id' => (string) Str::uuid(),
-                        'product_id' => $detail['product_id'],
-                        'quantite' => $detail['quantite']
-                    ]);
-                }
-
-                DB::commit();
-
-                $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
-
-                return response()->json([
-                    'success' => true,
-                    'data' => $stockMovement,
-                    'message' => 'Mouvement de stock mis à jour avec succès'
-                ]);
-            } catch (\Exception $e) {
-                DB::rollBack();
-                throw $e;
-            }
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la mise à jour du mouvement de stock',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-    /**
-     * @group Stock Movements
-     * @authenticated
-     * 
-     * @title Supprime logiquement un mouvement de stock (soft delete)
-     * 
-     * @description Le mouvement n'est pas physiquement supprimé de la base de données, mais marqué comme supprimé avec un timestamp deleted_at.
-     * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @urlParam id string required UUID du mouvement de stock à supprimer. Example: 550e8400-e29b-41d4-a716-446655440030
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Mouvement de stock supprimé avec succès"
-     * }
-     * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
-     * }
-     * 
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Mouvement de stock non trouvé"
-     * }
-     */
-    public function destroy(string $id): JsonResponse
-    {
-        try {
-            $stockMovement = StockMovement::find($id);
-
-            if (!$stockMovement) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Mouvement de stock non trouvé'
-                ], 404);
-            }
-
-            $stockMovement->delete();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Mouvement de stock supprimé avec succès'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la suppression du mouvement de stock',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-    /**
-     * @group Stock Movements
-     * @authenticated
-     * 
-     *  @title Restaure un mouvement de stock supprimé
-     * 
-     * Récupère un mouvement qui a été supprimé via soft delete.
-     * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @urlParam id string required UUID du mouvement de stock à restaurer. Example: 550e8400-e29b-41d4-a716-446655440030
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "data": {
-     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-     *     "reference": "MV-2024-00003",
-     *     "deleted_at": null
-     *   },
-     *   "message": "Mouvement de stock restauré avec succès"
-     * }
-     * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
-     * }
-     * 
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Mouvement de stock non trouvé"
-     * }
-     */
-    public function restore(string $id): JsonResponse
-    {
-        try {
-            $stockMovement = StockMovement::withTrashed()->find($id);
-
-            if (!$stockMovement) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Mouvement de stock non trouvé'
-                ], 404);
-            }
-
-            if (!$stockMovement->trashed()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Ce mouvement de stock n\'est pas supprimé'
-                ], 400);
-            }
-
-            $stockMovement->restore();
-
-            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product']);
-
-            return response()->json([
-                'success' => true,
-                'data' => $stockMovement,
-                'message' => 'Mouvement de stock restauré avec succès'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la restauration du mouvement de stock',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-    /**
-     * @group Stock Movements
-     * @authenticated
-     * 
-     *  @title Récupère la liste des mouvements de stock supprimés
-     * 
-     * Retourne tous les mouvements marqués comme supprimés (soft delete).
-     * 
-     * @header Authorization required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "data": {
-     *     "data": [],
-     *     "current_page": 1,
-     *     "per_page": 15,
-     *     "total": 0
-     *   },
-     *   "message": "Mouvements de stock supprimés récupérés avec succès"
-     * }
-     * 
-     * @response 401 {
-     *   "message": "Unauthenticated."
-     * }
-     */
-    public function trashed(): JsonResponse
-    {
-        try {
-            $stockMovements = StockMovement::onlyTrashed()
-                ->with(['entrepotFrom', 'entrepotTo', 'client', 'user', 'fournisseur', 'details.product'])
-                ->paginate(15);
-
-            return response()->json([
-                'success' => true,
-                'data' => $stockMovements,
-                'message' => 'Mouvements de stock supprimés récupérés avec succès'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la récupération des mouvements de stock supprimés',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-    /**
-     * Génère une référence unique pour le mouvement au format MV-YYYY-XXXXX
-     */
-    private function generateReference(): string
-    {
-        $year = date('Y');
-        $prefix = "MV-{$year}-";
-
-        $lastMovement = StockMovement::where('reference', 'like', "{$prefix}%")
-            ->orderBy('reference', 'desc')
-            ->first();
-
-        if ($lastMovement) {
-            $lastNumber = (int) substr($lastMovement->reference, strlen($prefix));
-            $newNumber = str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
-        } else {
-            $newNumber = '00001';
-        }
-
-        return $prefix . $newNumber;
     }
 }

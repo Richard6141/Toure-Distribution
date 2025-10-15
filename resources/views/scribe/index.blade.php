@@ -467,11 +467,66 @@ Cette endpoint supporte le filtrage avancé, la recherche et le tri.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements-transfer-warehouse">
                                 <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements-transfer-warehouse">Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
-La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.</a>
+La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+
+**Options de validation :**
+- **Mode par défaut** : Le transfert est créé avec le statut "pending" et nécessite une validation ultérieure
+- **Validation immédiate** : En passant `validate_immediately: true`, le transfert est créé ET validé automatiquement, mettant à jour les stocks en temps réel
+
+**Comportement lors de la validation immédiate :**
+- Vérifie que le stock disponible dans l'entrepôt source est suffisant
+- Diminue le stock de l'entrepôt source
+- Augmente le stock de l'entrepôt destination
+- Si le stock est insuffisant, la transaction échoue complètement (aucune création)</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements-receipt-supplier">
                                 <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements-receipt-supplier">Crée un nouveau mouvement de réception de marchandise en provenance d'un fournisseur.
-Cette opération augmente le stock dans l'entrepôt de destination.</a>
+La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+
+**Options de validation :**
+- **Mode par défaut** : La réception est créée avec le statut "pending" et nécessite une validation ultérieure
+- **Validation immédiate** : En passant `validate_immediately: true`, la réception est créée ET validée automatiquement, augmentant le stock dans l'entrepôt de destination en temps réel
+
+**Comportement lors de la validation immédiate :**
+- Augmente automatiquement le stock dans l'entrepôt de destination
+- Crée les enregistrements de stock si le produit n'existe pas encore dans cet entrepôt
+- Met à jour les quantités existantes si le produit est déjà présent
+- Passe le statut à "validated" immédiatement
+
+**Cas d'usage typiques :**
+- Réception de commandes fournisseur
+- Réapprovisionnement d'entrepôt
+- Import de stock initial
+- Livraison de marchandises</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements--id--validate">
+                                <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements--id--validate">Valide un mouvement de stock en attente et met à jour automatiquement les stocks dans les entrepôts concernés.
+Une fois validé, le mouvement ne peut plus être modifié, seulement annulé.
+
+**Comportement automatique :**
+- Pour un **transfert** : diminue le stock de l'entrepôt source et augmente celui de destination
+- Pour une **réception fournisseur** : augmente le stock de l'entrepôt de destination
+- Pour une **sortie client** : diminue le stock de l'entrepôt source
+
+**Vérifications effectuées :**
+- Le mouvement doit exister et être en statut "pending"
+- Pour les sorties : vérifie que le stock disponible (quantité - quantité réservée) est suffisant
+- Si le stock est insuffisant, la validation échoue avec un message d'erreur détaillé</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-mouvements-de-stock-POSTapi-stock-movements--id--cancel">
+                                <a href="#gestion-des-mouvements-de-stock-POSTapi-stock-movements--id--cancel">Annule un mouvement de stock précédemment validé et restaure automatiquement les stocks dans les entrepôts concernés.
+Seuls les mouvements avec le statut "validated" peuvent être annulés.
+
+**Comportement automatique :**
+- Pour un **transfert** : restaure le stock de l'entrepôt source et diminue celui de destination
+- Pour une **réception fournisseur** : diminue le stock de l'entrepôt de destination
+- Pour une **sortie client** : restaure le stock de l'entrepôt source
+
+**Important :**
+- L'annulation inverse exactement les mouvements effectués lors de la validation
+- Le statut du mouvement passe à "cancelled"
+- Un mouvement annulé ne peut plus être re-validé
+- Les stocks sont mis à jour en temps réel</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -2639,7 +2694,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -2665,7 +2720,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -2693,7 +2748,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -2878,7 +2933,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -3415,7 +3470,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": false,
     \"with_client_type\": true,
-    \"balance_filter\": \"zero\"
+    \"balance_filter\": \"positive\"
 }"
 </code></pre></div>
 
@@ -3461,7 +3516,7 @@ let body = {
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": false,
     "with_client_type": true,
-    "balance_filter": "zero"
+    "balance_filter": "positive"
 };
 
 fetch(url, {
@@ -3509,7 +3564,7 @@ $response = $client-&gt;get(
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; false,
             'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'zero',
+            'balance_filter' =&gt; 'positive',
         ],
     ]
 );
@@ -3946,10 +4001,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="zero"
+               value="positive"
                data-component="body">
     <br>
-<p>Example: <code>zero</code></p>
+<p>Example: <code>positive</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -6275,7 +6330,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": true
+    \"is_active\": false
 }"
 </code></pre></div>
 
@@ -6303,7 +6358,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": true
+    "is_active": false
 };
 
 fetch(url, {
@@ -6333,7 +6388,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; true,
+            'is_active' =&gt; false,
         ],
     ]
 );
@@ -6550,7 +6605,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -7739,7 +7794,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-15T10:20:52\",
+    \"date_from\": \"2025-10-15T11:51:56\",
     \"date_to\": \"2051-11-08\"
 }"
 </code></pre></div>
@@ -7763,7 +7818,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-15T10:20:52",
+    "date_from": "2025-10-15T11:51:56",
     "date_to": "2051-11-08"
 };
 
@@ -7789,7 +7844,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-15T10:20:52',
+            'date_from' =&gt; '2025-10-15T11:51:56',
             'date_to' =&gt; '2051-11-08',
         ],
     ]
@@ -7920,10 +7975,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-15T10:20:52"
+               value="2025-10-15T11:51:56"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T11:51:56</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -7959,10 +8014,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"paid\",
-    \"date_from\": \"2025-10-15T10:20:52\",
+    \"statut\": \"overdue\",
+    \"date_from\": \"2025-10-15T11:51:56\",
     \"date_to\": \"2051-11-08\",
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_details\": true
 }"
 </code></pre></div>
@@ -7997,10 +8052,10 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "paid",
-    "date_from": "2025-10-15T10:20:52",
+    "statut": "overdue",
+    "date_from": "2025-10-15T11:51:56",
     "date_to": "2051-11-08",
-    "with_client": true,
+    "with_client": false,
     "with_details": true
 };
 
@@ -8037,10 +8092,10 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'paid',
-            'date_from' =&gt; '2025-10-15T10:20:52',
+            'statut' =&gt; 'overdue',
+            'date_from' =&gt; '2025-10-15T11:51:56',
             'date_to' =&gt; '2051-11-08',
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_details' =&gt; true,
         ],
     ]
@@ -8327,10 +8382,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="paid"
+               value="overdue"
                data-component="body">
     <br>
-<p>Example: <code>paid</code></p>
+<p>Example: <code>overdue</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -8340,10 +8395,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-15T10:20:52"
+               value="2025-10-15T11:51:56"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T11:51:56</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8375,7 +8430,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -8824,9 +8879,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": false,
-    \"with_details\": true,
-    \"with_payments\": true
+    \"with_client\": true,
+    \"with_details\": false,
+    \"with_payments\": false
 }"
 </code></pre></div>
 
@@ -8850,9 +8905,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": false,
-    "with_details": true,
-    "with_payments": true
+    "with_client": true,
+    "with_details": false,
+    "with_payments": false
 };
 
 fetch(url, {
@@ -8878,9 +8933,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; false,
-            'with_details' =&gt; true,
-            'with_payments' =&gt; true,
+            'with_client' =&gt; true,
+            'with_details' =&gt; false,
+            'with_payments' =&gt; false,
         ],
     ]
 );
@@ -9090,7 +9145,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -9111,7 +9166,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -9132,7 +9187,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -10073,7 +10128,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-15T10:20:52\",
+    \"date_from\": \"2025-10-15T11:51:56\",
     \"date_to\": \"2051-11-08\"
 }"
 </code></pre></div>
@@ -10097,7 +10152,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-15T10:20:52",
+    "date_from": "2025-10-15T11:51:56",
     "date_to": "2051-11-08"
 };
 
@@ -10123,7 +10178,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-15T10:20:52',
+            'date_from' =&gt; '2025-10-15T11:51:56',
             'date_to' =&gt; '2051-11-08',
         ],
     ]
@@ -10263,10 +10318,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-15T10:20:52"
+               value="2025-10-15T11:51:56"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T11:51:56</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10304,11 +10359,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-15T10:20:52\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-15T11:51:56\",
     \"date_to\": \"2051-11-08\",
     \"with_facture\": false,
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_payment_method\": true
 }"
 </code></pre></div>
@@ -10348,11 +10403,11 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "refunded",
-    "date_from": "2025-10-15T10:20:52",
+    "statut": "failed",
+    "date_from": "2025-10-15T11:51:56",
     "date_to": "2051-11-08",
     "with_facture": false,
-    "with_client": true,
+    "with_client": false,
     "with_payment_method": true
 };
 
@@ -10394,11 +10449,11 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-15T10:20:52',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-15T11:51:56',
             'date_to' =&gt; '2051-11-08',
             'with_facture' =&gt; false,
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_payment_method' =&gt; true,
         ],
     ]
@@ -10744,10 +10799,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="refunded"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>refunded</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -10757,10 +10812,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-15T10:20:52"
+               value="2025-10-15T11:51:56"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T10:20:52</code></p>
+<p>Must be a valid date. Example: <code>2025-10-15T11:51:56</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10813,7 +10868,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -11165,7 +11220,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": true,
+    \"with_facture\": false,
     \"with_client\": false,
     \"with_payment_method\": false
 }"
@@ -11191,7 +11246,7 @@ const headers = {
 };
 
 let body = {
-    "with_facture": true,
+    "with_facture": false,
     "with_client": false,
     "with_payment_method": false
 };
@@ -11219,7 +11274,7 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; true,
+            'with_facture' =&gt; false,
             'with_client' =&gt; false,
             'with_payment_method' =&gt; false,
         ],
@@ -11433,7 +11488,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -16793,7 +16848,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -16821,7 +16876,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -16851,7 +16906,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -17084,7 +17139,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -17313,7 +17368,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -17335,7 +17390,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -17359,7 +17414,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -17517,7 +17572,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -23688,7 +23743,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </form>
 
                     <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements-transfer-warehouse">Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
-La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.</h2>
+La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+
+**Options de validation :**
+- **Mode par défaut** : Le transfert est créé avec le statut &quot;pending&quot; et nécessite une validation ultérieure
+- **Validation immédiate** : En passant `validate_immediately: true`, le transfert est créé ET validé automatiquement, mettant à jour les stocks en temps réel
+
+**Comportement lors de la validation immédiate :**
+- Vérifie que le stock disponible dans l&#039;entrepôt source est suffisant
+- Diminue le stock de l&#039;entrepôt source
+- Augmente le stock de l&#039;entrepôt destination
+- Si le stock est insuffisant, la transaction échoue complètement (aucune création)</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -23710,7 +23775,8 @@ La référence du mouvement est générée automatiquement au format MV-YYYY-XXX
     \"movement_type\": \"transfert\",
     \"entrepot_from_id\": \"550e8400-e29b-41d4-a716-446655440001\",
     \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"note\": \"\\\"Transfert urgent\\\"\",
+    \"note\": \"\\\"Transfert urgent pour réapprovisionner la succursale\\\"\",
+    \"validate_immediately\": true,
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
@@ -23736,7 +23802,8 @@ let body = {
     "movement_type": "transfert",
     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "note": "\"Transfert urgent\"",
+    "note": "\"Transfert urgent pour réapprovisionner la succursale\"",
+    "validate_immediately": true,
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
@@ -23782,7 +23849,8 @@ $response = $client-&gt;post(
                 'movement_type' =&gt; 'transfert',
                 'entrepot_from_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
                 'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'note' =&gt; '"Transfert urgent"',
+                'note' =&gt; '"Transfert urgent pour réapprovisionner la succursale"',
+                'validate_immediately' =&gt; true,
                 'details' =&gt; [
                     $o[0],
                 ],
@@ -23798,7 +23866,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-POSTapi-stock-movements-transfer-warehouse">
             <blockquote>
-            <p>Example response (201, Transfert créé):</p>
+            <p>Example response (201, Transfert créé en mode pending):</p>
         </blockquote>
                 <pre>
 
@@ -23807,7 +23875,90 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
         &quot;reference&quot;: &quot;MV-2024-00001&quot;,
-        &quot;statut&quot;: &quot;pending&quot;
+        &quot;movement_type&quot;: &quot;transfert&quot;,
+        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;statut&quot;: &quot;pending&quot;,
+        &quot;note&quot;: &quot;Transfert urgent&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+        &quot;created_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+        &quot;entrepot_from&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Principal&quot;,
+            &quot;adresse&quot;: &quot;123 Rue Principale&quot;
+        },
+        &quot;entrepot_to&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Secondaire&quot;,
+            &quot;adresse&quot;: &quot;456 Avenue Commerce&quot;
+        },
+        &quot;user&quot;: {
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;,
+            &quot;email&quot;: &quot;jean.dupont@example.com&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440011&quot;,
+                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;created_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;name&quot;: &quot;Produit A&quot;,
+                    &quot;reference&quot;: &quot;PROD-001&quot;,
+                    &quot;description&quot;: &quot;Description du produit&quot;
+                }
+            }
+        ]
+    },
+    &quot;message&quot;: &quot;Transfert entre entrep&ocirc;ts cr&eacute;&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (201, Transfert créé et validé immédiatement):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00001&quot;,
+        &quot;movement_type&quot;: &quot;transfert&quot;,
+        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;statut&quot;: &quot;validated&quot;,
+        &quot;note&quot;: &quot;Transfert urgent&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+        &quot;created_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+        &quot;entrepot_from&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Principal&quot;
+        },
+        &quot;entrepot_to&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Secondaire&quot;
+        },
+        &quot;user&quot;: {
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440011&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;name&quot;: &quot;Produit A&quot;,
+                    &quot;reference&quot;: &quot;PROD-001&quot;
+                }
+            }
+        ]
     },
     &quot;message&quot;: &quot;Transfert entre entrep&ocirc;ts cr&eacute;&eacute; avec succ&egrave;s&quot;
 }</code>
@@ -23829,7 +23980,39 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {}
+    &quot;errors&quot;: {
+        &quot;entrepot_from_id&quot;: [
+            &quot;Le champ entrepot from id est obligatoire.&quot;
+        ],
+        &quot;entrepot_to_id&quot;: [
+            &quot;Les entrep&ocirc;ts source et destination doivent &ecirc;tre diff&eacute;rents.&quot;
+        ],
+        &quot;details.0.quantite&quot;: [
+            &quot;La quantit&eacute; doit &ecirc;tre au minimum 1.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Stock insuffisant lors de validation immédiate):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la cr&eacute;ation du transfert&quot;,
+    &quot;error&quot;: &quot;Stock insuffisant pour le produit Produit A. Disponible: 5, Demand&eacute;: 10&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Erreur serveur):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la cr&eacute;ation du transfert&quot;,
+    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -23945,7 +24128,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440002"
                data-component="body">
     <br>
-<p>UUID de l'entrepôt destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+<p>UUID de l'entrepôt destination (doit être différent de l'entrepôt source). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -23953,10 +24136,31 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="note"                data-endpoint="POSTapi-stock-movements-transfer-warehouse"
-               value=""Transfert urgent""
+               value=""Transfert urgent pour réapprovisionner la succursale""
                data-component="body">
     <br>
-<p>optional Note descriptive du transfert (max 1000 caractères). Example: <code>"Transfert urgent"</code></p>
+<p>optional Note descriptive du transfert (max 1000 caractères). Example: <code>"Transfert urgent pour réapprovisionner la succursale"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>validate_immediately</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-stock-movements-transfer-warehouse" style="display: none">
+            <input type="radio" name="validate_immediately"
+                   value="true"
+                   data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-stock-movements-transfer-warehouse" style="display: none">
+            <input type="radio" name="validate_immediately"
+                   value="false"
+                   data-endpoint="POSTapi-stock-movements-transfer-warehouse"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Si true, valide le mouvement immédiatement après création et met à jour les stocks. Par défaut: false. Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
         <details>
@@ -23965,7 +24169,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
  &nbsp;
 <br>
-<p>Tableau des produits à transférer (minimum 1).</p>
+<p>Tableau des produits à transférer (minimum 1 produit).</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
@@ -23976,7 +24180,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440003"
                data-component="body">
     <br>
-<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+<p>UUID du produit à transférer. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
@@ -23987,14 +24191,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="10"
                data-component="body">
     <br>
-<p>Quantité (minimum 1). Example: <code>10</code></p>
+<p>Quantité à transférer (minimum 1). Example: <code>10</code></p>
                     </div>
                                     </details>
         </div>
         </form>
 
                     <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements-receipt-supplier">Crée un nouveau mouvement de réception de marchandise en provenance d&#039;un fournisseur.
-Cette opération augmente le stock dans l&#039;entrepôt de destination.</h2>
+La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+
+**Options de validation :**
+- **Mode par défaut** : La réception est créée avec le statut &quot;pending&quot; et nécessite une validation ultérieure
+- **Validation immédiate** : En passant `validate_immediately: true`, la réception est créée ET validée automatiquement, augmentant le stock dans l&#039;entrepôt de destination en temps réel
+
+**Comportement lors de la validation immédiate :**
+- Augmente automatiquement le stock dans l&#039;entrepôt de destination
+- Crée les enregistrements de stock si le produit n&#039;existe pas encore dans cet entrepôt
+- Met à jour les quantités existantes si le produit est déjà présent
+- Passe le statut à &quot;validated&quot; immédiatement
+
+**Cas d&#039;usage typiques :**
+- Réception de commandes fournisseur
+- Réapprovisionnement d&#039;entrepôt
+- Import de stock initial
+- Livraison de marchandises</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -24016,7 +24236,8 @@ Cette opération augmente le stock dans l&#039;entrepôt de destination.</h2>
     \"movement_type\": \"entrée\",
     \"fournisseur_id\": \"550e8400-e29b-41d4-a716-446655440100\",
     \"entrepot_to_id\": \"550e8400-e29b-41d4-a716-446655440002\",
-    \"note\": \"\\\"Réception commande #PO-2024-001\\\"\",
+    \"note\": \"\\\"Réception commande #PO-2024-001 - Facture F-789456\\\"\",
+    \"validate_immediately\": false,
     \"details\": [
         {
             \"product_id\": \"550e8400-e29b-41d4-a716-446655440003\",
@@ -24042,7 +24263,8 @@ let body = {
     "movement_type": "entrée",
     "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
-    "note": "\"Réception commande #PO-2024-001\"",
+    "note": "\"Réception commande #PO-2024-001 - Facture F-789456\"",
+    "validate_immediately": false,
     "details": [
         {
             "product_id": "550e8400-e29b-41d4-a716-446655440003",
@@ -24088,7 +24310,8 @@ $response = $client-&gt;post(
                 'movement_type' =&gt; 'entrée',
                 'fournisseur_id' =&gt; '550e8400-e29b-41d4-a716-446655440100',
                 'entrepot_to_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
-                'note' =&gt; '"Réception commande #PO-2024-001"',
+                'note' =&gt; '"Réception commande #PO-2024-001 - Facture F-789456"',
+                'validate_immediately' =&gt; false,
                 'details' =&gt; [
                     $o[0],
                 ],
@@ -24104,7 +24327,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-POSTapi-stock-movements-receipt-supplier">
             <blockquote>
-            <p>Example response (201, Réception créée):</p>
+            <p>Example response (201, Réception créée en mode pending):</p>
         </blockquote>
                 <pre>
 
@@ -24113,7 +24336,92 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
         &quot;reference&quot;: &quot;MV-2024-00002&quot;,
-        &quot;statut&quot;: &quot;pending&quot;
+        &quot;movement_type&quot;: &quot;entr&eacute;e&quot;,
+        &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
+        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;statut&quot;: &quot;pending&quot;,
+        &quot;note&quot;: &quot;R&eacute;ception commande #PO-2024-001&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+        &quot;created_at&quot;: &quot;2024-10-15T11:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-10-15T11:00:00.000000Z&quot;,
+        &quot;entrepot_to&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Secondaire&quot;,
+            &quot;adresse&quot;: &quot;456 Avenue Commerce&quot;,
+            &quot;ville&quot;: &quot;Cotonou&quot;
+        },
+        &quot;fournisseur&quot;: {
+            &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
+            &quot;nom&quot;: &quot;Fournisseur ABC&quot;,
+            &quot;email&quot;: &quot;contact@fournisseur-abc.com&quot;,
+            &quot;telephone&quot;: &quot;+229 12 34 56 78&quot;
+        },
+        &quot;user&quot;: {
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+            &quot;name&quot;: &quot;Marie Martin&quot;,
+            &quot;email&quot;: &quot;marie.martin@example.com&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440021&quot;,
+                &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;quantite&quot;: 50,
+                &quot;created_at&quot;: &quot;2024-10-15T11:00:00.000000Z&quot;,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;name&quot;: &quot;Produit B&quot;,
+                    &quot;reference&quot;: &quot;PROD-002&quot;,
+                    &quot;description&quot;: &quot;Description du produit B&quot;
+                }
+            }
+        ]
+    },
+    &quot;message&quot;: &quot;R&eacute;ception de fournisseur cr&eacute;&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (201, Réception créée et validée immédiatement):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00002&quot;,
+        &quot;movement_type&quot;: &quot;entr&eacute;e&quot;,
+        &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
+        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;statut&quot;: &quot;validated&quot;,
+        &quot;note&quot;: &quot;R&eacute;ception commande #PO-2024-001&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+        &quot;created_at&quot;: &quot;2024-10-15T11:00:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-10-15T11:00:00.000000Z&quot;,
+        &quot;entrepot_to&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Secondaire&quot;
+        },
+        &quot;fournisseur&quot;: {
+            &quot;fournisseur_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440100&quot;,
+            &quot;nom&quot;: &quot;Fournisseur ABC&quot;
+        },
+        &quot;user&quot;: {
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+            &quot;name&quot;: &quot;Marie Martin&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440021&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;quantite&quot;: 50,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;name&quot;: &quot;Produit B&quot;,
+                    &quot;reference&quot;: &quot;PROD-002&quot;
+                }
+            }
+        ]
     },
     &quot;message&quot;: &quot;R&eacute;ception de fournisseur cr&eacute;&eacute;e avec succ&egrave;s&quot;
 }</code>
@@ -24135,7 +24443,31 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {}
+    &quot;errors&quot;: {
+        &quot;fournisseur_id&quot;: [
+            &quot;Le fournisseur s&eacute;lectionn&eacute; n&#039;existe pas.&quot;
+        ],
+        &quot;entrepot_to_id&quot;: [
+            &quot;Le champ entrepot to id est obligatoire.&quot;
+        ],
+        &quot;details&quot;: [
+            &quot;Le tableau details doit contenir au moins 1 &eacute;l&eacute;ment.&quot;
+        ],
+        &quot;details.0.quantite&quot;: [
+            &quot;La quantit&eacute; doit &ecirc;tre au minimum 1.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Erreur serveur):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la cr&eacute;ation de la r&eacute;ception&quot;,
+    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -24240,7 +24572,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440100"
                data-component="body">
     <br>
-<p>UUID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
+<p>UUID du fournisseur source. Example: <code>550e8400-e29b-41d4-a716-446655440100</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>entrepot_to_id</code></b>&nbsp;&nbsp;
@@ -24251,7 +24583,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440002"
                data-component="body">
     <br>
-<p>UUID de l'entrepôt de destination. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+<p>UUID de l'entrepôt de destination qui recevra les produits. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -24259,10 +24591,31 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="note"                data-endpoint="POSTapi-stock-movements-receipt-supplier"
-               value=""Réception commande #PO-2024-001""
+               value=""Réception commande #PO-2024-001 - Facture F-789456""
                data-component="body">
     <br>
-<p>optional Note descriptive (ex: numéro de bon de commande). Example: <code>"Réception commande #PO-2024-001"</code></p>
+<p>optional Note descriptive (ex: numéro de bon de commande, numéro de facture fournisseur, etc.). Max 1000 caractères. Example: <code>"Réception commande #PO-2024-001 - Facture F-789456"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>validate_immediately</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-stock-movements-receipt-supplier" style="display: none">
+            <input type="radio" name="validate_immediately"
+                   value="true"
+                   data-endpoint="POSTapi-stock-movements-receipt-supplier"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-stock-movements-receipt-supplier" style="display: none">
+            <input type="radio" name="validate_immediately"
+                   value="false"
+                   data-endpoint="POSTapi-stock-movements-receipt-supplier"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Si true, valide la réception immédiatement après création et met à jour les stocks. Par défaut: false. Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
         <details>
@@ -24271,7 +24624,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
  &nbsp;
 <br>
-<p>Tableau des produits reçus (minimum 1).</p>
+<p>Tableau des produits reçus avec leurs quantités (minimum 1 produit).</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
@@ -24282,7 +24635,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440003"
                data-component="body">
     <br>
-<p>UUID du produit. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+<p>UUID du produit reçu. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
@@ -24298,6 +24651,514 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                     </details>
         </div>
         </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements--id--validate">Valide un mouvement de stock en attente et met à jour automatiquement les stocks dans les entrepôts concernés.
+Une fois validé, le mouvement ne peut plus être modifié, seulement annulé.
+
+**Comportement automatique :**
+- Pour un **transfert** : diminue le stock de l&#039;entrepôt source et augmente celui de destination
+- Pour une **réception fournisseur** : augmente le stock de l&#039;entrepôt de destination
+- Pour une **sortie client** : diminue le stock de l&#039;entrepôt source
+
+**Vérifications effectuées :**
+- Le mouvement doit exister et être en statut &quot;pending&quot;
+- Pour les sorties : vérifie que le stock disponible (quantité - quantité réservée) est suffisant
+- Si le stock est insuffisant, la validation échoue avec un message d&#039;erreur détaillé</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-stock-movements--id--validate">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440010/validate" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440010/validate"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440010/validate';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-stock-movements--id--validate">
+            <blockquote>
+            <p>Example response (200, Validation réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00001&quot;,
+        &quot;movement_type&quot;: &quot;transfert&quot;,
+        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;statut&quot;: &quot;validated&quot;,
+        &quot;note&quot;: &quot;Transfert urgent&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+        &quot;created_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-10-15T10:35:00.000000Z&quot;,
+        &quot;entrepot_from&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Principal&quot;
+        },
+        &quot;entrepot_to&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Secondaire&quot;
+        },
+        &quot;user&quot;: {
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440011&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;name&quot;: &quot;Produit A&quot;,
+                    &quot;reference&quot;: &quot;PROD-001&quot;
+                }
+            }
+        ]
+    },
+    &quot;message&quot;: &quot;Mouvement de stock valid&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Mouvement déjà validé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Ce mouvement est d&eacute;j&agrave; valid&eacute;&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Mouvement introuvable):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\StockMovement].&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Stock insuffisant):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la validation du mouvement&quot;,
+    &quot;error&quot;: &quot;Stock insuffisant pour le produit Produit A. Disponible: 5, Demand&eacute;: 10&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Erreur serveur):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la validation du mouvement&quot;,
+    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-stock-movements--id--validate" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-stock-movements--id--validate"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements--id--validate"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-stock-movements--id--validate" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-stock-movements--id--validate">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-stock-movements--id--validate" data-method="POST"
+      data-path="api/stock-movements/{id}/validate"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements--id--validate', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-stock-movements--id--validate"
+                    onclick="tryItOut('POSTapi-stock-movements--id--validate');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-stock-movements--id--validate"
+                    onclick="cancelTryOut('POSTapi-stock-movements--id--validate');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-stock-movements--id--validate"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/stock-movements/{id}/validate</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements--id--validate"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-stock-movements--id--validate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-stock-movements--id--validate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-stock-movements--id--validate"
+               value="550e8400-e29b-41d4-a716-446655440010"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock à valider. Example: <code>550e8400-e29b-41d4-a716-446655440010</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-mouvements-de-stock-POSTapi-stock-movements--id--cancel">Annule un mouvement de stock précédemment validé et restaure automatiquement les stocks dans les entrepôts concernés.
+Seuls les mouvements avec le statut &quot;validated&quot; peuvent être annulés.
+
+**Comportement automatique :**
+- Pour un **transfert** : restaure le stock de l&#039;entrepôt source et diminue celui de destination
+- Pour une **réception fournisseur** : diminue le stock de l&#039;entrepôt de destination
+- Pour une **sortie client** : restaure le stock de l&#039;entrepôt source
+
+**Important :**
+- L&#039;annulation inverse exactement les mouvements effectués lors de la validation
+- Le statut du mouvement passe à &quot;cancelled&quot;
+- Un mouvement annulé ne peut plus être re-validé
+- Les stocks sont mis à jour en temps réel</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-stock-movements--id--cancel">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440010/cancel" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440010/cancel"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/stock-movements/550e8400-e29b-41d4-a716-446655440010/cancel';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-stock-movements--id--cancel">
+            <blockquote>
+            <p>Example response (200, Annulation réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;stock_movement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+        &quot;reference&quot;: &quot;MV-2024-00001&quot;,
+        &quot;movement_type&quot;: &quot;transfert&quot;,
+        &quot;entrepot_from_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+        &quot;entrepot_to_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+        &quot;statut&quot;: &quot;cancelled&quot;,
+        &quot;note&quot;: &quot;Transfert urgent&quot;,
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+        &quot;created_at&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2024-10-15T10:40:00.000000Z&quot;,
+        &quot;entrepot_from&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Principal&quot;
+        },
+        &quot;entrepot_to&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
+            &quot;nom&quot;: &quot;Entrep&ocirc;t Secondaire&quot;
+        },
+        &quot;user&quot;: {
+            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440050&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;stock_movement_detail_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440011&quot;,
+                &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;name&quot;: &quot;Produit A&quot;,
+                    &quot;reference&quot;: &quot;PROD-001&quot;
+                }
+            }
+        ]
+    },
+    &quot;message&quot;: &quot;Mouvement de stock annul&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Mouvement non validé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Seuls les mouvements valid&eacute;s peuvent &ecirc;tre annul&eacute;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Mouvement introuvable):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\StockMovement].&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500, Erreur serveur):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de l&#039;annulation du mouvement&quot;,
+    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-stock-movements--id--cancel" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-stock-movements--id--cancel"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-stock-movements--id--cancel"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-stock-movements--id--cancel" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-stock-movements--id--cancel">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-stock-movements--id--cancel" data-method="POST"
+      data-path="api/stock-movements/{id}/cancel"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-stock-movements--id--cancel', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-stock-movements--id--cancel"
+                    onclick="tryItOut('POSTapi-stock-movements--id--cancel');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-stock-movements--id--cancel"
+                    onclick="cancelTryOut('POSTapi-stock-movements--id--cancel');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-stock-movements--id--cancel"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/stock-movements/{id}/cancel</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-stock-movements--id--cancel"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-stock-movements--id--cancel"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-stock-movements--id--cancel"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-stock-movements--id--cancel"
+               value="550e8400-e29b-41d4-a716-446655440010"
+               data-component="url">
+    <br>
+<p>UUID du mouvement de stock à annuler. Example: <code>550e8400-e29b-41d4-a716-446655440010</code></p>
+            </div>
+                    </form>
 
                 <h1 id="gestion-des-produits">Gestion des Produits</h1>
 

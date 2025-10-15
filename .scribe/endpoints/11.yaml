@@ -816,6 +816,16 @@ endpoints:
       title: |-
         Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
         La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+
+        **Options de validation :**
+        - **Mode par défaut** : Le transfert est créé avec le statut "pending" et nécessite une validation ultérieure
+        - **Validation immédiate** : En passant `validate_immediately: true`, le transfert est créé ET validé automatiquement, mettant à jour les stocks en temps réel
+
+        **Comportement lors de la validation immédiate :**
+        - Vérifie que le stock disponible dans l'entrepôt source est suffisant
+        - Diminue le stock de l'entrepôt source
+        - Augmente le stock de l'entrepôt destination
+        - Si le stock est insuffisant, la transaction échoue complètement (aucune création)
       description: ''
       authenticated: true
       deprecated: false
@@ -851,7 +861,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "UUID de l'entrepôt destination."
+        description: "UUID de l'entrepôt destination (doit être différent de l'entrepôt source)."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -863,15 +873,25 @@ endpoints:
         name: note
         description: 'optional Note descriptive du transfert (max 1000 caractères).'
         required: false
-        example: '"Transfert urgent"'
+        example: '"Transfert urgent pour réapprovisionner la succursale"'
         type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      validate_immediately:
+        name: validate_immediately
+        description: 'optional Si true, valide le mouvement immédiatement après création et met à jour les stocks. Par défaut: false.'
+        required: false
+        example: true
+        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
       details:
         name: details
-        description: 'Tableau des produits à transférer (minimum 1).'
+        description: 'Tableau des produits à transférer (minimum 1 produit).'
         required: true
         example:
           -
@@ -884,7 +904,7 @@ endpoints:
         custom: []
       'details[].product_id':
         name: 'details[].product_id'
-        description: 'UUID du produit.'
+        description: 'UUID du produit à transférer.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440003
         type: string
@@ -894,7 +914,7 @@ endpoints:
         custom: []
       'details[].quantite':
         name: 'details[].quantite'
-        description: 'Quantité (minimum 1).'
+        description: 'Quantité à transférer (minimum 1).'
         required: true
         example: 10
         type: integer
@@ -906,7 +926,8 @@ endpoints:
       movement_type: transfert
       entrepot_from_id: 550e8400-e29b-41d4-a716-446655440001
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
-      note: '"Transfert urgent"'
+      note: '"Transfert urgent pour réapprovisionner la succursale"'
+      validate_immediately: true
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -921,12 +942,95 @@ endpoints:
             "data": {
               "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
               "reference": "MV-2024-00001",
-              "statut": "pending"
+              "movement_type": "transfert",
+              "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+              "statut": "pending",
+              "note": "Transfert urgent",
+              "user_id": "550e8400-e29b-41d4-a716-446655440050",
+              "created_at": "2024-10-15T10:30:00.000000Z",
+              "updated_at": "2024-10-15T10:30:00.000000Z",
+              "entrepot_from": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+                "nom": "Entrepôt Principal",
+                "adresse": "123 Rue Principale"
+              },
+              "entrepot_to": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                "nom": "Entrepôt Secondaire",
+                "adresse": "456 Avenue Commerce"
+              },
+              "user": {
+                "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                "name": "Jean Dupont",
+                "email": "jean.dupont@example.com"
+              },
+              "details": [
+                {
+                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "quantite": 10,
+                  "created_at": "2024-10-15T10:30:00.000000Z",
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit A",
+                    "reference": "PROD-001",
+                    "description": "Description du produit"
+                  }
+                }
+              ]
             },
             "message": "Transfert entre entrepôts créé avec succès"
           }
         headers: []
-        description: 'Transfert créé'
+        description: 'Transfert créé en mode pending'
+        custom: []
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+              "reference": "MV-2024-00001",
+              "movement_type": "transfert",
+              "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+              "statut": "validated",
+              "note": "Transfert urgent",
+              "user_id": "550e8400-e29b-41d4-a716-446655440050",
+              "created_at": "2024-10-15T10:30:00.000000Z",
+              "updated_at": "2024-10-15T10:30:00.000000Z",
+              "entrepot_from": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+                "nom": "Entrepôt Principal"
+              },
+              "entrepot_to": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                "nom": "Entrepôt Secondaire"
+              },
+              "user": {
+                "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                "name": "Jean Dupont"
+              },
+              "details": [
+                {
+                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "quantite": 10,
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit A",
+                    "reference": "PROD-001"
+                  }
+                }
+              ]
+            },
+            "message": "Transfert entre entrepôts créé avec succès"
+          }
+        headers: []
+        description: 'Transfert créé et validé immédiatement'
         custom: []
       -
         status: 401
@@ -943,10 +1047,42 @@ endpoints:
           {
             "success": false,
             "message": "Erreur de validation",
-            "errors": {}
+            "errors": {
+              "entrepot_from_id": [
+                "Le champ entrepot from id est obligatoire."
+              ],
+              "entrepot_to_id": [
+                "Les entrepôts source et destination doivent être différents."
+              ],
+              "details.0.quantite": [
+                "La quantité doit être au minimum 1."
+              ]
+            }
           }
         headers: []
         description: 'Erreurs de validation'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la création du transfert",
+            "error": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
+          }
+        headers: []
+        description: 'Stock insuffisant lors de validation immédiate'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la création du transfert",
+            "error": "Message d'erreur détaillé"
+          }
+        headers: []
+        description: 'Erreur serveur'
         custom: []
     responseFields: []
     auth:
@@ -968,7 +1104,23 @@ endpoints:
       subgroupDescription: ''
       title: |-
         Crée un nouveau mouvement de réception de marchandise en provenance d'un fournisseur.
-        Cette opération augmente le stock dans l'entrepôt de destination.
+        La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+
+        **Options de validation :**
+        - **Mode par défaut** : La réception est créée avec le statut "pending" et nécessite une validation ultérieure
+        - **Validation immédiate** : En passant `validate_immediately: true`, la réception est créée ET validée automatiquement, augmentant le stock dans l'entrepôt de destination en temps réel
+
+        **Comportement lors de la validation immédiate :**
+        - Augmente automatiquement le stock dans l'entrepôt de destination
+        - Crée les enregistrements de stock si le produit n'existe pas encore dans cet entrepôt
+        - Met à jour les quantités existantes si le produit est déjà présent
+        - Passe le statut à "validated" immédiatement
+
+        **Cas d'usage typiques :**
+        - Réception de commandes fournisseur
+        - Réapprovisionnement d'entrepôt
+        - Import de stock initial
+        - Livraison de marchandises
       description: ''
       authenticated: true
       deprecated: false
@@ -994,7 +1146,7 @@ endpoints:
         custom: []
       fournisseur_id:
         name: fournisseur_id
-        description: 'UUID du fournisseur.'
+        description: 'UUID du fournisseur source.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440100
         type: string
@@ -1004,7 +1156,7 @@ endpoints:
         custom: []
       entrepot_to_id:
         name: entrepot_to_id
-        description: "UUID de l'entrepôt de destination."
+        description: "UUID de l'entrepôt de destination qui recevra les produits."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -1014,17 +1166,27 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optional Note descriptive (ex: numéro de bon de commande).'
+        description: 'optional Note descriptive (ex: numéro de bon de commande, numéro de facture fournisseur, etc.). Max 1000 caractères.'
         required: false
-        example: '"Réception commande #PO-2024-001"'
+        example: '"Réception commande #PO-2024-001 - Facture F-789456"'
         type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      validate_immediately:
+        name: validate_immediately
+        description: 'optional Si true, valide la réception immédiatement après création et met à jour les stocks. Par défaut: false.'
+        required: false
+        example: false
+        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
       details:
         name: details
-        description: 'Tableau des produits reçus (minimum 1).'
+        description: 'Tableau des produits reçus avec leurs quantités (minimum 1 produit).'
         required: true
         example:
           -
@@ -1037,7 +1199,7 @@ endpoints:
         custom: []
       'details[].product_id':
         name: 'details[].product_id'
-        description: 'UUID du produit.'
+        description: 'UUID du produit reçu.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440003
         type: string
@@ -1059,7 +1221,8 @@ endpoints:
       movement_type: entrée
       fournisseur_id: 550e8400-e29b-41d4-a716-446655440100
       entrepot_to_id: 550e8400-e29b-41d4-a716-446655440002
-      note: '"Réception commande #PO-2024-001"'
+      note: '"Réception commande #PO-2024-001 - Facture F-789456"'
+      validate_immediately: false
       details:
         -
           product_id: 550e8400-e29b-41d4-a716-446655440003
@@ -1074,12 +1237,97 @@ endpoints:
             "data": {
               "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
               "reference": "MV-2024-00002",
-              "statut": "pending"
+              "movement_type": "entrée",
+              "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+              "statut": "pending",
+              "note": "Réception commande #PO-2024-001",
+              "user_id": "550e8400-e29b-41d4-a716-446655440050",
+              "created_at": "2024-10-15T11:00:00.000000Z",
+              "updated_at": "2024-10-15T11:00:00.000000Z",
+              "entrepot_to": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                "nom": "Entrepôt Secondaire",
+                "adresse": "456 Avenue Commerce",
+                "ville": "Cotonou"
+              },
+              "fournisseur": {
+                "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+                "nom": "Fournisseur ABC",
+                "email": "contact@fournisseur-abc.com",
+                "telephone": "+229 12 34 56 78"
+              },
+              "user": {
+                "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                "name": "Marie Martin",
+                "email": "marie.martin@example.com"
+              },
+              "details": [
+                {
+                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440021",
+                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "quantite": 50,
+                  "created_at": "2024-10-15T11:00:00.000000Z",
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit B",
+                    "reference": "PROD-002",
+                    "description": "Description du produit B"
+                  }
+                }
+              ]
             },
             "message": "Réception de fournisseur créée avec succès"
           }
         headers: []
-        description: 'Réception créée'
+        description: 'Réception créée en mode pending'
+        custom: []
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
+              "reference": "MV-2024-00002",
+              "movement_type": "entrée",
+              "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+              "statut": "validated",
+              "note": "Réception commande #PO-2024-001",
+              "user_id": "550e8400-e29b-41d4-a716-446655440050",
+              "created_at": "2024-10-15T11:00:00.000000Z",
+              "updated_at": "2024-10-15T11:00:00.000000Z",
+              "entrepot_to": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                "nom": "Entrepôt Secondaire"
+              },
+              "fournisseur": {
+                "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+                "nom": "Fournisseur ABC"
+              },
+              "user": {
+                "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                "name": "Marie Martin"
+              },
+              "details": [
+                {
+                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440021",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "quantite": 50,
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit B",
+                    "reference": "PROD-002"
+                  }
+                }
+              ]
+            },
+            "message": "Réception de fournisseur créée avec succès"
+          }
+        headers: []
+        description: 'Réception créée et validée immédiatement'
         custom: []
       -
         status: 401
@@ -1096,10 +1344,334 @@ endpoints:
           {
             "success": false,
             "message": "Erreur de validation",
-            "errors": {}
+            "errors": {
+              "fournisseur_id": [
+                "Le fournisseur sélectionné n'existe pas."
+              ],
+              "entrepot_to_id": [
+                "Le champ entrepot to id est obligatoire."
+              ],
+              "details": [
+                "Le tableau details doit contenir au moins 1 élément."
+              ],
+              "details.0.quantite": [
+                "La quantité doit être au minimum 1."
+              ]
+            }
           }
         headers: []
         description: 'Erreurs de validation'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la création de la réception",
+            "error": "Message d'erreur détaillé"
+          }
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/stock-movements/{id}/validate'
+    metadata:
+      groupName: 'Gestion des Mouvements de Stock'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Valide un mouvement de stock en attente et met à jour automatiquement les stocks dans les entrepôts concernés.
+        Une fois validé, le mouvement ne peut plus être modifié, seulement annulé.
+
+        **Comportement automatique :**
+        - Pour un **transfert** : diminue le stock de l'entrepôt source et augmente celui de destination
+        - Pour une **réception fournisseur** : augmente le stock de l'entrepôt de destination
+        - Pour une **sortie client** : diminue le stock de l'entrepôt source
+
+        **Vérifications effectuées :**
+        - Le mouvement doit exister et être en statut "pending"
+        - Pour les sorties : vérifie que le stock disponible (quantité - quantité réservée) est suffisant
+        - Si le stock est insuffisant, la validation échoue avec un message d'erreur détaillé
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID du mouvement de stock à valider.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440010
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440010
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+              "reference": "MV-2024-00001",
+              "movement_type": "transfert",
+              "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+              "statut": "validated",
+              "note": "Transfert urgent",
+              "user_id": "550e8400-e29b-41d4-a716-446655440050",
+              "created_at": "2024-10-15T10:30:00.000000Z",
+              "updated_at": "2024-10-15T10:35:00.000000Z",
+              "entrepot_from": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+                "nom": "Entrepôt Principal"
+              },
+              "entrepot_to": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                "nom": "Entrepôt Secondaire"
+              },
+              "user": {
+                "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                "name": "Jean Dupont"
+              },
+              "details": [
+                {
+                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "quantite": 10,
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit A",
+                    "reference": "PROD-001"
+                  }
+                }
+              ]
+            },
+            "message": "Mouvement de stock validé avec succès"
+          }
+        headers: []
+        description: 'Validation réussie'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "Ce mouvement est déjà validé"
+          }
+        headers: []
+        description: 'Mouvement déjà validé'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "No query results for model [App\\Models\\StockMovement]."
+          }
+        headers: []
+        description: 'Mouvement introuvable'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la validation du mouvement",
+            "error": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
+          }
+        headers: []
+        description: 'Stock insuffisant'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la validation du mouvement",
+            "error": "Message d'erreur détaillé"
+          }
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/stock-movements/{id}/cancel'
+    metadata:
+      groupName: 'Gestion des Mouvements de Stock'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Annule un mouvement de stock précédemment validé et restaure automatiquement les stocks dans les entrepôts concernés.
+        Seuls les mouvements avec le statut "validated" peuvent être annulés.
+
+        **Comportement automatique :**
+        - Pour un **transfert** : restaure le stock de l'entrepôt source et diminue celui de destination
+        - Pour une **réception fournisseur** : diminue le stock de l'entrepôt de destination
+        - Pour une **sortie client** : restaure le stock de l'entrepôt source
+
+        **Important :**
+        - L'annulation inverse exactement les mouvements effectués lors de la validation
+        - Le statut du mouvement passe à "cancelled"
+        - Un mouvement annulé ne peut plus être re-validé
+        - Les stocks sont mis à jour en temps réel
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID du mouvement de stock à annuler.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440010
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440010
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+              "reference": "MV-2024-00001",
+              "movement_type": "transfert",
+              "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+              "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+              "statut": "cancelled",
+              "note": "Transfert urgent",
+              "user_id": "550e8400-e29b-41d4-a716-446655440050",
+              "created_at": "2024-10-15T10:30:00.000000Z",
+              "updated_at": "2024-10-15T10:40:00.000000Z",
+              "entrepot_from": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+                "nom": "Entrepôt Principal"
+              },
+              "entrepot_to": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                "nom": "Entrepôt Secondaire"
+              },
+              "user": {
+                "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                "name": "Jean Dupont"
+              },
+              "details": [
+                {
+                  "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "quantite": 10,
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit A",
+                    "reference": "PROD-001"
+                  }
+                }
+              ]
+            },
+            "message": "Mouvement de stock annulé avec succès"
+          }
+        headers: []
+        description: 'Annulation réussie'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "Seuls les mouvements validés peuvent être annulés"
+          }
+        headers: []
+        description: 'Mouvement non validé'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "No query results for model [App\\Models\\StockMovement]."
+          }
+        headers: []
+        description: 'Mouvement introuvable'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de l'annulation du mouvement",
+            "error": "Message d'erreur détaillé"
+          }
+        headers: []
+        description: 'Erreur serveur'
         custom: []
     responseFields: []
     auth:
