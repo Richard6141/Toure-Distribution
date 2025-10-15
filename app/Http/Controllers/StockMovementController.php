@@ -166,24 +166,113 @@ class StockMovementController extends Controller
      * Crée un nouveau mouvement de transfert de stock entre deux entrepôts différents.
      * La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
      * 
+     * **Options de validation :**
+     * - **Mode par défaut** : Le transfert est créé avec le statut "pending" et nécessite une validation ultérieure
+     * - **Validation immédiate** : En passant `validate_immediately: true`, le transfert est créé ET validé automatiquement, mettant à jour les stocks en temps réel
+     * 
+     * **Comportement lors de la validation immédiate :**
+     * - Vérifie que le stock disponible dans l'entrepôt source est suffisant
+     * - Diminue le stock de l'entrepôt source
+     * - Augmente le stock de l'entrepôt destination
+     * - Si le stock est insuffisant, la transaction échoue complètement (aucune création)
+     * 
      * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
      * @header Content-Type required application/json
      * @header Accept required application/json
      * 
      * @bodyParam movement_type string required Type de mouvement saisi manuellement. Example: transfert
      * @bodyParam entrepot_from_id string required UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
-     * @bodyParam entrepot_to_id string required UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam note string optional Note descriptive du transfert (max 1000 caractères). Example: "Transfert urgent"
-     * @bodyParam details array required Tableau des produits à transférer (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 10}]
-     * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 10
+     * @bodyParam entrepot_to_id string required UUID de l'entrepôt destination (doit être différent de l'entrepôt source). Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam note string optional Note descriptive du transfert (max 1000 caractères). Example: "Transfert urgent pour réapprovisionner la succursale"
+     * @bodyParam validate_immediately boolean optional Si true, valide le mouvement immédiatement après création et met à jour les stocks. Par défaut: false. Example: true
+     * @bodyParam details array required Tableau des produits à transférer (minimum 1 produit). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 10}]
+     * @bodyParam details[].product_id string required UUID du produit à transférer. Example: 550e8400-e29b-41d4-a716-446655440003
+     * @bodyParam details[].quantite integer required Quantité à transférer (minimum 1). Example: 10
      * 
-     * @response 201 scenario="Transfert créé" {
+     * @response 201 scenario="Transfert créé en mode pending" {
      *   "success": true,
      *   "data": {
      *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
      *     "reference": "MV-2024-00001",
-     *     "statut": "pending"
+     *     "movement_type": "transfert",
+     *     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+     *     "statut": "pending",
+     *     "note": "Transfert urgent",
+     *     "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *     "created_at": "2024-10-15T10:30:00.000000Z",
+     *     "updated_at": "2024-10-15T10:30:00.000000Z",
+     *     "entrepot_from": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+     *       "nom": "Entrepôt Principal",
+     *       "adresse": "123 Rue Principale"
+     *     },
+     *     "entrepot_to": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+     *       "nom": "Entrepôt Secondaire",
+     *       "adresse": "456 Avenue Commerce"
+     *     },
+     *     "user": {
+     *       "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *       "name": "Jean Dupont",
+     *       "email": "jean.dupont@example.com"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+     *         "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *         "quantite": 10,
+     *         "created_at": "2024-10-15T10:30:00.000000Z",
+     *         "product": {
+     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *           "name": "Produit A",
+     *           "reference": "PROD-001",
+     *           "description": "Description du produit"
+     *         }
+     *       }
+     *     ]
+     *   },
+     *   "message": "Transfert entre entrepôts créé avec succès"
+     * }
+     * 
+     * @response 201 scenario="Transfert créé et validé immédiatement" {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+     *     "reference": "MV-2024-00001",
+     *     "movement_type": "transfert",
+     *     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+     *     "statut": "validated",
+     *     "note": "Transfert urgent",
+     *     "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *     "created_at": "2024-10-15T10:30:00.000000Z",
+     *     "updated_at": "2024-10-15T10:30:00.000000Z",
+     *     "entrepot_from": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+     *       "nom": "Entrepôt Principal"
+     *     },
+     *     "entrepot_to": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+     *       "nom": "Entrepôt Secondaire"
+     *     },
+     *     "user": {
+     *       "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *       "name": "Jean Dupont"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *         "quantite": 10,
+     *         "product": {
+     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *           "name": "Produit A",
+     *           "reference": "PROD-001"
+     *         }
+     *       }
+     *     ]
      *   },
      *   "message": "Transfert entre entrepôts créé avec succès"
      * }
@@ -191,7 +280,29 @@ class StockMovementController extends Controller
      * @response 422 scenario="Erreurs de validation" {
      *   "success": false,
      *   "message": "Erreur de validation",
-     *   "errors": {}
+     *   "errors": {
+     *     "entrepot_from_id": [
+     *       "Le champ entrepot from id est obligatoire."
+     *     ],
+     *     "entrepot_to_id": [
+     *       "Les entrepôts source et destination doivent être différents."
+     *     ],
+     *     "details.0.quantite": [
+     *       "La quantité doit être au minimum 1."
+     *     ]
+     *   }
+     * }
+     * 
+     * @response 500 scenario="Stock insuffisant lors de validation immédiate" {
+     *   "success": false,
+     *   "message": "Erreur lors de la création du transfert",
+     *   "error": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
+     * }
+     * 
+     * @response 500 scenario="Erreur serveur" {
+     *   "success": false,
+     *   "message": "Erreur lors de la création du transfert",
+     *   "error": "Message d'erreur détaillé"
      * }
      * 
      * @response 401 {
@@ -208,7 +319,8 @@ class StockMovementController extends Controller
                 'note' => 'nullable|string|max:1000',
                 'details' => 'required|array|min:1',
                 'details.*.product_id' => 'required|uuid|exists:products,product_id',
-                'details.*.quantite' => 'required|integer|min:1'
+                'details.*.quantite' => 'required|integer|min:1',
+                'validate_immediately' => 'nullable|boolean' // Option pour valider immédiatement
             ]);
 
             if ($validator->fails()) {
@@ -242,6 +354,11 @@ class StockMovementController extends Controller
                 ]);
             }
 
+            // Valider immédiatement si demandé
+            if ($request->validate_immediately) {
+                $stockMovement->validate();
+            }
+
             DB::commit();
 
             $stockMovement->load(['entrepotFrom', 'entrepotTo', 'user', 'details.product']);
@@ -261,6 +378,7 @@ class StockMovementController extends Controller
         }
     }
 
+
     /**
      * @title Créer une réception de stock depuis un fournisseur
      * 
@@ -268,26 +386,123 @@ class StockMovementController extends Controller
      * @group Gestion des Mouvements de Stock
      * 
      * Crée un nouveau mouvement de réception de marchandise en provenance d'un fournisseur.
-     * Cette opération augmente le stock dans l'entrepôt de destination.
+     * La référence du mouvement est générée automatiquement au format MV-YYYY-XXXXX.
+     * 
+     * **Options de validation :**
+     * - **Mode par défaut** : La réception est créée avec le statut "pending" et nécessite une validation ultérieure
+     * - **Validation immédiate** : En passant `validate_immediately: true`, la réception est créée ET validée automatiquement, augmentant le stock dans l'entrepôt de destination en temps réel
+     * 
+     * **Comportement lors de la validation immédiate :**
+     * - Augmente automatiquement le stock dans l'entrepôt de destination
+     * - Crée les enregistrements de stock si le produit n'existe pas encore dans cet entrepôt
+     * - Met à jour les quantités existantes si le produit est déjà présent
+     * - Passe le statut à "validated" immédiatement
+     * 
+     * **Cas d'usage typiques :**
+     * - Réception de commandes fournisseur
+     * - Réapprovisionnement d'entrepôt
+     * - Import de stock initial
+     * - Livraison de marchandises
      * 
      * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
      * @header Content-Type required application/json
      * @header Accept required application/json
      * 
      * @bodyParam movement_type string required Type de mouvement saisi manuellement. Example: entrée
-     * @bodyParam fournisseur_id string required UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
-     * @bodyParam entrepot_to_id string required UUID de l'entrepôt de destination. Example: 550e8400-e29b-41d4-a716-446655440002
-     * @bodyParam note string optional Note descriptive (ex: numéro de bon de commande). Example: "Réception commande #PO-2024-001"
-     * @bodyParam details array required Tableau des produits reçus (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 50}]
-     * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
+     * @bodyParam fournisseur_id string required UUID du fournisseur source. Example: 550e8400-e29b-41d4-a716-446655440100
+     * @bodyParam entrepot_to_id string required UUID de l'entrepôt de destination qui recevra les produits. Example: 550e8400-e29b-41d4-a716-446655440002
+     * @bodyParam note string optional Note descriptive (ex: numéro de bon de commande, numéro de facture fournisseur, etc.). Max 1000 caractères. Example: "Réception commande #PO-2024-001 - Facture F-789456"
+     * @bodyParam validate_immediately boolean optional Si true, valide la réception immédiatement après création et met à jour les stocks. Par défaut: false. Example: false
+     * @bodyParam details array required Tableau des produits reçus avec leurs quantités (minimum 1 produit). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 50}]
+     * @bodyParam details[].product_id string required UUID du produit reçu. Example: 550e8400-e29b-41d4-a716-446655440003
      * @bodyParam details[].quantite integer required Quantité reçue (minimum 1). Example: 50
      * 
-     * @response 201 scenario="Réception créée" {
+     * @response 201 scenario="Réception créée en mode pending" {
      *   "success": true,
      *   "data": {
      *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
      *     "reference": "MV-2024-00002",
-     *     "statut": "pending"
+     *     "movement_type": "entrée",
+     *     "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+     *     "statut": "pending",
+     *     "note": "Réception commande #PO-2024-001",
+     *     "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *     "created_at": "2024-10-15T11:00:00.000000Z",
+     *     "updated_at": "2024-10-15T11:00:00.000000Z",
+     *     "entrepot_to": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+     *       "nom": "Entrepôt Secondaire",
+     *       "adresse": "456 Avenue Commerce",
+     *       "ville": "Cotonou"
+     *     },
+     *     "fournisseur": {
+     *       "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+     *       "nom": "Fournisseur ABC",
+     *       "email": "contact@fournisseur-abc.com",
+     *       "telephone": "+229 12 34 56 78"
+     *     },
+     *     "user": {
+     *       "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *       "name": "Marie Martin",
+     *       "email": "marie.martin@example.com"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440021",
+     *         "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
+     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *         "quantite": 50,
+     *         "created_at": "2024-10-15T11:00:00.000000Z",
+     *         "product": {
+     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *           "name": "Produit B",
+     *           "reference": "PROD-002",
+     *           "description": "Description du produit B"
+     *         }
+     *       }
+     *     ]
+     *   },
+     *   "message": "Réception de fournisseur créée avec succès"
+     * }
+     * 
+     * @response 201 scenario="Réception créée et validée immédiatement" {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440020",
+     *     "reference": "MV-2024-00002",
+     *     "movement_type": "entrée",
+     *     "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+     *     "statut": "validated",
+     *     "note": "Réception commande #PO-2024-001",
+     *     "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *     "created_at": "2024-10-15T11:00:00.000000Z",
+     *     "updated_at": "2024-10-15T11:00:00.000000Z",
+     *     "entrepot_to": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+     *       "nom": "Entrepôt Secondaire"
+     *     },
+     *     "fournisseur": {
+     *       "fournisseur_id": "550e8400-e29b-41d4-a716-446655440100",
+     *       "nom": "Fournisseur ABC"
+     *     },
+     *     "user": {
+     *       "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *       "name": "Marie Martin"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440021",
+     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *         "quantite": 50,
+     *         "product": {
+     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *           "name": "Produit B",
+     *           "reference": "PROD-002"
+     *         }
+     *       }
+     *     ]
      *   },
      *   "message": "Réception de fournisseur créée avec succès"
      * }
@@ -295,7 +510,26 @@ class StockMovementController extends Controller
      * @response 422 scenario="Erreurs de validation" {
      *   "success": false,
      *   "message": "Erreur de validation",
-     *   "errors": {}
+     *   "errors": {
+     *     "fournisseur_id": [
+     *       "Le fournisseur sélectionné n'existe pas."
+     *     ],
+     *     "entrepot_to_id": [
+     *       "Le champ entrepot to id est obligatoire."
+     *     ],
+     *     "details": [
+     *       "Le tableau details doit contenir au moins 1 élément."
+     *     ],
+     *     "details.0.quantite": [
+     *       "La quantité doit être au minimum 1."
+     *     ]
+     *   }
+     * }
+     * 
+     * @response 500 scenario="Erreur serveur" {
+     *   "success": false,
+     *   "message": "Erreur lors de la création de la réception",
+     *   "error": "Message d'erreur détaillé"
      * }
      * 
      * @response 401 {
@@ -312,7 +546,8 @@ class StockMovementController extends Controller
                 'note' => 'nullable|string|max:1000',
                 'details' => 'required|array|min:1',
                 'details.*.product_id' => 'required|uuid|exists:products,product_id',
-                'details.*.quantite' => 'required|integer|min:1'
+                'details.*.quantite' => 'required|integer|min:1',
+                'validate_immediately' => 'nullable|boolean'
             ]);
 
             if ($validator->fails()) {
@@ -344,6 +579,11 @@ class StockMovementController extends Controller
                     'product_id' => $detail['product_id'],
                     'quantite' => $detail['quantite']
                 ]);
+            }
+
+            // Valider immédiatement si demandé
+            if ($request->validate_immediately) {
+                $stockMovement->validate();
             }
 
             DB::commit();
@@ -909,5 +1149,255 @@ class StockMovementController extends Controller
         }
 
         return $prefix . $newNumber;
+    }
+
+    /**
+     * @title Valider un mouvement de stock
+     * 
+     * @authenticated
+     * @group Gestion des Mouvements de Stock
+     * 
+     * Valide un mouvement de stock en attente et met à jour automatiquement les stocks dans les entrepôts concernés.
+     * Une fois validé, le mouvement ne peut plus être modifié, seulement annulé.
+     * 
+     * **Comportement automatique :**
+     * - Pour un **transfert** : diminue le stock de l'entrepôt source et augmente celui de destination
+     * - Pour une **réception fournisseur** : augmente le stock de l'entrepôt de destination
+     * - Pour une **sortie client** : diminue le stock de l'entrepôt source
+     * 
+     * **Vérifications effectuées :**
+     * - Le mouvement doit exister et être en statut "pending"
+     * - Pour les sorties : vérifie que le stock disponible (quantité - quantité réservée) est suffisant
+     * - Si le stock est insuffisant, la validation échoue avec un message d'erreur détaillé
+     * 
+     * @urlParam id string required UUID du mouvement de stock à valider. Example: 550e8400-e29b-41d4-a716-446655440010
+     * 
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
+     * 
+     * @response 200 scenario="Validation réussie" {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+     *     "reference": "MV-2024-00001",
+     *     "movement_type": "transfert",
+     *     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+     *     "statut": "validated",
+     *     "note": "Transfert urgent",
+     *     "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *     "created_at": "2024-10-15T10:30:00.000000Z",
+     *     "updated_at": "2024-10-15T10:35:00.000000Z",
+     *     "entrepot_from": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+     *       "nom": "Entrepôt Principal"
+     *     },
+     *     "entrepot_to": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+     *       "nom": "Entrepôt Secondaire"
+     *     },
+     *     "user": {
+     *       "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *       "name": "Jean Dupont"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *         "quantite": 10,
+     *         "product": {
+     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *           "name": "Produit A",
+     *           "reference": "PROD-001"
+     *         }
+     *       }
+     *     ]
+     *   },
+     *   "message": "Mouvement de stock validé avec succès"
+     * }
+     * 
+     * @response 400 scenario="Mouvement déjà validé" {
+     *   "success": false,
+     *   "message": "Ce mouvement est déjà validé"
+     * }
+     * 
+     * @response 404 scenario="Mouvement introuvable" {
+     *   "success": false,
+     *   "message": "No query results for model [App\\Models\\StockMovement]."
+     * }
+     * 
+     * @response 500 scenario="Stock insuffisant" {
+     *   "success": false,
+     *   "message": "Erreur lors de la validation du mouvement",
+     *   "error": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
+     * }
+     * 
+     * @response 500 scenario="Erreur serveur" {
+     *   "success": false,
+     *   "message": "Erreur lors de la validation du mouvement",
+     *   "error": "Message d'erreur détaillé"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     */
+    public function validateMovement(string $stockMovementId): JsonResponse
+    {
+        try {
+            $stockMovement = StockMovement::with('details.product')->findOrFail($stockMovementId);
+
+            if ($stockMovement->statut === 'validated') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Ce mouvement est déjà validé'
+                ], 400);
+            }
+
+            DB::beginTransaction();
+
+            $stockMovement->validate();
+
+            DB::commit();
+
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'user', 'details.product']);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovement,
+                'message' => 'Mouvement de stock validé avec succès'
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la validation du mouvement',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * @title Annuler un mouvement de stock validé
+     * 
+     * @authenticated
+     * @group Gestion des Mouvements de Stock
+     * 
+     * Annule un mouvement de stock précédemment validé et restaure automatiquement les stocks dans les entrepôts concernés.
+     * Seuls les mouvements avec le statut "validated" peuvent être annulés.
+     * 
+     * **Comportement automatique :**
+     * - Pour un **transfert** : restaure le stock de l'entrepôt source et diminue celui de destination
+     * - Pour une **réception fournisseur** : diminue le stock de l'entrepôt de destination
+     * - Pour une **sortie client** : restaure le stock de l'entrepôt source
+     * 
+     * **Important :**
+     * - L'annulation inverse exactement les mouvements effectués lors de la validation
+     * - Le statut du mouvement passe à "cancelled"
+     * - Un mouvement annulé ne peut plus être re-validé
+     * - Les stocks sont mis à jour en temps réel
+     * 
+     * @urlParam id string required UUID du mouvement de stock à annuler. Example: 550e8400-e29b-41d4-a716-446655440010
+     * 
+     * @header Authorization required Bearer Token. Example: Bearer 1|abc123xyz456
+     * @header Content-Type required application/json
+     * @header Accept required application/json
+     * 
+     * @response 200 scenario="Annulation réussie" {
+     *   "success": true,
+     *   "data": {
+     *     "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+     *     "reference": "MV-2024-00001",
+     *     "movement_type": "transfert",
+     *     "entrepot_from_id": "550e8400-e29b-41d4-a716-446655440001",
+     *     "entrepot_to_id": "550e8400-e29b-41d4-a716-446655440002",
+     *     "statut": "cancelled",
+     *     "note": "Transfert urgent",
+     *     "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *     "created_at": "2024-10-15T10:30:00.000000Z",
+     *     "updated_at": "2024-10-15T10:40:00.000000Z",
+     *     "entrepot_from": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440001",
+     *       "nom": "Entrepôt Principal"
+     *     },
+     *     "entrepot_to": {
+     *       "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+     *       "nom": "Entrepôt Secondaire"
+     *     },
+     *     "user": {
+     *       "user_id": "550e8400-e29b-41d4-a716-446655440050",
+     *       "name": "Jean Dupont"
+     *     },
+     *     "details": [
+     *       {
+     *         "stock_movement_detail_id": "550e8400-e29b-41d4-a716-446655440011",
+     *         "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *         "quantite": 10,
+     *         "product": {
+     *           "product_id": "550e8400-e29b-41d4-a716-446655440003",
+     *           "name": "Produit A",
+     *           "reference": "PROD-001"
+     *         }
+     *       }
+     *     ]
+     *   },
+     *   "message": "Mouvement de stock annulé avec succès"
+     * }
+     * 
+     * @response 400 scenario="Mouvement non validé" {
+     *   "success": false,
+     *   "message": "Seuls les mouvements validés peuvent être annulés"
+     * }
+     * 
+     * @response 404 scenario="Mouvement introuvable" {
+     *   "success": false,
+     *   "message": "No query results for model [App\\Models\\StockMovement]."
+     * }
+     * 
+     * @response 500 scenario="Erreur serveur" {
+     *   "success": false,
+     *   "message": "Erreur lors de l'annulation du mouvement",
+     *   "error": "Message d'erreur détaillé"
+     * }
+     * 
+     * @response 401 {
+     *   "message": "Unauthenticated."
+     * }
+     */
+    public function cancelMovement(string $stockMovementId): JsonResponse
+    {
+        try {
+            $stockMovement = StockMovement::findOrFail($stockMovementId);
+
+            if ($stockMovement->statut !== 'validated') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Seuls les mouvements validés peuvent être annulés'
+                ], 400);
+            }
+
+            DB::beginTransaction();
+
+            $stockMovement->statut = 'cancelled';
+            $stockMovement->save(); // Cela déclenchera l'événement updated qui annulera les stocks
+
+            DB::commit();
+
+            $stockMovement->load(['entrepotFrom', 'entrepotTo', 'user', 'details.product']);
+
+            return response()->json([
+                'success' => true,
+                'data' => $stockMovement,
+                'message' => 'Mouvement de stock annulé avec succès'
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de l\'annulation du mouvement',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

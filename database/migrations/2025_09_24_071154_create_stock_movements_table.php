@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('reference')->unique()->comment('Numéro du mouvement');
 
             // Type de mouvement
-            $table->uuid('movement_type_id')->nullable();
+            $table->uuid('movement_type')->nullable();
             $table->foreign('movement_type_id')
                 ->references('stock_movement_type_id')
                 ->on('stock_movement_types')

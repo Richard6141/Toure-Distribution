@@ -217,6 +217,8 @@ Route::prefix('stock-movements')->group(function () {
 
     Route::get('/trashed/list', [StockMovementController::class, 'trashed'])
         ->name('stock-movements.trashed');
+    Route::post('/{id}/validate', [StockMovementController::class, 'validateMovement']);
+    Route::post('/{id}/cancel', [StockMovementController::class, 'cancelMovement']);
 
 
     Route::post('/{id}/restore', [StockMovementController::class, 'restore'])

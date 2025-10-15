@@ -18,7 +18,7 @@ class StockMovementDetail extends Model
     protected $fillable = [
         'stock_movement_id',
         'product_id',
-        'quantity',
+        'quantite',
     ];
 
     protected static function booted()
