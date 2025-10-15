@@ -174,9 +174,9 @@ class StockMovementController extends Controller
      * @bodyParam entrepot_from_id string required UUID de l'entrepôt source. Example: 550e8400-e29b-41d4-a716-446655440001
      * @bodyParam entrepot_to_id string required UUID de l'entrepôt destination. Example: 550e8400-e29b-41d4-a716-446655440002
      * @bodyParam note string optional Note descriptive du transfert (max 1000 caractères). Example: "Transfert urgent"
-     * @bodyParam details array required Tableau des produits à transférer (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 10}]
+     * @bodyParam details array required Tableau des produits à transférer (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 10}]
      * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantity integer required Quantité (minimum 1). Example: 10
+     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 10
      * 
      * @response 201 scenario="Transfert créé" {
      *   "success": true,
@@ -208,7 +208,7 @@ class StockMovementController extends Controller
                 'note' => 'nullable|string|max:1000',
                 'details' => 'required|array|min:1',
                 'details.*.product_id' => 'required|uuid|exists:products,product_id',
-                'details.*.quantity' => 'required|integer|min:1'
+                'details.*.quantite' => 'required|integer|min:1'
             ]);
 
             if ($validator->fails()) {
@@ -238,7 +238,7 @@ class StockMovementController extends Controller
                 $stockMovement->details()->create([
                     'stock_movement_detail_id' => (string) Str::uuid(),
                     'product_id' => $detail['product_id'],
-                    'quantity' => $detail['quantity']
+                    'quantite' => $detail['quantite']
                 ]);
             }
 
@@ -278,9 +278,9 @@ class StockMovementController extends Controller
      * @bodyParam fournisseur_id string required UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
      * @bodyParam entrepot_to_id string required UUID de l'entrepôt de destination. Example: 550e8400-e29b-41d4-a716-446655440002
      * @bodyParam note string optional Note descriptive (ex: numéro de bon de commande). Example: "Réception commande #PO-2024-001"
-     * @bodyParam details array required Tableau des produits reçus (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 50}]
+     * @bodyParam details array required Tableau des produits reçus (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 50}]
      * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantity integer required Quantité reçue (minimum 1). Example: 50
+     * @bodyParam details[].quantite integer required Quantité reçue (minimum 1). Example: 50
      * 
      * @response 201 scenario="Réception créée" {
      *   "success": true,
@@ -312,7 +312,7 @@ class StockMovementController extends Controller
                 'note' => 'nullable|string|max:1000',
                 'details' => 'required|array|min:1',
                 'details.*.product_id' => 'required|uuid|exists:products,product_id',
-                'details.*.quantity' => 'required|integer|min:1'
+                'details.*.quantite' => 'required|integer|min:1'
             ]);
 
             if ($validator->fails()) {
@@ -342,7 +342,7 @@ class StockMovementController extends Controller
                 $stockMovement->details()->create([
                     'stock_movement_detail_id' => (string) Str::uuid(),
                     'product_id' => $detail['product_id'],
-                    'quantity' => $detail['quantity']
+                    'quantite' => $detail['quantite']
                 ]);
             }
 
@@ -385,9 +385,9 @@ class StockMovementController extends Controller
      * @bodyParam fournisseur_id string optional UUID du fournisseur. Example: 550e8400-e29b-41d4-a716-446655440100
      * @bodyParam client_id string optional UUID du client. Example: 550e8400-e29b-41d4-a716-446655440101
      * @bodyParam note string optional Note descriptive (max 1000 caractères). Example: "Mouvement standard"
-     * @bodyParam details array required Tableau des produits (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 20}]
+     * @bodyParam details array required Tableau des produits (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 20}]
      * @bodyParam details[].product_id string required UUID du produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantity integer required Quantité (minimum 1). Example: 20
+     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 20
      * 
      * @response 201 scenario="Mouvement créé" {
      *   "success": true,
@@ -415,7 +415,7 @@ class StockMovementController extends Controller
                 'note' => 'nullable|string|max:1000',
                 'details' => 'required|array|min:1',
                 'details.*.product_id' => 'required|exists:products,product_id',
-                'details.*.quantity' => 'required|integer|min:1'
+                'details.*.quantite' => 'required|integer|min:1'
             ]);
 
             if ($validator->fails()) {
@@ -448,7 +448,7 @@ class StockMovementController extends Controller
                     $stockMovement->details()->create([
                         'stock_movement_detail_id' => (string) Str::uuid(),
                         'product_id' => $detail['product_id'],
-                        'quantity' => $detail['quantity']
+                        'quantite' => $detail['quantite']
                     ]);
                 }
 
@@ -555,9 +555,9 @@ class StockMovementController extends Controller
      * @bodyParam client_id string optional UUID client. Example: 550e8400-e29b-41d4-a716-446655440101
      * @bodyParam statut string required Statut (pending, completed, cancelled). Example: pending
      * @bodyParam note string optional Note. Example: "Note mise à jour"
-     * @bodyParam details array required Nouveaux détails (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantity": 15}]
+     * @bodyParam details array required Nouveaux détails (minimum 1). Example: [{"product_id": "550e8400-e29b-41d4-a716-446655440003", "quantite": 15}]
      * @bodyParam details[].product_id string required UUID produit. Example: 550e8400-e29b-41d4-a716-446655440003
-     * @bodyParam details[].quantity integer required Quantité (minimum 1). Example: 15
+     * @bodyParam details[].quantite integer required Quantité (minimum 1). Example: 15
      * 
      * @response 200 scenario="Succès" {
      *   "success": true,
@@ -591,7 +591,7 @@ class StockMovementController extends Controller
                 'note' => 'nullable|string|max:1000',
                 'details' => 'required|array|min:1',
                 'details.*.product_id' => 'required|exists:products,product_id',
-                'details.*.quantity' => 'required|integer|min:1'
+                'details.*.quantite' => 'required|integer|min:1'
             ]);
 
             if ($validator->fails()) {
@@ -621,7 +621,7 @@ class StockMovementController extends Controller
                     $stockMovement->details()->create([
                         'stock_movement_detail_id' => (string) Str::uuid(),
                         'product_id' => $detail['product_id'],
-                        'quantity' => $detail['quantity']
+                        'quantite' => $detail['quantite']
                     ]);
                 }
 
