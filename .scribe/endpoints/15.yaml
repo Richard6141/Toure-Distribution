@@ -53,7 +53,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-14T23:13:25'
+        example: '2025-10-15T09:49:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -63,15 +63,15 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-07'
+        example: '2051-11-08'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-14T23:13:25'
-      date_to: '2051-11-07'
+      date_from: '2025-10-15T09:49:52'
+      date_to: '2051-11-08'
     fileParameters: []
     responses:
       -
@@ -267,7 +267,7 @@ endpoints:
         name: statut
         description: ''
         required: false
-        example: pending
+        example: paid
         type: string
         enumValues:
           - pending
@@ -282,7 +282,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-14T23:13:25'
+        example: '2025-10-15T09:49:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -292,7 +292,7 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-07'
+        example: '2051-11-08'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -323,9 +323,9 @@ endpoints:
       per_page: 22
       search: g
       client_id: c90237e9-ced5-3af6-88ea-84aeaa148878
-      statut: pending
-      date_from: '2025-10-14T23:13:25'
-      date_to: '2051-11-07'
+      statut: paid
+      date_from: '2025-10-15T09:49:52'
+      date_to: '2051-11-08'
       with_client: true
       with_details: true
     fileParameters: []
@@ -724,7 +724,7 @@ endpoints:
         name: with_payments
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -733,7 +733,7 @@ endpoints:
     cleanBodyParameters:
       with_client: true
       with_details: true
-      with_payments: true
+      with_payments: false
     fileParameters: []
     responses:
       -
