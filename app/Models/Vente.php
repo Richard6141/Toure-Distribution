@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class Vente extends Model
 {
@@ -20,6 +22,7 @@ class Vente extends Model
     protected $fillable = [
         'numero_vente',
         'client_id',
+        'entrepot_id',
         'date_vente',
         'montant_ht',
         'montant_taxe',
@@ -29,6 +32,7 @@ class Vente extends Model
         'status',
         'statut_paiement',
         'note',
+        'stock_movement_id',
     ];
 
     protected $casts = [
@@ -44,7 +48,7 @@ class Vente extends Model
     ];
 
     /**
-     * Boot du modèle pour générer automatiquement le numéro de vente
+     * Boot du modèle
      */
     protected static function boot()
     {
@@ -53,6 +57,42 @@ class Vente extends Model
         static::creating(function ($vente) {
             if (empty($vente->numero_vente)) {
                 $vente->numero_vente = self::generateNumeroVente();
+            }
+        });
+
+        // Après création d'une vente validée, créer le mouvement de stock
+        static::created(function ($vente) {
+            if ($vente->status === 'validee' && $vente->entrepot_id) {
+                $vente->createStockMovement();
+            }
+        });
+
+        // Lors de la mise à jour du statut
+        static::updating(function ($vente) {
+            // Si le statut passe à "validee" et qu'il n'y a pas encore de mouvement
+            if (
+                $vente->isDirty('status') &&
+                $vente->status === 'validee' &&
+                !$vente->stock_movement_id &&
+                $vente->entrepot_id
+            ) {
+                $vente->createStockMovement();
+            }
+
+            // Si le statut passe à "annulee" et qu'il y a un mouvement validé
+            if (
+                $vente->isDirty('status') &&
+                $vente->status === 'annulee' &&
+                $vente->stock_movement_id
+            ) {
+                $vente->cancelStockMovement();
+            }
+        });
+
+        // Avant suppression, annuler le mouvement de stock si nécessaire
+        static::deleting(function ($vente) {
+            if ($vente->stock_movement_id) {
+                $vente->cancelStockMovement();
             }
         });
     }
@@ -82,27 +122,135 @@ class Vente extends Model
     }
 
     /**
-     * Relation avec le client
+     * Crée un mouvement de stock pour cette vente
+     */
+    public function createStockMovement(): void
+    {
+        DB::beginTransaction();
+        try {
+            // Vérifier que la vente a des détails
+            if ($this->detailVentes->isEmpty()) {
+                throw new \Exception("Impossible de créer un mouvement de stock sans détails de vente");
+            }
+
+            // Vérifier que l'entrepôt est défini
+            if (!$this->entrepot_id) {
+                throw new \Exception("L'entrepôt source doit être défini pour créer un mouvement de stock");
+            }
+
+            // Générer la référence du mouvement
+            $reference = $this->generateStockMovementReference();
+
+            // Créer le mouvement de stock
+            $stockMovement = StockMovement::create([
+                'stock_movement_id' => (string) Str::uuid(),
+                'reference' => $reference,
+                'movement_type' => 'sortie',
+                'entrepot_from_id' => $this->entrepot_id,
+                'client_id' => $this->client_id,
+                'statut' => 'pending',
+                'note' => "Mouvement automatique pour la vente {$this->numero_vente}",
+                'user_id' => auth()->user()->user_id ?? null,
+            ]);
+
+            // Créer les détails du mouvement
+            foreach ($this->detailVentes as $detail) {
+                $stockMovement->details()->create([
+                    'stock_movement_detail_id' => (string) Str::uuid(),
+                    'product_id' => $detail->product_id,
+                    'quantite' => $detail->quantite,
+                ]);
+            }
+
+            // Valider immédiatement le mouvement (met à jour les stocks)
+            $stockMovement->validate();
+
+            // Lier le mouvement à la vente
+            $this->stock_movement_id = $stockMovement->stock_movement_id;
+            $this->saveQuietly(); // Sauvegarder sans déclencher les événements
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    /**
+     * Annule le mouvement de stock associé
+     */
+    public function cancelStockMovement(): void
+    {
+        if (!$this->stock_movement_id) {
+            return;
+        }
+
+        DB::beginTransaction();
+        try {
+            $stockMovement = StockMovement::find($this->stock_movement_id);
+
+            if ($stockMovement && $stockMovement->statut === 'validated') {
+                // Annuler le mouvement (restaure les stocks)
+                $stockMovement->statut = 'cancelled';
+                $stockMovement->note .= " | Annulé suite à l'annulation/suppression de la vente {$this->numero_vente}";
+                $stockMovement->save();
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    /**
+     * Génère une référence unique pour le mouvement de stock
+     */
+    private function generateStockMovementReference(): string
+    {
+        $year = date('Y');
+        $prefix = "MV-{$year}-";
+
+        $lastMovement = StockMovement::where('reference', 'like', "{$prefix}%")
+            ->orderBy('reference', 'desc')
+            ->first();
+
+        if ($lastMovement) {
+            $lastNumber = (int) substr($lastMovement->reference, strlen($prefix));
+            $newNumber = str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
+        } else {
+            $newNumber = '00001';
+        }
+
+        return $prefix . $newNumber;
+    }
+
+    /**
+     * Relations
      */
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class, 'client_id', 'client_id');
     }
 
-    /**
-     * Relation avec les détails de vente
-     */
+    public function entrepot(): BelongsTo
+    {
+        return $this->belongsTo(Entrepot::class, 'entrepot_id', 'entrepot_id');
+    }
+
     public function detailVentes(): HasMany
     {
         return $this->hasMany(DetailVente::class, 'vente_id', 'vente_id');
     }
 
-    /**
-     * Relation avec les paiements
-     */
     public function paiements(): HasMany
     {
         return $this->hasMany(PaiementVente::class, 'vente_id', 'vente_id');
+    }
+
+    public function stockMovement(): BelongsTo
+    {
+        return $this->belongsTo(StockMovement::class, 'stock_movement_id', 'stock_movement_id');
     }
 
     /**
@@ -135,45 +283,6 @@ class Vente extends Model
     public function isPartiellementPayee(): bool
     {
         return $this->montant_paye > 0 && $this->montant_paye < $this->montant_net;
-    }
-
-    /**
-     * Vérifie si la vente est validée
-     */
-    public function isValidee(): bool
-    {
-        return $this->status === 'validee';
-    }
-
-    /**
-     * Vérifie si la vente est livrée
-     */
-    public function isLivree(): bool
-    {
-        return $this->status === 'livree';
-    }
-
-    /**
-     * Vérifie si la vente est annulée
-     */
-    public function isAnnulee(): bool
-    {
-        return $this->status === 'annulee';
-    }
-
-    /**
-     * Met à jour le statut de paiement
-     */
-    public function updateStatutPaiement(): void
-    {
-        if ($this->isTotalementPayee()) {
-            $this->statut_paiement = 'paye_totalement';
-        } elseif ($this->isPartiellementPayee()) {
-            $this->statut_paiement = 'paye_partiellement';
-        } else {
-            $this->statut_paiement = 'non_paye';
-        }
-        $this->save();
     }
 
     /**

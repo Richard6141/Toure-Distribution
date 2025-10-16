@@ -2954,7 +2954,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -2980,7 +2980,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -3008,7 +3008,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -3193,7 +3193,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -3729,8 +3729,8 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": true,
-    \"with_client_type\": false,
-    \"balance_filter\": \"zero\"
+    \"with_client_type\": true,
+    \"balance_filter\": \"positive\"
 }"
 </code></pre></div>
 
@@ -3775,8 +3775,8 @@ let body = {
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": true,
-    "with_client_type": false,
-    "balance_filter": "zero"
+    "with_client_type": true,
+    "balance_filter": "positive"
 };
 
 fetch(url, {
@@ -3823,8 +3823,8 @@ $response = $client-&gt;get(
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; true,
-            'with_client_type' =&gt; false,
-            'balance_filter' =&gt; 'zero',
+            'with_client_type' =&gt; true,
+            'balance_filter' =&gt; 'positive',
         ],
     ]
 );
@@ -4253,7 +4253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -4261,10 +4261,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="zero"
+               value="positive"
                data-component="body">
     <br>
-<p>Example: <code>zero</code></p>
+<p>Example: <code>positive</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -4659,7 +4659,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -4681,7 +4681,7 @@ const headers = {
 };
 
 let body = {
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -4705,7 +4705,7 @@ $response = $client-&gt;get(
             'with_client_type' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -4875,7 +4875,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -8054,7 +8054,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-16T00:44:25\",
+    \"date_from\": \"2025-10-16T01:48:40\",
     \"date_to\": \"2051-11-09\"
 }"
 </code></pre></div>
@@ -8078,7 +8078,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-16T00:44:25",
+    "date_from": "2025-10-16T01:48:40",
     "date_to": "2051-11-09"
 };
 
@@ -8104,7 +8104,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-16T00:44:25',
+            'date_from' =&gt; '2025-10-16T01:48:40',
             'date_to' =&gt; '2051-11-09',
         ],
     ]
@@ -8235,10 +8235,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-16T00:44:25"
+               value="2025-10-16T01:48:40"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T00:44:25</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8275,7 +8275,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"statut\": \"cancelled\",
-    \"date_from\": \"2025-10-16T00:44:25\",
+    \"date_from\": \"2025-10-16T01:48:40\",
     \"date_to\": \"2051-11-09\",
     \"with_client\": true,
     \"with_details\": true
@@ -8313,7 +8313,7 @@ let body = {
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "statut": "cancelled",
-    "date_from": "2025-10-16T00:44:25",
+    "date_from": "2025-10-16T01:48:40",
     "date_to": "2051-11-09",
     "with_client": true,
     "with_details": true
@@ -8353,7 +8353,7 @@ $response = $client-&gt;get(
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'statut' =&gt; 'cancelled',
-            'date_from' =&gt; '2025-10-16T00:44:25',
+            'date_from' =&gt; '2025-10-16T01:48:40',
             'date_to' =&gt; '2051-11-09',
             'with_client' =&gt; true,
             'with_details' =&gt; true,
@@ -8655,10 +8655,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-16T00:44:25"
+               value="2025-10-16T01:48:40"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T00:44:25</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9140,7 +9140,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"with_client\": false,
-    \"with_details\": true,
+    \"with_details\": false,
     \"with_payments\": false
 }"
 </code></pre></div>
@@ -9166,7 +9166,7 @@ const headers = {
 
 let body = {
     "with_client": false,
-    "with_details": true,
+    "with_details": false,
     "with_payments": false
 };
 
@@ -9194,7 +9194,7 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'with_client' =&gt; false,
-            'with_details' =&gt; true,
+            'with_details' =&gt; false,
             'with_payments' =&gt; false,
         ],
     ]
@@ -9426,7 +9426,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -10388,7 +10388,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-16T00:44:25\",
+    \"date_from\": \"2025-10-16T01:48:40\",
     \"date_to\": \"2051-11-09\"
 }"
 </code></pre></div>
@@ -10412,7 +10412,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-16T00:44:25",
+    "date_from": "2025-10-16T01:48:40",
     "date_to": "2051-11-09"
 };
 
@@ -10438,7 +10438,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-16T00:44:25',
+            'date_from' =&gt; '2025-10-16T01:48:40',
             'date_to' =&gt; '2051-11-09',
         ],
     ]
@@ -10578,10 +10578,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-16T00:44:25"
+               value="2025-10-16T01:48:40"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T00:44:25</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10619,12 +10619,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-16T00:44:25\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-16T01:48:40\",
     \"date_to\": \"2051-11-09\",
-    \"with_facture\": true,
-    \"with_client\": true,
-    \"with_payment_method\": false
+    \"with_facture\": false,
+    \"with_client\": false,
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -10663,12 +10663,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "refunded",
-    "date_from": "2025-10-16T00:44:25",
+    "statut": "failed",
+    "date_from": "2025-10-16T01:48:40",
     "date_to": "2051-11-09",
-    "with_facture": true,
-    "with_client": true,
-    "with_payment_method": false
+    "with_facture": false,
+    "with_client": false,
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -10709,12 +10709,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-16T00:44:25',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-16T01:48:40',
             'date_to' =&gt; '2051-11-09',
-            'with_facture' =&gt; true,
-            'with_client' =&gt; true,
-            'with_payment_method' =&gt; false,
+            'with_facture' =&gt; false,
+            'with_client' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -11059,10 +11059,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="refunded"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>refunded</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -11072,10 +11072,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-16T00:44:25"
+               value="2025-10-16T01:48:40"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T00:44:25</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11107,7 +11107,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -11128,7 +11128,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -11149,7 +11149,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -11481,8 +11481,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"with_facture\": true,
-    \"with_client\": false,
-    \"with_payment_method\": true
+    \"with_client\": true,
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -11507,8 +11507,8 @@ const headers = {
 
 let body = {
     "with_facture": true,
-    "with_client": false,
-    "with_payment_method": true
+    "with_client": true,
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -11535,8 +11535,8 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'with_facture' =&gt; true,
-            'with_client' =&gt; false,
-            'with_payment_method' =&gt; true,
+            'with_client' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -11769,7 +11769,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -11790,7 +11790,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -17418,7 +17418,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -17440,7 +17440,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -17464,7 +17464,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -17622,7 +17622,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -38663,7 +38663,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-paiement-ventes-trashed-list">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -38675,7 +38675,42 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Liste des paiements supprim&eacute;s r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/paiement-ventes/trashed/list?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/paiement-ventes/trashed/list?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/paiement-ventes/trashed/list?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/paiement-ventes/trashed/list&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
 }</code>
  </pre>
     </span>
@@ -43225,7 +43260,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="gestion-des-ventes">Gestion des Ventes</h1>
 
-    <p>API pour gérer les ventes aux clients.
+    <p>API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
 Toutes les routes nécessitent une authentification via Sanctum.</p>
 
                                 <h2 id="gestion-des-ventes-GETapi-ventes">Liste des ventes</h2>
@@ -43242,7 +43277,7 @@ Toutes les routes nécessitent une authentification via Sanctum.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/ventes?page=1&amp;per_page=15&amp;search=VTE-2025-001&amp;client_id=9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&amp;status=validee&amp;statut_paiement=paye_partiellement&amp;date_debut=2025-01-01&amp;date_fin=2025-12-31&amp;montant_min=1000&amp;montant_max=50000" \
+    --get "http://localhost/api/ventes?page=1&amp;per_page=15&amp;search=VTE-2025-001&amp;client_id=9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&amp;entrepot_id=9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&amp;status=validee&amp;statut_paiement=paye_partiellement&amp;date_debut=2025-01-01&amp;date_fin=2025-12-31" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -43258,12 +43293,11 @@ const params = {
     "per_page": "15",
     "search": "VTE-2025-001",
     "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+    "entrepot_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
     "status": "validee",
     "statut_paiement": "paye_partiellement",
     "date_debut": "2025-01-01",
     "date_fin": "2025-12-31",
-    "montant_min": "1000",
-    "montant_max": "50000",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -43296,12 +43330,11 @@ $response = $client-&gt;get(
             'per_page' =&gt; '15',
             'search' =&gt; 'VTE-2025-001',
             'client_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a',
+            'entrepot_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a',
             'status' =&gt; 'validee',
             'statut_paiement' =&gt; 'paye_partiellement',
             'date_debut' =&gt; '2025-01-01',
             'date_fin' =&gt; '2025-12-31',
-            'montant_min' =&gt; '1000',
-            'montant_max' =&gt; '50000',
         ],
     ]
 );
@@ -43326,22 +43359,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
                 &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
                 &quot;client_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+                &quot;entrepot_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
                 &quot;date_vente&quot;: &quot;2025-01-15T10:00:00.000000Z&quot;,
                 &quot;montant_total&quot;: &quot;25000.00&quot;,
                 &quot;montant_net&quot;: &quot;23750.00&quot;,
-                &quot;remise&quot;: &quot;1250.00&quot;,
                 &quot;status&quot;: &quot;validee&quot;,
-                &quot;statut_paiement&quot;: &quot;paye_partiellement&quot;,
-                &quot;created_at&quot;: &quot;2025-01-15T10:00:00.000000Z&quot;,
-                &quot;client&quot;: {
-                    &quot;client_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-                    &quot;code&quot;: &quot;CLI001&quot;,
-                    &quot;name_client&quot;: &quot;Entreprise ABC&quot;,
-                    &quot;phonenumber&quot;: &quot;+229 97 00 00 00&quot;
-                }
+                &quot;stock_movement_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;
             }
-        ],
-        &quot;total&quot;: 45
+        ]
     }
 }</code>
  </pre>
@@ -43472,6 +43497,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Filtrer par ID du client. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>entrepot_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_id"                data-endpoint="GETapi-ventes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="query">
+    <br>
+<p>Filtrer par ID de l'entrepôt. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -43480,7 +43516,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="validee"
                data-component="query">
     <br>
-<p>Filtrer par statut (en_attente, validee, livree, partiellement_livree, annulee). Example: <code>validee</code></p>
+<p>Filtrer par statut. Example: <code>validee</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>statut_paiement</code></b>&nbsp;&nbsp;
@@ -43491,7 +43527,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="paye_partiellement"
                data-component="query">
     <br>
-<p>Filtrer par statut de paiement (non_paye, paye_partiellement, paye_totalement). Example: <code>paye_partiellement</code></p>
+<p>Filtrer par statut de paiement. Example: <code>paye_partiellement</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>date_debut</code></b>&nbsp;&nbsp;
@@ -43502,7 +43538,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2025-01-01"
                data-component="query">
     <br>
-<p>date Filtrer par date minimum (format: Y-m-d). Example: <code>2025-01-01</code></p>
+<p>date Filtrer par date minimum. Example: <code>2025-01-01</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>date_fin</code></b>&nbsp;&nbsp;
@@ -43513,29 +43549,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2025-12-31"
                data-component="query">
     <br>
-<p>date Filtrer par date maximum (format: Y-m-d). Example: <code>2025-12-31</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>montant_min</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="montant_min"                data-endpoint="GETapi-ventes"
-               value="1000"
-               data-component="query">
-    <br>
-<p>numeric Filtrer par montant minimum. Example: <code>1000</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>montant_max</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="montant_max"                data-endpoint="GETapi-ventes"
-               value="50000"
-               data-component="query">
-    <br>
-<p>numeric Filtrer par montant maximum. Example: <code>50000</code></p>
+<p>date Filtrer par date maximum. Example: <code>2025-12-31</code></p>
             </div>
                 </form>
 
@@ -43546,7 +43560,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Enregistre une nouvelle vente avec ses détails.
-Le numéro de vente est généré automatiquement au format VTE-YYYY-0001.</p>
+Si la vente est créée avec le statut &quot;validee&quot;, les stocks sont automatiquement mis à jour.</p>
+<p><strong>Options de validation automatique:</strong></p>
+<ul>
+<li>Si <code>status</code> est &quot;validee&quot;, un mouvement de stock est créé et validé automatiquement</li>
+<li>Le stock de l'entrepôt source est diminué en temps réel</li>
+<li>Si le stock est insuffisant, la création échoue</li>
+</ul>
 
 <span id="example-requests-POSTapi-ventes">
 <blockquote>Example request:</blockquote>
@@ -43560,16 +43580,16 @@ Le numéro de vente est généré automatiquement au format VTE-YYYY-0001.</p>
     --header "Accept: application/json" \
     --data "{
     \"client_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b\",
+    \"entrepot_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c\",
     \"date_vente\": \"2025-01-15 10:00:00\",
     \"remise\": \"1250.00\",
+    \"status\": \"validee\",
     \"note\": \"Vente avec remise spéciale\",
     \"details\": [
         {
             \"product_id\": \"uuid\",
             \"quantite\": 10,
-            \"prix_unitaire\": 2500,
-            \"remise_ligne\": 0,
-            \"taux_taxe\": 18
+            \"prix_unitaire\": 2500
         }
     ]
 }"
@@ -43589,16 +43609,16 @@ const headers = {
 
 let body = {
     "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+    "entrepot_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
     "date_vente": "2025-01-15 10:00:00",
     "remise": "1250.00",
+    "status": "validee",
     "note": "Vente avec remise spéciale",
     "details": [
         {
             "product_id": "uuid",
             "quantite": 10,
-            "prix_unitaire": 2500,
-            "remise_ligne": 0,
-            "taux_taxe": 18
+            "prix_unitaire": 2500
         }
     ]
 };
@@ -43637,18 +43657,14 @@ $response = $client-&gt;post(
                     'prix_unitaire' =&gt; [
                         2500,
                     ],
-                    'remise_ligne' =&gt; [
-                        0,
-                    ],
-                    'taux_taxe' =&gt; [
-                        18,
-                    ],
                 ],
             ],
             [
                 'client_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b',
+                'entrepot_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c',
                 'date_vente' =&gt; '2025-01-15 10:00:00',
                 'remise' =&gt; '1250.00',
+                'status' =&gt; 'validee',
                 'note' =&gt; 'Vente avec remise spéciale',
                 'details' =&gt; [
                     $o[0],
@@ -43671,29 +43687,23 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Vente cr&eacute;&eacute;e avec succ&egrave;s&quot;,
+    &quot;message&quot;: &quot;Vente cr&eacute;&eacute;e avec succ&egrave;s et stocks mis &agrave; jour&quot;,
     &quot;data&quot;: {
         &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
         &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
-        &quot;client_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-        &quot;date_vente&quot;: &quot;2025-01-15T10:00:00.000000Z&quot;,
-        &quot;montant_ht&quot;: &quot;21186.44&quot;,
-        &quot;montant_taxe&quot;: &quot;3813.56&quot;,
-        &quot;montant_total&quot;: &quot;25000.00&quot;,
-        &quot;remise&quot;: &quot;1250.00&quot;,
-        &quot;montant_net&quot;: &quot;23750.00&quot;,
-        &quot;status&quot;: &quot;en_attente&quot;,
-        &quot;statut_paiement&quot;: &quot;non_paye&quot;,
-        &quot;details&quot;: [
-            {
-                &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
-                &quot;quantite&quot;: 10,
-                &quot;prix_unitaire&quot;: &quot;2500.00&quot;,
-                &quot;montant_ht&quot;: &quot;21186.44&quot;,
-                &quot;montant_ttc&quot;: &quot;25000.00&quot;
-            }
-        ]
+        &quot;stock_movement_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;,
+        &quot;status&quot;: &quot;validee&quot;
     }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Stock insuffisant pour le produit Produit A. Disponible: 5, Demand&eacute;: 10&quot;
 }</code>
  </pre>
     </span>
@@ -43790,6 +43800,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'UUID du client. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_id"                data-endpoint="POSTapi-ventes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c"
+               data-component="body">
+    <br>
+<p>L'UUID de l'entrepôt source. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_vente</code></b>&nbsp;&nbsp;
 <small>datetime</small>&nbsp;
  &nbsp;
@@ -43798,7 +43819,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2025-01-15 10:00:00"
                data-component="body">
     <br>
-<p>La date et heure de la vente (format: Y-m-d H:i:s). Example: <code>2025-01-15 10:00:00</code></p>
+<p>La date et heure de la vente. Example: <code>2025-01-15 10:00:00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>remise</code></b>&nbsp;&nbsp;
@@ -43809,7 +43830,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1250.00"
                data-component="body">
     <br>
-<p>La remise globale accordée. Example: <code>1250.00</code></p>
+<p>La remise globale. Example: <code>1250.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-ventes"
+               value="validee"
+               data-component="body">
+    <br>
+<p>Le statut (en_attente par défaut, validee pour mise à jour automatique des stocks). Example: <code>validee</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -43820,7 +43852,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Vente avec remise spéciale"
                data-component="body">
     <br>
-<p>Des notes ou observations. Example: <code>Vente avec remise spéciale</code></p>
+<p>Des notes. Example: <code>Vente avec remise spéciale</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
         <details>
@@ -43829,7 +43861,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
  &nbsp;
 <br>
-<p>Les détails de la vente (produits).</p>
+<p>Les détails de la vente.</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
@@ -43837,10 +43869,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="details.0.product_id"                data-endpoint="POSTapi-ventes"
-               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c"
+               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
                data-component="body">
     <br>
-<p>L'UUID du produit. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c</code></p>
+<p>Must be a valid UUID. The <code>product_id</code> of an existing record in the products table. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
@@ -43848,43 +43880,43 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="details.0.quantite"                data-endpoint="POSTapi-ventes"
-               value="10"
+               value="67"
                data-component="body">
     <br>
-<p>La quantité vendue. Example: <code>10</code></p>
+<p>Must be at least 1. Example: <code>67</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>prix_unitaire</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
+<small>number</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.prix_unitaire"                data-endpoint="POSTapi-ventes"
-               value="2500.00"
+                <input type="number" style="display: none"
+               step="any"               name="details.0.prix_unitaire"                data-endpoint="POSTapi-ventes"
+               value="12"
                data-component="body">
     <br>
-<p>Le prix unitaire. Example: <code>2500.00</code></p>
+<p>Must be at least 0. Example: <code>12</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>remise_ligne</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
+<small>number</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.remise_ligne"                data-endpoint="POSTapi-ventes"
-               value="0"
+                <input type="number" style="display: none"
+               step="any"               name="details.0.remise_ligne"                data-endpoint="POSTapi-ventes"
+               value="77"
                data-component="body">
     <br>
-<p>La remise sur la ligne. Example: <code>0</code></p>
+<p>Must be at least 0. Example: <code>77</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>taux_taxe</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
+<small>number</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="details.0.taux_taxe"                data-endpoint="POSTapi-ventes"
-               value="18"
+                <input type="number" style="display: none"
+               step="any"               name="details.0.taux_taxe"                data-endpoint="POSTapi-ventes"
+               value="15"
                data-component="body">
     <br>
-<p>Le taux de taxe en %. Example: <code>18</code></p>
+<p>Must be at least 0. Must not be greater than 100. Example: <code>15</code></p>
                     </div>
                                     </details>
         </div>
@@ -43896,7 +43928,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Récupère les détails complets d'une vente avec client, détails et paiements.</p>
+<p>Récupère les détails complets d'une vente.</p>
 
 <span id="example-requests-GETapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -43904,7 +43936,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    --get "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -43912,7 +43944,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -43929,7 +43961,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;get(
     $url,
     [
@@ -43947,51 +43979,20 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-ventes--id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (404):</p>
         </blockquote>
-                <pre>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;D&eacute;tails de la vente r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;,
-    &quot;data&quot;: {
-        &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
-        &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
-        &quot;date_vente&quot;: &quot;2025-01-15T10:00:00.000000Z&quot;,
-        &quot;montant_total&quot;: &quot;25000.00&quot;,
-        &quot;montant_net&quot;: &quot;23750.00&quot;,
-        &quot;montant_paye&quot;: &quot;10000.00&quot;,
-        &quot;montant_restant&quot;: &quot;13750.00&quot;,
-        &quot;status&quot;: &quot;validee&quot;,
-        &quot;statut_paiement&quot;: &quot;paye_partiellement&quot;,
-        &quot;client&quot;: {
-            &quot;client_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-            &quot;code&quot;: &quot;CLI001&quot;,
-            &quot;name_client&quot;: &quot;Entreprise ABC&quot;
-        },
-        &quot;detail_ventes&quot;: [
-            {
-                &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
-                &quot;quantite&quot;: 10,
-                &quot;prix_unitaire&quot;: &quot;2500.00&quot;,
-                &quot;montant_ttc&quot;: &quot;25000.00&quot;,
-                &quot;product&quot;: {
-                    &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
-                    &quot;code&quot;: &quot;PROD001&quot;,
-                    &quot;name&quot;: &quot;Produit A&quot;
-                }
-            }
-        ],
-        &quot;paiements&quot;: [
-            {
-                &quot;paiement_vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;,
-                &quot;reference_paiement&quot;: &quot;PAYV-2025-0001&quot;,
-                &quot;montant&quot;: &quot;10000.00&quot;,
-                &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
-                &quot;date_paiement&quot;: &quot;2025-01-15T14:00:00.000000Z&quot;
-            }
-        ]
-    }
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Vente non trouv&eacute;e&quot;
 }</code>
  </pre>
     </span>
@@ -44082,10 +44083,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-ventes--id-"
-               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               value="architecto"
                data-component="url">
     <br>
-<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                     </form>
 
@@ -44095,8 +44096,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Met à jour les informations d'une vente existante.
-Note: Le numéro de vente ne peut pas être modifié.</p>
+<p>Met à jour les informations d'une vente.
+<strong>Important:</strong> Si le statut passe à &quot;validee&quot;, les stocks seront mis à jour automatiquement.
+Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et les stocks restaurés.</p>
 
 <span id="example-requests-PUTapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -44104,12 +44106,12 @@ Note: Le numéro de vente ne peut pas être modifié.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"status\": \"livree\",
+    \"status\": \"validee\",
     \"note\": \"Livraison effectuée\"
 }"
 </code></pre></div>
@@ -44117,7 +44119,7 @@ Note: Le numéro de vente ne peut pas être modifié.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -44127,7 +44129,7 @@ const headers = {
 };
 
 let body = {
-    "status": "livree",
+    "status": "validee",
     "note": "Livraison effectuée"
 };
 
@@ -44140,7 +44142,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;put(
     $url,
     [
@@ -44150,7 +44152,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'status' =&gt; 'livree',
+            'status' =&gt; 'validee',
             'note' =&gt; 'Livraison effectuée',
         ],
     ]
@@ -44170,6 +44172,16 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Vente mise &agrave; jour avec succ&egrave;s&quot;,
     &quot;data&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Stock insuffisant pour valider cette vente&quot;
 }</code>
  </pre>
     </span>
@@ -44260,10 +44272,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-ventes--id-"
-               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               value="architecto"
                data-component="url">
     <br>
-<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -44272,10 +44284,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-ventes--id-"
-               value="livree"
+               value="validee"
                data-component="body">
     <br>
-<p>Le statut de la vente. Example: <code>livree</code></p>
+<p>Le statut de la vente. Example: <code>validee</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -44286,7 +44298,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Livraison effectuée"
                data-component="body">
     <br>
-<p>Des notes ou observations. Example: <code>Livraison effectuée</code></p>
+<p>Des notes. Example: <code>Livraison effectuée</code></p>
         </div>
         </form>
 
@@ -44296,8 +44308,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Met à jour les informations d'une vente existante.
-Note: Le numéro de vente ne peut pas être modifié.</p>
+<p>Met à jour les informations d'une vente.
+<strong>Important:</strong> Si le statut passe à &quot;validee&quot;, les stocks seront mis à jour automatiquement.
+Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et les stocks restaurés.</p>
 
 <span id="example-requests-PATCHapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -44305,12 +44318,12 @@ Note: Le numéro de vente ne peut pas être modifié.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"status\": \"livree\",
+    \"status\": \"validee\",
     \"note\": \"Livraison effectuée\"
 }"
 </code></pre></div>
@@ -44318,7 +44331,7 @@ Note: Le numéro de vente ne peut pas être modifié.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -44328,7 +44341,7 @@ const headers = {
 };
 
 let body = {
-    "status": "livree",
+    "status": "validee",
     "note": "Livraison effectuée"
 };
 
@@ -44341,7 +44354,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;patch(
     $url,
     [
@@ -44351,7 +44364,7 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'status' =&gt; 'livree',
+            'status' =&gt; 'validee',
             'note' =&gt; 'Livraison effectuée',
         ],
     ]
@@ -44371,6 +44384,16 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Vente mise &agrave; jour avec succ&egrave;s&quot;,
     &quot;data&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Stock insuffisant pour valider cette vente&quot;
 }</code>
  </pre>
     </span>
@@ -44461,10 +44484,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHapi-ventes--id-"
-               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               value="architecto"
                data-component="url">
     <br>
-<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -44473,10 +44496,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PATCHapi-ventes--id-"
-               value="livree"
+               value="validee"
                data-component="body">
     <br>
-<p>Le statut de la vente. Example: <code>livree</code></p>
+<p>Le statut de la vente. Example: <code>validee</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -44487,7 +44510,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Livraison effectuée"
                data-component="body">
     <br>
-<p>Des notes ou observations. Example: <code>Livraison effectuée</code></p>
+<p>Des notes. Example: <code>Livraison effectuée</code></p>
         </div>
         </form>
 
@@ -44497,7 +44520,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Effectue une suppression logique (soft delete) d'une vente.</p>
+<p>Effectue une suppression logique d'une vente.
+Si la vente est validée, le mouvement de stock sera annulé et les stocks restaurés.</p>
 
 <span id="example-requests-DELETEapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -44505,7 +44529,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -44513,7 +44537,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -44530,7 +44554,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;delete(
     $url,
     [
@@ -44547,17 +44571,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-DELETEapi-ventes--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Vente supprim&eacute;e avec succ&egrave;s&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-DELETEapi-ventes--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-DELETEapi-ventes--id-"></span>:
@@ -44645,17 +44659,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-ventes--id-"
-               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               value="architecto"
                data-component="url">
     <br>
-<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                     </form>
 
                     <h2 id="gestion-des-ventes-GETapi-ventes-trashed-list">Liste des ventes supprimées</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -44667,7 +44680,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/ventes/trashed/list" \
-    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -44678,7 +44690,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -44696,7 +44707,6 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -44709,7 +44719,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-ventes-trashed-list">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -44721,7 +44731,42 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Liste des ventes supprim&eacute;es r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/ventes/trashed/list?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/ventes/trashed/list?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/ventes/trashed/list?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/ventes/trashed/list&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
 }</code>
  </pre>
     </span>
@@ -44742,7 +44787,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-ventes-trashed-list" data-method="GET"
       data-path="api/ventes/trashed/list"
-      data-authed="1"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -44773,17 +44818,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ventes-trashed-list"
-               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -44810,7 +44844,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="gestion-des-ventes-POSTapi-ventes--id--restore">Restaurer une vente supprimée</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -44822,7 +44855,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/ventes/architecto/restore" \
-    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -44833,7 +44865,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -44851,7 +44882,6 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -44881,7 +44911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-ventes--id--restore" data-method="POST"
       data-path="api/ventes/{id}/restore"
-      data-authed="1"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -44911,17 +44941,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/ventes/{id}/restore</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ventes--id--restore"
-               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
-            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;

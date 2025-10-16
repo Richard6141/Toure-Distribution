@@ -55,7 +55,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-16T00:44:25'
+        example: '2025-10-16T01:48:40'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -72,7 +72,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-16T00:44:25'
+      date_from: '2025-10-16T01:48:40'
       date_to: '2051-11-09'
     fileParameters: []
     responses:
@@ -284,7 +284,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-16T00:44:25'
+        example: '2025-10-16T01:48:40'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -326,7 +326,7 @@ endpoints:
       search: g
       client_id: c90237e9-ced5-3af6-88ea-84aeaa148878
       statut: cancelled
-      date_from: '2025-10-16T00:44:25'
+      date_from: '2025-10-16T01:48:40'
       date_to: '2051-11-09'
       with_client: true
       with_details: true
@@ -716,7 +716,7 @@ endpoints:
         name: with_details
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -734,7 +734,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       with_client: false
-      with_details: true
+      with_details: false
       with_payments: false
     fileParameters: []
     responses:

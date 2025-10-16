@@ -3,7 +3,7 @@
 name: 'Gestion des Ventes'
 description: |-
 
-  API pour gérer les ventes aux clients.
+  API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
@@ -14,7 +14,7 @@ endpoints:
       groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
@@ -70,9 +70,19 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      entrepot_id:
+        name: entrepot_id
+        description: "Filtrer par ID de l'entrepôt."
+        required: false
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       status:
         name: status
-        description: 'Filtrer par statut (en_attente, validee, livree, partiellement_livree, annulee).'
+        description: 'Filtrer par statut.'
         required: false
         example: validee
         type: string
@@ -82,7 +92,7 @@ endpoints:
         custom: []
       statut_paiement:
         name: statut_paiement
-        description: 'Filtrer par statut de paiement (non_paye, paye_partiellement, paye_totalement).'
+        description: 'Filtrer par statut de paiement.'
         required: false
         example: paye_partiellement
         type: string
@@ -92,7 +102,7 @@ endpoints:
         custom: []
       date_debut:
         name: date_debut
-        description: 'date Filtrer par date minimum (format: Y-m-d).'
+        description: 'date Filtrer par date minimum.'
         required: false
         example: '2025-01-01'
         type: string
@@ -102,29 +112,9 @@ endpoints:
         custom: []
       date_fin:
         name: date_fin
-        description: 'date Filtrer par date maximum (format: Y-m-d).'
+        description: 'date Filtrer par date maximum.'
         required: false
         example: '2025-12-31'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant_min:
-        name: montant_min
-        description: 'numeric Filtrer par montant minimum.'
-        required: false
-        example: '1000'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant_max:
-        name: montant_max
-        description: 'numeric Filtrer par montant maximum.'
-        required: false
-        example: '50000'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -135,12 +125,11 @@ endpoints:
       per_page: 15
       search: VTE-2025-001
       client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
       status: validee
       statut_paiement: paye_partiellement
       date_debut: '2025-01-01'
       date_fin: '2025-12-31'
-      montant_min: '1000'
-      montant_max: '50000'
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -158,22 +147,14 @@ endpoints:
                   "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
                   "numero_vente": "VTE-2025-0001",
                   "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "entrepot_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
                   "date_vente": "2025-01-15T10:00:00.000000Z",
                   "montant_total": "25000.00",
                   "montant_net": "23750.00",
-                  "remise": "1250.00",
                   "status": "validee",
-                  "statut_paiement": "paye_partiellement",
-                  "created_at": "2025-01-15T10:00:00.000000Z",
-                  "client": {
-                    "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                    "code": "CLI001",
-                    "name_client": "Entreprise ABC",
-                    "phonenumber": "+229 97 00 00 00"
-                  }
+                  "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
                 }
-              ],
-              "total": 45
+              ]
             }
           }
         headers: []
@@ -196,14 +177,19 @@ endpoints:
       groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Créer une vente'
       description: |-
         Enregistre une nouvelle vente avec ses détails.
-        Le numéro de vente est généré automatiquement au format VTE-YYYY-0001.
+        Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour.
+
+        **Options de validation automatique:**
+        - Si `status` est "validee", un mouvement de stock est créé et validé automatiquement
+        - Le stock de l'entrepôt source est diminué en temps réel
+        - Si le stock est insuffisant, la création échoue
       authenticated: true
       deprecated: false
       custom: []
@@ -226,9 +212,19 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      entrepot_id:
+        name: entrepot_id
+        description: "L'UUID de l'entrepôt source."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       date_vente:
         name: date_vente
-        description: 'La date et heure de la vente (format: Y-m-d H:i:s).'
+        description: 'La date et heure de la vente.'
         required: true
         example: '2025-01-15 10:00:00'
         type: datetime
@@ -238,7 +234,7 @@ endpoints:
         custom: []
       remise:
         name: remise
-        description: 'La remise globale accordée.'
+        description: 'La remise globale.'
         required: false
         example: '1250.00'
         type: numeric
@@ -246,9 +242,19 @@ endpoints:
         exampleWasSpecified: true
         nullable: true
         custom: []
+      status:
+        name: status
+        description: 'Le statut (en_attente par défaut, validee pour mise à jour automatique des stocks).'
+        required: false
+        example: validee
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       note:
         name: note
-        description: 'Des notes ou observations.'
+        description: 'Des notes.'
         required: false
         example: 'Vente avec remise spéciale'
         type: string
@@ -258,15 +264,13 @@ endpoints:
         custom: []
       details:
         name: details
-        description: 'Les détails de la vente (produits).'
+        description: 'Les détails de la vente.'
         required: true
         example:
           -
             product_id: uuid
             quantite: 10
             prix_unitaire: 2500
-            remise_ligne: 0
-            taux_taxe: 18
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -274,66 +278,66 @@ endpoints:
         custom: []
       'details[].product_id':
         name: 'details[].product_id'
-        description: "L'UUID du produit."
+        description: 'Must be a valid UUID. The <code>product_id</code> of an existing record in the products table.'
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+        example: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       'details[].quantite':
         name: 'details[].quantite'
-        description: 'La quantité vendue.'
+        description: 'Must be at least 1.'
         required: true
-        example: 10
+        example: 67
         type: integer
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       'details[].prix_unitaire':
         name: 'details[].prix_unitaire'
-        description: 'Le prix unitaire.'
+        description: 'Must be at least 0.'
         required: true
-        example: '2500.00'
-        type: numeric
+        example: 12
+        type: number
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       'details[].remise_ligne':
         name: 'details[].remise_ligne'
-        description: 'La remise sur la ligne.'
+        description: 'Must be at least 0.'
         required: false
-        example: '0'
-        type: numeric
+        example: 77
+        type: number
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       'details[].taux_taxe':
         name: 'details[].taux_taxe'
-        description: 'Le taux de taxe en %.'
+        description: 'Must be at least 0. Must not be greater than 100.'
         required: false
-        example: '18'
-        type: numeric
+        example: 15
+        type: number
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
       client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
       date_vente: '2025-01-15 10:00:00'
       remise: '1250.00'
+      status: validee
       note: 'Vente avec remise spéciale'
       details:
         -
           product_id: uuid
           quantite: 10
           prix_unitaire: 2500
-          remise_ligne: 0
-          taux_taxe: 18
     fileParameters: []
     responses:
       -
@@ -341,29 +345,23 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Vente créée avec succès",
+            "message": "Vente créée avec succès et stocks mis à jour",
             "data": {
               "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
               "numero_vente": "VTE-2025-0001",
-              "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "date_vente": "2025-01-15T10:00:00.000000Z",
-              "montant_ht": "21186.44",
-              "montant_taxe": "3813.56",
-              "montant_total": "25000.00",
-              "remise": "1250.00",
-              "montant_net": "23750.00",
-              "status": "en_attente",
-              "statut_paiement": "non_paye",
-              "details": [
-                {
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "montant_ht": "21186.44",
-                  "montant_ttc": "25000.00"
-                }
-              ]
+              "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+              "status": "validee"
             }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
           }
         headers: []
         description: ''
@@ -385,12 +383,12 @@ endpoints:
       groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Afficher une vente'
-      description: "Récupère les détails complets d'une vente avec client, détails et paiements."
+      description: "Récupère les détails complets d'une vente."
       authenticated: true
       deprecated: false
       custom: []
@@ -401,16 +399,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: 'The ID of the vente.'
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -418,52 +416,13 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Détails de la vente récupérés avec succès",
-            "data": {
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_vente": "VTE-2025-0001",
-              "date_vente": "2025-01-15T10:00:00.000000Z",
-              "montant_total": "25000.00",
-              "montant_net": "23750.00",
-              "montant_paye": "10000.00",
-              "montant_restant": "13750.00",
-              "status": "validee",
-              "statut_paiement": "paye_partiellement",
-              "client": {
-                "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "CLI001",
-                "name_client": "Entreprise ABC"
-              },
-              "detail_ventes": [
-                {
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "montant_ttc": "25000.00",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                    "code": "PROD001",
-                    "name": "Produit A"
-                  }
-                }
-              ],
-              "paiements": [
-                {
-                  "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                  "reference_paiement": "PAYV-2025-0001",
-                  "montant": "10000.00",
-                  "mode_paiement": "mobile_money",
-                  "date_paiement": "2025-01-15T14:00:00.000000Z"
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
+        status: 404
+        content: '{"success":false,"message":"Vente non trouv\u00e9e"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
     responseFields: []
     auth:
@@ -482,14 +441,15 @@ endpoints:
       groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour une vente'
       description: |-
-        Met à jour les informations d'une vente existante.
-        Note: Le numéro de vente ne peut pas être modifié.
+        Met à jour les informations d'une vente.
+        **Important:** Si le statut passe à "validee", les stocks seront mis à jour automatiquement.
+        Si le statut passe à "annulee", le mouvement de stock sera annulé et les stocks restaurés.
       authenticated: true
       deprecated: false
       custom: []
@@ -500,16 +460,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: 'The ID of the vente.'
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -517,7 +477,7 @@ endpoints:
         name: status
         description: 'Le statut de la vente.'
         required: false
-        example: livree
+        example: validee
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -525,7 +485,7 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'Des notes ou observations.'
+        description: 'Des notes.'
         required: false
         example: 'Livraison effectuée'
         type: string
@@ -534,7 +494,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      status: livree
+      status: validee
       note: 'Livraison effectuée'
     fileParameters: []
     responses:
@@ -545,6 +505,16 @@ endpoints:
             "success": true,
             "message": "Vente mise à jour avec succès",
             "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Stock insuffisant pour valider cette vente"
           }
         headers: []
         description: ''
@@ -566,14 +536,15 @@ endpoints:
       groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour une vente'
       description: |-
-        Met à jour les informations d'une vente existante.
-        Note: Le numéro de vente ne peut pas être modifié.
+        Met à jour les informations d'une vente.
+        **Important:** Si le statut passe à "validee", les stocks seront mis à jour automatiquement.
+        Si le statut passe à "annulee", le mouvement de stock sera annulé et les stocks restaurés.
       authenticated: true
       deprecated: false
       custom: []
@@ -584,16 +555,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: 'The ID of the vente.'
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -601,7 +572,7 @@ endpoints:
         name: status
         description: 'Le statut de la vente.'
         required: false
-        example: livree
+        example: validee
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -609,7 +580,7 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'Des notes ou observations.'
+        description: 'Des notes.'
         required: false
         example: 'Livraison effectuée'
         type: string
@@ -618,7 +589,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      status: livree
+      status: validee
       note: 'Livraison effectuée'
     fileParameters: []
     responses:
@@ -629,6 +600,16 @@ endpoints:
             "success": true,
             "message": "Vente mise à jour avec succès",
             "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Stock insuffisant pour valider cette vente"
           }
         headers: []
         description: ''
@@ -650,121 +631,14 @@ endpoints:
       groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Supprimer une vente'
-      description: "Effectue une suppression logique (soft delete) d'une vente."
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la vente."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Vente supprimée avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/ventes/trashed/list
-    metadata:
-      groupName: 'Gestion des Ventes'
-      groupDescription: |-
-
-        API pour gérer les ventes aux clients.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Liste des ventes supprimées'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/ventes/{id}/restore'
-    metadata:
-      groupName: 'Gestion des Ventes'
-      groupDescription: |-
-
-        API pour gérer les ventes aux clients.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Restaurer une vente supprimée'
-      description: ''
+      description: |-
+        Effectue une suppression logique d'une vente.
+        Si la vente est validée, le mouvement de stock sera annulé et les stocks restaurés.
       authenticated: true
       deprecated: false
       custom: []
@@ -796,6 +670,94 @@ endpoints:
       - headers
       - Authorization
       - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/ventes/trashed/list
+    metadata:
+      groupName: 'Gestion des Ventes'
+      groupDescription: |-
+
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des ventes supprimées'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Liste des ventes supprim\u00e9es r\u00e9cup\u00e9r\u00e9e avec succ\u00e8s","data":{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/ventes\/trashed\/list?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/ventes\/trashed\/list?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/ventes\/trashed\/list?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/ventes\/trashed\/list","per_page":15,"prev_page_url":null,"to":null,"total":0}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/ventes/{id}/restore'
+    metadata:
+      groupName: 'Gestion des Ventes'
+      groupDescription: |-
+
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaurer une vente supprimée'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the vente.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
     controller: null
     method: null
     route: null

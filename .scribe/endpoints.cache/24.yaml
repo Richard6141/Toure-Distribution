@@ -851,11 +851,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 200
+        content: '{"success":true,"message":"Liste des paiements supprim\u00e9s r\u00e9cup\u00e9r\u00e9e avec succ\u00e8s","data":{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list","per_page":15,"prev_page_url":null,"to":null,"total":0}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\DetailVente;
 use App\Models\Product;
 use App\Models\Vente;
+use App\Models\Stock;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ use Illuminate\Validation\Rule;
 /**
  * @group Gestion des Ventes
  * 
- * API pour gérer les ventes aux clients.
+ * API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
  * Toutes les routes nécessitent une authentification via Sanctum.
  */
 class VenteController extends Controller
@@ -32,12 +33,11 @@ class VenteController extends Controller
      * @queryParam per_page integer Nombre d'éléments par page (max 100). Example: 15
      * @queryParam search string Rechercher par numéro de vente. Example: VTE-2025-001
      * @queryParam client_id string Filtrer par ID du client. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * @queryParam status string Filtrer par statut (en_attente, validee, livree, partiellement_livree, annulee). Example: validee
-     * @queryParam statut_paiement string Filtrer par statut de paiement (non_paye, paye_partiellement, paye_totalement). Example: paye_partiellement
-     * @queryParam date_debut date Filtrer par date minimum (format: Y-m-d). Example: 2025-01-01
-     * @queryParam date_fin date Filtrer par date maximum (format: Y-m-d). Example: 2025-12-31
-     * @queryParam montant_min numeric Filtrer par montant minimum. Example: 1000
-     * @queryParam montant_max numeric Filtrer par montant maximum. Example: 50000
+     * @queryParam entrepot_id string Filtrer par ID de l'entrepôt. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * @queryParam status string Filtrer par statut. Example: validee
+     * @queryParam statut_paiement string Filtrer par statut de paiement. Example: paye_partiellement
+     * @queryParam date_debut date Filtrer par date minimum. Example: 2025-01-01
+     * @queryParam date_fin date Filtrer par date maximum. Example: 2025-12-31
      * 
      * @response 200 {
      *   "success": true,
@@ -49,22 +49,14 @@ class VenteController extends Controller
      *         "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
      *         "numero_vente": "VTE-2025-0001",
      *         "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *         "entrepot_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
      *         "date_vente": "2025-01-15T10:00:00.000000Z",
      *         "montant_total": "25000.00",
      *         "montant_net": "23750.00",
-     *         "remise": "1250.00",
      *         "status": "validee",
-     *         "statut_paiement": "paye_partiellement",
-     *         "created_at": "2025-01-15T10:00:00.000000Z",
-     *         "client": {
-     *           "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-     *           "code": "CLI001",
-     *           "name_client": "Entreprise ABC",
-     *           "phonenumber": "+229 97 00 00 00"
-     *         }
+     *         "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
      *       }
-     *     ],
-     *     "total": 45
+     *     ]
      *   }
      * }
      */
@@ -72,7 +64,11 @@ class VenteController extends Controller
     {
         $perPage = min($request->input('per_page', 15), 100);
 
-        $query = Vente::with('client:client_id,code,name_client,phonenumber,email');
+        $query = Vente::with([
+            'client:client_id,code,name_client,phonenumber,email',
+            'entrepot:entrepot_id,code,name,adresse',
+            'stockMovement:stock_movement_id,reference,statut'
+        ]);
 
         // Recherche
         if ($request->filled('search')) {
@@ -83,6 +79,10 @@ class VenteController extends Controller
         // Filtres
         if ($request->filled('client_id')) {
             $query->parClient($request->input('client_id'));
+        }
+
+        if ($request->filled('entrepot_id')) {
+            $query->where('entrepot_id', $request->input('entrepot_id'));
         }
 
         if ($request->filled('status')) {
@@ -105,15 +105,6 @@ class VenteController extends Controller
             $query->where('date_vente', '<=', $request->input('date_fin') . ' 23:59:59');
         }
 
-        // Montants
-        if ($request->filled('montant_min')) {
-            $query->where('montant_net', '>=', $request->input('montant_min'));
-        }
-
-        if ($request->filled('montant_max')) {
-            $query->where('montant_net', '<=', $request->input('montant_max'));
-        }
-
         $ventes = $query->orderBy('date_vente', 'desc')->paginate($perPage);
 
         return response()->json([
@@ -127,54 +118,53 @@ class VenteController extends Controller
      * Créer une vente
      * 
      * Enregistre une nouvelle vente avec ses détails.
-     * Le numéro de vente est généré automatiquement au format VTE-YYYY-0001.
+     * Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour.
+     * 
+     * **Options de validation automatique:**
+     * - Si `status` est "validee", un mouvement de stock est créé et validé automatiquement
+     * - Le stock de l'entrepôt source est diminué en temps réel
+     * - Si le stock est insuffisant, la création échoue
      * 
      * @authenticated
      * 
      * @bodyParam client_id string required L'UUID du client. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-     * @bodyParam date_vente datetime required La date et heure de la vente (format: Y-m-d H:i:s). Example: 2025-01-15 10:00:00
-     * @bodyParam remise numeric La remise globale accordée. Example: 1250.00
-     * @bodyParam note string Des notes ou observations. Example: Vente avec remise spéciale
-     * @bodyParam details array required Les détails de la vente (produits). Example: [{"product_id": "uuid", "quantite": 10, "prix_unitaire": 2500, "remise_ligne": 0, "taux_taxe": 18}]
-     * @bodyParam details[].product_id string required L'UUID du produit. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-     * @bodyParam details[].quantite integer required La quantité vendue. Example: 10
-     * @bodyParam details[].prix_unitaire numeric required Le prix unitaire. Example: 2500.00
-     * @bodyParam details[].remise_ligne numeric La remise sur la ligne. Example: 0
-     * @bodyParam details[].taux_taxe numeric Le taux de taxe en %. Example: 18
+     * @bodyParam entrepot_id string required L'UUID de l'entrepôt source. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+     * @bodyParam date_vente datetime required La date et heure de la vente. Example: 2025-01-15 10:00:00
+     * @bodyParam remise numeric La remise globale. Example: 1250.00
+     * @bodyParam status string Le statut (en_attente par défaut, validee pour mise à jour automatique des stocks). Example: validee
+     * @bodyParam note string Des notes. Example: Vente avec remise spéciale
+     * @bodyParam details array required Les détails de la vente. Example: [{"product_id": "uuid", "quantite": 10, "prix_unitaire": 2500}]
      * 
      * @response 201 {
      *   "success": true,
-     *   "message": "Vente créée avec succès",
+     *   "message": "Vente créée avec succès et stocks mis à jour",
      *   "data": {
      *     "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
      *     "numero_vente": "VTE-2025-0001",
-     *     "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-     *     "date_vente": "2025-01-15T10:00:00.000000Z",
-     *     "montant_ht": "21186.44",
-     *     "montant_taxe": "3813.56",
-     *     "montant_total": "25000.00",
-     *     "remise": "1250.00",
-     *     "montant_net": "23750.00",
-     *     "status": "en_attente",
-     *     "statut_paiement": "non_paye",
-     *     "details": [
-     *       {
-     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-     *         "quantite": 10,
-     *         "prix_unitaire": "2500.00",
-     *         "montant_ht": "21186.44",
-     *         "montant_ttc": "25000.00"
-     *       }
-     *     ]
+     *     "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *     "status": "validee"
      *   }
+     * }
+     * 
+     * @response 422 {
+     *   "success": false,
+     *   "message": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
      * }
      */
     public function store(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'client_id' => 'required|uuid|exists:clients,client_id',
+            'entrepot_id' => 'required|uuid|exists:entrepots,entrepot_id',
             'date_vente' => 'required|date',
             'remise' => 'nullable|numeric|min:0',
+            'status' => ['nullable', Rule::in([
+                'en_attente',
+                'validee',
+                'livree',
+                'partiellement_livree',
+                'annulee'
+            ])],
             'note' => 'nullable|string',
             'details' => 'required|array|min:1',
             'details.*.product_id' => 'required|uuid|exists:products,product_id',
@@ -185,6 +175,8 @@ class VenteController extends Controller
         ], [
             'client_id.required' => 'Le client est requis',
             'client_id.exists' => 'Le client sélectionné n\'existe pas',
+            'entrepot_id.required' => 'L\'entrepôt source est requis',
+            'entrepot_id.exists' => 'L\'entrepôt sélectionné n\'existe pas',
             'date_vente.required' => 'La date de vente est requise',
             'details.required' => 'Les détails de la vente sont requis',
             'details.min' => 'Au moins un produit est requis',
@@ -200,6 +192,26 @@ class VenteController extends Controller
 
         DB::beginTransaction();
         try {
+            // Vérifier la disponibilité du stock si statut = validee
+            $status = $request->input('status', 'en_attente');
+            if ($status === 'validee') {
+                foreach ($request->details as $detail) {
+                    $stock = Stock::where('product_id', $detail['product_id'])
+                        ->where('entrepot_id', $request->entrepot_id)
+                        ->first();
+
+                    $disponible = $stock ? ($stock->quantite - $stock->reserved_quantity) : 0;
+
+                    if ($disponible < $detail['quantite']) {
+                        $product = Product::find($detail['product_id']);
+                        throw new \Exception(
+                            "Stock insuffisant pour le produit {$product->name}. " .
+                                "Disponible: {$disponible}, Demandé: {$detail['quantite']}"
+                        );
+                    }
+                }
+            }
+
             // Calculer les totaux
             $montantHT = 0;
             $montantTaxe = 0;
@@ -226,12 +238,14 @@ class VenteController extends Controller
             // Créer la vente
             $vente = Vente::create([
                 'client_id' => $request->client_id,
+                'entrepot_id' => $request->entrepot_id,
                 'date_vente' => $request->date_vente,
                 'montant_ht' => $montantHT,
                 'montant_taxe' => $montantTaxe,
                 'montant_total' => $montantTotal,
                 'remise' => $remise,
                 'montant_net' => $montantNet,
+                'status' => $status,
                 'note' => $request->note,
             ]);
 
@@ -247,21 +261,32 @@ class VenteController extends Controller
                 ]);
             }
 
-            $vente->load(['client:client_id,code,name_client', 'detailVentes.product:product_id,code,name']);
+            // Le mouvement de stock est créé automatiquement par le modèle
+            // si status = 'validee' grâce au hook created()
+
+            $vente->load([
+                'client:client_id,code,name_client',
+                'entrepot:entrepot_id,code,name',
+                'detailVentes.product:product_id,code,name',
+                'stockMovement:stock_movement_id,reference,statut'
+            ]);
 
             DB::commit();
 
+            $message = $status === 'validee'
+                ? 'Vente créée avec succès et stocks mis à jour'
+                : 'Vente créée avec succès';
+
             return response()->json([
                 'success' => true,
-                'message' => 'Vente créée avec succès',
+                'message' => $message,
                 'data' => $vente
             ], 201);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
                 'success' => false,
-                'message' => 'Erreur lors de la création de la vente',
-                'error' => $e->getMessage()
+                'message' => $e->getMessage()
             ], 500);
         }
     }
@@ -269,61 +294,18 @@ class VenteController extends Controller
     /**
      * Afficher une vente
      * 
-     * Récupère les détails complets d'une vente avec client, détails et paiements.
+     * Récupère les détails complets d'une vente.
      * 
      * @authenticated
-     * 
-     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Détails de la vente récupérés avec succès",
-     *   "data": {
-     *     "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-     *     "numero_vente": "VTE-2025-0001",
-     *     "date_vente": "2025-01-15T10:00:00.000000Z",
-     *     "montant_total": "25000.00",
-     *     "montant_net": "23750.00",
-     *     "montant_paye": "10000.00",
-     *     "montant_restant": "13750.00",
-     *     "status": "validee",
-     *     "statut_paiement": "paye_partiellement",
-     *     "client": {
-     *       "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-     *       "code": "CLI001",
-     *       "name_client": "Entreprise ABC"
-     *     },
-     *     "detail_ventes": [
-     *       {
-     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-     *         "quantite": 10,
-     *         "prix_unitaire": "2500.00",
-     *         "montant_ttc": "25000.00",
-     *         "product": {
-     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-     *           "code": "PROD001",
-     *           "name": "Produit A"
-     *         }
-     *       }
-     *     ],
-     *     "paiements": [
-     *       {
-     *         "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-     *         "reference_paiement": "PAYV-2025-0001",
-     *         "montant": "10000.00",
-     *         "mode_paiement": "mobile_money",
-     *         "date_paiement": "2025-01-15T14:00:00.000000Z"
-     *       }
-     *     ]
-     *   }
-     * }
      */
     public function show(string $id): JsonResponse
     {
         $vente = Vente::with([
             'client',
+            'entrepot',
             'detailVentes.product:product_id,code,name,unit_price',
-            'paiements'
+            'paiements',
+            'stockMovement.details.product'
         ])->find($id);
 
         if (!$vente) {
@@ -336,8 +318,6 @@ class VenteController extends Controller
         $data = $vente->toArray();
         $data['montant_paye'] = $vente->montant_paye;
         $data['montant_restant'] = $vente->montant_restant;
-        $data['is_totalement_payee'] = $vente->isTotalementPayee();
-        $data['is_partiellement_payee'] = $vente->isPartiellementPayee();
 
         return response()->json([
             'success' => true,
@@ -349,20 +329,24 @@ class VenteController extends Controller
     /**
      * Mettre à jour une vente
      * 
-     * Met à jour les informations d'une vente existante.
-     * Note: Le numéro de vente ne peut pas être modifié.
+     * Met à jour les informations d'une vente.
+     * **Important:** Si le statut passe à "validee", les stocks seront mis à jour automatiquement.
+     * Si le statut passe à "annulee", le mouvement de stock sera annulé et les stocks restaurés.
      * 
      * @authenticated
      * 
-     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
-     * @bodyParam status string Le statut de la vente. Example: livree
-     * @bodyParam note string Des notes ou observations. Example: Livraison effectuée
+     * @bodyParam status string Le statut de la vente. Example: validee
+     * @bodyParam note string Des notes. Example: Livraison effectuée
      * 
      * @response 200 {
      *   "success": true,
      *   "message": "Vente mise à jour avec succès",
      *   "data": {}
+     * }
+     * 
+     * @response 422 {
+     *   "success": false,
+     *   "message": "Stock insuffisant pour valider cette vente"
      * }
      */
     public function update(Request $request, string $id): JsonResponse
@@ -395,29 +379,66 @@ class VenteController extends Controller
             ], 422);
         }
 
-        $vente->update($validator->validated());
-        $vente->load('client:client_id,code,name_client');
+        DB::beginTransaction();
+        try {
+            // Vérifier le stock si passage à validee
+            if (
+                $request->has('status') &&
+                $request->status === 'validee' &&
+                $vente->status !== 'validee' &&
+                !$vente->stock_movement_id
+            ) {
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Vente mise à jour avec succès',
-            'data' => $vente->fresh(['client'])
-        ]);
+                foreach ($vente->detailVentes as $detail) {
+                    $stock = Stock::where('product_id', $detail->product_id)
+                        ->where('entrepot_id', $vente->entrepot_id)
+                        ->first();
+
+                    $disponible = $stock ? ($stock->quantite - $stock->reserved_quantity) : 0;
+
+                    if ($disponible < $detail->quantite) {
+                        throw new \Exception(
+                            "Stock insuffisant pour le produit {$detail->product->name}. " .
+                                "Disponible: {$disponible}, Demandé: {$detail->quantite}"
+                        );
+                    }
+                }
+            }
+
+            $vente->update($validator->validated());
+
+            // Le hook updated() du modèle gère automatiquement
+            // la création/annulation du mouvement de stock
+
+            $vente->load([
+                'client:client_id,code,name_client',
+                'entrepot:entrepot_id,code,name',
+                'stockMovement:stock_movement_id,reference,statut'
+            ]);
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Vente mise à jour avec succès',
+                'data' => $vente
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Supprimer une vente
      * 
-     * Effectue une suppression logique (soft delete) d'une vente.
+     * Effectue une suppression logique d'une vente.
+     * Si la vente est validée, le mouvement de stock sera annulé et les stocks restaurés.
      * 
      * @authenticated
-     * 
-     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Vente supprimée avec succès"
-     * }
      */
     public function destroy(string $id): JsonResponse
     {
@@ -430,18 +451,30 @@ class VenteController extends Controller
             ], 404);
         }
 
-        $vente->delete();
+        DB::beginTransaction();
+        try {
+            // Le hook deleting() du modèle annule automatiquement
+            // le mouvement de stock si nécessaire
+            $vente->delete();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Vente supprimée avec succès'
-        ]);
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Vente supprimée avec succès'
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la suppression de la vente',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
      * Liste des ventes supprimées
-     * 
-     * @authenticated
      */
     public function trashed(Request $request): JsonResponse
     {
@@ -461,8 +494,6 @@ class VenteController extends Controller
 
     /**
      * Restaurer une vente supprimée
-     * 
-     * @authenticated
      */
     public function restore(string $id): JsonResponse
     {
@@ -481,7 +512,7 @@ class VenteController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Vente restaurée avec succès',
-            'data' => $vente->fresh(['client'])
+            'data' => $vente
         ]);
     }
 }
