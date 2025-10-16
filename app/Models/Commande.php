@@ -1,15 +1,15 @@
 <?php
+// app/Models/Commande.php
 
 namespace App\Models;
 
 use Fournisseur;
-use App\Models\DetailCommande;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Commande extends Model
 {
@@ -41,7 +41,7 @@ class Commande extends Model
     ];
 
     /**
-     * Boot du modèle pour générer automatiquement le numéro de commande
+     * Boot du modèle
      */
     protected static function boot()
     {
@@ -55,30 +55,25 @@ class Commande extends Model
     }
 
     /**
-     * Génère automatiquement un numéro de commande unique
-     * Format: CMD-YYYY-0001
+     * Génère un numéro de commande unique
      */
     public static function generateNumeroCommande(): string
     {
         $year = date('Y');
         $prefix = "CMD-{$year}-";
 
-        // Récupérer le dernier numéro de commande de l'année en cours
         $lastCommande = self::withTrashed()
             ->where('numero_commande', 'like', "{$prefix}%")
             ->orderBy('numero_commande', 'desc')
             ->first();
 
         if ($lastCommande) {
-            // Extraire le numéro et incrémenter
             $lastNumber = intval(substr($lastCommande->numero_commande, -4));
             $newNumber = $lastNumber + 1;
         } else {
-            // Premier numéro de l'année
             $newNumber = 1;
         }
 
-        // Formater avec des zéros à gauche (4 chiffres)
         return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
     }
 
@@ -91,128 +86,19 @@ class Commande extends Model
     }
 
     /**
-     * Vérifie si la commande est en attente
-     */
-    public function isEnAttente(): bool
-    {
-        return $this->status === 'en_attente';
-    }
-
-    /**
-     * Vérifie si la commande est validée
-     */
-    public function isValidee(): bool
-    {
-        return $this->status === 'validee';
-    }
-
-    /**
-     * Vérifie si la commande est livrée
-     */
-    public function isLivree(): bool
-    {
-        return $this->status === 'livree';
-    }
-
-    /**
-     * Vérifie si la commande est annulée
-     */
-    public function isAnnulee(): bool
-    {
-        return $this->status === 'annulee';
-    }
-
-    /**
-     * Vérifie si la livraison est en retard
-     */
-    public function isEnRetard(): bool
-    {
-        if (in_array($this->status, ['livree', 'annulee'])) {
-            return false;
-        }
-
-        return $this->date_livraison_prevue < now()->toDateString();
-    }
-
-    /**
-     * Scope pour obtenir uniquement les commandes en attente
-     */
-    public function scopeEnAttente($query)
-    {
-        return $query->where('status', 'en_attente');
-    }
-
-    /**
-     * Scope pour obtenir les commandes validées
-     */
-    public function scopeValidees($query)
-    {
-        return $query->where('status', 'validee');
-    }
-
-    /**
-     * Scope pour obtenir les commandes livrées
-     */
-    public function scopeLivrees($query)
-    {
-        return $query->where('status', 'livree');
-    }
-
-    /**
-     * Scope pour obtenir les commandes en retard
-     */
-    public function scopeEnRetard($query)
-    {
-        return $query->whereNotIn('status', ['livree', 'annulee'])
-            ->where('date_livraison_prevue', '<', now()->toDateString());
-    }
-
-    /**
-     * Scope pour filtrer par fournisseur
-     */
-    public function scopeParFournisseur($query, $fournisseurId)
-    {
-        return $query->where('fournisseur_id', $fournisseurId);
-    }
-
-    /**
-     * Scope pour filtrer par période de dates d'achat
-     */
-    public function scopeParPeriodeAchat($query, $dateDebut, $dateFin)
-    {
-        return $query->whereBetween('date_achat', [$dateDebut, $dateFin]);
-    }
-
-    /**
-     * Scope pour filtrer par montant minimum
-     */
-    public function scopeMontantMin($query, $montant)
-    {
-        return $query->where('montant', '>=', $montant);
-    }
-
-    /**
-     * Scope pour filtrer par montant maximum
-     */
-    public function scopeMontantMax($query, $montant)
-    {
-        return $query->where('montant', '<=', $montant);
-    }
-
-    /**
      * Relation avec les détails de commande
      */
-    public function details()
+    public function details(): HasMany
     {
         return $this->hasMany(DetailCommande::class, 'commande_id', 'commande_id');
     }
 
     /**
-     * Calcule le montant total de la commande basé sur les détails
+     * Relation avec les mouvements de stock (répartitions)
      */
-    public function calculerMontantTotal(): float
+    public function stockMovements(): HasMany
     {
-        return $this->details()->sum('sous_total');
+        return $this->hasMany(StockMovement::class, 'commande_id', 'commande_id');
     }
 
     /**
@@ -223,33 +109,176 @@ class Commande extends Model
         return $this->hasMany(PaiementCommande::class, 'commande_id', 'commande_id');
     }
 
+    // ========== MÉTHODES POUR LA RÉPARTITION ==========
+
     /**
-     * Calcule le montant total payé
+     * Vérifie si la commande peut être répartie dans les entrepôts
+     * Seules les commandes livrées peuvent être réparties
      */
-    public function getMontantPayeAttribute(): float
+    public function canBeDistributed(): bool
     {
-        return $this->paiements()->valides()->sum('montant');
+        return $this->status === 'livree';
     }
 
     /**
-     * Calcule le montant restant à payer
+     * Calcule les quantités déjà réparties par produit
+     * Ne compte que les mouvements validés
      */
+    public function getQuantitesReparties(): array
+    {
+        $repartitions = $this->stockMovements()
+            ->where('statut', 'validated')
+            ->with('details')
+            ->get();
+
+        $quantitesParProduit = [];
+
+        foreach ($repartitions as $repartition) {
+            foreach ($repartition->details as $detail) {
+                if (!isset($quantitesParProduit[$detail->product_id])) {
+                    $quantitesParProduit[$detail->product_id] = 0;
+                }
+                $quantitesParProduit[$detail->product_id] += $detail->quantite;
+            }
+        }
+
+        return $quantitesParProduit;
+    }
+
+    /**
+     * Récupère les quantités restant à répartir par produit
+     * Quantité restante = Quantité commandée - Quantité déjà répartie
+     */
+    public function getQuantitesRestantes(): array
+    {
+        $quantitesCommandees = [];
+        foreach ($this->details as $detail) {
+            $quantitesCommandees[$detail->product_id] = $detail->quantite;
+        }
+
+        $quantitesReparties = $this->getQuantitesReparties();
+
+        $quantitesRestantes = [];
+        foreach ($quantitesCommandees as $productId => $qteCommandee) {
+            $qteRepartie = $quantitesReparties[$productId] ?? 0;
+            $quantitesRestantes[$productId] = max(0, $qteCommandee - $qteRepartie);
+        }
+
+        return $quantitesRestantes;
+    }
+
+    /**
+     * Vérifie si toute la commande a été répartie
+     */
+    public function isFullyDistributed(): bool
+    {
+        $quantitesRestantes = $this->getQuantitesRestantes();
+        return array_sum($quantitesRestantes) === 0;
+    }
+
+    /**
+     * Vérifie si des quantités peuvent encore être réparties
+     */
+    public function canDistributeMore(): bool
+    {
+        return !$this->isFullyDistributed();
+    }
+
+    // ========== MÉTHODES DE STATUT ==========
+
+    public function isEnAttente(): bool
+    {
+        return $this->status === 'en_attente';
+    }
+
+    public function isValidee(): bool
+    {
+        return $this->status === 'validee';
+    }
+
+    public function isLivree(): bool
+    {
+        return $this->status === 'livree';
+    }
+
+    public function isAnnulee(): bool
+    {
+        return $this->status === 'annulee';
+    }
+
+    public function isEnRetard(): bool
+    {
+        if (in_array($this->status, ['livree', 'annulee'])) {
+            return false;
+        }
+        return $this->date_livraison_prevue < now()->toDateString();
+    }
+
+    // ========== SCOPES ==========
+
+    public function scopeEnAttente($query)
+    {
+        return $query->where('status', 'en_attente');
+    }
+
+    public function scopeValidees($query)
+    {
+        return $query->where('status', 'validee');
+    }
+
+    public function scopeLivrees($query)
+    {
+        return $query->where('status', 'livree');
+    }
+
+    public function scopeEnRetard($query)
+    {
+        return $query->whereNotIn('status', ['livree', 'annulee'])
+            ->where('date_livraison_prevue', '<', now()->toDateString());
+    }
+
+    public function scopeParFournisseur($query, $fournisseurId)
+    {
+        return $query->where('fournisseur_id', $fournisseurId);
+    }
+
+    public function scopeParPeriodeAchat($query, $dateDebut, $dateFin)
+    {
+        return $query->whereBetween('date_achat', [$dateDebut, $dateFin]);
+    }
+
+    public function scopeMontantMin($query, $montant)
+    {
+        return $query->where('montant', '>=', $montant);
+    }
+
+    public function scopeMontantMax($query, $montant)
+    {
+        return $query->where('montant', '<=', $montant);
+    }
+
+    // ========== MÉTHODES DE CALCUL ==========
+
+    public function calculerMontantTotal(): float
+    {
+        return $this->details()->sum('sous_total');
+    }
+
+    public function getMontantPayeAttribute(): float
+    {
+        return $this->paiements()->where('statut', 'valide')->sum('montant');
+    }
+
     public function getMontantRestantAttribute(): float
     {
         return $this->montant - $this->montant_paye;
     }
 
-    /**
-     * Vérifie si la commande est totalement payée
-     */
     public function isTotalementPayee(): bool
     {
         return $this->montant_restant <= 0;
     }
 
-    /**
-     * Vérifie si la commande est partiellement payée
-     */
     public function isPartiellementPayee(): bool
     {
         return $this->montant_paye > 0 && $this->montant_paye < $this->montant;

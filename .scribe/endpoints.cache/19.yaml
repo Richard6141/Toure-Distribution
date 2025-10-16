@@ -1037,3 +1037,379 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/commandes/{id}/distribute-to-warehouses'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Répartir une commande livrée dans les entrepôts'
+      description: |-
+        Permet au responsable de la centrale de répartir les produits d'une commande livrée
+        dans différents entrepôts selon les besoins. La répartition peut se faire en plusieurs fois.
+
+        **Processus automatique :**
+        - ✅ Validation que la commande est bien livrée
+        - ✅ Vérification que les produits existent dans la table products
+        - ✅ Contrôle strict des quantités (ne pas dépasser ce qui est commandé)
+        - ✅ Création automatique des stocks si le produit n'existe pas dans l'entrepôt
+        - ✅ Mise à jour automatique des stocks existants
+        - ✅ Création des mouvements de stock et de leurs détails
+        - ✅ Validation automatique des mouvements
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la commande livrée.'
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      distributions:
+        name: distributions
+        description: 'Tableau des répartitions par entrepôt (minimum 1).'
+        required: true
+        example: null
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'distributions[].entrepot_id':
+        name: 'distributions[].entrepot_id'
+        description: "UUID de l'entrepôt de destination."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440002
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'distributions[].products':
+        name: 'distributions[].products'
+        description: 'Produits à transférer vers cet entrepôt (minimum 1).'
+        required: true
+        example:
+          -
+            product_id: 550e...
+            quantite: 50
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'distributions[].products[].product_id':
+        name: 'distributions[].products[].product_id'
+        description: 'UUID du produit (doit exister dans la table products).'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440003
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'distributions[].products[].quantite':
+        name: 'distributions[].products[].quantite'
+        description: 'Quantité à transférer (minimum 1).'
+        required: true
+        example: 50
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'distributions[].note':
+        name: 'distributions[].note'
+        description: 'optional Note ou observation sur cette répartition.'
+        required: false
+        example: '"Stock prioritaire - demande urgente"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      distributions: null
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Commande répartie avec succès dans 2 entrepôt(s)",
+            "data": {
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                "numero_commande": "CMD-2025-0001",
+                "status": "livree",
+                "is_fully_distributed": false,
+                "can_distribute_more": true
+              },
+              "stock_movements": [
+                {
+                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+                  "reference": "MV-2025-00001",
+                  "movement_type": "réception commande",
+                  "statut": "validated",
+                  "entrepot_to": {
+                    "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                    "name": "Entrepôt Principal",
+                    "code": "ENT-001"
+                  },
+                  "details": [
+                    {
+                      "product": {
+                        "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                        "name": "Produit A",
+                        "code": "PROD-001"
+                      },
+                      "quantite": 50
+                    }
+                  ]
+                }
+              ],
+              "quantites_reparties": {
+                "550e8400-e29b-41d4-a716-446655440003": 100
+              },
+              "quantites_restantes": {
+                "550e8400-e29b-41d4-a716-446655440003": 0,
+                "550e8400-e29b-41d4-a716-446655440004": 50
+              }
+            }
+          }
+        headers: []
+        description: 'Répartition réussie'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "La commande doit être livrée pour être répartie",
+            "current_status": "validee"
+          }
+        headers: []
+        description: 'Commande pas encore livrée'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "Le produit 'Produit XYZ' n'appartient pas à cette commande"
+          }
+        headers: []
+        description: "Produit n'appartient pas à la commande"
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "Quantité excessive pour le produit 'Produit A'. Restant à répartir: 30, Demandée: 50"
+          }
+        headers: []
+        description: 'Quantité excessive'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: 'Commande non trouvée'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Le produit avec l'ID '550e...' n'existe pas dans le système"
+          }
+        headers: []
+        description: 'Produit non trouvé'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "distributions": ["Au moins une répartition est requise"],
+              "distributions.0.entrepot_id": ["L'entrepôt est requis"],
+              "distributions.0.products.0.quantite": ["La quantité doit être au minimum 1"]
+            }
+          }
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la répartition de la commande",
+            "error": "Message d'erreur détaillé"
+          }
+        headers: []
+        description: 'Erreur serveur'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/commandes/{id}/distribution-history'
+    metadata:
+      groupName: 'Gestion des Commandes'
+      groupDescription: |-
+
+        API pour gérer les commandes d'achat auprès des fournisseurs.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Historique des répartitions d'une commande"
+      description: |-
+        Récupère l'historique complet de toutes les répartitions effectuées pour une commande.
+        Affiche les quantités commandées, réparties et restantes par produit.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la commande.'
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                "numero_commande": "CMD-2025-0001",
+                "status": "livree",
+                "date_livraison_effective": "2025-10-15",
+                "is_fully_distributed": false,
+                "can_distribute_more": true
+              },
+              "quantites_commandees": {
+                "550e8400-e29b-41d4-a716-446655440003": {
+                  "product": {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "name": "Produit A",
+                    "code": "PROD-001"
+                  },
+                  "quantite": 100,
+                  "prix_unitaire": "2500.00"
+                }
+              },
+              "quantites_reparties": {
+                "550e8400-e29b-41d4-a716-446655440003": 50
+              },
+              "quantites_restantes": {
+                "550e8400-e29b-41d4-a716-446655440003": 50
+              },
+              "repartitions": [
+                {
+                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
+                  "reference": "MV-2025-00001",
+                  "entrepot": {
+                    "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
+                    "name": "Entrepôt Principal",
+                    "code": "ENT-001"
+                  },
+                  "statut": "validated",
+                  "note": "Répartition urgente",
+                  "created_at": "2025-10-15T14:30:00.000000Z",
+                  "user": {
+                    "user_id": "550e8400-e29b-41d4-a716-446655440050",
+                    "username": "admin",
+                    "email": "admin@example.com"
+                  },
+                  "details": [
+                    {
+                      "product": {
+                        "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                        "name": "Produit A",
+                        "code": "PROD-001"
+                      },
+                      "quantite": 50
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []

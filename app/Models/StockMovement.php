@@ -1,12 +1,14 @@
 <?php
+// app/Models/StockMovement.php
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Fournisseur;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class StockMovement extends Model
 {
@@ -22,6 +24,7 @@ class StockMovement extends Model
         'entrepot_from_id',
         'entrepot_to_id',
         'fournisseur_id',
+        'commande_id',
         'client_id',
         'statut',
         'note',
@@ -36,27 +39,22 @@ class StockMovement extends Model
             }
         });
 
-        // Événement après création : mise à jour des stocks quand le statut est 'validated'
         static::created(function ($movement) {
             if ($movement->statut === 'validated') {
                 $movement->updateStocks();
             }
         });
 
-        // Événement après mise à jour : gérer le changement de statut
         static::updated(function ($movement) {
-            // Si le statut passe à 'validated', mettre à jour les stocks
             if ($movement->isDirty('statut') && $movement->statut === 'validated') {
                 $movement->updateStocks();
             }
 
-            // Si le statut passe de 'validated' à autre chose, annuler les mouvements
             if ($movement->isDirty('statut') && $movement->getOriginal('statut') === 'validated' && $movement->statut !== 'validated') {
                 $movement->reverseStocks();
             }
         });
 
-        // Événement avant suppression : annuler les mouvements de stock si validé
         static::deleting(function ($movement) {
             if ($movement->statut === 'validated') {
                 $movement->reverseStocks();
@@ -65,30 +63,27 @@ class StockMovement extends Model
     }
 
     /**
-     * Met à jour les stocks en fonction du type de mouvement
+     * Met à jour les stocks avec création automatique si nécessaire
      */
     public function updateStocks()
     {
         foreach ($this->details as $detail) {
             // Transfert entre entrepôts
             if ($this->entrepot_from_id && $this->entrepot_to_id) {
-                // Diminuer le stock de l'entrepôt source
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_from_id,
                     -$detail->quantite
                 );
 
-                // Augmenter le stock de l'entrepôt destination
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_to_id,
                     $detail->quantite
                 );
             }
-            // Réception fournisseur (entrée)
-            elseif ($this->fournisseur_id && $this->entrepot_to_id) {
-                // Augmenter le stock de l'entrepôt destination
+            // Réception fournisseur/commande (entrée)
+            elseif ($this->entrepot_to_id && ($this->fournisseur_id || $this->commande_id)) {
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_to_id,
@@ -97,7 +92,6 @@ class StockMovement extends Model
             }
             // Sortie client
             elseif ($this->client_id && $this->entrepot_from_id) {
-                // Diminuer le stock de l'entrepôt source
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_from_id,
@@ -108,39 +102,30 @@ class StockMovement extends Model
     }
 
     /**
-     * Annule les mouvements de stock (inverse de updateStocks)
+     * Annule les mouvements de stock
      */
     public function reverseStocks()
     {
         foreach ($this->details as $detail) {
-            // Transfert entre entrepôts
             if ($this->entrepot_from_id && $this->entrepot_to_id) {
-                // Augmenter le stock de l'entrepôt source (inverse)
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_from_id,
                     $detail->quantite
                 );
 
-                // Diminuer le stock de l'entrepôt destination (inverse)
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_to_id,
                     -$detail->quantite
                 );
-            }
-            // Réception fournisseur (entrée)
-            elseif ($this->fournisseur_id && $this->entrepot_to_id) {
-                // Diminuer le stock de l'entrepôt destination (inverse)
+            } elseif ($this->entrepot_to_id && ($this->fournisseur_id || $this->commande_id)) {
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_to_id,
                     -$detail->quantite
                 );
-            }
-            // Sortie client
-            elseif ($this->client_id && $this->entrepot_from_id) {
-                // Augmenter le stock de l'entrepôt source (inverse)
+            } elseif ($this->client_id && $this->entrepot_from_id) {
                 $this->updateOrCreateStock(
                     $detail->product_id,
                     $this->entrepot_from_id,
@@ -152,6 +137,7 @@ class StockMovement extends Model
 
     /**
      * Met à jour ou crée un enregistrement de stock
+     * CRÉATION AUTOMATIQUE si le stock n'existe pas pour ce produit dans cet entrepôt
      */
     private function updateOrCreateStock($productId, $entrepotId, $quantityChange)
     {
@@ -164,12 +150,12 @@ class StockMovement extends Model
             $stock->quantite += $quantityChange;
             $stock->save();
         } else {
-            // Création d'un nouveau stock
+            // CRÉATION AUTOMATIQUE d'un nouveau stock
             Stock::create([
                 'stock_id' => (string) Str::uuid(),
                 'product_id' => $productId,
                 'entrepot_id' => $entrepotId,
-                'quantite' => max(0, $quantityChange), // Ne pas créer de stock négatif
+                'quantite' => max(0, $quantityChange),
                 'reserved_quantity' => 0
             ]);
         }
@@ -211,7 +197,8 @@ class StockMovement extends Model
         }
     }
 
-    // Relations
+    // ========== RELATIONS ==========
+
     public function entrepotFrom()
     {
         return $this->belongsTo(Entrepot::class, 'entrepot_from_id', 'entrepot_id');
@@ -240,5 +227,10 @@ class StockMovement extends Model
     public function fournisseur()
     {
         return $this->belongsTo(Fournisseur::class, 'fournisseur_id', 'fournisseur_id');
+    }
+
+    public function commande()
+    {
+        return $this->belongsTo(Commande::class, 'commande_id', 'commande_id');
     }
 }

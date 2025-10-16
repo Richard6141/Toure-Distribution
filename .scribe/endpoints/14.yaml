@@ -156,7 +156,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -166,7 +166,7 @@ endpoints:
       page: 16
       per_page: 22
       search: g
-      is_active: true
+      is_active: false
     fileParameters: []
     responses:
       -

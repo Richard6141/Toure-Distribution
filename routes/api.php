@@ -372,6 +372,12 @@ Route::prefix('commandes')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [CommandeController::class, 'trashed']); // Liste des commandes supprimées
     Route::post('/{id}/restore', [CommandeController::class, 'restore']); // Restaurer une commande supprimée
+    // Nouvelles routes pour la répartition
+    Route::post('/{id}/distribute-to-warehouses', [CommandeController::class, 'distributeToWarehouses'])
+        ->name('commandes.distribute');
+
+    Route::get('/{id}/distribution-history', [CommandeController::class, 'distributionHistory'])
+        ->name('commandes.distribution-history');
 })->middleware('auth:sanctum');
 
 /**
