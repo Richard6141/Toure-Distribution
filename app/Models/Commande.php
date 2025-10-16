@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Commande extends Model
 {
@@ -212,5 +213,45 @@ class Commande extends Model
     public function calculerMontantTotal(): float
     {
         return $this->details()->sum('sous_total');
+    }
+
+    /**
+     * Relation avec les paiements
+     */
+    public function paiements(): HasMany
+    {
+        return $this->hasMany(PaiementCommande::class, 'commande_id', 'commande_id');
+    }
+
+    /**
+     * Calcule le montant total payé
+     */
+    public function getMontantPayeAttribute(): float
+    {
+        return $this->paiements()->valides()->sum('montant');
+    }
+
+    /**
+     * Calcule le montant restant à payer
+     */
+    public function getMontantRestantAttribute(): float
+    {
+        return $this->montant - $this->montant_paye;
+    }
+
+    /**
+     * Vérifie si la commande est totalement payée
+     */
+    public function isTotalementPayee(): bool
+    {
+        return $this->montant_restant <= 0;
+    }
+
+    /**
+     * Vérifie si la commande est partiellement payée
+     */
+    public function isPartiellementPayee(): bool
+    {
+        return $this->montant_paye > 0 && $this->montant_paye < $this->montant;
     }
 }

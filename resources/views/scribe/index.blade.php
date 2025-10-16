@@ -654,6 +654,40 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-gestion-des-paiements-de-commandes" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-paiements-de-commandes">
+                    <a href="#gestion-des-paiements-de-commandes">Gestion des Paiements de Commandes</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-paiements-de-commandes" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-GETapi-paiement-commandes">
+                                <a href="#gestion-des-paiements-de-commandes-GETapi-paiement-commandes">Liste des paiements</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-POSTapi-paiement-commandes">
+                                <a href="#gestion-des-paiements-de-commandes-POSTapi-paiement-commandes">Créer un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-GETapi-paiement-commandes--id-">
+                                <a href="#gestion-des-paiements-de-commandes-GETapi-paiement-commandes--id-">Afficher un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-PUTapi-paiement-commandes--id-">
+                                <a href="#gestion-des-paiements-de-commandes-PUTapi-paiement-commandes--id-">Mettre à jour un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-PATCHapi-paiement-commandes--id-">
+                                <a href="#gestion-des-paiements-de-commandes-PATCHapi-paiement-commandes--id-">Mettre à jour un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-DELETEapi-paiement-commandes--id-">
+                                <a href="#gestion-des-paiements-de-commandes-DELETEapi-paiement-commandes--id-">Supprimer un paiement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-GETapi-paiement-commandes-trashed-list">
+                                <a href="#gestion-des-paiements-de-commandes-GETapi-paiement-commandes-trashed-list">Liste des paiements supprimés</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-POSTapi-paiement-commandes--id--restore">
+                                <a href="#gestion-des-paiements-de-commandes-POSTapi-paiement-commandes--id--restore">Restaurer un paiement supprimé</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-commandes-GETapi-paiement-commandes-commande--commande_id-">
+                                <a href="#gestion-des-paiements-de-commandes-GETapi-paiement-commandes-commande--commande_id-">Paiements d'une commande</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-gestion-des-produits" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="gestion-des-produits">
                     <a href="#gestion-des-produits">Gestion des Produits</a>
@@ -756,7 +790,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 15 October 2025</li>
+        <li>Dernière mise à jour: 16 October 2025</li>
     </ul>
 </div>
 
@@ -3592,9 +3626,9 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": true,
-    \"with_client_type\": false,
-    \"balance_filter\": \"zero\"
+    \"is_active\": false,
+    \"with_client_type\": true,
+    \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
 
@@ -3638,9 +3672,9 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": true,
-    "with_client_type": false,
-    "balance_filter": "zero"
+    "is_active": false,
+    "with_client_type": true,
+    "balance_filter": "negative"
 };
 
 fetch(url, {
@@ -3686,9 +3720,9 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; true,
-            'with_client_type' =&gt; false,
-            'balance_filter' =&gt; 'zero',
+            'is_active' =&gt; false,
+            'with_client_type' =&gt; true,
+            'balance_filter' =&gt; 'negative',
         ],
     ]
 );
@@ -4096,7 +4130,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -4117,7 +4151,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -4125,10 +4159,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="zero"
+               value="negative"
                data-component="body">
     <br>
-<p>Example: <code>zero</code></p>
+<p>Example: <code>negative</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -6454,7 +6488,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": false
+    \"is_active\": true
 }"
 </code></pre></div>
 
@@ -6482,7 +6516,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": false
+    "is_active": true
 };
 
 fetch(url, {
@@ -6512,7 +6546,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
         ],
     ]
 );
@@ -6729,7 +6763,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -7918,8 +7952,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-15T23:39:05\",
-    \"date_to\": \"2051-11-08\"
+    \"date_from\": \"2025-10-16T00:03:57\",
+    \"date_to\": \"2051-11-09\"
 }"
 </code></pre></div>
 
@@ -7942,8 +7976,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-15T23:39:05",
-    "date_to": "2051-11-08"
+    "date_from": "2025-10-16T00:03:57",
+    "date_to": "2051-11-09"
 };
 
 fetch(url, {
@@ -7968,8 +8002,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-15T23:39:05',
-            'date_to' =&gt; '2051-11-08',
+            'date_from' =&gt; '2025-10-16T00:03:57',
+            'date_to' =&gt; '2051-11-09',
         ],
     ]
 );
@@ -8099,10 +8133,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-15T23:39:05"
+               value="2025-10-16T00:03:57"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T23:39:05</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T00:03:57</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8110,10 +8144,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2051-11-08"
+               value="2051-11-09"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-08</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
         </div>
         </form>
 
@@ -8138,10 +8172,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"pending\",
-    \"date_from\": \"2025-10-15T23:39:05\",
-    \"date_to\": \"2051-11-08\",
-    \"with_client\": false,
+    \"statut\": \"paid\",
+    \"date_from\": \"2025-10-16T00:03:57\",
+    \"date_to\": \"2051-11-09\",
+    \"with_client\": true,
     \"with_details\": true
 }"
 </code></pre></div>
@@ -8176,10 +8210,10 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "pending",
-    "date_from": "2025-10-15T23:39:05",
-    "date_to": "2051-11-08",
-    "with_client": false,
+    "statut": "paid",
+    "date_from": "2025-10-16T00:03:57",
+    "date_to": "2051-11-09",
+    "with_client": true,
     "with_details": true
 };
 
@@ -8216,10 +8250,10 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'pending',
-            'date_from' =&gt; '2025-10-15T23:39:05',
-            'date_to' =&gt; '2051-11-08',
-            'with_client' =&gt; false,
+            'statut' =&gt; 'paid',
+            'date_from' =&gt; '2025-10-16T00:03:57',
+            'date_to' =&gt; '2051-11-09',
+            'with_client' =&gt; true,
             'with_details' =&gt; true,
         ],
     ]
@@ -8506,10 +8540,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="pending"
+               value="paid"
                data-component="body">
     <br>
-<p>Example: <code>pending</code></p>
+<p>Example: <code>paid</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -8519,10 +8553,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-15T23:39:05"
+               value="2025-10-16T00:03:57"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T23:39:05</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T00:03:57</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8530,10 +8564,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures"
-               value="2051-11-08"
+               value="2051-11-09"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-08</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -8554,7 +8588,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -9005,7 +9039,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_client\": false,
     \"with_details\": true,
-    \"with_payments\": false
+    \"with_payments\": true
 }"
 </code></pre></div>
 
@@ -9031,7 +9065,7 @@ const headers = {
 let body = {
     "with_client": false,
     "with_details": true,
-    "with_payments": false
+    "with_payments": true
 };
 
 fetch(url, {
@@ -9059,7 +9093,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_client' =&gt; false,
             'with_details' =&gt; true,
-            'with_payments' =&gt; false,
+            'with_payments' =&gt; true,
         ],
     ]
 );
@@ -9311,7 +9345,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -10252,8 +10286,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-15T23:39:05\",
-    \"date_to\": \"2051-11-08\"
+    \"date_from\": \"2025-10-16T00:03:57\",
+    \"date_to\": \"2051-11-09\"
 }"
 </code></pre></div>
 
@@ -10276,8 +10310,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-15T23:39:05",
-    "date_to": "2051-11-08"
+    "date_from": "2025-10-16T00:03:57",
+    "date_to": "2051-11-09"
 };
 
 fetch(url, {
@@ -10302,8 +10336,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-15T23:39:05',
-            'date_to' =&gt; '2051-11-08',
+            'date_from' =&gt; '2025-10-16T00:03:57',
+            'date_to' =&gt; '2051-11-09',
         ],
     ]
 );
@@ -10442,10 +10476,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-15T23:39:05"
+               value="2025-10-16T00:03:57"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T23:39:05</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T00:03:57</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10453,10 +10487,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2051-11-08"
+               value="2051-11-09"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-08</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
         </div>
         </form>
 
@@ -10483,12 +10517,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-15T23:39:05\",
-    \"date_to\": \"2051-11-08\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-16T00:03:57\",
+    \"date_to\": \"2051-11-09\",
     \"with_facture\": true,
     \"with_client\": false,
-    \"with_payment_method\": true
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -10527,12 +10561,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "refunded",
-    "date_from": "2025-10-15T23:39:05",
-    "date_to": "2051-11-08",
+    "statut": "failed",
+    "date_from": "2025-10-16T00:03:57",
+    "date_to": "2051-11-09",
     "with_facture": true,
     "with_client": false,
-    "with_payment_method": true
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -10573,12 +10607,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-15T23:39:05',
-            'date_to' =&gt; '2051-11-08',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-16T00:03:57',
+            'date_to' =&gt; '2051-11-09',
             'with_facture' =&gt; true,
             'with_client' =&gt; false,
-            'with_payment_method' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -10923,10 +10957,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="refunded"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>refunded</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -10936,10 +10970,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-15T23:39:05"
+               value="2025-10-16T00:03:57"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-15T23:39:05</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T00:03:57</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10947,10 +10981,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements"
-               value="2051-11-08"
+               value="2051-11-09"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-08</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
@@ -11013,7 +11047,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -11344,9 +11378,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": true,
-    \"with_client\": true,
-    \"with_payment_method\": true
+    \"with_facture\": false,
+    \"with_client\": false,
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -11370,9 +11404,9 @@ const headers = {
 };
 
 let body = {
-    "with_facture": true,
-    "with_client": true,
-    "with_payment_method": true
+    "with_facture": false,
+    "with_client": false,
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -11398,9 +11432,9 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; true,
-            'with_client' =&gt; true,
-            'with_payment_method' =&gt; true,
+            'with_facture' =&gt; false,
+            'with_client' =&gt; false,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -11612,7 +11646,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -11633,7 +11667,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -11654,7 +11688,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -16762,7 +16796,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -16790,7 +16824,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -16820,7 +16854,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -17053,7 +17087,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -32476,6 +32510,2153 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>UUID du mouvement de stock à annuler. Example: <code>550e8400-e29b-41d4-a716-446655440010</code></p>
+            </div>
+                    </form>
+
+                <h1 id="gestion-des-paiements-de-commandes">Gestion des Paiements de Commandes</h1>
+
+    <p>API pour gérer les paiements des commandes d'achat.
+Toutes les routes nécessitent une authentification via Sanctum.</p>
+
+                                <h2 id="gestion-des-paiements-de-commandes-GETapi-paiement-commandes">Liste des paiements</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste paginée de tous les paiements avec leurs commandes.</p>
+
+<span id="example-requests-GETapi-paiement-commandes">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiement-commandes?page=1&amp;per_page=15&amp;search=PAY-2025-001&amp;commande_id=9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&amp;statut=valide&amp;mode_paiement=mobile_money&amp;date_debut=2025-01-01&amp;date_fin=2025-12-31&amp;montant_min=1000&amp;montant_max=50000" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "PAY-2025-001",
+    "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+    "statut": "valide",
+    "mode_paiement": "mobile_money",
+    "date_debut": "2025-01-01",
+    "date_fin": "2025-12-31",
+    "montant_min": "1000",
+    "montant_max": "50000",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'PAY-2025-001',
+            'commande_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a',
+            'statut' =&gt; 'valide',
+            'mode_paiement' =&gt; 'mobile_money',
+            'date_debut' =&gt; '2025-01-01',
+            'date_fin' =&gt; '2025-12-31',
+            'montant_min' =&gt; '1000',
+            'montant_max' =&gt; '50000',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiement-commandes">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Liste des paiements r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+                &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+                &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+                &quot;montant&quot;: &quot;10000.00&quot;,
+                &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
+                &quot;statut&quot;: &quot;valide&quot;,
+                &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+                &quot;numero_transaction&quot;: &quot;TRX123456789&quot;,
+                &quot;note&quot;: &quot;Paiement via MTN Mobile Money&quot;,
+                &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+                &quot;commande&quot;: {
+                    &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+                    &quot;numero_commande&quot;: &quot;CMD-2025-0001&quot;,
+                    &quot;montant&quot;: &quot;25000.00&quot;,
+                    &quot;status&quot;: &quot;en_cours&quot;
+                }
+            }
+        ],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/paiement-commandes?page=1&quot;,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 2,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 15,
+        &quot;total&quot;: 30
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiement-commandes" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiement-commandes"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiement-commandes"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiement-commandes" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiement-commandes">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiement-commandes" data-method="GET"
+      data-path="api/paiement-commandes"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiement-commandes', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiement-commandes"
+                    onclick="tryItOut('GETapi-paiement-commandes');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiement-commandes"
+                    onclick="cancelTryOut('GETapi-paiement-commandes');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiement-commandes"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiement-commandes</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-paiement-commandes"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiement-commandes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiement-commandes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-paiement-commandes"
+               value="1"
+               data-component="query">
+    <br>
+<p>Numéro de la page. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-paiement-commandes"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-paiement-commandes"
+               value="PAY-2025-001"
+               data-component="query">
+    <br>
+<p>Rechercher par référence de paiement. Example: <code>PAY-2025-001</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>commande_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="commande_id"                data-endpoint="GETapi-paiement-commandes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="query">
+    <br>
+<p>Filtrer par ID de commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-paiement-commandes"
+               value="valide"
+               data-component="query">
+    <br>
+<p>Filtrer par statut (en_attente, valide, refuse, annule). Example: <code>valide</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="mode_paiement"                data-endpoint="GETapi-paiement-commandes"
+               value="mobile_money"
+               data-component="query">
+    <br>
+<p>Filtrer par mode (especes, cheque, virement, carte_bancaire, mobile_money). Example: <code>mobile_money</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_debut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_debut"                data-endpoint="GETapi-paiement-commandes"
+               value="2025-01-01"
+               data-component="query">
+    <br>
+<p>date Filtrer par date minimum (format: Y-m-d). Example: <code>2025-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_fin</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_fin"                data-endpoint="GETapi-paiement-commandes"
+               value="2025-12-31"
+               data-component="query">
+    <br>
+<p>date Filtrer par date maximum (format: Y-m-d). Example: <code>2025-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>montant_min</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="montant_min"                data-endpoint="GETapi-paiement-commandes"
+               value="1000"
+               data-component="query">
+    <br>
+<p>numeric Filtrer par montant minimum. Example: <code>1000</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>montant_max</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="montant_max"                data-endpoint="GETapi-paiement-commandes"
+               value="50000"
+               data-component="query">
+    <br>
+<p>numeric Filtrer par montant maximum. Example: <code>50000</code></p>
+            </div>
+                </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-POSTapi-paiement-commandes">Créer un paiement</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Enregistre un nouveau paiement pour une commande.
+La référence de paiement est générée automatiquement au format PAY-YYYY-0001.</p>
+
+<span id="example-requests-POSTapi-paiement-commandes">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/paiement-commandes" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"commande_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b\",
+    \"montant\": \"10000.00\",
+    \"mode_paiement\": \"mobile_money\",
+    \"statut\": \"valide\",
+    \"date_paiement\": \"2025-01-15 14:30:00\",
+    \"numero_transaction\": \"TRX123456789\",
+    \"numero_cheque\": \"CHQ987654\",
+    \"banque\": \"Bank of Africa\",
+    \"note\": \"Paiement via MTN Mobile Money\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+    "montant": "10000.00",
+    "mode_paiement": "mobile_money",
+    "statut": "valide",
+    "date_paiement": "2025-01-15 14:30:00",
+    "numero_transaction": "TRX123456789",
+    "numero_cheque": "CHQ987654",
+    "banque": "Bank of Africa",
+    "note": "Paiement via MTN Mobile Money"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'commande_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b',
+            'montant' =&gt; '10000.00',
+            'mode_paiement' =&gt; 'mobile_money',
+            'statut' =&gt; 'valide',
+            'date_paiement' =&gt; '2025-01-15 14:30:00',
+            'numero_transaction' =&gt; 'TRX123456789',
+            'numero_cheque' =&gt; 'CHQ987654',
+            'banque' =&gt; 'Bank of Africa',
+            'note' =&gt; 'Paiement via MTN Mobile Money',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-paiement-commandes">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Paiement enregistr&eacute; avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;montant&quot;: &quot;10000.00&quot;,
+        &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
+        &quot;statut&quot;: &quot;valide&quot;,
+        &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;numero_transaction&quot;: &quot;TRX123456789&quot;,
+        &quot;note&quot;: &quot;Paiement via MTN Mobile Money&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;commande&quot;: {
+            &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+            &quot;numero_commande&quot;: &quot;CMD-2025-0001&quot;,
+            &quot;montant&quot;: &quot;25000.00&quot;,
+            &quot;montant_paye&quot;: &quot;10000.00&quot;,
+            &quot;montant_restant&quot;: &quot;15000.00&quot;
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;montant&quot;: [
+            &quot;Le montant du paiement d&eacute;passe le montant restant &agrave; payer&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-paiement-commandes" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-paiement-commandes"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-paiement-commandes"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-paiement-commandes" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-paiement-commandes">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-paiement-commandes" data-method="POST"
+      data-path="api/paiement-commandes"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-paiement-commandes', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-paiement-commandes"
+                    onclick="tryItOut('POSTapi-paiement-commandes');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-paiement-commandes"
+                    onclick="cancelTryOut('POSTapi-paiement-commandes');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-paiement-commandes"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/paiement-commandes</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-paiement-commandes"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-paiement-commandes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-paiement-commandes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>commande_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="commande_id"                data-endpoint="POSTapi-paiement-commandes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b"
+               data-component="body">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="POSTapi-paiement-commandes"
+               value="10000.00"
+               data-component="body">
+    <br>
+<p>Le montant payé. Example: <code>10000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="mode_paiement"                data-endpoint="POSTapi-paiement-commandes"
+               value="mobile_money"
+               data-component="body">
+    <br>
+<p>Le mode de paiement (especes, cheque, virement, carte_bancaire, mobile_money). Example: <code>mobile_money</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="POSTapi-paiement-commandes"
+               value="valide"
+               data-component="body">
+    <br>
+<p>Le statut du paiement (en_attente, valide, refuse, annule). Par défaut: en_attente. Example: <code>valide</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date_paiement"                data-endpoint="POSTapi-paiement-commandes"
+               value="2025-01-15 14:30:00"
+               data-component="body">
+    <br>
+<p>La date et heure du paiement (format: Y-m-d H:i:s). Example: <code>2025-01-15 14:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_transaction"                data-endpoint="POSTapi-paiement-commandes"
+               value="TRX123456789"
+               data-component="body">
+    <br>
+<p>Le numéro de transaction (pour paiements électroniques). Example: <code>TRX123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_cheque"                data-endpoint="POSTapi-paiement-commandes"
+               value="CHQ987654"
+               data-component="body">
+    <br>
+<p>Le numéro de chèque (pour paiements par chèque). Example: <code>CHQ987654</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="banque"                data-endpoint="POSTapi-paiement-commandes"
+               value="Bank of Africa"
+               data-component="body">
+    <br>
+<p>La banque émettrice. Example: <code>Bank of Africa</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-paiement-commandes"
+               value="Paiement via MTN Mobile Money"
+               data-component="body">
+    <br>
+<p>Des notes ou observations. Example: <code>Paiement via MTN Mobile Money</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-GETapi-paiement-commandes--id-">Afficher un paiement</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les détails d'un paiement spécifique avec sa commande.</p>
+
+<span id="example-requests-GETapi-paiement-commandes--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiement-commandes--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;D&eacute;tails du paiement r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;montant&quot;: &quot;10000.00&quot;,
+        &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
+        &quot;statut&quot;: &quot;valide&quot;,
+        &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;numero_transaction&quot;: &quot;TRX123456789&quot;,
+        &quot;banque&quot;: null,
+        &quot;note&quot;: &quot;Paiement via MTN Mobile Money&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;is_valide&quot;: true,
+        &quot;is_electronique&quot;: true,
+        &quot;commande&quot;: {
+            &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+            &quot;numero_commande&quot;: &quot;CMD-2025-0001&quot;,
+            &quot;montant&quot;: &quot;25000.00&quot;,
+            &quot;montant_paye&quot;: &quot;10000.00&quot;,
+            &quot;montant_restant&quot;: &quot;15000.00&quot;,
+            &quot;fournisseur&quot;: {
+                &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
+                &quot;code&quot;: &quot;FOUR001&quot;,
+                &quot;name&quot;: &quot;Fournisseur ABC&quot;
+            }
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiement-commandes--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiement-commandes--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiement-commandes--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiement-commandes--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiement-commandes--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiement-commandes--id-" data-method="GET"
+      data-path="api/paiement-commandes/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiement-commandes--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiement-commandes--id-"
+                    onclick="tryItOut('GETapi-paiement-commandes--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiement-commandes--id-"
+                    onclick="cancelTryOut('GETapi-paiement-commandes--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiement-commandes--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiement-commandes/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-paiement-commandes--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-paiement-commandes--id-"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-PUTapi-paiement-commandes--id-">Mettre à jour un paiement</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'un paiement existant.
+Note: La référence de paiement et la commande ne peuvent pas être modifiées.</p>
+
+<span id="example-requests-PUTapi-paiement-commandes--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"montant\": \"10000.00\",
+    \"mode_paiement\": \"mobile_money\",
+    \"statut\": \"valide\",
+    \"date_paiement\": \"2025-01-15 14:30:00\",
+    \"numero_transaction\": \"TRX123456789\",
+    \"numero_cheque\": \"CHQ987654\",
+    \"banque\": \"Bank of Africa\",
+    \"note\": \"Paiement validé\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "montant": "10000.00",
+    "mode_paiement": "mobile_money",
+    "statut": "valide",
+    "date_paiement": "2025-01-15 14:30:00",
+    "numero_transaction": "TRX123456789",
+    "numero_cheque": "CHQ987654",
+    "banque": "Bank of Africa",
+    "note": "Paiement validé"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'montant' =&gt; '10000.00',
+            'mode_paiement' =&gt; 'mobile_money',
+            'statut' =&gt; 'valide',
+            'date_paiement' =&gt; '2025-01-15 14:30:00',
+            'numero_transaction' =&gt; 'TRX123456789',
+            'numero_cheque' =&gt; 'CHQ987654',
+            'banque' =&gt; 'Bank of Africa',
+            'note' =&gt; 'Paiement validé',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-paiement-commandes--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Paiement mis &agrave; jour avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;montant&quot;: &quot;10000.00&quot;,
+        &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
+        &quot;statut&quot;: &quot;valide&quot;,
+        &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T15:00:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-paiement-commandes--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-paiement-commandes--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-paiement-commandes--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-paiement-commandes--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-paiement-commandes--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-paiement-commandes--id-" data-method="PUT"
+      data-path="api/paiement-commandes/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-paiement-commandes--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-paiement-commandes--id-"
+                    onclick="tryItOut('PUTapi-paiement-commandes--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-paiement-commandes--id-"
+                    onclick="cancelTryOut('PUTapi-paiement-commandes--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-paiement-commandes--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/paiement-commandes/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-paiement-commandes--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="10000.00"
+               data-component="body">
+    <br>
+<p>Le montant payé. Example: <code>10000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="mode_paiement"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="mobile_money"
+               data-component="body">
+    <br>
+<p>Le mode de paiement. Example: <code>mobile_money</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="valide"
+               data-component="body">
+    <br>
+<p>Le statut du paiement. Example: <code>valide</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_paiement"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="2025-01-15 14:30:00"
+               data-component="body">
+    <br>
+<p>La date et heure du paiement. Example: <code>2025-01-15 14:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_transaction"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="TRX123456789"
+               data-component="body">
+    <br>
+<p>Le numéro de transaction. Example: <code>TRX123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_cheque"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="CHQ987654"
+               data-component="body">
+    <br>
+<p>Le numéro de chèque. Example: <code>CHQ987654</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="banque"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="Bank of Africa"
+               data-component="body">
+    <br>
+<p>La banque émettrice. Example: <code>Bank of Africa</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-paiement-commandes--id-"
+               value="Paiement validé"
+               data-component="body">
+    <br>
+<p>Des notes ou observations. Example: <code>Paiement validé</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-PATCHapi-paiement-commandes--id-">Mettre à jour un paiement</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'un paiement existant.
+Note: La référence de paiement et la commande ne peuvent pas être modifiées.</p>
+
+<span id="example-requests-PATCHapi-paiement-commandes--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"montant\": \"10000.00\",
+    \"mode_paiement\": \"mobile_money\",
+    \"statut\": \"valide\",
+    \"date_paiement\": \"2025-01-15 14:30:00\",
+    \"numero_transaction\": \"TRX123456789\",
+    \"numero_cheque\": \"CHQ987654\",
+    \"banque\": \"Bank of Africa\",
+    \"note\": \"Paiement validé\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "montant": "10000.00",
+    "mode_paiement": "mobile_money",
+    "statut": "valide",
+    "date_paiement": "2025-01-15 14:30:00",
+    "numero_transaction": "TRX123456789",
+    "numero_cheque": "CHQ987654",
+    "banque": "Bank of Africa",
+    "note": "Paiement validé"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'montant' =&gt; '10000.00',
+            'mode_paiement' =&gt; 'mobile_money',
+            'statut' =&gt; 'valide',
+            'date_paiement' =&gt; '2025-01-15 14:30:00',
+            'numero_transaction' =&gt; 'TRX123456789',
+            'numero_cheque' =&gt; 'CHQ987654',
+            'banque' =&gt; 'Bank of Africa',
+            'note' =&gt; 'Paiement validé',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-paiement-commandes--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Paiement mis &agrave; jour avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;montant&quot;: &quot;10000.00&quot;,
+        &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
+        &quot;statut&quot;: &quot;valide&quot;,
+        &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T15:00:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-paiement-commandes--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-paiement-commandes--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-paiement-commandes--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-paiement-commandes--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-paiement-commandes--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-paiement-commandes--id-" data-method="PATCH"
+      data-path="api/paiement-commandes/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-paiement-commandes--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-paiement-commandes--id-"
+                    onclick="tryItOut('PATCHapi-paiement-commandes--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-paiement-commandes--id-"
+                    onclick="cancelTryOut('PATCHapi-paiement-commandes--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-paiement-commandes--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/paiement-commandes/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="10000.00"
+               data-component="body">
+    <br>
+<p>Le montant payé. Example: <code>10000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="mode_paiement"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="mobile_money"
+               data-component="body">
+    <br>
+<p>Le mode de paiement. Example: <code>mobile_money</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="valide"
+               data-component="body">
+    <br>
+<p>Le statut du paiement. Example: <code>valide</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_paiement"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="2025-01-15 14:30:00"
+               data-component="body">
+    <br>
+<p>La date et heure du paiement. Example: <code>2025-01-15 14:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_transaction"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="TRX123456789"
+               data-component="body">
+    <br>
+<p>Le numéro de transaction. Example: <code>TRX123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_cheque"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="CHQ987654"
+               data-component="body">
+    <br>
+<p>Le numéro de chèque. Example: <code>CHQ987654</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="banque"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="Bank of Africa"
+               data-component="body">
+    <br>
+<p>La banque émettrice. Example: <code>Bank of Africa</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-paiement-commandes--id-"
+               value="Paiement validé"
+               data-component="body">
+    <br>
+<p>Des notes ou observations. Example: <code>Paiement validé</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-DELETEapi-paiement-commandes--id-">Supprimer un paiement</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue une suppression logique (soft delete) d'un paiement.</p>
+
+<span id="example-requests-DELETEapi-paiement-commandes--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-paiement-commandes--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Paiement supprim&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-paiement-commandes--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-paiement-commandes--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-paiement-commandes--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-paiement-commandes--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-paiement-commandes--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-paiement-commandes--id-" data-method="DELETE"
+      data-path="api/paiement-commandes/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-paiement-commandes--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-paiement-commandes--id-"
+                    onclick="tryItOut('DELETEapi-paiement-commandes--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-paiement-commandes--id-"
+                    onclick="cancelTryOut('DELETEapi-paiement-commandes--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-paiement-commandes--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/paiement-commandes/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-paiement-commandes--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-paiement-commandes--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-paiement-commandes--id-"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-GETapi-paiement-commandes-trashed-list">Liste des paiements supprimés</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste paginée de tous les paiements supprimés.</p>
+
+<span id="example-requests-GETapi-paiement-commandes-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiement-commandes/trashed/list?page=1&amp;per_page=15" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/trashed/list"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiement-commandes-trashed-list">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Liste des paiements supprim&eacute;s r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiement-commandes-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiement-commandes-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiement-commandes-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiement-commandes-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiement-commandes-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiement-commandes-trashed-list" data-method="GET"
+      data-path="api/paiement-commandes/trashed/list"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiement-commandes-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiement-commandes-trashed-list"
+                    onclick="tryItOut('GETapi-paiement-commandes-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiement-commandes-trashed-list"
+                    onclick="cancelTryOut('GETapi-paiement-commandes-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiement-commandes-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiement-commandes/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-paiement-commandes-trashed-list"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiement-commandes-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiement-commandes-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-paiement-commandes-trashed-list"
+               value="1"
+               data-component="query">
+    <br>
+<p>Numéro de la page. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-paiement-commandes-trashed-list"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>15</code></p>
+            </div>
+                </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-POSTapi-paiement-commandes--id--restore">Restaurer un paiement supprimé</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Restaure un paiement précédemment supprimé.</p>
+
+<span id="example-requests-POSTapi-paiement-commandes--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/restore" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/restore"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/restore';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-paiement-commandes--id--restore">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Paiement restaur&eacute; avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+        &quot;deleted_at&quot;: null
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-paiement-commandes--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-paiement-commandes--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-paiement-commandes--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-paiement-commandes--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-paiement-commandes--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-paiement-commandes--id--restore" data-method="POST"
+      data-path="api/paiement-commandes/{id}/restore"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-paiement-commandes--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-paiement-commandes--id--restore"
+                    onclick="tryItOut('POSTapi-paiement-commandes--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-paiement-commandes--id--restore"
+                    onclick="cancelTryOut('POSTapi-paiement-commandes--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-paiement-commandes--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/paiement-commandes/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-paiement-commandes--id--restore"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-paiement-commandes--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-paiement-commandes--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-paiement-commandes--id--restore"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID du paiement supprimé. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-paiements-de-commandes-GETapi-paiement-commandes-commande--commande_id-">Paiements d&#039;une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère tous les paiements associés à une commande spécifique.</p>
+
+<span id="example-requests-GETapi-paiement-commandes-commande--commande_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/paiement-commandes/commande/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-commandes/commande/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-commandes/commande/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-paiement-commandes-commande--commande_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Paiements de la commande r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande&quot;: {
+            &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+            &quot;numero_commande&quot;: &quot;CMD-2025-0001&quot;,
+            &quot;montant&quot;: &quot;25000.00&quot;,
+            &quot;montant_paye&quot;: &quot;15000.00&quot;,
+            &quot;montant_restant&quot;: &quot;10000.00&quot;,
+            &quot;is_totalement_payee&quot;: false,
+            &quot;is_partiellement_payee&quot;: true
+        },
+        &quot;paiements&quot;: [
+            {
+                &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+                &quot;reference_paiement&quot;: &quot;PAY-2025-0001&quot;,
+                &quot;montant&quot;: &quot;10000.00&quot;,
+                &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
+                &quot;statut&quot;: &quot;valide&quot;,
+                &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;
+            },
+            {
+                &quot;paiement_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
+                &quot;reference_paiement&quot;: &quot;PAY-2025-0002&quot;,
+                &quot;montant&quot;: &quot;5000.00&quot;,
+                &quot;mode_paiement&quot;: &quot;especes&quot;,
+                &quot;statut&quot;: &quot;valide&quot;,
+                &quot;date_paiement&quot;: &quot;2025-01-20T10:00:00.000000Z&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-paiement-commandes-commande--commande_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-paiement-commandes-commande--commande_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-paiement-commandes-commande--commande_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-paiement-commandes-commande--commande_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-paiement-commandes-commande--commande_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-paiement-commandes-commande--commande_id-" data-method="GET"
+      data-path="api/paiement-commandes/commande/{commande_id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-paiement-commandes-commande--commande_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-paiement-commandes-commande--commande_id-"
+                    onclick="tryItOut('GETapi-paiement-commandes-commande--commande_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-paiement-commandes-commande--commande_id-"
+                    onclick="cancelTryOut('GETapi-paiement-commandes-commande--commande_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-paiement-commandes-commande--commande_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/paiement-commandes/commande/{commande_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-paiement-commandes-commande--commande_id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-paiement-commandes-commande--commande_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-paiement-commandes-commande--commande_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>commande_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="commande_id"                data-endpoint="GETapi-paiement-commandes-commande--commande_id-"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b</code></p>
             </div>
                     </form>
 

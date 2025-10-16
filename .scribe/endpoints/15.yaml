@@ -53,7 +53,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-15T23:39:05'
+        example: '2025-10-16T00:03:57'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -63,15 +63,15 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-08'
+        example: '2051-11-09'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-15T23:39:05'
-      date_to: '2051-11-08'
+      date_from: '2025-10-16T00:03:57'
+      date_to: '2051-11-09'
     fileParameters: []
     responses:
       -
@@ -267,7 +267,7 @@ endpoints:
         name: statut
         description: ''
         required: false
-        example: pending
+        example: paid
         type: string
         enumValues:
           - pending
@@ -282,7 +282,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-15T23:39:05'
+        example: '2025-10-16T00:03:57'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -292,7 +292,7 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-08'
+        example: '2051-11-09'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -302,7 +302,7 @@ endpoints:
         name: with_client
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -323,10 +323,10 @@ endpoints:
       per_page: 22
       search: g
       client_id: c90237e9-ced5-3af6-88ea-84aeaa148878
-      statut: pending
-      date_from: '2025-10-15T23:39:05'
-      date_to: '2051-11-08'
-      with_client: false
+      statut: paid
+      date_from: '2025-10-16T00:03:57'
+      date_to: '2051-11-09'
+      with_client: true
       with_details: true
     fileParameters: []
     responses:
@@ -724,7 +724,7 @@ endpoints:
         name: with_payments
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -733,7 +733,7 @@ endpoints:
     cleanBodyParameters:
       with_client: false
       with_details: true
-      with_payments: false
+      with_payments: true
     fileParameters: []
     responses:
       -

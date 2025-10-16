@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\ChauffeurController;
 use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\Api\PaiementCommandeController;
 use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\StockMovementTypeController;
 use App\Http\Controllers\Api\DetailCommandeController;
@@ -385,4 +386,23 @@ Route::prefix('detail-commandes')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [DetailCommandeController::class, 'trashed']);           // Liste des détails supprimés
     Route::post('/{id}/restore', [DetailCommandeController::class, 'restore']);          // Restaurer un détail
+})->middleware('auth:sanctum');
+/**
+ * Routes pour la gestion des paiements de commandes
+ * Prefix: /paiement-commandes
+ */
+Route::prefix('paiement-commandes')->group(function () {
+    Route::get('/', [PaiementCommandeController::class, 'index']);               // Liste des paiements
+    Route::post('/', [PaiementCommandeController::class, 'store']);              // Création d'un paiement
+    Route::get('/{id}', [PaiementCommandeController::class, 'show']);            // Afficher un paiement par ID
+    Route::put('/{id}', [PaiementCommandeController::class, 'update']);          // Mise à jour d'un paiement
+    Route::patch('/{id}', [PaiementCommandeController::class, 'update']);        // Mise à jour partielle d'un paiement
+    Route::delete('/{id}', [PaiementCommandeController::class, 'destroy']);      // Suppression logique (soft delete)
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [PaiementCommandeController::class, 'trashed']); // Liste des paiements supprimés
+    Route::post('/{id}/restore', [PaiementCommandeController::class, 'restore']); // Restaurer un paiement supprimé
+
+    // Route spéciale pour les paiements d'une commande
+    Route::get('/commande/{commande_id}', [PaiementCommandeController::class, 'paiementsParCommande']); // Paiements d'une commande
 })->middleware('auth:sanctum');
