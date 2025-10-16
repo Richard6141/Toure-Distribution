@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Client extends Model
 {
@@ -188,5 +189,34 @@ class Client extends Model
         $this->save();
 
         return $this;
+    }
+
+    /**
+     * Relation avec les ventes
+     */
+    public function ventes(): HasMany
+    {
+        return $this->hasMany(Vente::class, 'client_id', 'client_id');
+    }
+
+    /**
+     * Calcule le total des ventes du client
+     */
+    public function getTotalVentesAttribute(): float
+    {
+        return $this->ventes()->where('status', '!=', 'annulee')->sum('montant_net');
+    }
+
+    /**
+     * Calcule le total des impayés du client
+     */
+    public function getTotalImpayesAttribute(): float
+    {
+        return $this->ventes()
+            ->whereIn('statut_paiement', ['non_paye', 'paye_partiellement'])
+            ->get()
+            ->sum(function ($vente) {
+                return $vente->montant_restant;
+            });
     }
 }

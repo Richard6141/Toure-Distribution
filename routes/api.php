@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\VenteController;
 use App\Http\Controllers\Api\CamionController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
@@ -14,13 +15,15 @@ use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\PaiementController;
 use App\Http\Controllers\Api\ChauffeurController;
 use App\Http\Controllers\StockMovementController;
+use App\Http\Controllers\Api\DetailVenteController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
-use App\Http\Controllers\Api\PaiementCommandeController;
+use App\Http\Controllers\Api\PaiementVenteController;
 use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\StockMovementTypeController;
 use App\Http\Controllers\Api\DetailCommandeController;
 use App\Http\Controllers\StockMovementDetailController;
+use App\Http\Controllers\Api\PaiementCommandeController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -405,4 +408,62 @@ Route::prefix('paiement-commandes')->group(function () {
 
     // Route spéciale pour les paiements d'une commande
     Route::get('/commande/{commande_id}', [PaiementCommandeController::class, 'paiementsParCommande']); // Paiements d'une commande
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des ventes
+ * Prefix: /ventes
+ */
+Route::prefix('ventes')->group(function () {
+    Route::get('/', [VenteController::class, 'index']);               // Liste des ventes
+    Route::post('/', [VenteController::class, 'store']);              // Création d'une vente
+    Route::get('/{id}', [VenteController::class, 'show']);            // Afficher une vente par ID
+    Route::put('/{id}', [VenteController::class, 'update']);          // Mise à jour d'une vente
+    Route::patch('/{id}', [VenteController::class, 'update']);        // Mise à jour partielle
+    Route::delete('/{id}', [VenteController::class, 'destroy']);      // Suppression logique
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [VenteController::class, 'trashed']); // Liste des ventes supprimées
+    Route::post('/{id}/restore', [VenteController::class, 'restore']); // Restaurer une vente
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des détails de ventes
+ * Prefix: /detail-ventes
+ */
+Route::prefix('detail-ventes')->group(function () {
+    Route::get('/', [DetailVenteController::class, 'index']);               // Liste des détails
+    Route::post('/', [DetailVenteController::class, 'store']);              // Création d'un détail
+    Route::post('/multiple', [DetailVenteController::class, 'storeMultiple']); // Création multiple de détails
+    Route::get('/{id}', [DetailVenteController::class, 'show']);            // Afficher un détail par ID
+    Route::put('/{id}', [DetailVenteController::class, 'update']);          // Mise à jour d'un détail
+    Route::patch('/{id}', [DetailVenteController::class, 'update']);        // Mise à jour partielle
+    Route::delete('/{id}', [DetailVenteController::class, 'destroy']);      // Suppression logique
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [DetailVenteController::class, 'trashed']); // Liste des détails supprimés
+    Route::post('/{id}/restore', [DetailVenteController::class, 'restore']); // Restaurer un détail
+
+    // Route spéciale pour les détails d'une vente
+    Route::get('/vente/{vente_id}', [DetailVenteController::class, 'detailsParVente']); // Détails d'une vente
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des paiements de ventes
+ * Prefix: /paiement-ventes
+ */
+Route::prefix('paiement-ventes')->group(function () {
+    Route::get('/', [PaiementVenteController::class, 'index']);               // Liste des paiements
+    Route::post('/', [PaiementVenteController::class, 'store']);              // Création d'un paiement
+    Route::get('/{id}', [PaiementVenteController::class, 'show']);            // Afficher un paiement par ID
+    Route::put('/{id}', [PaiementVenteController::class, 'update']);          // Mise à jour d'un paiement
+    Route::patch('/{id}', [PaiementVenteController::class, 'update']);        // Mise à jour partielle
+    Route::delete('/{id}', [PaiementVenteController::class, 'destroy']);      // Suppression logique
+
+    // Routes pour gestion soft delete
+    Route::get('/trashed/list', [PaiementVenteController::class, 'trashed']); // Liste des paiements supprimés
+    Route::post('/{id}/restore', [PaiementVenteController::class, 'restore']); // Restaurer un paiement
+
+    // Route spéciale pour les paiements d'une vente
+    Route::get('/vente/{vente_id}', [PaiementVenteController::class, 'paiementsParVente']); // Paiements d'une vente
 })->middleware('auth:sanctum');
