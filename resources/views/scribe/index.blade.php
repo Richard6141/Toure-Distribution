@@ -571,6 +571,40 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-gestion-des-details-de-livraison" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-details-de-livraison">
+                    <a href="#gestion-des-details-de-livraison">Gestion des Détails de Livraison</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-details-de-livraison" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-GETapi-delivery-details">
+                                <a href="#gestion-des-details-de-livraison-GETapi-delivery-details">Liste des détails de livraisons</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-GETapi-delivery-details--id-">
+                                <a href="#gestion-des-details-de-livraison-GETapi-delivery-details--id-">Afficher un détail</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-PUTapi-delivery-details--id-">
+                                <a href="#gestion-des-details-de-livraison-PUTapi-delivery-details--id-">Mettre à jour un détail</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-PATCHapi-delivery-details--id-">
+                                <a href="#gestion-des-details-de-livraison-PATCHapi-delivery-details--id-">Mettre à jour un détail</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-POSTapi-delivery-details--id--preparer">
+                                <a href="#gestion-des-details-de-livraison-POSTapi-delivery-details--id--preparer">Préparer un produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-POSTapi-delivery-details--id--livrer">
+                                <a href="#gestion-des-details-de-livraison-POSTapi-delivery-details--id--livrer">Livrer un produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-POSTapi-delivery-details--id--retourner">
+                                <a href="#gestion-des-details-de-livraison-POSTapi-delivery-details--id--retourner">Retourner un produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-GETapi-delivery-details-delivery--deliveryId-">
+                                <a href="#gestion-des-details-de-livraison-GETapi-delivery-details-delivery--deliveryId-">Détails par livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-details-de-livraison-POSTapi-delivery-details-delivery--deliveryId--preparer-tout">
+                                <a href="#gestion-des-details-de-livraison-POSTapi-delivery-details-delivery--deliveryId--preparer-tout">Préparer tous les produits d'une livraison</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-gestion-des-details-de-ventes" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="gestion-des-details-de-ventes">
                     <a href="#gestion-des-details-de-ventes">Gestion des Détails de Ventes</a>
@@ -605,6 +639,43 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-details-de-ventes-GETapi-detail-ventes-vente--vente_id-">
                                 <a href="#gestion-des-details-de-ventes-GETapi-detail-ventes-vente--vente_id-">Détails d'une vente</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-gestion-des-livraisons" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-livraisons">
+                    <a href="#gestion-des-livraisons">Gestion des Livraisons</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-livraisons" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-livraisons-GETapi-deliveries">
+                                <a href="#gestion-des-livraisons-GETapi-deliveries">Liste des livraisons</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-POSTapi-deliveries">
+                                <a href="#gestion-des-livraisons-POSTapi-deliveries">Créer une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-GETapi-deliveries--id-">
+                                <a href="#gestion-des-livraisons-GETapi-deliveries--id-">Afficher une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-PUTapi-deliveries--id-">
+                                <a href="#gestion-des-livraisons-PUTapi-deliveries--id-">Mettre à jour une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-PATCHapi-deliveries--id-">
+                                <a href="#gestion-des-livraisons-PATCHapi-deliveries--id-">Mettre à jour une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-DELETEapi-deliveries--id-">
+                                <a href="#gestion-des-livraisons-DELETEapi-deliveries--id-">Supprimer une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-POSTapi-deliveries--id--start">
+                                <a href="#gestion-des-livraisons-POSTapi-deliveries--id--start">Démarrer une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-POSTapi-deliveries--id--complete">
+                                <a href="#gestion-des-livraisons-POSTapi-deliveries--id--complete">Terminer une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-POSTapi-deliveries--id--cancel">
+                                <a href="#gestion-des-livraisons-POSTapi-deliveries--id--cancel">Annuler une livraison</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-livraisons-GETapi-deliveries-statistics-overview">
+                                <a href="#gestion-des-livraisons-GETapi-deliveries-statistics-overview">Statistiques des livraisons</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -3728,9 +3799,9 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": true,
-    \"with_client_type\": true,
-    \"balance_filter\": \"positive\"
+    \"is_active\": false,
+    \"with_client_type\": false,
+    \"balance_filter\": \"zero\"
 }"
 </code></pre></div>
 
@@ -3774,9 +3845,9 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": true,
-    "with_client_type": true,
-    "balance_filter": "positive"
+    "is_active": false,
+    "with_client_type": false,
+    "balance_filter": "zero"
 };
 
 fetch(url, {
@@ -3822,9 +3893,9 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; true,
-            'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'positive',
+            'is_active' =&gt; false,
+            'with_client_type' =&gt; false,
+            'balance_filter' =&gt; 'zero',
         ],
     ]
 );
@@ -4232,7 +4303,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -4253,7 +4324,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -4261,10 +4332,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
+               value="zero"
                data-component="body">
     <br>
-<p>Example: <code>positive</code></p>
+<p>Example: <code>zero</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -4659,7 +4730,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client_type\": false
+    \"with_client_type\": true
 }"
 </code></pre></div>
 
@@ -4681,7 +4752,7 @@ const headers = {
 };
 
 let body = {
-    "with_client_type": false
+    "with_client_type": true
 };
 
 fetch(url, {
@@ -4705,7 +4776,7 @@ $response = $client-&gt;get(
             'with_client_type' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client_type' =&gt; false,
+            'with_client_type' =&gt; true,
         ],
     ]
 );
@@ -4875,7 +4946,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -8054,7 +8125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-16T01:48:40\",
+    \"date_from\": \"2025-10-16T02:18:44\",
     \"date_to\": \"2051-11-09\"
 }"
 </code></pre></div>
@@ -8078,7 +8149,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-16T01:48:40",
+    "date_from": "2025-10-16T02:18:44",
     "date_to": "2051-11-09"
 };
 
@@ -8104,7 +8175,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-16T01:48:40',
+            'date_from' =&gt; '2025-10-16T02:18:44',
             'date_to' =&gt; '2051-11-09',
         ],
     ]
@@ -8235,10 +8306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-16T01:48:40"
+               value="2025-10-16T02:18:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T02:18:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8274,8 +8345,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"cancelled\",
-    \"date_from\": \"2025-10-16T01:48:40\",
+    \"statut\": \"overdue\",
+    \"date_from\": \"2025-10-16T02:18:44\",
     \"date_to\": \"2051-11-09\",
     \"with_client\": true,
     \"with_details\": true
@@ -8312,8 +8383,8 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "cancelled",
-    "date_from": "2025-10-16T01:48:40",
+    "statut": "overdue",
+    "date_from": "2025-10-16T02:18:44",
     "date_to": "2051-11-09",
     "with_client": true,
     "with_details": true
@@ -8352,8 +8423,8 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'cancelled',
-            'date_from' =&gt; '2025-10-16T01:48:40',
+            'statut' =&gt; 'overdue',
+            'date_from' =&gt; '2025-10-16T02:18:44',
             'date_to' =&gt; '2051-11-09',
             'with_client' =&gt; true,
             'with_details' =&gt; true,
@@ -8642,10 +8713,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="cancelled"
+               value="overdue"
                data-component="body">
     <br>
-<p>Example: <code>cancelled</code></p>
+<p>Example: <code>overdue</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -8655,10 +8726,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-16T01:48:40"
+               value="2025-10-16T02:18:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T02:18:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9140,7 +9211,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"with_client\": false,
-    \"with_details\": false,
+    \"with_details\": true,
     \"with_payments\": false
 }"
 </code></pre></div>
@@ -9166,7 +9237,7 @@ const headers = {
 
 let body = {
     "with_client": false,
-    "with_details": false,
+    "with_details": true,
     "with_payments": false
 };
 
@@ -9194,7 +9265,7 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'with_client' =&gt; false,
-            'with_details' =&gt; false,
+            'with_details' =&gt; true,
             'with_payments' =&gt; false,
         ],
     ]
@@ -9426,7 +9497,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -10388,7 +10459,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-16T01:48:40\",
+    \"date_from\": \"2025-10-16T02:18:44\",
     \"date_to\": \"2051-11-09\"
 }"
 </code></pre></div>
@@ -10412,7 +10483,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-16T01:48:40",
+    "date_from": "2025-10-16T02:18:44",
     "date_to": "2051-11-09"
 };
 
@@ -10438,7 +10509,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-16T01:48:40',
+            'date_from' =&gt; '2025-10-16T02:18:44',
             'date_to' =&gt; '2051-11-09',
         ],
     ]
@@ -10578,10 +10649,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-16T01:48:40"
+               value="2025-10-16T02:18:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T02:18:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10619,11 +10690,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"failed\",
-    \"date_from\": \"2025-10-16T01:48:40\",
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-16T02:18:44\",
     \"date_to\": \"2051-11-09\",
     \"with_facture\": false,
-    \"with_client\": false,
+    \"with_client\": true,
     \"with_payment_method\": true
 }"
 </code></pre></div>
@@ -10663,11 +10734,11 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "failed",
-    "date_from": "2025-10-16T01:48:40",
+    "statut": "pending",
+    "date_from": "2025-10-16T02:18:44",
     "date_to": "2051-11-09",
     "with_facture": false,
-    "with_client": false,
+    "with_client": true,
     "with_payment_method": true
 };
 
@@ -10709,11 +10780,11 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'failed',
-            'date_from' =&gt; '2025-10-16T01:48:40',
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-16T02:18:44',
             'date_to' =&gt; '2051-11-09',
             'with_facture' =&gt; false,
-            'with_client' =&gt; false,
+            'with_client' =&gt; true,
             'with_payment_method' =&gt; true,
         ],
     ]
@@ -11059,10 +11130,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="failed"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>failed</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -11072,10 +11143,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-16T01:48:40"
+               value="2025-10-16T02:18:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T01:48:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-16T02:18:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11128,7 +11199,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -29984,6 +30055,1764 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="gestion-des-details-de-livraison">Gestion des Détails de Livraison</h1>
+
+    <p>API pour gérer les détails des livraisons (produits).
+Toutes les routes nécessitent une authentification via Sanctum.</p>
+
+                                <h2 id="gestion-des-details-de-livraison-GETapi-delivery-details">Liste des détails de livraisons</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-delivery-details">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/delivery-details?delivery_id=uuid&amp;product_id=uuid&amp;statut=pret" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details"
+);
+
+const params = {
+    "delivery_id": "uuid",
+    "product_id": "uuid",
+    "statut": "pret",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'delivery_id' =&gt; 'uuid',
+            'product_id' =&gt; 'uuid',
+            'statut' =&gt; 'pret',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-delivery-details">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Liste des d&eacute;tails de livraison r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/delivery-details?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/delivery-details?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/delivery-details?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/delivery-details&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-delivery-details" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-delivery-details"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-delivery-details"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-delivery-details" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-delivery-details">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-delivery-details" data-method="GET"
+      data-path="api/delivery-details"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-delivery-details', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-delivery-details"
+                    onclick="tryItOut('GETapi-delivery-details');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-delivery-details"
+                    onclick="cancelTryOut('GETapi-delivery-details');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-delivery-details"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/delivery-details</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-delivery-details"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-delivery-details"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-delivery-details"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>delivery_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="delivery_id"                data-endpoint="GETapi-delivery-details"
+               value="uuid"
+               data-component="query">
+    <br>
+<p>Filtrer par livraison. Example: <code>uuid</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="product_id"                data-endpoint="GETapi-delivery-details"
+               value="uuid"
+               data-component="query">
+    <br>
+<p>Filtrer par produit. Example: <code>uuid</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-delivery-details"
+               value="pret"
+               data-component="query">
+    <br>
+<p>Filtrer par statut. Example: <code>pret</code></p>
+            </div>
+                </form>
+
+                    <h2 id="gestion-des-details-de-livraison-GETapi-delivery-details--id-">Afficher un détail</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-delivery-details--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/delivery-details/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/architecto';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-delivery-details--id-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;D&eacute;tail de livraison non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-delivery-details--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-delivery-details--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-delivery-details--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-delivery-details--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-delivery-details--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-delivery-details--id-" data-method="GET"
+      data-path="api/delivery-details/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-delivery-details--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-delivery-details--id-"
+                    onclick="tryItOut('GETapi-delivery-details--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-delivery-details--id-"
+                    onclick="cancelTryOut('GETapi-delivery-details--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-delivery-details--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/delivery-details/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-delivery-details--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-delivery-details--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-delivery-details--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-delivery-details--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery detail. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-details-de-livraison-PUTapi-delivery-details--id-">Mettre à jour un détail</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-delivery-details--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/delivery-details/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"quantite_preparee\": 27,
+    \"quantite_livree\": 39,
+    \"quantite_retournee\": 84,
+    \"note\": \"architecto\",
+    \"raison_ecart\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "quantite_preparee": 27,
+    "quantite_livree": 39,
+    "quantite_retournee": 84,
+    "note": "architecto",
+    "raison_ecart": "architecto"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/architecto';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'quantite_preparee' =&gt; 27,
+            'quantite_livree' =&gt; 39,
+            'quantite_retournee' =&gt; 84,
+            'note' =&gt; 'architecto',
+            'raison_ecart' =&gt; 'architecto',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-delivery-details--id-">
+</span>
+<span id="execution-results-PUTapi-delivery-details--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-delivery-details--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-delivery-details--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-delivery-details--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-delivery-details--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-delivery-details--id-" data-method="PUT"
+      data-path="api/delivery-details/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-delivery-details--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-delivery-details--id-"
+                    onclick="tryItOut('PUTapi-delivery-details--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-delivery-details--id-"
+                    onclick="cancelTryOut('PUTapi-delivery-details--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-delivery-details--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/delivery-details/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-delivery-details--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-delivery-details--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-delivery-details--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-delivery-details--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery detail. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite_preparee</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite_preparee"                data-endpoint="PUTapi-delivery-details--id-"
+               value="27"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>27</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite_livree</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite_livree"                data-endpoint="PUTapi-delivery-details--id-"
+               value="39"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite_retournee</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite_retournee"                data-endpoint="PUTapi-delivery-details--id-"
+               value="84"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>84</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-delivery-details--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>raison_ecart</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="raison_ecart"                data-endpoint="PUTapi-delivery-details--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-details-de-livraison-PATCHapi-delivery-details--id-">Mettre à jour un détail</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-delivery-details--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/delivery-details/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"quantite_preparee\": 27,
+    \"quantite_livree\": 39,
+    \"quantite_retournee\": 84,
+    \"note\": \"architecto\",
+    \"raison_ecart\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "quantite_preparee": 27,
+    "quantite_livree": 39,
+    "quantite_retournee": 84,
+    "note": "architecto",
+    "raison_ecart": "architecto"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/architecto';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'quantite_preparee' =&gt; 27,
+            'quantite_livree' =&gt; 39,
+            'quantite_retournee' =&gt; 84,
+            'note' =&gt; 'architecto',
+            'raison_ecart' =&gt; 'architecto',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-delivery-details--id-">
+</span>
+<span id="execution-results-PATCHapi-delivery-details--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-delivery-details--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-delivery-details--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-delivery-details--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-delivery-details--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-delivery-details--id-" data-method="PATCH"
+      data-path="api/delivery-details/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-delivery-details--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-delivery-details--id-"
+                    onclick="tryItOut('PATCHapi-delivery-details--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-delivery-details--id-"
+                    onclick="cancelTryOut('PATCHapi-delivery-details--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-delivery-details--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/delivery-details/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-delivery-details--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery detail. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite_preparee</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite_preparee"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="27"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>27</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite_livree</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite_livree"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="39"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite_retournee</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite_retournee"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="84"
+               data-component="body">
+    <br>
+<p>Must be at least 0. Example: <code>84</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>raison_ecart</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="raison_ecart"                data-endpoint="PATCHapi-delivery-details--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-details-de-livraison-POSTapi-delivery-details--id--preparer">Préparer un produit</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Marque une quantité comme préparée pour la livraison.</p>
+
+<span id="example-requests-POSTapi-delivery-details--id--preparer">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/delivery-details/architecto/preparer" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"quantite\": 10,
+    \"note\": \"Produit préparé\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/architecto/preparer"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "quantite": 10,
+    "note": "Produit préparé"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/architecto/preparer';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'quantite' =&gt; 10,
+            'note' =&gt; 'Produit préparé',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-delivery-details--id--preparer">
+</span>
+<span id="execution-results-POSTapi-delivery-details--id--preparer" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-delivery-details--id--preparer"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-delivery-details--id--preparer"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-delivery-details--id--preparer" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-delivery-details--id--preparer">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-delivery-details--id--preparer" data-method="POST"
+      data-path="api/delivery-details/{id}/preparer"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-delivery-details--id--preparer', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-delivery-details--id--preparer"
+                    onclick="tryItOut('POSTapi-delivery-details--id--preparer');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-delivery-details--id--preparer"
+                    onclick="cancelTryOut('POSTapi-delivery-details--id--preparer');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-delivery-details--id--preparer"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/delivery-details/{id}/preparer</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-delivery-details--id--preparer"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-delivery-details--id--preparer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-delivery-details--id--preparer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-delivery-details--id--preparer"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery detail. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite"                data-endpoint="POSTapi-delivery-details--id--preparer"
+               value="10"
+               data-component="body">
+    <br>
+<p>Quantité préparée. Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-delivery-details--id--preparer"
+               value="Produit préparé"
+               data-component="body">
+    <br>
+<p>Note. Example: <code>Produit préparé</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-details-de-livraison-POSTapi-delivery-details--id--livrer">Livrer un produit</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Enregistre la quantité livrée pour un produit.</p>
+
+<span id="example-requests-POSTapi-delivery-details--id--livrer">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/delivery-details/architecto/livrer" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"quantite\": 10,
+    \"observation\": \"2 produits endommagés\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/architecto/livrer"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "quantite": 10,
+    "observation": "2 produits endommagés"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/architecto/livrer';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'quantite' =&gt; 10,
+            'observation' =&gt; '2 produits endommagés',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-delivery-details--id--livrer">
+</span>
+<span id="execution-results-POSTapi-delivery-details--id--livrer" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-delivery-details--id--livrer"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-delivery-details--id--livrer"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-delivery-details--id--livrer" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-delivery-details--id--livrer">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-delivery-details--id--livrer" data-method="POST"
+      data-path="api/delivery-details/{id}/livrer"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-delivery-details--id--livrer', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-delivery-details--id--livrer"
+                    onclick="tryItOut('POSTapi-delivery-details--id--livrer');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-delivery-details--id--livrer"
+                    onclick="cancelTryOut('POSTapi-delivery-details--id--livrer');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-delivery-details--id--livrer"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/delivery-details/{id}/livrer</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-delivery-details--id--livrer"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-delivery-details--id--livrer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-delivery-details--id--livrer"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-delivery-details--id--livrer"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery detail. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite"                data-endpoint="POSTapi-delivery-details--id--livrer"
+               value="10"
+               data-component="body">
+    <br>
+<p>Quantité livrée. Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>observation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="observation"                data-endpoint="POSTapi-delivery-details--id--livrer"
+               value="2 produits endommagés"
+               data-component="body">
+    <br>
+<p>Observation si écart. Example: <code>2 produits endommagés</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-details-de-livraison-POSTapi-delivery-details--id--retourner">Retourner un produit</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Enregistre un retour de produit.</p>
+
+<span id="example-requests-POSTapi-delivery-details--id--retourner">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/delivery-details/architecto/retourner" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"quantite\": 2,
+    \"raison\": \"Produits endommagés\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/architecto/retourner"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "quantite": 2,
+    "raison": "Produits endommagés"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/architecto/retourner';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'quantite' =&gt; 2,
+            'raison' =&gt; 'Produits endommagés',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-delivery-details--id--retourner">
+</span>
+<span id="execution-results-POSTapi-delivery-details--id--retourner" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-delivery-details--id--retourner"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-delivery-details--id--retourner"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-delivery-details--id--retourner" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-delivery-details--id--retourner">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-delivery-details--id--retourner" data-method="POST"
+      data-path="api/delivery-details/{id}/retourner"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-delivery-details--id--retourner', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-delivery-details--id--retourner"
+                    onclick="tryItOut('POSTapi-delivery-details--id--retourner');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-delivery-details--id--retourner"
+                    onclick="cancelTryOut('POSTapi-delivery-details--id--retourner');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-delivery-details--id--retourner"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/delivery-details/{id}/retourner</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-delivery-details--id--retourner"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-delivery-details--id--retourner"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-delivery-details--id--retourner"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-delivery-details--id--retourner"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery detail. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="quantite"                data-endpoint="POSTapi-delivery-details--id--retourner"
+               value="2"
+               data-component="body">
+    <br>
+<p>Quantité retournée. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>raison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="raison"                data-endpoint="POSTapi-delivery-details--id--retourner"
+               value="Produits endommagés"
+               data-component="body">
+    <br>
+<p>Raison du retour. Example: <code>Produits endommagés</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-details-de-livraison-GETapi-delivery-details-delivery--deliveryId-">Détails par livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère tous les détails d'une livraison spécifique.</p>
+
+<span id="example-requests-GETapi-delivery-details-delivery--deliveryId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/delivery-details/delivery/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/delivery/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/delivery/architecto';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-delivery-details-delivery--deliveryId-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Livraison non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-delivery-details-delivery--deliveryId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-delivery-details-delivery--deliveryId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-delivery-details-delivery--deliveryId-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-delivery-details-delivery--deliveryId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-delivery-details-delivery--deliveryId-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-delivery-details-delivery--deliveryId-" data-method="GET"
+      data-path="api/delivery-details/delivery/{deliveryId}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-delivery-details-delivery--deliveryId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-delivery-details-delivery--deliveryId-"
+                    onclick="tryItOut('GETapi-delivery-details-delivery--deliveryId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-delivery-details-delivery--deliveryId-"
+                    onclick="cancelTryOut('GETapi-delivery-details-delivery--deliveryId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-delivery-details-delivery--deliveryId-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/delivery-details/delivery/{deliveryId}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-delivery-details-delivery--deliveryId-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-delivery-details-delivery--deliveryId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-delivery-details-delivery--deliveryId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>deliveryId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="deliveryId"                data-endpoint="GETapi-delivery-details-delivery--deliveryId-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-details-de-livraison-POSTapi-delivery-details-delivery--deliveryId--preparer-tout">Préparer tous les produits d&#039;une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Marque tous les produits d'une livraison comme préparés avec leur quantité commandée.</p>
+
+<span id="example-requests-POSTapi-delivery-details-delivery--deliveryId--preparer-tout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/delivery-details/delivery/architecto/preparer-tout" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/delivery-details/delivery/architecto/preparer-tout"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/delivery-details/delivery/architecto/preparer-tout';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-delivery-details-delivery--deliveryId--preparer-tout">
+</span>
+<span id="execution-results-POSTapi-delivery-details-delivery--deliveryId--preparer-tout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-delivery-details-delivery--deliveryId--preparer-tout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-delivery-details-delivery--deliveryId--preparer-tout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-delivery-details-delivery--deliveryId--preparer-tout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-delivery-details-delivery--deliveryId--preparer-tout" data-method="POST"
+      data-path="api/delivery-details/delivery/{deliveryId}/preparer-tout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-delivery-details-delivery--deliveryId--preparer-tout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+                    onclick="tryItOut('POSTapi-delivery-details-delivery--deliveryId--preparer-tout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+                    onclick="cancelTryOut('POSTapi-delivery-details-delivery--deliveryId--preparer-tout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/delivery-details/delivery/{deliveryId}/preparer-tout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>deliveryId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="deliveryId"                data-endpoint="POSTapi-delivery-details-delivery--deliveryId--preparer-tout"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
                 <h1 id="gestion-des-details-de-ventes">Gestion des Détails de Ventes</h1>
 
     <p>API pour gérer les lignes de détails des ventes (produits vendus).
@@ -32268,6 +34097,2160 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b</code></p>
             </div>
                     </form>
+
+                <h1 id="gestion-des-livraisons">Gestion des Livraisons</h1>
+
+    <p>API pour gérer les livraisons aux clients.
+Toutes les routes nécessitent une authentification via Sanctum.</p>
+
+                                <h2 id="gestion-des-livraisons-GETapi-deliveries">Liste des livraisons</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste paginée de toutes les livraisons.</p>
+
+<span id="example-requests-GETapi-deliveries">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/deliveries?page=1&amp;per_page=15&amp;search=LIV-2025-001&amp;statut=en_transit&amp;chauffeur_id=uuid&amp;date_debut=2025-01-01&amp;date_fin=2025-12-31&amp;en_retard=1&amp;aujourdhui=1" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "15",
+    "search": "LIV-2025-001",
+    "statut": "en_transit",
+    "chauffeur_id": "uuid",
+    "date_debut": "2025-01-01",
+    "date_fin": "2025-12-31",
+    "en_retard": "1",
+    "aujourdhui": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
+            'search' =&gt; 'LIV-2025-001',
+            'statut' =&gt; 'en_transit',
+            'chauffeur_id' =&gt; 'uuid',
+            'date_debut' =&gt; '2025-01-01',
+            'date_fin' =&gt; '2025-12-31',
+            'en_retard' =&gt; '1',
+            'aujourdhui' =&gt; '1',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-deliveries">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Liste des livraisons r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [],
+        &quot;first_page_url&quot;: &quot;http://localhost/api/deliveries?page=1&quot;,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;last_page_url&quot;: &quot;http://localhost/api/deliveries?page=1&quot;,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost/api/deliveries?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;page&quot;: 1,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;page&quot;: null,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;next_page_url&quot;: null,
+        &quot;path&quot;: &quot;http://localhost/api/deliveries&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;prev_page_url&quot;: null,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-deliveries" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-deliveries"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-deliveries"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-deliveries" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-deliveries">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-deliveries" data-method="GET"
+      data-path="api/deliveries"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-deliveries', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-deliveries"
+                    onclick="tryItOut('GETapi-deliveries');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-deliveries"
+                    onclick="cancelTryOut('GETapi-deliveries');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-deliveries"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/deliveries</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-deliveries"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-deliveries"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-deliveries"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-deliveries"
+               value="1"
+               data-component="query">
+    <br>
+<p>Numéro de la page. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-deliveries"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-deliveries"
+               value="LIV-2025-001"
+               data-component="query">
+    <br>
+<p>Rechercher par référence. Example: <code>LIV-2025-001</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-deliveries"
+               value="en_transit"
+               data-component="query">
+    <br>
+<p>Filtrer par statut. Example: <code>en_transit</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="GETapi-deliveries"
+               value="uuid"
+               data-component="query">
+    <br>
+<p>Filtrer par chauffeur. Example: <code>uuid</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_debut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_debut"                data-endpoint="GETapi-deliveries"
+               value="2025-01-01"
+               data-component="query">
+    <br>
+<p>date Filtrer par date minimum. Example: <code>2025-01-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>date_fin</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_fin"                data-endpoint="GETapi-deliveries"
+               value="2025-12-31"
+               data-component="query">
+    <br>
+<p>date Filtrer par date maximum. Example: <code>2025-12-31</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>en_retard</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-deliveries" style="display: none">
+            <input type="radio" name="en_retard"
+                   value="1"
+                   data-endpoint="GETapi-deliveries"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-deliveries" style="display: none">
+            <input type="radio" name="en_retard"
+                   value="0"
+                   data-endpoint="GETapi-deliveries"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Afficher uniquement les livraisons en retard. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>aujourdhui</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-deliveries" style="display: none">
+            <input type="radio" name="aujourdhui"
+                   value="1"
+                   data-endpoint="GETapi-deliveries"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-deliveries" style="display: none">
+            <input type="radio" name="aujourdhui"
+                   value="0"
+                   data-endpoint="GETapi-deliveries"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Afficher uniquement les livraisons du jour. Example: <code>true</code></p>
+            </div>
+                </form>
+
+                    <h2 id="gestion-des-livraisons-POSTapi-deliveries">Créer une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Crée une nouvelle livraison à partir d'une vente validée.
+Les détails de livraison sont créés automatiquement à partir des détails de vente.</p>
+
+<span id="example-requests-POSTapi-deliveries">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/deliveries" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"vente_id\": \"uuid\",
+    \"entrepot_id\": \"uuid\",
+    \"chauffeur_id\": \"uuid\",
+    \"camion_id\": \"uuid\",
+    \"date_livraison_prevue\": \"2025-01-20 14:00:00\",
+    \"adresse_livraison\": \"123 Rue Example\",
+    \"contact_livraison\": \"Jean Dupont\",
+    \"telephone_livraison\": \"+229 97 00 00 00\",
+    \"note\": \"Livraison urgente\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "vente_id": "uuid",
+    "entrepot_id": "uuid",
+    "chauffeur_id": "uuid",
+    "camion_id": "uuid",
+    "date_livraison_prevue": "2025-01-20 14:00:00",
+    "adresse_livraison": "123 Rue Example",
+    "contact_livraison": "Jean Dupont",
+    "telephone_livraison": "+229 97 00 00 00",
+    "note": "Livraison urgente"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'vente_id' =&gt; 'uuid',
+            'entrepot_id' =&gt; 'uuid',
+            'chauffeur_id' =&gt; 'uuid',
+            'camion_id' =&gt; 'uuid',
+            'date_livraison_prevue' =&gt; '2025-01-20 14:00:00',
+            'adresse_livraison' =&gt; '123 Rue Example',
+            'contact_livraison' =&gt; 'Jean Dupont',
+            'telephone_livraison' =&gt; '+229 97 00 00 00',
+            'note' =&gt; 'Livraison urgente',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-deliveries">
+</span>
+<span id="execution-results-POSTapi-deliveries" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-deliveries"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-deliveries"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-deliveries" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-deliveries">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-deliveries" data-method="POST"
+      data-path="api/deliveries"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-deliveries', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-deliveries"
+                    onclick="tryItOut('POSTapi-deliveries');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-deliveries"
+                    onclick="cancelTryOut('POSTapi-deliveries');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-deliveries"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/deliveries</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-deliveries"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-deliveries"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-deliveries"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vente_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="vente_id"                data-endpoint="POSTapi-deliveries"
+               value="uuid"
+               data-component="body">
+    <br>
+<p>L'UUID de la vente. Example: <code>uuid</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>entrepot_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="entrepot_id"                data-endpoint="POSTapi-deliveries"
+               value="uuid"
+               data-component="body">
+    <br>
+<p>L'UUID de l'entrepôt source. Example: <code>uuid</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="POSTapi-deliveries"
+               value="uuid"
+               data-component="body">
+    <br>
+<p>L'UUID du chauffeur. Example: <code>uuid</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>camion_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="camion_id"                data-endpoint="POSTapi-deliveries"
+               value="uuid"
+               data-component="body">
+    <br>
+<p>L'UUID du camion. Example: <code>uuid</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_livraison_prevue</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_livraison_prevue"                data-endpoint="POSTapi-deliveries"
+               value="2025-01-20 14:00:00"
+               data-component="body">
+    <br>
+<p>Date de livraison prévue. Example: <code>2025-01-20 14:00:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse_livraison"                data-endpoint="POSTapi-deliveries"
+               value="123 Rue Example"
+               data-component="body">
+    <br>
+<p>Adresse de livraison. Example: <code>123 Rue Example</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="contact_livraison"                data-endpoint="POSTapi-deliveries"
+               value="Jean Dupont"
+               data-component="body">
+    <br>
+<p>Contact sur place. Example: <code>Jean Dupont</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>telephone_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="telephone_livraison"                data-endpoint="POSTapi-deliveries"
+               value="+229 97 00 00 00"
+               data-component="body">
+    <br>
+<p>Téléphone du contact. Example: <code>+229 97 00 00 00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-deliveries"
+               value="Livraison urgente"
+               data-component="body">
+    <br>
+<p>Notes. Example: <code>Livraison urgente</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-livraisons-GETapi-deliveries--id-">Afficher une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les détails complets d'une livraison.</p>
+
+<span id="example-requests-GETapi-deliveries--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/deliveries/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-deliveries--id-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Livraison non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-deliveries--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-deliveries--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-deliveries--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-deliveries--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-deliveries--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-deliveries--id-" data-method="GET"
+      data-path="api/deliveries/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-deliveries--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-deliveries--id-"
+                    onclick="tryItOut('GETapi-deliveries--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-deliveries--id-"
+                    onclick="cancelTryOut('GETapi-deliveries--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-deliveries--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/deliveries/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-deliveries--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-deliveries--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-livraisons-PUTapi-deliveries--id-">Mettre à jour une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'une livraison.</p>
+
+<span id="example-requests-PUTapi-deliveries--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/deliveries/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
+    \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
+    \"date_livraison_prevue\": \"2025-10-16T02:18:44\",
+    \"adresse_livraison\": \"m\",
+    \"contact_livraison\": \"i\",
+    \"telephone_livraison\": \"yvdljnikhwaykcmy\",
+    \"note\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
+    "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
+    "date_livraison_prevue": "2025-10-16T02:18:44",
+    "adresse_livraison": "m",
+    "contact_livraison": "i",
+    "telephone_livraison": "yvdljnikhwaykcmy",
+    "note": "architecto"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
+            'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
+            'date_livraison_prevue' =&gt; '2025-10-16T02:18:44',
+            'adresse_livraison' =&gt; 'm',
+            'contact_livraison' =&gt; 'i',
+            'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
+            'note' =&gt; 'architecto',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-deliveries--id-">
+</span>
+<span id="execution-results-PUTapi-deliveries--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-deliveries--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-deliveries--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-deliveries--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-deliveries--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-deliveries--id-" data-method="PUT"
+      data-path="api/deliveries/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-deliveries--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-deliveries--id-"
+                    onclick="tryItOut('PUTapi-deliveries--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-deliveries--id-"
+                    onclick="cancelTryOut('PUTapi-deliveries--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-deliveries--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/deliveries/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-deliveries--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-deliveries--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="PUTapi-deliveries--id-"
+               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>chauffeur_id</code> of an existing record in the chauffeurs table. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>camion_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="camion_id"                data-endpoint="PUTapi-deliveries--id-"
+               value="6b72fe4a-5b40-307c-bc24-f79acf9a1bb9"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>camion_id</code> of an existing record in the camions table. Example: <code>6b72fe4a-5b40-307c-bc24-f79acf9a1bb9</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_livraison_prevue</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
+               value="2025-10-16T02:18:44"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2025-10-16T02:18:44</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse_livraison"                data-endpoint="PUTapi-deliveries--id-"
+               value="m"
+               data-component="body">
+    <br>
+<p>Must not be greater than 500 characters. Example: <code>m</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="contact_livraison"                data-endpoint="PUTapi-deliveries--id-"
+               value="i"
+               data-component="body">
+    <br>
+<p>Must not be greater than 100 characters. Example: <code>i</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>telephone_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="telephone_livraison"                data-endpoint="PUTapi-deliveries--id-"
+               value="yvdljnikhwaykcmy"
+               data-component="body">
+    <br>
+<p>Must not be greater than 20 characters. Example: <code>yvdljnikhwaykcmy</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PUTapi-deliveries--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-livraisons-PATCHapi-deliveries--id-">Mettre à jour une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'une livraison.</p>
+
+<span id="example-requests-PATCHapi-deliveries--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/deliveries/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
+    \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
+    \"date_livraison_prevue\": \"2025-10-16T02:18:44\",
+    \"adresse_livraison\": \"m\",
+    \"contact_livraison\": \"i\",
+    \"telephone_livraison\": \"yvdljnikhwaykcmy\",
+    \"note\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
+    "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
+    "date_livraison_prevue": "2025-10-16T02:18:44",
+    "adresse_livraison": "m",
+    "contact_livraison": "i",
+    "telephone_livraison": "yvdljnikhwaykcmy",
+    "note": "architecto"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
+            'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
+            'date_livraison_prevue' =&gt; '2025-10-16T02:18:44',
+            'adresse_livraison' =&gt; 'm',
+            'contact_livraison' =&gt; 'i',
+            'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
+            'note' =&gt; 'architecto',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-deliveries--id-">
+</span>
+<span id="execution-results-PATCHapi-deliveries--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-deliveries--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-deliveries--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-deliveries--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-deliveries--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-deliveries--id-" data-method="PATCH"
+      data-path="api/deliveries/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-deliveries--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-deliveries--id-"
+                    onclick="tryItOut('PATCHapi-deliveries--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-deliveries--id-"
+                    onclick="cancelTryOut('PATCHapi-deliveries--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-deliveries--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/deliveries/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-deliveries--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-deliveries--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="PATCHapi-deliveries--id-"
+               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>chauffeur_id</code> of an existing record in the chauffeurs table. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>camion_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="camion_id"                data-endpoint="PATCHapi-deliveries--id-"
+               value="6b72fe4a-5b40-307c-bc24-f79acf9a1bb9"
+               data-component="body">
+    <br>
+<p>Must be a valid UUID. The <code>camion_id</code> of an existing record in the camions table. Example: <code>6b72fe4a-5b40-307c-bc24-f79acf9a1bb9</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_livraison_prevue</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
+               value="2025-10-16T02:18:44"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2025-10-16T02:18:44</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse_livraison"                data-endpoint="PATCHapi-deliveries--id-"
+               value="m"
+               data-component="body">
+    <br>
+<p>Must not be greater than 500 characters. Example: <code>m</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="contact_livraison"                data-endpoint="PATCHapi-deliveries--id-"
+               value="i"
+               data-component="body">
+    <br>
+<p>Must not be greater than 100 characters. Example: <code>i</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>telephone_livraison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="telephone_livraison"                data-endpoint="PATCHapi-deliveries--id-"
+               value="yvdljnikhwaykcmy"
+               data-component="body">
+    <br>
+<p>Must not be greater than 20 characters. Example: <code>yvdljnikhwaykcmy</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="PATCHapi-deliveries--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-livraisons-DELETEapi-deliveries--id-">Supprimer une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue une suppression logique.</p>
+
+<span id="example-requests-DELETEapi-deliveries--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/deliveries/architecto" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-deliveries--id-">
+</span>
+<span id="execution-results-DELETEapi-deliveries--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-deliveries--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-deliveries--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-deliveries--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-deliveries--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-deliveries--id-" data-method="DELETE"
+      data-path="api/deliveries/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-deliveries--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-deliveries--id-"
+                    onclick="tryItOut('DELETEapi-deliveries--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-deliveries--id-"
+                    onclick="cancelTryOut('DELETEapi-deliveries--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-deliveries--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/deliveries/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-deliveries--id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-deliveries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-deliveries--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-livraisons-POSTapi-deliveries--id--start">Démarrer une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Passe le statut à &quot;en_transit&quot; et enregistre l'heure de départ.</p>
+
+<span id="example-requests-POSTapi-deliveries--id--start">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/deliveries/architecto/start" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto/start"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto/start';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-deliveries--id--start">
+</span>
+<span id="execution-results-POSTapi-deliveries--id--start" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-deliveries--id--start"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-deliveries--id--start"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-deliveries--id--start" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-deliveries--id--start">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-deliveries--id--start" data-method="POST"
+      data-path="api/deliveries/{id}/start"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-deliveries--id--start', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-deliveries--id--start"
+                    onclick="tryItOut('POSTapi-deliveries--id--start');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-deliveries--id--start"
+                    onclick="cancelTryOut('POSTapi-deliveries--id--start');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-deliveries--id--start"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/deliveries/{id}/start</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-deliveries--id--start"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-deliveries--id--start"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-deliveries--id--start"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-deliveries--id--start"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-livraisons-POSTapi-deliveries--id--complete">Terminer une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Passe le statut à &quot;livree&quot; et enregistre les informations de livraison.</p>
+
+<span id="example-requests-POSTapi-deliveries--id--complete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/deliveries/architecto/complete" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"observation\": \"Livraison effectuée sans problème\",
+    \"signature_client\": \"\\/signatures\\/sig-123.png\",
+    \"photos\": [
+        \"\\/photos\\/photo1.jpg\"
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto/complete"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "observation": "Livraison effectuée sans problème",
+    "signature_client": "\/signatures\/sig-123.png",
+    "photos": [
+        "\/photos\/photo1.jpg"
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto/complete';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'observation' =&gt; 'Livraison effectuée sans problème',
+            'signature_client' =&gt; '/signatures/sig-123.png',
+            'photos' =&gt; [
+                '/photos/photo1.jpg',
+            ],
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-deliveries--id--complete">
+</span>
+<span id="execution-results-POSTapi-deliveries--id--complete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-deliveries--id--complete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-deliveries--id--complete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-deliveries--id--complete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-deliveries--id--complete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-deliveries--id--complete" data-method="POST"
+      data-path="api/deliveries/{id}/complete"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-deliveries--id--complete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-deliveries--id--complete"
+                    onclick="tryItOut('POSTapi-deliveries--id--complete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-deliveries--id--complete"
+                    onclick="cancelTryOut('POSTapi-deliveries--id--complete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-deliveries--id--complete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/deliveries/{id}/complete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-deliveries--id--complete"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-deliveries--id--complete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-deliveries--id--complete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-deliveries--id--complete"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>observation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="observation"                data-endpoint="POSTapi-deliveries--id--complete"
+               value="Livraison effectuée sans problème"
+               data-component="body">
+    <br>
+<p>Observations du chauffeur. Example: <code>Livraison effectuée sans problème</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>signature_client</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="signature_client"                data-endpoint="POSTapi-deliveries--id--complete"
+               value="/signatures/sig-123.png"
+               data-component="body">
+    <br>
+<p>Chemin de la signature. Example: <code>/signatures/sig-123.png</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>photos</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="photos[0]"                data-endpoint="POSTapi-deliveries--id--complete"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="photos[1]"                data-endpoint="POSTapi-deliveries--id--complete"
+               data-component="body">
+    <br>
+<p>Photos de la livraison.</p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-livraisons-POSTapi-deliveries--id--cancel">Annuler une livraison</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Annule une livraison en cours.</p>
+
+<span id="example-requests-POSTapi-deliveries--id--cancel">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/deliveries/architecto/cancel" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"raison\": \"Client indisponible\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/architecto/cancel"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "raison": "Client indisponible"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/architecto/cancel';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'raison' =&gt; 'Client indisponible',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-deliveries--id--cancel">
+</span>
+<span id="execution-results-POSTapi-deliveries--id--cancel" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-deliveries--id--cancel"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-deliveries--id--cancel"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-deliveries--id--cancel" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-deliveries--id--cancel">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-deliveries--id--cancel" data-method="POST"
+      data-path="api/deliveries/{id}/cancel"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-deliveries--id--cancel', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-deliveries--id--cancel"
+                    onclick="tryItOut('POSTapi-deliveries--id--cancel');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-deliveries--id--cancel"
+                    onclick="cancelTryOut('POSTapi-deliveries--id--cancel');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-deliveries--id--cancel"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/deliveries/{id}/cancel</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-deliveries--id--cancel"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-deliveries--id--cancel"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-deliveries--id--cancel"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-deliveries--id--cancel"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the delivery. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>raison</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="raison"                data-endpoint="POSTapi-deliveries--id--cancel"
+               value="Client indisponible"
+               data-component="body">
+    <br>
+<p>Raison de l'annulation. Example: <code>Client indisponible</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-livraisons-GETapi-deliveries-statistics-overview">Statistiques des livraisons</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-deliveries-statistics-overview">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/deliveries/statistics/overview" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/deliveries/statistics/overview"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/deliveries/statistics/overview';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-deliveries-statistics-overview">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;total&quot;: 0,
+        &quot;en_preparation&quot;: 0,
+        &quot;prete&quot;: 0,
+        &quot;en_transit&quot;: 0,
+        &quot;livree&quot;: 0,
+        &quot;en_retard&quot;: 0,
+        &quot;aujourdhui&quot;: 0
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-deliveries-statistics-overview" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-deliveries-statistics-overview"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-deliveries-statistics-overview"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-deliveries-statistics-overview" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-deliveries-statistics-overview">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-deliveries-statistics-overview" data-method="GET"
+      data-path="api/deliveries/statistics/overview"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-deliveries-statistics-overview', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-deliveries-statistics-overview"
+                    onclick="tryItOut('GETapi-deliveries-statistics-overview');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-deliveries-statistics-overview"
+                    onclick="cancelTryOut('GETapi-deliveries-statistics-overview');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-deliveries-statistics-overview"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/deliveries/statistics/overview</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-deliveries-statistics-overview"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-deliveries-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-deliveries-statistics-overview"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
 
                 <h1 id="gestion-des-mouvements-de-stock">Gestion des Mouvements de Stock</h1>
 

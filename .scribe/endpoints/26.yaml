@@ -1,0 +1,672 @@
+name: 'Gestion des Détails de Livraison'
+description: |-
+
+  API pour gérer les détails des livraisons (produits).
+  Toutes les routes nécessitent une authentification via Sanctum.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/delivery-details
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des détails de livraisons'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      delivery_id:
+        name: delivery_id
+        description: 'Filtrer par livraison.'
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      product_id:
+        name: product_id
+        description: 'Filtrer par produit.'
+        required: false
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: 'Filtrer par statut.'
+        required: false
+        example: pret
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      delivery_id: uuid
+      product_id: uuid
+      statut: pret
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Liste des d\u00e9tails de livraison r\u00e9cup\u00e9r\u00e9e avec succ\u00e8s","data":{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/delivery-details?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/delivery-details?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/delivery-details?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/delivery-details","per_page":15,"prev_page_url":null,"to":null,"total":0}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/delivery-details/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher un détail'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the delivery detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"success":false,"message":"D\u00e9tail de livraison non trouv\u00e9"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/delivery-details/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour un détail'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the delivery detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite_preparee:
+        name: quantite_preparee
+        description: 'Must be at least 0.'
+        required: false
+        example: 27
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      quantite_livree:
+        name: quantite_livree
+        description: 'Must be at least 0.'
+        required: false
+        example: 39
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      quantite_retournee:
+        name: quantite_retournee
+        description: 'Must be at least 0.'
+        required: false
+        example: 84
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      raison_ecart:
+        name: raison_ecart
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      quantite_preparee: 27
+      quantite_livree: 39
+      quantite_retournee: 84
+      note: architecto
+      raison_ecart: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/delivery-details/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour un détail'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the delivery detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite_preparee:
+        name: quantite_preparee
+        description: 'Must be at least 0.'
+        required: false
+        example: 27
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      quantite_livree:
+        name: quantite_livree
+        description: 'Must be at least 0.'
+        required: false
+        example: 39
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      quantite_retournee:
+        name: quantite_retournee
+        description: 'Must be at least 0.'
+        required: false
+        example: 84
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      raison_ecart:
+        name: raison_ecart
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      quantite_preparee: 27
+      quantite_livree: 39
+      quantite_retournee: 84
+      note: architecto
+      raison_ecart: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/delivery-details/{id}/preparer'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Préparer un produit'
+      description: 'Marque une quantité comme préparée pour la livraison.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the delivery detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite:
+        name: quantite
+        description: 'Quantité préparée.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: Note.
+        required: false
+        example: 'Produit préparé'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      quantite: 10
+      note: 'Produit préparé'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/delivery-details/{id}/livrer'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Livrer un produit'
+      description: 'Enregistre la quantité livrée pour un produit.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the delivery detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite:
+        name: quantite
+        description: 'Quantité livrée.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      observation:
+        name: observation
+        description: 'Observation si écart.'
+        required: false
+        example: '2 produits endommagés'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      quantite: 10
+      observation: '2 produits endommagés'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/delivery-details/{id}/retourner'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Retourner un produit'
+      description: 'Enregistre un retour de produit.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the delivery detail.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantite:
+        name: quantite
+        description: 'Quantité retournée.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      raison:
+        name: raison
+        description: 'Raison du retour.'
+        required: true
+        example: 'Produits endommagés'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      quantite: 2
+      raison: 'Produits endommagés'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/delivery-details/delivery/{deliveryId}'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Détails par livraison'
+      description: "Récupère tous les détails d'une livraison spécifique."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      deliveryId:
+        name: deliveryId
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      deliveryId: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"success":false,"message":"Livraison non trouv\u00e9e"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/delivery-details/delivery/{deliveryId}/preparer-tout'
+    metadata:
+      groupName: 'Gestion des Détails de Livraison'
+      groupDescription: |-
+
+        API pour gérer les détails des livraisons (produits).
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Préparer tous les produits d'une livraison"
+      description: "Marque tous les produits d'une livraison comme préparés avec leur quantité commandée."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      deliveryId:
+        name: deliveryId
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      deliveryId: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []

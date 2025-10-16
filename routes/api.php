@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
 use App\Http\Controllers\Api\FactureController;
 use App\Http\Controllers\Api\CommandeController;
+use App\Http\Controllers\Api\DeliveryController;
 use App\Http\Controllers\Api\EntrepotController;
 use App\Http\Controllers\Api\PaiementController;
 use App\Http\Controllers\Api\ChauffeurController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\Api\PaiementVenteController;
 use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\StockMovementTypeController;
+use App\Http\Controllers\Api\DeliveryDetailController;
 use App\Http\Controllers\Api\DetailCommandeController;
 use App\Http\Controllers\StockMovementDetailController;
 use App\Http\Controllers\Api\PaiementCommandeController;
@@ -466,4 +468,43 @@ Route::prefix('paiement-ventes')->group(function () {
 
     // Route spéciale pour les paiements d'une vente
     Route::get('/vente/{vente_id}', [PaiementVenteController::class, 'paiementsParVente']); // Paiements d'une vente
+})->middleware('auth:sanctum');
+Route::prefix('deliveries')->group(function () {
+    // Routes CRUD principales
+    Route::get('/', [DeliveryController::class, 'index'])->name('deliveries.index');
+    Route::post('/', [DeliveryController::class, 'store'])->name('deliveries.store');
+    Route::get('/{id}', [DeliveryController::class, 'show'])->name('deliveries.show');
+    Route::put('/{id}', [DeliveryController::class, 'update'])->name('deliveries.update');
+    Route::patch('/{id}', [DeliveryController::class, 'update'])->name('deliveries.patch');
+    Route::delete('/{id}', [DeliveryController::class, 'destroy'])->name('deliveries.destroy');
+
+    // Actions spéciales sur les livraisons
+    Route::post('/{id}/start', [DeliveryController::class, 'startDelivery'])->name('deliveries.start');
+    Route::post('/{id}/complete', [DeliveryController::class, 'completeDelivery'])->name('deliveries.complete');
+    Route::post('/{id}/cancel', [DeliveryController::class, 'cancelDelivery'])->name('deliveries.cancel');
+
+    // Statistiques
+    Route::get('/statistics/overview', [DeliveryController::class, 'statistics'])->name('deliveries.statistics');
+})->middleware('auth:sanctum');
+
+/**
+ * Routes pour la gestion des détails de livraison
+ */
+Route::prefix('delivery-details')->group(function () {
+    // Routes CRUD
+    Route::get('/', [DeliveryDetailController::class, 'index'])->name('delivery-details.index');
+    Route::get('/{id}', [DeliveryDetailController::class, 'show'])->name('delivery-details.show');
+    Route::put('/{id}', [DeliveryDetailController::class, 'update'])->name('delivery-details.update');
+    Route::patch('/{id}', [DeliveryDetailController::class, 'update'])->name('delivery-details.patch');
+
+    // Actions spéciales sur les détails
+    Route::post('/{id}/preparer', [DeliveryDetailController::class, 'preparer'])->name('delivery-details.preparer');
+    Route::post('/{id}/livrer', [DeliveryDetailController::class, 'livrer'])->name('delivery-details.livrer');
+    Route::post('/{id}/retourner', [DeliveryDetailController::class, 'retourner'])->name('delivery-details.retourner');
+
+    // Détails par livraison
+    Route::get('/delivery/{deliveryId}', [DeliveryDetailController::class, 'detailsParLivraison'])->name('delivery-details.by-delivery');
+
+    // Préparer tous les produits d'une livraison
+    Route::post('/delivery/{deliveryId}/preparer-tout', [DeliveryDetailController::class, 'preparerTout'])->name('delivery-details.preparer-tout');
 })->middleware('auth:sanctum');
