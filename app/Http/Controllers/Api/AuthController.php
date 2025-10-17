@@ -34,6 +34,110 @@ use Illuminate\Validation\Rules\Password as PasswordRule;
 
 class AuthController extends Controller
 {
+
+    /**
+     * Liste de tous les utilisateurs
+     * 
+     * Récupère la liste paginée de tous les utilisateurs avec filtres et recherche.
+     */
+    #[Endpoint(
+        title: "Liste des utilisateurs",
+        description: "Récupérer la liste paginée de tous les utilisateurs avec filtres optionnels"
+    )]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[QueryParam("search", "string", "Recherche par nom, email ou username", required: false, example: "jean")]
+    #[QueryParam("is_active", "boolean", "Filtrer par statut actif/inactif", required: false, example: true)]
+    #[QueryParam("poste", "string", "Filtrer par poste", required: false, example: "Développeur")]
+    #[QueryParam("per_page", "integer", "Nombre d'éléments par page (défaut: 15)", required: false, example: 15)]
+    #[QueryParam("sort_by", "string", "Tri par champ (created_at, lastname, email)", required: false, example: "created_at")]
+    #[QueryParam("sort_order", "string", "Ordre de tri (asc, desc)", required: false, example: "desc")]
+    #[Response([
+        'success' => true,
+        'data' => [
+            'users' => [
+                [
+                    'user_id' => '550e8400-e29b-41d4-a716-446655440000',
+                    'firstname' => 'Jean',
+                    'lastname' => 'DUPONT',
+                    'username' => 'jean.dupont',
+                    'email' => 'jean.dupont@example.com',
+                    'phonenumber' => '+33612345678',
+                    'poste' => 'Développeur',
+                    'is_active' => true,
+                    'email_verified_at' => '2024-01-10 10:00:00',
+                    'last_login_at' => '2024-01-15 14:30:00',
+                    'created_at' => '2024-01-10 09:15:00'
+                ]
+            ],
+            'pagination' => [
+                'total' => 50,
+                'per_page' => 15,
+                'current_page' => 1,
+                'last_page' => 4,
+                'from' => 1,
+                'to' => 15
+            ]
+        ]
+    ], 200, "Liste récupérée")]
+    public function index(Request $request): JsonResponse
+    {
+        try {
+            $perPage = $request->input('per_page', 15);
+            $sortBy = $request->input('sort_by', 'created_at');
+            $sortOrder = $request->input('sort_order', 'desc');
+
+            $query = User::query();
+
+            // Recherche
+            if ($request->has('search')) {
+                $search = $request->search;
+                $query->where(function ($q) use ($search) {
+                    $q->where('firstname', 'like', "%{$search}%")
+                        ->orWhere('lastname', 'like', "%{$search}%")
+                        ->orWhere('username', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                });
+            }
+
+            // Filtre par statut
+            if ($request->has('is_active')) {
+                $query->where('is_active', $request->boolean('is_active'));
+            }
+
+            // Filtre par poste
+            if ($request->has('poste')) {
+                $query->where('poste', 'like', "%{$request->poste}%");
+            }
+
+            // Tri
+            $query->orderBy($sortBy, $sortOrder);
+
+            // Pagination
+            $users = $query->paginate($perPage);
+
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'users' => UserResource::collection($users->items()),
+                    'pagination' => [
+                        'total' => $users->total(),
+                        'per_page' => $users->perPage(),
+                        'current_page' => $users->currentPage(),
+                        'last_page' => $users->lastPage(),
+                        'from' => $users->firstItem(),
+                        'to' => $users->lastItem(),
+                    ]
+                ]
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la récupération des utilisateurs',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
     /**
      * Inscription d'un nouvel utilisateur
      * 
@@ -196,6 +300,61 @@ class AuthController extends Controller
     }
 
     /**
+     * Voir un utilisateur spécifique
+     */
+    #[Endpoint(
+        title: "Détails d'un utilisateur",
+        description: "Récupérer les informations complètes d'un utilisateur par son ID"
+    )]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[UrlParam("id", "string", "UUID de l'utilisateur", required: true, example: "550e8400-e29b-41d4-a716-446655440000")]
+    #[Response([
+        'success' => true,
+        'data' => [
+            'user_id' => '550e8400-e29b-41d4-a716-446655440000',
+            'firstname' => 'Jean',
+            'lastname' => 'DUPONT',
+            'username' => 'jean.dupont',
+            'email' => 'jean.dupont@example.com',
+            'phonenumber' => '+33612345678',
+            'poste' => 'Développeur',
+            'is_active' => true,
+            'email_verified_at' => '2024-01-10 10:00:00',
+            'last_login_at' => '2024-01-15 14:30:00',
+            'failed_login_attempts' => 0,
+            'created_at' => '2024-01-10 09:15:00'
+        ]
+    ], 200, "Utilisateur trouvé")]
+    #[Response([
+        'success' => false,
+        'message' => 'Utilisateur non trouvé'
+    ], 404, "Utilisateur non trouvé")]
+    public function show(string $id): JsonResponse
+    {
+        try {
+            $user = User::find($id);
+
+            if (!$user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Utilisateur non trouvé'
+                ], 404);
+            }
+
+            return response()->json([
+                'success' => true,
+                'data' => new UserResource($user)
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la récupération de l\'utilisateur',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
      * Vérifier la disponibilité d'un nom d'utilisateur
      * 
      * Permet de vérifier en temps réel si un nom d'utilisateur est disponible avant la soumission du formulaire d'inscription.
@@ -224,6 +383,140 @@ class AuthController extends Controller
             'available' => $available,
             'message' => $available ? 'Nom d\'utilisateur disponible' : 'Nom d\'utilisateur déjà pris'
         ]);
+    }
+
+    /**
+     * Activer un utilisateur
+     */
+    #[Endpoint(
+        title: "Activer un utilisateur",
+        description: "Réactiver un compte utilisateur désactivé"
+    )]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[UrlParam("id", "string", "UUID de l'utilisateur", required: true)]
+    #[Response([
+        'success' => true,
+        'message' => 'Utilisateur activé avec succès'
+    ], 200, "Activation réussie")]
+    public function activate(string $id): JsonResponse
+    {
+        try {
+            $user = User::find($id);
+
+            if (!$user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Utilisateur non trouvé'
+                ], 404);
+            }
+
+            $user->update([
+                'is_active' => true,
+                'failed_login_attempts' => 0,
+                'locked_until' => null
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Utilisateur activé avec succès',
+                'data' => new UserResource($user->fresh())
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de l\'activation',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Statistiques des utilisateurs
+     */
+    #[Endpoint(
+        title: "Statistiques utilisateurs",
+        description: "Obtenir des statistiques globales sur les utilisateurs"
+    )]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[Response([
+        'success' => true,
+        'data' => [
+            'total_users' => 150,
+            'active_users' => 142,
+            'inactive_users' => 8,
+            'verified_emails' => 130,
+            'users_with_login_today' => 45,
+            'users_with_login_this_week' => 98,
+            'locked_accounts' => 2
+        ]
+    ], 200, "Statistiques récupérées")]
+    public function statistics(): JsonResponse
+    {
+        try {
+            $stats = [
+                'total_users' => User::count(),
+                'active_users' => User::where('is_active', true)->count(),
+                'inactive_users' => User::where('is_active', false)->count(),
+                'verified_emails' => User::whereNotNull('email_verified_at')->count(),
+                'users_with_login_today' => User::whereDate('last_login_at', today())->count(),
+                'users_with_login_this_week' => User::whereBetween('last_login_at', [now()->startOfWeek(), now()->endOfWeek()])->count(),
+                'locked_accounts' => User::where('locked_until', '>', now())->count()
+            ];
+
+            return response()->json([
+                'success' => true,
+                'data' => $stats
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la récupération des statistiques',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Déverrouiller un compte utilisateur
+     */
+    #[Endpoint(
+        title: "Déverrouiller un compte",
+        description: "Déverrouiller un compte utilisateur bloqué après plusieurs tentatives échouées"
+    )]
+    #[Header("Authorization", "Bearer {token}", "Token d'authentification requis")]
+    #[UrlParam("id", "string", "UUID de l'utilisateur", required: true)]
+    #[Response([
+        'success' => true,
+        'message' => 'Compte déverrouillé avec succès'
+    ], 200, "Déverrouillage réussi")]
+    public function unlock(string $id): JsonResponse
+    {
+        try {
+            $user = User::find($id);
+
+            if (!$user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Utilisateur non trouvé'
+                ], 404);
+            }
+
+            $user->update([
+                'failed_login_attempts' => 0,
+                'locked_until' => null
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Compte déverrouillé avec succès'
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors du déverrouillage',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**

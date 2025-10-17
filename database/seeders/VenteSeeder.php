@@ -78,12 +78,19 @@ class VenteSeeder extends Seeder
         $products = Product::where('is_active', true)->get();
 
         for ($i = 0; $i < $count; $i++) {
-            // Créer la vente avec l'état spécifié
+            // MODIFICATION: Créer d'abord la vente avec status en_attente
+            // pour éviter que le hook créé le mouvement de stock avant les détails
             $venteFactory = Vente::factory();
             if ($state) {
                 $venteFactory = $venteFactory->$state();
             }
-            $vente = $venteFactory->create();
+
+            // Récupérer les attributs mais forcer le status à en_attente temporairement
+            $attributes = $venteFactory->make()->toArray();
+            $originalStatus = $attributes['status'];
+            $attributes['status'] = 'en_attente'; // Temporaire
+
+            $vente = Vente::create($attributes);
 
             // Nombre de lignes de détail (entre 1 et 10 produits par vente)
             $detailsCount = rand(1, 10);
@@ -123,7 +130,7 @@ class VenteSeeder extends Seeder
                 $totalRemise += $remiseLigne;
             }
 
-            // Mettre à jour la vente avec les montants calculés
+            // Mettre à jour la vente avec les montants calculés ET le statut original
             $montantTotal = $totalMontantHT + $totalMontantTaxe;
             $montantNet = $montantTotal - $totalRemise;
 
@@ -133,7 +140,20 @@ class VenteSeeder extends Seeder
                 'montant_total' => round($montantTotal, 2),
                 'remise' => round($totalRemise, 2),
                 'montant_net' => round($montantNet, 2),
+                'status' => $originalStatus, // Restaurer le statut original
             ]);
+
+            // NOUVEAU: Créer le mouvement de stock si nécessaire
+            // (pour les ventes validées ou livrées avec un entrepôt)
+            if ($vente->entrepot_id && in_array($originalStatus, ['validee', 'livree', 'en_cours_livraison', 'partiellement_livree'])) {
+                try {
+                    $vente->createStockMovementIfNeeded();
+                } catch (\Exception $e) {
+                    // Si erreur (stock insuffisant par exemple), on continue
+                    // mais on peut logger l'erreur
+                    $this->command->warn("⚠️  Mouvement de stock non créé pour {$vente->numero_vente}: " . $e->getMessage());
+                }
+            }
         }
     }
 

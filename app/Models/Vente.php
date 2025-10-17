@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\DB;
+use Log;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vente extends Model
 {
@@ -60,12 +61,9 @@ class Vente extends Model
             }
         });
 
-        // Après création d'une vente validée, créer le mouvement de stock
-        static::created(function ($vente) {
-            if ($vente->status === 'validee' && $vente->entrepot_id) {
-                $vente->createStockMovement();
-            }
-        });
+        // MODIFICATION: Ne plus créer le mouvement lors de la création
+        // Seulement lors de la mise à jour du statut vers "validee"
+        // Cela permet au seeder de créer d'abord les détails
 
         // Lors de la mise à jour du statut
         static::updating(function ($vente) {
@@ -76,7 +74,10 @@ class Vente extends Model
                 !$vente->stock_movement_id &&
                 $vente->entrepot_id
             ) {
-                $vente->createStockMovement();
+                // Vérifier qu'il y a des détails avant de créer le mouvement
+                if ($vente->detailVentes()->count() > 0) {
+                    $vente->createStockMovement();
+                }
             }
 
             // Si le statut passe à "annulee" et qu'il y a un mouvement validé
@@ -123,6 +124,7 @@ class Vente extends Model
 
     /**
      * Crée un mouvement de stock pour cette vente
+     * Cette méthode peut aussi être appelée manuellement si nécessaire
      */
     public function createStockMovement(): void
     {
@@ -174,6 +176,36 @@ class Vente extends Model
             DB::rollBack();
             throw $e;
         }
+    }
+
+    /**
+     * Méthode publique pour créer manuellement le mouvement de stock
+     * Utile après la création des détails dans le seeder
+     */
+    public function createStockMovementIfNeeded(): bool
+    {
+        // Ne créer que si :
+        // - La vente est validée ou livrée
+        // - Il n'y a pas déjà un mouvement
+        // - Il y a un entrepôt
+        // - Il y a des détails
+        if (
+            in_array($this->status, ['validee', 'livree', 'en_cours_livraison', 'partiellement_livree']) &&
+            !$this->stock_movement_id &&
+            $this->entrepot_id &&
+            $this->detailVentes()->count() > 0
+        ) {
+            try {
+                $this->createStockMovement();
+                return true;
+            } catch (\Exception $e) {
+                // Log l'erreur mais ne pas faire échouer
+                Log::warning("Impossible de créer le mouvement de stock pour la vente {$this->numero_vente}: " . $e->getMessage());
+                return false;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -251,6 +283,24 @@ class Vente extends Model
     public function stockMovement(): BelongsTo
     {
         return $this->belongsTo(StockMovement::class, 'stock_movement_id', 'stock_movement_id');
+    }
+
+    /**
+     * Met à jour le statut de paiement en fonction des paiements reçus
+     */
+    public function updateStatutPaiement(): void
+    {
+        $montantPaye = $this->montant_paye;
+
+        if ($montantPaye <= 0) {
+            $this->statut_paiement = 'non_paye';
+        } elseif ($montantPaye >= $this->montant_net) {
+            $this->statut_paiement = 'paye_totalement';
+        } else {
+            $this->statut_paiement = 'paye_partiellement';
+        }
+
+        $this->saveQuietly();
     }
 
     /**

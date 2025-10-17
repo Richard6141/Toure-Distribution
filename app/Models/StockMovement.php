@@ -1,9 +1,7 @@
 <?php
-// app/Models/StockMovement.php
 
 namespace App\Models;
 
-use Fournisseur;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +27,12 @@ class StockMovement extends Model
         'statut',
         'note',
         'user_id',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     protected static function booted()

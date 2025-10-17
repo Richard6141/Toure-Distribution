@@ -1,15 +1,17 @@
 <?php
 
-use App\Models\Commande;
+namespace App\Models;
+
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Fournisseur extends Model
 {
-    use SoftDeletes, HasUuids, SoftDeletes;
+    use HasFactory, HasUuids, SoftDeletes;
 
     protected $table = 'fournisseurs';
     protected $primaryKey = 'fournisseur_id';
@@ -28,6 +30,13 @@ class Fournisseur extends Model
         'is_active',
     ];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
+    ];
+
     protected static function booted()
     {
         static::creating(function ($model) {
@@ -36,7 +45,7 @@ class Fournisseur extends Model
             }
 
             if (empty($model->code)) {
-                $model->code = 'FRN-' . strtoupper(Str::random(6));
+                $model->code = 'FRS-' . strtoupper(Str::random(3)) . '-' . rand(1000, 9999);
             }
         });
     }
@@ -55,5 +64,55 @@ class Fournisseur extends Model
     public function scopeActifs($query)
     {
         return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope pour obtenir les fournisseurs inactifs
+     */
+    public function scopeInactifs($query)
+    {
+        return $query->where('is_active', false);
+    }
+
+    /**
+     * Scope pour rechercher par nom
+     */
+    public function scopeByName($query, $name)
+    {
+        return $query->where('name', 'like', "%{$name}%");
+    }
+
+    /**
+     * Scope pour rechercher par ville
+     */
+    public function scopeByCity($query, $city)
+    {
+        return $query->where('city', 'like', "%{$city}%");
+    }
+
+    /**
+     * Vérifie si le fournisseur est actif
+     */
+    public function isActif(): bool
+    {
+        return $this->is_active === true;
+    }
+
+    /**
+     * Calcule le total des commandes du fournisseur
+     */
+    public function getTotalCommandesAttribute(): float
+    {
+        return $this->commandes()
+            ->whereNotIn('status', ['annulee'])
+            ->sum('montant');
+    }
+
+    /**
+     * Compte le nombre de commandes du fournisseur
+     */
+    public function getNombreCommandesAttribute(): int
+    {
+        return $this->commandes()->count();
     }
 }

@@ -32,22 +32,38 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('auth')->name('auth.')->group(function () {
-    // Routes publiques (sans authentification)
+    // Routes publiques existantes...
     Route::post('register', [AuthController::class, 'register'])->name('register');
     Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
     Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('reset.password');
-
-    // Vérifications de disponibilité
     Route::get('check-username/{username}', [AuthController::class, 'checkUsername'])->name('check.username');
     Route::get('check-email/{email}', [AuthController::class, 'checkEmail'])->name('check.email');
 
     // Routes protégées (authentification requise)
     Route::middleware('auth:sanctum')->group(function () {
+        // Routes existantes
         Route::get('profile', [AuthController::class, 'profile'])->name('profile');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         Route::post('logout-all', [AuthController::class, 'logoutAll'])->name('logout.all');
         Route::post('change-password', [AuthController::class, 'changePassword'])->name('change.password');
+
+        // ⚠️ ROUTES MANQUANTES À AJOUTER ⚠️
+
+        // 1. Liste de tous les utilisateurs
+        Route::get('users', [AuthController::class, 'index'])->name('users.index');
+
+        // 2. Voir un utilisateur spécifique
+        Route::get('users/{id}', [AuthController::class, 'show'])->name('users.show');
+
+        // 3. Activer un utilisateur
+        Route::post('users/{id}/activate', [AuthController::class, 'activate'])->name('users.activate');
+
+        // 4. Déverrouiller un compte utilisateur
+        Route::post('users/{id}/unlock', [AuthController::class, 'unlock'])->name('users.unlock');
+
+        // 5. Statistiques des utilisateurs
+        Route::get('statistics', [AuthController::class, 'statistics'])->name('statistics');
     });
 });
 
