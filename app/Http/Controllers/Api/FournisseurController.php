@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use Fournisseur;
+use App\Models\Fournisseur;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\JsonResponse;
