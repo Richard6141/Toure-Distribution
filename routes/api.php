@@ -131,7 +131,7 @@ Route::prefix('fournisseurs')->name('fournisseurs.')->group(function () {
 */
 
 Route::prefix('entrepots')->name('entrepots.')->group(function () {
-    // Routes CRUD standard
+    // Routes CRUD standard existantes
     Route::get('/', [EntrepotController::class, 'index'])->name('index');
     Route::post('/', [EntrepotController::class, 'store'])->name('store');
     Route::get('/{id}', [EntrepotController::class, 'show'])->name('show');
@@ -139,10 +139,13 @@ Route::prefix('entrepots')->name('entrepots.')->group(function () {
     Route::patch('/{id}', [EntrepotController::class, 'update'])->name('patch');
     Route::delete('/{id}', [EntrepotController::class, 'destroy'])->name('destroy');
 
-    // Routes pour la gestion des responsables
+    // Routes pour la gestion des responsables existantes
     Route::patch('/{id}/assign-user', [EntrepotController::class, 'assignUser'])->name('assign-user');
     Route::patch('/{id}/unassign-user', [EntrepotController::class, 'unassignUser'])->name('unassign-user');
     Route::patch('/{id}/change-user', [EntrepotController::class, 'changeUser'])->name('change-user');
+
+    // 🆕 NOUVELLE ROUTE pour obtenir les produits avec stocks d'un entrepôt
+    Route::get('/{id}/products-stocks', [EntrepotController::class, 'getProductsWithStocks'])->name('products-stocks');
 })->middleware('auth:sanctum');
 
 
