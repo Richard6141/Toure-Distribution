@@ -34,6 +34,21 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductSeeder::class);
         $this->command->info('');
 
+        // 5. Créer les fournisseurs
+        $this->command->info('🏭 Création des fournisseurs...');
+        $this->call(FournisseurSeeder::class);
+        $this->command->info('');
+
+        // 6. Créer les entrepôts
+        $this->command->info('🏢 Création des entrepôts...');
+        $this->call(EntrepotSeeder::class);
+        $this->command->info('');
+
+        // 7. Créer les ventes avec leurs détails
+        $this->command->info('💰 Création des ventes...');
+        $this->call(VenteSeeder::class);
+        $this->command->info('');
+
         $this->command->info('✨ Seeding terminé avec succès !');
     }
 }
