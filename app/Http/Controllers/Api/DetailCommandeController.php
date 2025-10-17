@@ -372,13 +372,13 @@ class DetailCommandeController extends Controller
 
     /**
      * Afficher un détail de commande
-     * 
-     * Récupère les informations d'une ligne de commande spécifique.
-     * 
+     *
+     * Récupère les informations d'une ligne de commande spécifique avec tous les produits de la commande.
+     *
      * @authenticated
-     * 
+     *
      * @urlParam id string required L'UUID du détail de commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
+     *
      * @response 200 {
      *   "success": true,
      *   "message": "Détail de commande récupéré avec succès",
@@ -394,7 +394,35 @@ class DetailCommandeController extends Controller
      *     "commande": {
      *       "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
      *       "numero_commande": "CMD-2025-0001",
-     *       "date_achat": "2025-01-15"
+     *       "date_achat": "2025-01-15",
+     *       "details": [
+     *         {
+     *           "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+     *           "quantite": 10,
+     *           "prix_unitaire": "2500.00",
+     *           "sous_total": "25000.00",
+     *           "product": {
+     *             "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+     *             "code": "PROD001",
+     *             "name": "Produit ABC",
+     *             "unit_price": "2500.00"
+     *           }
+     *         },
+     *         {
+     *           "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+     *           "quantite": 5,
+     *           "prix_unitaire": "5000.00",
+     *           "sous_total": "25000.00",
+     *           "product": {
+     *             "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+     *             "code": "PROD002",
+     *             "name": "Produit XYZ",
+     *             "unit_price": "5000.00"
+     *           }
+     *         }
+     *       ]
      *     },
      *     "product": {
      *       "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
@@ -404,7 +432,7 @@ class DetailCommandeController extends Controller
      *     }
      *   }
      * }
-     * 
+     *
      * @response 404 {
      *   "success": false,
      *   "message": "Détail de commande non trouvé"
@@ -413,7 +441,10 @@ class DetailCommandeController extends Controller
     public function show(string $id): JsonResponse
     {
         $detail = DetailCommande::with([
-            'commande:commande_id,numero_commande,date_achat',
+            'commande' => function ($query) {
+                $query->select('commande_id', 'numero_commande', 'date_achat')
+                    ->with(['details.product:product_id,code,name,unit_price']);
+            },
             'product:product_id,code,name,unit_price'
         ])->find($id);
 
