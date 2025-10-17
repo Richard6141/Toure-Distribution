@@ -26,7 +26,7 @@ class CommandeController extends Controller
     /**
      * Liste des commandes
      * 
-     * Récupère la liste paginée de toutes les commandes avec leurs fournisseurs.
+     * Récupère la liste paginée de toutes les commandes avec leurs fournisseurs et produits associés.
      * 
      * @authenticated
      * 
@@ -54,7 +54,7 @@ class CommandeController extends Controller
      *         "date_achat": "2025-01-15",
      *         "date_livraison_prevue": "2025-02-15",
      *         "date_livraison_effective": null,
-     *         "montant": "25000.00",
+     *         "montant": "75000.00",
      *         "status": "en_attente",
      *         "note": "Commande urgente",
      *         "created_at": "2025-01-15T10:30:00.000000Z",
@@ -65,7 +65,43 @@ class CommandeController extends Controller
      *           "name": "Fournisseur ABC",
      *           "email": "contact@fournisseur-abc.com",
      *           "phone": "+229 97 00 00 00"
-     *         }
+     *         },
+     *         "details": [
+     *           {
+     *             "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+     *             "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *             "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *             "quantite": 10,
+     *             "prix_unitaire": "2500.00",
+     *             "sous_total": "25000.00",
+     *             "created_at": "2025-01-15T10:30:00.000000Z",
+     *             "updated_at": "2025-01-15T10:30:00.000000Z",
+     *             "product": {
+     *               "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *               "code": "PROD001",
+     *               "name": "Laptop Dell XPS 15",
+     *               "unit_price": "2500.00",
+     *               "picture": "laptop-dell-xps.jpg"
+     *             }
+     *           },
+     *           {
+     *             "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+     *             "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *             "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
+     *             "quantite": 5,
+     *             "prix_unitaire": "5000.00",
+     *             "sous_total": "25000.00",
+     *             "created_at": "2025-01-15T10:30:00.000000Z",
+     *             "updated_at": "2025-01-15T10:30:00.000000Z",
+     *             "product": {
+     *               "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
+     *               "code": "PROD002",
+     *               "name": "Imprimante HP LaserJet",
+     *               "unit_price": "5000.00",
+     *               "picture": "imprimante-hp.jpg"
+     *             }
+     *           }
+     *         ]
      *       }
      *     ],
      *     "first_page_url": "http://localhost/api/commandes?page=1",
@@ -81,7 +117,10 @@ class CommandeController extends Controller
     {
         $perPage = min($request->input('per_page', 15), 100);
 
-        $query = Commande::with('fournisseur:fournisseur_id,code,name,email,phone');
+        $query = Commande::with([
+            'fournisseur:fournisseur_id,code,name,email,phone',
+            'details.product:product_id,code,name,unit_price,picture'
+        ]);
 
         // Recherche par numéro de commande
         if ($request->filled('search')) {
@@ -235,7 +274,7 @@ class CommandeController extends Controller
     /**
      * Afficher une commande
      * 
-     * Récupère les détails d'une commande spécifique avec son fournisseur.
+     * Récupère les détails d'une commande spécifique avec son fournisseur et tous ses produits.
      * 
      * @authenticated
      * 
@@ -251,7 +290,7 @@ class CommandeController extends Controller
      *     "date_achat": "2025-01-15",
      *     "date_livraison_prevue": "2025-02-15",
      *     "date_livraison_effective": null,
-     *     "montant": "25000.00",
+     *     "montant": "75000.00",
      *     "status": "en_attente",
      *     "note": "Commande urgente",
      *     "created_at": "2025-01-15T10:30:00.000000Z",
@@ -268,7 +307,84 @@ class CommandeController extends Controller
      *       "phone": "+229 97 00 00 00",
      *       "adresse": "123 Rue Principale",
      *       "city": "Cotonou"
-     *     }
+     *     },
+     *     "details": [
+     *       {
+     *         "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+     *         "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *         "quantite": 10,
+     *         "prix_unitaire": "2500.00",
+     *         "sous_total": "25000.00",
+     *         "created_at": "2025-01-15T10:30:00.000000Z",
+     *         "updated_at": "2025-01-15T10:30:00.000000Z",
+     *         "product": {
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *           "code": "PROD001",
+     *           "name": "Laptop Dell XPS 15",
+     *           "description": "Ordinateur portable haute performance",
+     *           "unit_price": "2500.00",
+     *           "cost": "2000.00",
+     *           "minimum_cost": "1800.00",
+     *           "min_stock_level": 5,
+     *           "is_active": true,
+     *           "picture": "laptop-dell-xps.jpg",
+     *           "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+     *           "created_at": "2025-01-10T08:00:00.000000Z",
+     *           "updated_at": "2025-01-10T08:00:00.000000Z"
+     *         }
+     *       },
+     *       {
+     *         "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+     *         "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
+     *         "quantite": 5,
+     *         "prix_unitaire": "5000.00",
+     *         "sous_total": "25000.00",
+     *         "created_at": "2025-01-15T10:30:00.000000Z",
+     *         "updated_at": "2025-01-15T10:30:00.000000Z",
+     *         "product": {
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
+     *           "code": "PROD002",
+     *           "name": "Imprimante HP LaserJet",
+     *           "description": "Imprimante laser professionnelle",
+     *           "unit_price": "5000.00",
+     *           "cost": "4000.00",
+     *           "minimum_cost": "3500.00",
+     *           "min_stock_level": 3,
+     *           "is_active": true,
+     *           "picture": "imprimante-hp.jpg",
+     *           "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+     *           "created_at": "2025-01-10T08:00:00.000000Z",
+     *           "updated_at": "2025-01-10T08:00:00.000000Z"
+     *         }
+     *       },
+     *       {
+     *         "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f30",
+     *         "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f31",
+     *         "quantite": 20,
+     *         "prix_unitaire": "1250.00",
+     *         "sous_total": "25000.00",
+     *         "created_at": "2025-01-15T10:30:00.000000Z",
+     *         "updated_at": "2025-01-15T10:30:00.000000Z",
+     *         "product": {
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f31",
+     *           "code": "PROD003",
+     *           "name": "Souris sans fil Logitech",
+     *           "description": "Souris ergonomique sans fil",
+     *           "unit_price": "1250.00",
+     *           "cost": "800.00",
+     *           "minimum_cost": "600.00",
+     *           "min_stock_level": 20,
+     *           "is_active": true,
+     *           "picture": "souris-logitech.jpg",
+     *           "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+     *           "created_at": "2025-01-10T08:00:00.000000Z",
+     *           "updated_at": "2025-01-10T08:00:00.000000Z"
+     *         }
+     *       }
+     *     ]
      *   }
      * }
      * 
@@ -279,7 +395,10 @@ class CommandeController extends Controller
      */
     public function show(string $id): JsonResponse
     {
-        $commande = Commande::with('fournisseur')->find($id);
+        $commande = Commande::with([
+            'fournisseur',
+            'details.product'
+        ])->find($id);
 
         if (!$commande) {
             return response()->json([
@@ -299,6 +418,7 @@ class CommandeController extends Controller
             'data' => $data
         ]);
     }
+
 
     /**
      * Mettre à jour une commande
