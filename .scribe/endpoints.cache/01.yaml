@@ -716,3 +716,298 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/auth/users
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des utilisateurs'
+      description: 'Récupérer la liste paginée de tous les utilisateurs avec filtres optionnels'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        name: search
+        description: 'Recherche par nom, email ou username'
+        required: false
+        example: jean
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Filtrer par statut actif/inactif'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      poste:
+        name: poste
+        description: 'Filtrer par poste'
+        required: false
+        example: Développeur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (défaut: 15)"
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Tri par champ (created_at, lastname, email)'
+        required: false
+        example: created_at
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc)'
+        required: false
+        example: desc
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      search: jean
+      is_active: true
+      poste: Développeur
+      per_page: 15
+      sort_by: created_at
+      sort_order: desc
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"data":{"users":[{"user_id":"550e8400-e29b-41d4-a716-446655440000","firstname":"Jean","lastname":"DUPONT","username":"jean.dupont","email":"jean.dupont@example.com","phonenumber":"+33612345678","poste":"D\u00e9veloppeur","is_active":true,"email_verified_at":"2024-01-10 10:00:00","last_login_at":"2024-01-15 14:30:00","created_at":"2024-01-10 09:15:00"}],"pagination":{"total":50,"per_page":15,"current_page":1,"last_page":4,"from":1,"to":15}}}'
+        headers: []
+        description: 'Liste récupérée'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/auth/users/{id}'
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Détails d'un utilisateur"
+      description: "Récupérer les informations complètes d'un utilisateur par son ID"
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "UUID de l'utilisateur"
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"data":{"user_id":"550e8400-e29b-41d4-a716-446655440000","firstname":"Jean","lastname":"DUPONT","username":"jean.dupont","email":"jean.dupont@example.com","phonenumber":"+33612345678","poste":"D\u00e9veloppeur","is_active":true,"email_verified_at":"2024-01-10 10:00:00","last_login_at":"2024-01-15 14:30:00","failed_login_attempts":0,"created_at":"2024-01-10 09:15:00"}}'
+        headers: []
+        description: 'Utilisateur trouvé'
+        custom: []
+      -
+        status: 404
+        content: '{"success":false,"message":"Utilisateur non trouv\u00e9"}'
+        headers: []
+        description: 'Utilisateur non trouvé'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/auth/users/{id}/activate'
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Activer un utilisateur'
+      description: 'Réactiver un compte utilisateur désactivé'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "UUID de l'utilisateur"
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Utilisateur activ\u00e9 avec succ\u00e8s"}'
+        headers: []
+        description: 'Activation réussie'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/auth/users/{id}/unlock'
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Déverrouiller un compte'
+      description: 'Déverrouiller un compte utilisateur bloqué après plusieurs tentatives échouées'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "UUID de l'utilisateur"
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"Compte d\u00e9verrouill\u00e9 avec succ\u00e8s"}'
+        headers: []
+        description: 'Déverrouillage réussi'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/auth/statistics
+    metadata:
+      groupName: Authentification
+      groupDescription: 'Gestion des utilisateurs et authentification'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Statistiques utilisateurs'
+      description: 'Obtenir des statistiques globales sur les utilisateurs'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {token}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"data":{"total_users":150,"active_users":142,"inactive_users":8,"verified_emails":130,"users_with_login_today":45,"users_with_login_this_week":98,"locked_accounts":2}}'
+        headers: []
+        description: 'Statistiques récupérées'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

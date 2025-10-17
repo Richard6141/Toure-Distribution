@@ -964,3 +964,215 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/entrepots/{id}/products-stocks'
+    metadata:
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Obtenir tous les produits avec leurs stocks pour un entrepôt spécifique'
+      description: |-
+        Récupère la liste complète des produits avec leurs informations de stock
+        dans un entrepôt donné. Inclut également les produits sans stock (quantité 0).
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de l'entrepôt."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters:
+      with_category:
+        name: with_category
+        description: 'Inclure les informations de catégorie des produits.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      only_in_stock:
+        name: only_in_stock
+        description: 'Afficher uniquement les produits en stock (quantité > 0).'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      only_active:
+        name: only_active
+        description: 'Afficher uniquement les produits actifs.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Rechercher par nom ou code de produit.'
+        required: false
+        example: Laptop
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Champ de tri (name, quantite, available_quantity).'
+        required: false
+        example: name
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc).'
+        required: false
+        example: asc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      with_category: true
+      only_in_stock: false
+      only_active: true
+      search: Laptop
+      sort_by: name
+      sort_order: asc
+      per_page: 20
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "entrepot": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+                "code": "ENT001",
+                "name": "Entrepôt Central",
+                "adresse": "123 Rue de l'Industrie",
+                "is_active": true
+              },
+              "products": {
+                "current_page": 1,
+                "data": [
+                  {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "code": "PRO-ABC123",
+                    "name": "Laptop Dell XPS 15",
+                    "description": "Ordinateur portable haute performance",
+                    "unit_price": 1500000.00,
+                    "cost": 1200000.00,
+                    "min_stock_level": 5,
+                    "is_active": true,
+                    "picture": "laptop-dell-xps.jpg",
+                    "category": {
+                      "product_category_id": "550e8400-e29b-41d4-a716-446655440010",
+                      "label": "Informatique"
+                    },
+                    "stock": {
+                      "stock_id": "550e8400-e29b-41d4-a716-446655440020",
+                      "quantite": 50,
+                      "reserved_quantity": 5,
+                      "available_quantity": 45,
+                      "is_below_minimum": false,
+                      "last_updated": "2024-10-15T10:30:00.000000Z"
+                    }
+                  },
+                  {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440004",
+                    "code": "PRO-XYZ789",
+                    "name": "Souris Logitech",
+                    "description": "Souris sans fil ergonomique",
+                    "unit_price": 25000.00,
+                    "cost": 18000.00,
+                    "min_stock_level": 20,
+                    "is_active": true,
+                    "picture": "souris-logitech.jpg",
+                    "category": {
+                      "product_category_id": "550e8400-e29b-41d4-a716-446655440010",
+                      "label": "Informatique"
+                    },
+                    "stock": {
+                      "stock_id": null,
+                      "quantite": 0,
+                      "reserved_quantity": 0,
+                      "available_quantity": 0,
+                      "is_below_minimum": true,
+                      "last_updated": null
+                    }
+                  }
+                ],
+                "per_page": 20,
+                "total": 2
+              },
+              "summary": {
+                "total_products": 2,
+                "products_in_stock": 1,
+                "products_out_of_stock": 1,
+                "products_below_minimum": 1,
+                "total_stock_value": 60000000.00
+              }
+            },
+            "message": "Produits de l'entrepôt récupérés avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Entrepôt non trouvé."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

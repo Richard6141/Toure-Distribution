@@ -103,6 +103,21 @@
                                                                                 <li class="tocify-item level-2" data-unique="authentification-POSTapi-auth-change-password">
                                 <a href="#authentification-POSTapi-auth-change-password">Changer le mot de passe</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentification-GETapi-auth-users">
+                                <a href="#authentification-GETapi-auth-users">Liste des utilisateurs</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentification-GETapi-auth-users--id-">
+                                <a href="#authentification-GETapi-auth-users--id-">Détails d'un utilisateur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentification-POSTapi-auth-users--id--activate">
+                                <a href="#authentification-POSTapi-auth-users--id--activate">Activer un utilisateur</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentification-POSTapi-auth-users--id--unlock">
+                                <a href="#authentification-POSTapi-auth-users--id--unlock">Déverrouiller un compte</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentification-GETapi-auth-statistics">
+                                <a href="#authentification-GETapi-auth-statistics">Statistiques utilisateurs</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-clients-management" class="tocify-header">
@@ -407,6 +422,9 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="entrepots-PATCHapi-entrepots--id--change-user">
                                 <a href="#entrepots-PATCHapi-entrepots--id--change-user">Changer le responsable d'un entrepôt</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="entrepots-GETapi-entrepots--id--products-stocks">
+                                <a href="#entrepots-GETapi-entrepots--id--products-stocks">Obtenir tous les produits avec leurs stocks pour un entrepôt spécifique</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -969,7 +987,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 16 October 2025</li>
+        <li>Dernière mise à jour: 17 October 2025</li>
     </ul>
 </div>
 
@@ -3008,6 +3026,933 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                    <h2 id="authentification-GETapi-auth-users">Liste des utilisateurs</h2>
+
+<p>
+</p>
+
+<p>Récupérer la liste paginée de tous les utilisateurs avec filtres optionnels</p>
+
+<span id="example-requests-GETapi-auth-users">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/auth/users?search=jean&amp;is_active=1&amp;poste=D%C3%A9veloppeur&amp;per_page=15&amp;sort_by=created_at&amp;sort_order=desc" \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/users"
+);
+
+const params = {
+    "search": "jean",
+    "is_active": "1",
+    "poste": "Développeur",
+    "per_page": "15",
+    "sort_by": "created_at",
+    "sort_order": "desc",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/auth/users';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {token}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'search' =&gt; 'jean',
+            'is_active' =&gt; '1',
+            'poste' =&gt; 'Développeur',
+            'per_page' =&gt; '15',
+            'sort_by' =&gt; 'created_at',
+            'sort_order' =&gt; 'desc',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth-users">
+            <blockquote>
+            <p>Example response (200, Liste récupérée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;users&quot;: [
+            {
+                &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+                &quot;firstname&quot;: &quot;Jean&quot;,
+                &quot;lastname&quot;: &quot;DUPONT&quot;,
+                &quot;username&quot;: &quot;jean.dupont&quot;,
+                &quot;email&quot;: &quot;jean.dupont@example.com&quot;,
+                &quot;phonenumber&quot;: &quot;+33612345678&quot;,
+                &quot;poste&quot;: &quot;D&eacute;veloppeur&quot;,
+                &quot;is_active&quot;: true,
+                &quot;email_verified_at&quot;: &quot;2024-01-10 10:00:00&quot;,
+                &quot;last_login_at&quot;: &quot;2024-01-15 14:30:00&quot;,
+                &quot;created_at&quot;: &quot;2024-01-10 09:15:00&quot;
+            }
+        ],
+        &quot;pagination&quot;: {
+            &quot;total&quot;: 50,
+            &quot;per_page&quot;: 15,
+            &quot;current_page&quot;: 1,
+            &quot;last_page&quot;: 4,
+            &quot;from&quot;: 1,
+            &quot;to&quot;: 15
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth-users" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth-users"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth-users"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth-users" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth-users">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth-users" data-method="GET"
+      data-path="api/auth/users"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-users', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth-users"
+                    onclick="tryItOut('GETapi-auth-users');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth-users"
+                    onclick="cancelTryOut('GETapi-auth-users');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth-users"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/users</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization"                data-endpoint="GETapi-auth-users"
+               value="Bearer {token}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {token}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth-users"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth-users"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-auth-users"
+               value="jean"
+               data-component="query">
+    <br>
+<p>Recherche par nom, email ou username Example: <code>jean</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-auth-users" style="display: none">
+            <input type="radio" name="is_active"
+                   value="1"
+                   data-endpoint="GETapi-auth-users"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-auth-users" style="display: none">
+            <input type="radio" name="is_active"
+                   value="0"
+                   data-endpoint="GETapi-auth-users"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Filtrer par statut actif/inactif Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>poste</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="poste"                data-endpoint="GETapi-auth-users"
+               value="Développeur"
+               data-component="query">
+    <br>
+<p>Filtrer par poste Example: <code>Développeur</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-auth-users"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (défaut: 15) Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-auth-users"
+               value="created_at"
+               data-component="query">
+    <br>
+<p>Tri par champ (created_at, lastname, email) Example: <code>created_at</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-auth-users"
+               value="desc"
+               data-component="query">
+    <br>
+<p>Ordre de tri (asc, desc) Example: <code>desc</code></p>
+            </div>
+                </form>
+
+                    <h2 id="authentification-GETapi-auth-users--id-">Détails d&#039;un utilisateur</h2>
+
+<p>
+</p>
+
+<p>Récupérer les informations complètes d'un utilisateur par son ID</p>
+
+<span id="example-requests-GETapi-auth-users--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/auth/users/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/users/550e8400-e29b-41d4-a716-446655440000"
+);
+
+const headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/auth/users/550e8400-e29b-41d4-a716-446655440000';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {token}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth-users--id-">
+            <blockquote>
+            <p>Example response (200, Utilisateur trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;firstname&quot;: &quot;Jean&quot;,
+        &quot;lastname&quot;: &quot;DUPONT&quot;,
+        &quot;username&quot;: &quot;jean.dupont&quot;,
+        &quot;email&quot;: &quot;jean.dupont@example.com&quot;,
+        &quot;phonenumber&quot;: &quot;+33612345678&quot;,
+        &quot;poste&quot;: &quot;D&eacute;veloppeur&quot;,
+        &quot;is_active&quot;: true,
+        &quot;email_verified_at&quot;: &quot;2024-01-10 10:00:00&quot;,
+        &quot;last_login_at&quot;: &quot;2024-01-15 14:30:00&quot;,
+        &quot;failed_login_attempts&quot;: 0,
+        &quot;created_at&quot;: &quot;2024-01-10 09:15:00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Utilisateur non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Utilisateur non trouv&eacute;&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth-users--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth-users--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth-users--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth-users--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth-users--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth-users--id-" data-method="GET"
+      data-path="api/auth/users/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-users--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth-users--id-"
+                    onclick="tryItOut('GETapi-auth-users--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth-users--id-"
+                    onclick="cancelTryOut('GETapi-auth-users--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth-users--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/users/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization"                data-endpoint="GETapi-auth-users--id-"
+               value="Bearer {token}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {token}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth-users--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth-users--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-auth-users--id-"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>UUID de l'utilisateur Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="authentification-POSTapi-auth-users--id--activate">Activer un utilisateur</h2>
+
+<p>
+</p>
+
+<p>Réactiver un compte utilisateur désactivé</p>
+
+<span id="example-requests-POSTapi-auth-users--id--activate">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/auth/users/architecto/activate" \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/users/architecto/activate"
+);
+
+const headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/auth/users/architecto/activate';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {token}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-auth-users--id--activate">
+            <blockquote>
+            <p>Example response (200, Activation réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Utilisateur activ&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-users--id--activate" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-users--id--activate"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-users--id--activate"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-users--id--activate" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-users--id--activate">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-auth-users--id--activate" data-method="POST"
+      data-path="api/auth/users/{id}/activate"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-users--id--activate', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-users--id--activate"
+                    onclick="tryItOut('POSTapi-auth-users--id--activate');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-users--id--activate"
+                    onclick="cancelTryOut('POSTapi-auth-users--id--activate');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-users--id--activate"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/users/{id}/activate</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization"                data-endpoint="POSTapi-auth-users--id--activate"
+               value="Bearer {token}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {token}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-users--id--activate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-auth-users--id--activate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-auth-users--id--activate"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>UUID de l'utilisateur Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="authentification-POSTapi-auth-users--id--unlock">Déverrouiller un compte</h2>
+
+<p>
+</p>
+
+<p>Déverrouiller un compte utilisateur bloqué après plusieurs tentatives échouées</p>
+
+<span id="example-requests-POSTapi-auth-users--id--unlock">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/auth/users/architecto/unlock" \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/users/architecto/unlock"
+);
+
+const headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/auth/users/architecto/unlock';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {token}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-auth-users--id--unlock">
+            <blockquote>
+            <p>Example response (200, Déverrouillage réussi):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Compte d&eacute;verrouill&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-users--id--unlock" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-users--id--unlock"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-users--id--unlock"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-users--id--unlock" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-users--id--unlock">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-auth-users--id--unlock" data-method="POST"
+      data-path="api/auth/users/{id}/unlock"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-users--id--unlock', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-users--id--unlock"
+                    onclick="tryItOut('POSTapi-auth-users--id--unlock');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-users--id--unlock"
+                    onclick="cancelTryOut('POSTapi-auth-users--id--unlock');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-users--id--unlock"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/users/{id}/unlock</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization"                data-endpoint="POSTapi-auth-users--id--unlock"
+               value="Bearer {token}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {token}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-auth-users--id--unlock"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-auth-users--id--unlock"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-auth-users--id--unlock"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>UUID de l'utilisateur Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="authentification-GETapi-auth-statistics">Statistiques utilisateurs</h2>
+
+<p>
+</p>
+
+<p>Obtenir des statistiques globales sur les utilisateurs</p>
+
+<span id="example-requests-GETapi-auth-statistics">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/auth/statistics" \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth/statistics"
+);
+
+const headers = {
+    "Authorization": "Bearer {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/auth/statistics';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer {token}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-auth-statistics">
+            <blockquote>
+            <p>Example response (200, Statistiques récupérées):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;total_users&quot;: 150,
+        &quot;active_users&quot;: 142,
+        &quot;inactive_users&quot;: 8,
+        &quot;verified_emails&quot;: 130,
+        &quot;users_with_login_today&quot;: 45,
+        &quot;users_with_login_this_week&quot;: 98,
+        &quot;locked_accounts&quot;: 2
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-auth-statistics" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-auth-statistics"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-auth-statistics"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-auth-statistics" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-auth-statistics">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-auth-statistics" data-method="GET"
+      data-path="api/auth/statistics"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-auth-statistics', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-auth-statistics"
+                    onclick="tryItOut('GETapi-auth-statistics');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-auth-statistics"
+                    onclick="cancelTryOut('GETapi-auth-statistics');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-auth-statistics"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/auth/statistics</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization"                data-endpoint="GETapi-auth-statistics"
+               value="Bearer {token}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {token}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-auth-statistics"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-auth-statistics"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
                 <h1 id="clients-management">Clients Management</h1>
 
     <p>APIs pour gérer les clients</p>
@@ -3031,7 +3976,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -3057,7 +4002,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -3085,7 +4030,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -3270,7 +4215,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -3805,8 +4750,8 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": true,
-    \"with_client_type\": true,
+    \"is_active\": false,
+    \"with_client_type\": false,
     \"balance_filter\": \"positive\"
 }"
 </code></pre></div>
@@ -3851,8 +4796,8 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": true,
-    "with_client_type": true,
+    "is_active": false,
+    "with_client_type": false,
     "balance_filter": "positive"
 };
 
@@ -3899,8 +4844,8 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; true,
-            'with_client_type' =&gt; true,
+            'is_active' =&gt; false,
+            'with_client_type' =&gt; false,
             'balance_filter' =&gt; 'positive',
         ],
     ]
@@ -4309,7 +5254,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -4330,7 +5275,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -6667,7 +7612,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": false
+    \"is_active\": true
 }"
 </code></pre></div>
 
@@ -6695,7 +7640,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": false
+    "is_active": true
 };
 
 fetch(url, {
@@ -6725,7 +7670,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
         ],
     ]
 );
@@ -6942,7 +7887,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -8131,8 +9076,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-16T17:42:43\",
-    \"date_to\": \"2051-11-09\"
+    \"date_from\": \"2025-10-17T09:14:31\",
+    \"date_to\": \"2051-11-10\"
 }"
 </code></pre></div>
 
@@ -8155,8 +9100,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-16T17:42:43",
-    "date_to": "2051-11-09"
+    "date_from": "2025-10-17T09:14:31",
+    "date_to": "2051-11-10"
 };
 
 fetch(url, {
@@ -8181,8 +9126,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-16T17:42:43',
-            'date_to' =&gt; '2051-11-09',
+            'date_from' =&gt; '2025-10-17T09:14:31',
+            'date_to' =&gt; '2051-11-10',
         ],
     ]
 );
@@ -8312,10 +9257,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-16T17:42:43"
+               value="2025-10-17T09:14:31"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T17:42:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-17T09:14:31</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8323,10 +9268,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2051-11-09"
+               value="2051-11-10"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-10</code></p>
         </div>
         </form>
 
@@ -8351,10 +9296,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"paid\",
-    \"date_from\": \"2025-10-16T17:42:43\",
-    \"date_to\": \"2051-11-09\",
-    \"with_client\": true,
+    \"statut\": \"partially_paid\",
+    \"date_from\": \"2025-10-17T09:14:31\",
+    \"date_to\": \"2051-11-10\",
+    \"with_client\": false,
     \"with_details\": false
 }"
 </code></pre></div>
@@ -8389,10 +9334,10 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "paid",
-    "date_from": "2025-10-16T17:42:43",
-    "date_to": "2051-11-09",
-    "with_client": true,
+    "statut": "partially_paid",
+    "date_from": "2025-10-17T09:14:31",
+    "date_to": "2051-11-10",
+    "with_client": false,
     "with_details": false
 };
 
@@ -8429,10 +9374,10 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'paid',
-            'date_from' =&gt; '2025-10-16T17:42:43',
-            'date_to' =&gt; '2051-11-09',
-            'with_client' =&gt; true,
+            'statut' =&gt; 'partially_paid',
+            'date_from' =&gt; '2025-10-17T09:14:31',
+            'date_to' =&gt; '2051-11-10',
+            'with_client' =&gt; false,
             'with_details' =&gt; false,
         ],
     ]
@@ -8719,10 +9664,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="paid"
+               value="partially_paid"
                data-component="body">
     <br>
-<p>Example: <code>paid</code></p>
+<p>Example: <code>partially_paid</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -8732,10 +9677,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-16T17:42:43"
+               value="2025-10-17T09:14:31"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T17:42:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-17T09:14:31</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -8743,10 +9688,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures"
-               value="2051-11-09"
+               value="2051-11-10"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -8767,7 +9712,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -9216,7 +10161,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": false,
+    \"with_client\": true,
     \"with_details\": true,
     \"with_payments\": false
 }"
@@ -9242,7 +10187,7 @@ const headers = {
 };
 
 let body = {
-    "with_client": false,
+    "with_client": true,
     "with_details": true,
     "with_payments": false
 };
@@ -9270,7 +10215,7 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; false,
+            'with_client' =&gt; true,
             'with_details' =&gt; true,
             'with_payments' =&gt; false,
         ],
@@ -9482,7 +10427,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10465,8 +11410,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-16T17:42:43\",
-    \"date_to\": \"2051-11-09\"
+    \"date_from\": \"2025-10-17T09:14:31\",
+    \"date_to\": \"2051-11-10\"
 }"
 </code></pre></div>
 
@@ -10489,8 +11434,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-16T17:42:43",
-    "date_to": "2051-11-09"
+    "date_from": "2025-10-17T09:14:31",
+    "date_to": "2051-11-10"
 };
 
 fetch(url, {
@@ -10515,8 +11460,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-16T17:42:43',
-            'date_to' =&gt; '2051-11-09',
+            'date_from' =&gt; '2025-10-17T09:14:31',
+            'date_to' =&gt; '2051-11-10',
         ],
     ]
 );
@@ -10655,10 +11600,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-16T17:42:43"
+               value="2025-10-17T09:14:31"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T17:42:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-17T09:14:31</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -10666,10 +11611,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2051-11-09"
+               value="2051-11-10"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-10</code></p>
         </div>
         </form>
 
@@ -10696,10 +11641,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"failed\",
-    \"date_from\": \"2025-10-16T17:42:43\",
-    \"date_to\": \"2051-11-09\",
-    \"with_facture\": true,
+    \"statut\": \"completed\",
+    \"date_from\": \"2025-10-17T09:14:31\",
+    \"date_to\": \"2051-11-10\",
+    \"with_facture\": false,
     \"with_client\": true,
     \"with_payment_method\": false
 }"
@@ -10740,10 +11685,10 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "failed",
-    "date_from": "2025-10-16T17:42:43",
-    "date_to": "2051-11-09",
-    "with_facture": true,
+    "statut": "completed",
+    "date_from": "2025-10-17T09:14:31",
+    "date_to": "2051-11-10",
+    "with_facture": false,
     "with_client": true,
     "with_payment_method": false
 };
@@ -10786,10 +11731,10 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'failed',
-            'date_from' =&gt; '2025-10-16T17:42:43',
-            'date_to' =&gt; '2051-11-09',
-            'with_facture' =&gt; true,
+            'statut' =&gt; 'completed',
+            'date_from' =&gt; '2025-10-17T09:14:31',
+            'date_to' =&gt; '2051-11-10',
+            'with_facture' =&gt; false,
             'with_client' =&gt; true,
             'with_payment_method' =&gt; false,
         ],
@@ -11136,10 +12081,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="failed"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>failed</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -11149,10 +12094,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-16T17:42:43"
+               value="2025-10-17T09:14:31"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T17:42:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-17T09:14:31</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11160,10 +12105,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements"
-               value="2051-11-09"
+               value="2051-11-10"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-09</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-10</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
@@ -11184,7 +12129,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -11559,7 +12504,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_facture\": true,
     \"with_client\": true,
-    \"with_payment_method\": true
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -11585,7 +12530,7 @@ const headers = {
 let body = {
     "with_facture": true,
     "with_client": true,
-    "with_payment_method": true
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -11613,7 +12558,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
-            'with_payment_method' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -11867,7 +12812,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -16975,7 +17920,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -17003,7 +17948,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -17033,7 +17978,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -17266,7 +18211,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -20451,6 +21396,361 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID du nouveau responsable. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
         </div>
         </form>
+
+                    <h2 id="entrepots-GETapi-entrepots--id--products-stocks">Obtenir tous les produits avec leurs stocks pour un entrepôt spécifique</h2>
+
+<p>
+</p>
+
+<p>Récupère la liste complète des produits avec leurs informations de stock
+dans un entrepôt donné. Inclut également les produits sans stock (quantité 0).</p>
+
+<span id="example-requests-GETapi-entrepots--id--products-stocks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/products-stocks?with_category=1&amp;only_in_stock=&amp;only_active=1&amp;search=Laptop&amp;sort_by=name&amp;sort_order=asc&amp;per_page=20" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/products-stocks"
+);
+
+const params = {
+    "with_category": "1",
+    "only_in_stock": "0",
+    "only_active": "1",
+    "search": "Laptop",
+    "sort_by": "name",
+    "sort_order": "asc",
+    "per_page": "20",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/entrepots/550e8400-e29b-41d4-a716-446655440000/products-stocks';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'with_category' =&gt; '1',
+            'only_in_stock' =&gt; '0',
+            'only_active' =&gt; '1',
+            'search' =&gt; 'Laptop',
+            'sort_by' =&gt; 'name',
+            'sort_order' =&gt; 'asc',
+            'per_page' =&gt; '20',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-entrepots--id--products-stocks">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;entrepot&quot;: {
+            &quot;entrepot_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+            &quot;code&quot;: &quot;ENT001&quot;,
+            &quot;name&quot;: &quot;Entrep&ocirc;t Central&quot;,
+            &quot;adresse&quot;: &quot;123 Rue de l&#039;Industrie&quot;,
+            &quot;is_active&quot;: true
+        },
+        &quot;products&quot;: {
+            &quot;current_page&quot;: 1,
+            &quot;data&quot;: [
+                {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
+                    &quot;code&quot;: &quot;PRO-ABC123&quot;,
+                    &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;,
+                    &quot;description&quot;: &quot;Ordinateur portable haute performance&quot;,
+                    &quot;unit_price&quot;: 1500000,
+                    &quot;cost&quot;: 1200000,
+                    &quot;min_stock_level&quot;: 5,
+                    &quot;is_active&quot;: true,
+                    &quot;picture&quot;: &quot;laptop-dell-xps.jpg&quot;,
+                    &quot;category&quot;: {
+                        &quot;product_category_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+                        &quot;label&quot;: &quot;Informatique&quot;
+                    },
+                    &quot;stock&quot;: {
+                        &quot;stock_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440020&quot;,
+                        &quot;quantite&quot;: 50,
+                        &quot;reserved_quantity&quot;: 5,
+                        &quot;available_quantity&quot;: 45,
+                        &quot;is_below_minimum&quot;: false,
+                        &quot;last_updated&quot;: &quot;2024-10-15T10:30:00.000000Z&quot;
+                    }
+                },
+                {
+                    &quot;product_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440004&quot;,
+                    &quot;code&quot;: &quot;PRO-XYZ789&quot;,
+                    &quot;name&quot;: &quot;Souris Logitech&quot;,
+                    &quot;description&quot;: &quot;Souris sans fil ergonomique&quot;,
+                    &quot;unit_price&quot;: 25000,
+                    &quot;cost&quot;: 18000,
+                    &quot;min_stock_level&quot;: 20,
+                    &quot;is_active&quot;: true,
+                    &quot;picture&quot;: &quot;souris-logitech.jpg&quot;,
+                    &quot;category&quot;: {
+                        &quot;product_category_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440010&quot;,
+                        &quot;label&quot;: &quot;Informatique&quot;
+                    },
+                    &quot;stock&quot;: {
+                        &quot;stock_id&quot;: null,
+                        &quot;quantite&quot;: 0,
+                        &quot;reserved_quantity&quot;: 0,
+                        &quot;available_quantity&quot;: 0,
+                        &quot;is_below_minimum&quot;: true,
+                        &quot;last_updated&quot;: null
+                    }
+                }
+            ],
+            &quot;per_page&quot;: 20,
+            &quot;total&quot;: 2
+        },
+        &quot;summary&quot;: {
+            &quot;total_products&quot;: 2,
+            &quot;products_in_stock&quot;: 1,
+            &quot;products_out_of_stock&quot;: 1,
+            &quot;products_below_minimum&quot;: 1,
+            &quot;total_stock_value&quot;: 60000000
+        }
+    },
+    &quot;message&quot;: &quot;Produits de l&#039;entrep&ocirc;t r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Entrep&ocirc;t non trouv&eacute;.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-entrepots--id--products-stocks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-entrepots--id--products-stocks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-entrepots--id--products-stocks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-entrepots--id--products-stocks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-entrepots--id--products-stocks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-entrepots--id--products-stocks" data-method="GET"
+      data-path="api/entrepots/{id}/products-stocks"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-entrepots--id--products-stocks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-entrepots--id--products-stocks"
+                    onclick="tryItOut('GETapi-entrepots--id--products-stocks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-entrepots--id--products-stocks"
+                    onclick="cancelTryOut('GETapi-entrepots--id--products-stocks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-entrepots--id--products-stocks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/entrepots/{id}/products-stocks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="url">
+    <br>
+<p>L'ID de l'entrepôt. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_category</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots--id--products-stocks" style="display: none">
+            <input type="radio" name="with_category"
+                   value="1"
+                   data-endpoint="GETapi-entrepots--id--products-stocks"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots--id--products-stocks" style="display: none">
+            <input type="radio" name="with_category"
+                   value="0"
+                   data-endpoint="GETapi-entrepots--id--products-stocks"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les informations de catégorie des produits. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>only_in_stock</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots--id--products-stocks" style="display: none">
+            <input type="radio" name="only_in_stock"
+                   value="1"
+                   data-endpoint="GETapi-entrepots--id--products-stocks"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots--id--products-stocks" style="display: none">
+            <input type="radio" name="only_in_stock"
+                   value="0"
+                   data-endpoint="GETapi-entrepots--id--products-stocks"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Afficher uniquement les produits en stock (quantité &gt; 0). Example: <code>false</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>only_active</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-entrepots--id--products-stocks" style="display: none">
+            <input type="radio" name="only_active"
+                   value="1"
+                   data-endpoint="GETapi-entrepots--id--products-stocks"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-entrepots--id--products-stocks" style="display: none">
+            <input type="radio" name="only_active"
+                   value="0"
+                   data-endpoint="GETapi-entrepots--id--products-stocks"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Afficher uniquement les produits actifs. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="Laptop"
+               data-component="query">
+    <br>
+<p>Rechercher par nom ou code de produit. Example: <code>Laptop</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_by"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="name"
+               data-component="query">
+    <br>
+<p>Champ de tri (name, quantite, available_quantity). Example: <code>name</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort_order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort_order"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="asc"
+               data-component="query">
+    <br>
+<p>Ordre de tri (asc, desc). Example: <code>asc</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-entrepots--id--products-stocks"
+               value="20"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>20</code></p>
+            </div>
+                </form>
 
                 <h1 id="fournisseurs">Fournisseurs</h1>
 
@@ -35509,7 +36809,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-16T17:42:43\",
+    \"date_livraison_prevue\": \"2025-10-17T09:14:32\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -35532,7 +36832,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-16T17:42:43",
+    "date_livraison_prevue": "2025-10-17T09:14:32",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -35560,7 +36860,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-16T17:42:43',
+            'date_livraison_prevue' =&gt; '2025-10-17T09:14:32',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -35696,10 +36996,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-16T17:42:43"
+               value="2025-10-17T09:14:32"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T17:42:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-17T09:14:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -35768,7 +37068,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-16T17:42:43\",
+    \"date_livraison_prevue\": \"2025-10-17T09:14:32\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -35791,7 +37091,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-16T17:42:43",
+    "date_livraison_prevue": "2025-10-17T09:14:32",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -35819,7 +37119,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-16T17:42:43',
+            'date_livraison_prevue' =&gt; '2025-10-17T09:14:32',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -35955,10 +37255,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-16T17:42:43"
+               value="2025-10-17T09:14:32"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-16T17:42:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-17T09:14:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -48695,7 +49995,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/ventes/architecto" \
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -48708,7 +50008,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7"
 );
 
 const headers = {
@@ -48731,7 +50031,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7';
 $response = $client-&gt;put(
     $url,
     [
@@ -48861,10 +50161,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-ventes--id-"
-               value="architecto"
+               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -48907,7 +50207,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/ventes/architecto" \
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -48920,7 +50220,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7"
 );
 
 const headers = {
@@ -48943,7 +50243,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7';
 $response = $client-&gt;patch(
     $url,
     [
@@ -49073,10 +50373,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHapi-ventes--id-"
-               value="architecto"
+               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -49118,7 +50418,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/ventes/architecto" \
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -49126,7 +50426,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7"
 );
 
 const headers = {
@@ -49143,7 +50443,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7';
 $response = $client-&gt;delete(
     $url,
     [
@@ -49248,10 +50548,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-ventes--id-"
-               value="architecto"
+               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
             </div>
                     </form>
 
@@ -49443,14 +50743,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/ventes/architecto/restore" \
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7/restore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto/restore"
+    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7/restore"
 );
 
 const headers = {
@@ -49466,7 +50766,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto/restore';
+$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7/restore';
 $response = $client-&gt;post(
     $url,
     [
@@ -49559,10 +50859,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-ventes--id--restore"
-               value="architecto"
+               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
             </div>
                     </form>
 
