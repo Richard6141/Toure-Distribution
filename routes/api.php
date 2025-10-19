@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\StockMovementTypeController;
 use App\Http\Controllers\Api\DeliveryDetailController;
 use App\Http\Controllers\Api\DetailCommandeController;
+use App\Http\Controllers\Api\RolePermissionController;
 use App\Http\Controllers\StockMovementDetailController;
 use App\Http\Controllers\Api\PaiementCommandeController;
 
@@ -532,4 +533,82 @@ Route::prefix('delivery-details')->group(function () {
 
     // Préparer tous les produits d'une livraison
     Route::post('/delivery/{deliveryId}/preparer-tout', [DeliveryDetailController::class, 'preparerTout'])->name('delivery-details.preparer-tout');
-})->middleware('auth:sanctum');
+})->middleware('auth:sanctum');/*
+|--------------------------------------------------------------------------
+| Roles & Permissions API Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('roles-permissions')
+    ->name('roles-permissions.')
+    ->middleware('auth:sanctum')
+    ->group(function () {
+
+        // ✅ STATISTIQUES EN PREMIER (route fixe)
+        Route::get('/statistics', [RolePermissionController::class, 'statistics'])
+            ->name('statistics');
+
+        // ==================== GESTION DES RÔLES ====================
+        Route::prefix('roles')->name('roles.')->group(function () {
+            // ✅ Routes FIXES d'abord
+
+            Route::get('/', [RolePermissionController::class, 'indexRoles'])
+                ->name('index');
+
+            Route::post('/', [RolePermissionController::class, 'storeRole'])
+                ->name('store');
+
+            // ✅ Routes DYNAMIQUES ensuite
+            Route::get('/{id}', [RolePermissionController::class, 'showRole'])
+                ->name('show');
+
+            Route::put('/{id}', [RolePermissionController::class, 'updateRole'])
+                ->name('update');
+
+            Route::patch('/{id}', [RolePermissionController::class, 'updateRole'])
+                ->name('patch');
+
+            Route::delete('/{id}', [RolePermissionController::class, 'destroyRole'])
+                ->name('destroy');
+
+            // ✅ Routes spécifiques avec segments fixes
+            Route::post('/{roleId}/permissions/assign', [RolePermissionController::class, 'assignPermissionsToRole'])
+                ->name('permissions.assign');
+
+            Route::post('/{roleId}/permissions/revoke', [RolePermissionController::class, 'revokePermissionsFromRole'])
+                ->name('permissions.revoke');
+
+            Route::get('/{roleId}/users', [RolePermissionController::class, 'getUsersByRole'])
+                ->name('users');
+        });
+
+        // ==================== GESTION DES PERMISSIONS ====================
+        Route::prefix('permissions')->name('permissions.')->group(function () {
+            Route::get('/', [RolePermissionController::class, 'indexPermissions'])
+                ->name('index');
+
+            Route::post('/', [RolePermissionController::class, 'storePermission'])
+                ->name('store');
+
+            Route::put('/{id}', [RolePermissionController::class, 'updatePermission'])
+                ->name('update');
+
+            Route::patch('/{id}', [RolePermissionController::class, 'updatePermission'])
+                ->name('patch');
+
+            Route::delete('/{id}', [RolePermissionController::class, 'destroyPermission'])
+                ->name('destroy');
+        });
+
+        // ==================== GESTION UTILISATEURS ↔ RÔLES ====================
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::post('/{userId}/roles/assign', [RolePermissionController::class, 'assignRolesToUser'])
+                ->name('roles.assign');
+
+            Route::post('/{userId}/roles/revoke', [RolePermissionController::class, 'revokeRolesFromUser'])
+                ->name('roles.revoke');
+
+            Route::get('/{userId}/permissions', [RolePermissionController::class, 'getUserPermissions'])
+                ->name('permissions');
+        });
+    });
