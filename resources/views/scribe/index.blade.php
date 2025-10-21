@@ -4016,11 +4016,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="clients-management">Clients Management</h1>
 
-    <p>APIs pour gérer les clients</p>
+    
 
                                 <h2 id="clients-management-GETapi-clients-trashed-list">Lister les clients supprimés</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Récupère la liste des clients supprimés (soft delete).</p>
@@ -4032,6 +4033,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/clients/trashed/list?page=1&amp;per_page=15&amp;with_client_type=1&amp;with_phones=1" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -4051,6 +4053,7 @@ Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4068,6 +4071,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4123,7 +4127,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-clients-trashed-list" data-method="GET"
       data-path="api/clients/trashed/list"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -4153,6 +4157,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/trashed/list</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-clients-trashed-list"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -4245,6 +4260,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-GETapi-clients-statistics-overview">Statistiques des clients</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Récupère des statistiques générales sur les clients.</p>
@@ -4256,6 +4272,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/clients/statistics/overview" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -4266,6 +4283,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4283,6 +4301,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4336,7 +4355,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-clients-statistics-overview" data-method="GET"
       data-path="api/clients/statistics/overview"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -4367,6 +4386,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-clients-statistics-overview"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -4393,6 +4423,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-POSTapi-clients-search">Rechercher des clients</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Recherche avancée de clients avec de multiples critères.</p>
@@ -4404,6 +4435,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/clients/search" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -4433,6 +4465,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4470,6 +4503,7 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4571,7 +4605,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-clients-search" data-method="POST"
       data-path="api/clients/search"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -4601,6 +4635,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/search</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-clients-search"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -4773,6 +4818,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-GETapi-clients">Liste tous les clients</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Récupère la liste de tous les clients avec pagination et filtres optionnels.
@@ -4785,6 +4831,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;ifu=1234567890123&amp;marketteur=Marie+Dupont&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;with_phones=1&amp;balance_filter=positive" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -4814,6 +4861,7 @@ Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -4831,6 +4879,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -4928,7 +4977,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-clients" data-method="GET"
       data-path="api/clients"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -4958,6 +5007,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-clients"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -5170,6 +5230,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-POSTapi-clients">Créer un nouveau client</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Crée un nouveau client avec les informations fournies.
@@ -5182,6 +5243,7 @@ L'UUID et le code client sont générés automatiquement.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/clients" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5214,6 +5276,7 @@ L'UUID et le code client sont générés automatiquement.</p>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5254,6 +5317,7 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -5385,7 +5449,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-clients" data-method="POST"
       data-path="api/clients"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -5415,6 +5479,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-clients"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -5629,6 +5704,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-GETapi-clients--client_id-">Afficher un client spécifique</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Récupère les détails d'un client par son ID.</p>
@@ -5640,6 +5716,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000?with_client_type=1&amp;with_phones=1" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -5657,6 +5734,7 @@ Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5674,6 +5752,7 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -5754,7 +5833,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-clients--client_id-" data-method="GET"
       data-path="api/clients/{client_id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -5784,6 +5863,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-clients--client_id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -5866,6 +5956,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-PUTapi-clients--client_id-">Mettre à jour un client</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Met à jour les informations d'un client existant.
@@ -5878,6 +5969,7 @@ Seuls les champs fournis seront mis à jour.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
     "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -5911,6 +6003,7 @@ Seuls les champs fournis seront mis à jour.</p>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -5952,6 +6045,7 @@ $response = $client-&gt;put(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -6070,7 +6164,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PUTapi-clients--client_id-" data-method="PUT"
       data-path="api/clients/{client_id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -6100,6 +6194,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-clients--client_id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -6348,6 +6453,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-PATCHapi-clients--client_id-">Mettre à jour un client</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Met à jour les informations d'un client existant.
@@ -6360,6 +6466,7 @@ Seuls les champs fournis seront mis à jour.</p>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
     "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -6393,6 +6500,7 @@ Seuls les champs fournis seront mis à jour.</p>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6434,6 +6542,7 @@ $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -6552,7 +6661,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PATCHapi-clients--client_id-" data-method="PATCH"
       data-path="api/clients/{client_id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -6582,6 +6691,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-clients--client_id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -6830,6 +6950,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-DELETEapi-clients--client_id-">Supprimer un client</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Supprime un client (soft delete).
@@ -6842,6 +6963,7 @@ Le client sera marqué comme supprimé mais restera dans la base de données.</p
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
     "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -6852,6 +6974,7 @@ Le client sera marqué comme supprimé mais restera dans la base de données.</p
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -6869,6 +6992,7 @@ $response = $client-&gt;delete(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -6918,7 +7042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-DELETEapi-clients--client_id-" data-method="DELETE"
       data-path="api/clients/{client_id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -6948,6 +7072,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-clients--client_id-"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -6987,6 +7122,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-POSTapi-clients--client_id--restore">Restaurer un client supprimé</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Restaure un client qui a été supprimé avec soft delete.</p>
@@ -6998,6 +7134,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/restore" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -7008,6 +7145,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7025,6 +7163,7 @@ $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7091,7 +7230,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-clients--client_id--restore" data-method="POST"
       data-path="api/clients/{client_id}/restore"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -7121,6 +7260,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}/restore</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-clients--client_id--restore"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -7160,6 +7310,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-PATCHapi-clients--client_id--toggle-status">Activer/Désactiver un client</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Change le statut actif d'un client.</p>
@@ -7171,6 +7322,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
     "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/toggle-status" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7185,6 +7337,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7207,6 +7360,7 @@ $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7263,7 +7417,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PATCHapi-clients--client_id--toggle-status" data-method="PATCH"
       data-path="api/clients/{client_id}/toggle-status"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -7293,6 +7447,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}/toggle-status</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-clients--client_id--toggle-status"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -7354,6 +7519,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <h2 id="clients-management-PATCHapi-clients--client_id--update-balance">Mettre à jour le solde d&#039;un client</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 <p>Ajoute ou soustrait un montant au solde actuel du client.</p>
@@ -7365,6 +7531,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
     "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000/update-balance" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -7380,6 +7547,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -7403,6 +7571,7 @@ $response = $client-&gt;patch(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -7480,7 +7649,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PATCHapi-clients--client_id--update-balance" data-method="PATCH"
       data-path="api/clients/{client_id}/update-balance"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -7510,6 +7679,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/clients/{client_id}/update-balance</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-clients--client_id--update-balance"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -7735,7 +7915,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": true
+    \"is_active\": false
 }"
 </code></pre></div>
 
@@ -7763,7 +7943,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": true
+    "is_active": false
 };
 
 fetch(url, {
@@ -7793,7 +7973,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; true,
+            'is_active' =&gt; false,
         ],
     ]
 );
@@ -8010,7 +8190,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -9199,7 +9379,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_from\": \"2025-10-21T09:10:58\",
     \"date_to\": \"2051-11-14\"
 }"
 </code></pre></div>
@@ -9223,7 +9403,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-21T08:51:43",
+    "date_from": "2025-10-21T09:10:58",
     "date_to": "2051-11-14"
 };
 
@@ -9249,7 +9429,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_from' =&gt; '2025-10-21T09:10:58',
             'date_to' =&gt; '2051-11-14',
         ],
     ]
@@ -9380,10 +9560,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-21T08:51:43"
+               value="2025-10-21T09:10:58"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T09:10:58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9420,9 +9600,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"statut\": \"pending\",
-    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_from\": \"2025-10-21T09:10:58\",
     \"date_to\": \"2051-11-14\",
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_details\": false
 }"
 </code></pre></div>
@@ -9458,9 +9638,9 @@ let body = {
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "statut": "pending",
-    "date_from": "2025-10-21T08:51:43",
+    "date_from": "2025-10-21T09:10:58",
     "date_to": "2051-11-14",
-    "with_client": true,
+    "with_client": false,
     "with_details": false
 };
 
@@ -9498,9 +9678,9 @@ $response = $client-&gt;get(
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'statut' =&gt; 'pending',
-            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_from' =&gt; '2025-10-21T09:10:58',
             'date_to' =&gt; '2051-11-14',
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_details' =&gt; false,
         ],
     ]
@@ -9800,10 +9980,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-21T08:51:43"
+               value="2025-10-21T09:10:58"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T09:10:58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9835,7 +10015,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10284,7 +10464,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": false,
+    \"with_client\": true,
     \"with_details\": false,
     \"with_payments\": true
 }"
@@ -10310,7 +10490,7 @@ const headers = {
 };
 
 let body = {
-    "with_client": false,
+    "with_client": true,
     "with_details": false,
     "with_payments": true
 };
@@ -10338,7 +10518,7 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; false,
+            'with_client' =&gt; true,
             'with_details' =&gt; false,
             'with_payments' =&gt; true,
         ],
@@ -10550,7 +10730,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -11533,7 +11713,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_from\": \"2025-10-21T09:10:58\",
     \"date_to\": \"2051-11-14\"
 }"
 </code></pre></div>
@@ -11557,7 +11737,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-21T08:51:43",
+    "date_from": "2025-10-21T09:10:58",
     "date_to": "2051-11-14"
 };
 
@@ -11583,7 +11763,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_from' =&gt; '2025-10-21T09:10:58',
             'date_to' =&gt; '2051-11-14',
         ],
     ]
@@ -11723,10 +11903,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-21T08:51:43"
+               value="2025-10-21T09:10:58"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T09:10:58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11764,12 +11944,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"completed\",
-    \"date_from\": \"2025-10-21T08:51:43\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-21T09:10:58\",
     \"date_to\": \"2051-11-14\",
-    \"with_facture\": false,
+    \"with_facture\": true,
     \"with_client\": false,
-    \"with_payment_method\": true
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -11808,12 +11988,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "completed",
-    "date_from": "2025-10-21T08:51:43",
+    "statut": "failed",
+    "date_from": "2025-10-21T09:10:58",
     "date_to": "2051-11-14",
-    "with_facture": false,
+    "with_facture": true,
     "with_client": false,
-    "with_payment_method": true
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -11854,12 +12034,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'completed',
-            'date_from' =&gt; '2025-10-21T08:51:43',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-21T09:10:58',
             'date_to' =&gt; '2051-11-14',
-            'with_facture' =&gt; false,
+            'with_facture' =&gt; true,
             'with_client' =&gt; false,
-            'with_payment_method' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -12204,10 +12384,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="completed"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12217,10 +12397,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-21T08:51:43"
+               value="2025-10-21T09:10:58"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T09:10:58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12252,7 +12432,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -12294,7 +12474,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -12627,7 +12807,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_facture\": true,
     \"with_client\": true,
-    \"with_payment_method\": false
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -12653,7 +12833,7 @@ const headers = {
 let body = {
     "with_facture": true,
     "with_client": true,
-    "with_payment_method": false
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -12681,7 +12861,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
-            'with_payment_method' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -12935,7 +13115,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -18043,7 +18223,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -18071,7 +18251,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -18101,7 +18281,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -18334,7 +18514,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -37073,7 +37253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-21T08:51:43\",
+    \"date_livraison_prevue\": \"2025-10-21T09:10:58\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -37096,7 +37276,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-21T08:51:43",
+    "date_livraison_prevue": "2025-10-21T09:10:58",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -37124,7 +37304,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-21T08:51:43',
+            'date_livraison_prevue' =&gt; '2025-10-21T09:10:58',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -37260,10 +37440,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-21T08:51:43"
+               value="2025-10-21T09:10:58"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T09:10:58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -37332,7 +37512,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-21T08:51:43\",
+    \"date_livraison_prevue\": \"2025-10-21T09:10:58\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -37355,7 +37535,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-21T08:51:43",
+    "date_livraison_prevue": "2025-10-21T09:10:58",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -37383,7 +37563,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-21T08:51:43',
+            'date_livraison_prevue' =&gt; '2025-10-21T09:10:58',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -37519,10 +37699,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-21T08:51:43"
+               value="2025-10-21T09:10:58"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T09:10:58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;

@@ -1,7 +1,5 @@
 name: 'Clients Management'
-description: |-
-
-  APIs pour gérer les clients
+description: ''
 endpoints:
   -
     httpMethods:
@@ -9,17 +7,16 @@ endpoints:
     uri: api/clients/trashed/list
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Lister les clients supprimés'
       description: 'Récupère la liste des clients supprimés (soft delete).'
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -95,7 +92,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -106,17 +106,16 @@ endpoints:
     uri: api/clients/statistics/overview
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Statistiques des clients'
       description: 'Récupère des statistiques générales sur les clients.'
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -152,7 +151,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -163,17 +165,16 @@ endpoints:
     uri: api/clients/search
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Rechercher des clients'
       description: 'Recherche avancée de clients avec de multiples critères.'
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -375,7 +376,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -386,19 +390,18 @@ endpoints:
     uri: api/clients
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Liste tous les clients'
       description: |-
         Récupère la liste de tous les clients avec pagination et filtres optionnels.
         Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type de client.
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -614,7 +617,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -625,19 +631,18 @@ endpoints:
     uri: api/clients
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Créer un nouveau client'
       description: |-
         Crée un nouveau client avec les informations fournies.
         L'UUID et le code client sont générés automatiquement.
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -891,7 +896,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -902,17 +910,16 @@ endpoints:
     uri: 'api/clients/{client_id}'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Afficher un client spécifique'
       description: "Récupère les détails d'un client par son ID."
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1004,7 +1011,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -1015,19 +1025,18 @@ endpoints:
     uri: 'api/clients/{client_id}'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour un client'
       description: |-
         Met à jour les informations d'un client existant.
         Seuls les champs fournis seront mis à jour.
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1299,7 +1308,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -1310,19 +1322,18 @@ endpoints:
     uri: 'api/clients/{client_id}'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour un client'
       description: |-
         Met à jour les informations d'un client existant.
         Seuls les champs fournis seront mis à jour.
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1594,7 +1605,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -1605,19 +1619,18 @@ endpoints:
     uri: 'api/clients/{client_id}'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Supprimer un client'
       description: |-
         Supprime un client (soft delete).
         Le client sera marqué comme supprimé mais restera dans la base de données.
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1660,7 +1673,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -1671,17 +1687,16 @@ endpoints:
     uri: 'api/clients/{client_id}/restore'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Restaurer un client supprimé'
       description: 'Restaure un client qui a été supprimé avec soft delete.'
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1741,7 +1756,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -1752,17 +1770,16 @@ endpoints:
     uri: 'api/clients/{client_id}/toggle-status'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Activer/Désactiver un client'
       description: "Change le statut actif d'un client."
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1820,7 +1837,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -1831,17 +1851,16 @@ endpoints:
     uri: 'api/clients/{client_id}/update-balance'
     metadata:
       groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: "Mettre à jour le solde d'un client"
       description: 'Ajoute ou soustrait un montant au solde actuel du client.'
-      authenticated: false
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1930,7 +1949,10 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 /**
  * @group Clients Management
  *
+ * @authenticated
  * APIs pour gérer les clients
  */
 class ClientController extends Controller
