@@ -6,6 +6,75 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: api/roles-permissions/statistics
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Statistiques globales'
+      description: 'Récupère les statistiques générales sur les rôles et permissions.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Statistiques récupérées avec succès",
+            "data": {
+              "total_roles": 11,
+              "total_permissions": 161,
+              "total_users_with_roles": 45,
+              "roles_breakdown": [
+                {
+                  "role": "Super Admin",
+                  "users_count": 2,
+                  "permissions_count": 161
+                },
+                {
+                  "role": "Comptable",
+                  "users_count": 5,
+                  "permissions_count": 30
+                }
+              ],
+              "permissions_by_module": {
+                "users": 8,
+                "clients": 9,
+                "stocks": 15
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/roles-permissions/roles
     metadata:
       groupName: 'Gestion des Rôles et Permissions'
@@ -1424,75 +1493,6 @@ endpoints:
                 }
               ],
               "total_permissions": 45
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/roles-permissions/statistics
-    metadata:
-      groupName: 'Gestion des Rôles et Permissions'
-      groupDescription: |-
-
-        API pour gérer les rôles, permissions et leurs assignations
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Statistiques globales'
-      description: 'Récupère les statistiques générales sur les rôles et permissions.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Statistiques récupérées avec succès",
-            "data": {
-              "total_roles": 11,
-              "total_permissions": 161,
-              "total_users_with_roles": 45,
-              "roles_breakdown": [
-                {
-                  "role": "Super Admin",
-                  "users_count": 2,
-                  "permissions_count": 161
-                },
-                {
-                  "role": "Comptable",
-                  "users_count": 5,
-                  "permissions_count": 30
-                }
-              ],
-              "permissions_by_module": {
-                "users": 8,
-                "clients": 9,
-                "stocks": 15
-              }
             }
           }
         headers: []

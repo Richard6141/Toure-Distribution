@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\ClientPhone;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Client extends Model
 {
@@ -218,5 +219,24 @@ class Client extends Model
             ->sum(function ($vente) {
                 return $vente->montant_restant;
             });
+    }
+
+    /**
+     * Relation avec les numéros de téléphone
+     */
+    public function phones(): HasMany
+    {
+        return $this->hasMany(ClientPhone::class, 'client_id', 'client_id');
+    }
+
+    /**
+     * Accessor pour la compatibilité avec l'ancien champ phonenumber
+     * Retourne le premier numéro de téléphone de la collection
+     * 
+     * @return string|null
+     */
+    public function getPhonenumberAttribute(): ?string
+    {
+        return $this->phones()->first()?->phone_number;
     }
 }

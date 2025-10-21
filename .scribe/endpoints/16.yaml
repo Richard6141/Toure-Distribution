@@ -53,7 +53,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-19T11:47:46'
+        example: '2025-10-21T08:51:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -63,15 +63,15 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-12'
+        example: '2051-11-14'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-19T11:47:46'
-      date_to: '2051-11-12'
+      date_from: '2025-10-21T08:51:43'
+      date_to: '2051-11-14'
     fileParameters: []
     responses:
       -
@@ -329,7 +329,7 @@ endpoints:
         name: statut
         description: ''
         required: false
-        example: refunded
+        example: completed
         type: string
         enumValues:
           - pending
@@ -343,7 +343,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-19T11:47:46'
+        example: '2025-10-21T08:51:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -353,7 +353,7 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-12'
+        example: '2051-11-14'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -383,7 +383,7 @@ endpoints:
         name: with_payment_method
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -396,12 +396,12 @@ endpoints:
       facture_id: c90237e9-ced5-3af6-88ea-84aeaa148878
       client_id: a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f
       payment_method_id: 21c4122b-d554-3723-966c-6d723ea5293f
-      statut: refunded
-      date_from: '2025-10-19T11:47:46'
-      date_to: '2051-11-12'
+      statut: completed
+      date_from: '2025-10-21T08:51:43'
+      date_to: '2051-11-14'
       with_facture: false
       with_client: false
-      with_payment_method: false
+      with_payment_method: true
     fileParameters: []
     responses:
       -
@@ -713,7 +713,7 @@ endpoints:
         name: with_payment_method
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -722,7 +722,7 @@ endpoints:
     cleanBodyParameters:
       with_facture: true
       with_client: true
-      with_payment_method: true
+      with_payment_method: false
     fileParameters: []
     responses:
       -

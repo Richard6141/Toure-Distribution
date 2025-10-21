@@ -887,7 +887,10 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                     <a href="#gestion-des-roles-et-permissions">Gestion des Rôles et Permissions</a>
                 </li>
                                     <ul id="tocify-subheader-gestion-des-roles-et-permissions" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="gestion-des-roles-et-permissions-GETapi-roles-permissions-roles">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-roles-et-permissions-GETapi-roles-permissions-statistics">
+                                <a href="#gestion-des-roles-et-permissions-GETapi-roles-permissions-statistics">Statistiques globales</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-roles-et-permissions-GETapi-roles-permissions-roles">
                                 <a href="#gestion-des-roles-et-permissions-GETapi-roles-permissions-roles">Liste des rôles</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-roles-et-permissions-POSTapi-roles-permissions-roles">
@@ -937,9 +940,6 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-roles-et-permissions-GETapi-roles-permissions-users--userId--permissions">
                                 <a href="#gestion-des-roles-et-permissions-GETapi-roles-permissions-users--userId--permissions">Permissions d'un utilisateur</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="gestion-des-roles-et-permissions-GETapi-roles-permissions-statistics">
-                                <a href="#gestion-des-roles-et-permissions-GETapi-roles-permissions-statistics">Statistiques globales</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -1048,7 +1048,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 19 October 2025</li>
+        <li>Dernière mise à jour: 21 October 2025</li>
     </ul>
 </div>
 
@@ -4031,15 +4031,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/trashed/list?page=1&amp;per_page=15&amp;with_client_type=1" \
+    --get "http://localhost/api/clients/trashed/list?page=1&amp;per_page=15&amp;with_client_type=1&amp;with_phones=1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"page\": 16,
-    \"per_page\": 22,
-    \"with_client_type\": false
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -4051,6 +4045,7 @@ const params = {
     "page": "1",
     "per_page": "15",
     "with_client_type": "1",
+    "with_phones": "1",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -4060,16 +4055,9 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "page": 16,
-    "per_page": 22,
-    "with_client_type": false
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -4087,11 +4075,7 @@ $response = $client-&gt;get(
             'page' =&gt; '1',
             'per_page' =&gt; '15',
             'with_client_type' =&gt; '1',
-        ],
-        'json' =&gt; [
-            'page' =&gt; 16,
-            'per_page' =&gt; 22,
-            'with_client_type' =&gt; false,
+            'with_phones' =&gt; '1',
         ],
     ]
 );
@@ -4107,6 +4091,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
     &quot;data&quot;: [
         {
             &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
@@ -4234,51 +4219,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Inclure les informations du type de client. Example: <code>true</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-clients-trashed-list"
-               value="16"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-clients-trashed-list"
-               value="22"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_phones</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
                 <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="true"
+            <input type="radio" name="with_phones"
+                   value="1"
                    data-endpoint="GETapi-clients-trashed-list"
-                   data-component="body"             >
+                   data-component="query"             >
             <code>true</code>
         </label>
         <label data-endpoint="GETapi-clients-trashed-list" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="false"
+            <input type="radio" name="with_phones"
+                   value="0"
                    data-endpoint="GETapi-clients-trashed-list"
-                   data-component="body"             >
+                   data-component="query"             >
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
-        </div>
-        </form>
+<p>Inclure les numéros de téléphone. Example: <code>true</code></p>
+            </div>
+                </form>
 
                     <h2 id="clients-management-GETapi-clients-statistics-overview">Statistiques des clients</h2>
 
@@ -4338,6 +4300,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
     &quot;data&quot;: {
         &quot;total_clients&quot;: 150,
         &quot;active_clients&quot;: 120,
@@ -4542,6 +4505,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
     &quot;data&quot;: [
         {
             &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
@@ -4553,16 +4517,39 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;ifu&quot;: &quot;1234567890123&quot;,
             &quot;city&quot;: &quot;Cotonou&quot;,
             &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+            &quot;phones&quot;: [
+                {
+                    &quot;id&quot;: &quot;uuid&quot;,
+                    &quot;phone_number&quot;: &quot;+229 12 34 56 78&quot;,
+                    &quot;type&quot;: &quot;mobile&quot;,
+                    &quot;label&quot;: &quot;Principal&quot;
+                }
+            ],
             &quot;credit_limit&quot;: &quot;500000.00&quot;,
             &quot;current_balance&quot;: &quot;150000.00&quot;,
             &quot;base_reduction&quot;: &quot;5.00&quot;,
             &quot;is_active&quot;: true
         }
     ],
-    &quot;meta&quot;: {
+    &quot;pagination&quot;: {
         &quot;total&quot;: 1,
         &quot;per_page&quot;: 20,
         &quot;current_page&quot;: 1
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;query&quot;: [
+            &quot;Le terme de recherche est obligatoire&quot;
+        ]
     }
 }</code>
  </pre>
@@ -4659,7 +4646,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                name="fields[1]"                data-endpoint="POSTapi-clients-search"
                data-component="body">
     <br>
-<p>optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).</p>
+<p>Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
@@ -4670,7 +4657,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="body">
     <br>
-<p>optionnel Filtrer par type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>Filtrer par type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -4691,7 +4678,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>optionnel Filtrer par statut. Example: <code>true</code></p>
+<p>Filtrer par statut. Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>credit_min</code></b>&nbsp;&nbsp;
@@ -4702,7 +4689,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="100000"
                data-component="body">
     <br>
-<p>optionnel Limite de crédit minimale. Example: <code>100000</code></p>
+<p>Limite de crédit minimale. Example: <code>100000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>credit_max</code></b>&nbsp;&nbsp;
@@ -4713,7 +4700,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1000000"
                data-component="body">
     <br>
-<p>optionnel Limite de crédit maximale. Example: <code>1000000</code></p>
+<p>Limite de crédit maximale. Example: <code>1000000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_min</code></b>&nbsp;&nbsp;
@@ -4724,7 +4711,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="-50000"
                data-component="body">
     <br>
-<p>optionnel Solde minimal. Example: <code>-50000</code></p>
+<p>Solde minimal. Example: <code>-50000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_max</code></b>&nbsp;&nbsp;
@@ -4735,7 +4722,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="500000"
                data-component="body">
     <br>
-<p>optionnel Solde maximal. Example: <code>500000</code></p>
+<p>Solde maximal. Example: <code>500000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reduction_min</code></b>&nbsp;&nbsp;
@@ -4746,7 +4733,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="0"
                data-component="body">
     <br>
-<p>optionnel Réduction de base minimale (%). Example: <code>0</code></p>
+<p>Réduction de base minimale (%). Example: <code>0</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reduction_max</code></b>&nbsp;&nbsp;
@@ -4757,7 +4744,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="20"
                data-component="body">
     <br>
-<p>optionnel Réduction de base maximale (%). Example: <code>20</code></p>
+<p>Réduction de base maximale (%). Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -4768,7 +4755,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="body">
     <br>
-<p>optionnel Page à récupérer. Example: <code>1</code></p>
+<p>Page à récupérer. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
@@ -4779,7 +4766,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="20"
                data-component="body">
     <br>
-<p>optionnel Éléments par page. Example: <code>20</code></p>
+<p>Éléments par page. Example: <code>20</code></p>
         </div>
         </form>
 
@@ -4797,25 +4784,9 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;ifu=1234567890123&amp;marketteur=Marie+Dupont&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;balance_filter=positive" \
+    --get "http://localhost/api/clients?page=1&amp;per_page=15&amp;search=John&amp;name=John+Doe&amp;email=john%40example.com&amp;code=CLI-ABC123&amp;city=Cotonou&amp;ifu=1234567890123&amp;marketteur=Marie+Dupont&amp;client_type_id=550e8400-e29b-41d4-a716-446655440000&amp;is_active=1&amp;with_client_type=1&amp;with_phones=1&amp;balance_filter=positive" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"page\": 16,
-    \"per_page\": 22,
-    \"search\": \"g\",
-    \"name\": \"z\",
-    \"email\": \"rempel.chadrick@example.org\",
-    \"code\": \"l\",
-    \"city\": \"j\",
-    \"ifu\": \"n\",
-    \"marketteur\": \"i\",
-    \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": true,
-    \"with_client_type\": true,
-    \"balance_filter\": \"zero\"
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -4836,6 +4807,7 @@ const params = {
     "client_type_id": "550e8400-e29b-41d4-a716-446655440000",
     "is_active": "1",
     "with_client_type": "1",
+    "with_phones": "1",
     "balance_filter": "positive",
 };
 Object.keys(params)
@@ -4846,26 +4818,9 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "page": 16,
-    "per_page": 22,
-    "search": "g",
-    "name": "z",
-    "email": "rempel.chadrick@example.org",
-    "code": "l",
-    "city": "j",
-    "ifu": "n",
-    "marketteur": "i",
-    "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": true,
-    "with_client_type": true,
-    "balance_filter": "zero"
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -4892,22 +4847,8 @@ $response = $client-&gt;get(
             'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
             'is_active' =&gt; '1',
             'with_client_type' =&gt; '1',
+            'with_phones' =&gt; '1',
             'balance_filter' =&gt; 'positive',
-        ],
-        'json' =&gt; [
-            'page' =&gt; 16,
-            'per_page' =&gt; 22,
-            'search' =&gt; 'g',
-            'name' =&gt; 'z',
-            'email' =&gt; 'rempel.chadrick@example.org',
-            'code' =&gt; 'l',
-            'city' =&gt; 'j',
-            'ifu' =&gt; 'n',
-            'marketteur' =&gt; 'i',
-            'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; true,
-            'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'zero',
         ],
     ]
 );
@@ -4926,7 +4867,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: [
         {
             &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;code&quot;: &quot;CLI-ABC123&quot;,
+            &quot;code&quot;: &quot;CLI00001&quot;,
             &quot;name_client&quot;: &quot;John Doe&quot;,
             &quot;name_representant&quot;: &quot;Jane Smith&quot;,
             &quot;marketteur&quot;: &quot;Marie Dupont&quot;,
@@ -4936,19 +4877,37 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;email&quot;: &quot;john.doe@example.com&quot;,
             &quot;ifu&quot;: &quot;1234567890123&quot;,
             &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+            &quot;phones&quot;: [
+                {
+                    &quot;id&quot;: &quot;uuid&quot;,
+                    &quot;phone_number&quot;: &quot;+229 12 34 56 78&quot;,
+                    &quot;type&quot;: &quot;mobile&quot;,
+                    &quot;label&quot;: &quot;Principal&quot;
+                }
+            ],
             &quot;credit_limit&quot;: &quot;500000.00&quot;,
             &quot;current_balance&quot;: &quot;150000.00&quot;,
             &quot;base_reduction&quot;: &quot;5.00&quot;,
             &quot;is_active&quot;: true,
             &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-            &quot;formatted_credit_limit&quot;: &quot;500 000,00 FCFA&quot;,
-            &quot;formatted_current_balance&quot;: &quot;150 000,00 FCFA&quot;,
-            &quot;available_credit&quot;: &quot;350000.00&quot;,
-            &quot;formatted_available_credit&quot;: &quot;350 000,00 FCFA&quot;,
-            &quot;formatted_base_reduction&quot;: &quot;5,00 %&quot;
+            &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
         }
     ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;per_page&quot;: [
+            &quot;Le nombre d&#039;&eacute;l&eacute;ments par page ne peut pas d&eacute;passer 100&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -5053,7 +5012,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="John"
                data-component="query">
     <br>
-<p>Recherche globale (nom, email, code, IFU, représentant, marketteur). Example: <code>John</code></p>
+<p>Recherche globale (nom, email, code, IFU, représentant, marketteur, téléphones). Example: <code>John</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -5175,6 +5134,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Inclure les informations du type de client. Example: <code>true</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_phones</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="with_phones"
+                   value="1"
+                   data-endpoint="GETapi-clients"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-clients" style="display: none">
+            <input type="radio" name="with_phones"
+                   value="0"
+                   data-endpoint="GETapi-clients"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Inclure les numéros de téléphone. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -5185,173 +5165,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Filtrer par solde (positive, negative, zero). Example: <code>positive</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-clients"
-               value="16"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-clients"
-               value="22"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-clients"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="name"                data-endpoint="GETapi-clients"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="GETapi-clients"
-               value="rempel.chadrick@example.org"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>rempel.chadrick@example.org</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="code"                data-endpoint="GETapi-clients"
-               value="l"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>l</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="GETapi-clients"
-               value="j"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>j</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ifu"                data-endpoint="GETapi-clients"
-               value="n"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>n</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="marketteur"                data-endpoint="GETapi-clients"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="client_type_id"                data-endpoint="GETapi-clients"
-               value="51c7cf5e-fac2-3ac6-8ef8-61e6050503af"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table. Example: <code>51c7cf5e-fac2-3ac6-8ef8-61e6050503af</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="true"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="is_active"
-                   value="false"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="true"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-clients" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="false"
-                   data-endpoint="GETapi-clients"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>true</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="balance_filter"                data-endpoint="GETapi-clients"
-               value="zero"
-               data-component="body">
-    <br>
-<p>Example: <code>zero</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
-        </div>
-        </form>
+                </form>
 
                     <h2 id="clients-management-POSTapi-clients">Créer un nouveau client</h2>
 
@@ -5359,7 +5173,7 @@ Must be one of:
 </p>
 
 <p>Crée un nouveau client avec les informations fournies.
-L'UUID et le code client sont générés automatiquement si non fournis.</p>
+L'UUID et le code client sont générés automatiquement.</p>
 
 <span id="example-requests-POSTapi-clients">
 <blockquote>Example request:</blockquote>
@@ -5379,7 +5193,13 @@ L'UUID et le code client sont générés automatiquement si non fournis.</p>
     \"city\": \"Cotonou\",
     \"email\": \"john.doe@example.com\",
     \"ifu\": \"1234567890123\",
-    \"phonenumber\": \"+229 12 34 56 78\",
+    \"phones\": [
+        {
+            \"phone_number\": \"+229 12 34 56 78\",
+            \"type\": \"mobile\",
+            \"label\": \"Principal\"
+        }
+    ],
     \"credit_limit\": 500000,
     \"current_balance\": 0,
     \"base_reduction\": 5,
@@ -5407,7 +5227,13 @@ let body = {
     "city": "Cotonou",
     "email": "john.doe@example.com",
     "ifu": "1234567890123",
-    "phonenumber": "+229 12 34 56 78",
+    "phones": [
+        {
+            "phone_number": "+229 12 34 56 78",
+            "type": "mobile",
+            "label": "Principal"
+        }
+    ],
     "credit_limit": 500000,
     "current_balance": 0,
     "base_reduction": 5,
@@ -5431,21 +5257,43 @@ $response = $client-&gt;post(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'name_client' =&gt; 'John Doe',
-            'name_representant' =&gt; 'Jane Smith',
-            'marketteur' =&gt; 'Marie Dupont',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'adresse' =&gt; '123 Rue de la Paix',
-            'city' =&gt; 'Cotonou',
-            'email' =&gt; 'john.doe@example.com',
-            'ifu' =&gt; '1234567890123',
-            'phonenumber' =&gt; '+229 12 34 56 78',
-            'credit_limit' =&gt; 500000.0,
-            'current_balance' =&gt; 0.0,
-            'base_reduction' =&gt; 5.0,
-            'is_active' =&gt; true,
-        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'phone_number' =&gt; [
+                        '+229 12 34 56 78',
+                    ],
+                    'type' =&gt; [
+                        'mobile',
+                    ],
+                    'label' =&gt; [
+                        'Principal',
+                    ],
+                ],
+            ],
+            [
+                'name_client' =&gt; 'John Doe',
+                'name_representant' =&gt; 'Jane Smith',
+                'marketteur' =&gt; 'Marie Dupont',
+                'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+                'adresse' =&gt; '123 Rue de la Paix',
+                'city' =&gt; 'Cotonou',
+                'email' =&gt; 'john.doe@example.com',
+                'ifu' =&gt; '1234567890123',
+                'phones' =&gt; [
+                    $o[0],
+                ],
+                'credit_limit' =&gt; 500000.0,
+                'current_balance' =&gt; 0.0,
+                'base_reduction' =&gt; 5.0,
+                'is_active' =&gt; true,
+            ],
+            []
+        ),
     ]
 );
 $body = $response-&gt;getBody();
@@ -5460,6 +5308,8 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Client cr&eacute;&eacute; avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI00001&quot;,
@@ -5471,15 +5321,21 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;city&quot;: &quot;Cotonou&quot;,
         &quot;email&quot;: &quot;john.doe@example.com&quot;,
         &quot;ifu&quot;: &quot;1234567890123&quot;,
-        &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+        &quot;phones&quot;: [
+            {
+                &quot;id&quot;: &quot;uuid&quot;,
+                &quot;phone_number&quot;: &quot;+229 12 34 56 78&quot;,
+                &quot;type&quot;: &quot;mobile&quot;,
+                &quot;label&quot;: &quot;Principal&quot;
+            }
+        ],
         &quot;credit_limit&quot;: &quot;500000.00&quot;,
         &quot;current_balance&quot;: &quot;0.00&quot;,
         &quot;base_reduction&quot;: &quot;5.00&quot;,
         &quot;is_active&quot;: true,
         &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
         &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Client cr&eacute;&eacute; avec succ&egrave;s&quot;
+    }
 }</code>
  </pre>
             <blockquote>
@@ -5488,15 +5344,27 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
     &quot;errors&quot;: {
         &quot;email&quot;: [
             &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
         ],
-        &quot;ifu&quot;: [
-            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        &quot;phones&quot;: [
+            &quot;Au moins un num&eacute;ro de t&eacute;l&eacute;phone est requis&quot;
         ]
     }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur lors de la cr&eacute;ation du client&quot;,
+    &quot;error&quot;: &quot;Message d&#039;erreur d&eacute;taill&eacute;&quot;
 }</code>
  </pre>
     </span>
@@ -5590,7 +5458,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Jane Smith"
                data-component="body">
     <br>
-<p>optionnel Nom du représentant du client. Example: <code>Jane Smith</code></p>
+<p>Nom du représentant du client. Example: <code>Jane Smith</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>marketteur</code></b>&nbsp;&nbsp;
@@ -5601,7 +5469,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Marie Dupont"
                data-component="body">
     <br>
-<p>optionnel Nom du marketteur associé au client. Example: <code>Marie Dupont</code></p>
+<p>Nom du marketteur associé au client. Example: <code>Marie Dupont</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_type_id</code></b>&nbsp;&nbsp;
@@ -5612,7 +5480,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="body">
     <br>
-<p>optionnel UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID du type de client. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
@@ -5623,7 +5491,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="123 Rue de la Paix"
                data-component="body">
     <br>
-<p>optionnel Adresse du client. Example: <code>123 Rue de la Paix</code></p>
+<p>Adresse du client. Example: <code>123 Rue de la Paix</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
@@ -5634,7 +5502,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Cotonou"
                data-component="body">
     <br>
-<p>optionnel Ville du client. Example: <code>Cotonou</code></p>
+<p>Ville du client. Example: <code>Cotonou</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -5645,7 +5513,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="john.doe@example.com"
                data-component="body">
     <br>
-<p>optionnel Email unique du client. Example: <code>john.doe@example.com</code></p>
+<p>Email unique du client. Example: <code>john.doe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>ifu</code></b>&nbsp;&nbsp;
@@ -5656,18 +5524,51 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1234567890123"
                data-component="body">
     <br>
-<p>optionnel Numéro IFU (Identifiant Fiscal Unique). Example: <code>1234567890123</code></p>
+<p>Numéro IFU (Identifiant Fiscal Unique). Example: <code>1234567890123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>phones</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Tableau de numéros de téléphone (minimum 1).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
-                              name="phonenumber"                data-endpoint="POSTapi-clients"
+                              name="phones.0.phone_number"                data-endpoint="POSTapi-clients"
                value="+229 12 34 56 78"
                data-component="body">
     <br>
-<p>optionnel Numéro de téléphone. Example: <code>+229 12 34 56 78</code></p>
+<p>Numéro de téléphone. Example: <code>+229 12 34 56 78</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.type"                data-endpoint="POSTapi-clients"
+               value="mobile"
+               data-component="body">
+    <br>
+<p>Type de téléphone (mobile, fixe, whatsapp, autre). Example: <code>mobile</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.label"                data-endpoint="POSTapi-clients"
+               value="Principal"
+               data-component="body">
+    <br>
+<p>Label du numéro. Example: <code>Principal</code></p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
@@ -5678,7 +5579,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="500000"
                data-component="body">
     <br>
-<p>optionnel Limite de crédit (défaut: 0). Example: <code>500000</code></p>
+<p>Limite de crédit (défaut: 0). Example: <code>500000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>current_balance</code></b>&nbsp;&nbsp;
@@ -5689,7 +5590,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="0"
                data-component="body">
     <br>
-<p>optionnel Solde actuel (défaut: 0). Example: <code>0</code></p>
+<p>Solde actuel (défaut: 0). Example: <code>0</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>base_reduction</code></b>&nbsp;&nbsp;
@@ -5700,7 +5601,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="5"
                data-component="body">
     <br>
-<p>optionnel Réduction de base en pourcentage (0-100, défaut: 0). Example: <code>5</code></p>
+<p>Réduction de base en pourcentage (0-100, défaut: 0). Example: <code>5</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -5721,7 +5622,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>optionnel Statut actif (défaut: true). Example: <code>true</code></p>
+<p>Statut actif (défaut: true). Example: <code>true</code></p>
         </div>
         </form>
 
@@ -5738,13 +5639,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000?with_client_type=1" \
+    --get "http://localhost/api/clients/550e8400-e29b-41d4-a716-446655440000?with_client_type=1&amp;with_phones=1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"with_client_type\": true
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -5754,6 +5651,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const params = {
     "with_client_type": "1",
+    "with_phones": "1",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -5763,14 +5661,9 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "with_client_type": true
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 
@@ -5786,9 +5679,7 @@ $response = $client-&gt;get(
         ],
         'query' =&gt; [
             'with_client_type' =&gt; '1',
-        ],
-        'json' =&gt; [
-            'with_client_type' =&gt; true,
+            'with_phones' =&gt; '1',
         ],
     ]
 );
@@ -5804,6 +5695,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI00001&quot;,
@@ -5816,6 +5708,14 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;email&quot;: &quot;john.doe@example.com&quot;,
         &quot;ifu&quot;: &quot;1234567890123&quot;,
         &quot;phonenumber&quot;: &quot;+229 12 34 56 78&quot;,
+        &quot;phones&quot;: [
+            {
+                &quot;id&quot;: &quot;uuid&quot;,
+                &quot;phone_number&quot;: &quot;+229 12 34 56 78&quot;,
+                &quot;type&quot;: &quot;mobile&quot;,
+                &quot;label&quot;: &quot;Principal&quot;
+            }
+        ],
         &quot;credit_limit&quot;: &quot;500000.00&quot;,
         &quot;current_balance&quot;: &quot;150000.00&quot;,
         &quot;base_reduction&quot;: &quot;5.00&quot;,
@@ -5831,7 +5731,9 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Client non trouv&eacute;&quot;,
+    &quot;error&quot;: &quot;Aucun client ne correspond &agrave; l&#039;identifiant fourni&quot;
 }</code>
  </pre>
     </span>
@@ -5938,29 +5840,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Inclure les informations du type de client. Example: <code>true</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>with_phones</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
                 <label data-endpoint="GETapi-clients--client_id-" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="true"
+            <input type="radio" name="with_phones"
+                   value="1"
                    data-endpoint="GETapi-clients--client_id-"
-                   data-component="body"             >
+                   data-component="query"             >
             <code>true</code>
         </label>
         <label data-endpoint="GETapi-clients--client_id-" style="display: none">
-            <input type="radio" name="with_client_type"
-                   value="false"
+            <input type="radio" name="with_phones"
+                   value="0"
                    data-endpoint="GETapi-clients--client_id-"
-                   data-component="body"             >
+                   data-component="query"             >
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
-        </div>
-        </form>
+<p>Inclure les numéros de téléphone. Example: <code>true</code></p>
+            </div>
+                </form>
 
                     <h2 id="clients-management-PUTapi-clients--client_id-">Mettre à jour un client</h2>
 
@@ -5989,7 +5890,13 @@ Seuls les champs fournis seront mis à jour.</p>
     \"city\": \"Porto-Novo\",
     \"email\": \"jane.doe@example.com\",
     \"ifu\": \"9876543210987\",
-    \"phonenumber\": \"+229 87 65 43 21\",
+    \"phones\": [
+        {
+            \"id\": \"uuid\",
+            \"phone_number\": \"+229 12 34 56 78\",
+            \"type\": \"mobile\"
+        }
+    ],
     \"credit_limit\": 750000,
     \"current_balance\": 200000,
     \"base_reduction\": 10,
@@ -6018,7 +5925,13 @@ let body = {
     "city": "Porto-Novo",
     "email": "jane.doe@example.com",
     "ifu": "9876543210987",
-    "phonenumber": "+229 87 65 43 21",
+    "phones": [
+        {
+            "id": "uuid",
+            "phone_number": "+229 12 34 56 78",
+            "type": "mobile"
+        }
+    ],
     "credit_limit": 750000,
     "current_balance": 200000,
     "base_reduction": 10,
@@ -6042,22 +5955,44 @@ $response = $client-&gt;put(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'code' =&gt; 'CLI-UPDATED',
-            'name_client' =&gt; 'Jane Doe',
-            'name_representant' =&gt; 'John Smith',
-            'marketteur' =&gt; 'Pierre Martin',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'adresse' =&gt; '456 Avenue des Palmiers',
-            'city' =&gt; 'Porto-Novo',
-            'email' =&gt; 'jane.doe@example.com',
-            'ifu' =&gt; '9876543210987',
-            'phonenumber' =&gt; '+229 87 65 43 21',
-            'credit_limit' =&gt; 750000.0,
-            'current_balance' =&gt; 200000.0,
-            'base_reduction' =&gt; 10.0,
-            'is_active' =&gt; false,
-        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'id' =&gt; [
+                        'uuid',
+                    ],
+                    'phone_number' =&gt; [
+                        '+229 12 34 56 78',
+                    ],
+                    'type' =&gt; [
+                        'mobile',
+                    ],
+                ],
+            ],
+            [
+                'code' =&gt; 'CLI-UPDATED',
+                'name_client' =&gt; 'Jane Doe',
+                'name_representant' =&gt; 'John Smith',
+                'marketteur' =&gt; 'Pierre Martin',
+                'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+                'adresse' =&gt; '456 Avenue des Palmiers',
+                'city' =&gt; 'Porto-Novo',
+                'email' =&gt; 'jane.doe@example.com',
+                'ifu' =&gt; '9876543210987',
+                'phones' =&gt; [
+                    $o[0],
+                ],
+                'credit_limit' =&gt; 750000.0,
+                'current_balance' =&gt; 200000.0,
+                'base_reduction' =&gt; 10.0,
+                'is_active' =&gt; false,
+            ],
+            []
+        ),
     ]
 );
 $body = $response-&gt;getBody();
@@ -6072,26 +6007,21 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI-UPDATED&quot;,
         &quot;name_client&quot;: &quot;Jane Doe&quot;,
-        &quot;name_representant&quot;: &quot;John Smith&quot;,
-        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
-        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
-        &quot;city&quot;: &quot;Porto-Novo&quot;,
-        &quot;email&quot;: &quot;jane.doe@example.com&quot;,
-        &quot;ifu&quot;: &quot;9876543210987&quot;,
-        &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
-        &quot;credit_limit&quot;: &quot;750000.00&quot;,
-        &quot;current_balance&quot;: &quot;200000.00&quot;,
-        &quot;base_reduction&quot;: &quot;10.00&quot;,
-        &quot;is_active&quot;: false,
-        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
+        &quot;phones&quot;: [
+            {
+                &quot;id&quot;: &quot;uuid&quot;,
+                &quot;phone_number&quot;: &quot;+229 87 65 43 21&quot;,
+                &quot;type&quot;: &quot;mobile&quot;,
+                &quot;label&quot;: &quot;Bureau&quot;
+            }
+        ]
+    }
 }</code>
  </pre>
             <blockquote>
@@ -6100,6 +6030,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
@@ -6109,13 +6040,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
     &quot;errors&quot;: {
         &quot;email&quot;: [
             &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
         ],
-        &quot;ifu&quot;: [
-            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        &quot;phones&quot;: [
+            &quot;Au moins un num&eacute;ro de t&eacute;l&eacute;phone est requis&quot;
         ]
     }
 }</code>
@@ -6303,15 +6235,59 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Numéro IFU unique. Example: <code>9876543210987</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>phones</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+<p>Tableau de numéros de téléphone.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="phonenumber"                data-endpoint="PUTapi-clients--client_id-"
+                              name="phones.0.id"                data-endpoint="PUTapi-clients--client_id-"
+               value="uuid-existant"
+               data-component="body">
+    <br>
+<p>UUID du téléphone (pour mise à jour). Example: <code>uuid-existant</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.phone_number"                data-endpoint="PUTapi-clients--client_id-"
                value="+229 87 65 43 21"
                data-component="body">
     <br>
 <p>Numéro de téléphone. Example: <code>+229 87 65 43 21</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.type"                data-endpoint="PUTapi-clients--client_id-"
+               value="mobile"
+               data-component="body">
+    <br>
+<p>Type (mobile, fixe, whatsapp, autre). Example: <code>mobile</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.label"                data-endpoint="PUTapi-clients--client_id-"
+               value="Bureau"
+               data-component="body">
+    <br>
+<p>Label du numéro. Example: <code>Bureau</code></p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
@@ -6396,7 +6372,13 @@ Seuls les champs fournis seront mis à jour.</p>
     \"city\": \"Porto-Novo\",
     \"email\": \"jane.doe@example.com\",
     \"ifu\": \"9876543210987\",
-    \"phonenumber\": \"+229 87 65 43 21\",
+    \"phones\": [
+        {
+            \"id\": \"uuid\",
+            \"phone_number\": \"+229 12 34 56 78\",
+            \"type\": \"mobile\"
+        }
+    ],
     \"credit_limit\": 750000,
     \"current_balance\": 200000,
     \"base_reduction\": 10,
@@ -6425,7 +6407,13 @@ let body = {
     "city": "Porto-Novo",
     "email": "jane.doe@example.com",
     "ifu": "9876543210987",
-    "phonenumber": "+229 87 65 43 21",
+    "phones": [
+        {
+            "id": "uuid",
+            "phone_number": "+229 12 34 56 78",
+            "type": "mobile"
+        }
+    ],
     "credit_limit": 750000,
     "current_balance": 200000,
     "base_reduction": 10,
@@ -6449,22 +6437,44 @@ $response = $client-&gt;patch(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
-        'json' =&gt; [
-            'code' =&gt; 'CLI-UPDATED',
-            'name_client' =&gt; 'Jane Doe',
-            'name_representant' =&gt; 'John Smith',
-            'marketteur' =&gt; 'Pierre Martin',
-            'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
-            'adresse' =&gt; '456 Avenue des Palmiers',
-            'city' =&gt; 'Porto-Novo',
-            'email' =&gt; 'jane.doe@example.com',
-            'ifu' =&gt; '9876543210987',
-            'phonenumber' =&gt; '+229 87 65 43 21',
-            'credit_limit' =&gt; 750000.0,
-            'current_balance' =&gt; 200000.0,
-            'base_reduction' =&gt; 10.0,
-            'is_active' =&gt; false,
-        ],
+        'json' =&gt; \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+            $o = [
+                clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['stdClass'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('stdClass')),
+            ],
+            null,
+            [
+                'stdClass' =&gt; [
+                    'id' =&gt; [
+                        'uuid',
+                    ],
+                    'phone_number' =&gt; [
+                        '+229 12 34 56 78',
+                    ],
+                    'type' =&gt; [
+                        'mobile',
+                    ],
+                ],
+            ],
+            [
+                'code' =&gt; 'CLI-UPDATED',
+                'name_client' =&gt; 'Jane Doe',
+                'name_representant' =&gt; 'John Smith',
+                'marketteur' =&gt; 'Pierre Martin',
+                'client_type_id' =&gt; '550e8400-e29b-41d4-a716-446655440000',
+                'adresse' =&gt; '456 Avenue des Palmiers',
+                'city' =&gt; 'Porto-Novo',
+                'email' =&gt; 'jane.doe@example.com',
+                'ifu' =&gt; '9876543210987',
+                'phones' =&gt; [
+                    $o[0],
+                ],
+                'credit_limit' =&gt; 750000.0,
+                'current_balance' =&gt; 200000.0,
+                'base_reduction' =&gt; 10.0,
+                'is_active' =&gt; false,
+            ],
+            []
+        ),
     ]
 );
 $body = $response-&gt;getBody();
@@ -6479,26 +6489,21 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI-UPDATED&quot;,
         &quot;name_client&quot;: &quot;Jane Doe&quot;,
-        &quot;name_representant&quot;: &quot;John Smith&quot;,
-        &quot;marketteur&quot;: &quot;Pierre Martin&quot;,
-        &quot;client_type_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;adresse&quot;: &quot;456 Avenue des Palmiers&quot;,
-        &quot;city&quot;: &quot;Porto-Novo&quot;,
-        &quot;email&quot;: &quot;jane.doe@example.com&quot;,
-        &quot;ifu&quot;: &quot;9876543210987&quot;,
-        &quot;phonenumber&quot;: &quot;+229 87 65 43 21&quot;,
-        &quot;credit_limit&quot;: &quot;750000.00&quot;,
-        &quot;current_balance&quot;: &quot;200000.00&quot;,
-        &quot;base_reduction&quot;: &quot;10.00&quot;,
-        &quot;is_active&quot;: false,
-        &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2024-01-15T11:00:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Client mis &agrave; jour avec succ&egrave;s&quot;
+        &quot;phones&quot;: [
+            {
+                &quot;id&quot;: &quot;uuid&quot;,
+                &quot;phone_number&quot;: &quot;+229 87 65 43 21&quot;,
+                &quot;type&quot;: &quot;mobile&quot;,
+                &quot;label&quot;: &quot;Bureau&quot;
+            }
+        ]
+    }
 }</code>
  </pre>
             <blockquote>
@@ -6507,6 +6512,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
@@ -6516,13 +6522,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
     &quot;errors&quot;: {
         &quot;email&quot;: [
             &quot;Cette adresse email est d&eacute;j&agrave; utilis&eacute;e&quot;
         ],
-        &quot;ifu&quot;: [
-            &quot;Ce num&eacute;ro IFU est d&eacute;j&agrave; utilis&eacute;&quot;
+        &quot;phones&quot;: [
+            &quot;Au moins un num&eacute;ro de t&eacute;l&eacute;phone est requis&quot;
         ]
     }
 }</code>
@@ -6710,15 +6717,59 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Numéro IFU unique. Example: <code>9876543210987</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phonenumber</code></b>&nbsp;&nbsp;
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>phones</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+<p>Tableau de numéros de téléphone.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="phonenumber"                data-endpoint="PATCHapi-clients--client_id-"
+                              name="phones.0.id"                data-endpoint="PATCHapi-clients--client_id-"
+               value="uuid-existant"
+               data-component="body">
+    <br>
+<p>UUID du téléphone (pour mise à jour). Example: <code>uuid-existant</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.phone_number"                data-endpoint="PATCHapi-clients--client_id-"
                value="+229 87 65 43 21"
                data-component="body">
     <br>
 <p>Numéro de téléphone. Example: <code>+229 87 65 43 21</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.type"                data-endpoint="PATCHapi-clients--client_id-"
+               value="mobile"
+               data-component="body">
+    <br>
+<p>Type (mobile, fixe, whatsapp, autre). Example: <code>mobile</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="phones.0.label"                data-endpoint="PATCHapi-clients--client_id-"
+               value="Bureau"
+               data-component="body">
+    <br>
+<p>Label du numéro. Example: <code>Bureau</code></p>
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>credit_limit</code></b>&nbsp;&nbsp;
@@ -6835,6 +6886,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
     &quot;message&quot;: &quot;Client supprim&eacute; avec succ&egrave;s&quot;
 }</code>
  </pre>
@@ -6844,6 +6896,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
@@ -6989,13 +7042,14 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Client restaur&eacute; avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;code&quot;: &quot;CLI-ABC123&quot;,
         &quot;name_client&quot;: &quot;John Doe&quot;,
         &quot;deleted_at&quot;: null
-    },
-    &quot;message&quot;: &quot;Client restaur&eacute; avec succ&egrave;s&quot;
+    }
 }</code>
  </pre>
             <blockquote>
@@ -7004,7 +7058,9 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Ce client n&#039;est pas supprim&eacute;&quot;
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Ce client n&#039;est pas supprim&eacute;&quot;,
+    &quot;error&quot;: &quot;Le client est d&eacute;j&agrave; actif&quot;
 }</code>
  </pre>
             <blockquote>
@@ -7013,6 +7069,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
@@ -7170,11 +7227,12 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Statut du client mis &agrave; jour avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;is_active&quot;: false
-    },
-    &quot;message&quot;: &quot;Statut du client mis &agrave; jour avec succ&egrave;s&quot;
+    }
 }</code>
  </pre>
             <blockquote>
@@ -7183,6 +7241,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
@@ -7365,6 +7424,8 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Solde mis &agrave; jour avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
         &quot;previous_balance&quot;: &quot;150000.00&quot;,
@@ -7372,8 +7433,7 @@ print_r(json_decode((string) $body));</code></pre></div>
         &quot;amount_added&quot;: &quot;50000.00&quot;,
         &quot;available_credit&quot;: &quot;300000.00&quot;,
         &quot;description&quot;: &quot;Paiement facture&quot;
-    },
-    &quot;message&quot;: &quot;Solde mis &agrave; jour avec succ&egrave;s&quot;
+    }
 }</code>
  </pre>
             <blockquote>
@@ -7382,6 +7442,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Le montant d&eacute;passerait la limite de cr&eacute;dit autoris&eacute;e&quot;,
     &quot;data&quot;: {
         &quot;current_balance&quot;: &quot;150000.00&quot;,
@@ -7397,6 +7458,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
     &quot;message&quot;: &quot;Client non trouv&eacute;&quot;
 }</code>
  </pre>
@@ -7503,7 +7565,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Paiement facture"
                data-component="body">
     <br>
-<p>optionnel Description de l'opération. Example: <code>Paiement facture</code></p>
+<p>Description de l'opération. Example: <code>Paiement facture</code></p>
         </div>
         </form>
 
@@ -7673,7 +7735,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": false
+    \"is_active\": true
 }"
 </code></pre></div>
 
@@ -7701,7 +7763,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": false
+    "is_active": true
 };
 
 fetch(url, {
@@ -7731,7 +7793,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
         ],
     ]
 );
@@ -7948,7 +8010,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -9137,8 +9199,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-19T11:47:45\",
-    \"date_to\": \"2051-11-12\"
+    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_to\": \"2051-11-14\"
 }"
 </code></pre></div>
 
@@ -9161,8 +9223,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-19T11:47:45",
-    "date_to": "2051-11-12"
+    "date_from": "2025-10-21T08:51:43",
+    "date_to": "2051-11-14"
 };
 
 fetch(url, {
@@ -9187,8 +9249,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-19T11:47:45',
-            'date_to' =&gt; '2051-11-12',
+            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_to' =&gt; '2051-11-14',
         ],
     ]
 );
@@ -9318,10 +9380,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-19T11:47:45"
+               value="2025-10-21T08:51:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-19T11:47:45</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9329,10 +9391,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2051-11-12"
+               value="2051-11-14"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-12</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-14</code></p>
         </div>
         </form>
 
@@ -9357,9 +9419,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"paid\",
-    \"date_from\": \"2025-10-19T11:47:45\",
-    \"date_to\": \"2051-11-12\",
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_to\": \"2051-11-14\",
     \"with_client\": true,
     \"with_details\": false
 }"
@@ -9395,9 +9457,9 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "paid",
-    "date_from": "2025-10-19T11:47:45",
-    "date_to": "2051-11-12",
+    "statut": "pending",
+    "date_from": "2025-10-21T08:51:43",
+    "date_to": "2051-11-14",
     "with_client": true,
     "with_details": false
 };
@@ -9435,9 +9497,9 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'paid',
-            'date_from' =&gt; '2025-10-19T11:47:45',
-            'date_to' =&gt; '2051-11-12',
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_to' =&gt; '2051-11-14',
             'with_client' =&gt; true,
             'with_details' =&gt; false,
         ],
@@ -9725,10 +9787,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="paid"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>paid</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9738,10 +9800,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-19T11:47:45"
+               value="2025-10-21T08:51:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-19T11:47:45</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9749,10 +9811,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures"
-               value="2051-11-12"
+               value="2051-11-14"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-12</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -10223,8 +10285,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"with_client\": false,
-    \"with_details\": true,
-    \"with_payments\": false
+    \"with_details\": false,
+    \"with_payments\": true
 }"
 </code></pre></div>
 
@@ -10249,8 +10311,8 @@ const headers = {
 
 let body = {
     "with_client": false,
-    "with_details": true,
-    "with_payments": false
+    "with_details": false,
+    "with_payments": true
 };
 
 fetch(url, {
@@ -10277,8 +10339,8 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'with_client' =&gt; false,
-            'with_details' =&gt; true,
-            'with_payments' =&gt; false,
+            'with_details' =&gt; false,
+            'with_payments' =&gt; true,
         ],
     ]
 );
@@ -10509,7 +10571,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -10530,7 +10592,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -11471,8 +11533,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-19T11:47:46\",
-    \"date_to\": \"2051-11-12\"
+    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_to\": \"2051-11-14\"
 }"
 </code></pre></div>
 
@@ -11495,8 +11557,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-19T11:47:46",
-    "date_to": "2051-11-12"
+    "date_from": "2025-10-21T08:51:43",
+    "date_to": "2051-11-14"
 };
 
 fetch(url, {
@@ -11521,8 +11583,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-19T11:47:46',
-            'date_to' =&gt; '2051-11-12',
+            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_to' =&gt; '2051-11-14',
         ],
     ]
 );
@@ -11661,10 +11723,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-19T11:47:46"
+               value="2025-10-21T08:51:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-19T11:47:46</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11672,10 +11734,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2051-11-12"
+               value="2051-11-14"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-12</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-14</code></p>
         </div>
         </form>
 
@@ -11702,12 +11764,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-19T11:47:46\",
-    \"date_to\": \"2051-11-12\",
+    \"statut\": \"completed\",
+    \"date_from\": \"2025-10-21T08:51:43\",
+    \"date_to\": \"2051-11-14\",
     \"with_facture\": false,
     \"with_client\": false,
-    \"with_payment_method\": false
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -11746,12 +11808,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "refunded",
-    "date_from": "2025-10-19T11:47:46",
-    "date_to": "2051-11-12",
+    "statut": "completed",
+    "date_from": "2025-10-21T08:51:43",
+    "date_to": "2051-11-14",
     "with_facture": false,
     "with_client": false,
-    "with_payment_method": false
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -11792,12 +11854,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-19T11:47:46',
-            'date_to' =&gt; '2051-11-12',
+            'statut' =&gt; 'completed',
+            'date_from' =&gt; '2025-10-21T08:51:43',
+            'date_to' =&gt; '2051-11-14',
             'with_facture' =&gt; false,
             'with_client' =&gt; false,
-            'with_payment_method' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -12142,10 +12204,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="refunded"
+               value="completed"
                data-component="body">
     <br>
-<p>Example: <code>refunded</code></p>
+<p>Example: <code>completed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12155,10 +12217,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-19T11:47:46"
+               value="2025-10-21T08:51:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-19T11:47:46</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12166,10 +12228,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements"
-               value="2051-11-12"
+               value="2051-11-14"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-12</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
@@ -12232,7 +12294,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -12565,7 +12627,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"with_facture\": true,
     \"with_client\": true,
-    \"with_payment_method\": true
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -12591,7 +12653,7 @@ const headers = {
 let body = {
     "with_facture": true,
     "with_client": true,
-    "with_payment_method": true
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -12619,7 +12681,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
-            'with_payment_method' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -12873,7 +12935,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -18501,7 +18563,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -18523,7 +18585,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -18547,7 +18609,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -18705,7 +18767,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -37011,7 +37073,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-19T11:47:47\",
+    \"date_livraison_prevue\": \"2025-10-21T08:51:43\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -37034,7 +37096,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-19T11:47:47",
+    "date_livraison_prevue": "2025-10-21T08:51:43",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -37062,7 +37124,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-19T11:47:47',
+            'date_livraison_prevue' =&gt; '2025-10-21T08:51:43',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -37198,10 +37260,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-19T11:47:47"
+               value="2025-10-21T08:51:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-19T11:47:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -37270,7 +37332,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-19T11:47:47\",
+    \"date_livraison_prevue\": \"2025-10-21T08:51:43\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -37293,7 +37355,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-19T11:47:47",
+    "date_livraison_prevue": "2025-10-21T08:51:43",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -37321,7 +37383,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-19T11:47:47',
+            'date_livraison_prevue' =&gt; '2025-10-21T08:51:43',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -37457,10 +37519,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-19T11:47:47"
+               value="2025-10-21T08:51:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-19T11:47:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-21T08:51:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -46972,7 +47034,178 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     <p>API pour gérer les rôles, permissions et leurs assignations</p>
 
-                                <h2 id="gestion-des-roles-et-permissions-GETapi-roles-permissions-roles">Liste des rôles</h2>
+                                <h2 id="gestion-des-roles-et-permissions-GETapi-roles-permissions-statistics">Statistiques globales</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les statistiques générales sur les rôles et permissions.</p>
+
+<span id="example-requests-GETapi-roles-permissions-statistics">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/statistics" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/statistics"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/statistics';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-statistics">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Statistiques r&eacute;cup&eacute;r&eacute;es avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;total_roles&quot;: 11,
+        &quot;total_permissions&quot;: 161,
+        &quot;total_users_with_roles&quot;: 45,
+        &quot;roles_breakdown&quot;: [
+            {
+                &quot;role&quot;: &quot;Super Admin&quot;,
+                &quot;users_count&quot;: 2,
+                &quot;permissions_count&quot;: 161
+            },
+            {
+                &quot;role&quot;: &quot;Comptable&quot;,
+                &quot;users_count&quot;: 5,
+                &quot;permissions_count&quot;: 30
+            }
+        ],
+        &quot;permissions_by_module&quot;: {
+            &quot;users&quot;: 8,
+            &quot;clients&quot;: 9,
+            &quot;stocks&quot;: 15
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-statistics" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-statistics"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-statistics"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-statistics" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-statistics">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-statistics" data-method="GET"
+      data-path="api/roles-permissions/statistics"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-statistics', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-statistics"
+                    onclick="tryItOut('GETapi-roles-permissions-statistics');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-statistics"
+                    onclick="cancelTryOut('GETapi-roles-permissions-statistics');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-statistics"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/statistics</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-statistics"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-statistics"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-statistics"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-roles-et-permissions-GETapi-roles-permissions-roles">Liste des rôles</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -50434,177 +50667,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'ID de l'utilisateur. Example: <code>5</code></p>
             </div>
                     </form>
-
-                    <h2 id="gestion-des-roles-et-permissions-GETapi-roles-permissions-statistics">Statistiques globales</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Récupère les statistiques générales sur les rôles et permissions.</p>
-
-<span id="example-requests-GETapi-roles-permissions-statistics">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles-permissions/statistics" \
-    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles-permissions/statistics"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles-permissions/statistics';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-roles-permissions-statistics">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Statistiques r&eacute;cup&eacute;r&eacute;es avec succ&egrave;s&quot;,
-    &quot;data&quot;: {
-        &quot;total_roles&quot;: 11,
-        &quot;total_permissions&quot;: 161,
-        &quot;total_users_with_roles&quot;: 45,
-        &quot;roles_breakdown&quot;: [
-            {
-                &quot;role&quot;: &quot;Super Admin&quot;,
-                &quot;users_count&quot;: 2,
-                &quot;permissions_count&quot;: 161
-            },
-            {
-                &quot;role&quot;: &quot;Comptable&quot;,
-                &quot;users_count&quot;: 5,
-                &quot;permissions_count&quot;: 30
-            }
-        ],
-        &quot;permissions_by_module&quot;: {
-            &quot;users&quot;: 8,
-            &quot;clients&quot;: 9,
-            &quot;stocks&quot;: 15
-        }
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-roles-permissions-statistics" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-roles-permissions-statistics"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-statistics"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-roles-permissions-statistics" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-roles-permissions-statistics">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-roles-permissions-statistics" data-method="GET"
-      data-path="api/roles-permissions/statistics"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-statistics', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-roles-permissions-statistics"
-                    onclick="tryItOut('GETapi-roles-permissions-statistics');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-roles-permissions-statistics"
-                    onclick="cancelTryOut('GETapi-roles-permissions-statistics');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-roles-permissions-statistics"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/roles-permissions/statistics</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-statistics"
-               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-statistics"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-roles-permissions-statistics"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
 
                 <h1 id="gestion-des-stocks">Gestion des Stocks</h1>
 

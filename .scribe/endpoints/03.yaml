@@ -55,51 +55,30 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      with_phones:
+        name: with_phones
+        description: 'Inclure les numéros de téléphone.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
     cleanQueryParameters:
       page: 1
       per_page: 15
       with_client_type: true
-    bodyParameters:
-      page:
-        name: page
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      with_client_type:
-        name: with_client_type
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      page: 16
-      per_page: 22
-      with_client_type: false
+      with_phones: true
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
             "data": [
               {
                 "client_id": "550e8400-e29b-41d4-a716-446655440000",
@@ -152,6 +131,7 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
             "data": {
               "total_clients": 150,
               "active_clients": 120,
@@ -213,7 +193,7 @@ endpoints:
         custom: []
       fields:
         name: fields
-        description: 'optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).'
+        description: 'Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).'
         required: false
         example:
           - name_client
@@ -226,17 +206,17 @@ endpoints:
         custom: []
       client_type_id:
         name: client_type_id
-        description: 'optionnel Filtrer par type de client.'
+        description: 'Filtrer par type de client.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       is_active:
         name: is_active
-        description: 'optionnel Filtrer par statut.'
+        description: 'Filtrer par statut.'
         required: false
         example: true
         type: boolean
@@ -246,67 +226,67 @@ endpoints:
         custom: []
       credit_min:
         name: credit_min
-        description: 'optionnel Limite de crédit minimale.'
+        description: 'Limite de crédit minimale.'
         required: false
         example: 100000.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       credit_max:
         name: credit_max
-        description: 'optionnel Limite de crédit maximale.'
+        description: 'Limite de crédit maximale.'
         required: false
         example: 1000000.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       balance_min:
         name: balance_min
-        description: 'optionnel Solde minimal.'
+        description: 'Solde minimal.'
         required: false
         example: -50000.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       balance_max:
         name: balance_max
-        description: 'optionnel Solde maximal.'
+        description: 'Solde maximal.'
         required: false
         example: 500000.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       reduction_min:
         name: reduction_min
-        description: 'optionnel Réduction de base minimale (%).'
+        description: 'Réduction de base minimale (%).'
         required: false
         example: 0.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       reduction_max:
         name: reduction_max
-        description: 'optionnel Réduction de base maximale (%).'
+        description: 'Réduction de base maximale (%).'
         required: false
         example: 20.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       page:
         name: page
-        description: 'optionnel Page à récupérer.'
+        description: 'Page à récupérer.'
         required: false
         example: 1
         type: integer
@@ -316,7 +296,7 @@ endpoints:
         custom: []
       per_page:
         name: per_page
-        description: 'optionnel Éléments par page.'
+        description: 'Éléments par page.'
         required: false
         example: 20
         type: integer
@@ -346,6 +326,7 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
             "data": [
               {
                 "client_id": "550e8400-e29b-41d4-a716-446655440000",
@@ -357,16 +338,37 @@ endpoints:
                 "ifu": "1234567890123",
                 "city": "Cotonou",
                 "phonenumber": "+229 12 34 56 78",
+                "phones": [
+                  {
+                    "id": "uuid",
+                    "phone_number": "+229 12 34 56 78",
+                    "type": "mobile",
+                    "label": "Principal"
+                  }
+                ],
                 "credit_limit": "500000.00",
                 "current_balance": "150000.00",
                 "base_reduction": "5.00",
                 "is_active": true
               }
             ],
-            "meta": {
+            "pagination": {
               "total": 1,
               "per_page": 20,
               "current_page": 1
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "query": ["Le terme de recherche est obligatoire"]
             }
           }
         headers: []
@@ -424,7 +426,7 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Recherche globale (nom, email, code, IFU, représentant, marketteur).'
+        description: 'Recherche globale (nom, email, code, IFU, représentant, marketteur, téléphones).'
         required: false
         example: John
         type: string
@@ -522,6 +524,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      with_phones:
+        name: with_phones
+        description: 'Inclure les numéros de téléphone.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       balance_filter:
         name: balance_filter
         description: 'Filtrer par solde (positive, negative, zero).'
@@ -545,155 +557,10 @@ endpoints:
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       is_active: true
       with_client_type: true
+      with_phones: true
       balance_filter: positive
-    bodyParameters:
-      page:
-        name: page
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      search:
-        name: search
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: g
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      name:
-        name: name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: z
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      email:
-        name: email
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: rempel.chadrick@example.org
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      code:
-        name: code
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: l
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      city:
-        name: city
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: j
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      ifu:
-        name: ifu
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      marketteur:
-        name: marketteur
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: i
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      client_type_id:
-        name: client_type_id
-        description: 'Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table.'
-        required: false
-        example: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      is_active:
-        name: is_active
-        description: ''
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      with_client_type:
-        name: with_client_type
-        description: ''
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      balance_filter:
-        name: balance_filter
-        description: ''
-        required: false
-        example: zero
-        type: string
-        enumValues:
-          - positive
-          - negative
-          - zero
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      page: 16
-      per_page: 22
-      search: g
-      name: z
-      email: rempel.chadrick@example.org
-      code: l
-      city: j
-      ifu: 'n'
-      marketteur: i
-      client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
-      is_active: true
-      with_client_type: true
-      balance_filter: zero
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -703,7 +570,7 @@ endpoints:
             "data": [
               {
                 "client_id": "550e8400-e29b-41d4-a716-446655440000",
-                "code": "CLI-ABC123",
+                "code": "CLI00001",
                 "name_client": "John Doe",
                 "name_representant": "Jane Smith",
                 "marketteur": "Marie Dupont",
@@ -713,19 +580,35 @@ endpoints:
                 "email": "john.doe@example.com",
                 "ifu": "1234567890123",
                 "phonenumber": "+229 12 34 56 78",
+                "phones": [
+                  {
+                    "id": "uuid",
+                    "phone_number": "+229 12 34 56 78",
+                    "type": "mobile",
+                    "label": "Principal"
+                  }
+                ],
                 "credit_limit": "500000.00",
                 "current_balance": "150000.00",
                 "base_reduction": "5.00",
                 "is_active": true,
                 "created_at": "2024-01-15T10:30:00Z",
-                "updated_at": "2024-01-15T10:30:00Z",
-                "formatted_credit_limit": "500 000,00 FCFA",
-                "formatted_current_balance": "150 000,00 FCFA",
-                "available_credit": "350000.00",
-                "formatted_available_credit": "350 000,00 FCFA",
-                "formatted_base_reduction": "5,00 %"
+                "updated_at": "2024-01-15T10:30:00Z"
               }
             ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "per_page": ["Le nombre d'éléments par page ne peut pas dépasser 100"]
+            }
           }
         headers: []
         description: ''
@@ -750,7 +633,7 @@ endpoints:
       title: 'Créer un nouveau client'
       description: |-
         Crée un nouveau client avec les informations fournies.
-        L'UUID et le code client sont générés automatiquement si non fournis.
+        L'UUID et le code client sont générés automatiquement.
       authenticated: false
       deprecated: false
       custom: []
@@ -774,117 +657,151 @@ endpoints:
         custom: []
       name_representant:
         name: name_representant
-        description: 'optionnel Nom du représentant du client.'
+        description: 'Nom du représentant du client.'
         required: false
         example: 'Jane Smith'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       marketteur:
         name: marketteur
-        description: 'optionnel Nom du marketteur associé au client.'
+        description: 'Nom du marketteur associé au client.'
         required: false
         example: 'Marie Dupont'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       client_type_id:
         name: client_type_id
-        description: 'optionnel UUID du type de client.'
+        description: 'UUID du type de client.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       adresse:
         name: adresse
-        description: 'optionnel Adresse du client.'
+        description: 'Adresse du client.'
         required: false
         example: '123 Rue de la Paix'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       city:
         name: city
-        description: 'optionnel Ville du client.'
+        description: 'Ville du client.'
         required: false
         example: Cotonou
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       email:
         name: email
-        description: 'optionnel Email unique du client.'
+        description: 'Email unique du client.'
         required: false
         example: john.doe@example.com
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       ifu:
         name: ifu
-        description: 'optionnel Numéro IFU (Identifiant Fiscal Unique).'
+        description: 'Numéro IFU (Identifiant Fiscal Unique).'
         required: false
         example: '1234567890123'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
-      phonenumber:
-        name: phonenumber
-        description: 'optionnel Numéro de téléphone.'
-        required: false
+      phones:
+        name: phones
+        description: 'Tableau de numéros de téléphone (minimum 1).'
+        required: true
+        example:
+          -
+            phone_number: '+229 12 34 56 78'
+            type: mobile
+            label: Principal
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].phone_number':
+        name: 'phones[].phone_number'
+        description: 'Numéro de téléphone.'
+        required: true
         example: '+229 12 34 56 78'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
+        custom: []
+      'phones[].type':
+        name: 'phones[].type'
+        description: 'Type de téléphone (mobile, fixe, whatsapp, autre).'
+        required: true
+        example: mobile
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].label':
+        name: 'phones[].label'
+        description: 'Label du numéro.'
+        required: false
+        example: Principal
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
         custom: []
       credit_limit:
         name: credit_limit
-        description: 'optionnel Limite de crédit (défaut: 0).'
+        description: 'Limite de crédit (défaut: 0).'
         required: false
         example: 500000.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       current_balance:
         name: current_balance
-        description: 'optionnel Solde actuel (défaut: 0).'
+        description: 'Solde actuel (défaut: 0).'
         required: false
         example: 0.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       base_reduction:
         name: base_reduction
-        description: 'optionnel Réduction de base en pourcentage (0-100, défaut: 0).'
+        description: 'Réduction de base en pourcentage (0-100, défaut: 0).'
         required: false
         example: 5.0
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       is_active:
         name: is_active
-        description: 'optionnel Statut actif (défaut: true).'
+        description: 'Statut actif (défaut: true).'
         required: false
         example: true
         type: boolean
@@ -901,7 +818,11 @@ endpoints:
       city: Cotonou
       email: john.doe@example.com
       ifu: '1234567890123'
-      phonenumber: '+229 12 34 56 78'
+      phones:
+        -
+          phone_number: '+229 12 34 56 78'
+          type: mobile
+          label: Principal
       credit_limit: 500000.0
       current_balance: 0.0
       base_reduction: 5.0
@@ -912,6 +833,8 @@ endpoints:
         status: 201
         content: |-
           {
+            "success": true,
+            "message": "Client créé avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI00001",
@@ -923,15 +846,21 @@ endpoints:
               "city": "Cotonou",
               "email": "john.doe@example.com",
               "ifu": "1234567890123",
-              "phonenumber": "+229 12 34 56 78",
+              "phones": [
+                {
+                  "id": "uuid",
+                  "phone_number": "+229 12 34 56 78",
+                  "type": "mobile",
+                  "label": "Principal"
+                }
+              ],
               "credit_limit": "500000.00",
               "current_balance": "0.00",
               "base_reduction": "5.00",
               "is_active": true,
               "created_at": "2024-01-15T10:30:00Z",
               "updated_at": "2024-01-15T10:30:00Z"
-            },
-            "message": "Client créé avec succès"
+            }
           }
         headers: []
         description: ''
@@ -940,11 +869,23 @@ endpoints:
         status: 422
         content: |-
           {
-            "message": "Données de validation échouées",
+            "success": false,
+            "message": "Erreur de validation",
             "errors": {
               "email": ["Cette adresse email est déjà utilisée"],
-              "ifu": ["Ce numéro IFU est déjà utilisé"]
+              "phones": ["Au moins un numéro de téléphone est requis"]
             }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la création du client",
+            "error": "Message d'erreur détaillé"
           }
         headers: []
         description: ''
@@ -998,27 +939,28 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-    cleanQueryParameters:
-      with_client_type: true
-    bodyParameters:
-      with_client_type:
-        name: with_client_type
-        description: ''
+      with_phones:
+        name: with_phones
+        description: 'Inclure les numéros de téléphone.'
         required: false
         example: true
         type: boolean
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
-    cleanBodyParameters:
+    cleanQueryParameters:
       with_client_type: true
+      with_phones: true
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI00001",
@@ -1031,6 +973,14 @@ endpoints:
               "email": "john.doe@example.com",
               "ifu": "1234567890123",
               "phonenumber": "+229 12 34 56 78",
+              "phones": [
+                {
+                  "id": "uuid",
+                  "phone_number": "+229 12 34 56 78",
+                  "type": "mobile",
+                  "label": "Principal"
+                }
+              ],
               "credit_limit": "500000.00",
               "current_balance": "150000.00",
               "base_reduction": "5.00",
@@ -1046,7 +996,9 @@ endpoints:
         status: 404
         content: |-
           {
-            "message": "Client non trouvé"
+            "success": false,
+            "message": "Client non trouvé",
+            "error": "Aucun client ne correspond à l'identifiant fourni"
           }
         headers: []
         description: ''
@@ -1184,11 +1136,55 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phonenumber:
-        name: phonenumber
-        description: 'Numéro de téléphone.'
+      phones:
+        name: phones
+        description: 'Tableau de numéros de téléphone.'
         required: false
+        example:
+          -
+            id: uuid
+            phone_number: '+229 12 34 56 78'
+            type: mobile
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].id':
+        name: 'phones[].id'
+        description: 'UUID du téléphone (pour mise à jour).'
+        required: false
+        example: uuid-existant
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].phone_number':
+        name: 'phones[].phone_number'
+        description: 'Numéro de téléphone.'
+        required: true
         example: '+229 87 65 43 21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].type':
+        name: 'phones[].type'
+        description: 'Type (mobile, fixe, whatsapp, autre).'
+        required: true
+        example: mobile
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].label':
+        name: 'phones[].label'
+        description: 'Label du numéro.'
+        required: false
+        example: Bureau
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -1244,7 +1240,11 @@ endpoints:
       city: Porto-Novo
       email: jane.doe@example.com
       ifu: '9876543210987'
-      phonenumber: '+229 87 65 43 21'
+      phones:
+        -
+          id: uuid
+          phone_number: '+229 12 34 56 78'
+          type: mobile
       credit_limit: 750000.0
       current_balance: 200000.0
       base_reduction: 10.0
@@ -1255,26 +1255,21 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Client mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI-UPDATED",
               "name_client": "Jane Doe",
-              "name_representant": "John Smith",
-              "marketteur": "Pierre Martin",
-              "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
-              "adresse": "456 Avenue des Palmiers",
-              "city": "Porto-Novo",
-              "email": "jane.doe@example.com",
-              "ifu": "9876543210987",
-              "phonenumber": "+229 87 65 43 21",
-              "credit_limit": "750000.00",
-              "current_balance": "200000.00",
-              "base_reduction": "10.00",
-              "is_active": false,
-              "created_at": "2024-01-15T10:30:00Z",
-              "updated_at": "2024-01-15T11:00:00Z"
-            },
-            "message": "Client mis à jour avec succès"
+              "phones": [
+                {
+                  "id": "uuid",
+                  "phone_number": "+229 87 65 43 21",
+                  "type": "mobile",
+                  "label": "Bureau"
+                }
+              ]
+            }
           }
         headers: []
         description: ''
@@ -1283,6 +1278,7 @@ endpoints:
         status: 404
         content: |-
           {
+            "success": false,
             "message": "Client non trouvé"
           }
         headers: []
@@ -1292,10 +1288,11 @@ endpoints:
         status: 422
         content: |-
           {
-            "message": "Données de validation échouées",
+            "success": false,
+            "message": "Erreur de validation",
             "errors": {
               "email": ["Cette adresse email est déjà utilisée"],
-              "ifu": ["Ce numéro IFU est déjà utilisé"]
+              "phones": ["Au moins un numéro de téléphone est requis"]
             }
           }
         headers: []
@@ -1434,11 +1431,55 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phonenumber:
-        name: phonenumber
-        description: 'Numéro de téléphone.'
+      phones:
+        name: phones
+        description: 'Tableau de numéros de téléphone.'
         required: false
+        example:
+          -
+            id: uuid
+            phone_number: '+229 12 34 56 78'
+            type: mobile
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].id':
+        name: 'phones[].id'
+        description: 'UUID du téléphone (pour mise à jour).'
+        required: false
+        example: uuid-existant
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].phone_number':
+        name: 'phones[].phone_number'
+        description: 'Numéro de téléphone.'
+        required: true
         example: '+229 87 65 43 21'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].type':
+        name: 'phones[].type'
+        description: 'Type (mobile, fixe, whatsapp, autre).'
+        required: true
+        example: mobile
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'phones[].label':
+        name: 'phones[].label'
+        description: 'Label du numéro.'
+        required: false
+        example: Bureau
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -1494,7 +1535,11 @@ endpoints:
       city: Porto-Novo
       email: jane.doe@example.com
       ifu: '9876543210987'
-      phonenumber: '+229 87 65 43 21'
+      phones:
+        -
+          id: uuid
+          phone_number: '+229 12 34 56 78'
+          type: mobile
       credit_limit: 750000.0
       current_balance: 200000.0
       base_reduction: 10.0
@@ -1505,26 +1550,21 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Client mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI-UPDATED",
               "name_client": "Jane Doe",
-              "name_representant": "John Smith",
-              "marketteur": "Pierre Martin",
-              "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
-              "adresse": "456 Avenue des Palmiers",
-              "city": "Porto-Novo",
-              "email": "jane.doe@example.com",
-              "ifu": "9876543210987",
-              "phonenumber": "+229 87 65 43 21",
-              "credit_limit": "750000.00",
-              "current_balance": "200000.00",
-              "base_reduction": "10.00",
-              "is_active": false,
-              "created_at": "2024-01-15T10:30:00Z",
-              "updated_at": "2024-01-15T11:00:00Z"
-            },
-            "message": "Client mis à jour avec succès"
+              "phones": [
+                {
+                  "id": "uuid",
+                  "phone_number": "+229 87 65 43 21",
+                  "type": "mobile",
+                  "label": "Bureau"
+                }
+              ]
+            }
           }
         headers: []
         description: ''
@@ -1533,6 +1573,7 @@ endpoints:
         status: 404
         content: |-
           {
+            "success": false,
             "message": "Client non trouvé"
           }
         headers: []
@@ -1542,10 +1583,11 @@ endpoints:
         status: 422
         content: |-
           {
-            "message": "Données de validation échouées",
+            "success": false,
+            "message": "Erreur de validation",
             "errors": {
               "email": ["Cette adresse email est déjà utilisée"],
-              "ifu": ["Ce numéro IFU est déjà utilisé"]
+              "phones": ["Au moins un numéro de téléphone est requis"]
             }
           }
         headers: []
@@ -1601,6 +1643,7 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
             "message": "Client supprimé avec succès"
           }
         headers: []
@@ -1610,6 +1653,7 @@ endpoints:
         status: 404
         content: |-
           {
+            "success": false,
             "message": "Client non trouvé"
           }
         headers: []
@@ -1663,13 +1707,14 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Client restauré avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI-ABC123",
               "name_client": "John Doe",
               "deleted_at": null
-            },
-            "message": "Client restauré avec succès"
+            }
           }
         headers: []
         description: ''
@@ -1678,7 +1723,9 @@ endpoints:
         status: 400
         content: |-
           {
-            "message": "Ce client n'est pas supprimé"
+            "success": false,
+            "message": "Ce client n'est pas supprimé",
+            "error": "Le client est déjà actif"
           }
         headers: []
         description: ''
@@ -1687,6 +1734,7 @@ endpoints:
         status: 404
         content: |-
           {
+            "success": false,
             "message": "Client non trouvé"
           }
         headers: []
@@ -1751,11 +1799,12 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Statut du client mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "is_active": false
-            },
-            "message": "Statut du client mis à jour avec succès"
+            }
           }
         headers: []
         description: ''
@@ -1764,6 +1813,7 @@ endpoints:
         status: 404
         content: |-
           {
+            "success": false,
             "message": "Client non trouvé"
           }
         headers: []
@@ -1822,13 +1872,13 @@ endpoints:
         custom: []
       description:
         name: description
-        description: "optionnel Description de l'opération."
+        description: "Description de l'opération."
         required: false
         example: 'Paiement facture'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
       amount: 50000.0
@@ -1839,6 +1889,8 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Solde mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "previous_balance": "150000.00",
@@ -1846,8 +1898,7 @@ endpoints:
               "amount_added": "50000.00",
               "available_credit": "300000.00",
               "description": "Paiement facture"
-            },
-            "message": "Solde mis à jour avec succès"
+            }
           }
         headers: []
         description: ''
@@ -1856,6 +1907,7 @@ endpoints:
         status: 400
         content: |-
           {
+            "success": false,
             "message": "Le montant dépasserait la limite de crédit autorisée",
             "data": {
               "current_balance": "150000.00",
@@ -1871,6 +1923,7 @@ endpoints:
         status: 404
         content: |-
           {
+            "success": false,
             "message": "Client non trouvé"
           }
         headers: []
