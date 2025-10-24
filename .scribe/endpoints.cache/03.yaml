@@ -8,124 +8,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/clients/trashed/list
-    metadata:
-      groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lister les clients supprimés'
-      description: 'Récupère la liste des clients supprimés (soft delete).'
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      page:
-        name: page
-        description: 'Page à récupérer.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: "Nombre d'éléments par page."
-        required: false
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      with_client_type:
-        name: with_client_type
-        description: 'Inclure les informations du type de client.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      page: 1
-      per_page: 15
-      with_client_type: true
-    bodyParameters:
-      page:
-        name: page
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      with_client_type:
-        name: with_client_type
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      page: 16
-      per_page: 22
-      with_client_type: false
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "client_id": "550e8400-e29b-41d4-a716-446655440000",
-                "code": "CLI-DEL123",
-                "name_client": "Client Supprimé",
-                "email": "deleted@example.com",
-                "created_at": "2024-01-15T10:30:00Z",
-                "updated_at": "2024-01-15T10:30:00Z",
-                "deleted_at": "2024-01-15T12:00:00Z"
-              }
-            ]
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
     uri: api/clients/statistics/overview
     metadata:
       groupName: 'Clients Management'
@@ -154,24 +36,15 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
             "data": {
               "total_clients": 150,
               "active_clients": 120,
-              "inactive_clients": 30,
-              "deleted_clients": 5,
-              "clients_with_positive_balance": 80,
-              "clients_with_negative_balance": 25,
-              "clients_with_zero_balance": 45,
-              "total_credit_limit": "75000000.00",
-              "total_current_balance": "12500000.00",
-              "total_available_credit": "62500000.00",
-              "average_credit_limit": "500000.00",
-              "average_current_balance": "83333.33",
-              "average_base_reduction": "5.25"
+              "inactive_clients": 30
             }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
     responseFields: []
     auth: []
@@ -215,12 +88,11 @@ endpoints:
         custom: []
       fields:
         name: fields
-        description: 'optionnel Champs à rechercher (name_client, email, code, city, phonenumber, ifu, name_representant, marketteur).'
+        description: 'optionnel Champs à rechercher.'
         required: false
         example:
           - name_client
           - email
-          - ifu
         type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
@@ -234,7 +106,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       is_active:
         name: is_active
@@ -245,66 +117,6 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
-      credit_min:
-        name: credit_min
-        description: 'optionnel Limite de crédit minimale.'
-        required: false
-        example: 100000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      credit_max:
-        name: credit_max
-        description: 'optionnel Limite de crédit maximale.'
-        required: false
-        example: 1000000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      balance_min:
-        name: balance_min
-        description: 'optionnel Solde minimal.'
-        required: false
-        example: -50000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      balance_max:
-        name: balance_max
-        description: 'optionnel Solde maximal.'
-        required: false
-        example: 500000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      reduction_min:
-        name: reduction_min
-        description: 'optionnel Réduction de base minimale (%).'
-        required: false
-        example: 0.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      reduction_max:
-        name: reduction_max
-        description: 'optionnel Réduction de base maximale (%).'
-        required: false
-        example: 20.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
         custom: []
       page:
         name: page
@@ -331,15 +143,8 @@ endpoints:
       fields:
         - name_client
         - email
-        - ifu
       client_type_id: 550e8400-e29b-41d4-a716-446655440000
       is_active: true
-      credit_min: 100000.0
-      credit_max: 1000000.0
-      balance_min: -50000.0
-      balance_max: 500000.0
-      reduction_min: 0.0
-      reduction_max: 20.0
       page: 1
       per_page: 20
     fileParameters: []
@@ -348,31 +153,16 @@ endpoints:
         status: 200
         content: |-
           {
-            "data": [
-              {
-                "client_id": "550e8400-e29b-41d4-a716-446655440000",
-                "code": "CLI-ABC123",
-                "name_client": "John Doe",
-                "name_representant": "Jane Smith",
-                "marketteur": "Marie Dupont",
-                "email": "john.doe@example.com",
-                "ifu": "1234567890123",
-                "city": "Cotonou",
-                "phonenumber": "+229 12 34 56 78",
-                "credit_limit": "500000.00",
-                "current_balance": "150000.00",
-                "base_reduction": "5.00",
-                "is_active": true
-              }
-            ],
+            "success": true,
+            "data": [],
             "meta": {
-              "total": 1,
+              "total": 0,
               "per_page": 20,
               "current_page": 1
             }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
     responseFields: []
     auth: []
@@ -548,160 +338,15 @@ endpoints:
       is_active: true
       with_client_type: true
       balance_filter: positive
-    bodyParameters:
-      page:
-        name: page
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      search:
-        name: search
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: g
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      name:
-        name: name
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: z
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      email:
-        name: email
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: rempel.chadrick@example.org
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      code:
-        name: code
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: l
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      city:
-        name: city
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: j
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      ifu:
-        name: ifu
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      marketteur:
-        name: marketteur
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: i
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      client_type_id:
-        name: client_type_id
-        description: 'Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table.'
-        required: false
-        example: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      is_active:
-        name: is_active
-        description: ''
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      with_client_type:
-        name: with_client_type
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      balance_filter:
-        name: balance_filter
-        description: ''
-        required: false
-        example: negative
-        type: string
-        enumValues:
-          - positive
-          - negative
-          - zero
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      page: 16
-      per_page: 22
-      search: g
-      name: z
-      email: rempel.chadrick@example.org
-      code: l
-      city: j
-      ifu: 'n'
-      marketteur: i
-      client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
-      is_active: true
-      with_client_type: false
-      balance_filter: negative
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
             "data": [
               {
                 "client_id": "550e8400-e29b-41d4-a716-446655440000",
@@ -720,17 +365,42 @@ endpoints:
                 "base_reduction": "5.00",
                 "is_active": true,
                 "created_at": "2024-01-15T10:30:00Z",
-                "updated_at": "2024-01-15T10:30:00Z",
-                "formatted_credit_limit": "500 000,00 FCFA",
-                "formatted_current_balance": "150 000,00 FCFA",
-                "available_credit": "350000.00",
-                "formatted_available_credit": "350 000,00 FCFA",
-                "formatted_base_reduction": "5,00 %"
+                "updated_at": "2024-01-15T10:30:00Z"
               }
             ]
           }
         headers: []
-        description: ''
+        description: Succès
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "error": {
+              "code": "VALIDATION_ERROR",
+              "message": "Les données fournies sont invalides",
+              "details": {
+                "per_page": ["Le champ per_page ne peut pas dépasser 100."]
+              }
+            }
+          }
+        headers: []
+        description: 'Erreur de validation'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "error": {
+              "code": "DATABASE_ERROR",
+              "message": "Une erreur est survenue lors de la récupération des clients",
+              "details": "Erreur de connexion à la base de données"
+            }
+          }
+        headers: []
+        description: 'Erreur serveur'
         custom: []
     responseFields: []
     auth: []
@@ -782,7 +452,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       marketteur:
         name: marketteur
@@ -792,7 +462,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       client_type_id:
         name: client_type_id
@@ -802,7 +472,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       adresse:
         name: adresse
@@ -812,7 +482,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       city:
         name: city
@@ -822,7 +492,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       email:
         name: email
@@ -832,7 +502,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       ifu:
         name: ifu
@@ -842,7 +512,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       phonenumber:
         name: phonenumber
@@ -852,7 +522,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       credit_limit:
         name: credit_limit
@@ -862,7 +532,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       current_balance:
         name: current_balance
@@ -872,7 +542,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       base_reduction:
         name: base_reduction
@@ -882,7 +552,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
       is_active:
         name: is_active
@@ -914,42 +584,45 @@ endpoints:
         status: 201
         content: |-
           {
+            "success": true,
+            "message": "Client créé avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "code": "CLI00001",
               "name_client": "John Doe",
-              "name_representant": "Jane Smith",
-              "marketteur": "Marie Dupont",
-              "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
-              "adresse": "123 Rue de la Paix",
-              "city": "Cotonou",
-              "email": "john.doe@example.com",
-              "ifu": "1234567890123",
-              "phonenumber": "+229 12 34 56 78",
-              "credit_limit": "500000.00",
-              "current_balance": "0.00",
-              "base_reduction": "5.00",
-              "is_active": true,
-              "created_at": "2024-01-15T10:30:00Z",
-              "updated_at": "2024-01-15T10:30:00Z"
-            },
-            "message": "Client créé avec succès"
+              "email": "john.doe@example.com"
+            }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 422
         content: |-
           {
-            "message": "Données de validation échouées",
-            "errors": {
-              "email": ["Cette adresse email est déjà utilisée"],
-              "ifu": ["Ce numéro IFU est déjà utilisé"]
+            "success": false,
+            "error": {
+              "code": "DUPLICATE_EMAIL",
+              "message": "Cet email est déjà utilisé par un autre client",
+              "field": "email"
             }
           }
         headers: []
-        description: ''
+        description: 'Email déjà utilisé'
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "error": {
+              "code": "CREATE_ERROR",
+              "message": "Impossible de créer le client",
+              "details": "Erreur lors de l'enregistrement"
+            }
+          }
+        headers: []
+        description: 'Erreur lors de la création'
         custom: []
     responseFields: []
     auth: []
@@ -969,7 +642,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Afficher un client spécifique'
-      description: "Récupère les détails d'un client par son ID."
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -979,7 +652,17 @@ endpoints:
     urlParameters:
       client_id:
         name: client_id
-        description: "L'UUID du client."
+        description: 'The ID of the client.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'UUID du client.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -988,70 +671,42 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
-    queryParameters:
-      with_client_type:
-        name: with_client_type
-        description: 'Inclure les informations du type de client.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      with_client_type: true
-    bodyParameters:
-      with_client_type:
-        name: with_client_type
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      with_client_type: false
+      client_id: architecto
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "code": "CLI00001",
+              "code": "CLI-ABC123",
               "name_client": "John Doe",
-              "name_representant": "Jane Smith",
-              "marketteur": "Marie Dupont",
-              "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
-              "adresse": "123 Rue de la Paix",
-              "city": "Cotonou",
-              "email": "john.doe@example.com",
-              "ifu": "1234567890123",
-              "phonenumber": "+229 12 34 56 78",
-              "credit_limit": "500000.00",
-              "current_balance": "150000.00",
-              "base_reduction": "5.00",
-              "is_active": true,
-              "created_at": "2024-01-15T10:30:00Z",
-              "updated_at": "2024-01-15T10:30:00Z"
+              "email": "john.doe@example.com"
             }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "Client non trouvé"
+            "success": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "Client non trouvé",
+              "details": "Aucun client ne correspond à l'ID fourni"
+            }
           }
         headers: []
-        description: ''
+        description: 'Client non trouvé'
         custom: []
     responseFields: []
     auth: []
@@ -1071,9 +726,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour un client'
-      description: |-
-        Met à jour les informations d'un client existant.
-        Seuls les champs fournis seront mis à jour.
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -1083,7 +736,17 @@ endpoints:
     urlParameters:
       client_id:
         name: client_id
-        description: "L'UUID du client."
+        description: 'The ID of the client.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'UUID du client.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -1092,216 +755,40 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
+      client_id: architecto
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      code:
-        name: code
-        description: 'Code client unique.'
-        required: false
-        example: CLI-UPDATED
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_client:
-        name: name_client
-        description: 'Nom complet du client.'
-        required: false
-        example: 'Jane Doe'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_representant:
-        name: name_representant
-        description: 'Nom du représentant du client.'
-        required: false
-        example: 'John Smith'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      marketteur:
-        name: marketteur
-        description: 'Nom du marketteur associé.'
-        required: false
-        example: 'Pierre Martin'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      client_type_id:
-        name: client_type_id
-        description: 'UUID du type de client.'
-        required: false
-        example: 550e8400-e29b-41d4-a716-446655440000
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      adresse:
-        name: adresse
-        description: 'Adresse du client.'
-        required: false
-        example: '456 Avenue des Palmiers'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      city:
-        name: city
-        description: 'Ville du client.'
-        required: false
-        example: Porto-Novo
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      email:
-        name: email
-        description: 'Email unique du client.'
-        required: false
-        example: jane.doe@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      ifu:
-        name: ifu
-        description: 'Numéro IFU unique.'
-        required: false
-        example: '9876543210987'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      phonenumber:
-        name: phonenumber
-        description: 'Numéro de téléphone.'
-        required: false
-        example: '+229 87 65 43 21'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      credit_limit:
-        name: credit_limit
-        description: 'Limite de crédit.'
-        required: false
-        example: 750000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      current_balance:
-        name: current_balance
-        description: 'Solde actuel.'
-        required: false
-        example: 200000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      base_reduction:
-        name: base_reduction
-        description: 'Réduction de base en pourcentage (0-100).'
-        required: false
-        example: 10.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Statut actif.'
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      code: CLI-UPDATED
-      name_client: 'Jane Doe'
-      name_representant: 'John Smith'
-      marketteur: 'Pierre Martin'
-      client_type_id: 550e8400-e29b-41d4-a716-446655440000
-      adresse: '456 Avenue des Palmiers'
-      city: Porto-Novo
-      email: jane.doe@example.com
-      ifu: '9876543210987'
-      phonenumber: '+229 87 65 43 21'
-      credit_limit: 750000.0
-      current_balance: 200000.0
-      base_reduction: 10.0
-      is_active: false
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Client mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "code": "CLI-UPDATED",
-              "name_client": "Jane Doe",
-              "name_representant": "John Smith",
-              "marketteur": "Pierre Martin",
-              "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
-              "adresse": "456 Avenue des Palmiers",
-              "city": "Porto-Novo",
-              "email": "jane.doe@example.com",
-              "ifu": "9876543210987",
-              "phonenumber": "+229 87 65 43 21",
-              "credit_limit": "750000.00",
-              "current_balance": "200000.00",
-              "base_reduction": "10.00",
-              "is_active": false,
-              "created_at": "2024-01-15T10:30:00Z",
-              "updated_at": "2024-01-15T11:00:00Z"
-            },
-            "message": "Client mis à jour avec succès"
+              "name_client": "John Doe Updated"
+            }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "Client non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "message": "Données de validation échouées",
-            "errors": {
-              "email": ["Cette adresse email est déjà utilisée"],
-              "ifu": ["Ce numéro IFU est déjà utilisé"]
+            "success": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "Client non trouvé"
             }
           }
         headers: []
-        description: ''
+        description: 'Client non trouvé'
         custom: []
     responseFields: []
     auth: []
@@ -1321,9 +808,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour un client'
-      description: |-
-        Met à jour les informations d'un client existant.
-        Seuls les champs fournis seront mis à jour.
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -1333,7 +818,17 @@ endpoints:
     urlParameters:
       client_id:
         name: client_id
-        description: "L'UUID du client."
+        description: 'The ID of the client.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'UUID du client.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -1342,216 +837,40 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
+      client_id: architecto
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      code:
-        name: code
-        description: 'Code client unique.'
-        required: false
-        example: CLI-UPDATED
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_client:
-        name: name_client
-        description: 'Nom complet du client.'
-        required: false
-        example: 'Jane Doe'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      name_representant:
-        name: name_representant
-        description: 'Nom du représentant du client.'
-        required: false
-        example: 'John Smith'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      marketteur:
-        name: marketteur
-        description: 'Nom du marketteur associé.'
-        required: false
-        example: 'Pierre Martin'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      client_type_id:
-        name: client_type_id
-        description: 'UUID du type de client.'
-        required: false
-        example: 550e8400-e29b-41d4-a716-446655440000
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      adresse:
-        name: adresse
-        description: 'Adresse du client.'
-        required: false
-        example: '456 Avenue des Palmiers'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      city:
-        name: city
-        description: 'Ville du client.'
-        required: false
-        example: Porto-Novo
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      email:
-        name: email
-        description: 'Email unique du client.'
-        required: false
-        example: jane.doe@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      ifu:
-        name: ifu
-        description: 'Numéro IFU unique.'
-        required: false
-        example: '9876543210987'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      phonenumber:
-        name: phonenumber
-        description: 'Numéro de téléphone.'
-        required: false
-        example: '+229 87 65 43 21'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      credit_limit:
-        name: credit_limit
-        description: 'Limite de crédit.'
-        required: false
-        example: 750000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      current_balance:
-        name: current_balance
-        description: 'Solde actuel.'
-        required: false
-        example: 200000.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      base_reduction:
-        name: base_reduction
-        description: 'Réduction de base en pourcentage (0-100).'
-        required: false
-        example: 10.0
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Statut actif.'
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      code: CLI-UPDATED
-      name_client: 'Jane Doe'
-      name_representant: 'John Smith'
-      marketteur: 'Pierre Martin'
-      client_type_id: 550e8400-e29b-41d4-a716-446655440000
-      adresse: '456 Avenue des Palmiers'
-      city: Porto-Novo
-      email: jane.doe@example.com
-      ifu: '9876543210987'
-      phonenumber: '+229 87 65 43 21'
-      credit_limit: 750000.0
-      current_balance: 200000.0
-      base_reduction: 10.0
-      is_active: false
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Client mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "code": "CLI-UPDATED",
-              "name_client": "Jane Doe",
-              "name_representant": "John Smith",
-              "marketteur": "Pierre Martin",
-              "client_type_id": "550e8400-e29b-41d4-a716-446655440001",
-              "adresse": "456 Avenue des Palmiers",
-              "city": "Porto-Novo",
-              "email": "jane.doe@example.com",
-              "ifu": "9876543210987",
-              "phonenumber": "+229 87 65 43 21",
-              "credit_limit": "750000.00",
-              "current_balance": "200000.00",
-              "base_reduction": "10.00",
-              "is_active": false,
-              "created_at": "2024-01-15T10:30:00Z",
-              "updated_at": "2024-01-15T11:00:00Z"
-            },
-            "message": "Client mis à jour avec succès"
+              "name_client": "John Doe Updated"
+            }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "Client non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "message": "Données de validation échouées",
-            "errors": {
-              "email": ["Cette adresse email est déjà utilisée"],
-              "ifu": ["Ce numéro IFU est déjà utilisé"]
+            "success": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "Client non trouvé"
             }
           }
         headers: []
-        description: ''
+        description: 'Client non trouvé'
         custom: []
     responseFields: []
     auth: []
@@ -1570,10 +889,8 @@ endpoints:
         APIs pour gérer les clients
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un client'
-      description: |-
-        Supprime un client (soft delete).
-        Le client sera marqué comme supprimé mais restera dans la base de données.
+      title: 'Supprimer un client (soft delete)'
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -1583,7 +900,17 @@ endpoints:
     urlParameters:
       client_id:
         name: client_id
-        description: "L'UUID du client."
+        description: 'The ID of the client.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'UUID du client.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -1592,7 +919,8 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
+      client_id: architecto
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1603,173 +931,38 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
             "message": "Client supprimé avec succès"
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "Client non trouvé"
+            "success": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "Client non trouvé"
+            }
           }
         headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/clients/{client_id}/restore'
-    metadata:
-      groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Restaurer un client supprimé'
-      description: 'Restaure un client qui a été supprimé avec soft delete.'
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      client_id:
-        name: client_id
-        description: "L'UUID du client."
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "code": "CLI-ABC123",
-              "name_client": "John Doe",
-              "deleted_at": null
-            },
-            "message": "Client restauré avec succès"
-          }
-        headers: []
-        description: ''
+        description: 'Client non trouvé'
         custom: []
       -
-        status: 400
+        status: 409
         content: |-
           {
-            "message": "Ce client n'est pas supprimé"
+            "success": false,
+            "error": {
+              "code": "CANNOT_DELETE",
+              "message": "Impossible de supprimer ce client car il possède des transactions",
+              "details": "Veuillez d'abord supprimer ou archiver les transactions associées"
+            }
           }
         headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Client non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PATCH
-    uri: 'api/clients/{client_id}/toggle-status'
-    metadata:
-      groupName: 'Clients Management'
-      groupDescription: |-
-
-        APIs pour gérer les clients
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Activer/Désactiver un client'
-      description: "Change le statut actif d'un client."
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      client_id:
-        name: client_id
-        description: "L'UUID du client."
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      is_active:
-        name: is_active
-        description: 'Nouveau statut actif.'
-        required: true
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      is_active: false
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "client_id": "550e8400-e29b-41d4-a716-446655440000",
-              "is_active": false
-            },
-            "message": "Statut du client mis à jour avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Client non trouvé"
-          }
-        headers: []
-        description: ''
+        description: 'Client avec transactions'
         custom: []
     responseFields: []
     auth: []
@@ -1789,7 +982,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: "Mettre à jour le solde d'un client"
-      description: 'Ajoute ou soustrait un montant au solde actuel du client.'
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -1799,7 +992,17 @@ endpoints:
     urlParameters:
       client_id:
         name: client_id
-        description: "L'UUID du client."
+        description: 'The ID of the client.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      id:
+        name: id
+        description: 'UUID du client.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -1808,13 +1011,14 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      client_id: 550e8400-e29b-41d4-a716-446655440000
+      client_id: architecto
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       amount:
         name: amount
-        description: 'Montant à ajouter (positif) ou soustraire (négatif).'
+        description: 'Montant à ajouter au solde (peut être négatif).'
         required: true
         example: 50000.0
         type: number
@@ -1826,57 +1030,65 @@ endpoints:
         name: description
         description: "optionnel Description de l'opération."
         required: false
-        example: 'Paiement facture'
+        example: 'Paiement facture INV-001'
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
       amount: 50000.0
-      description: 'Paiement facture'
+      description: 'Paiement facture INV-001'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Solde mis à jour avec succès",
             "data": {
               "client_id": "550e8400-e29b-41d4-a716-446655440000",
               "previous_balance": "150000.00",
               "new_balance": "200000.00",
               "amount_added": "50000.00",
-              "available_credit": "300000.00",
-              "description": "Paiement facture"
-            },
-            "message": "Solde mis à jour avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "message": "Le montant dépasserait la limite de crédit autorisée",
-            "data": {
-              "current_balance": "150000.00",
-              "credit_limit": "500000.00",
-              "available_credit": "350000.00",
-              "requested_amount": "400000.00"
+              "available_credit": "300000.00"
             }
           }
         headers: []
-        description: ''
+        description: Succès
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "Client non trouvé"
+            "success": false,
+            "error": {
+              "code": "NOT_FOUND",
+              "message": "Client non trouvé"
+            }
           }
         headers: []
-        description: ''
+        description: 'Client non trouvé'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "error": {
+              "code": "CREDIT_LIMIT_EXCEEDED",
+              "message": "Cette opération dépasserait la limite de crédit autorisée",
+              "details": {
+                "current_balance": "150000.00",
+                "credit_limit": "500000.00",
+                "attempted_amount": "400000.00",
+                "available_credit": "350000.00"
+              }
+            }
+          }
+        headers: []
+        description: 'Dépassement de limite de crédit'
         custom: []
     responseFields: []
     auth: []
