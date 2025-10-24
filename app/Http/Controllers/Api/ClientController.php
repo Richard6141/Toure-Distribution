@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Log;
 use App\Models\Client;
 use App\Models\ClientType;
 use Illuminate\Http\Request;
@@ -239,6 +240,8 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request): JsonResponse
     {
+        Log::info('Store method called', ['user' => auth()->user(), 'request' => $request->all()]);
+
         try {
             // Les données sont déjà validées par StoreClientRequest
             $validated = $request->validated();
