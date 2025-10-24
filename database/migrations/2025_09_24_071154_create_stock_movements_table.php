@@ -14,10 +14,6 @@ return new class extends Migration
 
             // Type de mouvement
             $table->uuid('movement_type')->nullable();
-            $table->foreign('movement_type_id')
-                ->references('stock_movement_type_id')
-                ->on('stock_movement_types')
-                ->onDelete('set null');
 
             // Entrepôts
             $table->uuid('entrepot_from_id')->nullable();
@@ -51,7 +47,6 @@ return new class extends Migration
             $table->softDeletes();
 
             // Index avec noms courts pour éviter la limite de 64 caractères
-            $table->index(['movement_type_id'], 'idx_movement_type');
             $table->index(['entrepot_from_id'], 'idx_entrepot_from');
             $table->index(['entrepot_to_id'], 'idx_entrepot_to');
             $table->index(['client_id'], 'idx_client');
