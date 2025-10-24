@@ -116,7 +116,8 @@ class ClientTypeController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
-                $validated = $request->validate([
+        dd("Ok");
+        $validated = $request->validate([
             'label' => 'required|string|max:255|unique:client_types,label',
             'icon' => 'nullable|string',
             'description' => 'nullable|string|max:1000'
