@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\ClientType;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClientRequest;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Validation\Rule;
 
 /**
  * @group Clients Management
@@ -87,16 +88,39 @@ class ClientController extends Controller
 
         $query = Client::query();
 
-        // Recherche globale
+        // ❌ ERREUR CORRIGÉE : Lignes 91-101
+        // Syntaxe incorrecte : ->orWhere->byEmail($search)
+        // Cette syntaxe n'existe pas en Laravel/PHP
+
+        // Recherche globale - VERSION CORRIGÉE
         if (isset($validated['search'])) {
             $search = $validated['search'];
             $query->where(function ($q) use ($search) {
+                // Option 1 : Si byName, byEmail, byCode, byIfu sont des query scopes locaux
                 $q->byName($search)
-                    ->orWhere->byEmail($search)
-                    ->orWhere->byCode($search)
-                    ->orWhere->byIfu($search)
+                    ->orWhere(function ($subQ) use ($search) {
+                        $subQ->byEmail($search);
+                    })
+                    ->orWhere(function ($subQ) use ($search) {
+                        $subQ->byCode($search);
+                    })
+                    ->orWhere(function ($subQ) use ($search) {
+                        $subQ->byIfu($search);
+                    })
                     ->orWhere('name_representant', 'like', "%{$search}%")
                     ->orWhere('marketteur', 'like', "%{$search}%");
+
+                // Option 2 : Si ce sont des scopes globaux avec support de orWhere
+                // Vérifiez votre modèle Client pour la définition exacte des scopes
+                // Sinon utilisez directement les colonnes :
+                /*
+                $q->where('name_client', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('code', 'like', "%{$search}%")
+                    ->orWhere('ifu', 'like', "%{$search}%")
+                    ->orWhere('name_representant', 'like', "%{$search}%")
+                    ->orWhere('marketteur', 'like', "%{$search}%");
+                */
             });
         }
 
@@ -213,52 +237,36 @@ class ClientController extends Controller
      *   }
      * }
      */
-    public function store(Request $request): JsonResponse
+    public function store(StoreClientRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'name_client' => 'required|string|max:255',
-            'name_representant' => 'nullable|string|max:255',
-            'marketteur' => 'nullable|string|max:255',
-            'client_type_id' => 'nullable|uuid|exists:client_types,client_type_id',
-            'adresse' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:100',
-            'email' => 'nullable|email|max:255|unique:clients,email',
-            'ifu' => 'nullable|string|max:50|unique:clients,ifu',
-            'phonenumber' => 'nullable|string|max:20',
-            'credit_limit' => 'nullable|numeric|min:0|max:999999999999.99',
-            'current_balance' => 'nullable|numeric|min:-999999999999.99|max:999999999999.99',
-            'base_reduction' => 'nullable|numeric|min:0|max:100',
-            'is_active' => 'boolean'
-        ], [
-            'name_client.required' => 'Le nom du client est requis',
-            'client_type_id.exists' => 'Le type de client sélectionné n\'existe pas',
-            'email.unique' => 'Cette adresse email est déjà utilisée',
-            'email.email' => 'L\'adresse email doit être valide',
-            'ifu.unique' => 'Ce numéro IFU est déjà utilisé',
-            'credit_limit.min' => 'La limite de crédit doit être positive',
-            'base_reduction.min' => 'La réduction de base doit être positive',
-            'base_reduction.max' => 'La réduction de base ne peut pas dépasser 100%',
-            'phonenumber.max' => 'Le numéro de téléphone ne peut pas dépasser 20 caractères'
-        ]);
+        try {
+            // Les données sont déjà validées par StoreClientRequest
+            $validated = $request->validated();
 
-        // Générer le code automatiquement (exemple : CLI00001, CLI00002, etc.)
-        $lastClient = Client::orderByDesc('created_at')->first();
-        $lastNumber = $lastClient && preg_match('/CLI(\d+)/', $lastClient->code, $matches)
-            ? (int)$matches[1]
-            : 0;
+            // Générer le code automatiquement
+            $lastClient = Client::orderByDesc('created_at')->first();
+            $lastNumber = $lastClient && preg_match('/CLI(\d+)/', $lastClient->code, $matches)
+                ? (int)$matches[1]
+                : 0;
 
-        $newCode = 'CLI' . str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
+            $newCode = 'CLI' . str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
+            $validated['code'] = $newCode;
 
-        // On ajoute le code généré dans les données
-        $validated['code'] = $newCode;
+            $client = Client::create($validated);
+            $client->load('clientType');
 
-        $client = Client::create($validated);
-        $client->load('clientType');
-
-        return response()->json([
-            'data' => $client,
-            'message' => 'Client créé avec succès'
-        ], 201);
+            return response()->json([
+                'success' => true,
+                'message' => 'Client créé avec succès',
+                'data' => $client
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la création du client',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**

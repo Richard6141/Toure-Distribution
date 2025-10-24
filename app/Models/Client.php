@@ -220,23 +220,4 @@ class Client extends Model
                 return $vente->montant_restant;
             });
     }
-
-    /**
-     * Relation avec les numéros de téléphone
-     */
-    public function phones(): HasMany
-    {
-        return $this->hasMany(ClientPhone::class, 'client_id', 'client_id');
-    }
-
-    /**
-     * Accessor pour la compatibilité avec l'ancien champ phonenumber
-     * Retourne le premier numéro de téléphone de la collection
-     * 
-     * @return string|null
-     */
-    public function getPhonenumberAttribute(): ?string
-    {
-        return $this->phones()->first()?->phone_number;
-    }
 }
