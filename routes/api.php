@@ -382,6 +382,7 @@ Route::prefix('camions')->group(function () {
  * Prefix: /commandes
  */
 Route::prefix('commandes')->group(function () {
+    // Routes CRUD de base
     Route::get('/', [CommandeController::class, 'index']);               // Liste des commandes
     Route::post('/', [CommandeController::class, 'store']);              // Création d'une commande
     Route::get('/{id}', [CommandeController::class, 'show']);            // Afficher une commande par ID
@@ -392,12 +393,32 @@ Route::prefix('commandes')->group(function () {
     // Routes pour gestion soft delete
     Route::get('/trashed/list', [CommandeController::class, 'trashed']); // Liste des commandes supprimées
     Route::post('/{id}/restore', [CommandeController::class, 'restore']); // Restaurer une commande supprimée
-    // Nouvelles routes pour la répartition
+
+    // Routes pour la répartition dans les entrepôts
     Route::post('/{id}/distribute-to-warehouses', [CommandeController::class, 'distributeToWarehouses'])
         ->name('commandes.distribute');
-
     Route::get('/{id}/distribution-history', [CommandeController::class, 'distributionHistory'])
         ->name('commandes.distribution-history');
+
+    // Routes pour l'affectation de chauffeur et camion
+    Route::post('/{id}/assign-chauffeur', [CommandeController::class, 'assignChauffeur'])
+        ->name('commandes.assign-chauffeur');
+    Route::post('/{id}/assign-camion', [CommandeController::class, 'assignCamion'])
+        ->name('commandes.assign-camion');
+    Route::post('/{id}/assign-livraison', [CommandeController::class, 'assignLivraison'])
+        ->name('commandes.assign-livraison'); // Affecte chauffeur ET camion en une seule fois
+
+    // Routes pour la désaffectation
+    Route::delete('/{id}/unassign-chauffeur', [CommandeController::class, 'unassignChauffeur'])
+        ->name('commandes.unassign-chauffeur');
+    Route::delete('/{id}/unassign-camion', [CommandeController::class, 'unassignCamion'])
+        ->name('commandes.unassign-camion');
+    Route::delete('/{id}/unassign-livraison', [CommandeController::class, 'unassignLivraison'])
+        ->name('commandes.unassign-livraison'); // Retire chauffeur ET camion
+
+    // Route pour obtenir les informations de livraison d'une commande
+    Route::get('/{id}/livraison-info', [CommandeController::class, 'livraisonInfo'])
+        ->name('commandes.livraison-info');
 })->middleware('auth:sanctum');
 
 /**

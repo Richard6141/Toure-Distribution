@@ -20,6 +20,8 @@ class Commande extends Model
     protected $fillable = [
         'numero_commande',
         'fournisseur_id',
+        'chauffeur_id',
+        'camion_id',
         'date_achat',
         'date_livraison_prevue',
         'date_livraison_effective',
@@ -75,12 +77,30 @@ class Commande extends Model
         return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
     }
 
+    // ========== RELATIONS ==========
+
     /**
      * Relation avec le fournisseur
      */
     public function fournisseur(): BelongsTo
     {
         return $this->belongsTo(Fournisseur::class, 'fournisseur_id', 'fournisseur_id');
+    }
+
+    /**
+     * Relation avec le chauffeur (livraison avec chauffeur propre)
+     */
+    public function chauffeur(): BelongsTo
+    {
+        return $this->belongsTo(Chauffeur::class, 'chauffeur_id', 'chauffeur_id');
+    }
+
+    /**
+     * Relation avec le camion (livraison avec camion propre)
+     */
+    public function camion(): BelongsTo
+    {
+        return $this->belongsTo(Camion::class, 'camion_id', 'camion_id');
     }
 
     /**
@@ -105,6 +125,104 @@ class Commande extends Model
     public function paiements(): HasMany
     {
         return $this->hasMany(PaiementCommande::class, 'commande_id', 'commande_id');
+    }
+
+    // ========== MÉTHODES POUR LA GESTION DE LA LIVRAISON ==========
+
+    /**
+     * Vérifie si la commande est livrée par le client (avec chauffeur et camion propres)
+     */
+    public function isLivraisonPropre(): bool
+    {
+        return !is_null($this->chauffeur_id) || !is_null($this->camion_id);
+    }
+
+    /**
+     * Vérifie si la commande est livrée par le fournisseur
+     */
+    public function isLivraisonFournisseur(): bool
+    {
+        return is_null($this->chauffeur_id) && is_null($this->camion_id);
+    }
+
+    /**
+     * Vérifie si un chauffeur est affecté à la commande
+     */
+    public function hasChauffeur(): bool
+    {
+        return !is_null($this->chauffeur_id);
+    }
+
+    /**
+     * Vérifie si un camion est affecté à la commande
+     */
+    public function hasCamion(): bool
+    {
+        return !is_null($this->camion_id);
+    }
+
+    /**
+     * Vérifie si la livraison est complète (chauffeur ET camion affectés)
+     */
+    public function hasCompleteLivraisonPropre(): bool
+    {
+        return $this->hasChauffeur() && $this->hasCamion();
+    }
+
+    /**
+     * Affecte un chauffeur à la commande
+     */
+    public function assignChauffeur(string $chauffeurId): bool
+    {
+        $this->chauffeur_id = $chauffeurId;
+        return $this->save();
+    }
+
+    /**
+     * Affecte un camion à la commande
+     */
+    public function assignCamion(string $camionId): bool
+    {
+        $this->camion_id = $camionId;
+        return $this->save();
+    }
+
+    /**
+     * Retire le chauffeur de la commande
+     */
+    public function unassignChauffeur(): bool
+    {
+        $this->chauffeur_id = null;
+        return $this->save();
+    }
+
+    /**
+     * Retire le camion de la commande
+     */
+    public function unassignCamion(): bool
+    {
+        $this->camion_id = null;
+        return $this->save();
+    }
+
+    /**
+     * Affecte un chauffeur et un camion à la commande
+     */
+    public function assignLivraison(string $chauffeurId, string $camionId): bool
+    {
+        $this->chauffeur_id = $chauffeurId;
+        $this->camion_id = $camionId;
+        return $this->save();
+    }
+
+    /**
+     * Retire le chauffeur et le camion de la commande
+     */
+    public function unassignLivraison(): bool
+    {
+        $this->chauffeur_id = null;
+        $this->camion_id = null;
+        return $this->save();
     }
 
     // ========== MÉTHODES POUR LA RÉPARTITION ==========
@@ -238,6 +356,42 @@ class Commande extends Model
     public function scopeParFournisseur($query, $fournisseurId)
     {
         return $query->where('fournisseur_id', $fournisseurId);
+    }
+
+    /**
+     * Scope pour les commandes livrées par le client (avec chauffeur/camion)
+     */
+    public function scopeLivraisonPropre($query)
+    {
+        return $query->where(function ($q) {
+            $q->whereNotNull('chauffeur_id')
+                ->orWhereNotNull('camion_id');
+        });
+    }
+
+    /**
+     * Scope pour les commandes livrées par le fournisseur
+     */
+    public function scopeLivraisonFournisseur($query)
+    {
+        return $query->whereNull('chauffeur_id')
+            ->whereNull('camion_id');
+    }
+
+    /**
+     * Scope pour les commandes avec chauffeur spécifique
+     */
+    public function scopeParChauffeur($query, $chauffeurId)
+    {
+        return $query->where('chauffeur_id', $chauffeurId);
+    }
+
+    /**
+     * Scope pour les commandes avec camion spécifique
+     */
+    public function scopeParCamion($query, $camionId)
+    {
+        return $query->where('camion_id', $camionId);
     }
 
     public function scopeParPeriodeAchat($query, $dateDebut, $dateFin)

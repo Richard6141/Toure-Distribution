@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Camion;
 use App\Models\Product;
 use App\Models\Commande;
 use App\Models\Entrepot;
+use App\Models\Chauffeur;
 use App\Models\Fournisseur;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -179,28 +181,38 @@ class CommandeController extends Controller
      * 
      * Enregistre une nouvelle commande d'achat dans le système.
      * Le numéro de commande est généré automatiquement au format CMD-YYYY-0001.
+     * Vous pouvez affecter un chauffeur et/ou un camion dès la création pour une livraison propre, 
+     * ou laisser ces champs vides si la livraison est assurée par le fournisseur.
      * 
      * @authenticated
      * 
      * @bodyParam fournisseur_id string required L'UUID du fournisseur. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+     * @bodyParam chauffeur_id string L'UUID du chauffeur pour la livraison (optionnel - si livraison propre). Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
+     * @bodyParam camion_id string L'UUID du camion pour la livraison (optionnel - si livraison propre). Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
      * @bodyParam date_achat date required La date d'achat (format: Y-m-d). Example: 2025-01-15
      * @bodyParam date_livraison_prevue date required La date de livraison prévue (format: Y-m-d). Example: 2025-02-15
      * @bodyParam date_livraison_effective date La date de livraison effective (format: Y-m-d). Example: 2025-02-10
-     * @bodyParam montant numeric required Le montant total de la commande. Example: 25000.00
+     * @bodyParam montant numeric required Le montant total de la commande. Example: 75000.00
      * @bodyParam status string Le statut de la commande (en_attente, validee, en_cours, livree, partiellement_livree, annulee). Par défaut: en_attente. Example: en_attente
-     * @bodyParam note string Des notes ou observations sur la commande. Example: Commande urgente
+     * @bodyParam note string Des notes ou observations sur la commande. Example: Commande urgente - Livraison propre
+     * @bodyParam details array required Liste des produits commandés (minimum 1 produit).
+     * @bodyParam details[].product_id string required L'UUID du produit. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d
+     * @bodyParam details[].quantite integer required La quantité commandée (minimum 1). Example: 10
+     * @bodyParam details[].prix_unitaire numeric required Le prix unitaire du produit. Example: 2500.00
      * 
-     * @response 201 {
+     * @response 201 scenario="Création réussie - Livraison fournisseur" {
      *   "success": true,
      *   "message": "Commande créée avec succès",
      *   "data": {
      *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-     *     "numero_commande": "CMD-2025-0001",
+     *     "numero_commande": "CMD-2025-0156",
      *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": null,
+     *     "camion_id": null,
      *     "date_achat": "2025-01-15",
      *     "date_livraison_prevue": "2025-02-15",
      *     "date_livraison_effective": null,
-     *     "montant": "25000.00",
+     *     "montant": "75000.00",
      *     "status": "en_attente",
      *     "note": "Commande urgente",
      *     "created_at": "2025-01-15T10:30:00.000000Z",
@@ -210,17 +222,112 @@ class CommandeController extends Controller
      *       "code": "FOUR001",
      *       "name": "Fournisseur ABC",
      *       "email": "contact@fournisseur-abc.com"
-     *     }
+     *     },
+     *     "chauffeur": null,
+     *     "camion": null,
+     *     "details": [
+     *       {
+     *         "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a",
+     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *         "quantite": 10,
+     *         "prix_unitaire": "2500.00",
+     *         "sous_total": "25000.00",
+     *         "product": {
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *           "code": "PROD001",
+     *           "name": "Laptop Dell XPS 15",
+     *           "unit_price": "2500.00"
+     *         }
+     *       },
+     *       {
+     *         "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3b",
+     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+     *         "quantite": 5,
+     *         "prix_unitaire": "5000.00",
+     *         "sous_total": "25000.00",
+     *         "product": {
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+     *           "code": "PROD002",
+     *           "name": "Imprimante HP LaserJet",
+     *           "unit_price": "5000.00"
+     *         }
+     *       }
+     *     ]
      *   }
      * }
      * 
-     * @response 422 {
-     *   "success": false,
-     *   "message": "Erreur de validation",
-     *   "errors": {
-     *     "fournisseur_id": [
-     *       "Le fournisseur sélectionné n'existe pas"
+     * @response 201 scenario="Création réussie - Livraison propre (avec chauffeur et camion)" {
+     *   "success": true,
+     *   "message": "Commande créée avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *     "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "date_livraison_effective": null,
+     *     "montant": "75000.00",
+     *     "status": "en_attente",
+     *     "note": "Livraison avec notre propre chauffeur et camion",
+     *     "created_at": "2025-01-15T10:30:00.000000Z",
+     *     "updated_at": "2025-01-15T10:30:00.000000Z",
+     *     "fournisseur": {
+     *       "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *       "code": "FOUR001",
+     *       "name": "Fournisseur ABC",
+     *       "email": "contact@fournisseur-abc.com"
+     *     },
+     *     "chauffeur": {
+     *       "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *       "name": "Jean Dupont",
+     *       "phone": "+229 97 00 00 00",
+     *       "numero_permis": "P-123456",
+     *       "status": "actif"
+     *     },
+     *     "camion": {
+     *       "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *       "numero_immat": "AB-1234-BJ",
+     *       "marque": "Mercedes-Benz",
+     *       "modele": "Actros",
+     *       "capacite": "15.00",
+     *       "status": "disponible"
+     *     },
+     *     "details": [
+     *       {
+     *         "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a",
+     *         "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *         "quantite": 10,
+     *         "prix_unitaire": "2500.00",
+     *         "sous_total": "25000.00",
+     *         "product": {
+     *           "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+     *           "code": "PROD001",
+     *           "name": "Laptop Dell XPS 15"
+     *         }
+     *       }
      *     ]
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Chauffeur non actif" {
+     *   "success": false,
+     *   "message": "Le chauffeur sélectionné n'est pas actif"
+     * }
+     * 
+     * @response 400 scenario="Camion non disponible" {
+     *   "success": false,
+     *   "message": "Le camion sélectionné n'est pas disponible"
+     * }
+     * 
+     * @response 422 scenario="Erreur de validation" {
+     *   "success": false,
+     *   "message": "Validation échouée",
+     *   "errors": {
+     *     "fournisseur_id": ["Le fournisseur sélectionné n'existe pas"],
+     *     "chauffeur_id": ["Le chauffeur sélectionné n'existe pas"],
+     *     "details": ["Le champ details est requis et doit contenir au moins 1 produit"]
      *   }
      * }
      */
@@ -228,41 +335,74 @@ class CommandeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'fournisseur_id' => 'required|uuid|exists:fournisseurs,fournisseur_id',
+            'chauffeur_id' => 'nullable|uuid|exists:chauffeurs,chauffeur_id',
+            'camion_id' => 'nullable|uuid|exists:camions,camion_id',
             'date_achat' => 'required|date',
             'date_livraison_prevue' => 'required|date|after_or_equal:date_achat',
-            'date_livraison_effective' => 'nullable|date',
-            'montant' => 'required|numeric|min:0|max:9999999999999.99',
-            'status' => ['sometimes', Rule::in([
-                'en_attente',
-                'validee',
-                'en_cours',
-                'livree',
-                'partiellement_livree',
-                'annulee'
-            ])],
+            'montant' => 'required|numeric|min:0',
+            'status' => 'sometimes|in:en_attente,validee,en_cours,livree,partiellement_livree,annulee',
             'note' => 'nullable|string',
-        ], [
-            'fournisseur_id.required' => 'Le fournisseur est requis',
-            'fournisseur_id.exists' => 'Le fournisseur sélectionné n\'existe pas',
-            'date_achat.required' => 'La date d\'achat est requise',
-            'date_livraison_prevue.required' => 'La date de livraison prévue est requise',
-            'date_livraison_prevue.after_or_equal' => 'La date de livraison doit être postérieure ou égale à la date d\'achat',
-            'montant.required' => 'Le montant est requis',
-            'montant.numeric' => 'Le montant doit être un nombre',
-            'montant.min' => 'Le montant doit être supérieur ou égal à 0',
+            // Détails des produits
+            'details' => 'required|array|min:1',
+            'details.*.product_id' => 'required|uuid|exists:products,product_id',
+            'details.*.quantite' => 'required|integer|min:1',
+            'details.*.prix_unitaire' => 'required|numeric|min:0',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'message' => 'Erreur de validation',
+                'message' => 'Validation échouée',
                 'errors' => $validator->errors()
             ], 422);
         }
 
-        // Le numero_commande sera généré automatiquement par le modèle
-        $commande = Commande::create($validator->validated());
-        $commande->load('fournisseur:fournisseur_id,code,name,email,phone');
+        // Si un chauffeur est fourni, vérifier qu'il est actif
+        if ($request->has('chauffeur_id')) {
+            $chauffeur = Chauffeur::find($request->chauffeur_id);
+            if ($chauffeur->status !== 'actif') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Le chauffeur sélectionné n\'est pas actif'
+                ], 400);
+            }
+        }
+
+        // Si un camion est fourni, vérifier qu'il est disponible
+        if ($request->has('camion_id')) {
+            $camion = Camion::find($request->camion_id);
+            if ($camion->status !== 'disponible') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Le camion sélectionné n\'est pas disponible'
+                ], 400);
+            }
+        }
+
+        // Créer la commande
+        $commande = Commande::create($request->only([
+            'fournisseur_id',
+            'chauffeur_id',
+            'camion_id',
+            'date_achat',
+            'date_livraison_prevue',
+            'montant',
+            'status',
+            'note'
+        ]));
+
+        // Créer les détails de la commande
+        foreach ($request->details as $detail) {
+            $commande->details()->create([
+                'product_id' => $detail['product_id'],
+                'quantite' => $detail['quantite'],
+                'prix_unitaire' => $detail['prix_unitaire'],
+                'sous_total' => $detail['quantite'] * $detail['prix_unitaire']
+            ]);
+        }
+
+        // Charger les relations pour la réponse
+        $commande->load(['fournisseur', 'chauffeur', 'camion', 'details.product']);
 
         return response()->json([
             'success' => true,
@@ -270,7 +410,6 @@ class CommandeController extends Controller
             'data' => $commande
         ], 201);
     }
-
     /**
      * Afficher une commande
      * 
@@ -1141,5 +1280,594 @@ class CommandeController extends Controller
         }
 
         return $prefix . $newNumber;
+    }
+
+    /**
+     * Affecter un chauffeur à une commande
+     * 
+     * Affecte un chauffeur à une commande existante pour assurer la livraison.
+     * Le chauffeur doit avoir le statut "actif" pour pouvoir être affecté.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * @bodyParam chauffeur_id string required L'UUID du chauffeur à affecter. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
+     * 
+     * @response 200 scenario="Chauffeur affecté avec succès" {
+     *   "success": true,
+     *   "message": "Chauffeur affecté avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *     "camion_id": null,
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "montant": "75000.00",
+     *     "status": "en_attente",
+     *     "chauffeur": {
+     *       "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *       "name": "Jean Dupont",
+     *       "phone": "+229 97 00 00 00",
+     *       "numero_permis": "P-123456",
+     *       "status": "actif"
+     *     }
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Chauffeur non actif" {
+     *   "success": false,
+     *   "message": "Le chauffeur n'est pas actif"
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     * 
+     * @response 422 scenario="Erreur de validation" {
+     *   "success": false,
+     *   "message": "Validation échouée",
+     *   "errors": {
+     *     "chauffeur_id": ["Le chauffeur sélectionné n'existe pas"]
+     *   }
+     * }
+     */
+    public function assignChauffeur(Request $request, string $id): JsonResponse
+    {
+        $commande = Commande::find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'chauffeur_id' => 'required|uuid|exists:chauffeurs,chauffeur_id'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation échouée',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Vérifier que le chauffeur est actif
+        $chauffeur = Chauffeur::find($request->chauffeur_id);
+        if ($chauffeur->status !== 'actif') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Le chauffeur n\'est pas actif'
+            ], 400);
+        }
+
+        $commande->assignChauffeur($request->chauffeur_id);
+        $commande->load('chauffeur');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Chauffeur affecté avec succès',
+            'data' => $commande
+        ], 200);
+    }
+
+    /**
+     * Affecter un camion à une commande
+     * 
+     * Affecte un camion à une commande existante pour assurer le transport.
+     * Le camion doit avoir le statut "disponible" pour pouvoir être affecté.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * @bodyParam camion_id string required L'UUID du camion à affecter. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
+     * 
+     * @response 200 scenario="Camion affecté avec succès" {
+     *   "success": true,
+     *   "message": "Camion affecté avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": null,
+     *     "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "montant": "75000.00",
+     *     "status": "en_attente",
+     *     "camion": {
+     *       "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *       "numero_immat": "AB-1234-BJ",
+     *       "marque": "Mercedes-Benz",
+     *       "modele": "Actros",
+     *       "capacite": "15.00",
+     *       "status": "disponible"
+     *     }
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Camion non disponible" {
+     *   "success": false,
+     *   "message": "Le camion n'est pas disponible"
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     * 
+     * @response 422 scenario="Erreur de validation" {
+     *   "success": false,
+     *   "message": "Validation échouée",
+     *   "errors": {
+     *     "camion_id": ["Le camion sélectionné n'existe pas"]
+     *   }
+     * }
+     */
+    public function assignCamion(Request $request, string $id): JsonResponse
+    {
+        $commande = Commande::find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'camion_id' => 'required|uuid|exists:camions,camion_id'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation échouée',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Vérifier que le camion est disponible
+        $camion = Camion::find($request->camion_id);
+        if ($camion->status !== 'disponible') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Le camion n\'est pas disponible'
+            ], 400);
+        }
+
+        $commande->assignCamion($request->camion_id);
+        $commande->load('camion');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Camion affecté avec succès',
+            'data' => $commande
+        ], 200);
+    }
+
+    /**
+     * Affecter un chauffeur et un camion à une commande
+     * 
+     * Affecte simultanément un chauffeur et un camion à une commande existante pour organiser une livraison complète.
+     * Le chauffeur doit être "actif" et le camion doit être "disponible".
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * @bodyParam chauffeur_id string required L'UUID du chauffeur à affecter. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
+     * @bodyParam camion_id string required L'UUID du camion à affecter. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
+     * 
+     * @response 200 scenario="Livraison affectée avec succès" {
+     *   "success": true,
+     *   "message": "Chauffeur et camion affectés avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *     "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "montant": "75000.00",
+     *     "status": "en_attente",
+     *     "chauffeur": {
+     *       "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *       "name": "Jean Dupont",
+     *       "phone": "+229 97 00 00 00",
+     *       "numero_permis": "P-123456",
+     *       "status": "actif"
+     *     },
+     *     "camion": {
+     *       "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *       "numero_immat": "AB-1234-BJ",
+     *       "marque": "Mercedes-Benz",
+     *       "modele": "Actros",
+     *       "capacite": "15.00",
+     *       "status": "disponible"
+     *     }
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Chauffeur non actif" {
+     *   "success": false,
+     *   "message": "Le chauffeur n'est pas actif"
+     * }
+     * 
+     * @response 400 scenario="Camion non disponible" {
+     *   "success": false,
+     *   "message": "Le camion n'est pas disponible"
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     * 
+     * @response 422 scenario="Erreur de validation" {
+     *   "success": false,
+     *   "message": "Validation échouée",
+     *   "errors": {
+     *     "chauffeur_id": ["Le chauffeur sélectionné n'existe pas"],
+     *     "camion_id": ["Le camion sélectionné n'existe pas"]
+     *   }
+     * }
+     */
+    public function assignLivraison(Request $request, string $id): JsonResponse
+    {
+        $commande = Commande::find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'chauffeur_id' => 'required|uuid|exists:chauffeurs,chauffeur_id',
+            'camion_id' => 'required|uuid|exists:camions,camion_id'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation échouée',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Vérifier que le chauffeur est actif
+        $chauffeur = Chauffeur::find($request->chauffeur_id);
+        if ($chauffeur->status !== 'actif') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Le chauffeur n\'est pas actif'
+            ], 400);
+        }
+
+        // Vérifier que le camion est disponible
+        $camion = Camion::find($request->camion_id);
+        if ($camion->status !== 'disponible') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Le camion n\'est pas disponible'
+            ], 400);
+        }
+
+        $commande->assignLivraison($request->chauffeur_id, $request->camion_id);
+        $commande->load(['chauffeur', 'camion']);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Chauffeur et camion affectés avec succès',
+            'data' => $commande
+        ], 200);
+    }
+
+    /**
+     * Retirer le chauffeur d'une commande
+     * 
+     * Retire le chauffeur affecté à une commande. La commande repassera en livraison fournisseur si aucun camion n'est affecté.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @response 200 scenario="Chauffeur retiré avec succès" {
+     *   "success": true,
+     *   "message": "Chauffeur retiré avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": null,
+     *     "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "montant": "75000.00",
+     *     "status": "en_attente"
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Aucun chauffeur affecté" {
+     *   "success": false,
+     *   "message": "Aucun chauffeur n'est affecté à cette commande"
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     */
+    public function unassignChauffeur(string $id): JsonResponse
+    {
+        $commande = Commande::find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        if (!$commande->hasChauffeur()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Aucun chauffeur n\'est affecté à cette commande'
+            ], 400);
+        }
+
+        $commande->unassignChauffeur();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Chauffeur retiré avec succès',
+            'data' => $commande
+        ], 200);
+    }
+
+    /**
+     * Retirer le camion d'une commande
+     * 
+     * Retire le camion affecté à une commande. La commande repassera en livraison fournisseur si aucun chauffeur n'est affecté.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @response 200 scenario="Camion retiré avec succès" {
+     *   "success": true,
+     *   "message": "Camion retiré avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *     "camion_id": null,
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "montant": "75000.00",
+     *     "status": "en_attente"
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Aucun camion affecté" {
+     *   "success": false,
+     *   "message": "Aucun camion n'est affecté à cette commande"
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     */
+    public function unassignCamion(string $id): JsonResponse
+    {
+        $commande = Commande::find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        if (!$commande->hasCamion()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Aucun camion n\'est affecté à cette commande'
+            ], 400);
+        }
+
+        $commande->unassignCamion();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Camion retiré avec succès',
+            'data' => $commande
+        ], 200);
+    }
+
+    /**
+     * Retirer le chauffeur et le camion d'une commande
+     * 
+     * Retire simultanément le chauffeur et le camion affectés à une commande.
+     * La commande repassera en livraison fournisseur.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @response 200 scenario="Livraison retirée avec succès" {
+     *   "success": true,
+     *   "message": "Chauffeur et camion retirés avec succès",
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "chauffeur_id": null,
+     *     "camion_id": null,
+     *     "date_achat": "2025-01-15",
+     *     "date_livraison_prevue": "2025-02-15",
+     *     "montant": "75000.00",
+     *     "status": "en_attente"
+     *   }
+     * }
+     * 
+     * @response 400 scenario="Aucune livraison propre affectée" {
+     *   "success": false,
+     *   "message": "Aucun chauffeur ni camion n'est affecté à cette commande"
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     */
+    public function unassignLivraison(string $id): JsonResponse
+    {
+        $commande = Commande::find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        if (!$commande->isLivraisonPropre()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Aucun chauffeur ni camion n\'est affecté à cette commande'
+            ], 400);
+        }
+
+        $commande->unassignLivraison();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Chauffeur et camion retirés avec succès',
+            'data' => $commande
+        ], 200);
+    }
+
+    /**
+     * Obtenir les informations de livraison d'une commande
+     * 
+     * Récupère les informations détaillées concernant la livraison d'une commande :
+     * type de livraison (propre ou fournisseur), chauffeur et camion affectés.
+     * 
+     * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la commande. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @response 200 scenario="Livraison propre complète" {
+     *   "success": true,
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "type_livraison": "propre",
+     *     "livraison_complete": true,
+     *     "chauffeur": {
+     *       "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *       "name": "Jean Dupont",
+     *       "phone": "+229 97 00 00 00",
+     *       "numero_permis": "P-123456",
+     *       "date_expiration_permis": "2026-12-31",
+     *       "status": "actif"
+     *     },
+     *     "camion": {
+     *       "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
+     *       "numero_immat": "AB-1234-BJ",
+     *       "marque": "Mercedes-Benz",
+     *       "modele": "Actros",
+     *       "capacite": "15.00",
+     *       "status": "disponible"
+     *     }
+     *   }
+     * }
+     * 
+     * @response 200 scenario="Livraison fournisseur" {
+     *   "success": true,
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "type_livraison": "fournisseur",
+     *     "livraison_complete": false,
+     *     "chauffeur": null,
+     *     "camion": null
+     *   }
+     * }
+     * 
+     * @response 200 scenario="Livraison propre partielle (chauffeur seul)" {
+     *   "success": true,
+     *   "data": {
+     *     "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "numero_commande": "CMD-2025-0156",
+     *     "type_livraison": "propre",
+     *     "livraison_complete": false,
+     *     "chauffeur": {
+     *       "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+     *       "name": "Jean Dupont",
+     *       "phone": "+229 97 00 00 00",
+     *       "status": "actif"
+     *     },
+     *     "camion": null
+     *   }
+     * }
+     * 
+     * @response 404 scenario="Commande non trouvée" {
+     *   "success": false,
+     *   "message": "Commande non trouvée"
+     * }
+     */
+    public function livraisonInfo(string $id): JsonResponse
+    {
+        $commande = Commande::with(['chauffeur', 'camion'])->find($id);
+
+        if (!$commande) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Commande non trouvée'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'commande_id' => $commande->commande_id,
+                'numero_commande' => $commande->numero_commande,
+                'type_livraison' => $commande->isLivraisonPropre() ? 'propre' : 'fournisseur',
+                'livraison_complete' => $commande->hasCompleteLivraisonPropre(),
+                'chauffeur' => $commande->chauffeur,
+                'camion' => $commande->camion,
+            ]
+        ], 200);
     }
 }

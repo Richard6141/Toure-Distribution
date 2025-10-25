@@ -462,14 +462,14 @@ endpoints:
         name: id
         description: 'The ID of the vente.'
         required: true
-        example: 03079e40-6f6b-4e19-bb97-a14435b858b7
+        example: architecto
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 03079e40-6f6b-4e19-bb97-a14435b858b7
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -557,14 +557,14 @@ endpoints:
         name: id
         description: 'The ID of the vente.'
         required: true
-        example: 03079e40-6f6b-4e19-bb97-a14435b858b7
+        example: architecto
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 03079e40-6f6b-4e19-bb97-a14435b858b7
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -651,14 +651,14 @@ endpoints:
         name: id
         description: 'The ID of the vente.'
         required: true
-        example: 03079e40-6f6b-4e19-bb97-a14435b858b7
+        example: architecto
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 03079e40-6f6b-4e19-bb97-a14435b858b7
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -742,14 +742,14 @@ endpoints:
         name: id
         description: 'The ID of the vente.'
         required: true
-        example: 03079e40-6f6b-4e19-bb97-a14435b858b7
+        example: architecto
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 03079e40-6f6b-4e19-bb97-a14435b858b7
+      id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

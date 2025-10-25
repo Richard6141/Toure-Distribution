@@ -556,6 +556,27 @@
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-commandes-GETapi-commandes--id--distribution-history">
                                 <a href="#gestion-des-commandes-GETapi-commandes--id--distribution-history">Historique des répartitions d'une commande</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-POSTapi-commandes--id--assign-chauffeur">
+                                <a href="#gestion-des-commandes-POSTapi-commandes--id--assign-chauffeur">Affecter un chauffeur à une commande</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-POSTapi-commandes--id--assign-camion">
+                                <a href="#gestion-des-commandes-POSTapi-commandes--id--assign-camion">Affecter un camion à une commande</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-POSTapi-commandes--id--assign-livraison">
+                                <a href="#gestion-des-commandes-POSTapi-commandes--id--assign-livraison">Affecter un chauffeur et un camion à une commande</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-DELETEapi-commandes--id--unassign-chauffeur">
+                                <a href="#gestion-des-commandes-DELETEapi-commandes--id--unassign-chauffeur">Retirer le chauffeur d'une commande</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-DELETEapi-commandes--id--unassign-camion">
+                                <a href="#gestion-des-commandes-DELETEapi-commandes--id--unassign-camion">Retirer le camion d'une commande</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-DELETEapi-commandes--id--unassign-livraison">
+                                <a href="#gestion-des-commandes-DELETEapi-commandes--id--unassign-livraison">Retirer le chauffeur et le camion d'une commande</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-commandes-GETapi-commandes--id--livraison-info">
+                                <a href="#gestion-des-commandes-GETapi-commandes--id--livraison-info">Obtenir les informations de livraison d'une commande</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-gestion-des-details-de-commandes" class="tocify-header">
@@ -1048,7 +1069,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 24 October 2025</li>
+        <li>Dernière mise à jour: 25 October 2025</li>
     </ul>
 </div>
 
@@ -4037,7 +4058,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -4063,7 +4084,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -4091,7 +4112,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -4276,7 +4297,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -4811,7 +4832,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": false,
+    \"is_active\": true,
     \"with_client_type\": true,
     \"balance_filter\": \"negative\"
 }"
@@ -4857,7 +4878,7 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": false,
+    "is_active": true,
     "with_client_type": true,
     "balance_filter": "negative"
 };
@@ -4905,7 +4926,7 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
             'with_client_type' =&gt; true,
             'balance_filter' =&gt; 'negative',
         ],
@@ -5315,7 +5336,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -9137,8 +9158,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-24T10:10:34\",
-    \"date_to\": \"2051-11-17\"
+    \"date_from\": \"2025-10-25T19:58:27\",
+    \"date_to\": \"2051-11-18\"
 }"
 </code></pre></div>
 
@@ -9161,8 +9182,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-24T10:10:34",
-    "date_to": "2051-11-17"
+    "date_from": "2025-10-25T19:58:27",
+    "date_to": "2051-11-18"
 };
 
 fetch(url, {
@@ -9187,8 +9208,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-24T10:10:34',
-            'date_to' =&gt; '2051-11-17',
+            'date_from' =&gt; '2025-10-25T19:58:27',
+            'date_to' =&gt; '2051-11-18',
         ],
     ]
 );
@@ -9318,10 +9339,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-24T10:10:34"
+               value="2025-10-25T19:58:27"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-24T10:10:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9329,10 +9350,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2051-11-17"
+               value="2051-11-18"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-17</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
         </div>
         </form>
 
@@ -9357,11 +9378,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"cancelled\",
-    \"date_from\": \"2025-10-24T10:10:34\",
-    \"date_to\": \"2051-11-17\",
-    \"with_client\": false,
-    \"with_details\": true
+    \"statut\": \"overdue\",
+    \"date_from\": \"2025-10-25T19:58:27\",
+    \"date_to\": \"2051-11-18\",
+    \"with_client\": true,
+    \"with_details\": false
 }"
 </code></pre></div>
 
@@ -9395,11 +9416,11 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "cancelled",
-    "date_from": "2025-10-24T10:10:34",
-    "date_to": "2051-11-17",
-    "with_client": false,
-    "with_details": true
+    "statut": "overdue",
+    "date_from": "2025-10-25T19:58:27",
+    "date_to": "2051-11-18",
+    "with_client": true,
+    "with_details": false
 };
 
 fetch(url, {
@@ -9435,11 +9456,11 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'cancelled',
-            'date_from' =&gt; '2025-10-24T10:10:34',
-            'date_to' =&gt; '2051-11-17',
-            'with_client' =&gt; false,
-            'with_details' =&gt; true,
+            'statut' =&gt; 'overdue',
+            'date_from' =&gt; '2025-10-25T19:58:27',
+            'date_to' =&gt; '2051-11-18',
+            'with_client' =&gt; true,
+            'with_details' =&gt; false,
         ],
     ]
 );
@@ -9725,10 +9746,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="cancelled"
+               value="overdue"
                data-component="body">
     <br>
-<p>Example: <code>cancelled</code></p>
+<p>Example: <code>overdue</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9738,10 +9759,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-24T10:10:34"
+               value="2025-10-25T19:58:27"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-24T10:10:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9749,10 +9770,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures"
-               value="2051-11-17"
+               value="2051-11-18"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-17</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -9773,7 +9794,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -9794,7 +9815,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -10222,9 +10243,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": false,
-    \"with_details\": true,
-    \"with_payments\": true
+    \"with_client\": true,
+    \"with_details\": false,
+    \"with_payments\": false
 }"
 </code></pre></div>
 
@@ -10248,9 +10269,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": false,
-    "with_details": true,
-    "with_payments": true
+    "with_client": true,
+    "with_details": false,
+    "with_payments": false
 };
 
 fetch(url, {
@@ -10276,9 +10297,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; false,
-            'with_details' =&gt; true,
-            'with_payments' =&gt; true,
+            'with_client' =&gt; true,
+            'with_details' =&gt; false,
+            'with_payments' =&gt; false,
         ],
     ]
 );
@@ -10488,7 +10509,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10509,7 +10530,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -10530,7 +10551,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -11471,8 +11492,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-24T10:10:34\",
-    \"date_to\": \"2051-11-17\"
+    \"date_from\": \"2025-10-25T19:58:27\",
+    \"date_to\": \"2051-11-18\"
 }"
 </code></pre></div>
 
@@ -11495,8 +11516,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-24T10:10:34",
-    "date_to": "2051-11-17"
+    "date_from": "2025-10-25T19:58:27",
+    "date_to": "2051-11-18"
 };
 
 fetch(url, {
@@ -11521,8 +11542,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-24T10:10:34',
-            'date_to' =&gt; '2051-11-17',
+            'date_from' =&gt; '2025-10-25T19:58:27',
+            'date_to' =&gt; '2051-11-18',
         ],
     ]
 );
@@ -11661,10 +11682,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-24T10:10:34"
+               value="2025-10-25T19:58:27"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-24T10:10:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11672,10 +11693,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2051-11-17"
+               value="2051-11-18"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-17</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
         </div>
         </form>
 
@@ -11702,12 +11723,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"completed\",
-    \"date_from\": \"2025-10-24T10:10:34\",
-    \"date_to\": \"2051-11-17\",
+    \"statut\": \"refunded\",
+    \"date_from\": \"2025-10-25T19:58:27\",
+    \"date_to\": \"2051-11-18\",
     \"with_facture\": true,
-    \"with_client\": false,
-    \"with_payment_method\": false
+    \"with_client\": true,
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -11746,12 +11767,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "completed",
-    "date_from": "2025-10-24T10:10:34",
-    "date_to": "2051-11-17",
+    "statut": "refunded",
+    "date_from": "2025-10-25T19:58:27",
+    "date_to": "2051-11-18",
     "with_facture": true,
-    "with_client": false,
-    "with_payment_method": false
+    "with_client": true,
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -11792,12 +11813,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'completed',
-            'date_from' =&gt; '2025-10-24T10:10:34',
-            'date_to' =&gt; '2051-11-17',
+            'statut' =&gt; 'refunded',
+            'date_from' =&gt; '2025-10-25T19:58:27',
+            'date_to' =&gt; '2051-11-18',
             'with_facture' =&gt; true,
-            'with_client' =&gt; false,
-            'with_payment_method' =&gt; false,
+            'with_client' =&gt; true,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -12142,10 +12163,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="completed"
+               value="refunded"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>refunded</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12155,10 +12176,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-24T10:10:34"
+               value="2025-10-25T19:58:27"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-24T10:10:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12166,10 +12187,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements"
-               value="2051-11-17"
+               value="2051-11-18"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-17</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
@@ -12211,7 +12232,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -12232,7 +12253,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -12563,9 +12584,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": true,
+    \"with_facture\": false,
     \"with_client\": false,
-    \"with_payment_method\": false
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -12589,9 +12610,9 @@ const headers = {
 };
 
 let body = {
-    "with_facture": true,
+    "with_facture": false,
     "with_client": false,
-    "with_payment_method": false
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -12617,9 +12638,9 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; true,
+            'with_facture' =&gt; false,
             'with_client' =&gt; false,
-            'with_payment_method' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -12831,7 +12852,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -12873,7 +12894,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -18501,7 +18522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -18523,7 +18544,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -18547,7 +18568,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -18705,7 +18726,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -27697,7 +27718,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Enregistre une nouvelle commande d'achat dans le système.
-Le numéro de commande est généré automatiquement au format CMD-YYYY-0001.</p>
+Le numéro de commande est généré automatiquement au format CMD-YYYY-0001.
+Vous pouvez affecter un chauffeur et/ou un camion dès la création pour une livraison propre,
+ou laisser ces champs vides si la livraison est assurée par le fournisseur.</p>
 
 <span id="example-requests-POSTapi-commandes">
 <blockquote>Example request:</blockquote>
@@ -27711,12 +27734,17 @@ Le numéro de commande est généré automatiquement au format CMD-YYYY-0001.</p
     --header "Accept: application/json" \
     --data "{
     \"fournisseur_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b\",
+    \"chauffeur_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c\",
+    \"camion_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d\",
     \"date_achat\": \"2025-01-15\",
     \"date_livraison_prevue\": \"2025-02-15\",
-    \"date_livraison_effective\": \"2025-02-10\",
-    \"montant\": \"25000.00\",
+    \"montant\": \"75000.00\",
     \"status\": \"en_attente\",
-    \"note\": \"Commande urgente\"
+    \"note\": \"Commande urgente - Livraison propre\",
+    \"details\": [
+        \"architecto\"
+    ],
+    \"date_livraison_effective\": \"2025-02-10\"
 }"
 </code></pre></div>
 
@@ -27734,12 +27762,17 @@ const headers = {
 
 let body = {
     "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+    "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+    "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
     "date_achat": "2025-01-15",
     "date_livraison_prevue": "2025-02-15",
-    "date_livraison_effective": "2025-02-10",
-    "montant": "25000.00",
+    "montant": "75000.00",
     "status": "en_attente",
-    "note": "Commande urgente"
+    "note": "Commande urgente - Livraison propre",
+    "details": [
+        "architecto"
+    ],
+    "date_livraison_effective": "2025-02-10"
 };
 
 fetch(url, {
@@ -27762,12 +27795,17 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'fournisseur_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b',
+            'chauffeur_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c',
+            'camion_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d',
             'date_achat' =&gt; '2025-01-15',
             'date_livraison_prevue' =&gt; '2025-02-15',
-            'date_livraison_effective' =&gt; '2025-02-10',
-            'montant' =&gt; '25000.00',
+            'montant' =&gt; '75000.00',
             'status' =&gt; 'en_attente',
-            'note' =&gt; 'Commande urgente',
+            'note' =&gt; 'Commande urgente - Livraison propre',
+            'details' =&gt; [
+                'architecto',
+            ],
+            'date_livraison_effective' =&gt; '2025-02-10',
         ],
     ]
 );
@@ -27778,7 +27816,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-POSTapi-commandes">
             <blockquote>
-            <p>Example response (201):</p>
+            <p>Example response (201, Création réussie - Livraison fournisseur):</p>
         </blockquote>
                 <pre>
 
@@ -27787,12 +27825,14 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;message&quot;: &quot;Commande cr&eacute;&eacute;e avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
-        &quot;numero_commande&quot;: &quot;CMD-2025-0001&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
         &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: null,
+        &quot;camion_id&quot;: null,
         &quot;date_achat&quot;: &quot;2025-01-15&quot;,
         &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
         &quot;date_livraison_effective&quot;: null,
-        &quot;montant&quot;: &quot;25000.00&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
         &quot;status&quot;: &quot;en_attente&quot;,
         &quot;note&quot;: &quot;Commande urgente&quot;,
         &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
@@ -27802,21 +27842,137 @@ print_r(json_decode((string) $body));</code></pre></div>
             &quot;code&quot;: &quot;FOUR001&quot;,
             &quot;name&quot;: &quot;Fournisseur ABC&quot;,
             &quot;email&quot;: &quot;contact@fournisseur-abc.com&quot;
-        }
+        },
+        &quot;chauffeur&quot;: null,
+        &quot;camion&quot;: null,
+        &quot;details&quot;: [
+            {
+                &quot;detail_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a&quot;,
+                &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;prix_unitaire&quot;: &quot;2500.00&quot;,
+                &quot;sous_total&quot;: &quot;25000.00&quot;,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;,
+                    &quot;code&quot;: &quot;PROD001&quot;,
+                    &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;,
+                    &quot;unit_price&quot;: &quot;2500.00&quot;
+                }
+            },
+            {
+                &quot;detail_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3b&quot;,
+                &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e&quot;,
+                &quot;quantite&quot;: 5,
+                &quot;prix_unitaire&quot;: &quot;5000.00&quot;,
+                &quot;sous_total&quot;: &quot;25000.00&quot;,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e&quot;,
+                    &quot;code&quot;: &quot;PROD002&quot;,
+                    &quot;name&quot;: &quot;Imprimante HP LaserJet&quot;,
+                    &quot;unit_price&quot;: &quot;5000.00&quot;
+                }
+            }
+        ]
     }
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (422):</p>
+            <p>Example response (201, Création réussie - Livraison propre (avec chauffeur et camion)):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Commande cr&eacute;&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+        &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;date_livraison_effective&quot;: null,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;,
+        &quot;note&quot;: &quot;Livraison avec notre propre chauffeur et camion&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;fournisseur&quot;: {
+            &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+            &quot;code&quot;: &quot;FOUR001&quot;,
+            &quot;name&quot;: &quot;Fournisseur ABC&quot;,
+            &quot;email&quot;: &quot;contact@fournisseur-abc.com&quot;
+        },
+        &quot;chauffeur&quot;: {
+            &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;,
+            &quot;phone&quot;: &quot;+229 97 00 00 00&quot;,
+            &quot;numero_permis&quot;: &quot;P-123456&quot;,
+            &quot;status&quot;: &quot;actif&quot;
+        },
+        &quot;camion&quot;: {
+            &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+            &quot;numero_immat&quot;: &quot;AB-1234-BJ&quot;,
+            &quot;marque&quot;: &quot;Mercedes-Benz&quot;,
+            &quot;modele&quot;: &quot;Actros&quot;,
+            &quot;capacite&quot;: &quot;15.00&quot;,
+            &quot;status&quot;: &quot;disponible&quot;
+        },
+        &quot;details&quot;: [
+            {
+                &quot;detail_commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a&quot;,
+                &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;,
+                &quot;quantite&quot;: 10,
+                &quot;prix_unitaire&quot;: &quot;2500.00&quot;,
+                &quot;sous_total&quot;: &quot;25000.00&quot;,
+                &quot;product&quot;: {
+                    &quot;product_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d&quot;,
+                    &quot;code&quot;: &quot;PROD001&quot;,
+                    &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;
+                }
+            }
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Chauffeur non actif):</p>
         </blockquote>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;message&quot;: &quot;Le chauffeur s&eacute;lectionn&eacute; n&#039;est pas actif&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Camion non disponible):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Le camion s&eacute;lectionn&eacute; n&#039;est pas disponible&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreur de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Validation &eacute;chou&eacute;e&quot;,
     &quot;errors&quot;: {
         &quot;fournisseur_id&quot;: [
             &quot;Le fournisseur s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ],
+        &quot;chauffeur_id&quot;: [
+            &quot;Le chauffeur s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ],
+        &quot;details&quot;: [
+            &quot;Le champ details est requis et doit contenir au moins 1 produit&quot;
         ]
     }
 }</code>
@@ -27915,6 +28071,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>L'UUID du fournisseur. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="POSTapi-commandes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c"
+               data-component="body">
+    <br>
+<p>L'UUID du chauffeur pour la livraison (optionnel - si livraison propre). Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>camion_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="camion_id"                data-endpoint="POSTapi-commandes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d"
+               data-component="body">
+    <br>
+<p>L'UUID du camion pour la livraison (optionnel - si livraison propre). Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_achat</code></b>&nbsp;&nbsp;
 <small>date</small>&nbsp;
  &nbsp;
@@ -27937,26 +28115,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>La date de livraison prévue (format: Y-m-d). Example: <code>2025-02-15</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>date_livraison_effective</code></b>&nbsp;&nbsp;
-<small>date</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="date_livraison_effective"                data-endpoint="POSTapi-commandes"
-               value="2025-02-10"
-               data-component="body">
-    <br>
-<p>La date de livraison effective (format: Y-m-d). Example: <code>2025-02-10</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
 <small>numeric</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                               name="montant"                data-endpoint="POSTapi-commandes"
-               value="25000.00"
+               value="75000.00"
                data-component="body">
     <br>
-<p>Le montant total de la commande. Example: <code>25000.00</code></p>
+<p>Le montant total de la commande. Example: <code>75000.00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -27975,10 +28142,65 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="note"                data-endpoint="POSTapi-commandes"
-               value="Commande urgente"
+               value="Commande urgente - Livraison propre"
                data-component="body">
     <br>
-<p>Des notes ou observations sur la commande. Example: <code>Commande urgente</code></p>
+<p>Des notes ou observations sur la commande. Example: <code>Commande urgente - Livraison propre</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>details</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Liste des produits commandés (minimum 1 produit).</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>product_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.product_id"                data-endpoint="POSTapi-commandes"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
+               data-component="body">
+    <br>
+<p>L'UUID du produit. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>quantite</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="details.0.quantite"                data-endpoint="POSTapi-commandes"
+               value="10"
+               data-component="body">
+    <br>
+<p>La quantité commandée (minimum 1). Example: <code>10</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>prix_unitaire</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="details.0.prix_unitaire"                data-endpoint="POSTapi-commandes"
+               value="2500.00"
+               data-component="body">
+    <br>
+<p>Le prix unitaire du produit. Example: <code>2500.00</code></p>
+                    </div>
+                                    </details>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_livraison_effective</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="date_livraison_effective"                data-endpoint="POSTapi-commandes"
+               value="2025-02-10"
+               data-component="body">
+    <br>
+<p>La date de livraison effective (format: Y-m-d). Example: <code>2025-02-10</code></p>
         </div>
         </form>
 
@@ -30019,6 +30241,1568 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-commandes-POSTapi-commandes--id--assign-chauffeur">Affecter un chauffeur à une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Affecte un chauffeur à une commande existante pour assurer la livraison.
+Le chauffeur doit avoir le statut &quot;actif&quot; pour pouvoir être affecté.</p>
+
+<span id="example-requests-POSTapi-commandes--id--assign-chauffeur">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-chauffeur" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"chauffeur_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-chauffeur"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-chauffeur';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'chauffeur_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-commandes--id--assign-chauffeur">
+            <blockquote>
+            <p>Example response (200, Chauffeur affecté avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Chauffeur affect&eacute; avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+        &quot;camion_id&quot;: null,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;,
+        &quot;chauffeur&quot;: {
+            &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;,
+            &quot;phone&quot;: &quot;+229 97 00 00 00&quot;,
+            &quot;numero_permis&quot;: &quot;P-123456&quot;,
+            &quot;status&quot;: &quot;actif&quot;
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Chauffeur non actif):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Le chauffeur n&#039;est pas actif&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreur de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Validation &eacute;chou&eacute;e&quot;,
+    &quot;errors&quot;: {
+        &quot;chauffeur_id&quot;: [
+            &quot;Le chauffeur s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-commandes--id--assign-chauffeur" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-commandes--id--assign-chauffeur"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-commandes--id--assign-chauffeur"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-commandes--id--assign-chauffeur" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-commandes--id--assign-chauffeur">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-commandes--id--assign-chauffeur" data-method="POST"
+      data-path="api/commandes/{id}/assign-chauffeur"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-commandes--id--assign-chauffeur', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-commandes--id--assign-chauffeur"
+                    onclick="tryItOut('POSTapi-commandes--id--assign-chauffeur');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-commandes--id--assign-chauffeur"
+                    onclick="cancelTryOut('POSTapi-commandes--id--assign-chauffeur');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-commandes--id--assign-chauffeur"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/commandes/{id}/assign-chauffeur</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-commandes--id--assign-chauffeur"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-commandes--id--assign-chauffeur"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-commandes--id--assign-chauffeur"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-commandes--id--assign-chauffeur"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="POSTapi-commandes--id--assign-chauffeur"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c"
+               data-component="body">
+    <br>
+<p>L'UUID du chauffeur à affecter. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-commandes-POSTapi-commandes--id--assign-camion">Affecter un camion à une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Affecte un camion à une commande existante pour assurer le transport.
+Le camion doit avoir le statut &quot;disponible&quot; pour pouvoir être affecté.</p>
+
+<span id="example-requests-POSTapi-commandes--id--assign-camion">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-camion" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"camion_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-camion"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-camion';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'camion_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-commandes--id--assign-camion">
+            <blockquote>
+            <p>Example response (200, Camion affecté avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Camion affect&eacute; avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: null,
+        &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;,
+        &quot;camion&quot;: {
+            &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+            &quot;numero_immat&quot;: &quot;AB-1234-BJ&quot;,
+            &quot;marque&quot;: &quot;Mercedes-Benz&quot;,
+            &quot;modele&quot;: &quot;Actros&quot;,
+            &quot;capacite&quot;: &quot;15.00&quot;,
+            &quot;status&quot;: &quot;disponible&quot;
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Camion non disponible):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Le camion n&#039;est pas disponible&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreur de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Validation &eacute;chou&eacute;e&quot;,
+    &quot;errors&quot;: {
+        &quot;camion_id&quot;: [
+            &quot;Le camion s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-commandes--id--assign-camion" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-commandes--id--assign-camion"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-commandes--id--assign-camion"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-commandes--id--assign-camion" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-commandes--id--assign-camion">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-commandes--id--assign-camion" data-method="POST"
+      data-path="api/commandes/{id}/assign-camion"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-commandes--id--assign-camion', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-commandes--id--assign-camion"
+                    onclick="tryItOut('POSTapi-commandes--id--assign-camion');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-commandes--id--assign-camion"
+                    onclick="cancelTryOut('POSTapi-commandes--id--assign-camion');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-commandes--id--assign-camion"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/commandes/{id}/assign-camion</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-commandes--id--assign-camion"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-commandes--id--assign-camion"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-commandes--id--assign-camion"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-commandes--id--assign-camion"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>camion_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="camion_id"                data-endpoint="POSTapi-commandes--id--assign-camion"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d"
+               data-component="body">
+    <br>
+<p>L'UUID du camion à affecter. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-commandes-POSTapi-commandes--id--assign-livraison">Affecter un chauffeur et un camion à une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Affecte simultanément un chauffeur et un camion à une commande existante pour organiser une livraison complète.
+Le chauffeur doit être &quot;actif&quot; et le camion doit être &quot;disponible&quot;.</p>
+
+<span id="example-requests-POSTapi-commandes--id--assign-livraison">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-livraison" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"chauffeur_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c\",
+    \"camion_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-livraison"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
+    "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/assign-livraison';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'chauffeur_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c',
+            'camion_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-commandes--id--assign-livraison">
+            <blockquote>
+            <p>Example response (200, Livraison affectée avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Chauffeur et camion affect&eacute;s avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+        &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;,
+        &quot;chauffeur&quot;: {
+            &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;,
+            &quot;phone&quot;: &quot;+229 97 00 00 00&quot;,
+            &quot;numero_permis&quot;: &quot;P-123456&quot;,
+            &quot;status&quot;: &quot;actif&quot;
+        },
+        &quot;camion&quot;: {
+            &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+            &quot;numero_immat&quot;: &quot;AB-1234-BJ&quot;,
+            &quot;marque&quot;: &quot;Mercedes-Benz&quot;,
+            &quot;modele&quot;: &quot;Actros&quot;,
+            &quot;capacite&quot;: &quot;15.00&quot;,
+            &quot;status&quot;: &quot;disponible&quot;
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Chauffeur non actif):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Le chauffeur n&#039;est pas actif&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Camion non disponible):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Le camion n&#039;est pas disponible&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreur de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Validation &eacute;chou&eacute;e&quot;,
+    &quot;errors&quot;: {
+        &quot;chauffeur_id&quot;: [
+            &quot;Le chauffeur s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ],
+        &quot;camion_id&quot;: [
+            &quot;Le camion s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-commandes--id--assign-livraison" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-commandes--id--assign-livraison"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-commandes--id--assign-livraison"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-commandes--id--assign-livraison" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-commandes--id--assign-livraison">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-commandes--id--assign-livraison" data-method="POST"
+      data-path="api/commandes/{id}/assign-livraison"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-commandes--id--assign-livraison', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-commandes--id--assign-livraison"
+                    onclick="tryItOut('POSTapi-commandes--id--assign-livraison');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-commandes--id--assign-livraison"
+                    onclick="cancelTryOut('POSTapi-commandes--id--assign-livraison');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-commandes--id--assign-livraison"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/commandes/{id}/assign-livraison</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-commandes--id--assign-livraison"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-commandes--id--assign-livraison"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-commandes--id--assign-livraison"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-commandes--id--assign-livraison"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chauffeur_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="chauffeur_id"                data-endpoint="POSTapi-commandes--id--assign-livraison"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c"
+               data-component="body">
+    <br>
+<p>L'UUID du chauffeur à affecter. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>camion_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="camion_id"                data-endpoint="POSTapi-commandes--id--assign-livraison"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d"
+               data-component="body">
+    <br>
+<p>L'UUID du camion à affecter. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-commandes-DELETEapi-commandes--id--unassign-chauffeur">Retirer le chauffeur d&#039;une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retire le chauffeur affecté à une commande. La commande repassera en livraison fournisseur si aucun camion n'est affecté.</p>
+
+<span id="example-requests-DELETEapi-commandes--id--unassign-chauffeur">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-chauffeur" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-chauffeur"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-chauffeur';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-commandes--id--unassign-chauffeur">
+            <blockquote>
+            <p>Example response (200, Chauffeur retiré avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Chauffeur retir&eacute; avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: null,
+        &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Aucun chauffeur affecté):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Aucun chauffeur n&#039;est affect&eacute; &agrave; cette commande&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-commandes--id--unassign-chauffeur" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-commandes--id--unassign-chauffeur"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-commandes--id--unassign-chauffeur"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-commandes--id--unassign-chauffeur" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-commandes--id--unassign-chauffeur">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-commandes--id--unassign-chauffeur" data-method="DELETE"
+      data-path="api/commandes/{id}/unassign-chauffeur"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-commandes--id--unassign-chauffeur', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-commandes--id--unassign-chauffeur"
+                    onclick="tryItOut('DELETEapi-commandes--id--unassign-chauffeur');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-commandes--id--unassign-chauffeur"
+                    onclick="cancelTryOut('DELETEapi-commandes--id--unassign-chauffeur');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-commandes--id--unassign-chauffeur"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/commandes/{id}/unassign-chauffeur</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-commandes--id--unassign-chauffeur"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-commandes--id--unassign-chauffeur"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-commandes--id--unassign-chauffeur"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-commandes--id--unassign-chauffeur"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-commandes-DELETEapi-commandes--id--unassign-camion">Retirer le camion d&#039;une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retire le camion affecté à une commande. La commande repassera en livraison fournisseur si aucun chauffeur n'est affecté.</p>
+
+<span id="example-requests-DELETEapi-commandes--id--unassign-camion">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-camion" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-camion"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-camion';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-commandes--id--unassign-camion">
+            <blockquote>
+            <p>Example response (200, Camion retiré avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Camion retir&eacute; avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+        &quot;camion_id&quot;: null,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Aucun camion affecté):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Aucun camion n&#039;est affect&eacute; &agrave; cette commande&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-commandes--id--unassign-camion" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-commandes--id--unassign-camion"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-commandes--id--unassign-camion"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-commandes--id--unassign-camion" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-commandes--id--unassign-camion">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-commandes--id--unassign-camion" data-method="DELETE"
+      data-path="api/commandes/{id}/unassign-camion"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-commandes--id--unassign-camion', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-commandes--id--unassign-camion"
+                    onclick="tryItOut('DELETEapi-commandes--id--unassign-camion');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-commandes--id--unassign-camion"
+                    onclick="cancelTryOut('DELETEapi-commandes--id--unassign-camion');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-commandes--id--unassign-camion"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/commandes/{id}/unassign-camion</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-commandes--id--unassign-camion"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-commandes--id--unassign-camion"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-commandes--id--unassign-camion"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-commandes--id--unassign-camion"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-commandes-DELETEapi-commandes--id--unassign-livraison">Retirer le chauffeur et le camion d&#039;une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Retire simultanément le chauffeur et le camion affectés à une commande.
+La commande repassera en livraison fournisseur.</p>
+
+<span id="example-requests-DELETEapi-commandes--id--unassign-livraison">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-livraison" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-livraison"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/unassign-livraison';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-commandes--id--unassign-livraison">
+            <blockquote>
+            <p>Example response (200, Livraison retirée avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Chauffeur et camion retir&eacute;s avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;fournisseur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
+        &quot;chauffeur_id&quot;: null,
+        &quot;camion_id&quot;: null,
+        &quot;date_achat&quot;: &quot;2025-01-15&quot;,
+        &quot;date_livraison_prevue&quot;: &quot;2025-02-15&quot;,
+        &quot;montant&quot;: &quot;75000.00&quot;,
+        &quot;status&quot;: &quot;en_attente&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (400, Aucune livraison propre affectée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Aucun chauffeur ni camion n&#039;est affect&eacute; &agrave; cette commande&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-commandes--id--unassign-livraison" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-commandes--id--unassign-livraison"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-commandes--id--unassign-livraison"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-commandes--id--unassign-livraison" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-commandes--id--unassign-livraison">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-commandes--id--unassign-livraison" data-method="DELETE"
+      data-path="api/commandes/{id}/unassign-livraison"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-commandes--id--unassign-livraison', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-commandes--id--unassign-livraison"
+                    onclick="tryItOut('DELETEapi-commandes--id--unassign-livraison');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-commandes--id--unassign-livraison"
+                    onclick="cancelTryOut('DELETEapi-commandes--id--unassign-livraison');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-commandes--id--unassign-livraison"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/commandes/{id}/unassign-livraison</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-commandes--id--unassign-livraison"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-commandes--id--unassign-livraison"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-commandes--id--unassign-livraison"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-commandes--id--unassign-livraison"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-commandes-GETapi-commandes--id--livraison-info">Obtenir les informations de livraison d&#039;une commande</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les informations détaillées concernant la livraison d'une commande :
+type de livraison (propre ou fournisseur), chauffeur et camion affectés.</p>
+
+<span id="example-requests-GETapi-commandes--id--livraison-info">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/livraison-info" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/livraison-info"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/commandes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/livraison-info';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-commandes--id--livraison-info">
+            <blockquote>
+            <p>Example response (200, Livraison propre complète):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;type_livraison&quot;: &quot;propre&quot;,
+        &quot;livraison_complete&quot;: true,
+        &quot;chauffeur&quot;: {
+            &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;,
+            &quot;phone&quot;: &quot;+229 97 00 00 00&quot;,
+            &quot;numero_permis&quot;: &quot;P-123456&quot;,
+            &quot;date_expiration_permis&quot;: &quot;2026-12-31&quot;,
+            &quot;status&quot;: &quot;actif&quot;
+        },
+        &quot;camion&quot;: {
+            &quot;camion_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d&quot;,
+            &quot;numero_immat&quot;: &quot;AB-1234-BJ&quot;,
+            &quot;marque&quot;: &quot;Mercedes-Benz&quot;,
+            &quot;modele&quot;: &quot;Actros&quot;,
+            &quot;capacite&quot;: &quot;15.00&quot;,
+            &quot;status&quot;: &quot;disponible&quot;
+        }
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Livraison fournisseur):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;type_livraison&quot;: &quot;fournisseur&quot;,
+        &quot;livraison_complete&quot;: false,
+        &quot;chauffeur&quot;: null,
+        &quot;camion&quot;: null
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Livraison propre partielle (chauffeur seul)):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;commande_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_commande&quot;: &quot;CMD-2025-0156&quot;,
+        &quot;type_livraison&quot;: &quot;propre&quot;,
+        &quot;livraison_complete&quot;: false,
+        &quot;chauffeur&quot;: {
+            &quot;chauffeur_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c&quot;,
+            &quot;name&quot;: &quot;Jean Dupont&quot;,
+            &quot;phone&quot;: &quot;+229 97 00 00 00&quot;,
+            &quot;status&quot;: &quot;actif&quot;
+        },
+        &quot;camion&quot;: null
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Commande non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Commande non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-commandes--id--livraison-info" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-commandes--id--livraison-info"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-commandes--id--livraison-info"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-commandes--id--livraison-info" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-commandes--id--livraison-info">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-commandes--id--livraison-info" data-method="GET"
+      data-path="api/commandes/{id}/livraison-info"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-commandes--id--livraison-info', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-commandes--id--livraison-info"
+                    onclick="tryItOut('GETapi-commandes--id--livraison-info');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-commandes--id--livraison-info"
+                    onclick="cancelTryOut('GETapi-commandes--id--livraison-info');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-commandes--id--livraison-info"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/commandes/{id}/livraison-info</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-commandes--id--livraison-info"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-commandes--id--livraison-info"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-commandes--id--livraison-info"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-commandes--id--livraison-info"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la commande. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                     </form>
 
@@ -37011,7 +38795,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-24T10:10:34\",
+    \"date_livraison_prevue\": \"2025-10-25T19:58:28\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -37034,7 +38818,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-24T10:10:34",
+    "date_livraison_prevue": "2025-10-25T19:58:28",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -37062,7 +38846,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-24T10:10:34',
+            'date_livraison_prevue' =&gt; '2025-10-25T19:58:28',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -37198,10 +38982,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-24T10:10:34"
+               value="2025-10-25T19:58:28"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-24T10:10:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T19:58:28</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -37270,7 +39054,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-24T10:10:34\",
+    \"date_livraison_prevue\": \"2025-10-25T19:58:28\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -37293,7 +39077,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-24T10:10:34",
+    "date_livraison_prevue": "2025-10-25T19:58:28",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -37321,7 +39105,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-24T10:10:34',
+            'date_livraison_prevue' =&gt; '2025-10-25T19:58:28',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -37457,10 +39241,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-24T10:10:34"
+               value="2025-10-25T19:58:28"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-24T10:10:34</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T19:58:28</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -53835,7 +55619,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7" \
+    "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -53848,7 +55632,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -53871,7 +55655,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;put(
     $url,
     [
@@ -54001,10 +55785,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-ventes--id-"
-               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -54047,7 +55831,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7" \
+    "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -54060,7 +55844,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -54083,7 +55867,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;patch(
     $url,
     [
@@ -54213,10 +55997,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHapi-ventes--id-"
-               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -54258,7 +56042,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7" \
+    "http://localhost/api/ventes/architecto" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -54266,7 +56050,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7"
+    "http://localhost/api/ventes/architecto"
 );
 
 const headers = {
@@ -54283,7 +56067,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7';
+$url = 'http://localhost/api/ventes/architecto';
 $response = $client-&gt;delete(
     $url,
     [
@@ -54388,10 +56172,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-ventes--id-"
-               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                     </form>
 
@@ -54583,14 +56367,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7/restore" \
+    "http://localhost/api/ventes/architecto/restore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7/restore"
+    "http://localhost/api/ventes/architecto/restore"
 );
 
 const headers = {
@@ -54606,7 +56390,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/03079e40-6f6b-4e19-bb97-a14435b858b7/restore';
+$url = 'http://localhost/api/ventes/architecto/restore';
 $response = $client-&gt;post(
     $url,
     [
@@ -54699,10 +56483,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-ventes--id--restore"
-               value="03079e40-6f6b-4e19-bb97-a14435b858b7"
+               value="architecto"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>03079e40-6f6b-4e19-bb97-a14435b858b7</code></p>
+<p>The ID of the vente. Example: <code>architecto</code></p>
             </div>
                     </form>
 
