@@ -1,23 +1,23 @@
-name: 'Gestion des Commandes'
+name: 'Gestion des Détails de Commandes'
 description: |-
 
-  API pour gérer les commandes d'achat auprès des fournisseurs.
+  API pour gérer les lignes de produits (détails) des commandes d'achat.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/commandes
+    uri: api/detail-commandes
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des commandes'
-      description: 'Récupère la liste paginée de toutes les commandes avec leurs fournisseurs et produits associés.'
+      title: 'Liste des détails de commandes'
+      description: 'Récupère la liste paginée de tous les détails de commandes avec leurs produits.'
       authenticated: true
       deprecated: false
       custom: []
@@ -48,29 +48,9 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      search:
-        name: search
-        description: 'Rechercher par numéro de commande.'
-        required: false
-        example: CMD-2025-001
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      status:
-        name: status
-        description: 'Filtrer par statut (en_attente, validee, en_cours, livree, partiellement_livree, annulee).'
-        required: false
-        example: en_attente
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      fournisseur_id:
-        name: fournisseur_id
-        description: 'Filtrer par ID du fournisseur.'
+      commande_id:
+        name: commande_id
+        description: 'Filtrer par ID de commande.'
         required: false
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -78,52 +58,12 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      date_achat_debut:
-        name: date_achat_debut
-        description: "date Filtrer par date d'achat minimum (format: Y-m-d)."
+      product_id:
+        name: product_id
+        description: 'Filtrer par ID de produit.'
         required: false
-        example: '2025-01-01'
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_achat_fin:
-        name: date_achat_fin
-        description: "date Filtrer par date d'achat maximum (format: Y-m-d)."
-        required: false
-        example: '2025-12-31'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant_min:
-        name: montant_min
-        description: 'numeric Filtrer par montant minimum.'
-        required: false
-        example: '1000'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant_max:
-        name: montant_max
-        description: 'numeric Filtrer par montant maximum.'
-        required: false
-        example: '50000'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      en_retard:
-        name: en_retard
-        description: 'Afficher uniquement les commandes en retard (1 ou 0).'
-        required: false
-        example: true
-        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: false
@@ -131,14 +71,8 @@ endpoints:
     cleanQueryParameters:
       page: 1
       per_page: 15
-      search: CMD-2025-001
-      status: en_attente
-      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-      date_achat_debut: '2025-01-01'
-      date_achat_fin: '2025-12-31'
-      montant_min: '1000'
-      montant_max: '50000'
-      en_retard: true
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -148,73 +82,38 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des commandes récupérée avec succès",
+            "message": "Liste des détails de commandes récupérée avec succès",
             "data": {
               "current_page": 1,
               "data": [
                 {
-                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "numero_commande": "CMD-2025-0001",
-                  "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "date_achat": "2025-01-15",
-                  "date_livraison_prevue": "2025-02-15",
-                  "date_livraison_effective": null,
-                  "montant": "75000.00",
-                  "status": "en_attente",
-                  "note": "Commande urgente",
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00",
                   "created_at": "2025-01-15T10:30:00.000000Z",
                   "updated_at": "2025-01-15T10:30:00.000000Z",
-                  "fournisseur": {
-                    "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                    "code": "FOUR001",
-                    "name": "Fournisseur ABC",
-                    "email": "contact@fournisseur-abc.com",
-                    "phone": "+229 97 00 00 00"
+                  "commande": {
+                    "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                    "numero_commande": "CMD-2025-0001",
+                    "date_achat": "2025-01-15"
                   },
-                  "details": [
-                    {
-                      "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                      "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                      "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                      "quantite": 10,
-                      "prix_unitaire": "2500.00",
-                      "sous_total": "25000.00",
-                      "created_at": "2025-01-15T10:30:00.000000Z",
-                      "updated_at": "2025-01-15T10:30:00.000000Z",
-                      "product": {
-                        "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                        "code": "PROD001",
-                        "name": "Laptop Dell XPS 15",
-                        "unit_price": "2500.00",
-                        "picture": "laptop-dell-xps.jpg"
-                      }
-                    },
-                    {
-                      "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
-                      "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                      "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
-                      "quantite": 5,
-                      "prix_unitaire": "5000.00",
-                      "sous_total": "25000.00",
-                      "created_at": "2025-01-15T10:30:00.000000Z",
-                      "updated_at": "2025-01-15T10:30:00.000000Z",
-                      "product": {
-                        "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
-                        "code": "PROD002",
-                        "name": "Imprimante HP LaserJet",
-                        "unit_price": "5000.00",
-                        "picture": "imprimante-hp.jpg"
-                      }
-                    }
-                  ]
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "code": "PROD001",
+                    "name": "Produit ABC",
+                    "unit_price": "2500.00"
+                  }
                 }
               ],
-              "first_page_url": "http://localhost/api/commandes?page=1",
+              "first_page_url": "http://localhost/api/detail-commandes?page=1",
               "from": 1,
-              "last_page": 3,
+              "last_page": 2,
               "per_page": 15,
               "to": 15,
-              "total": 45
+              "total": 30
             }
           }
         headers: []
@@ -232,21 +131,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/commandes
+    uri: api/detail-commandes
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer une commande'
-      description: |-
-        Enregistre une nouvelle commande d'achat dans le système.
-        Le numéro de commande est généré automatiquement au format CMD-YYYY-0001.
-        Vous pouvez affecter un chauffeur et/ou un camion dès la création pour une livraison propre,
-        ou laisser ces champs vides si la livraison est assurée par le fournisseur.
+      title: 'Créer un détail de commande'
+      description: 'Ajoute une ligne de produit à une commande existante.'
       authenticated: true
       deprecated: false
       custom: []
@@ -259,9 +154,19 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      fournisseur_id:
-        name: fournisseur_id
-        description: "L'UUID du fournisseur."
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      product_id:
+        name: product_id
+        description: "L'UUID du produit."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
@@ -269,79 +174,128 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      chauffeur_id:
-        name: chauffeur_id
-        description: "L'UUID du chauffeur pour la livraison (optionnel - si livraison propre)."
-        required: false
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      camion_id:
-        name: camion_id
-        description: "L'UUID du camion pour la livraison (optionnel - si livraison propre)."
-        required: false
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      date_achat:
-        name: date_achat
-        description: "La date d'achat (format: Y-m-d)."
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
         required: true
-        example: '2025-01-15'
-        type: date
+        example: 10
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      date_livraison_prevue:
-        name: date_livraison_prevue
-        description: 'La date de livraison prévue (format: Y-m-d).'
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
         required: true
-        example: '2025-02-15'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant:
-        name: montant
-        description: 'Le montant total de la commande.'
-        required: true
-        example: '75000.00'
+        example: '2500.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      status:
-        name: status
-        description: 'Le statut de la commande (en_attente, validee, en_cours, livree, partiellement_livree, annulee). Par défaut: en_attente.'
-        required: false
-        example: en_attente
+    cleanBodyParameters:
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      quantite: 10
+      prix_unitaire: '2500.00'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande créé avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001"
+              },
+              "product": {
+                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                "code": "PROD001",
+                "name": "Produit ABC"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "commande_id": [
+                "La commande sélectionnée n'existe pas"
+              ],
+              "product_id": [
+                "Le produit sélectionné n'existe pas"
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/detail-commandes/multiple
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer plusieurs détails de commande en une seule fois'
+      description: 'Ajoute plusieurs lignes de produits à une commande existante.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      note:
-        name: note
-        description: 'Des notes ou observations sur la commande.'
-        required: false
-        example: 'Commande urgente - Livraison propre'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
       details:
         name: details
-        description: 'Liste des produits commandés (minimum 1 produit).'
+        description: 'Liste des détails à ajouter.'
         required: true
         example:
           - architecto
@@ -354,7 +308,7 @@ endpoints:
         name: 'details[].product_id'
         description: "L'UUID du produit."
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -362,7 +316,7 @@ endpoints:
         custom: []
       'details[].quantite':
         name: 'details[].quantite'
-        description: 'La quantité commandée (minimum 1).'
+        description: 'La quantité commandée.'
         required: true
         example: 10
         type: integer
@@ -372,7 +326,7 @@ endpoints:
         custom: []
       'details[].prix_unitaire':
         name: 'details[].prix_unitaire'
-        description: 'Le prix unitaire du produit.'
+        description: 'Le prix unitaire.'
         required: true
         example: '2500.00'
         type: numeric
@@ -380,28 +334,10 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      date_livraison_effective:
-        name: date_livraison_effective
-        description: 'La date de livraison effective (format: Y-m-d).'
-        required: false
-        example: '2025-02-10'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanBodyParameters:
-      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      chauffeur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
-      camion_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
-      date_achat: '2025-01-15'
-      date_livraison_prevue: '2025-02-15'
-      montant: '75000.00'
-      status: en_attente
-      note: 'Commande urgente - Livraison propre'
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
       details:
         - architecto
-      date_livraison_effective: '2025-02-10'
     fileParameters: []
     responses:
       -
@@ -409,156 +345,24 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Commande créée avec succès",
+            "message": "3 détails de commande créés avec succès",
             "data": {
               "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": null,
-              "camion_id": null,
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "date_livraison_effective": null,
-              "montant": "75000.00",
-              "status": "en_attente",
-              "note": "Commande urgente",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "fournisseur": {
-                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "FOUR001",
-                "name": "Fournisseur ABC",
-                "email": "contact@fournisseur-abc.com"
-              },
-              "chauffeur": null,
-              "camion": null,
+              "details_count": 3,
+              "total": "75000.00",
               "details": [
                 {
-                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
                   "quantite": 10,
                   "prix_unitaire": "2500.00",
-                  "sous_total": "25000.00",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                    "code": "PROD001",
-                    "name": "Laptop Dell XPS 15",
-                    "unit_price": "2500.00"
-                  }
-                },
-                {
-                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3b",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
-                  "quantite": 5,
-                  "prix_unitaire": "5000.00",
-                  "sous_total": "25000.00",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
-                    "code": "PROD002",
-                    "name": "Imprimante HP LaserJet",
-                    "unit_price": "5000.00"
-                  }
+                  "sous_total": "25000.00"
                 }
               ]
             }
           }
         headers: []
-        description: 'Création réussie - Livraison fournisseur'
-        custom: []
-      -
-        status: 201
-        content: |-
-          {
-            "success": true,
-            "message": "Commande créée avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "date_livraison_effective": null,
-              "montant": "75000.00",
-              "status": "en_attente",
-              "note": "Livraison avec notre propre chauffeur et camion",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "fournisseur": {
-                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "FOUR001",
-                "name": "Fournisseur ABC",
-                "email": "contact@fournisseur-abc.com"
-              },
-              "chauffeur": {
-                "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-                "name": "Jean Dupont",
-                "phone": "+229 97 00 00 00",
-                "numero_permis": "P-123456",
-                "status": "actif"
-              },
-              "camion": {
-                "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-                "numero_immat": "AB-1234-BJ",
-                "marque": "Mercedes-Benz",
-                "modele": "Actros",
-                "capacite": "15.00",
-                "status": "disponible"
-              },
-              "details": [
-                {
-                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "sous_total": "25000.00",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                    "code": "PROD001",
-                    "name": "Laptop Dell XPS 15"
-                  }
-                }
-              ]
-            }
-          }
-        headers: []
-        description: 'Création réussie - Livraison propre (avec chauffeur et camion)'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le chauffeur sélectionné n'est pas actif"
-          }
-        headers: []
-        description: 'Chauffeur non actif'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le camion sélectionné n'est pas disponible"
-          }
-        headers: []
-        description: 'Camion non disponible'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Validation échouée",
-            "errors": {
-              "fournisseur_id": ["Le fournisseur sélectionné n'existe pas"],
-              "chauffeur_id": ["Le chauffeur sélectionné n'existe pas"],
-              "details": ["Le champ details est requis et doit contenir au moins 1 produit"]
-            }
-          }
-        headers: []
-        description: 'Erreur de validation'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -572,17 +376,121 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/commandes/{id}'
+    uri: 'api/detail-commandes/commande/{commandeId}'
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher une commande'
-      description: "Récupère les détails d'une commande spécifique avec son fournisseur et tous ses produits."
+      title: "Liste des détails d'une commande spécifique"
+      description: "Récupère tous les détails (lignes de produits) d'une commande donnée."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      commandeId:
+        name: commandeId
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      commandeId: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détails de la commande récupérés avec succès",
+            "data": {
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                "numero_commande": "CMD-2025-0001",
+                "date_achat": "2025-01-15",
+                "montant": "50000.00"
+              },
+              "details": [
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00",
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "code": "PROD001",
+                    "name": "Produit ABC"
+                  }
+                },
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                  "quantite": 5,
+                  "prix_unitaire": "5000.00",
+                  "sous_total": "25000.00",
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                    "code": "PROD002",
+                    "name": "Produit XYZ"
+                  }
+                }
+              ],
+              "total": "50000.00"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/detail-commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher un détail de commande'
+      description: "Récupère les informations d'une ligne de commande spécifique avec tous les produits de la commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -593,7 +501,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la commande."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -614,109 +522,55 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détails de la commande récupérés avec succès",
+            "message": "Détail de commande récupéré avec succès",
             "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0001",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "date_livraison_effective": null,
-              "montant": "75000.00",
-              "status": "en_attente",
-              "note": "Commande urgente",
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-15T10:30:00.000000Z",
-              "is_en_attente": true,
-              "is_livree": false,
-              "is_en_retard": false,
-              "fournisseur": {
-                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "FOUR001",
-                "name": "Fournisseur ABC",
-                "responsable": "Jean Dupont",
-                "email": "contact@fournisseur-abc.com",
-                "phone": "+229 97 00 00 00",
-                "adresse": "123 Rue Principale",
-                "city": "Cotonou"
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001",
+                "date_achat": "2025-01-15",
+                "details": [
+                  {
+                    "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "quantite": 10,
+                    "prix_unitaire": "2500.00",
+                    "sous_total": "25000.00",
+                    "product": {
+                      "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                      "code": "PROD001",
+                      "name": "Produit ABC",
+                      "unit_price": "2500.00"
+                    }
+                  },
+                  {
+                    "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                    "quantite": 5,
+                    "prix_unitaire": "5000.00",
+                    "sous_total": "25000.00",
+                    "product": {
+                      "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                      "code": "PROD002",
+                      "name": "Produit XYZ",
+                      "unit_price": "5000.00"
+                    }
+                  }
+                ]
               },
-              "details": [
-                {
-                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "sous_total": "25000.00",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "updated_at": "2025-01-15T10:30:00.000000Z",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                    "code": "PROD001",
-                    "name": "Laptop Dell XPS 15",
-                    "description": "Ordinateur portable haute performance",
-                    "unit_price": "2500.00",
-                    "cost": "2000.00",
-                    "minimum_cost": "1800.00",
-                    "min_stock_level": 5,
-                    "is_active": true,
-                    "picture": "laptop-dell-xps.jpg",
-                    "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                    "created_at": "2025-01-10T08:00:00.000000Z",
-                    "updated_at": "2025-01-10T08:00:00.000000Z"
-                  }
-                },
-                {
-                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
-                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
-                  "quantite": 5,
-                  "prix_unitaire": "5000.00",
-                  "sous_total": "25000.00",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "updated_at": "2025-01-15T10:30:00.000000Z",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
-                    "code": "PROD002",
-                    "name": "Imprimante HP LaserJet",
-                    "description": "Imprimante laser professionnelle",
-                    "unit_price": "5000.00",
-                    "cost": "4000.00",
-                    "minimum_cost": "3500.00",
-                    "min_stock_level": 3,
-                    "is_active": true,
-                    "picture": "imprimante-hp.jpg",
-                    "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                    "created_at": "2025-01-10T08:00:00.000000Z",
-                    "updated_at": "2025-01-10T08:00:00.000000Z"
-                  }
-                },
-                {
-                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f30",
-                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f31",
-                  "quantite": 20,
-                  "prix_unitaire": "1250.00",
-                  "sous_total": "25000.00",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "updated_at": "2025-01-15T10:30:00.000000Z",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f31",
-                    "code": "PROD003",
-                    "name": "Souris sans fil Logitech",
-                    "description": "Souris ergonomique sans fil",
-                    "unit_price": "1250.00",
-                    "cost": "800.00",
-                    "minimum_cost": "600.00",
-                    "min_stock_level": 20,
-                    "is_active": true,
-                    "picture": "souris-logitech.jpg",
-                    "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                    "created_at": "2025-01-10T08:00:00.000000Z",
-                    "updated_at": "2025-01-10T08:00:00.000000Z"
-                  }
-                }
-              ]
+              "product": {
+                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                "code": "PROD001",
+                "name": "Produit ABC",
+                "unit_price": "2500.00"
+              }
             }
           }
         headers: []
@@ -727,7 +581,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Commande non trouvée"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -744,19 +598,17 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/commandes/{id}'
+    uri: 'api/detail-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour une commande'
-      description: |-
-        Met à jour les informations d'une commande existante.
-        Note: Le numéro de commande ne peut pas être modifié.
+      title: 'Mettre à jour un détail de commande'
+      description: "Modifie la quantité ou le prix unitaire d'une ligne de commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -767,7 +619,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la commande."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -780,84 +632,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      fournisseur_id:
-        name: fournisseur_id
-        description: "L'UUID du fournisseur."
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
         required: false
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-        type: string
+        example: 15
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      date_achat:
-        name: date_achat
-        description: "La date d'achat (format: Y-m-d)."
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
         required: false
-        example: '2025-01-15'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_livraison_prevue:
-        name: date_livraison_prevue
-        description: 'La date de livraison prévue (format: Y-m-d).'
-        required: false
-        example: '2025-02-15'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_livraison_effective:
-        name: date_livraison_effective
-        description: 'La date de livraison effective (format: Y-m-d).'
-        required: false
-        example: '2025-02-10'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      montant:
-        name: montant
-        description: 'Le montant total de la commande.'
-        required: false
-        example: '25000.00'
+        example: '2300.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      status:
-        name: status
-        description: 'Le statut de la commande.'
-        required: false
-        example: livree
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      note:
-        name: note
-        description: 'Des notes ou observations sur la commande.'
-        required: false
-        example: 'Livraison effectuée avec succès'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
     cleanBodyParameters:
-      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      date_achat: '2025-01-15'
-      date_livraison_prevue: '2025-02-15'
-      date_livraison_effective: '2025-02-10'
-      montant: '25000.00'
-      status: livree
-      note: 'Livraison effectuée avec succès'
+      quantite: 15
+      prix_unitaire: '2300.00'
     fileParameters: []
     responses:
       -
@@ -865,24 +662,16 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Commande mise à jour avec succès",
+            "message": "Détail de commande mis à jour avec succès",
             "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0001",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "date_livraison_effective": "2025-02-10",
-              "montant": "25000.00",
-              "status": "livree",
-              "note": "Livraison effectuée avec succès",
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 15,
+              "prix_unitaire": "2300.00",
+              "sous_total": "34500.00",
               "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-02-10T14:30:00.000000Z",
-              "fournisseur": {
-                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "FOUR001",
-                "name": "Fournisseur ABC"
-              }
+              "updated_at": "2025-01-15T14:30:00.000000Z"
             }
           }
         headers: []
@@ -893,7 +682,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Commande non trouvée"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -910,19 +699,17 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/commandes/{id}'
+    uri: 'api/detail-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour une commande'
-      description: |-
-        Met à jour les informations d'une commande existante.
-        Note: Le numéro de commande ne peut pas être modifié.
+      title: 'Mettre à jour un détail de commande'
+      description: "Modifie la quantité ou le prix unitaire d'une ligne de commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -933,7 +720,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la commande."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -946,84 +733,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      fournisseur_id:
-        name: fournisseur_id
-        description: "L'UUID du fournisseur."
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
         required: false
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-        type: string
+        example: 15
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      date_achat:
-        name: date_achat
-        description: "La date d'achat (format: Y-m-d)."
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
         required: false
-        example: '2025-01-15'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_livraison_prevue:
-        name: date_livraison_prevue
-        description: 'La date de livraison prévue (format: Y-m-d).'
-        required: false
-        example: '2025-02-15'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_livraison_effective:
-        name: date_livraison_effective
-        description: 'La date de livraison effective (format: Y-m-d).'
-        required: false
-        example: '2025-02-10'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      montant:
-        name: montant
-        description: 'Le montant total de la commande.'
-        required: false
-        example: '25000.00'
+        example: '2300.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      status:
-        name: status
-        description: 'Le statut de la commande.'
-        required: false
-        example: livree
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      note:
-        name: note
-        description: 'Des notes ou observations sur la commande.'
-        required: false
-        example: 'Livraison effectuée avec succès'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
     cleanBodyParameters:
-      fournisseur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      date_achat: '2025-01-15'
-      date_livraison_prevue: '2025-02-15'
-      date_livraison_effective: '2025-02-10'
-      montant: '25000.00'
-      status: livree
-      note: 'Livraison effectuée avec succès'
+      quantite: 15
+      prix_unitaire: '2300.00'
     fileParameters: []
     responses:
       -
@@ -1031,24 +763,16 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Commande mise à jour avec succès",
+            "message": "Détail de commande mis à jour avec succès",
             "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0001",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "date_livraison_effective": "2025-02-10",
-              "montant": "25000.00",
-              "status": "livree",
-              "note": "Livraison effectuée avec succès",
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 15,
+              "prix_unitaire": "2300.00",
+              "sous_total": "34500.00",
               "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-02-10T14:30:00.000000Z",
-              "fournisseur": {
-                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "FOUR001",
-                "name": "Fournisseur ABC"
-              }
+              "updated_at": "2025-01-15T14:30:00.000000Z"
             }
           }
         headers: []
@@ -1059,7 +783,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Commande non trouvée"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -1076,19 +800,17 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/commandes/{id}'
+    uri: 'api/detail-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer une commande'
-      description: |-
-        Effectue une suppression logique (soft delete) d'une commande.
-        La commande reste dans la base mais est marquée comme supprimée.
+      title: 'Supprimer un détail de commande'
+      description: "Effectue une suppression logique (soft delete) d'une ligne de commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -1099,7 +821,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la commande."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -1120,7 +842,7 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Commande supprimée avec succès"
+            "message": "Détail de commande supprimé avec succès"
           }
         headers: []
         description: ''
@@ -1130,7 +852,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Commande non trouvée"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -1147,17 +869,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/commandes/trashed/list
+    uri: api/detail-commandes/trashed/list
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des commandes supprimées'
-      description: 'Récupère la liste paginée de toutes les commandes supprimées (soft deleted).'
+      title: 'Liste des détails supprimés'
+      description: 'Récupère la liste paginée de tous les détails de commandes supprimés.'
       authenticated: true
       deprecated: false
       custom: []
@@ -1200,33 +922,11 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des commandes supprimées récupérée avec succès",
+            "message": "Liste des détails supprimés récupérée avec succès",
             "data": {
               "current_page": 1,
-              "data": [
-                {
-                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "numero_commande": "CMD-2025-0001",
-                  "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "date_achat": "2025-01-15",
-                  "montant": "25000.00",
-                  "status": "annulee",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "updated_at": "2025-01-15T10:30:00.000000Z",
-                  "deleted_at": "2025-01-20T14:30:00.000000Z",
-                  "fournisseur": {
-                    "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                    "code": "FOUR001",
-                    "name": "Fournisseur ABC"
-                  }
-                }
-              ],
-              "first_page_url": "http://localhost/api/commandes/trashed/list?page=1",
-              "from": 1,
-              "last_page": 1,
-              "per_page": 15,
-              "to": 3,
-              "total": 3
+              "data": [],
+              "total": 0
             }
           }
         headers: []
@@ -1244,17 +944,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/commandes/{id}/restore'
+    uri: 'api/detail-commandes/{id}/restore'
     metadata:
-      groupName: 'Gestion des Commandes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les commandes d'achat auprès des fournisseurs.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer une commande supprimée'
-      description: 'Restaure une commande précédemment supprimée (soft deleted).'
+      title: 'Restaurer un détail supprimé'
+      description: 'Restaure un détail de commande précédemment supprimé.'
       authenticated: true
       deprecated: false
       custom: []
@@ -1265,7 +965,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la commande supprimée."
+        description: "L'UUID du détail supprimé."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -1286,23 +986,15 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Commande restaurée avec succès",
+            "message": "Détail de commande restauré avec succès",
             "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0001",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "25000.00",
-              "status": "en_attente",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "deleted_at": null,
-              "fournisseur": {
-                "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "code": "FOUR001",
-                "name": "Fournisseur ABC"
-              }
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "deleted_at": null
             }
           }
         headers: []
@@ -1313,1189 +1005,10 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Commande supprimée non trouvée"
+            "message": "Détail supprimé non trouvé"
           }
         headers: []
         description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/commandes/{id}/distribute-to-warehouses'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Répartir une commande livrée dans les entrepôts'
-      description: |-
-        Permet au responsable de la centrale de répartir les produits d'une commande livrée
-        dans différents entrepôts selon les besoins. La répartition peut se faire en plusieurs fois.
-
-        **Processus automatique :**
-        - ✅ Validation que la commande est bien livrée
-        - ✅ Vérification que les produits existent dans la table products
-        - ✅ Contrôle strict des quantités (ne pas dépasser ce qui est commandé)
-        - ✅ Création automatique des stocks si le produit n'existe pas dans l'entrepôt
-        - ✅ Mise à jour automatique des stocks existants
-        - ✅ Création des mouvements de stock et de leurs détails
-        - ✅ Validation automatique des mouvements
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID de la commande livrée.'
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      distributions:
-        name: distributions
-        description: 'Tableau des répartitions par entrepôt (minimum 1).'
-        required: true
-        example: null
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'distributions[].entrepot_id':
-        name: 'distributions[].entrepot_id'
-        description: "UUID de l'entrepôt de destination."
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440002
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'distributions[].products':
-        name: 'distributions[].products'
-        description: 'Produits à transférer vers cet entrepôt (minimum 1).'
-        required: true
-        example:
-          -
-            product_id: 550e...
-            quantite: 50
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'distributions[].products[].product_id':
-        name: 'distributions[].products[].product_id'
-        description: 'UUID du produit (doit exister dans la table products).'
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440003
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'distributions[].products[].quantite':
-        name: 'distributions[].products[].quantite'
-        description: 'Quantité à transférer (minimum 1).'
-        required: true
-        example: 50
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'distributions[].note':
-        name: 'distributions[].note'
-        description: 'optional Note ou observation sur cette répartition.'
-        required: false
-        example: '"Stock prioritaire - demande urgente"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      distributions: null
-    fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "success": true,
-            "message": "Commande répartie avec succès dans 2 entrepôt(s)",
-            "data": {
-              "commande": {
-                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                "numero_commande": "CMD-2025-0001",
-                "status": "livree",
-                "is_fully_distributed": false,
-                "can_distribute_more": true
-              },
-              "stock_movements": [
-                {
-                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
-                  "reference": "MV-2025-00001",
-                  "movement_type": "réception commande",
-                  "statut": "validated",
-                  "entrepot_to": {
-                    "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
-                    "name": "Entrepôt Principal",
-                    "code": "ENT-001"
-                  },
-                  "details": [
-                    {
-                      "product": {
-                        "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                        "name": "Produit A",
-                        "code": "PROD-001"
-                      },
-                      "quantite": 50
-                    }
-                  ]
-                }
-              ],
-              "quantites_reparties": {
-                "550e8400-e29b-41d4-a716-446655440003": 100
-              },
-              "quantites_restantes": {
-                "550e8400-e29b-41d4-a716-446655440003": 0,
-                "550e8400-e29b-41d4-a716-446655440004": 50
-              }
-            }
-          }
-        headers: []
-        description: 'Répartition réussie'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "La commande doit être livrée pour être répartie",
-            "current_status": "validee"
-          }
-        headers: []
-        description: 'Commande pas encore livrée'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le produit 'Produit XYZ' n'appartient pas à cette commande"
-          }
-        headers: []
-        description: "Produit n'appartient pas à la commande"
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Quantité excessive pour le produit 'Produit A'. Restant à répartir: 30, Demandée: 50"
-          }
-        headers: []
-        description: 'Quantité excessive'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Le produit avec l'ID '550e...' n'existe pas dans le système"
-          }
-        headers: []
-        description: 'Produit non trouvé'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {
-              "distributions": ["Au moins une répartition est requise"],
-              "distributions.0.entrepot_id": ["L'entrepôt est requis"],
-              "distributions.0.products.0.quantite": ["La quantité doit être au minimum 1"]
-            }
-          }
-        headers: []
-        description: 'Erreurs de validation'
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur lors de la répartition de la commande",
-            "error": "Message d'erreur détaillé"
-          }
-        headers: []
-        description: 'Erreur serveur'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/commandes/{id}/distribution-history'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Historique des répartitions d'une commande"
-      description: |-
-        Récupère l'historique complet de toutes les répartitions effectuées pour une commande.
-        Affiche les quantités commandées, réparties et restantes par produit.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID de la commande.'
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "commande": {
-                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                "numero_commande": "CMD-2025-0001",
-                "status": "livree",
-                "date_livraison_effective": "2025-10-15",
-                "is_fully_distributed": false,
-                "can_distribute_more": true
-              },
-              "quantites_commandees": {
-                "550e8400-e29b-41d4-a716-446655440003": {
-                  "product": {
-                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                    "name": "Produit A",
-                    "code": "PROD-001"
-                  },
-                  "quantite": 100,
-                  "prix_unitaire": "2500.00"
-                }
-              },
-              "quantites_reparties": {
-                "550e8400-e29b-41d4-a716-446655440003": 50
-              },
-              "quantites_restantes": {
-                "550e8400-e29b-41d4-a716-446655440003": 50
-              },
-              "repartitions": [
-                {
-                  "stock_movement_id": "550e8400-e29b-41d4-a716-446655440010",
-                  "reference": "MV-2025-00001",
-                  "entrepot": {
-                    "entrepot_id": "550e8400-e29b-41d4-a716-446655440002",
-                    "name": "Entrepôt Principal",
-                    "code": "ENT-001"
-                  },
-                  "statut": "validated",
-                  "note": "Répartition urgente",
-                  "created_at": "2025-10-15T14:30:00.000000Z",
-                  "user": {
-                    "user_id": "550e8400-e29b-41d4-a716-446655440050",
-                    "username": "admin",
-                    "email": "admin@example.com"
-                  },
-                  "details": [
-                    {
-                      "product": {
-                        "product_id": "550e8400-e29b-41d4-a716-446655440003",
-                        "name": "Produit A",
-                        "code": "PROD-001"
-                      },
-                      "quantite": 50
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/commandes/{id}/assign-chauffeur'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Affecter un chauffeur à une commande'
-      description: |-
-        Affecte un chauffeur à une commande existante pour assurer la livraison.
-        Le chauffeur doit avoir le statut "actif" pour pouvoir être affecté.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      chauffeur_id:
-        name: chauffeur_id
-        description: "L'UUID du chauffeur à affecter."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      chauffeur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Chauffeur affecté avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-              "camion_id": null,
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "75000.00",
-              "status": "en_attente",
-              "chauffeur": {
-                "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-                "name": "Jean Dupont",
-                "phone": "+229 97 00 00 00",
-                "numero_permis": "P-123456",
-                "status": "actif"
-              }
-            }
-          }
-        headers: []
-        description: 'Chauffeur affecté avec succès'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le chauffeur n'est pas actif"
-          }
-        headers: []
-        description: 'Chauffeur non actif'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Validation échouée",
-            "errors": {
-              "chauffeur_id": ["Le chauffeur sélectionné n'existe pas"]
-            }
-          }
-        headers: []
-        description: 'Erreur de validation'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/commandes/{id}/assign-camion'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Affecter un camion à une commande'
-      description: |-
-        Affecte un camion à une commande existante pour assurer le transport.
-        Le camion doit avoir le statut "disponible" pour pouvoir être affecté.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      camion_id:
-        name: camion_id
-        description: "L'UUID du camion à affecter."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      camion_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Camion affecté avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": null,
-              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "75000.00",
-              "status": "en_attente",
-              "camion": {
-                "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-                "numero_immat": "AB-1234-BJ",
-                "marque": "Mercedes-Benz",
-                "modele": "Actros",
-                "capacite": "15.00",
-                "status": "disponible"
-              }
-            }
-          }
-        headers: []
-        description: 'Camion affecté avec succès'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le camion n'est pas disponible"
-          }
-        headers: []
-        description: 'Camion non disponible'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Validation échouée",
-            "errors": {
-              "camion_id": ["Le camion sélectionné n'existe pas"]
-            }
-          }
-        headers: []
-        description: 'Erreur de validation'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/commandes/{id}/assign-livraison'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Affecter un chauffeur et un camion à une commande'
-      description: |-
-        Affecte simultanément un chauffeur et un camion à une commande existante pour organiser une livraison complète.
-        Le chauffeur doit être "actif" et le camion doit être "disponible".
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      chauffeur_id:
-        name: chauffeur_id
-        description: "L'UUID du chauffeur à affecter."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      camion_id:
-        name: camion_id
-        description: "L'UUID du camion à affecter."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      chauffeur_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c
-      camion_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Chauffeur et camion affectés avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "75000.00",
-              "status": "en_attente",
-              "chauffeur": {
-                "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-                "name": "Jean Dupont",
-                "phone": "+229 97 00 00 00",
-                "numero_permis": "P-123456",
-                "status": "actif"
-              },
-              "camion": {
-                "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-                "numero_immat": "AB-1234-BJ",
-                "marque": "Mercedes-Benz",
-                "modele": "Actros",
-                "capacite": "15.00",
-                "status": "disponible"
-              }
-            }
-          }
-        headers: []
-        description: 'Livraison affectée avec succès'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le chauffeur n'est pas actif"
-          }
-        headers: []
-        description: 'Chauffeur non actif'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Le camion n'est pas disponible"
-          }
-        headers: []
-        description: 'Camion non disponible'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Validation échouée",
-            "errors": {
-              "chauffeur_id": ["Le chauffeur sélectionné n'existe pas"],
-              "camion_id": ["Le camion sélectionné n'existe pas"]
-            }
-          }
-        headers: []
-        description: 'Erreur de validation'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/commandes/{id}/unassign-chauffeur'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Retirer le chauffeur d'une commande"
-      description: "Retire le chauffeur affecté à une commande. La commande repassera en livraison fournisseur si aucun camion n'est affecté."
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Chauffeur retiré avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": null,
-              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "75000.00",
-              "status": "en_attente"
-            }
-          }
-        headers: []
-        description: 'Chauffeur retiré avec succès'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Aucun chauffeur n'est affecté à cette commande"
-          }
-        headers: []
-        description: 'Aucun chauffeur affecté'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/commandes/{id}/unassign-camion'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Retirer le camion d'une commande"
-      description: "Retire le camion affecté à une commande. La commande repassera en livraison fournisseur si aucun chauffeur n'est affecté."
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Camion retiré avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-              "camion_id": null,
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "75000.00",
-              "status": "en_attente"
-            }
-          }
-        headers: []
-        description: 'Camion retiré avec succès'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Aucun camion n'est affecté à cette commande"
-          }
-        headers: []
-        description: 'Aucun camion affecté'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/commandes/{id}/unassign-livraison'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Retirer le chauffeur et le camion d'une commande"
-      description: |-
-        Retire simultanément le chauffeur et le camion affectés à une commande.
-        La commande repassera en livraison fournisseur.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Chauffeur et camion retirés avec succès",
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "chauffeur_id": null,
-              "camion_id": null,
-              "date_achat": "2025-01-15",
-              "date_livraison_prevue": "2025-02-15",
-              "montant": "75000.00",
-              "status": "en_attente"
-            }
-          }
-        headers: []
-        description: 'Livraison retirée avec succès'
-        custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "success": false,
-            "message": "Aucun chauffeur ni camion n'est affecté à cette commande"
-          }
-        headers: []
-        description: 'Aucune livraison propre affectée'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/commandes/{id}/livraison-info'
-    metadata:
-      groupName: 'Gestion des Commandes'
-      groupDescription: |-
-
-        API pour gérer les commandes d'achat auprès des fournisseurs.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Obtenir les informations de livraison d'une commande"
-      description: |-
-        Récupère les informations détaillées concernant la livraison d'une commande :
-        type de livraison (propre ou fournisseur), chauffeur et camion affectés.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "type_livraison": "propre",
-              "livraison_complete": true,
-              "chauffeur": {
-                "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-                "name": "Jean Dupont",
-                "phone": "+229 97 00 00 00",
-                "numero_permis": "P-123456",
-                "date_expiration_permis": "2026-12-31",
-                "status": "actif"
-              },
-              "camion": {
-                "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3d",
-                "numero_immat": "AB-1234-BJ",
-                "marque": "Mercedes-Benz",
-                "modele": "Actros",
-                "capacite": "15.00",
-                "status": "disponible"
-              }
-            }
-          }
-        headers: []
-        description: 'Livraison propre complète'
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "type_livraison": "fournisseur",
-              "livraison_complete": false,
-              "chauffeur": null,
-              "camion": null
-            }
-          }
-        headers: []
-        description: 'Livraison fournisseur'
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_commande": "CMD-2025-0156",
-              "type_livraison": "propre",
-              "livraison_complete": false,
-              "chauffeur": {
-                "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3c",
-                "name": "Jean Dupont",
-                "phone": "+229 97 00 00 00",
-                "status": "actif"
-              },
-              "camion": null
-            }
-          }
-        headers: []
-        description: 'Livraison propre partielle (chauffeur seul)'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
         custom: []
     responseFields: []
     auth:

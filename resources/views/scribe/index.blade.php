@@ -322,16 +322,6 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-produits" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="produits">
-                    <a href="#produits">Produits</a>
-                </li>
-                                    <ul id="tocify-subheader-produits" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="produits-GETapi-products-category--categoryId-">
-                                <a href="#produits-GETapi-products-category--categoryId-">Lister les produits par catégorie</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
                     <ul id="tocify-header-endpoints" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
@@ -887,7 +877,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                                 <a href="#gestion-des-produits-POSTapi-products">Créer un nouveau produit</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-produits-GETapi-products--id-">
-                                <a href="#gestion-des-produits-GETapi-products--id-">Afficher un produit par ID</a>
+                                <a href="#gestion-des-produits-GETapi-products--id-">Afficher un produit spécifique</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-produits-PUTapi-products--id-">
                                 <a href="#gestion-des-produits-PUTapi-products--id-">Mettre à jour un produit</a>
@@ -895,11 +885,17 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-produits-DELETEapi-products--id-">
                                 <a href="#gestion-des-produits-DELETEapi-products--id-">Supprimer un produit (soft delete)</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-produits-GETapi-products-category--categoryId-">
+                                <a href="#gestion-des-produits-GETapi-products-category--categoryId-">Lister les produits par catégorie</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-produits-GETapi-products--id--restore">
                                 <a href="#gestion-des-produits-GETapi-products--id--restore">Restaurer un produit supprimé</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-produits-DELETEapi-products--id--force">
                                 <a href="#gestion-des-produits-DELETEapi-products--id--force">Supprimer définitivement un produit</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-produits-POSTapi-products--id--calculate-tonnage">
+                                <a href="#gestion-des-produits-POSTapi-products--id--calculate-tonnage">Calculer le tonnage pour une quantité de produit</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -4833,7 +4829,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": true,
-    \"with_client_type\": true,
+    \"with_client_type\": false,
     \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
@@ -4879,7 +4875,7 @@ let body = {
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": true,
-    "with_client_type": true,
+    "with_client_type": false,
     "balance_filter": "negative"
 };
 
@@ -4927,7 +4923,7 @@ $response = $client-&gt;get(
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; true,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
             'balance_filter' =&gt; 'negative',
         ],
     ]
@@ -5357,7 +5353,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -7694,7 +7690,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": false
+    \"is_active\": true
 }"
 </code></pre></div>
 
@@ -7722,7 +7718,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": false
+    "is_active": true
 };
 
 fetch(url, {
@@ -7752,7 +7748,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
         ],
     ]
 );
@@ -7969,7 +7965,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -9158,7 +9154,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-25T19:58:27\",
+    \"date_from\": \"2025-10-25T20:44:23\",
     \"date_to\": \"2051-11-18\"
 }"
 </code></pre></div>
@@ -9182,7 +9178,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-25T19:58:27",
+    "date_from": "2025-10-25T20:44:23",
     "date_to": "2051-11-18"
 };
 
@@ -9208,7 +9204,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-25T19:58:27',
+            'date_from' =&gt; '2025-10-25T20:44:23',
             'date_to' =&gt; '2051-11-18',
         ],
     ]
@@ -9339,10 +9335,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-25T19:58:27"
+               value="2025-10-25T20:44:23"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T20:44:23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9378,10 +9374,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"overdue\",
-    \"date_from\": \"2025-10-25T19:58:27\",
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-25T20:44:23\",
     \"date_to\": \"2051-11-18\",
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_details\": false
 }"
 </code></pre></div>
@@ -9416,10 +9412,10 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "overdue",
-    "date_from": "2025-10-25T19:58:27",
+    "statut": "pending",
+    "date_from": "2025-10-25T20:44:23",
     "date_to": "2051-11-18",
-    "with_client": true,
+    "with_client": false,
     "with_details": false
 };
 
@@ -9456,10 +9452,10 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'overdue',
-            'date_from' =&gt; '2025-10-25T19:58:27',
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-25T20:44:23',
             'date_to' =&gt; '2051-11-18',
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_details' =&gt; false,
         ],
     ]
@@ -9746,10 +9742,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="overdue"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>overdue</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9759,10 +9755,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-25T19:58:27"
+               value="2025-10-25T20:44:23"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T20:44:23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9794,7 +9790,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10243,9 +10239,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_details\": false,
-    \"with_payments\": false
+    \"with_payments\": true
 }"
 </code></pre></div>
 
@@ -10269,9 +10265,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": true,
+    "with_client": false,
     "with_details": false,
-    "with_payments": false
+    "with_payments": true
 };
 
 fetch(url, {
@@ -10297,9 +10293,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_details' =&gt; false,
-            'with_payments' =&gt; false,
+            'with_payments' =&gt; true,
         ],
     ]
 );
@@ -10509,7 +10505,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10551,7 +10547,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -11492,7 +11488,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-25T19:58:27\",
+    \"date_from\": \"2025-10-25T20:44:23\",
     \"date_to\": \"2051-11-18\"
 }"
 </code></pre></div>
@@ -11516,7 +11512,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-25T19:58:27",
+    "date_from": "2025-10-25T20:44:23",
     "date_to": "2051-11-18"
 };
 
@@ -11542,7 +11538,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-25T19:58:27',
+            'date_from' =&gt; '2025-10-25T20:44:23',
             'date_to' =&gt; '2051-11-18',
         ],
     ]
@@ -11682,10 +11678,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-25T19:58:27"
+               value="2025-10-25T20:44:23"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T20:44:23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11723,12 +11719,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-25T19:58:27\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-25T20:44:23\",
     \"date_to\": \"2051-11-18\",
     \"with_facture\": true,
     \"with_client\": true,
-    \"with_payment_method\": true
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -11767,12 +11763,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "refunded",
-    "date_from": "2025-10-25T19:58:27",
+    "statut": "failed",
+    "date_from": "2025-10-25T20:44:23",
     "date_to": "2051-11-18",
     "with_facture": true,
     "with_client": true,
-    "with_payment_method": true
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -11813,12 +11809,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-25T19:58:27',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-25T20:44:23',
             'date_to' =&gt; '2051-11-18',
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
-            'with_payment_method' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -12163,10 +12159,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="refunded"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>refunded</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12176,10 +12172,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-25T19:58:27"
+               value="2025-10-25T20:44:23"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T19:58:27</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T20:44:23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12253,7 +12249,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -12584,9 +12580,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": false,
+    \"with_facture\": true,
     \"with_client\": false,
-    \"with_payment_method\": true
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -12610,9 +12606,9 @@ const headers = {
 };
 
 let body = {
-    "with_facture": false,
+    "with_facture": true,
     "with_client": false,
-    "with_payment_method": true
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -12638,9 +12634,9 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; false,
+            'with_facture' =&gt; true,
             'with_client' =&gt; false,
-            'with_payment_method' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -12852,7 +12848,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -12894,7 +12890,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -16590,163 +16586,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                <h1 id="produits">Produits</h1>
-
-    
-
-                                <h2 id="produits-GETapi-products-category--categoryId-">Lister les produits par catégorie</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-products-category--categoryId-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/products/category/architecto" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/products/category/architecto"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/products/category/architecto';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-products-category--categoryId-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
-    &quot;message&quot;: &quot;Produits de la cat&eacute;gorie&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-products-category--categoryId-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-products-category--categoryId-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-products-category--categoryId-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-products-category--categoryId-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-products-category--categoryId-">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-products-category--categoryId-" data-method="GET"
-      data-path="api/products/category/{categoryId}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-products-category--categoryId-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-products-category--categoryId-"
-                    onclick="tryItOut('GETapi-products-category--categoryId-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-products-category--categoryId-"
-                    onclick="cancelTryOut('GETapi-products-category--categoryId-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-products-category--categoryId-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/products/category/{categoryId}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-products-category--categoryId-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-products-category--categoryId-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>categoryId</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="categoryId"                data-endpoint="GETapi-products-category--categoryId-"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
                 <h1 id="endpoints">Endpoints</h1>
 
     
@@ -18002,7 +17841,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -18030,7 +17869,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -18060,7 +17899,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -18293,7 +18132,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -38795,7 +38634,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-25T19:58:28\",
+    \"date_livraison_prevue\": \"2025-10-25T20:44:24\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -38818,7 +38657,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-25T19:58:28",
+    "date_livraison_prevue": "2025-10-25T20:44:24",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -38846,7 +38685,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-25T19:58:28',
+            'date_livraison_prevue' =&gt; '2025-10-25T20:44:24',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -38982,10 +38821,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-25T19:58:28"
+               value="2025-10-25T20:44:24"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T19:58:28</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T20:44:24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -39054,7 +38893,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-25T19:58:28\",
+    \"date_livraison_prevue\": \"2025-10-25T20:44:24\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -39077,7 +38916,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-25T19:58:28",
+    "date_livraison_prevue": "2025-10-25T20:44:24",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -39105,7 +38944,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-25T19:58:28',
+            'date_livraison_prevue' =&gt; '2025-10-25T20:44:24',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -39241,10 +39080,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-25T19:58:28"
+               value="2025-10-25T20:44:24"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T19:58:28</code></p>
+<p>Must be a valid date. Example: <code>2025-10-25T20:44:24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -47075,77 +46914,28 @@ print_r(json_decode((string) $body));</code></pre></div>
         {
             &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
             &quot;code&quot;: &quot;PRO-ABC123&quot;,
-            &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;,
-            &quot;description&quot;: &quot;Ordinateur portable haute performance avec &eacute;cran 15 pouces&quot;,
-            &quot;unit_price&quot;: 1500000,
-            &quot;cost&quot;: 1200000,
-            &quot;minimum_cost&quot;: 1000000,
-            &quot;min_stock_level&quot;: 5,
+            &quot;name&quot;: &quot;Ciment Portland&quot;,
+            &quot;description&quot;: &quot;Ciment de qualit&eacute; sup&eacute;rieure pour construction&quot;,
+            &quot;unit_price&quot;: 45000,
+            &quot;unit_of_measure&quot;: &quot;sac&quot;,
+            &quot;unit_weight&quot;: 50,
+            &quot;cost&quot;: 35000,
+            &quot;minimum_cost&quot;: 30000,
+            &quot;min_stock_level&quot;: 100,
             &quot;is_active&quot;: true,
-            &quot;picture&quot;: &quot;laptop-dell-xps.jpg&quot;,
+            &quot;picture&quot;: &quot;ciment-portland.jpg&quot;,
             &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-            &quot;created_at&quot;: &quot;2025-01-16T14:20:00.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-01-16T14:20:00.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
             &quot;deleted_at&quot;: null,
             &quot;category&quot;: {
                 &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-                &quot;label&quot;: &quot;Informatique&quot;,
-                &quot;description&quot;: &quot;&Eacute;quipements informatiques&quot;
+                &quot;label&quot;: &quot;Mat&eacute;riaux de construction&quot;,
+                &quot;description&quot;: &quot;Mat&eacute;riaux pour le b&acirc;timent&quot;
             }
         }
     ],
-    &quot;message&quot;: &quot;Produits de la cat&eacute;gorie&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (200, Aucun produit dans la catégorie):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
-    &quot;message&quot;: &quot;Produits de la cat&eacute;gorie&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (401, Non authentifié):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-  &quot;message&quot;: &quot;Unauthenticated.&quot;
-}2025-01-15T10:30:00.000000Z&quot;,
-      &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
-      &quot;deleted_at&quot;: null,
-      &quot;category&quot;: {
-        &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-        &quot;label&quot;: &quot;Informatique&quot;,
-        &quot;description&quot;: &quot;&Eacute;quipements informatiques&quot;
-      }
-    },
-    {
-      &quot;product_id&quot;: &quot;7d3e1c9b-2a4d-5e6f-7g8h-9i0j1k2l3m4n&quot;,
-      &quot;code&quot;: &quot;PRO-XYZ789&quot;,
-      &quot;name&quot;: &quot;Souris sans fil Logitech&quot;,
-      &quot;description&quot;: &quot;Souris ergonomique sans fil&quot;,
-      &quot;unit_price&quot;: 25000.00,
-      &quot;cost&quot;: 18000.00,
-      &quot;minimum_cost&quot;: 15000.00,
-      &quot;min_stock_level&quot;: 20,
-      &quot;is_active&quot;: true,
-      &quot;picture&quot;: &quot;souris-logitech.jpg&quot;,
-      &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-      &quot;created_at&quot;: &quot;2025-01-16T14:20:00.000000Z&quot;,
-      &quot;updated_at&quot;: &quot;2025-01-16T14:20:00.000000Z&quot;,
-      &quot;deleted_at&quot;: null,
-      &quot;category&quot;: {
-        &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-        &quot;label&quot;: &quot;Informatique&quot;,
-        &quot;description&quot;: &quot;&Eacute;quipements informatiques&quot;
-      }
-    }
-  ],
-  &quot;message&quot;: &quot;Liste des produits&quot;
+    &quot;message&quot;: &quot;Liste des produits&quot;
 }</code>
  </pre>
             <blockquote>
@@ -47260,15 +47050,17 @@ si non fourni (format: PRO-XXXXXX où X est un caractère aléatoire).</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"\\\"Laptop Dell XPS 15\\\"\",
-    \"description\": \"\\\"Ordinateur portable haute performance avec processeur Intel i7\\\"\",
+    \"name\": \"\\\"Ciment Portland\\\"\",
+    \"description\": \"\\\"Ciment de qualité supérieure pour construction\\\"\",
     \"product_category_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
-    \"unit_price\": \"1500000.00\",
-    \"cost\": \"1200000.00\",
-    \"minimum_cost\": \"1000000.00\",
-    \"min_stock_level\": 5,
+    \"unit_price\": \"45000.00\",
+    \"unit_of_measure\": \"\\\"sac\\\"\",
+    \"unit_weight\": \"50.0000\",
+    \"cost\": \"35000.00\",
+    \"minimum_cost\": \"30000.00\",
+    \"min_stock_level\": 100,
     \"is_active\": true,
-    \"picture\": \"\\\"laptop-dell-xps.jpg\\\"\",
+    \"picture\": \"\\\"ciment-portland.jpg\\\"\",
     \"image\": \"\\\"image.jpg\\\"\"
 }"
 </code></pre></div>
@@ -47286,15 +47078,17 @@ const headers = {
 };
 
 let body = {
-    "name": "\"Laptop Dell XPS 15\"",
-    "description": "\"Ordinateur portable haute performance avec processeur Intel i7\"",
+    "name": "\"Ciment Portland\"",
+    "description": "\"Ciment de qualité supérieure pour construction\"",
     "product_category_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
-    "unit_price": "1500000.00",
-    "cost": "1200000.00",
-    "minimum_cost": "1000000.00",
-    "min_stock_level": 5,
+    "unit_price": "45000.00",
+    "unit_of_measure": "\"sac\"",
+    "unit_weight": "50.0000",
+    "cost": "35000.00",
+    "minimum_cost": "30000.00",
+    "min_stock_level": 100,
     "is_active": true,
-    "picture": "\"laptop-dell-xps.jpg\"",
+    "picture": "\"ciment-portland.jpg\"",
     "image": "\"image.jpg\""
 };
 
@@ -47317,15 +47111,17 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; '"Laptop Dell XPS 15"',
-            'description' =&gt; '"Ordinateur portable haute performance avec processeur Intel i7"',
+            'name' =&gt; '"Ciment Portland"',
+            'description' =&gt; '"Ciment de qualité supérieure pour construction"',
             'product_category_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
-            'unit_price' =&gt; '1500000.00',
-            'cost' =&gt; '1200000.00',
-            'minimum_cost' =&gt; '1000000.00',
-            'min_stock_level' =&gt; 5,
+            'unit_price' =&gt; '45000.00',
+            'unit_of_measure' =&gt; '"sac"',
+            'unit_weight' =&gt; '50.0000',
+            'cost' =&gt; '35000.00',
+            'minimum_cost' =&gt; '30000.00',
+            'min_stock_level' =&gt; 100,
             'is_active' =&gt; true,
-            'picture' =&gt; '"laptop-dell-xps.jpg"',
+            'picture' =&gt; '"ciment-portland.jpg"',
             'image' =&gt; '"image.jpg"',
         ],
     ]
@@ -47345,22 +47141,24 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
         &quot;code&quot;: &quot;PRO-A7B9C2&quot;,
-        &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;,
-        &quot;description&quot;: &quot;Ordinateur portable haute performance avec processeur Intel i7&quot;,
-        &quot;unit_price&quot;: 1500000,
-        &quot;cost&quot;: 1200000,
-        &quot;minimum_cost&quot;: 1000000,
-        &quot;min_stock_level&quot;: 5,
+        &quot;name&quot;: &quot;Ciment Portland&quot;,
+        &quot;description&quot;: &quot;Ciment de qualit&eacute; sup&eacute;rieure pour construction&quot;,
+        &quot;unit_price&quot;: 45000,
+        &quot;unit_of_measure&quot;: &quot;sac&quot;,
+        &quot;unit_weight&quot;: 50,
+        &quot;cost&quot;: 35000,
+        &quot;minimum_cost&quot;: 30000,
+        &quot;min_stock_level&quot;: 100,
         &quot;is_active&quot;: true,
-        &quot;picture&quot;: &quot;laptop-dell-xps.jpg&quot;,
+        &quot;picture&quot;: &quot;ciment-portland.jpg&quot;,
         &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
         &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
         &quot;deleted_at&quot;: null,
         &quot;category&quot;: {
             &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-            &quot;label&quot;: &quot;Informatique&quot;,
-            &quot;description&quot;: &quot;&Eacute;quipements informatiques&quot;
+            &quot;label&quot;: &quot;Mat&eacute;riaux de construction&quot;,
+            &quot;description&quot;: &quot;Mat&eacute;riaux pour le b&acirc;timent&quot;
         }
     },
     &quot;message&quot;: &quot;Produit cr&eacute;&eacute; avec succ&egrave;s&quot;
@@ -47508,10 +47306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-products"
-               value=""Laptop Dell XPS 15""
+               value=""Ciment Portland""
                data-component="body">
     <br>
-<p>Nom du produit (max 255 caractères, doit être unique). Example: <code>"Laptop Dell XPS 15"</code></p>
+<p>Nom du produit (max 255 caractères, doit être unique). Example: <code>"Ciment Portland"</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -47519,10 +47317,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-products"
-               value=""Ordinateur portable haute performance avec processeur Intel i7""
+               value=""Ciment de qualité supérieure pour construction""
                data-component="body">
     <br>
-<p>optional Description détaillée du produit. Example: <code>"Ordinateur portable haute performance avec processeur Intel i7"</code></p>
+<p>optional Description détaillée du produit. Example: <code>"Ciment de qualité supérieure pour construction"</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>product_category_id</code></b>&nbsp;&nbsp;
@@ -47541,10 +47339,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="unit_price"                data-endpoint="POSTapi-products"
-               value="1500000.00"
+               value="45000.00"
                data-component="body">
     <br>
-<p>Prix de vente unitaire (doit être &gt;= 0). Example: <code>1500000.00</code></p>
+<p>Prix de vente unitaire (doit être &gt;= 0). Example: <code>45000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>unit_of_measure</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="unit_of_measure"                data-endpoint="POSTapi-products"
+               value=""sac""
+               data-component="body">
+    <br>
+<p>optional Unité de mesure (kg, t, l, pcs, sac, m, m², m³, etc.). Example: <code>"sac"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>unit_weight</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="unit_weight"                data-endpoint="POSTapi-products"
+               value="50.0000"
+               data-component="body">
+    <br>
+<p>optional Poids unitaire en kilogrammes pour le calcul du tonnage. Example: <code>50.0000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>cost</code></b>&nbsp;&nbsp;
@@ -47552,10 +47372,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="cost"                data-endpoint="POSTapi-products"
-               value="1200000.00"
+               value="35000.00"
                data-component="body">
     <br>
-<p>optional Coût d'achat du produit (doit être &gt;= 0). Example: <code>1200000.00</code></p>
+<p>optional Coût d'achat du produit (doit être &gt;= 0). Example: <code>35000.00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>minimum_cost</code></b>&nbsp;&nbsp;
@@ -47563,10 +47383,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="minimum_cost"                data-endpoint="POSTapi-products"
-               value="1000000.00"
+               value="30000.00"
                data-component="body">
     <br>
-<p>optional Coût minimum acceptable (doit être &gt;= 0). Example: <code>1000000.00</code></p>
+<p>optional Coût minimum acceptable (doit être &gt;= 0). Example: <code>30000.00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>min_stock_level</code></b>&nbsp;&nbsp;
@@ -47574,10 +47394,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="min_stock_level"                data-endpoint="POSTapi-products"
-               value="5"
+               value="100"
                data-component="body">
     <br>
-<p>optional Quantité minimale en stock déclenchant une alerte (doit être &gt;= 0). Example: <code>5</code></p>
+<p>optional Quantité minimale en stock déclenchant une alerte (doit être &gt;= 0). Example: <code>100</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -47606,10 +47426,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="picture"                data-endpoint="POSTapi-products"
-               value=""laptop-dell-xps.jpg""
+               value=""ciment-portland.jpg""
                data-component="body">
     <br>
-<p>optional URL ou nom du fichier image (max 255 caractères). Example: <code>"laptop-dell-xps.jpg"</code></p>
+<p>optional URL ou nom du fichier image (max 255 caractères). Example: <code>"ciment-portland.jpg"</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
@@ -47624,13 +47444,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="gestion-des-produits-GETapi-products--id-">Afficher un produit par ID</h2>
+                    <h2 id="gestion-des-produits-GETapi-products--id-">Afficher un produit spécifique</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Récupère les détails complets d'un produit spécifique avec sa catégorie.</p>
+<p>Récupère les détails complets d'un produit spécifique avec sa catégorie associée.</p>
 
 <span id="example-requests-GETapi-products--id-">
 <blockquote>Example request:</blockquote>
@@ -47681,7 +47501,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-products--id-">
             <blockquote>
-            <p>Example response (200, Succès):</p>
+            <p>Example response (200, Produit trouvé):</p>
         </blockquote>
                 <pre>
 
@@ -47689,25 +47509,27 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
         &quot;code&quot;: &quot;PRO-ABC123&quot;,
-        &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;,
-        &quot;description&quot;: &quot;Ordinateur portable haute performance&quot;,
-        &quot;unit_price&quot;: 1500000,
-        &quot;cost&quot;: 1200000,
-        &quot;minimum_cost&quot;: 1000000,
-        &quot;min_stock_level&quot;: 5,
+        &quot;name&quot;: &quot;Ciment Portland&quot;,
+        &quot;description&quot;: &quot;Ciment de qualit&eacute; sup&eacute;rieure pour construction&quot;,
+        &quot;unit_price&quot;: 45000,
+        &quot;unit_of_measure&quot;: &quot;sac&quot;,
+        &quot;unit_weight&quot;: 50,
+        &quot;cost&quot;: 35000,
+        &quot;minimum_cost&quot;: 30000,
+        &quot;min_stock_level&quot;: 100,
         &quot;is_active&quot;: true,
-        &quot;picture&quot;: &quot;laptop-dell-xps.jpg&quot;,
+        &quot;picture&quot;: &quot;ciment-portland.jpg&quot;,
         &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
         &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
         &quot;deleted_at&quot;: null,
         &quot;category&quot;: {
             &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-            &quot;label&quot;: &quot;Informatique&quot;,
-            &quot;description&quot;: &quot;&Eacute;quipements informatiques&quot;
+            &quot;label&quot;: &quot;Mat&eacute;riaux de construction&quot;,
+            &quot;description&quot;: &quot;Mat&eacute;riaux pour le b&acirc;timent&quot;
         }
     },
-    &quot;message&quot;: &quot;D&eacute;tail du produit&quot;
+    &quot;message&quot;: &quot;D&eacute;tails du produit&quot;
 }</code>
  </pre>
             <blockquote>
@@ -47725,7 +47547,7 @@ print_r(json_decode((string) $body));</code></pre></div>
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Product] 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Product]&quot;
 }</code>
  </pre>
     </span>
@@ -47819,7 +47641,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
                data-component="url">
     <br>
-<p>UUID du produit à afficher. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+<p>UUID du produit. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
             </div>
                     </form>
 
@@ -47829,8 +47651,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Met à jour les informations d'un produit existant. Tous les champs sont requis sauf indication contraire.
-Le nom du produit doit rester unique (sauf pour le produit lui-même).</p>
+<p>Met à jour les informations d'un produit existant. Le nom du produit doit rester unique.</p>
 
 <span id="example-requests-PUTapi-products--id-">
 <blockquote>Example request:</blockquote>
@@ -47843,16 +47664,17 @@ Le nom du produit doit rester unique (sauf pour le produit lui-même).</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"\\\"Laptop Dell XPS 15 - Édition 2025\\\"\",
-    \"description\": \"\\\"Ordinateur portable avec écran OLED\\\"\",
+    \"name\": \"\\\"Ciment Portland Premium\\\"\",
+    \"description\": \"\\\"Ciment de qualité supérieure renforcé\\\"\",
     \"product_category_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
-    \"unit_price\": \"1600000.00\",
-    \"cost\": \"1300000.00\",
-    \"minimum_cost\": \"1100000.00\",
-    \"min_stock_level\": 3,
+    \"unit_price\": \"48000.00\",
+    \"unit_of_measure\": \"\\\"sac\\\"\",
+    \"unit_weight\": \"50.0000\",
+    \"cost\": \"38000.00\",
+    \"minimum_cost\": \"32000.00\",
+    \"min_stock_level\": 80,
     \"is_active\": true,
-    \"picture\": \"\\\"laptop-dell-xps-2025.jpg\\\"\",
-    \"image\": \"\\\"image.jpg\\\"\"
+    \"picture\": \"\\\"ciment-premium.jpg\\\"\"
 }"
 </code></pre></div>
 
@@ -47869,16 +47691,17 @@ const headers = {
 };
 
 let body = {
-    "name": "\"Laptop Dell XPS 15 - Édition 2025\"",
-    "description": "\"Ordinateur portable avec écran OLED\"",
+    "name": "\"Ciment Portland Premium\"",
+    "description": "\"Ciment de qualité supérieure renforcé\"",
     "product_category_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
-    "unit_price": "1600000.00",
-    "cost": "1300000.00",
-    "minimum_cost": "1100000.00",
-    "min_stock_level": 3,
+    "unit_price": "48000.00",
+    "unit_of_measure": "\"sac\"",
+    "unit_weight": "50.0000",
+    "cost": "38000.00",
+    "minimum_cost": "32000.00",
+    "min_stock_level": 80,
     "is_active": true,
-    "picture": "\"laptop-dell-xps-2025.jpg\"",
-    "image": "\"image.jpg\""
+    "picture": "\"ciment-premium.jpg\""
 };
 
 fetch(url, {
@@ -47900,16 +47723,17 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; '"Laptop Dell XPS 15 - Édition 2025"',
-            'description' =&gt; '"Ordinateur portable avec écran OLED"',
+            'name' =&gt; '"Ciment Portland Premium"',
+            'description' =&gt; '"Ciment de qualité supérieure renforcé"',
             'product_category_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
-            'unit_price' =&gt; '1600000.00',
-            'cost' =&gt; '1300000.00',
-            'minimum_cost' =&gt; '1100000.00',
-            'min_stock_level' =&gt; 3,
+            'unit_price' =&gt; '48000.00',
+            'unit_of_measure' =&gt; '"sac"',
+            'unit_weight' =&gt; '50.0000',
+            'cost' =&gt; '38000.00',
+            'minimum_cost' =&gt; '32000.00',
+            'min_stock_level' =&gt; 80,
             'is_active' =&gt; true,
-            'picture' =&gt; '"laptop-dell-xps-2025.jpg"',
-            'image' =&gt; '"image.jpg"',
+            'picture' =&gt; '"ciment-premium.jpg"',
         ],
     ]
 );
@@ -47928,22 +47752,24 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
         &quot;code&quot;: &quot;PRO-ABC123&quot;,
-        &quot;name&quot;: &quot;Laptop Dell XPS 15 - &Eacute;dition 2025&quot;,
-        &quot;description&quot;: &quot;Ordinateur portable avec &eacute;cran OLED&quot;,
-        &quot;unit_price&quot;: 1600000,
-        &quot;cost&quot;: 1300000,
-        &quot;minimum_cost&quot;: 1100000,
-        &quot;min_stock_level&quot;: 3,
+        &quot;name&quot;: &quot;Ciment Portland Premium&quot;,
+        &quot;description&quot;: &quot;Ciment de qualit&eacute; sup&eacute;rieure renforc&eacute;&quot;,
+        &quot;unit_price&quot;: 48000,
+        &quot;unit_of_measure&quot;: &quot;sac&quot;,
+        &quot;unit_weight&quot;: 50,
+        &quot;cost&quot;: 38000,
+        &quot;minimum_cost&quot;: 32000,
+        &quot;min_stock_level&quot;: 80,
         &quot;is_active&quot;: true,
-        &quot;picture&quot;: &quot;laptop-dell-xps-2025.jpg&quot;,
+        &quot;picture&quot;: &quot;ciment-premium.jpg&quot;,
         &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
         &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;,
         &quot;deleted_at&quot;: null,
         &quot;category&quot;: {
             &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
-            &quot;label&quot;: &quot;Informatique&quot;,
-            &quot;description&quot;: &quot;&Eacute;quipements informatiques&quot;
+            &quot;label&quot;: &quot;Mat&eacute;riaux de construction&quot;,
+            &quot;description&quot;: &quot;Mat&eacute;riaux pour le b&acirc;timent&quot;
         }
     },
     &quot;message&quot;: &quot;Produit mis &agrave; jour avec succ&egrave;s&quot;
@@ -48083,10 +47909,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PUTapi-products--id-"
-               value=""Laptop Dell XPS 15 - Édition 2025""
+               value=""Ciment Portland Premium""
                data-component="body">
     <br>
-<p>Nouveau nom du produit (max 255 caractères, doit être unique). Example: <code>"Laptop Dell XPS 15 - Édition 2025"</code></p>
+<p>Nom du produit (max 255 caractères, doit être unique). Example: <code>"Ciment Portland Premium"</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -48094,10 +47920,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="PUTapi-products--id-"
-               value=""Ordinateur portable avec écran OLED""
+               value=""Ciment de qualité supérieure renforcé""
                data-component="body">
     <br>
-<p>optional Nouvelle description du produit. Example: <code>"Ordinateur portable avec écran OLED"</code></p>
+<p>optional Description détaillée du produit. Example: <code>"Ciment de qualité supérieure renforcé"</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>product_category_id</code></b>&nbsp;&nbsp;
@@ -48108,7 +47934,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
                data-component="body">
     <br>
-<p>UUID de la catégorie (doit exister). Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+<p>UUID de la catégorie du produit. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>unit_price</code></b>&nbsp;&nbsp;
@@ -48116,10 +47942,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="unit_price"                data-endpoint="PUTapi-products--id-"
-               value="1600000.00"
+               value="48000.00"
                data-component="body">
     <br>
-<p>Nouveau prix unitaire (&gt;= 0). Example: <code>1600000.00</code></p>
+<p>Prix de vente unitaire (&gt;= 0). Example: <code>48000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>unit_of_measure</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="unit_of_measure"                data-endpoint="PUTapi-products--id-"
+               value=""sac""
+               data-component="body">
+    <br>
+<p>optional Unité de mesure. Example: <code>"sac"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>unit_weight</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="unit_weight"                data-endpoint="PUTapi-products--id-"
+               value="50.0000"
+               data-component="body">
+    <br>
+<p>optional Poids unitaire en kg. Example: <code>50.0000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>cost</code></b>&nbsp;&nbsp;
@@ -48127,10 +47975,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="cost"                data-endpoint="PUTapi-products--id-"
-               value="1300000.00"
+               value="38000.00"
                data-component="body">
     <br>
-<p>optional Nouveau coût d'achat (&gt;= 0). Example: <code>1300000.00</code></p>
+<p>optional Coût d'achat (&gt;= 0). Example: <code>38000.00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>minimum_cost</code></b>&nbsp;&nbsp;
@@ -48138,10 +47986,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="minimum_cost"                data-endpoint="PUTapi-products--id-"
-               value="1100000.00"
+               value="32000.00"
                data-component="body">
     <br>
-<p>optional Nouveau coût minimum (&gt;= 0). Example: <code>1100000.00</code></p>
+<p>optional Coût minimum (&gt;= 0). Example: <code>32000.00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>min_stock_level</code></b>&nbsp;&nbsp;
@@ -48149,10 +47997,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="min_stock_level"                data-endpoint="PUTapi-products--id-"
-               value="3"
+               value="80"
                data-component="body">
     <br>
-<p>optional Nouveau niveau de stock minimum (&gt;= 0). Example: <code>3</code></p>
+<p>optional Quantité minimale en stock (&gt;= 0). Example: <code>80</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -48173,7 +48021,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>optional Statut actif/inactif. Example: <code>true</code></p>
+<p>optional Statut actif du produit. Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>picture</code></b>&nbsp;&nbsp;
@@ -48181,21 +48029,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="picture"                data-endpoint="PUTapi-products--id-"
-               value=""laptop-dell-xps-2025.jpg""
+               value=""ciment-premium.jpg""
                data-component="body">
     <br>
-<p>optional Nouvelle image (max 255 caractères). Example: <code>"laptop-dell-xps-2025.jpg"</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="image"                data-endpoint="PUTapi-products--id-"
-               value=""image.jpg""
-               data-component="body">
-    <br>
-<p>optional Alternative pour l'image. Example: <code>"image.jpg"</code></p>
+<p>optional URL ou nom du fichier image (max 255 caractères). Example: <code>"ciment-premium.jpg"</code></p>
         </div>
         </form>
 
@@ -48378,6 +48215,210 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="gestion-des-produits-GETapi-products-category--categoryId-">Lister les produits par catégorie</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste de tous les produits appartenant à une catégorie spécifique.</p>
+
+<span id="example-requests-GETapi-products-category--categoryId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/products/category/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/products/category/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/products/category/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-products-category--categoryId-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;code&quot;: &quot;PRO-ABC123&quot;,
+            &quot;name&quot;: &quot;Ciment Portland&quot;,
+            &quot;description&quot;: &quot;Ciment de qualit&eacute; sup&eacute;rieure&quot;,
+            &quot;unit_price&quot;: 45000,
+            &quot;unit_of_measure&quot;: &quot;sac&quot;,
+            &quot;unit_weight&quot;: 50,
+            &quot;cost&quot;: 35000,
+            &quot;minimum_cost&quot;: 30000,
+            &quot;min_stock_level&quot;: 100,
+            &quot;is_active&quot;: true,
+            &quot;picture&quot;: &quot;ciment-portland.jpg&quot;,
+            &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+            &quot;created_at&quot;: &quot;2025-01-16T14:20:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-16T14:20:00.000000Z&quot;,
+            &quot;deleted_at&quot;: null,
+            &quot;category&quot;: {
+                &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+                &quot;label&quot;: &quot;Mat&eacute;riaux de construction&quot;,
+                &quot;description&quot;: &quot;Mat&eacute;riaux pour le b&acirc;timent&quot;
+            }
+        }
+    ],
+    &quot;message&quot;: &quot;Produits de la cat&eacute;gorie&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Aucun produit dans la catégorie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;message&quot;: &quot;Produits de la cat&eacute;gorie&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-products-category--categoryId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-products-category--categoryId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-products-category--categoryId-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-products-category--categoryId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-products-category--categoryId-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-products-category--categoryId-" data-method="GET"
+      data-path="api/products/category/{categoryId}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-products-category--categoryId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-products-category--categoryId-"
+                    onclick="tryItOut('GETapi-products-category--categoryId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-products-category--categoryId-"
+                    onclick="cancelTryOut('GETapi-products-category--categoryId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-products-category--categoryId-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/products/category/{categoryId}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-products-category--categoryId-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-products-category--categoryId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-products-category--categoryId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>categoryId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="categoryId"                data-endpoint="GETapi-products-category--categoryId-"
+               value="8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"
+               data-component="url">
+    <br>
+<p>UUID de la catégorie. Example: <code>8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b</code></p>
+            </div>
+                    </form>
+
                     <h2 id="gestion-des-produits-GETapi-products--id--restore">Restaurer un produit supprimé</h2>
 
 <p>
@@ -48444,14 +48485,16 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;data&quot;: {
         &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
         &quot;code&quot;: &quot;PRO-ABC123&quot;,
-        &quot;name&quot;: &quot;Laptop Dell XPS 15&quot;,
-        &quot;description&quot;: &quot;Ordinateur portable haute performance&quot;,
-        &quot;unit_price&quot;: 1500000,
-        &quot;cost&quot;: 1200000,
-        &quot;minimum_cost&quot;: 1000000,
-        &quot;min_stock_level&quot;: 5,
+        &quot;name&quot;: &quot;Ciment Portland&quot;,
+        &quot;description&quot;: &quot;Ciment de qualit&eacute; sup&eacute;rieure&quot;,
+        &quot;unit_price&quot;: 45000,
+        &quot;unit_of_measure&quot;: &quot;sac&quot;,
+        &quot;unit_weight&quot;: 50,
+        &quot;cost&quot;: 35000,
+        &quot;minimum_cost&quot;: 30000,
+        &quot;min_stock_level&quot;: 100,
         &quot;is_active&quot;: true,
-        &quot;picture&quot;: &quot;laptop-dell-xps.jpg&quot;,
+        &quot;picture&quot;: &quot;ciment-portland.jpg&quot;,
         &quot;product_category_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
         &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
         &quot;updated_at&quot;: &quot;2025-01-16T16:20:00.000000Z&quot;,
@@ -48751,6 +48794,240 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>UUID du produit à supprimer définitivement. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
             </div>
                     </form>
+
+                    <h2 id="gestion-des-produits-POSTapi-products--id--calculate-tonnage">Calculer le tonnage pour une quantité de produit</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Calcule le tonnage total pour une quantité donnée d'un produit spécifique.
+Le produit doit avoir un unit_weight défini.</p>
+
+<span id="example-requests-POSTapi-products--id--calculate-tonnage">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/products/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/calculate-tonnage" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"quantity\": \"500\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/products/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/calculate-tonnage"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "quantity": "500"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/products/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/calculate-tonnage';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'quantity' =&gt; '500',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-products--id--calculate-tonnage">
+            <blockquote>
+            <p>Example response (200, Calcul réussi):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;product_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;product_name&quot;: &quot;Ciment Portland&quot;,
+        &quot;quantity&quot;: 500,
+        &quot;unit_weight_kg&quot;: 50,
+        &quot;total_weight_kg&quot;: 25000,
+        &quot;tonnage_t&quot;: 25,
+        &quot;unit_of_measure&quot;: &quot;sac&quot;
+    },
+    &quot;message&quot;: &quot;Tonnage calcul&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Produit non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Product]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Produit sans poids unitaire):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Ce produit n&#039;a pas de poids unitaire d&eacute;fini pour le calcul du tonnage&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Quantité invalide):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;quantity&quot;: [
+            &quot;La quantit&eacute; est obligatoire&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-products--id--calculate-tonnage" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-products--id--calculate-tonnage"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-products--id--calculate-tonnage"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-products--id--calculate-tonnage" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-products--id--calculate-tonnage">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-products--id--calculate-tonnage" data-method="POST"
+      data-path="api/products/{id}/calculate-tonnage"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-products--id--calculate-tonnage', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-products--id--calculate-tonnage"
+                    onclick="tryItOut('POSTapi-products--id--calculate-tonnage');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-products--id--calculate-tonnage"
+                    onclick="cancelTryOut('POSTapi-products--id--calculate-tonnage');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-products--id--calculate-tonnage"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/products/{id}/calculate-tonnage</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-products--id--calculate-tonnage"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-products--id--calculate-tonnage"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-products--id--calculate-tonnage"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-products--id--calculate-tonnage"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du produit. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>quantity</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="quantity"                data-endpoint="POSTapi-products--id--calculate-tonnage"
+               value="500"
+               data-component="body">
+    <br>
+<p>Quantité de produit. Example: <code>500</code></p>
+        </div>
+        </form>
 
                 <h1 id="gestion-des-roles-et-permissions">Gestion des Rôles et Permissions</h1>
 

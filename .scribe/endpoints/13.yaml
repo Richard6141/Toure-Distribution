@@ -1,163 +1,21 @@
-name: 'Stock Movement Details'
-description: ''
+name: 'Payment Methods Management'
+description: |-
+
+  APIs pour gérer les méthodes de paiement
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/stock-movement-details
+    uri: api/payment-methods/statistics/overview
     metadata:
-      groupName: 'Stock Movement Details'
-      groupDescription: ''
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
       subgroup: ''
       subgroupDescription: ''
-      title: 'Récupère la liste des détails de mouvements de stock'
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      stock_movement_id:
-        name: stock_movement_id
-        description: 'Filtrer par mouvement de stock.'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      product_id:
-        name: product_id
-        description: 'Filtrer par produit.'
-        required: false
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      quantity_min:
-        name: quantity_min
-        description: 'Filtrer par quantité minimale.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      quantity_max:
-        name: quantity_max
-        description: 'Filtrer par quantité maximale.'
-        required: false
-        example: 100
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      sort_by:
-        name: sort_by
-        description: 'Champ de tri.'
-        required: false
-        example: created_at
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      sort_order:
-        name: sort_order
-        description: 'Ordre de tri (asc, desc).'
-        required: false
-        example: desc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: "Nombre d'éléments par page."
-        required: false
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      stock_movement_id: uuid
-      product_id: uuid
-      quantity_min: 1
-      quantity_max: 100
-      sort_by: created_at
-      sort_order: desc
-      per_page: 15
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "data": {
-              "data": [
-                {
-                  "stock_movement_detail_id": "uuid",
-                  "stock_movement_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
-                  "created_at": "2024-01-01 10:00:00",
-                  "updated_at": "2024-01-01 10:00:00",
-                  "stock_movement": {
-                    "stock_movement_id": "uuid",
-                    "reference": "MV-2024-001",
-                    "movement_type": {
-                      "name": "Réception",
-                      "direction": "in"
-                    }
-                  },
-                  "product": {
-                    "product_id": "uuid",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
-                }
-              ],
-              "current_page": 1,
-              "per_page": 15,
-              "total": 1
-            },
-            "message": "Détails de mouvements de stock récupérés avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/stock-movement-details
-    metadata:
-      groupName: 'Stock Movement Details'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Crée un nouveau détail de mouvement de stock'
-      description: ''
+      title: 'Statistiques des méthodes de paiement'
+      description: 'Récupère des statistiques sur les méthodes de paiement.'
       authenticated: false
       deprecated: false
       custom: []
@@ -168,94 +26,23 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      stock_movement_id:
-        name: stock_movement_id
-        description: 'ID du mouvement de stock.'
-        required: true
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      product_id:
-        name: product_id
-        description: 'ID du produit.'
-        required: true
-        example: uuid
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      quantity:
-        name: quantity
-        description: 'Quantité (minimum 1).'
-        required: true
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      stock_movement_id: uuid
-      product_id: uuid
-      quantity: 10
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
-        status: 201
+        status: 200
         content: |-
           {
-            "success": true,
             "data": {
-              "stock_movement_detail_id": "uuid",
-              "stock_movement_id": "uuid",
-              "product_id": "uuid",
-              "quantity": 10,
-              "created_at": "2024-01-01 10:00:00",
-              "updated_at": "2024-01-01 10:00:00",
-              "stock_movement": {
-                "stock_movement_id": "uuid",
-                "reference": "MV-2024-001",
-                "movement_type": {
-                  "name": "Réception",
-                  "direction": "in"
-                }
-              },
-              "product": {
-                "product_id": "uuid",
-                "name": "Produit A",
-                "sku": "PROD-A-001"
+              "total_payment_methods": 5,
+              "active_payment_methods": 4,
+              "inactive_payment_methods": 1,
+              "most_used_payment_method": {
+                "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+                "name": "Espèces",
+                "usage_count": 125
               }
-            },
-            "message": "Détail de mouvement de stock créé avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {
-              "stock_movement_id": ["Le mouvement de stock est obligatoire."],
-              "product_id": ["Le produit est obligatoire."],
-              "quantity": ["La quantité est obligatoire."]
             }
           }
         headers: []
@@ -270,75 +57,226 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/stock-movement-details/stock-movement/{stockMovementId}'
+    uri: api/payment-methods
     metadata:
-      groupName: 'Stock Movement Details'
-      groupDescription: ''
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
       subgroup: ''
       subgroupDescription: ''
-      title: "Récupère tous les détails d'un mouvement de stock spécifique"
-      description: ''
+      title: 'Liste toutes les méthodes de paiement'
+      description: 'Récupère la liste de toutes les méthodes de paiement avec pagination et filtres optionnels.'
       authenticated: false
       deprecated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      stockMovementId:
-        name: stockMovementId
-        description: 'ID du mouvement de stock.'
-        required: true
-        example: uuid
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Page à récupérer (pagination).'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max: 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Recherche par nom de méthode de paiement.'
+        required: false
+        example: Espèces
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-    cleanUrlParameters:
-      stockMovementId: uuid
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+      is_active:
+        name: is_active
+        description: 'Filtrer par statut actif.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+      search: Espèces
+      is_active: true
+    bodyParameters:
+      page:
+        name: page
+        description: 'Must be at least 1.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      page: 16
+      per_page: 22
+      search: g
+      is_active: true
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "data": {
-              "data": [
-                {
-                  "stock_movement_detail_id": "uuid",
-                  "stock_movement_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
-                  "created_at": "2024-01-01 10:00:00",
-                  "updated_at": "2024-01-01 10:00:00",
-                  "product": {
-                    "product_id": "uuid",
-                    "name": "Produit A",
-                    "sku": "PROD-A-001"
-                  }
-                }
-              ],
+            "data": [
+              {
+                "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+                "name": "Espèces",
+                "is_active": true,
+                "created_at": "2024-01-15T10:30:00Z",
+                "updated_at": "2024-01-15T10:30:00Z"
+              },
+              {
+                "payment_method_id": "550e8400-e29b-41d4-a716-446655440001",
+                "name": "Carte bancaire",
+                "is_active": true,
+                "created_at": "2024-01-15T10:30:00Z",
+                "updated_at": "2024-01-15T10:30:00Z"
+              }
+            ],
+            "meta": {
               "current_page": 1,
               "per_page": 15,
-              "total": 1
+              "total": 2
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/payment-methods
+    metadata:
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une nouvelle méthode de paiement'
+      description: 'Crée une nouvelle méthode de paiement avec les informations fournies.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la méthode de paiement.'
+        required: true
+        example: 'Mobile Money'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'optionnel Statut actif de la méthode (défaut: true).'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'Mobile Money'
+      is_active: true
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "data": {
+              "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+              "name": "Mobile Money",
+              "is_active": true,
+              "created_at": "2024-01-15T10:30:00Z",
+              "updated_at": "2024-01-15T10:30:00Z"
             },
-            "message": "Détails du mouvement de stock récupérés avec succès"
+            "message": "Méthode de paiement créée avec succès"
           }
         headers: []
         description: ''
         custom: []
       -
-        status: 404
+        status: 422
         content: |-
           {
-            "success": false,
-            "message": "Mouvement de stock non trouvé"
+            "message": "Données de validation échouées",
+            "errors": {
+              "name": ["Le nom de la méthode de paiement est requis"]
+            }
           }
         headers: []
         description: ''
@@ -352,14 +290,16 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/stock-movement-details/product/{productId}'
+    uri: 'api/payment-methods/{id}'
     metadata:
-      groupName: 'Stock Movement Details'
-      groupDescription: ''
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
       subgroup: ''
       subgroupDescription: ''
-      title: 'Récupère tous les détails de mouvements pour un produit spécifique'
-      description: ''
+      title: 'Afficher une méthode de paiement spécifique'
+      description: "Récupère les détails d'une méthode de paiement par son ID."
       authenticated: false
       deprecated: false
       custom: []
@@ -367,18 +307,18 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      productId:
-        name: productId
-        description: 'ID du produit.'
+      id:
+        name: id
+        description: "L'UUID de la méthode de paiement."
         required: true
-        example: uuid
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      productId: uuid
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -389,31 +329,13 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": true,
             "data": {
-              "data": [
-                {
-                  "stock_movement_detail_id": "uuid",
-                  "stock_movement_id": "uuid",
-                  "product_id": "uuid",
-                  "quantity": 10,
-                  "created_at": "2024-01-01 10:00:00",
-                  "updated_at": "2024-01-01 10:00:00",
-                  "stock_movement": {
-                    "stock_movement_id": "uuid",
-                    "reference": "MV-2024-001",
-                    "movement_type": {
-                      "name": "Réception",
-                      "direction": "in"
-                    }
-                  }
-                }
-              ],
-              "current_page": 1,
-              "per_page": 15,
-              "total": 1
-            },
-            "message": "Détails de mouvements du produit récupérés avec succès"
+              "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+              "name": "Mobile Money",
+              "is_active": true,
+              "created_at": "2024-01-15T10:30:00Z",
+              "updated_at": "2024-01-15T10:30:00Z"
+            }
           }
         headers: []
         description: ''
@@ -422,8 +344,363 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": false,
-            "message": "Produit non trouvé"
+            "message": "Méthode de paiement non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/payment-methods/{id}'
+    metadata:
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une méthode de paiement'
+      description: "Met à jour les informations d'une méthode de paiement existante."
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la méthode de paiement."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la méthode de paiement.'
+        required: false
+        example: 'Carte de crédit'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Statut actif de la méthode.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'Carte de crédit'
+      is_active: false
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+              "name": "Carte de crédit",
+              "is_active": false,
+              "created_at": "2024-01-15T10:30:00Z",
+              "updated_at": "2024-01-15T11:00:00Z"
+            },
+            "message": "Méthode de paiement mise à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Méthode de paiement non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Données de validation échouées",
+            "errors": {
+              "name": ["Cette méthode de paiement existe déjà"]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/payment-methods/{id}'
+    metadata:
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une méthode de paiement'
+      description: "Met à jour les informations d'une méthode de paiement existante."
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la méthode de paiement."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la méthode de paiement.'
+        required: false
+        example: 'Carte de crédit'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Statut actif de la méthode.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'Carte de crédit'
+      is_active: false
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+              "name": "Carte de crédit",
+              "is_active": false,
+              "created_at": "2024-01-15T10:30:00Z",
+              "updated_at": "2024-01-15T11:00:00Z"
+            },
+            "message": "Méthode de paiement mise à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Méthode de paiement non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Données de validation échouées",
+            "errors": {
+              "name": ["Cette méthode de paiement existe déjà"]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/payment-methods/{id}'
+    metadata:
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer une méthode de paiement'
+      description: |-
+        Supprime définitivement une méthode de paiement.
+        Attention: Cette action est irréversible.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la méthode de paiement."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Méthode de paiement supprimée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Impossible de supprimer cette méthode de paiement car elle est utilisée dans des paiements existants"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Méthode de paiement non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/payment-methods/{id}/toggle-status'
+    metadata:
+      groupName: 'Payment Methods Management'
+      groupDescription: |-
+
+        APIs pour gérer les méthodes de paiement
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Activer/Désactiver une méthode de paiement'
+      description: "Change le statut actif d'une méthode de paiement."
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la méthode de paiement."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      is_active:
+        name: is_active
+        description: 'Nouveau statut actif.'
+        required: true
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      is_active: false
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "payment_method_id": "550e8400-e29b-41d4-a716-446655440000",
+              "is_active": false
+            },
+            "message": "Statut de la méthode de paiement mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Méthode de paiement non trouvée"
           }
         headers: []
         description: ''

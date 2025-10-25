@@ -1,23 +1,23 @@
-name: 'Gestion des Chauffeurs'
+name: 'Gestion des Camions'
 description: |-
 
-  API pour gérer les chauffeurs (conducteurs) de l'application.
+  API pour gérer les camions (véhicules de transport) de l'application.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/chauffeurs
+    uri: api/camions
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des chauffeurs'
-      description: 'Récupère la liste paginée de tous les chauffeurs actifs.'
+      title: 'Liste des camions'
+      description: 'Récupère la liste paginée de tous les camions actifs.'
       authenticated: true
       deprecated: false
       custom: []
@@ -50,9 +50,9 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Rechercher par nom ou numéro de téléphone.'
+        description: "Rechercher par numéro d'immatriculation ou marque."
         required: false
-        example: Jean
+        example: Toyota
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -60,20 +60,40 @@ endpoints:
         custom: []
       status:
         name: status
-        description: 'Filtrer par statut (actif, inactif, en_conge).'
+        description: 'Filtrer par statut (disponible, en_mission, en_maintenance, hors_service).'
         required: false
-        example: actif
+        example: disponible
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      permis_valide:
-        name: permis_valide
-        description: 'Filtrer par permis valide (1 ou 0).'
+      capacite_min:
+        name: capacite_min
+        description: 'numeric Filtrer par capacité minimale en tonnes.'
         required: false
-        example: true
-        type: boolean
+        example: '5'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      capacite_max:
+        name: capacite_max
+        description: 'numeric Filtrer par capacité maximale en tonnes.'
+        required: false
+        example: '20'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      marque:
+        name: marque
+        description: 'Filtrer par marque.'
+        required: false
+        example: Mercedes
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
@@ -81,9 +101,11 @@ endpoints:
     cleanQueryParameters:
       page: 1
       per_page: 15
-      search: Jean
-      status: actif
-      permis_valide: true
+      search: Toyota
+      status: disponible
+      capacite_min: '5'
+      capacite_max: '20'
+      marque: Mercedes
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -93,31 +115,32 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des chauffeurs récupérée avec succès",
+            "message": "Liste des camions récupérée avec succès",
             "data": {
               "current_page": 1,
               "data": [
                 {
-                  "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "name": "Jean Dupont",
-                  "phone": "+229 97 00 00 00",
-                  "numero_permis": "PERM123456",
-                  "date_expiration_permis": "2026-12-31",
-                  "status": "actif",
+                  "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "numero_immat": "AB-1234-CD",
+                  "marque": "Mercedes",
+                  "modele": "Actros",
+                  "capacite": "15.50",
+                  "status": "disponible",
+                  "note": "Camion en excellent état",
                   "created_at": "2025-01-15T10:30:00.000000Z",
                   "updated_at": "2025-01-15T10:30:00.000000Z"
                 }
               ],
-              "first_page_url": "http://localhost/api/chauffeurs?page=1",
+              "first_page_url": "http://localhost/api/camions?page=1",
               "from": 1,
               "last_page": 1,
-              "last_page_url": "http://localhost/api/chauffeurs?page=1",
+              "last_page_url": "http://localhost/api/camions?page=1",
               "next_page_url": null,
-              "path": "http://localhost/api/chauffeurs",
+              "path": "http://localhost/api/camions",
               "per_page": 15,
               "prev_page_url": null,
-              "to": 5,
-              "total": 5
+              "to": 10,
+              "total": 10
             }
           }
         headers: []
@@ -135,17 +158,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/chauffeurs
+    uri: api/camions
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer un chauffeur'
-      description: 'Enregistre un nouveau chauffeur dans le système.'
+      title: 'Créer un camion'
+      description: 'Enregistre un nouveau camion dans le système.'
       authenticated: true
       deprecated: false
       custom: []
@@ -158,62 +181,73 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Le nom complet du chauffeur.'
+      numero_immat:
+        name: numero_immat
+        description: "Le numéro d'immatriculation unique du camion."
         required: true
-        example: 'Jean Dupont'
+        example: AB-1234-CD
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phone:
-        name: phone
-        description: 'Le numéro de téléphone du chauffeur.'
+      marque:
+        name: marque
+        description: 'La marque du camion.'
         required: true
-        example: '+229 97 00 00 00'
+        example: Mercedes
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      numero_permis:
-        name: numero_permis
-        description: 'Le numéro unique du permis de conduire.'
-        required: true
-        example: PERM123456
+      modele:
+        name: modele
+        description: 'Le modèle du camion.'
+        required: false
+        example: Actros
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
-      date_expiration_permis:
-        name: date_expiration_permis
-        description: "La date d'expiration du permis (format: Y-m-d)."
+      capacite:
+        name: capacite
+        description: 'La capacité du camion en tonnes.'
         required: true
-        example: '2026-12-31'
-        type: date
+        example: '15.50'
+        type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
       status:
         name: status
-        description: 'Le statut du chauffeur (actif, inactif, en_conge). Par défaut: actif.'
+        description: 'Le statut du camion (disponible, en_mission, en_maintenance, hors_service). Par défaut: disponible.'
         required: false
-        example: actif
+        example: disponible
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations sur le camion.'
+        required: false
+        example: 'Camion en excellent état'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      name: 'Jean Dupont'
-      phone: '+229 97 00 00 00'
-      numero_permis: PERM123456
-      date_expiration_permis: '2026-12-31'
-      status: actif
+      numero_immat: AB-1234-CD
+      marque: Mercedes
+      modele: Actros
+      capacite: '15.50'
+      status: disponible
+      note: 'Camion en excellent état'
     fileParameters: []
     responses:
       -
@@ -221,14 +255,15 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Chauffeur créé avec succès",
+            "message": "Camion créé avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "actif",
+              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_immat": "AB-1234-CD",
+              "marque": "Mercedes",
+              "modele": "Actros",
+              "capacite": "15.50",
+              "status": "disponible",
+              "note": "Camion en excellent état",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-15T10:30:00.000000Z"
             }
@@ -243,8 +278,8 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "numero_permis": [
-                "Ce numéro de permis existe déjà"
+              "numero_immat": [
+                "Ce numéro d'immatriculation existe déjà"
               ]
             }
           }
@@ -263,17 +298,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/camions/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un chauffeur'
-      description: "Récupère les détails d'un chauffeur spécifique."
+      title: 'Afficher un camion'
+      description: "Récupère les détails d'un camion spécifique."
       authenticated: true
       deprecated: false
       custom: []
@@ -284,7 +319,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID du camion."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -305,18 +340,20 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détails du chauffeur récupérés avec succès",
+            "message": "Détails du camion récupérés avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "actif",
+              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_immat": "AB-1234-CD",
+              "marque": "Mercedes",
+              "modele": "Actros",
+              "capacite": "15.50",
+              "status": "disponible",
+              "note": "Camion en excellent état",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-15T10:30:00.000000Z",
-              "is_permis_expire": false,
-              "is_actif": true
+              "is_disponible": true,
+              "is_en_mission": false,
+              "is_en_maintenance": false
             }
           }
         headers: []
@@ -327,7 +364,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Camion non trouvé"
           }
         headers: []
         description: ''
@@ -344,17 +381,17 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/camions/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un chauffeur'
-      description: "Met à jour les informations d'un chauffeur existant."
+      title: 'Mettre à jour un camion'
+      description: "Met à jour les informations d'un camion existant."
       authenticated: true
       deprecated: false
       custom: []
@@ -365,7 +402,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID du camion."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -378,62 +415,73 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Le nom complet du chauffeur.'
+      numero_immat:
+        name: numero_immat
+        description: "Le numéro d'immatriculation unique du camion."
         required: false
-        example: 'Jean Dupont'
+        example: AB-1234-CD
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phone:
-        name: phone
-        description: 'Le numéro de téléphone du chauffeur.'
+      marque:
+        name: marque
+        description: 'La marque du camion.'
         required: false
-        example: '+229 97 00 00 00'
+        example: Mercedes
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      numero_permis:
-        name: numero_permis
-        description: 'Le numéro unique du permis de conduire.'
+      modele:
+        name: modele
+        description: 'Le modèle du camion.'
         required: false
-        example: PERM123456
+        example: Actros
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
-      date_expiration_permis:
-        name: date_expiration_permis
-        description: "La date d'expiration du permis (format: Y-m-d)."
+      capacite:
+        name: capacite
+        description: 'La capacité du camion en tonnes.'
         required: false
-        example: '2026-12-31'
-        type: date
+        example: '15.50'
+        type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
       status:
         name: status
-        description: 'Le statut du chauffeur (actif, inactif, en_conge).'
+        description: 'Le statut du camion (disponible, en_mission, en_maintenance, hors_service).'
         required: false
-        example: inactif
+        example: en_mission
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations sur le camion.'
+        required: false
+        example: 'Révision effectuée le 15/01/2025'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      name: 'Jean Dupont'
-      phone: '+229 97 00 00 00'
-      numero_permis: PERM123456
-      date_expiration_permis: '2026-12-31'
-      status: inactif
+      numero_immat: AB-1234-CD
+      marque: Mercedes
+      modele: Actros
+      capacite: '15.50'
+      status: en_mission
+      note: 'Révision effectuée le 15/01/2025'
     fileParameters: []
     responses:
       -
@@ -441,16 +489,17 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Chauffeur mis à jour avec succès",
+            "message": "Camion mis à jour avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "inactif",
+              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_immat": "AB-1234-CD",
+              "marque": "Mercedes",
+              "modele": "Actros",
+              "capacite": "15.50",
+              "status": "en_mission",
+              "note": "Révision effectuée le 15/01/2025",
               "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T11:30:00.000000Z"
+              "updated_at": "2025-01-15T14:30:00.000000Z"
             }
           }
         headers: []
@@ -461,7 +510,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Camion non trouvé"
           }
         headers: []
         description: ''
@@ -478,17 +527,17 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/camions/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un chauffeur'
-      description: "Met à jour les informations d'un chauffeur existant."
+      title: 'Mettre à jour un camion'
+      description: "Met à jour les informations d'un camion existant."
       authenticated: true
       deprecated: false
       custom: []
@@ -499,7 +548,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID du camion."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -512,62 +561,73 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Le nom complet du chauffeur.'
+      numero_immat:
+        name: numero_immat
+        description: "Le numéro d'immatriculation unique du camion."
         required: false
-        example: 'Jean Dupont'
+        example: AB-1234-CD
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phone:
-        name: phone
-        description: 'Le numéro de téléphone du chauffeur.'
+      marque:
+        name: marque
+        description: 'La marque du camion.'
         required: false
-        example: '+229 97 00 00 00'
+        example: Mercedes
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      numero_permis:
-        name: numero_permis
-        description: 'Le numéro unique du permis de conduire.'
+      modele:
+        name: modele
+        description: 'Le modèle du camion.'
         required: false
-        example: PERM123456
+        example: Actros
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
-      date_expiration_permis:
-        name: date_expiration_permis
-        description: "La date d'expiration du permis (format: Y-m-d)."
+      capacite:
+        name: capacite
+        description: 'La capacité du camion en tonnes.'
         required: false
-        example: '2026-12-31'
-        type: date
+        example: '15.50'
+        type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
       status:
         name: status
-        description: 'Le statut du chauffeur (actif, inactif, en_conge).'
+        description: 'Le statut du camion (disponible, en_mission, en_maintenance, hors_service).'
         required: false
-        example: inactif
+        example: en_mission
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations sur le camion.'
+        required: false
+        example: 'Révision effectuée le 15/01/2025'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      name: 'Jean Dupont'
-      phone: '+229 97 00 00 00'
-      numero_permis: PERM123456
-      date_expiration_permis: '2026-12-31'
-      status: inactif
+      numero_immat: AB-1234-CD
+      marque: Mercedes
+      modele: Actros
+      capacite: '15.50'
+      status: en_mission
+      note: 'Révision effectuée le 15/01/2025'
     fileParameters: []
     responses:
       -
@@ -575,16 +635,17 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Chauffeur mis à jour avec succès",
+            "message": "Camion mis à jour avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "inactif",
+              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_immat": "AB-1234-CD",
+              "marque": "Mercedes",
+              "modele": "Actros",
+              "capacite": "15.50",
+              "status": "en_mission",
+              "note": "Révision effectuée le 15/01/2025",
               "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T11:30:00.000000Z"
+              "updated_at": "2025-01-15T14:30:00.000000Z"
             }
           }
         headers: []
@@ -595,7 +656,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Camion non trouvé"
           }
         headers: []
         description: ''
@@ -612,19 +673,19 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/camions/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un chauffeur'
+      title: 'Supprimer un camion'
       description: |-
-        Effectue une suppression logique (soft delete) d'un chauffeur.
-        Le chauffeur reste dans la base mais est marqué comme supprimé.
+        Effectue une suppression logique (soft delete) d'un camion.
+        Le camion reste dans la base mais est marqué comme supprimé.
       authenticated: true
       deprecated: false
       custom: []
@@ -635,7 +696,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID du camion."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -656,7 +717,7 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Chauffeur supprimé avec succès"
+            "message": "Camion supprimé avec succès"
           }
         headers: []
         description: ''
@@ -666,7 +727,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Camion non trouvé"
           }
         headers: []
         description: ''
@@ -683,17 +744,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/chauffeurs/trashed/list
+    uri: api/camions/trashed/list
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des chauffeurs supprimés'
-      description: 'Récupère la liste paginée de tous les chauffeurs supprimés (soft deleted).'
+      title: 'Liste des camions supprimés'
+      description: 'Récupère la liste paginée de tous les camions supprimés (soft deleted).'
       authenticated: true
       deprecated: false
       custom: []
@@ -736,28 +797,29 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des chauffeurs supprimés récupérée avec succès",
+            "message": "Liste des camions supprimés récupérée avec succès",
             "data": {
               "current_page": 1,
               "data": [
                 {
-                  "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "name": "Jean Dupont",
-                  "phone": "+229 97 00 00 00",
-                  "numero_permis": "PERM123456",
-                  "date_expiration_permis": "2026-12-31",
-                  "status": "actif",
+                  "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "numero_immat": "AB-1234-CD",
+                  "marque": "Mercedes",
+                  "modele": "Actros",
+                  "capacite": "15.50",
+                  "status": "hors_service",
+                  "note": "Camion accidenté",
                   "created_at": "2025-01-15T10:30:00.000000Z",
                   "updated_at": "2025-01-15T10:30:00.000000Z",
                   "deleted_at": "2025-01-20T14:30:00.000000Z"
                 }
               ],
-              "first_page_url": "http://localhost/api/chauffeurs/trashed/list?page=1",
+              "first_page_url": "http://localhost/api/camions/trashed/list?page=1",
               "from": 1,
               "last_page": 1,
               "per_page": 15,
-              "to": 3,
-              "total": 3
+              "to": 2,
+              "total": 2
             }
           }
         headers: []
@@ -775,17 +837,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/chauffeurs/{id}/restore'
+    uri: 'api/camions/{id}/restore'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Gestion des Camions'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
+        API pour gérer les camions (véhicules de transport) de l'application.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer un chauffeur supprimé'
-      description: 'Restaure un chauffeur précédemment supprimé (soft deleted).'
+      title: 'Restaurer un camion supprimé'
+      description: 'Restaure un camion précédemment supprimé (soft deleted).'
       authenticated: true
       deprecated: false
       custom: []
@@ -796,7 +858,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur supprimé."
+        description: "L'UUID du camion supprimé."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -817,14 +879,15 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Chauffeur restauré avec succès",
+            "message": "Camion restauré avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "actif",
+              "camion_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_immat": "AB-1234-CD",
+              "marque": "Mercedes",
+              "modele": "Actros",
+              "capacite": "15.50",
+              "status": "disponible",
+              "note": "Réparations effectuées",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-15T10:30:00.000000Z",
               "deleted_at": null
@@ -838,7 +901,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Chauffeur supprimé non trouvé"
+            "message": "Camion supprimé non trouvé"
           }
         headers: []
         description: ''

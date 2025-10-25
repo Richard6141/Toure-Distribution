@@ -23,11 +23,25 @@ class Product extends Model
         'description',
         'product_category_id',
         'unit_price',
+        'unit_of_measure',
+        'unit_weight',
         'cost',
         'minimum_cost',
         'min_stock_level',
         'is_active',
         'picture',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     */
+    protected $casts = [
+        'unit_price' => 'decimal:2',
+        'cost' => 'decimal:2',
+        'minimum_cost' => 'decimal:2',
+        'unit_weight' => 'decimal:4',
+        'min_stock_level' => 'integer',
+        'is_active' => 'boolean',
     ];
 
     /**
@@ -67,5 +81,46 @@ class Product extends Model
     public function scopeActifs($query)
     {
         return $query->where('is_active', true);
+    }
+
+    /**
+     * Calculer le tonnage pour une quantité donnée
+     * 
+     * @param float $quantity
+     * @return float|null Tonnage en tonnes
+     */
+    public function calculateTonnage(float $quantity): ?float
+    {
+        if (!$this->unit_weight) {
+            return null;
+        }
+
+        // Convertir kg en tonnes
+        return ($quantity * $this->unit_weight) / 1000;
+    }
+
+    /**
+     * Obtenir le poids total pour une quantité donnée en kg
+     * 
+     * @param float $quantity
+     * @return float|null Poids en kg
+     */
+    public function getTotalWeight(float $quantity): ?float
+    {
+        if (!$this->unit_weight) {
+            return null;
+        }
+
+        return $quantity * $this->unit_weight;
+    }
+
+    /**
+     * Vérifier si le produit nécessite un calcul de tonnage
+     * 
+     * @return bool
+     */
+    public function hasTonnageCalculation(): bool
+    {
+        return !is_null($this->unit_weight) && $this->unit_weight > 0;
     }
 }

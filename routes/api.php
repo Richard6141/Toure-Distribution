@@ -159,18 +159,29 @@ Route::prefix('product-categories')->group(function () {
 })->middleware('auth:sanctum');
 
 
+/**
+ * Routes API pour la gestion des produits
+ * 
+ * Toutes les routes nécessitent une authentification via Sanctum
+ */
+
 Route::prefix('products')->group(function () {
+    // CRUD de base
     Route::get('/', [ProductController::class, 'index']);          // Liste des produits
-    Route::post('/', [ProductController::class, 'store']);         // Création d’un produit
+    Route::post('/', [ProductController::class, 'store']);         // Création d'un produit
     Route::get('{id}', [ProductController::class, 'show']);        // Afficher un produit par ID
-    Route::put('{id}', [ProductController::class, 'update']);      // Mise à jour d’un produit
+    Route::put('{id}', [ProductController::class, 'update']);      // Mise à jour d'un produit
     Route::delete('{id}', [ProductController::class, 'destroy']);  // Suppression logique (soft delete)
 
-    // Bonus utiles
-    Route::get('category/{categoryId}', [ProductController::class, 'byCategory']); // Produits d’une catégorie
+    // Routes spécifiques
+    Route::get('category/{categoryId}', [ProductController::class, 'byCategory']); // Produits d'une catégorie
     Route::get('{id}/restore', [ProductController::class, 'restore']);  // Restaurer un produit supprimé
     Route::delete('{id}/force', [ProductController::class, 'forceDelete']); // Suppression définitive
+
+    // Nouvelle route : Calcul du tonnage
+    Route::post('{id}/calculate-tonnage', [ProductController::class, 'calculateTonnage']); // Calculer le tonnage
 })->middleware('auth:sanctum');
+
 
 /**
  * Routes pour la gestion des stocks

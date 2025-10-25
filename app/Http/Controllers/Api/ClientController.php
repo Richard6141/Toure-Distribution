@@ -246,13 +246,24 @@ class ClientController extends Controller
             // Les données sont déjà validées par StoreClientRequest
             $validated = $request->validated();
 
-            // Générer le code automatiquement
-            $lastClient = Client::orderByDesc('created_at')->first();
+            // Générer le code automatiquement en tenant compte des soft deletes
+            $lastClient = Client::withTrashed()
+                ->orderByDesc('created_at')
+                ->first();
+
             $lastNumber = $lastClient && preg_match('/CLI(\d+)/', $lastClient->code, $matches)
                 ? (int)$matches[1]
                 : 0;
 
+            // Générer le nouveau code
             $newCode = 'CLI' . str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
+
+            // Vérifier l'unicité du code (au cas où)
+            while (Client::withTrashed()->where('code', $newCode)->exists()) {
+                $lastNumber++;
+                $newCode = 'CLI' . str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
+            }
+
             $validated['code'] = $newCode;
 
             $client = Client::create($validated);

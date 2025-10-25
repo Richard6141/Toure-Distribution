@@ -37,80 +37,31 @@ endpoints:
               {
                 "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
                 "code": "PRO-ABC123",
-                "name": "Laptop Dell XPS 15",
-                "description": "Ordinateur portable haute performance avec écran 15 pouces",
-                "unit_price": 1500000.00,
-                "cost": 1200000.00,
-                "minimum_cost": 1000000.00,
-                "min_stock_level": 5,
+                "name": "Ciment Portland",
+                "description": "Ciment de qualité supérieure pour construction",
+                "unit_price": 45000.00,
+                "unit_of_measure": "sac",
+                "unit_weight": 50.0000,
+                "cost": 35000.00,
+                "minimum_cost": 30000.00,
+                "min_stock_level": 100,
                 "is_active": true,
-                "picture": "laptop-dell-xps.jpg",
+                "picture": "ciment-portland.jpg",
                 "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "created_at": "2025-01-16T14:20:00.000000Z",
-                "updated_at": "2025-01-16T14:20:00.000000Z",
-                "deleted_at": null,
-                "category": {
-                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                  "label": "Informatique",
-                  "description": "Équipements informatiques"
-                }
-              }
-            ],
-            "message": "Produits de la catégorie"
-          }
-        headers: []
-        description: Succès
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "data": [],
-            "message": "Produits de la catégorie"
-          }
-        headers: []
-        description: 'Aucun produit dans la catégorie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }2025-01-15T10:30:00.000000Z",
+                "created_at": "2025-01-15T10:30:00.000000Z",
                 "updated_at": "2025-01-15T10:30:00.000000Z",
                 "deleted_at": null,
                 "category": {
                   "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                  "label": "Informatique",
-                  "description": "Équipements informatiques"
-                }
-              },
-              {
-                "product_id": "7d3e1c9b-2a4d-5e6f-7g8h-9i0j1k2l3m4n",
-                "code": "PRO-XYZ789",
-                "name": "Souris sans fil Logitech",
-                "description": "Souris ergonomique sans fil",
-                "unit_price": 25000.00,
-                "cost": 18000.00,
-                "minimum_cost": 15000.00,
-                "min_stock_level": 20,
-                "is_active": true,
-                "picture": "souris-logitech.jpg",
-                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "created_at": "2025-01-16T14:20:00.000000Z",
-                "updated_at": "2025-01-16T14:20:00.000000Z",
-                "deleted_at": null,
-                "category": {
-                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                  "label": "Informatique",
-                  "description": "Équipements informatiques"
+                  "label": "Matériaux de construction",
+                  "description": "Matériaux pour le bâtiment"
                 }
               }
             ],
             "message": "Liste des produits"
           }
         headers: []
-        description: 'Non authentifié'
+        description: Succès
         custom: []
       -
         status: 401
@@ -159,7 +110,7 @@ endpoints:
         name: name
         description: 'Nom du produit (max 255 caractères, doit être unique).'
         required: true
-        example: '"Laptop Dell XPS 15"'
+        example: '"Ciment Portland"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -169,7 +120,7 @@ endpoints:
         name: description
         description: 'optional Description détaillée du produit.'
         required: false
-        example: '"Ordinateur portable haute performance avec processeur Intel i7"'
+        example: '"Ciment de qualité supérieure pour construction"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -189,17 +140,37 @@ endpoints:
         name: unit_price
         description: 'Prix de vente unitaire (doit être >= 0).'
         required: true
-        example: '1500000.00'
+        example: '45000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      unit_of_measure:
+        name: unit_of_measure
+        description: 'optional Unité de mesure (kg, t, l, pcs, sac, m, m², m³, etc.).'
+        required: false
+        example: '"sac"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      unit_weight:
+        name: unit_weight
+        description: 'optional Poids unitaire en kilogrammes pour le calcul du tonnage.'
+        required: false
+        example: '50.0000'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       cost:
         name: cost
         description: "optional Coût d'achat du produit (doit être >= 0)."
         required: false
-        example: '1200000.00'
+        example: '35000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
@@ -209,7 +180,7 @@ endpoints:
         name: minimum_cost
         description: 'optional Coût minimum acceptable (doit être >= 0).'
         required: false
-        example: '1000000.00'
+        example: '30000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
@@ -219,7 +190,7 @@ endpoints:
         name: min_stock_level
         description: 'optional Quantité minimale en stock déclenchant une alerte (doit être >= 0).'
         required: false
-        example: 5
+        example: 100
         type: integer
         enumValues: []
         exampleWasSpecified: true
@@ -239,7 +210,7 @@ endpoints:
         name: picture
         description: 'optional URL ou nom du fichier image (max 255 caractères).'
         required: false
-        example: '"laptop-dell-xps.jpg"'
+        example: '"ciment-portland.jpg"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -256,15 +227,17 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: '"Laptop Dell XPS 15"'
-      description: '"Ordinateur portable haute performance avec processeur Intel i7"'
+      name: '"Ciment Portland"'
+      description: '"Ciment de qualité supérieure pour construction"'
       product_category_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      unit_price: '1500000.00'
-      cost: '1200000.00'
-      minimum_cost: '1000000.00'
-      min_stock_level: 5
+      unit_price: '45000.00'
+      unit_of_measure: '"sac"'
+      unit_weight: '50.0000'
+      cost: '35000.00'
+      minimum_cost: '30000.00'
+      min_stock_level: 100
       is_active: true
-      picture: '"laptop-dell-xps.jpg"'
+      picture: '"ciment-portland.jpg"'
       image: '"image.jpg"'
     fileParameters: []
     responses:
@@ -275,22 +248,24 @@ endpoints:
             "data": {
               "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
               "code": "PRO-A7B9C2",
-              "name": "Laptop Dell XPS 15",
-              "description": "Ordinateur portable haute performance avec processeur Intel i7",
-              "unit_price": 1500000.00,
-              "cost": 1200000.00,
-              "minimum_cost": 1000000.00,
-              "min_stock_level": 5,
+              "name": "Ciment Portland",
+              "description": "Ciment de qualité supérieure pour construction",
+              "unit_price": 45000.00,
+              "unit_of_measure": "sac",
+              "unit_weight": 50.0000,
+              "cost": 35000.00,
+              "minimum_cost": 30000.00,
+              "min_stock_level": 100,
               "is_active": true,
-              "picture": "laptop-dell-xps.jpg",
+              "picture": "ciment-portland.jpg",
               "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-15T10:30:00.000000Z",
               "deleted_at": null,
               "category": {
                 "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "label": "Informatique",
-                "description": "Équipements informatiques"
+                "label": "Matériaux de construction",
+                "description": "Matériaux pour le bâtiment"
               }
             },
             "message": "Produit créé avec succès"
@@ -370,8 +345,8 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un produit par ID'
-      description: "Récupère les détails complets d'un produit spécifique avec sa catégorie."
+      title: 'Afficher un produit spécifique'
+      description: "Récupère les détails complets d'un produit spécifique avec sa catégorie associée."
       authenticated: true
       deprecated: false
       custom: []
@@ -382,7 +357,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'UUID du produit à afficher.'
+        description: 'UUID du produit.'
         required: true
         example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
         type: string
@@ -405,28 +380,30 @@ endpoints:
             "data": {
               "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
               "code": "PRO-ABC123",
-              "name": "Laptop Dell XPS 15",
-              "description": "Ordinateur portable haute performance",
-              "unit_price": 1500000.00,
-              "cost": 1200000.00,
-              "minimum_cost": 1000000.00,
-              "min_stock_level": 5,
+              "name": "Ciment Portland",
+              "description": "Ciment de qualité supérieure pour construction",
+              "unit_price": 45000.00,
+              "unit_of_measure": "sac",
+              "unit_weight": 50.0000,
+              "cost": 35000.00,
+              "minimum_cost": 30000.00,
+              "min_stock_level": 100,
               "is_active": true,
-              "picture": "laptop-dell-xps.jpg",
+              "picture": "ciment-portland.jpg",
               "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-15T10:30:00.000000Z",
               "deleted_at": null,
               "category": {
                 "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "label": "Informatique",
-                "description": "Équipements informatiques"
+                "label": "Matériaux de construction",
+                "description": "Matériaux pour le bâtiment"
               }
             },
-            "message": "Détail du produit"
+            "message": "Détails du produit"
           }
         headers: []
-        description: Succès
+        description: 'Produit trouvé'
         custom: []
       -
         status: 401
@@ -441,7 +418,7 @@ endpoints:
         status: 404
         content: |-
           {
-            "message": "No query results for model [App\\Models\\Product] 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+            "message": "No query results for model [App\\Models\\Product]"
           }
         headers: []
         description: 'Produit non trouvé'
@@ -465,9 +442,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Mettre à jour un produit'
-      description: |-
-        Met à jour les informations d'un produit existant. Tous les champs sont requis sauf indication contraire.
-        Le nom du produit doit rester unique (sauf pour le produit lui-même).
+      description: "Met à jour les informations d'un produit existant. Le nom du produit doit rester unique."
       authenticated: true
       deprecated: false
       custom: []
@@ -493,9 +468,9 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Nouveau nom du produit (max 255 caractères, doit être unique).'
+        description: 'Nom du produit (max 255 caractères, doit être unique).'
         required: true
-        example: '"Laptop Dell XPS 15 - Édition 2025"'
+        example: '"Ciment Portland Premium"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -503,9 +478,9 @@ endpoints:
         custom: []
       description:
         name: description
-        description: 'optional Nouvelle description du produit.'
+        description: 'optional Description détaillée du produit.'
         required: false
-        example: '"Ordinateur portable avec écran OLED"'
+        example: '"Ciment de qualité supérieure renforcé"'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -513,7 +488,7 @@ endpoints:
         custom: []
       product_category_id:
         name: product_category_id
-        description: 'UUID de la catégorie (doit exister).'
+        description: 'UUID de la catégorie du produit.'
         required: true
         example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
         type: string
@@ -523,19 +498,39 @@ endpoints:
         custom: []
       unit_price:
         name: unit_price
-        description: 'Nouveau prix unitaire (>= 0).'
+        description: 'Prix de vente unitaire (>= 0).'
         required: true
-        example: '1600000.00'
+        example: '48000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      unit_of_measure:
+        name: unit_of_measure
+        description: 'optional Unité de mesure.'
+        required: false
+        example: '"sac"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      unit_weight:
+        name: unit_weight
+        description: 'optional Poids unitaire en kg.'
+        required: false
+        example: '50.0000'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       cost:
         name: cost
-        description: "optional Nouveau coût d'achat (>= 0)."
+        description: "optional Coût d'achat (>= 0)."
         required: false
-        example: '1300000.00'
+        example: '38000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
@@ -543,9 +538,9 @@ endpoints:
         custom: []
       minimum_cost:
         name: minimum_cost
-        description: 'optional Nouveau coût minimum (>= 0).'
+        description: 'optional Coût minimum (>= 0).'
         required: false
-        example: '1100000.00'
+        example: '32000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
@@ -553,9 +548,9 @@ endpoints:
         custom: []
       min_stock_level:
         name: min_stock_level
-        description: 'optional Nouveau niveau de stock minimum (>= 0).'
+        description: 'optional Quantité minimale en stock (>= 0).'
         required: false
-        example: 3
+        example: 80
         type: integer
         enumValues: []
         exampleWasSpecified: true
@@ -563,7 +558,7 @@ endpoints:
         custom: []
       is_active:
         name: is_active
-        description: 'optional Statut actif/inactif.'
+        description: 'optional Statut actif du produit.'
         required: false
         example: true
         type: boolean
@@ -573,35 +568,26 @@ endpoints:
         custom: []
       picture:
         name: picture
-        description: 'optional Nouvelle image (max 255 caractères).'
+        description: 'optional URL ou nom du fichier image (max 255 caractères).'
         required: false
-        example: '"laptop-dell-xps-2025.jpg"'
+        example: '"ciment-premium.jpg"'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
-      image:
-        name: image
-        description: "optional Alternative pour l'image."
-        required: false
-        example: '"image.jpg"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanBodyParameters:
-      name: '"Laptop Dell XPS 15 - Édition 2025"'
-      description: '"Ordinateur portable avec écran OLED"'
+      name: '"Ciment Portland Premium"'
+      description: '"Ciment de qualité supérieure renforcé"'
       product_category_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      unit_price: '1600000.00'
-      cost: '1300000.00'
-      minimum_cost: '1100000.00'
-      min_stock_level: 3
+      unit_price: '48000.00'
+      unit_of_measure: '"sac"'
+      unit_weight: '50.0000'
+      cost: '38000.00'
+      minimum_cost: '32000.00'
+      min_stock_level: 80
       is_active: true
-      picture: '"laptop-dell-xps-2025.jpg"'
-      image: '"image.jpg"'
+      picture: '"ciment-premium.jpg"'
     fileParameters: []
     responses:
       -
@@ -611,22 +597,24 @@ endpoints:
             "data": {
               "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
               "code": "PRO-ABC123",
-              "name": "Laptop Dell XPS 15 - Édition 2025",
-              "description": "Ordinateur portable avec écran OLED",
-              "unit_price": 1600000.00,
-              "cost": 1300000.00,
-              "minimum_cost": 1100000.00,
-              "min_stock_level": 3,
+              "name": "Ciment Portland Premium",
+              "description": "Ciment de qualité supérieure renforcé",
+              "unit_price": 48000.00,
+              "unit_of_measure": "sac",
+              "unit_weight": 50.0000,
+              "cost": 38000.00,
+              "minimum_cost": 32000.00,
+              "min_stock_level": 80,
               "is_active": true,
-              "picture": "laptop-dell-xps-2025.jpg",
+              "picture": "ciment-premium.jpg",
               "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-16T15:45:00.000000Z",
               "deleted_at": null,
               "category": {
                 "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "label": "Informatique",
-                "description": "Équipements informatiques"
+                "label": "Matériaux de construction",
+                "description": "Matériaux pour le bâtiment"
               }
             },
             "message": "Produit mis à jour avec succès"
@@ -755,6 +743,105 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: 'api/products/category/{categoryId}'
+    metadata:
+      groupName: 'Gestion des Produits'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les produits par catégorie'
+      description: 'Récupère la liste de tous les produits appartenant à une catégorie spécifique.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      categoryId:
+        name: categoryId
+        description: 'UUID de la catégorie.'
+        required: true
+        example: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      categoryId: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "code": "PRO-ABC123",
+                "name": "Ciment Portland",
+                "description": "Ciment de qualité supérieure",
+                "unit_price": 45000.00,
+                "unit_of_measure": "sac",
+                "unit_weight": 50.0000,
+                "cost": 35000.00,
+                "minimum_cost": 30000.00,
+                "min_stock_level": 100,
+                "is_active": true,
+                "picture": "ciment-portland.jpg",
+                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "created_at": "2025-01-16T14:20:00.000000Z",
+                "updated_at": "2025-01-16T14:20:00.000000Z",
+                "deleted_at": null,
+                "category": {
+                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                  "label": "Matériaux de construction",
+                  "description": "Matériaux pour le bâtiment"
+                }
+              }
+            ],
+            "message": "Produits de la catégorie"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "data": [],
+            "message": "Produits de la catégorie"
+          }
+        headers: []
+        description: 'Aucun produit dans la catégorie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: 'api/products/{id}/restore'
     metadata:
       groupName: 'Gestion des Produits'
@@ -798,14 +885,16 @@ endpoints:
             "data": {
               "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
               "code": "PRO-ABC123",
-              "name": "Laptop Dell XPS 15",
-              "description": "Ordinateur portable haute performance",
-              "unit_price": 1500000.00,
-              "cost": 1200000.00,
-              "minimum_cost": 1000000.00,
-              "min_stock_level": 5,
+              "name": "Ciment Portland",
+              "description": "Ciment de qualité supérieure",
+              "unit_price": 45000.00,
+              "unit_of_measure": "sac",
+              "unit_weight": 50.0000,
+              "cost": 35000.00,
+              "minimum_cost": 30000.00,
+              "min_stock_level": 100,
               "is_active": true,
-              "picture": "laptop-dell-xps.jpg",
+              "picture": "ciment-portland.jpg",
               "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
               "created_at": "2025-01-15T10:30:00.000000Z",
               "updated_at": "2025-01-16T16:20:00.000000Z",
@@ -908,6 +997,123 @@ endpoints:
           }
         headers: []
         description: 'Produit non trouvé'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/products/{id}/calculate-tonnage'
+    metadata:
+      groupName: 'Gestion des Produits'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Calculer le tonnage pour une quantité de produit'
+      description: |-
+        Calcule le tonnage total pour une quantité donnée d'un produit spécifique.
+        Le produit doit avoir un unit_weight défini.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID du produit.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      quantity:
+        name: quantity
+        description: 'Quantité de produit.'
+        required: true
+        example: '500'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      quantity: '500'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "product_name": "Ciment Portland",
+              "quantity": 500,
+              "unit_weight_kg": 50.0000,
+              "total_weight_kg": 25000.0000,
+              "tonnage_t": 25.0000,
+              "unit_of_measure": "sac"
+            },
+            "message": "Tonnage calculé avec succès"
+          }
+        headers: []
+        description: 'Calcul réussi'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Product]"
+          }
+        headers: []
+        description: 'Produit non trouvé'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Ce produit n'a pas de poids unitaire défini pour le calcul du tonnage"
+          }
+        headers: []
+        description: 'Produit sans poids unitaire'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "quantity": [
+                "La quantité est obligatoire"
+              ]
+            }
+          }
+        headers: []
+        description: 'Quantité invalide'
         custom: []
     responseFields: []
     auth:
