@@ -15,6 +15,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserListResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Knuckles\Scribe\Attributes\Group;
@@ -112,13 +113,16 @@ class AuthController extends Controller
             // Tri
             $query->orderBy($sortBy, $sortOrder);
 
+            // Charger les rôles pour la resource
+            $query->with('roles');
+
             // Pagination
             $users = $query->paginate($perPage);
 
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'users' => UserResource::collection($users->items()),
+                    'users' => UserListResource::collection($users->items()),
                     'pagination' => [
                         'total' => $users->total(),
                         'per_page' => $users->perPage(),
@@ -273,19 +277,15 @@ class AuthController extends Controller
                 $token = $user->createToken('auth-token')->plainTextToken;
             }
 
+            // Charger les rôles et permissions (si l'utilisateur en a)
+            $user->load(['roles.permissions', 'permissions']);
+
             return response()->json([
                 'success' => true,
                 'code' => 200,
                 'message' => 'Inscription réussie',
                 'data' => [
-                    'user' => [
-                        'user_id' => $user->user_id,
-                        'firstname' => $user->firstname,
-                        'lastname' => $user->lastname,
-                        'username' => $user->username,
-                        'email' => $user->email,
-                        'is_active' => $user->is_active,
-                    ],
+                    'user' => new UserResource($user),
                     'access_token' => $token,
                     'token_type' => 'Bearer',
                 ]
@@ -340,6 +340,9 @@ class AuthController extends Controller
                     'message' => 'Utilisateur non trouvé'
                 ], 404);
             }
+
+            // Charger les rôles et permissions
+            $user->load(['roles.permissions', 'permissions']);
 
             return response()->json([
                 'success' => true,
@@ -584,6 +587,9 @@ class AuthController extends Controller
     {
         $user = auth()->user();
 
+        // Charger les rôles et permissions
+        $user->load(['roles.permissions', 'permissions']);
+
         return response()->json([
             'success' => true,
             'data' => new UserResource($user)
@@ -731,19 +737,14 @@ class AuthController extends Controller
 
             $token = $user->createToken($tokenName)->plainTextToken;
 
+            // Charger les rôles et permissions pour la resource
+            $user->load(['roles.permissions', 'permissions']);
+
             return response()->json([
                 'success' => true,
                 'message' => 'Connexion réussie',
                 'data' => [
-                    'user' => [
-                        'user_id' => $user->user_id,
-                        'firstname' => $user->firstname,
-                        'lastname' => $user->lastname,
-                        'username' => $user->username,
-                        'email' => $user->email,
-                        'is_active' => $user->is_active,
-                        'last_login_at' => $user->last_login_at,
-                    ],
+                    'user' => new UserResource($user),
                     'access_token' => $token,
                     'token_type' => 'Bearer',
                 ]

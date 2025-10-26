@@ -46,23 +46,13 @@ class UserResource extends JsonResource
             'password_changed_at' => $this->password_changed_at?->format('Y-m-d H:i:s'),
             'should_change_password' => $this->shouldChangePassword(),
 
-            // Rôles et permissions Spatie
-            'roles' => RoleResource::collection($this->whenLoaded('roles')),
-            'role_names' => $this->getRoleNames(), // Collection de noms de rôles
-
-            // Permissions directes (assignées directement à l'utilisateur)
-            'direct_permissions' => PermissionResource::collection(
-                $this->whenLoaded('permissions')
-            ),
-            'direct_permission_names' => $this->getDirectPermissions()->pluck('name'),
-
-            // Toutes les permissions (directes + via rôles)
-            'all_permissions' => $this->when(
-                $request->boolean('include_all_permissions'),
-                function () {
-                    return $this->getAllPermissions()->pluck('name');
-                }
-            ),
+            // Rôles et permissions (si utilisés)
+            'roles' => $this->when($this->relationLoaded('roles'), function () {
+                return $this->roles->pluck('name');
+            }),
+            'permissions' => $this->when($this->relationLoaded('permissions'), function () {
+                return $this->permissions->pluck('name');
+            }),
 
             // Timestamps
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),

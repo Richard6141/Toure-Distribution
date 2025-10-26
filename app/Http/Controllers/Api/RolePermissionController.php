@@ -10,6 +10,9 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\RoleResource;
+use App\Http\Resources\PermissionResource;
+use App\Http\Resources\UserListResource;
 
 /**
  * @group Gestion des Rôles et Permissions
@@ -100,7 +103,7 @@ class RolePermissionController extends Controller
                 'success' => true,
                 'message' => 'Liste des rôles récupérée avec succès',
                 'data' => [
-                    'roles' => $roles->items(),
+                    'roles' => RoleResource::collection($roles->items()),
                     'pagination' => [
                         'total' => $roles->total(),
                         'per_page' => $roles->perPage(),
@@ -185,7 +188,7 @@ class RolePermissionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Rôle créé avec succès',
-                'data' => ['role' => $role]
+                'data' => ['role' => new RoleResource($role)]
             ], 201);
         } catch (ValidationException $e) {
             return response()->json([
@@ -256,7 +259,7 @@ class RolePermissionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Rôle récupéré avec succès',
-                'data' => ['role' => $role]
+                'data' => ['role' => new RoleResource($role)]
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -306,7 +309,7 @@ class RolePermissionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Rôle mis à jour avec succès',
-                'data' => ['role' => $role]
+                'data' => ['role' => new RoleResource($role->fresh()->load('permissions'))]
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
@@ -464,7 +467,7 @@ class RolePermissionController extends Controller
                 'success' => true,
                 'message' => 'Liste des permissions récupérée avec succès',
                 'data' => [
-                    'permissions' => $permissions->items(),
+                    'permissions' => PermissionResource::collection($permissions->items()),
                     'pagination' => [
                         'total' => $permissions->total(),
                         'per_page' => $permissions->perPage(),
@@ -528,7 +531,7 @@ class RolePermissionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Permission créée avec succès',
-                'data' => ['permission' => $permission]
+                'data' => ['permission' => new PermissionResource($permission)]
             ], 201);
         } catch (ValidationException $e) {
             return response()->json([
@@ -584,7 +587,7 @@ class RolePermissionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Permission mise à jour avec succès',
-                'data' => ['permission' => $permission]
+                'data' => ['permission' => new PermissionResource($permission->fresh())]
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
@@ -683,9 +686,7 @@ class RolePermissionController extends Controller
                 'success' => true,
                 'message' => 'Permissions assignées avec succès',
                 'data' => [
-                    'role' => $role->name,
-                    'permissions_count' => $role->permissions->count(),
-                    'permissions' => $role->permissions
+                    'role' => new RoleResource($role)
                 ]
             ], 200);
         } catch (ValidationException $e) {
@@ -813,13 +814,7 @@ class RolePermissionController extends Controller
                 'success' => true,
                 'message' => 'Rôles assignés avec succès',
                 'data' => [
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'email' => $user->email
-                    ],
-                    'roles' => $user->roles->pluck('name'),
-                    'all_permissions_count' => $user->getAllPermissions()->count()
+                    'user' => new UserListResource($user)
                 ]
             ], 200);
         } catch (ValidationException $e) {
@@ -928,28 +923,28 @@ class RolePermissionController extends Controller
             $role = Role::findOrFail($roleId);
             $perPage = $request->get('per_page', 15);
 
-            // ✅ Paginer manuellement avec UUID
-            $usersQuery = DB::table('model_has_roles')
+            // ✅ Récupérer les IDs des utilisateurs ayant ce rôle
+            $userIds = DB::table('model_has_roles')
                 ->where('role_id', $roleId)
                 ->where('model_type', User::class)
-                ->join('users', 'model_has_roles.model_id', '=', 'users.user_id')
-                ->select('users.user_id as id', 'users.firstname', 'users.lastname', 'users.email', 'users.created_at');
+                ->pluck('model_id');
 
-            $total = $usersQuery->count();
-            $currentPage = $request->get('page', 1);
-            $users = $usersQuery->skip(($currentPage - 1) * $perPage)->take($perPage)->get();
+            // Récupérer les utilisateurs complets avec leurs rôles
+            $usersQuery = User::whereIn('user_id', $userIds)->with('roles');
+
+            $users = $usersQuery->paginate($perPage);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Utilisateurs du rôle récupérés avec succès',
                 'data' => [
                     'role' => $role->name,
-                    'users' => $users,
+                    'users' => UserListResource::collection($users->items()),
                     'pagination' => [
-                        'total' => $total,
-                        'per_page' => $perPage,
-                        'current_page' => $currentPage,
-                        'last_page' => ceil($total / $perPage),
+                        'total' => $users->total(),
+                        'per_page' => $users->perPage(),
+                        'current_page' => $users->currentPage(),
+                        'last_page' => $users->lastPage(),
                     ]
                 ]
             ], 200);
@@ -1019,11 +1014,7 @@ class RolePermissionController extends Controller
                 'success' => true,
                 'message' => 'Permissions de l\'utilisateur récupérées avec succès',
                 'data' => [
-                    'user' => [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'email' => $user->email
-                    ],
+                    'user' => new UserListResource($user),
                     'roles' => $user->roles->pluck('name'),
                     'permissions' => $allPermissions,
                     'total_permissions' => $allPermissions->count()

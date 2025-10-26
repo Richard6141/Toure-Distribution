@@ -6,6 +6,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\VenteController;
+use App\Http\Controllers\Api\BanqueController;
 use App\Http\Controllers\Api\CamionController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\ClientTypeController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\Api\DetailVenteController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\Api\BanqueAccountController;
 use App\Http\Controllers\Api\PaiementVenteController;
 use App\Http\Controllers\Api\PaymentMethodController;
 use App\Http\Controllers\StockMovementTypeController;
@@ -27,6 +29,7 @@ use App\Http\Controllers\Api\DetailCommandeController;
 use App\Http\Controllers\Api\RolePermissionController;
 use App\Http\Controllers\StockMovementDetailController;
 use App\Http\Controllers\Api\PaiementCommandeController;
+use App\Http\Controllers\Api\BanqueTransactionController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -643,4 +646,85 @@ Route::prefix('roles-permissions')
             Route::get('/{userId}/permissions', [RolePermissionController::class, 'getUserPermissions'])
                 ->name('permissions');
         });
+
+        /*
+|--------------------------------------------------------------------------
+| Banques API Routes
+|--------------------------------------------------------------------------
+*/
+
+        Route::prefix('banques')->name('banques.')->group(function () {
+            // Routes fixes d'abord
+            Route::get('/trashed/list', [BanqueController::class, 'trashed'])->name('trashed');
+            Route::get('/active/list', [BanqueController::class, 'active'])->name('active');
+
+            // Routes CRUD standard
+            Route::get('/', [BanqueController::class, 'index'])->name('index');
+            Route::post('/', [BanqueController::class, 'store'])->name('store');
+            Route::get('/{id}', [BanqueController::class, 'show'])->name('show');
+            Route::put('/{id}', [BanqueController::class, 'update'])->name('update');
+            Route::patch('/{id}', [BanqueController::class, 'update'])->name('patch');
+            Route::delete('/{id}', [BanqueController::class, 'destroy'])->name('destroy');
+
+            // Routes pour gestion soft delete
+            Route::post('/{id}/restore', [BanqueController::class, 'restore'])->name('restore');
+        })->middleware('auth:sanctum');
+
+        /*
+|--------------------------------------------------------------------------
+| Banque Accounts API Routes
+|--------------------------------------------------------------------------
+*/
+
+        Route::prefix('banque-accounts')->name('banque-accounts.')->group(function () {
+            // Routes fixes d'abord
+            Route::get('/trashed/list', [BanqueAccountController::class, 'trashed'])->name('trashed');
+            Route::get('/banque/{banqueId}', [BanqueAccountController::class, 'byBanque'])->name('by-banque');
+            Route::get('/statut/{statut}', [BanqueAccountController::class, 'byStatut'])->name('by-statut');
+
+            // Routes CRUD standard
+            Route::get('/', [BanqueAccountController::class, 'index'])->name('index');
+            Route::post('/', [BanqueAccountController::class, 'store'])->name('store');
+            Route::get('/{id}', [BanqueAccountController::class, 'show'])->name('show');
+            Route::put('/{id}', [BanqueAccountController::class, 'update'])->name('update');
+            Route::patch('/{id}', [BanqueAccountController::class, 'update'])->name('patch');
+            Route::delete('/{id}', [BanqueAccountController::class, 'destroy'])->name('destroy');
+
+            // Routes pour gestion soft delete
+            Route::post('/{id}/restore', [BanqueAccountController::class, 'restore'])->name('restore');
+
+            // Routes pour opérations bancaires
+            Route::post('/{id}/debit', [BanqueAccountController::class, 'debit'])->name('debit');
+            Route::post('/{id}/credit', [BanqueAccountController::class, 'credit'])->name('credit');
+        })->middleware('auth:sanctum');
+
+        /*
+|--------------------------------------------------------------------------
+| Banque Transactions API Routes
+|--------------------------------------------------------------------------
+*/
+
+        Route::prefix('banque-transactions')->name('banque-transactions.')->group(function () {
+            // Routes fixes d'abord
+            Route::get('/trashed/list', [BanqueTransactionController::class, 'trashed'])->name('trashed');
+            Route::get('/account/{accountId}', [BanqueTransactionController::class, 'byAccount'])->name('by-account');
+            Route::get('/type/{type}', [BanqueTransactionController::class, 'byType'])->name('by-type');
+            Route::get('/status/{status}', [BanqueTransactionController::class, 'byStatus'])->name('by-status');
+            Route::post('/period', [BanqueTransactionController::class, 'byPeriod'])->name('by-period');
+
+            // Routes CRUD standard
+            Route::get('/', [BanqueTransactionController::class, 'index'])->name('index');
+            Route::post('/', [BanqueTransactionController::class, 'store'])->name('store');
+            Route::get('/{id}', [BanqueTransactionController::class, 'show'])->name('show');
+            Route::put('/{id}', [BanqueTransactionController::class, 'update'])->name('update');
+            Route::patch('/{id}', [BanqueTransactionController::class, 'update'])->name('patch');
+            Route::delete('/{id}', [BanqueTransactionController::class, 'destroy'])->name('destroy');
+
+            // Routes pour gestion soft delete
+            Route::post('/{id}/restore', [BanqueTransactionController::class, 'restore'])->name('restore');
+
+            // Routes pour actions spéciales
+            Route::post('/{id}/validate', [BanqueTransactionController::class, 'validate'])->name('validate');
+            Route::post('/{id}/cancel', [BanqueTransactionController::class, 'cancel'])->name('cancel');
+        })->middleware('auth:sanctum');
     });

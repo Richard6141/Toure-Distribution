@@ -40,11 +40,6 @@ class User extends Authenticatable
         'email',
         'password',
         'is_active',
-        'email_verified_at',
-        'last_login_at',
-        'last_login_ip',
-        'failed_login_attempts',
-        'locked_until',
         'password_changed_at',
     ];
 
@@ -68,7 +63,6 @@ class User extends Authenticatable
             'password_changed_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
-            'failed_login_attempts' => 'integer',
         ];
     }
 
