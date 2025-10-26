@@ -53,6 +53,7 @@ class VenteController extends Controller
      *         "date_vente": "2025-01-15T10:00:00.000000Z",
      *         "montant_total": "25000.00",
      *         "montant_net": "23750.00",
+     *         "transport_price": "500.00",
      *         "status": "validee",
      *         "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
      *       }
@@ -131,6 +132,7 @@ class VenteController extends Controller
      * @bodyParam entrepot_id string required L'UUID de l'entrepôt source. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
      * @bodyParam date_vente datetime required La date et heure de la vente. Example: 2025-01-15 10:00:00
      * @bodyParam remise numeric La remise globale. Example: 1250.00
+     * @bodyParam transport_price numeric Le prix du transport. Example: 500.00
      * @bodyParam status string Le statut (en_attente par défaut, validee pour mise à jour automatique des stocks). Example: validee
      * @bodyParam note string Des notes. Example: Vente avec remise spéciale
      * @bodyParam details array required Les détails de la vente. Example: [{"product_id": "uuid", "quantite": 10, "prix_unitaire": 2500}]
@@ -141,6 +143,7 @@ class VenteController extends Controller
      *   "data": {
      *     "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
      *     "numero_vente": "VTE-2025-0001",
+     *     "transport_price": "500.00",
      *     "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
      *     "status": "validee"
      *   }
@@ -158,6 +161,7 @@ class VenteController extends Controller
             'entrepot_id' => 'required|uuid|exists:entrepots,entrepot_id',
             'date_vente' => 'required|date',
             'remise' => 'nullable|numeric|min:0',
+            'transport_price' => 'nullable|numeric|min:0',
             'status' => ['nullable', Rule::in([
                 'en_attente',
                 'validee',
@@ -180,6 +184,8 @@ class VenteController extends Controller
             'date_vente.required' => 'La date de vente est requise',
             'details.required' => 'Les détails de la vente sont requis',
             'details.min' => 'Au moins un produit est requis',
+            'transport_price.numeric' => 'Le prix du transport doit être un nombre',
+            'transport_price.min' => 'Le prix du transport ne peut pas être négatif',
         ]);
 
         if ($validator->fails()) {
@@ -225,15 +231,17 @@ class VenteController extends Controller
 
                 $ht = ($qte * $pu) - $remiseLigne;
                 $taxe = $ht * ($tauxTaxe / 100);
-                $ttc = $ht + $taxe;
 
                 $montantHT += $ht;
                 $montantTaxe += $taxe;
-                $montantTotal += $ttc;
+                $montantTotal += $ht + $taxe;
             }
 
             $remise = $request->input('remise', 0);
-            $montantNet = $montantTotal - $remise;
+            $transportPrice = $request->input('transport_price', 0);
+
+            // Montant net = Montant total - Remise + Frais de transport
+            $montantNet = $montantTotal - $remise + $transportPrice;
 
             // Créer la vente
             $vente = Vente::create([
@@ -244,6 +252,7 @@ class VenteController extends Controller
                 'montant_taxe' => $montantTaxe,
                 'montant_total' => $montantTotal,
                 'remise' => $remise,
+                'transport_price' => $transportPrice,
                 'montant_net' => $montantNet,
                 'status' => $status,
                 'note' => $request->note,
@@ -251,18 +260,32 @@ class VenteController extends Controller
 
             // Créer les détails
             foreach ($request->details as $detail) {
+                $qte = $detail['quantite'];
+                $pu = $detail['prix_unitaire'];
+                $remiseLigne = $detail['remise_ligne'] ?? 0;
+                $tauxTaxe = $detail['taux_taxe'] ?? 0;
+
+                $ht = ($qte * $pu) - $remiseLigne;
+                $taxe = $ht * ($tauxTaxe / 100);
+                $total = $ht + $taxe;
+
                 DetailVente::create([
                     'vente_id' => $vente->vente_id,
                     'product_id' => $detail['product_id'],
-                    'quantite' => $detail['quantite'],
-                    'prix_unitaire' => $detail['prix_unitaire'],
-                    'remise_ligne' => $detail['remise_ligne'] ?? 0,
-                    'taux_taxe' => $detail['taux_taxe'] ?? 0,
+                    'quantite' => $qte,
+                    'prix_unitaire' => $pu,
+                    'remise_ligne' => $remiseLigne,
+                    'taux_taxe' => $tauxTaxe,
+                    'montant_ht' => $ht,
+                    'montant_taxe' => $taxe,
+                    'montant_total' => $total,
                 ]);
             }
 
-            // Le mouvement de stock est créé automatiquement par le modèle
-            // si status = 'validee' grâce au hook created()
+            // Si statut validee, créer le mouvement de stock
+            if ($status === 'validee') {
+                $vente->createStockMovementIfNeeded();
+            }
 
             $vente->load([
                 'client:client_id,code,name_client',
@@ -336,6 +359,7 @@ class VenteController extends Controller
      * @authenticated
      * 
      * @bodyParam status string Le statut de la vente. Example: validee
+     * @bodyParam transport_price numeric Le prix du transport. Example: 500.00
      * @bodyParam note string Des notes. Example: Livraison effectuée
      * 
      * @response 200 {
@@ -368,6 +392,7 @@ class VenteController extends Controller
                 'partiellement_livree',
                 'annulee'
             ])],
+            'transport_price' => 'nullable|numeric|min:0',
             'note' => 'nullable|string',
         ]);
 
@@ -403,6 +428,15 @@ class VenteController extends Controller
                         );
                     }
                 }
+            }
+
+            // Si transport_price est modifié, recalculer le montant_net
+            if ($request->has('transport_price')) {
+                $oldTransportPrice = $vente->transport_price;
+                $newTransportPrice = $request->transport_price;
+
+                // Recalculer montant_net: montant_net = montant_total - remise + transport_price
+                $vente->montant_net = $vente->montant_total - $vente->remise + $newTransportPrice;
             }
 
             $vente->update($validator->validated());

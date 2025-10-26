@@ -151,6 +151,7 @@ endpoints:
                   "date_vente": "2025-01-15T10:00:00.000000Z",
                   "montant_total": "25000.00",
                   "montant_net": "23750.00",
+                  "transport_price": "500.00",
                   "status": "validee",
                   "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
                 }
@@ -237,6 +238,16 @@ endpoints:
         description: 'La remise globale.'
         required: false
         example: '1250.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      transport_price:
+        name: transport_price
+        description: 'Le prix du transport.'
+        required: false
+        example: '500.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
@@ -331,6 +342,7 @@ endpoints:
       entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
       date_vente: '2025-01-15 10:00:00'
       remise: '1250.00'
+      transport_price: '500.00'
       status: validee
       note: 'Vente avec remise spéciale'
       details:
@@ -349,6 +361,7 @@ endpoints:
             "data": {
               "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
               "numero_vente": "VTE-2025-0001",
+              "transport_price": "500.00",
               "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
               "status": "validee"
             }
@@ -483,6 +496,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      transport_price:
+        name: transport_price
+        description: 'Le prix du transport.'
+        required: false
+        example: '500.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       note:
         name: note
         description: 'Des notes.'
@@ -495,6 +518,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       status: validee
+      transport_price: '500.00'
       note: 'Livraison effectuée'
     fileParameters: []
     responses:
@@ -578,6 +602,16 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      transport_price:
+        name: transport_price
+        description: 'Le prix du transport.'
+        required: false
+        example: '500.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
       note:
         name: note
         description: 'Des notes.'
@@ -590,6 +624,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       status: validee
+      transport_price: '500.00'
       note: 'Livraison effectuée'
     fileParameters: []
     responses:
