@@ -1,0 +1,862 @@
+name: 'Gestion des Banques'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/roles-permissions/banques/trashed/list
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les banques supprimées'
+      description: 'Récupère la liste de toutes les banques supprimées logiquement.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [],
+            "message": "Liste des banques supprimées"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/roles-permissions/banques/active/list
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les banques actives'
+      description: 'Récupère uniquement les banques avec isActive = true.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "name": "Ecobank Bénin",
+                "code": "BNQ-ECO001",
+                "adresse": "Avenue Clozel, Cotonou",
+                "contact_info": "+229 21 31 32 33",
+                "isActive": true
+              }
+            ],
+            "message": "Liste des banques actives"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/roles-permissions/banques
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister toutes les banques'
+      description: 'Récupère la liste complète de toutes les banques avec leurs comptes associés.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "name": "Ecobank Bénin",
+                "code": "BNQ-ECO001",
+                "adresse": "Avenue Clozel, Cotonou",
+                "contact_info": "+229 21 31 32 33",
+                "isActive": true,
+                "created_at": "2025-01-15T10:30:00.000000Z",
+                "updated_at": "2025-01-15T10:30:00.000000Z",
+                "deleted_at": null,
+                "accounts_count": 5
+              }
+            ],
+            "message": "Liste des banques"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/roles-permissions/banques
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une nouvelle banque'
+      description: |-
+        Crée une nouvelle banque dans le système. Le code banque est généré automatiquement
+        si non fourni (format: BNQ-XXXXXX).
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la banque (max 255 caractères, unique).'
+        required: true
+        example: '"Ecobank Bénin"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      code:
+        name: code
+        description: 'optional Code unique de la banque (auto-généré si non fourni).'
+        required: false
+        example: '"BNQ-ECO001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      adresse:
+        name: adresse
+        description: 'optional Adresse physique de la banque.'
+        required: false
+        example: '"Avenue Clozel, Cotonou"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      contact_info:
+        name: contact_info
+        description: 'optional Informations de contact (téléphone, email).'
+        required: false
+        example: '"+229 21 31 32 33"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      isActive:
+        name: isActive
+        description: 'optional Indique si la banque est active (par défaut: true).'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: '"Ecobank Bénin"'
+      code: '"BNQ-ECO001"'
+      adresse: '"Avenue Clozel, Cotonou"'
+      contact_info: '"+229 21 31 32 33"'
+      isActive: true
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "data": {
+              "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "name": "Ecobank Bénin",
+              "code": "BNQ-ECO001",
+              "adresse": "Avenue Clozel, Cotonou",
+              "contact_info": "+229 21 31 32 33",
+              "isActive": true,
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "deleted_at": null
+            },
+            "message": "Banque créée avec succès"
+          }
+        headers: []
+        description: 'Banque créée avec succès'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": ["Le nom de la banque est obligatoire"],
+              "code": ["Ce code banque existe déjà"]
+            }
+          }
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/banques/{id}'
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher une banque spécifique'
+      description: "Récupère les détails complets d'une banque avec ses comptes associés."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la banque.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "name": "Ecobank Bénin",
+              "code": "BNQ-ECO001",
+              "adresse": "Avenue Clozel, Cotonou",
+              "contact_info": "+229 21 31 32 33",
+              "isActive": true,
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "deleted_at": null,
+              "accounts": []
+            },
+            "message": "Détails de la banque"
+          }
+        headers: []
+        description: 'Banque trouvée'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Banque]"
+          }
+        headers: []
+        description: 'Banque non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/roles-permissions/banques/{id}'
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une banque'
+      description: "Met à jour les informations d'une banque existante."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la banque à mettre à jour.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la banque (unique).'
+        required: true
+        example: '"Ecobank Bénin SA"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      code:
+        name: code
+        description: 'optional Code de la banque.'
+        required: false
+        example: '"BNQ-ECO001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      adresse:
+        name: adresse
+        description: 'optional Adresse de la banque.'
+        required: false
+        example: '"Avenue Clozel, Cotonou"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      contact_info:
+        name: contact_info
+        description: 'optional Contact de la banque.'
+        required: false
+        example: '"+229 21 31 32 33"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      isActive:
+        name: isActive
+        description: 'optional Statut actif.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: '"Ecobank Bénin SA"'
+      code: '"BNQ-ECO001"'
+      adresse: '"Avenue Clozel, Cotonou"'
+      contact_info: '"+229 21 31 32 33"'
+      isActive: true
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "name": "Ecobank Bénin SA",
+              "code": "BNQ-ECO001",
+              "adresse": "Avenue Clozel, Cotonou",
+              "contact_info": "+229 21 31 32 33",
+              "isActive": true,
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T15:45:00.000000Z",
+              "deleted_at": null
+            },
+            "message": "Banque mise à jour avec succès"
+          }
+        headers: []
+        description: 'Mise à jour réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Banque]"
+          }
+        headers: []
+        description: 'Banque non trouvée'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": ["Ce nom de banque existe déjà"]
+            }
+          }
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/roles-permissions/banques/{id}'
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une banque'
+      description: "Met à jour les informations d'une banque existante."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la banque à mettre à jour.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom de la banque (unique).'
+        required: true
+        example: '"Ecobank Bénin SA"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      code:
+        name: code
+        description: 'optional Code de la banque.'
+        required: false
+        example: '"BNQ-ECO001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      adresse:
+        name: adresse
+        description: 'optional Adresse de la banque.'
+        required: false
+        example: '"Avenue Clozel, Cotonou"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      contact_info:
+        name: contact_info
+        description: 'optional Contact de la banque.'
+        required: false
+        example: '"+229 21 31 32 33"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      isActive:
+        name: isActive
+        description: 'optional Statut actif.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: '"Ecobank Bénin SA"'
+      code: '"BNQ-ECO001"'
+      adresse: '"Avenue Clozel, Cotonou"'
+      contact_info: '"+229 21 31 32 33"'
+      isActive: true
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "name": "Ecobank Bénin SA",
+              "code": "BNQ-ECO001",
+              "adresse": "Avenue Clozel, Cotonou",
+              "contact_info": "+229 21 31 32 33",
+              "isActive": true,
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T15:45:00.000000Z",
+              "deleted_at": null
+            },
+            "message": "Banque mise à jour avec succès"
+          }
+        headers: []
+        description: 'Mise à jour réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Banque]"
+          }
+        headers: []
+        description: 'Banque non trouvée'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": ["Ce nom de banque existe déjà"]
+            }
+          }
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/roles-permissions/banques/{id}'
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer une banque (soft delete)'
+      description: 'Effectue une suppression logique de la banque.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la banque à supprimer.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Banque supprimée avec succès"
+          }
+        headers: []
+        description: 'Suppression réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Banque]"
+          }
+        headers: []
+        description: 'Banque non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/roles-permissions/banques/{id}/restore'
+    metadata:
+      groupName: 'Gestion des Banques'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaurer une banque supprimée'
+      description: 'Restaure une banque supprimée logiquement.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la banque à restaurer.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "name": "Ecobank Bénin",
+              "code": "BNQ-ECO001",
+              "adresse": "Avenue Clozel, Cotonou",
+              "contact_info": "+229 21 31 32 33",
+              "isActive": true,
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T16:20:00.000000Z",
+              "deleted_at": null
+            },
+            "message": "Banque restaurée avec succès"
+          }
+        headers: []
+        description: 'Restauration réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\Banque]"
+          }
+        headers: []
+        description: 'Banque non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []

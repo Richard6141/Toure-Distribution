@@ -449,6 +449,40 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-gestion-des-banques" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-banques">
+                    <a href="#gestion-des-banques">Gestion des Banques</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-banques" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-banques-GETapi-roles-permissions-banques-trashed-list">
+                                <a href="#gestion-des-banques-GETapi-roles-permissions-banques-trashed-list">Lister les banques supprimées</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-GETapi-roles-permissions-banques-active-list">
+                                <a href="#gestion-des-banques-GETapi-roles-permissions-banques-active-list">Lister les banques actives</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-GETapi-roles-permissions-banques">
+                                <a href="#gestion-des-banques-GETapi-roles-permissions-banques">Lister toutes les banques</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-POSTapi-roles-permissions-banques">
+                                <a href="#gestion-des-banques-POSTapi-roles-permissions-banques">Créer une nouvelle banque</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-GETapi-roles-permissions-banques--id-">
+                                <a href="#gestion-des-banques-GETapi-roles-permissions-banques--id-">Afficher une banque spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-PUTapi-roles-permissions-banques--id-">
+                                <a href="#gestion-des-banques-PUTapi-roles-permissions-banques--id-">Mettre à jour une banque</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-PATCHapi-roles-permissions-banques--id-">
+                                <a href="#gestion-des-banques-PATCHapi-roles-permissions-banques--id-">Mettre à jour une banque</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-DELETEapi-roles-permissions-banques--id-">
+                                <a href="#gestion-des-banques-DELETEapi-roles-permissions-banques--id-">Supprimer une banque (soft delete)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-banques-POSTapi-roles-permissions-banques--id--restore">
+                                <a href="#gestion-des-banques-POSTapi-roles-permissions-banques--id--restore">Restaurer une banque supprimée</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-gestion-des-camions" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="gestion-des-camions">
                     <a href="#gestion-des-camions">Gestion des Camions</a>
@@ -566,6 +600,49 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-commandes-GETapi-commandes--id--livraison-info">
                                 <a href="#gestion-des-commandes-GETapi-commandes--id--livraison-info">Obtenir les informations de livraison d'une commande</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-gestion-des-comptes-bancaires" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-comptes-bancaires">
+                    <a href="#gestion-des-comptes-bancaires">Gestion des Comptes Bancaires</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-comptes-bancaires" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-trashed-list">
+                                <a href="#gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-trashed-list">Lister les comptes supprimés</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-banque--banqueId-">
+                                <a href="#gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-banque--banqueId-">Lister les comptes par banque</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-statut--statut-">
+                                <a href="#gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-statut--statut-">Lister les comptes par statut</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts">
+                                <a href="#gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts">Lister tous les comptes bancaires</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts">
+                                <a href="#gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts">Créer un nouveau compte bancaire</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts--id-">
+                                <a href="#gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts--id-">Afficher un compte bancaire spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-PUTapi-roles-permissions-banque-accounts--id-">
+                                <a href="#gestion-des-comptes-bancaires-PUTapi-roles-permissions-banque-accounts--id-">Mettre à jour un compte bancaire</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-PATCHapi-roles-permissions-banque-accounts--id-">
+                                <a href="#gestion-des-comptes-bancaires-PATCHapi-roles-permissions-banque-accounts--id-">Mettre à jour un compte bancaire</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-DELETEapi-roles-permissions-banque-accounts--id-">
+                                <a href="#gestion-des-comptes-bancaires-DELETEapi-roles-permissions-banque-accounts--id-">Supprimer un compte bancaire (soft delete)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--restore">
+                                <a href="#gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--restore">Restaurer un compte bancaire supprimé</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--debit">
+                                <a href="#gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--debit">Débiter un compte</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--credit">
+                                <a href="#gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--credit">Créditer un compte</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -1003,6 +1080,55 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-gestion-des-transactions-bancaires" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="gestion-des-transactions-bancaires">
+                    <a href="#gestion-des-transactions-bancaires">Gestion des Transactions Bancaires</a>
+                </li>
+                                    <ul id="tocify-subheader-gestion-des-transactions-bancaires" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-trashed-list">
+                                <a href="#gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-trashed-list">Lister les transactions supprimées</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-account--accountId-">
+                                <a href="#gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-account--accountId-">Lister les transactions par compte</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-type--type-">
+                                <a href="#gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-type--type-">Lister les transactions par type</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-status--status-">
+                                <a href="#gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-status--status-">Lister les transactions par statut</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions-period">
+                                <a href="#gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions-period">Lister les transactions par période</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions">
+                                <a href="#gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions">Lister toutes les transactions</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions">
+                                <a href="#gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions">Créer une nouvelle transaction</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions--id-">
+                                <a href="#gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions--id-">Afficher une transaction spécifique</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-PUTapi-roles-permissions-banque-transactions--id-">
+                                <a href="#gestion-des-transactions-bancaires-PUTapi-roles-permissions-banque-transactions--id-">Mettre à jour une transaction</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-PATCHapi-roles-permissions-banque-transactions--id-">
+                                <a href="#gestion-des-transactions-bancaires-PATCHapi-roles-permissions-banque-transactions--id-">Mettre à jour une transaction</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-DELETEapi-roles-permissions-banque-transactions--id-">
+                                <a href="#gestion-des-transactions-bancaires-DELETEapi-roles-permissions-banque-transactions--id-">Supprimer une transaction (soft delete)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--restore">
+                                <a href="#gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--restore">Restaurer une transaction supprimée</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--validate">
+                                <a href="#gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--validate">Valider une transaction</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--cancel">
+                                <a href="#gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--cancel">Annuler une transaction</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-gestion-des-ventes" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="gestion-des-ventes">
                     <a href="#gestion-des-ventes">Gestion des Ventes</a>
@@ -1065,7 +1191,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 25 October 2025</li>
+        <li>Dernière mise à jour: 26 October 2025</li>
     </ul>
 </div>
 
@@ -4054,7 +4180,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"page\": 16,
     \"per_page\": 22,
-    \"with_client_type\": true
+    \"with_client_type\": false
 }"
 </code></pre></div>
 
@@ -4080,7 +4206,7 @@ const headers = {
 let body = {
     "page": 16,
     "per_page": 22,
-    "with_client_type": true
+    "with_client_type": false
 };
 
 fetch(url, {
@@ -4108,7 +4234,7 @@ $response = $client-&gt;get(
         'json' =&gt; [
             'page' =&gt; 16,
             'per_page' =&gt; 22,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
         ],
     ]
 );
@@ -4293,7 +4419,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -4830,7 +4956,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": false,
     \"with_client_type\": true,
-    \"balance_filter\": \"positive\"
+    \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
 
@@ -4876,7 +5002,7 @@ let body = {
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": false,
     "with_client_type": true,
-    "balance_filter": "positive"
+    "balance_filter": "negative"
 };
 
 fetch(url, {
@@ -4924,7 +5050,7 @@ $response = $client-&gt;get(
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; false,
             'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'positive',
+            'balance_filter' =&gt; 'negative',
         ],
     ]
 );
@@ -5361,10 +5487,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
+               value="negative"
                data-component="body">
     <br>
-<p>Example: <code>positive</code></p>
+<p>Example: <code>negative</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -5759,7 +5885,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client_type\": false
+    \"with_client_type\": true
 }"
 </code></pre></div>
 
@@ -5781,7 +5907,7 @@ const headers = {
 };
 
 let body = {
-    "with_client_type": false
+    "with_client_type": true
 };
 
 fetch(url, {
@@ -5805,7 +5931,7 @@ $response = $client-&gt;get(
             'with_client_type' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client_type' =&gt; false,
+            'with_client_type' =&gt; true,
         ],
     ]
 );
@@ -5975,7 +6101,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -7690,7 +7816,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": true
+    \"is_active\": false
 }"
 </code></pre></div>
 
@@ -7718,7 +7844,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": true
+    "is_active": false
 };
 
 fetch(url, {
@@ -7748,7 +7874,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; true,
+            'is_active' =&gt; false,
         ],
     ]
 );
@@ -7965,7 +8091,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -9154,8 +9280,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-25T23:59:47\",
-    \"date_to\": \"2051-11-18\"
+    \"date_from\": \"2025-10-26T14:52:33\",
+    \"date_to\": \"2051-11-19\"
 }"
 </code></pre></div>
 
@@ -9178,8 +9304,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-25T23:59:47",
-    "date_to": "2051-11-18"
+    "date_from": "2025-10-26T14:52:33",
+    "date_to": "2051-11-19"
 };
 
 fetch(url, {
@@ -9204,8 +9330,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-25T23:59:47',
-            'date_to' =&gt; '2051-11-18',
+            'date_from' =&gt; '2025-10-26T14:52:33',
+            'date_to' =&gt; '2051-11-19',
         ],
     ]
 );
@@ -9335,10 +9461,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-25T23:59:47"
+               value="2025-10-26T14:52:33"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T23:59:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-26T14:52:33</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9346,10 +9472,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2051-11-18"
+               value="2051-11-19"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-19</code></p>
         </div>
         </form>
 
@@ -9374,11 +9500,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"paid\",
-    \"date_from\": \"2025-10-25T23:59:47\",
-    \"date_to\": \"2051-11-18\",
-    \"with_client\": true,
-    \"with_details\": false
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-26T14:52:33\",
+    \"date_to\": \"2051-11-19\",
+    \"with_client\": false,
+    \"with_details\": true
 }"
 </code></pre></div>
 
@@ -9412,11 +9538,11 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "paid",
-    "date_from": "2025-10-25T23:59:47",
-    "date_to": "2051-11-18",
-    "with_client": true,
-    "with_details": false
+    "statut": "pending",
+    "date_from": "2025-10-26T14:52:33",
+    "date_to": "2051-11-19",
+    "with_client": false,
+    "with_details": true
 };
 
 fetch(url, {
@@ -9452,11 +9578,11 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'paid',
-            'date_from' =&gt; '2025-10-25T23:59:47',
-            'date_to' =&gt; '2051-11-18',
-            'with_client' =&gt; true,
-            'with_details' =&gt; false,
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-26T14:52:33',
+            'date_to' =&gt; '2051-11-19',
+            'with_client' =&gt; false,
+            'with_details' =&gt; true,
         ],
     ]
 );
@@ -9742,10 +9868,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="paid"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>paid</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9755,10 +9881,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-25T23:59:47"
+               value="2025-10-26T14:52:33"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T23:59:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-26T14:52:33</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9766,10 +9892,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures"
-               value="2051-11-18"
+               value="2051-11-19"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -9790,7 +9916,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -9811,7 +9937,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -10239,9 +10365,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": true,
+    \"with_client\": false,
     \"with_details\": false,
-    \"with_payments\": false
+    \"with_payments\": true
 }"
 </code></pre></div>
 
@@ -10265,9 +10391,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": true,
+    "with_client": false,
     "with_details": false,
-    "with_payments": false
+    "with_payments": true
 };
 
 fetch(url, {
@@ -10293,9 +10419,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; true,
+            'with_client' =&gt; false,
             'with_details' =&gt; false,
-            'with_payments' =&gt; false,
+            'with_payments' =&gt; true,
         ],
     ]
 );
@@ -10505,7 +10631,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10547,7 +10673,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -11488,8 +11614,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-25T23:59:47\",
-    \"date_to\": \"2051-11-18\"
+    \"date_from\": \"2025-10-26T14:52:33\",
+    \"date_to\": \"2051-11-19\"
 }"
 </code></pre></div>
 
@@ -11512,8 +11638,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-25T23:59:47",
-    "date_to": "2051-11-18"
+    "date_from": "2025-10-26T14:52:33",
+    "date_to": "2051-11-19"
 };
 
 fetch(url, {
@@ -11538,8 +11664,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-25T23:59:47',
-            'date_to' =&gt; '2051-11-18',
+            'date_from' =&gt; '2025-10-26T14:52:33',
+            'date_to' =&gt; '2051-11-19',
         ],
     ]
 );
@@ -11678,10 +11804,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-25T23:59:47"
+               value="2025-10-26T14:52:33"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T23:59:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-26T14:52:33</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11689,10 +11815,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2051-11-18"
+               value="2051-11-19"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-19</code></p>
         </div>
         </form>
 
@@ -11720,11 +11846,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
     \"statut\": \"refunded\",
-    \"date_from\": \"2025-10-25T23:59:47\",
-    \"date_to\": \"2051-11-18\",
+    \"date_from\": \"2025-10-26T14:52:33\",
+    \"date_to\": \"2051-11-19\",
     \"with_facture\": true,
-    \"with_client\": true,
-    \"with_payment_method\": false
+    \"with_client\": false,
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -11764,11 +11890,11 @@ let body = {
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
     "statut": "refunded",
-    "date_from": "2025-10-25T23:59:47",
-    "date_to": "2051-11-18",
+    "date_from": "2025-10-26T14:52:33",
+    "date_to": "2051-11-19",
     "with_facture": true,
-    "with_client": true,
-    "with_payment_method": false
+    "with_client": false,
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -11810,11 +11936,11 @@ $response = $client-&gt;get(
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
             'statut' =&gt; 'refunded',
-            'date_from' =&gt; '2025-10-25T23:59:47',
-            'date_to' =&gt; '2051-11-18',
+            'date_from' =&gt; '2025-10-26T14:52:33',
+            'date_to' =&gt; '2051-11-19',
             'with_facture' =&gt; true,
-            'with_client' =&gt; true,
-            'with_payment_method' =&gt; false,
+            'with_client' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -12172,10 +12298,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-25T23:59:47"
+               value="2025-10-26T14:52:33"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T23:59:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-26T14:52:33</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12183,10 +12309,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements"
-               value="2051-11-18"
+               value="2051-11-19"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-18</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
@@ -12228,7 +12354,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -12249,7 +12375,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -12580,7 +12706,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": true,
+    \"with_facture\": false,
     \"with_client\": true,
     \"with_payment_method\": false
 }"
@@ -12606,7 +12732,7 @@ const headers = {
 };
 
 let body = {
-    "with_facture": true,
+    "with_facture": false,
     "with_client": true,
     "with_payment_method": false
 };
@@ -12634,7 +12760,7 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; true,
+            'with_facture' =&gt; false,
             'with_client' =&gt; true,
             'with_payment_method' =&gt; false,
         ],
@@ -12848,7 +12974,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -18361,7 +18487,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -18383,7 +18509,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -18407,7 +18533,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -18565,7 +18691,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -23552,6 +23678,1922 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>L'ID du fournisseur. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                <h1 id="gestion-des-banques">Gestion des Banques</h1>
+
+    
+
+                                <h2 id="gestion-des-banques-GETapi-roles-permissions-banques-trashed-list">Lister les banques supprimées</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste de toutes les banques supprimées logiquement.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banques-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banques/trashed/list" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/trashed/list"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banques-trashed-list">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;message&quot;: &quot;Liste des banques supprim&eacute;es&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banques-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banques-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banques-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banques-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banques-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banques-trashed-list" data-method="GET"
+      data-path="api/roles-permissions/banques/trashed/list"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banques-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banques-trashed-list"
+                    onclick="tryItOut('GETapi-roles-permissions-banques-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banques-trashed-list"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banques-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banques-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banques/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banques-trashed-list"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banques-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banques-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-banques-GETapi-roles-permissions-banques-active-list">Lister les banques actives</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère uniquement les banques avec isActive = true.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banques-active-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banques/active/list" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/active/list"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/active/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banques-active-list">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+            &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+            &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+            &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+            &quot;isActive&quot;: true
+        }
+    ],
+    &quot;message&quot;: &quot;Liste des banques actives&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banques-active-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banques-active-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banques-active-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banques-active-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banques-active-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banques-active-list" data-method="GET"
+      data-path="api/roles-permissions/banques/active/list"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banques-active-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banques-active-list"
+                    onclick="tryItOut('GETapi-roles-permissions-banques-active-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banques-active-list"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banques-active-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banques-active-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banques/active/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banques-active-list"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banques-active-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banques-active-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-banques-GETapi-roles-permissions-banques">Lister toutes les banques</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste complète de toutes les banques avec leurs comptes associés.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banques">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banques" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banques">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+            &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+            &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+            &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+            &quot;isActive&quot;: true,
+            &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;deleted_at&quot;: null,
+            &quot;accounts_count&quot;: 5
+        }
+    ],
+    &quot;message&quot;: &quot;Liste des banques&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banques" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banques"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banques"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banques" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banques">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banques" data-method="GET"
+      data-path="api/roles-permissions/banques"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banques', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banques"
+                    onclick="tryItOut('GETapi-roles-permissions-banques');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banques"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banques');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banques"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banques</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banques"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banques"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banques"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-banques-POSTapi-roles-permissions-banques">Créer une nouvelle banque</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Crée une nouvelle banque dans le système. Le code banque est généré automatiquement
+si non fourni (format: BNQ-XXXXXX).</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banques">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banques" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"\\\"Ecobank Bénin\\\"\",
+    \"code\": \"\\\"BNQ-ECO001\\\"\",
+    \"adresse\": \"\\\"Avenue Clozel, Cotonou\\\"\",
+    \"contact_info\": \"\\\"+229 21 31 32 33\\\"\",
+    \"isActive\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "\"Ecobank Bénin\"",
+    "code": "\"BNQ-ECO001\"",
+    "adresse": "\"Avenue Clozel, Cotonou\"",
+    "contact_info": "\"+229 21 31 32 33\"",
+    "isActive": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; '"Ecobank Bénin"',
+            'code' =&gt; '"BNQ-ECO001"',
+            'adresse' =&gt; '"Avenue Clozel, Cotonou"',
+            'contact_info' =&gt; '"+229 21 31 32 33"',
+            'isActive' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banques">
+            <blockquote>
+            <p>Example response (201, Banque créée avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+        &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+        &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+        &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Banque cr&eacute;&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Le nom de la banque est obligatoire&quot;
+        ],
+        &quot;code&quot;: [
+            &quot;Ce code banque existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banques" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banques"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banques"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banques" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banques">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banques" data-method="POST"
+      data-path="api/roles-permissions/banques"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banques', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banques"
+                    onclick="tryItOut('POSTapi-roles-permissions-banques');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banques"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banques');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banques"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banques</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banques"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banques"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banques"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-roles-permissions-banques"
+               value=""Ecobank Bénin""
+               data-component="body">
+    <br>
+<p>Nom de la banque (max 255 caractères, unique). Example: <code>"Ecobank Bénin"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="POSTapi-roles-permissions-banques"
+               value=""BNQ-ECO001""
+               data-component="body">
+    <br>
+<p>optional Code unique de la banque (auto-généré si non fourni). Example: <code>"BNQ-ECO001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="POSTapi-roles-permissions-banques"
+               value=""Avenue Clozel, Cotonou""
+               data-component="body">
+    <br>
+<p>optional Adresse physique de la banque. Example: <code>"Avenue Clozel, Cotonou"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_info</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="contact_info"                data-endpoint="POSTapi-roles-permissions-banques"
+               value=""+229 21 31 32 33""
+               data-component="body">
+    <br>
+<p>optional Informations de contact (téléphone, email). Example: <code>"+229 21 31 32 33"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>isActive</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-roles-permissions-banques" style="display: none">
+            <input type="radio" name="isActive"
+                   value="true"
+                   data-endpoint="POSTapi-roles-permissions-banques"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-roles-permissions-banques" style="display: none">
+            <input type="radio" name="isActive"
+                   value="false"
+                   data-endpoint="POSTapi-roles-permissions-banques"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Indique si la banque est active (par défaut: true). Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-banques-GETapi-roles-permissions-banques--id-">Afficher une banque spécifique</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les détails complets d'une banque avec ses comptes associés.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banques--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banques--id-">
+            <blockquote>
+            <p>Example response (200, Banque trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+        &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+        &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+        &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null,
+        &quot;accounts&quot;: []
+    },
+    &quot;message&quot;: &quot;D&eacute;tails de la banque&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Banque non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Banque]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banques--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banques--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banques--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banques--id-" data-method="GET"
+      data-path="api/roles-permissions/banques/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banques--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banques--id-"
+                    onclick="tryItOut('GETapi-roles-permissions-banques--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banques--id-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banques--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banques--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banques/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banques--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-roles-permissions-banques--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la banque. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-banques-PUTapi-roles-permissions-banques--id-">Mettre à jour une banque</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'une banque existante.</p>
+
+<span id="example-requests-PUTapi-roles-permissions-banques--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"\\\"Ecobank Bénin SA\\\"\",
+    \"code\": \"\\\"BNQ-ECO001\\\"\",
+    \"adresse\": \"\\\"Avenue Clozel, Cotonou\\\"\",
+    \"contact_info\": \"\\\"+229 21 31 32 33\\\"\",
+    \"isActive\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "\"Ecobank Bénin SA\"",
+    "code": "\"BNQ-ECO001\"",
+    "adresse": "\"Avenue Clozel, Cotonou\"",
+    "contact_info": "\"+229 21 31 32 33\"",
+    "isActive": true
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; '"Ecobank Bénin SA"',
+            'code' =&gt; '"BNQ-ECO001"',
+            'adresse' =&gt; '"Avenue Clozel, Cotonou"',
+            'contact_info' =&gt; '"+229 21 31 32 33"',
+            'isActive' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-roles-permissions-banques--id-">
+            <blockquote>
+            <p>Example response (200, Mise à jour réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;name&quot;: &quot;Ecobank B&eacute;nin SA&quot;,
+        &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+        &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+        &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Banque mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Banque non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Banque]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Ce nom de banque existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-roles-permissions-banques--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-roles-permissions-banques--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-roles-permissions-banques--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-roles-permissions-banques--id-" data-method="PUT"
+      data-path="api/roles-permissions/banques/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-roles-permissions-banques--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-roles-permissions-banques--id-"
+                    onclick="tryItOut('PUTapi-roles-permissions-banques--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-roles-permissions-banques--id-"
+                    onclick="cancelTryOut('PUTapi-roles-permissions-banques--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-roles-permissions-banques--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/roles-permissions/banques/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la banque à mettre à jour. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value=""Ecobank Bénin SA""
+               data-component="body">
+    <br>
+<p>Nom de la banque (unique). Example: <code>"Ecobank Bénin SA"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value=""BNQ-ECO001""
+               data-component="body">
+    <br>
+<p>optional Code de la banque. Example: <code>"BNQ-ECO001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value=""Avenue Clozel, Cotonou""
+               data-component="body">
+    <br>
+<p>optional Adresse de la banque. Example: <code>"Avenue Clozel, Cotonou"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_info</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="contact_info"                data-endpoint="PUTapi-roles-permissions-banques--id-"
+               value=""+229 21 31 32 33""
+               data-component="body">
+    <br>
+<p>optional Contact de la banque. Example: <code>"+229 21 31 32 33"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>isActive</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-roles-permissions-banques--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="true"
+                   data-endpoint="PUTapi-roles-permissions-banques--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-roles-permissions-banques--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="false"
+                   data-endpoint="PUTapi-roles-permissions-banques--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Statut actif. Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-banques-PATCHapi-roles-permissions-banques--id-">Mettre à jour une banque</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'une banque existante.</p>
+
+<span id="example-requests-PATCHapi-roles-permissions-banques--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"\\\"Ecobank Bénin SA\\\"\",
+    \"code\": \"\\\"BNQ-ECO001\\\"\",
+    \"adresse\": \"\\\"Avenue Clozel, Cotonou\\\"\",
+    \"contact_info\": \"\\\"+229 21 31 32 33\\\"\",
+    \"isActive\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "\"Ecobank Bénin SA\"",
+    "code": "\"BNQ-ECO001\"",
+    "adresse": "\"Avenue Clozel, Cotonou\"",
+    "contact_info": "\"+229 21 31 32 33\"",
+    "isActive": true
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; '"Ecobank Bénin SA"',
+            'code' =&gt; '"BNQ-ECO001"',
+            'adresse' =&gt; '"Avenue Clozel, Cotonou"',
+            'contact_info' =&gt; '"+229 21 31 32 33"',
+            'isActive' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-roles-permissions-banques--id-">
+            <blockquote>
+            <p>Example response (200, Mise à jour réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;name&quot;: &quot;Ecobank B&eacute;nin SA&quot;,
+        &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+        &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+        &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Banque mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Banque non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Banque]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;Ce nom de banque existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-roles-permissions-banques--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-roles-permissions-banques--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-roles-permissions-banques--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-roles-permissions-banques--id-" data-method="PATCH"
+      data-path="api/roles-permissions/banques/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-roles-permissions-banques--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-roles-permissions-banques--id-"
+                    onclick="tryItOut('PATCHapi-roles-permissions-banques--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-roles-permissions-banques--id-"
+                    onclick="cancelTryOut('PATCHapi-roles-permissions-banques--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-roles-permissions-banques--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/roles-permissions/banques/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la banque à mettre à jour. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value=""Ecobank Bénin SA""
+               data-component="body">
+    <br>
+<p>Nom de la banque (unique). Example: <code>"Ecobank Bénin SA"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="code"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value=""BNQ-ECO001""
+               data-component="body">
+    <br>
+<p>optional Code de la banque. Example: <code>"BNQ-ECO001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>adresse</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="adresse"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value=""Avenue Clozel, Cotonou""
+               data-component="body">
+    <br>
+<p>optional Adresse de la banque. Example: <code>"Avenue Clozel, Cotonou"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>contact_info</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="contact_info"                data-endpoint="PATCHapi-roles-permissions-banques--id-"
+               value=""+229 21 31 32 33""
+               data-component="body">
+    <br>
+<p>optional Contact de la banque. Example: <code>"+229 21 31 32 33"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>isActive</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-roles-permissions-banques--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="true"
+                   data-endpoint="PATCHapi-roles-permissions-banques--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-roles-permissions-banques--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="false"
+                   data-endpoint="PATCHapi-roles-permissions-banques--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Statut actif. Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-banques-DELETEapi-roles-permissions-banques--id-">Supprimer une banque (soft delete)</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue une suppression logique de la banque.</p>
+
+<span id="example-requests-DELETEapi-roles-permissions-banques--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-roles-permissions-banques--id-">
+            <blockquote>
+            <p>Example response (200, Suppression réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Banque supprim&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Banque non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Banque]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-roles-permissions-banques--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-roles-permissions-banques--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-roles-permissions-banques--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-roles-permissions-banques--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-roles-permissions-banques--id-" data-method="DELETE"
+      data-path="api/roles-permissions/banques/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-roles-permissions-banques--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-roles-permissions-banques--id-"
+                    onclick="tryItOut('DELETEapi-roles-permissions-banques--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-roles-permissions-banques--id-"
+                    onclick="cancelTryOut('DELETEapi-roles-permissions-banques--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-roles-permissions-banques--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/roles-permissions/banques/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-roles-permissions-banques--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-roles-permissions-banques--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-roles-permissions-banques--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la banque à supprimer. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-banques-POSTapi-roles-permissions-banques--id--restore">Restaurer une banque supprimée</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Restaure une banque supprimée logiquement.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banques--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banques/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banques--id--restore">
+            <blockquote>
+            <p>Example response (200, Restauration réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+        &quot;code&quot;: &quot;BNQ-ECO001&quot;,
+        &quot;adresse&quot;: &quot;Avenue Clozel, Cotonou&quot;,
+        &quot;contact_info&quot;: &quot;+229 21 31 32 33&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T16:20:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Banque restaur&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Banque non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Banque]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banques--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banques--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banques--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banques--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banques--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banques--id--restore" data-method="POST"
+      data-path="api/roles-permissions/banques/{id}/restore"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banques--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banques--id--restore"
+                    onclick="tryItOut('POSTapi-roles-permissions-banques--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banques--id--restore"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banques--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banques--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banques/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banques--id--restore"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banques--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banques--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banques--id--restore"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la banque à restaurer. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
             </div>
                     </form>
 
@@ -31645,6 +33687,2747 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="gestion-des-comptes-bancaires">Gestion des Comptes Bancaires</h1>
+
+    
+
+                                <h2 id="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-trashed-list">Lister les comptes supprimés</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste de tous les comptes supprimés logiquement.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-accounts-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-accounts/trashed/list" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/trashed/list"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-accounts-trashed-list">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;message&quot;: &quot;Liste des comptes supprim&eacute;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-accounts-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-accounts-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-accounts-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-accounts-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-accounts-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-accounts-trashed-list" data-method="GET"
+      data-path="api/roles-permissions/banque-accounts/trashed/list"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-accounts-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-accounts-trashed-list"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-accounts-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-accounts-trashed-list"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-accounts-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-accounts-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-accounts/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-accounts-trashed-list"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-accounts-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-accounts-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-banque--banqueId-">Lister les comptes par banque</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère tous les comptes d'une banque spécifique.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-accounts-banque--banqueId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-accounts/banque/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/banque/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/banque/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-accounts-banque--banqueId-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+            &quot;account_name&quot;: &quot;Compte Principal&quot;,
+            &quot;balance&quot;: 15500000,
+            &quot;statut&quot;: &quot;actif&quot;
+        }
+    ],
+    &quot;message&quot;: &quot;Comptes de la banque&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-accounts-banque--banqueId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-accounts-banque--banqueId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-accounts-banque--banqueId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-accounts-banque--banqueId-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-accounts-banque--banqueId-" data-method="GET"
+      data-path="api/roles-permissions/banque-accounts/banque/{banqueId}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-accounts-banque--banqueId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-accounts-banque--banqueId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-accounts-banque--banqueId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-accounts/banque/{banqueId}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>banqueId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banqueId"                data-endpoint="GETapi-roles-permissions-banque-accounts-banque--banqueId-"
+               value="8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"
+               data-component="url">
+    <br>
+<p>UUID de la banque. Example: <code>8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts-statut--statut-">Lister les comptes par statut</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère tous les comptes ayant un statut spécifique.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-accounts-statut--statut-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-accounts/statut/actif" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/statut/actif"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/statut/actif';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-accounts-statut--statut-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+            &quot;account_name&quot;: &quot;Compte Principal&quot;,
+            &quot;statut&quot;: &quot;actif&quot;
+        }
+    ],
+    &quot;message&quot;: &quot;Comptes avec le statut: actif&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-accounts-statut--statut-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-accounts-statut--statut-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-accounts-statut--statut-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-accounts-statut--statut-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-accounts-statut--statut-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-accounts-statut--statut-" data-method="GET"
+      data-path="api/roles-permissions/banque-accounts/statut/{statut}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-accounts-statut--statut-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-accounts-statut--statut-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-accounts-statut--statut-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-accounts-statut--statut-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-accounts-statut--statut-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-accounts-statut--statut-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-accounts/statut/{statut}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-accounts-statut--statut-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-accounts-statut--statut-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-accounts-statut--statut-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="GETapi-roles-permissions-banque-accounts-statut--statut-"
+               value="actif"
+               data-component="url">
+    <br>
+<p>Statut du compte (actif, inactif, suspendu, cloture). Example: <code>actif</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts">Lister tous les comptes bancaires</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste complète de tous les comptes avec leurs banques associées.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-accounts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-accounts" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-accounts">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+            &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+            &quot;account_name&quot;: &quot;Compte Principal&quot;,
+            &quot;account_type&quot;: &quot;courant&quot;,
+            &quot;titulaire&quot;: &quot;Entreprise ABC SARL&quot;,
+            &quot;balance&quot;: 15500000,
+            &quot;statut&quot;: &quot;actif&quot;,
+            &quot;date_ouverture&quot;: &quot;2024-01-15&quot;,
+            &quot;isActive&quot;: true,
+            &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;deleted_at&quot;: null,
+            &quot;banque&quot;: {
+                &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+                &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+                &quot;code&quot;: &quot;BNQ-ECO001&quot;
+            }
+        }
+    ],
+    &quot;message&quot;: &quot;Liste des comptes bancaires&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-accounts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-accounts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-accounts"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-accounts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-accounts">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-accounts" data-method="GET"
+      data-path="api/roles-permissions/banque-accounts"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-accounts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-accounts"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-accounts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-accounts"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-accounts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-accounts"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-accounts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-accounts"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-accounts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-accounts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts">Créer un nouveau compte bancaire</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Crée un nouveau compte bancaire dans le système.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-accounts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-accounts" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"banque_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
+    \"account_number\": \"\\\"BJ066001010100100100100100\\\"\",
+    \"account_name\": \"\\\"Compte Principal\\\"\",
+    \"account_type\": \"\\\"courant\\\"\",
+    \"titulaire\": \"\\\"Entreprise ABC SARL\\\"\",
+    \"balance\": \"15500000.00\",
+    \"statut\": \"\\\"actif\\\"\",
+    \"date_ouverture\": \"\\\"2024-01-15\\\"\",
+    \"isActive\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "banque_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
+    "account_number": "\"BJ066001010100100100100100\"",
+    "account_name": "\"Compte Principal\"",
+    "account_type": "\"courant\"",
+    "titulaire": "\"Entreprise ABC SARL\"",
+    "balance": "15500000.00",
+    "statut": "\"actif\"",
+    "date_ouverture": "\"2024-01-15\"",
+    "isActive": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'banque_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
+            'account_number' =&gt; '"BJ066001010100100100100100"',
+            'account_name' =&gt; '"Compte Principal"',
+            'account_type' =&gt; '"courant"',
+            'titulaire' =&gt; '"Entreprise ABC SARL"',
+            'balance' =&gt; '15500000.00',
+            'statut' =&gt; '"actif"',
+            'date_ouverture' =&gt; '"2024-01-15"',
+            'isActive' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-accounts">
+            <blockquote>
+            <p>Example response (201, Compte créé avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;account_name&quot;: &quot;Compte Principal&quot;,
+        &quot;account_type&quot;: &quot;courant&quot;,
+        &quot;titulaire&quot;: &quot;Entreprise ABC SARL&quot;,
+        &quot;balance&quot;: 15500000,
+        &quot;statut&quot;: &quot;actif&quot;,
+        &quot;date_ouverture&quot;: &quot;2024-01-15&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null,
+        &quot;banque&quot;: {
+            &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+            &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;,
+            &quot;code&quot;: &quot;BNQ-ECO001&quot;
+        }
+    },
+    &quot;message&quot;: &quot;Compte bancaire cr&eacute;&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;account_number&quot;: [
+            &quot;Ce num&eacute;ro de compte existe d&eacute;j&agrave;&quot;
+        ],
+        &quot;banque_id&quot;: [
+            &quot;La banque s&eacute;lectionn&eacute;e n&#039;existe pas&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-accounts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-accounts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-accounts"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-accounts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-accounts">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-accounts" data-method="POST"
+      data-path="api/roles-permissions/banque-accounts"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-accounts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-accounts"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-accounts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-accounts"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-accounts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-accounts"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-accounts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banque_id"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
+               data-component="body">
+    <br>
+<p>UUID de la banque. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="account_number"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""BJ066001010100100100100100""
+               data-component="body">
+    <br>
+<p>Numéro de compte (unique). Example: <code>"BJ066001010100100100100100"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="account_name"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""Compte Principal""
+               data-component="body">
+    <br>
+<p>Nom du compte. Example: <code>"Compte Principal"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="account_type"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""courant""
+               data-component="body">
+    <br>
+<p>optional Type de compte (courant, epargne, depot). Example: <code>"courant"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>titulaire</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="titulaire"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""Entreprise ABC SARL""
+               data-component="body">
+    <br>
+<p>Nom du titulaire du compte. Example: <code>"Entreprise ABC SARL"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>balance</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="balance"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value="15500000.00"
+               data-component="body">
+    <br>
+<p>optional Solde initial (par défaut: 0). Example: <code>15500000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""actif""
+               data-component="body">
+    <br>
+<p>optional Statut (actif, inactif, suspendu, cloture). Example: <code>"actif"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_ouverture</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date_ouverture"                data-endpoint="POSTapi-roles-permissions-banque-accounts"
+               value=""2024-01-15""
+               data-component="body">
+    <br>
+<p>Date d'ouverture du compte (format: YYYY-MM-DD). Example: <code>"2024-01-15"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>isActive</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-roles-permissions-banque-accounts" style="display: none">
+            <input type="radio" name="isActive"
+                   value="true"
+                   data-endpoint="POSTapi-roles-permissions-banque-accounts"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-roles-permissions-banque-accounts" style="display: none">
+            <input type="radio" name="isActive"
+                   value="false"
+                   data-endpoint="POSTapi-roles-permissions-banque-accounts"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Indique si le compte est actif (par défaut: true). Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-GETapi-roles-permissions-banque-accounts--id-">Afficher un compte bancaire spécifique</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les détails complets d'un compte avec ses transactions.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-accounts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-accounts--id-">
+            <blockquote>
+            <p>Example response (200, Compte trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;account_name&quot;: &quot;Compte Principal&quot;,
+        &quot;account_type&quot;: &quot;courant&quot;,
+        &quot;titulaire&quot;: &quot;Entreprise ABC SARL&quot;,
+        &quot;balance&quot;: 15500000,
+        &quot;statut&quot;: &quot;actif&quot;,
+        &quot;date_ouverture&quot;: &quot;2024-01-15&quot;,
+        &quot;isActive&quot;: true,
+        &quot;banque&quot;: {
+            &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+            &quot;name&quot;: &quot;Ecobank B&eacute;nin&quot;
+        },
+        &quot;transactions&quot;: []
+    },
+    &quot;message&quot;: &quot;D&eacute;tails du compte bancaire&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-accounts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-accounts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-accounts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-accounts--id-" data-method="GET"
+      data-path="api/roles-permissions/banque-accounts/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-accounts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-accounts--id-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-accounts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-accounts--id-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-accounts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-accounts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-accounts--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-roles-permissions-banque-accounts--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte bancaire. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-PUTapi-roles-permissions-banque-accounts--id-">Mettre à jour un compte bancaire</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'un compte bancaire existant.</p>
+
+<span id="example-requests-PUTapi-roles-permissions-banque-accounts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"banque_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
+    \"account_number\": \"\\\"BJ066001010100100100100100\\\"\",
+    \"account_name\": \"\\\"Compte Principal Modifié\\\"\",
+    \"account_type\": \"\\\"courant\\\"\",
+    \"titulaire\": \"\\\"Entreprise ABC SARL\\\"\",
+    \"balance\": \"16000000.00\",
+    \"statut\": \"\\\"actif\\\"\",
+    \"date_ouverture\": \"\\\"2024-01-15\\\"\",
+    \"isActive\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "banque_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
+    "account_number": "\"BJ066001010100100100100100\"",
+    "account_name": "\"Compte Principal Modifié\"",
+    "account_type": "\"courant\"",
+    "titulaire": "\"Entreprise ABC SARL\"",
+    "balance": "16000000.00",
+    "statut": "\"actif\"",
+    "date_ouverture": "\"2024-01-15\"",
+    "isActive": true
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'banque_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
+            'account_number' =&gt; '"BJ066001010100100100100100"',
+            'account_name' =&gt; '"Compte Principal Modifié"',
+            'account_type' =&gt; '"courant"',
+            'titulaire' =&gt; '"Entreprise ABC SARL"',
+            'balance' =&gt; '16000000.00',
+            'statut' =&gt; '"actif"',
+            'date_ouverture' =&gt; '"2024-01-15"',
+            'isActive' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-roles-permissions-banque-accounts--id-">
+            <blockquote>
+            <p>Example response (200, Mise à jour réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;account_name&quot;: &quot;Compte Principal Modifi&eacute;&quot;,
+        &quot;account_type&quot;: &quot;courant&quot;,
+        &quot;titulaire&quot;: &quot;Entreprise ABC SARL&quot;,
+        &quot;balance&quot;: 16000000,
+        &quot;statut&quot;: &quot;actif&quot;,
+        &quot;date_ouverture&quot;: &quot;2024-01-15&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Compte bancaire mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;account_number&quot;: [
+            &quot;Ce num&eacute;ro de compte existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-roles-permissions-banque-accounts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-roles-permissions-banque-accounts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-roles-permissions-banque-accounts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-roles-permissions-banque-accounts--id-" data-method="PUT"
+      data-path="api/roles-permissions/banque-accounts/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-roles-permissions-banque-accounts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-roles-permissions-banque-accounts--id-"
+                    onclick="tryItOut('PUTapi-roles-permissions-banque-accounts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-roles-permissions-banque-accounts--id-"
+                    onclick="cancelTryOut('PUTapi-roles-permissions-banque-accounts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-roles-permissions-banque-accounts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte bancaire à mettre à jour. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banque_id"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
+               data-component="body">
+    <br>
+<p>UUID de la banque. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="account_number"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""BJ066001010100100100100100""
+               data-component="body">
+    <br>
+<p>Numéro de compte (unique). Example: <code>"BJ066001010100100100100100"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="account_name"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""Compte Principal Modifié""
+               data-component="body">
+    <br>
+<p>Nom du compte. Example: <code>"Compte Principal Modifié"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="account_type"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""courant""
+               data-component="body">
+    <br>
+<p>optional Type de compte. Example: <code>"courant"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>titulaire</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="titulaire"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""Entreprise ABC SARL""
+               data-component="body">
+    <br>
+<p>Titulaire du compte. Example: <code>"Entreprise ABC SARL"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>balance</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="balance"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value="16000000.00"
+               data-component="body">
+    <br>
+<p>optional Solde du compte. Example: <code>16000000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""actif""
+               data-component="body">
+    <br>
+<p>optional Statut du compte. Example: <code>"actif"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_ouverture</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date_ouverture"                data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+               value=""2024-01-15""
+               data-component="body">
+    <br>
+<p>Date d'ouverture. Example: <code>"2024-01-15"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>isActive</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PUTapi-roles-permissions-banque-accounts--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="true"
+                   data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-roles-permissions-banque-accounts--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="false"
+                   data-endpoint="PUTapi-roles-permissions-banque-accounts--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Statut actif. Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-PATCHapi-roles-permissions-banque-accounts--id-">Mettre à jour un compte bancaire</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'un compte bancaire existant.</p>
+
+<span id="example-requests-PATCHapi-roles-permissions-banque-accounts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"banque_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
+    \"account_number\": \"\\\"BJ066001010100100100100100\\\"\",
+    \"account_name\": \"\\\"Compte Principal Modifié\\\"\",
+    \"account_type\": \"\\\"courant\\\"\",
+    \"titulaire\": \"\\\"Entreprise ABC SARL\\\"\",
+    \"balance\": \"16000000.00\",
+    \"statut\": \"\\\"actif\\\"\",
+    \"date_ouverture\": \"\\\"2024-01-15\\\"\",
+    \"isActive\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "banque_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
+    "account_number": "\"BJ066001010100100100100100\"",
+    "account_name": "\"Compte Principal Modifié\"",
+    "account_type": "\"courant\"",
+    "titulaire": "\"Entreprise ABC SARL\"",
+    "balance": "16000000.00",
+    "statut": "\"actif\"",
+    "date_ouverture": "\"2024-01-15\"",
+    "isActive": true
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'banque_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
+            'account_number' =&gt; '"BJ066001010100100100100100"',
+            'account_name' =&gt; '"Compte Principal Modifié"',
+            'account_type' =&gt; '"courant"',
+            'titulaire' =&gt; '"Entreprise ABC SARL"',
+            'balance' =&gt; '16000000.00',
+            'statut' =&gt; '"actif"',
+            'date_ouverture' =&gt; '"2024-01-15"',
+            'isActive' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-roles-permissions-banque-accounts--id-">
+            <blockquote>
+            <p>Example response (200, Mise à jour réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;account_name&quot;: &quot;Compte Principal Modifi&eacute;&quot;,
+        &quot;account_type&quot;: &quot;courant&quot;,
+        &quot;titulaire&quot;: &quot;Entreprise ABC SARL&quot;,
+        &quot;balance&quot;: 16000000,
+        &quot;statut&quot;: &quot;actif&quot;,
+        &quot;date_ouverture&quot;: &quot;2024-01-15&quot;,
+        &quot;isActive&quot;: true,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Compte bancaire mis &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;account_number&quot;: [
+            &quot;Ce num&eacute;ro de compte existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-roles-permissions-banque-accounts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-roles-permissions-banque-accounts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-roles-permissions-banque-accounts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-roles-permissions-banque-accounts--id-" data-method="PATCH"
+      data-path="api/roles-permissions/banque-accounts/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-roles-permissions-banque-accounts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-roles-permissions-banque-accounts--id-"
+                    onclick="tryItOut('PATCHapi-roles-permissions-banque-accounts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-roles-permissions-banque-accounts--id-"
+                    onclick="cancelTryOut('PATCHapi-roles-permissions-banque-accounts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-roles-permissions-banque-accounts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte bancaire à mettre à jour. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banque_id"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
+               data-component="body">
+    <br>
+<p>UUID de la banque. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="account_number"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""BJ066001010100100100100100""
+               data-component="body">
+    <br>
+<p>Numéro de compte (unique). Example: <code>"BJ066001010100100100100100"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="account_name"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""Compte Principal Modifié""
+               data-component="body">
+    <br>
+<p>Nom du compte. Example: <code>"Compte Principal Modifié"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>account_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="account_type"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""courant""
+               data-component="body">
+    <br>
+<p>optional Type de compte. Example: <code>"courant"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>titulaire</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="titulaire"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""Entreprise ABC SARL""
+               data-component="body">
+    <br>
+<p>Titulaire du compte. Example: <code>"Entreprise ABC SARL"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>balance</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="balance"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value="16000000.00"
+               data-component="body">
+    <br>
+<p>optional Solde du compte. Example: <code>16000000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="statut"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""actif""
+               data-component="body">
+    <br>
+<p>optional Statut du compte. Example: <code>"actif"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_ouverture</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date_ouverture"                data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+               value=""2024-01-15""
+               data-component="body">
+    <br>
+<p>Date d'ouverture. Example: <code>"2024-01-15"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>isActive</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="true"
+                   data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-" style="display: none">
+            <input type="radio" name="isActive"
+                   value="false"
+                   data-endpoint="PATCHapi-roles-permissions-banque-accounts--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>optional Statut actif. Example: <code>true</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-DELETEapi-roles-permissions-banque-accounts--id-">Supprimer un compte bancaire (soft delete)</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue une suppression logique du compte bancaire.</p>
+
+<span id="example-requests-DELETEapi-roles-permissions-banque-accounts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-roles-permissions-banque-accounts--id-">
+            <blockquote>
+            <p>Example response (200, Suppression réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Compte bancaire supprim&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-roles-permissions-banque-accounts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-roles-permissions-banque-accounts--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-roles-permissions-banque-accounts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-roles-permissions-banque-accounts--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-roles-permissions-banque-accounts--id-" data-method="DELETE"
+      data-path="api/roles-permissions/banque-accounts/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-roles-permissions-banque-accounts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-roles-permissions-banque-accounts--id-"
+                    onclick="tryItOut('DELETEapi-roles-permissions-banque-accounts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-roles-permissions-banque-accounts--id-"
+                    onclick="cancelTryOut('DELETEapi-roles-permissions-banque-accounts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-roles-permissions-banque-accounts--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-roles-permissions-banque-accounts--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-roles-permissions-banque-accounts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-roles-permissions-banque-accounts--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte à supprimer. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--restore">Restaurer un compte bancaire supprimé</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Restaure un compte bancaire supprimé logiquement.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-accounts--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-accounts--id--restore">
+            <blockquote>
+            <p>Example response (200, Restauration réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;account_name&quot;: &quot;Compte Principal&quot;,
+        &quot;balance&quot;: 15500000,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Compte bancaire restaur&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-accounts--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-accounts--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-accounts--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-accounts--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-accounts--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-accounts--id--restore" data-method="POST"
+      data-path="api/roles-permissions/banque-accounts/{id}/restore"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-accounts--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-accounts--id--restore"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-accounts--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-accounts--id--restore"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-accounts--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-accounts--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-accounts--id--restore"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--restore"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte à restaurer. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--debit">Débiter un compte</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue un débit sur le compte bancaire.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-accounts--id--debit">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/debit" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"montant\": \"500000.00\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/debit"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "montant": "500000.00"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/debit';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'montant' =&gt; '500000.00',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-accounts--id--debit">
+            <blockquote>
+            <p>Example response (200, Débit réussi):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;balance&quot;: 15000000,
+        &quot;previous_balance&quot;: 15500000,
+        &quot;montant_debite&quot;: 500000
+    },
+    &quot;message&quot;: &quot;Compte d&eacute;bit&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;montant&quot;: [
+            &quot;Le montant est obligatoire&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-accounts--id--debit" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-accounts--id--debit"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-accounts--id--debit"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-accounts--id--debit" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-accounts--id--debit">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-accounts--id--debit" data-method="POST"
+      data-path="api/roles-permissions/banque-accounts/{id}/debit"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-accounts--id--debit', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-accounts--id--debit"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-accounts--id--debit');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-accounts--id--debit"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-accounts--id--debit');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-accounts--id--debit"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}/debit</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-accounts--id--debit"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--debit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--debit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--debit"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--debit"
+               value="500000.00"
+               data-component="body">
+    <br>
+<p>Montant à débiter. Example: <code>500000.00</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-comptes-bancaires-POSTapi-roles-permissions-banque-accounts--id--credit">Créditer un compte</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue un crédit sur le compte bancaire.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-accounts--id--credit">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/credit" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"montant\": \"750000.00\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/credit"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "montant": "750000.00"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-accounts/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/credit';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'montant' =&gt; '750000.00',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-accounts--id--credit">
+            <blockquote>
+            <p>Example response (200, Crédit réussi):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_account_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+        &quot;balance&quot;: 16250000,
+        &quot;previous_balance&quot;: 15500000,
+        &quot;montant_credite&quot;: 750000
+    },
+    &quot;message&quot;: &quot;Compte cr&eacute;dit&eacute; avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Compte non trouvé):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueAccount]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;montant&quot;: [
+            &quot;Le montant est obligatoire&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-accounts--id--credit" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-accounts--id--credit"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-accounts--id--credit"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-accounts--id--credit" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-accounts--id--credit">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-accounts--id--credit" data-method="POST"
+      data-path="api/roles-permissions/banque-accounts/{id}/credit"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-accounts--id--credit', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-accounts--id--credit"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-accounts--id--credit');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-accounts--id--credit"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-accounts--id--credit');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-accounts--id--credit"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-accounts/{id}/credit</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-accounts--id--credit"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--credit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--credit"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--credit"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID du compte. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="POSTapi-roles-permissions-banque-accounts--id--credit"
+               value="750000.00"
+               data-component="body">
+    <br>
+<p>Montant à créditer. Example: <code>750000.00</code></p>
+        </div>
+        </form>
+
                 <h1 id="gestion-des-details-de-commandes">Gestion des Détails de Commandes</h1>
 
     <p>API pour gérer les lignes de produits (détails) des commandes d'achat.
@@ -38634,7 +43417,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-25T23:59:47\",
+    \"date_livraison_prevue\": \"2025-10-26T14:52:34\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -38657,7 +43440,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-25T23:59:47",
+    "date_livraison_prevue": "2025-10-26T14:52:34",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -38685,7 +43468,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-25T23:59:47',
+            'date_livraison_prevue' =&gt; '2025-10-26T14:52:34',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -38821,10 +43604,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-25T23:59:47"
+               value="2025-10-26T14:52:34"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T23:59:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-26T14:52:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -38893,7 +43676,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-25T23:59:47\",
+    \"date_livraison_prevue\": \"2025-10-26T14:52:34\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -38916,7 +43699,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-25T23:59:47",
+    "date_livraison_prevue": "2025-10-26T14:52:34",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -38944,7 +43727,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-25T23:59:47',
+            'date_livraison_prevue' =&gt; '2025-10-26T14:52:34',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -39080,10 +43863,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-25T23:59:47"
+               value="2025-10-26T14:52:34"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-25T23:59:47</code></p>
+<p>Must be a valid date. Example: <code>2025-10-26T14:52:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -55045,6 +59828,3052 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>L'ID du stock à supprimer définitivement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+            </div>
+                    </form>
+
+                <h1 id="gestion-des-transactions-bancaires">Gestion des Transactions Bancaires</h1>
+
+    
+
+                                <h2 id="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-trashed-list">Lister les transactions supprimées</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste de toutes les transactions supprimées logiquement.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-transactions-trashed-list">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-transactions/trashed/list" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/trashed/list"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/trashed/list';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-transactions-trashed-list">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;message&quot;: &quot;Liste des transactions supprim&eacute;es&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-transactions-trashed-list" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-transactions-trashed-list"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-transactions-trashed-list"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-transactions-trashed-list" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-transactions-trashed-list">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-transactions-trashed-list" data-method="GET"
+      data-path="api/roles-permissions/banque-transactions/trashed/list"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-transactions-trashed-list', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-transactions-trashed-list"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-transactions-trashed-list');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-transactions-trashed-list"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-transactions-trashed-list');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-transactions-trashed-list"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-transactions/trashed/list</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-transactions-trashed-list"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-transactions-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-transactions-trashed-list"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-account--accountId-">Lister les transactions par compte</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère toutes les transactions d'un compte spécifique.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-transactions-account--accountId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-transactions/account/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/account/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/account/8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-transactions-account--accountId-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+            &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+            &quot;transaction_type&quot;: &quot;credit&quot;,
+            &quot;montant&quot;: 5000000,
+            &quot;status&quot;: &quot;valide&quot;
+        }
+    ],
+    &quot;message&quot;: &quot;Transactions du compte&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-transactions-account--accountId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-transactions-account--accountId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-transactions-account--accountId-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-transactions-account--accountId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-transactions-account--accountId-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-transactions-account--accountId-" data-method="GET"
+      data-path="api/roles-permissions/banque-transactions/account/{accountId}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-transactions-account--accountId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-transactions-account--accountId-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-transactions-account--accountId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-transactions-account--accountId-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-transactions-account--accountId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-transactions-account--accountId-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-transactions/account/{accountId}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-transactions-account--accountId-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-transactions-account--accountId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-transactions-account--accountId-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>accountId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="accountId"                data-endpoint="GETapi-roles-permissions-banque-transactions-account--accountId-"
+               value="8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"
+               data-component="url">
+    <br>
+<p>UUID du compte. Example: <code>8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-type--type-">Lister les transactions par type</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère toutes les transactions d'un type spécifique.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-transactions-type--type-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-transactions/type/credit" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/type/credit"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/type/credit';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-transactions-type--type-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+            &quot;transaction_type&quot;: &quot;credit&quot;,
+            &quot;montant&quot;: 5000000
+        }
+    ],
+    &quot;message&quot;: &quot;Transactions de type: credit&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-transactions-type--type-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-transactions-type--type-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-transactions-type--type-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-transactions-type--type-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-transactions-type--type-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-transactions-type--type-" data-method="GET"
+      data-path="api/roles-permissions/banque-transactions/type/{type}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-transactions-type--type-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-transactions-type--type-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-transactions-type--type-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-transactions-type--type-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-transactions-type--type-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-transactions-type--type-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-transactions/type/{type}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-transactions-type--type-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-transactions-type--type-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-transactions-type--type-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="type"                data-endpoint="GETapi-roles-permissions-banque-transactions-type--type-"
+               value="credit"
+               data-component="url">
+    <br>
+<p>Type de transaction (debit, credit, virement, cheque, retrait, depot). Example: <code>credit</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions-status--status-">Lister les transactions par statut</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère toutes les transactions ayant un statut spécifique.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-transactions-status--status-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-transactions/status/valide" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/status/valide"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/status/valide';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-transactions-status--status-">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+            &quot;status&quot;: &quot;valide&quot;,
+            &quot;montant&quot;: 5000000
+        }
+    ],
+    &quot;message&quot;: &quot;Transactions avec le statut: valide&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-transactions-status--status-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-transactions-status--status-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-transactions-status--status-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-transactions-status--status-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-transactions-status--status-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-transactions-status--status-" data-method="GET"
+      data-path="api/roles-permissions/banque-transactions/status/{status}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-transactions-status--status-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-transactions-status--status-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-transactions-status--status-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-transactions-status--status-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-transactions-status--status-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-transactions-status--status-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-transactions/status/{status}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-transactions-status--status-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-transactions-status--status-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-transactions-status--status-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-roles-permissions-banque-transactions-status--status-"
+               value="valide"
+               data-component="url">
+    <br>
+<p>Statut (en_attente, valide, rejete, annule). Example: <code>valide</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions-period">Lister les transactions par période</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère toutes les transactions entre deux dates.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-transactions-period">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-transactions/period" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"start_date\": \"\\\"2025-01-01\\\"\",
+    \"end_date\": \"\\\"2025-01-31\\\"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/period"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "start_date": "\"2025-01-01\"",
+    "end_date": "\"2025-01-31\""
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/period';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'start_date' =&gt; '"2025-01-01"',
+            'end_date' =&gt; '"2025-01-31"',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-transactions-period">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+            &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+            &quot;montant&quot;: 5000000
+        }
+    ],
+    &quot;message&quot;: &quot;Transactions entre 2025-01-01 et 2025-01-31&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;start_date&quot;: [
+            &quot;La date de d&eacute;but est obligatoire&quot;
+        ],
+        &quot;end_date&quot;: [
+            &quot;La date de fin est obligatoire&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-transactions-period" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-transactions-period"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-transactions-period"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-transactions-period" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-transactions-period">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-transactions-period" data-method="POST"
+      data-path="api/roles-permissions/banque-transactions/period"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-transactions-period', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-transactions-period"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-transactions-period');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-transactions-period"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-transactions-period');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-transactions-period"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-transactions/period</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-transactions-period"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-transactions-period"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-transactions-period"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="POSTapi-roles-permissions-banque-transactions-period"
+               value=""2025-01-01""
+               data-component="body">
+    <br>
+<p>Date de début (YYYY-MM-DD). Example: <code>"2025-01-01"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="end_date"                data-endpoint="POSTapi-roles-permissions-banque-transactions-period"
+               value=""2025-01-31""
+               data-component="body">
+    <br>
+<p>Date de fin (YYYY-MM-DD). Example: <code>"2025-01-31"</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions">Lister toutes les transactions</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère la liste complète de toutes les transactions avec leurs comptes associés.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-transactions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-transactions" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-transactions">
+            <blockquote>
+            <p>Example response (200, Succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+            &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+            &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+            &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+            &quot;transaction_type&quot;: &quot;credit&quot;,
+            &quot;montant&quot;: 5000000,
+            &quot;libelle&quot;: &quot;Virement re&ccedil;u - Facture #FAC-2025-001&quot;,
+            &quot;reference_externe&quot;: &quot;VIR123456789&quot;,
+            &quot;tiers&quot;: &quot;Client ABC SARL&quot;,
+            &quot;status&quot;: &quot;valide&quot;,
+            &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+            &quot;deleted_at&quot;: null,
+            &quot;account&quot;: {
+                &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+                &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+                &quot;account_name&quot;: &quot;Compte Principal&quot;
+            }
+        }
+    ],
+    &quot;message&quot;: &quot;Liste des transactions&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-transactions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-transactions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-transactions"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-transactions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-transactions">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-transactions" data-method="GET"
+      data-path="api/roles-permissions/banque-transactions"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-transactions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-transactions"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-transactions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-transactions"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-transactions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-transactions"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-transactions</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-transactions"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-transactions"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-transactions"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions">Créer une nouvelle transaction</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Crée une nouvelle transaction bancaire et met à jour le solde du compte.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-transactions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-transactions" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"banque_account_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
+    \"transaction_number\": \"\\\"TRX-2025-001\\\"\",
+    \"transaction_date\": \"\\\"2025-01-15\\\"\",
+    \"transaction_type\": \"\\\"credit\\\"\",
+    \"montant\": \"5000000.00\",
+    \"libelle\": \"\\\"Virement reçu - Facture #FAC-2025-001\\\"\",
+    \"reference_externe\": \"\\\"VIR123456789\\\"\",
+    \"tiers\": \"\\\"Client ABC SARL\\\"\",
+    \"status\": \"\\\"valide\\\"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "banque_account_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
+    "transaction_number": "\"TRX-2025-001\"",
+    "transaction_date": "\"2025-01-15\"",
+    "transaction_type": "\"credit\"",
+    "montant": "5000000.00",
+    "libelle": "\"Virement reçu - Facture #FAC-2025-001\"",
+    "reference_externe": "\"VIR123456789\"",
+    "tiers": "\"Client ABC SARL\"",
+    "status": "\"valide\""
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'banque_account_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
+            'transaction_number' =&gt; '"TRX-2025-001"',
+            'transaction_date' =&gt; '"2025-01-15"',
+            'transaction_type' =&gt; '"credit"',
+            'montant' =&gt; '5000000.00',
+            'libelle' =&gt; '"Virement reçu - Facture #FAC-2025-001"',
+            'reference_externe' =&gt; '"VIR123456789"',
+            'tiers' =&gt; '"Client ABC SARL"',
+            'status' =&gt; '"valide"',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-transactions">
+            <blockquote>
+            <p>Example response (201, Transaction créée avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+        &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+        &quot;transaction_type&quot;: &quot;credit&quot;,
+        &quot;montant&quot;: 5000000,
+        &quot;libelle&quot;: &quot;Virement re&ccedil;u - Facture #FAC-2025-001&quot;,
+        &quot;reference_externe&quot;: &quot;VIR123456789&quot;,
+        &quot;tiers&quot;: &quot;Client ABC SARL&quot;,
+        &quot;status&quot;: &quot;valide&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;deleted_at&quot;: null,
+        &quot;account&quot;: {
+            &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+            &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+            &quot;balance&quot;: 20500000
+        }
+    },
+    &quot;message&quot;: &quot;Transaction cr&eacute;&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;transaction_number&quot;: [
+            &quot;Ce num&eacute;ro de transaction existe d&eacute;j&agrave;&quot;
+        ],
+        &quot;banque_account_id&quot;: [
+            &quot;Le compte bancaire s&eacute;lectionn&eacute; n&#039;existe pas&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-transactions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-transactions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-transactions"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-transactions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-transactions">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-transactions" data-method="POST"
+      data-path="api/roles-permissions/banque-transactions"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-transactions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-transactions"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-transactions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-transactions"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-transactions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-transactions"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-transactions</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque_account_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banque_account_id"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
+               data-component="body">
+    <br>
+<p>UUID du compte bancaire. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_number"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""TRX-2025-001""
+               data-component="body">
+    <br>
+<p>Numéro unique de la transaction. Example: <code>"TRX-2025-001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_date"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""2025-01-15""
+               data-component="body">
+    <br>
+<p>Date de la transaction (YYYY-MM-DD). Example: <code>"2025-01-15"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_type"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""credit""
+               data-component="body">
+    <br>
+<p>Type (debit, credit, virement, cheque, retrait, depot). Example: <code>"credit"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value="5000000.00"
+               data-component="body">
+    <br>
+<p>Montant de la transaction. Example: <code>5000000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>libelle</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="libelle"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""Virement reçu - Facture #FAC-2025-001""
+               data-component="body">
+    <br>
+<p>Description de la transaction. Example: <code>"Virement reçu - Facture #FAC-2025-001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reference_externe</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reference_externe"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""VIR123456789""
+               data-component="body">
+    <br>
+<p>optional Référence externe (numéro chèque, référence virement). Example: <code>"VIR123456789"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>tiers</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="tiers"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""Client ABC SARL""
+               data-component="body">
+    <br>
+<p>optional Nom du tiers (destinataire ou émetteur). Example: <code>"Client ABC SARL"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-roles-permissions-banque-transactions"
+               value=""valide""
+               data-component="body">
+    <br>
+<p>optional Statut (en_attente, valide, rejete, annule). Example: <code>"valide"</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-GETapi-roles-permissions-banque-transactions--id-">Afficher une transaction spécifique</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Récupère les détails complets d'une transaction.</p>
+
+<span id="example-requests-GETapi-roles-permissions-banque-transactions--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-roles-permissions-banque-transactions--id-">
+            <blockquote>
+            <p>Example response (200, Transaction trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;data&quot;: {
+    &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+    &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+    &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+    &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+    &quot;transaction_type&quot;: &quot;credit&quot;,
+    &quot;montant&quot;: 5000000.00,
+    &quot;libelle&quot;: &quot;Virement re&ccedil;u - Facture #FAC-2025-001&quot;,
+    &quot;reference_externe&quot;: &quot;VIR
+123456789&quot;,
+    &quot;tiers&quot;: &quot;Client ABC SARL&quot;,
+    &quot;status&quot;: &quot;valide&quot;,
+    &quot;account&quot;: {
+      &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+      &quot;account_number&quot;: &quot;BJ066001010100100100100100&quot;,
+      &quot;account_name&quot;: &quot;Compte Principal&quot;,
+      &quot;balance&quot;: 20500000.00
+    }
+  },
+  &quot;message&quot;: &quot;D&eacute;tails de la transaction&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-roles-permissions-banque-transactions--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-banque-transactions--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-roles-permissions-banque-transactions--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-roles-permissions-banque-transactions--id-" data-method="GET"
+      data-path="api/roles-permissions/banque-transactions/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-banque-transactions--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles-permissions-banque-transactions--id-"
+                    onclick="tryItOut('GETapi-roles-permissions-banque-transactions--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles-permissions-banque-transactions--id-"
+                    onclick="cancelTryOut('GETapi-roles-permissions-banque-transactions--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles-permissions-banque-transactions--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-banque-transactions--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-roles-permissions-banque-transactions--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-PUTapi-roles-permissions-banque-transactions--id-">Mettre à jour une transaction</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'une transaction existante.</p>
+
+<span id="example-requests-PUTapi-roles-permissions-banque-transactions--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"banque_account_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
+    \"transaction_number\": \"\\\"TRX-2025-001\\\"\",
+    \"transaction_date\": \"\\\"2025-01-15\\\"\",
+    \"transaction_type\": \"\\\"credit\\\"\",
+    \"montant\": \"5500000.00\",
+    \"libelle\": \"\\\"Virement reçu - Facture #FAC-2025-001 (modifié)\\\"\",
+    \"reference_externe\": \"\\\"VIR123456789\\\"\",
+    \"tiers\": \"\\\"Client ABC SARL\\\"\",
+    \"status\": \"\\\"valide\\\"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "banque_account_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
+    "transaction_number": "\"TRX-2025-001\"",
+    "transaction_date": "\"2025-01-15\"",
+    "transaction_type": "\"credit\"",
+    "montant": "5500000.00",
+    "libelle": "\"Virement reçu - Facture #FAC-2025-001 (modifié)\"",
+    "reference_externe": "\"VIR123456789\"",
+    "tiers": "\"Client ABC SARL\"",
+    "status": "\"valide\""
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;put(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'banque_account_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
+            'transaction_number' =&gt; '"TRX-2025-001"',
+            'transaction_date' =&gt; '"2025-01-15"',
+            'transaction_type' =&gt; '"credit"',
+            'montant' =&gt; '5500000.00',
+            'libelle' =&gt; '"Virement reçu - Facture #FAC-2025-001 (modifié)"',
+            'reference_externe' =&gt; '"VIR123456789"',
+            'tiers' =&gt; '"Client ABC SARL"',
+            'status' =&gt; '"valide"',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-roles-permissions-banque-transactions--id-">
+            <blockquote>
+            <p>Example response (200, Mise à jour réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+        &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+        &quot;transaction_type&quot;: &quot;credit&quot;,
+        &quot;montant&quot;: 5500000,
+        &quot;libelle&quot;: &quot;Virement re&ccedil;u - Facture #FAC-2025-001 (modifi&eacute;)&quot;,
+        &quot;status&quot;: &quot;valide&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;
+    },
+    &quot;message&quot;: &quot;Transaction mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;transaction_number&quot;: [
+            &quot;Ce num&eacute;ro de transaction existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-roles-permissions-banque-transactions--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-roles-permissions-banque-transactions--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-roles-permissions-banque-transactions--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-roles-permissions-banque-transactions--id-" data-method="PUT"
+      data-path="api/roles-permissions/banque-transactions/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-roles-permissions-banque-transactions--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-roles-permissions-banque-transactions--id-"
+                    onclick="tryItOut('PUTapi-roles-permissions-banque-transactions--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-roles-permissions-banque-transactions--id-"
+                    onclick="cancelTryOut('PUTapi-roles-permissions-banque-transactions--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-roles-permissions-banque-transactions--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction à mettre à jour. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque_account_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banque_account_id"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
+               data-component="body">
+    <br>
+<p>UUID du compte bancaire. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_number"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""TRX-2025-001""
+               data-component="body">
+    <br>
+<p>Numéro de transaction (unique). Example: <code>"TRX-2025-001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_date"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""2025-01-15""
+               data-component="body">
+    <br>
+<p>Date de la transaction. Example: <code>"2025-01-15"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_type"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""credit""
+               data-component="body">
+    <br>
+<p>Type de transaction. Example: <code>"credit"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value="5500000.00"
+               data-component="body">
+    <br>
+<p>Montant. Example: <code>5500000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>libelle</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="libelle"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""Virement reçu - Facture #FAC-2025-001 (modifié)""
+               data-component="body">
+    <br>
+<p>Description. Example: <code>"Virement reçu - Facture #FAC-2025-001 (modifié)"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reference_externe</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reference_externe"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""VIR123456789""
+               data-component="body">
+    <br>
+<p>optional Référence externe. Example: <code>"VIR123456789"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>tiers</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="tiers"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""Client ABC SARL""
+               data-component="body">
+    <br>
+<p>optional Tiers. Example: <code>"Client ABC SARL"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PUTapi-roles-permissions-banque-transactions--id-"
+               value=""valide""
+               data-component="body">
+    <br>
+<p>optional Statut. Example: <code>"valide"</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-PATCHapi-roles-permissions-banque-transactions--id-">Mettre à jour une transaction</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Met à jour les informations d'une transaction existante.</p>
+
+<span id="example-requests-PATCHapi-roles-permissions-banque-transactions--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"banque_account_id\": \"\\\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\\\"\",
+    \"transaction_number\": \"\\\"TRX-2025-001\\\"\",
+    \"transaction_date\": \"\\\"2025-01-15\\\"\",
+    \"transaction_type\": \"\\\"credit\\\"\",
+    \"montant\": \"5500000.00\",
+    \"libelle\": \"\\\"Virement reçu - Facture #FAC-2025-001 (modifié)\\\"\",
+    \"reference_externe\": \"\\\"VIR123456789\\\"\",
+    \"tiers\": \"\\\"Client ABC SARL\\\"\",
+    \"status\": \"\\\"valide\\\"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "banque_account_id": "\"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b\"",
+    "transaction_number": "\"TRX-2025-001\"",
+    "transaction_date": "\"2025-01-15\"",
+    "transaction_type": "\"credit\"",
+    "montant": "5500000.00",
+    "libelle": "\"Virement reçu - Facture #FAC-2025-001 (modifié)\"",
+    "reference_externe": "\"VIR123456789\"",
+    "tiers": "\"Client ABC SARL\"",
+    "status": "\"valide\""
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;patch(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'banque_account_id' =&gt; '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"',
+            'transaction_number' =&gt; '"TRX-2025-001"',
+            'transaction_date' =&gt; '"2025-01-15"',
+            'transaction_type' =&gt; '"credit"',
+            'montant' =&gt; '5500000.00',
+            'libelle' =&gt; '"Virement reçu - Facture #FAC-2025-001 (modifié)"',
+            'reference_externe' =&gt; '"VIR123456789"',
+            'tiers' =&gt; '"Client ABC SARL"',
+            'status' =&gt; '"valide"',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-roles-permissions-banque-transactions--id-">
+            <blockquote>
+            <p>Example response (200, Mise à jour réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;banque_account_id&quot;: &quot;8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b&quot;,
+        &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+        &quot;transaction_date&quot;: &quot;2025-01-15&quot;,
+        &quot;transaction_type&quot;: &quot;credit&quot;,
+        &quot;montant&quot;: 5500000,
+        &quot;libelle&quot;: &quot;Virement re&ccedil;u - Facture #FAC-2025-001 (modifi&eacute;)&quot;,
+        &quot;status&quot;: &quot;valide&quot;,
+        &quot;created_at&quot;: &quot;2025-01-15T10:30:00.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-01-16T15:45:00.000000Z&quot;
+    },
+    &quot;message&quot;: &quot;Transaction mise &agrave; jour avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Erreurs de validation):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;errors&quot;: {
+        &quot;transaction_number&quot;: [
+            &quot;Ce num&eacute;ro de transaction existe d&eacute;j&agrave;&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-roles-permissions-banque-transactions--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-roles-permissions-banque-transactions--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-roles-permissions-banque-transactions--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-roles-permissions-banque-transactions--id-" data-method="PATCH"
+      data-path="api/roles-permissions/banque-transactions/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-roles-permissions-banque-transactions--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-roles-permissions-banque-transactions--id-"
+                    onclick="tryItOut('PATCHapi-roles-permissions-banque-transactions--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-roles-permissions-banque-transactions--id-"
+                    onclick="cancelTryOut('PATCHapi-roles-permissions-banque-transactions--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-roles-permissions-banque-transactions--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction à mettre à jour. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque_account_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="banque_account_id"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b""
+               data-component="body">
+    <br>
+<p>UUID du compte bancaire. Example: <code>"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_number"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""TRX-2025-001""
+               data-component="body">
+    <br>
+<p>Numéro de transaction (unique). Example: <code>"TRX-2025-001"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_date"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""2025-01-15""
+               data-component="body">
+    <br>
+<p>Date de la transaction. Example: <code>"2025-01-15"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_type"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""credit""
+               data-component="body">
+    <br>
+<p>Type de transaction. Example: <code>"credit"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value="5500000.00"
+               data-component="body">
+    <br>
+<p>Montant. Example: <code>5500000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>libelle</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="libelle"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""Virement reçu - Facture #FAC-2025-001 (modifié)""
+               data-component="body">
+    <br>
+<p>Description. Example: <code>"Virement reçu - Facture #FAC-2025-001 (modifié)"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reference_externe</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reference_externe"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""VIR123456789""
+               data-component="body">
+    <br>
+<p>optional Référence externe. Example: <code>"VIR123456789"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>tiers</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="tiers"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""Client ABC SARL""
+               data-component="body">
+    <br>
+<p>optional Tiers. Example: <code>"Client ABC SARL"</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PATCHapi-roles-permissions-banque-transactions--id-"
+               value=""valide""
+               data-component="body">
+    <br>
+<p>optional Statut. Example: <code>"valide"</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-DELETEapi-roles-permissions-banque-transactions--id-">Supprimer une transaction (soft delete)</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Effectue une suppression logique de la transaction.</p>
+
+<span id="example-requests-DELETEapi-roles-permissions-banque-transactions--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a';
+$response = $client-&gt;delete(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-roles-permissions-banque-transactions--id-">
+            <blockquote>
+            <p>Example response (200, Suppression réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Transaction supprim&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-roles-permissions-banque-transactions--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-roles-permissions-banque-transactions--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-roles-permissions-banque-transactions--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-roles-permissions-banque-transactions--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-roles-permissions-banque-transactions--id-" data-method="DELETE"
+      data-path="api/roles-permissions/banque-transactions/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-roles-permissions-banque-transactions--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-roles-permissions-banque-transactions--id-"
+                    onclick="tryItOut('DELETEapi-roles-permissions-banque-transactions--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-roles-permissions-banque-transactions--id-"
+                    onclick="cancelTryOut('DELETEapi-roles-permissions-banque-transactions--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-roles-permissions-banque-transactions--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-roles-permissions-banque-transactions--id-"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-roles-permissions-banque-transactions--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="DELETEapi-roles-permissions-banque-transactions--id-"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction à supprimer. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--restore">Restaurer une transaction supprimée</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Restaure une transaction supprimée logiquement.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-transactions--id--restore">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/restore';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-transactions--id--restore">
+            <blockquote>
+            <p>Example response (200, Restauration réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+        &quot;montant&quot;: 5000000,
+        &quot;deleted_at&quot;: null
+    },
+    &quot;message&quot;: &quot;Transaction restaur&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-transactions--id--restore" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-transactions--id--restore"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-transactions--id--restore"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-transactions--id--restore" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-transactions--id--restore">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-transactions--id--restore" data-method="POST"
+      data-path="api/roles-permissions/banque-transactions/{id}/restore"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-transactions--id--restore', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-transactions--id--restore"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-transactions--id--restore');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-transactions--id--restore"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-transactions--id--restore');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-transactions--id--restore"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}/restore</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-transactions--id--restore"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--restore"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--restore"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction à restaurer. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--validate">Valider une transaction</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Change le statut d'une transaction en &quot;valide&quot; et met à jour le solde du compte.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-transactions--id--validate">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/validate" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/validate"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/validate';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-transactions--id--validate">
+            <blockquote>
+            <p>Example response (200, Validation réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+        &quot;status&quot;: &quot;valide&quot;,
+        &quot;account&quot;: {
+            &quot;balance&quot;: 20500000
+        }
+    },
+    &quot;message&quot;: &quot;Transaction valid&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Transaction déjà validée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Cette transaction est d&eacute;j&agrave; valid&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-transactions--id--validate" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-transactions--id--validate"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-transactions--id--validate"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-transactions--id--validate" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-transactions--id--validate">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-transactions--id--validate" data-method="POST"
+      data-path="api/roles-permissions/banque-transactions/{id}/validate"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-transactions--id--validate', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-transactions--id--validate"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-transactions--id--validate');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-transactions--id--validate"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-transactions--id--validate');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-transactions--id--validate"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}/validate</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-transactions--id--validate"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--validate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--validate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--validate"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="gestion-des-transactions-bancaires-POSTapi-roles-permissions-banque-transactions--id--cancel">Annuler une transaction</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Change le statut d'une transaction en &quot;annule&quot; et ajuste le solde du compte si nécessaire.</p>
+
+<span id="example-requests-POSTapi-roles-permissions-banque-transactions--id--cancel">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/cancel" \
+    --header "Authorization: required Bearer Token. Example: Bearer 1|abc123xyz456" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/cancel"
+);
+
+const headers = {
+    "Authorization": "required Bearer Token. Example: Bearer 1|abc123xyz456",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/roles-permissions/banque-transactions/9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a/cancel';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'required Bearer Token. Example: Bearer 1|abc123xyz456',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-roles-permissions-banque-transactions--id--cancel">
+            <blockquote>
+            <p>Example response (200, Annulation réussie):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {
+        &quot;banque_transaction_id&quot;: &quot;9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a&quot;,
+        &quot;transaction_number&quot;: &quot;TRX-2025-001&quot;,
+        &quot;status&quot;: &quot;annule&quot;
+    },
+    &quot;message&quot;: &quot;Transaction annul&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401, Non authentifié):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Transaction non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\BanqueTransaction]&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Transaction déjà annulée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Cette transaction est d&eacute;j&agrave; annul&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-roles-permissions-banque-transactions--id--cancel" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-roles-permissions-banque-transactions--id--cancel"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-banque-transactions--id--cancel"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-roles-permissions-banque-transactions--id--cancel" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-roles-permissions-banque-transactions--id--cancel">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-roles-permissions-banque-transactions--id--cancel" data-method="POST"
+      data-path="api/roles-permissions/banque-transactions/{id}/cancel"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-banque-transactions--id--cancel', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles-permissions-banque-transactions--id--cancel"
+                    onclick="tryItOut('POSTapi-roles-permissions-banque-transactions--id--cancel');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles-permissions-banque-transactions--id--cancel"
+                    onclick="cancelTryOut('POSTapi-roles-permissions-banque-transactions--id--cancel');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles-permissions-banque-transactions--id--cancel"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/roles-permissions/banque-transactions/{id}/cancel</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-banque-transactions--id--cancel"
+               value="required Bearer Token. Example: Bearer 1|abc123xyz456"
+               data-component="header">
+    <br>
+<p>Example: <code>required Bearer Token. Example: Bearer 1|abc123xyz456</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--cancel"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--cancel"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="POSTapi-roles-permissions-banque-transactions--id--cancel"
+               value="9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a"
+               data-component="url">
+    <br>
+<p>UUID de la transaction. Example: <code>9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a</code></p>
             </div>
                     </form>
 
