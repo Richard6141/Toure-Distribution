@@ -82,12 +82,13 @@ class FacturePDFController extends Controller
         $action = $request->input('action', 'download');
 
         // Informations de l'entreprise
+
         $entreprise = [
             'nom' => 'TOURE DISTRIBUTION',
             'adresse' => 'Abidjan, Côte d\'Ivoire',
             'email' => 'contact@toure-distribution.com',
             'telephone' => '+225 XX XX XX XX X',
-            'logo' => null // Vous pouvez ajouter le chemin du logo ici
+            'logo' => null,
         ];
 
         // Préparer les données pour la facture
