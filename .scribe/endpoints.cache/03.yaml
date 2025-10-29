@@ -86,7 +86,7 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -95,7 +95,7 @@ endpoints:
     cleanBodyParameters:
       page: 16
       per_page: 22
-      with_client_type: false
+      with_client_type: true
     fileParameters: []
     responses:
       -
@@ -673,7 +673,7 @@ endpoints:
         name: balance_filter
         description: ''
         required: false
-        example: negative
+        example: positive
         type: string
         enumValues:
           - positive
@@ -695,7 +695,7 @@ endpoints:
       client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
       is_active: false
       with_client_type: true
-      balance_filter: negative
+      balance_filter: positive
     fileParameters: []
     responses:
       -
@@ -1007,14 +1007,14 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_client_type: true
+      with_client_type: false
     fileParameters: []
     responses:
       -
