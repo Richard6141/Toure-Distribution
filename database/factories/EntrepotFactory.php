@@ -68,21 +68,28 @@ class EntrepotFactory extends Factory
     }
 
     /**
-     * Générer un nom d'entrepôt
+     * Générer un nom d'entrepôt UNIQUE
      */
     private function generateWarehouseName(): string
     {
+        // ✅ Ajout d'un identifiant unique pour éviter les doublons
+        $uniqueId = strtoupper(Str::random(3)) . '-' . $this->faker->numberBetween(100, 999);
+
         $types = [
             fn() => 'Entrepôt ' . $this->faker->randomElement($this->warehouseTypes) . ' ' .
-                $this->faker->randomElement(['A', 'B', 'C', '1', '2', '3']),
+                $this->faker->randomElement(['A', 'B', 'C', '1', '2', '3']) . ' ' . $uniqueId,
 
-            fn() => 'Dépôt ' . $this->faker->randomElement($this->abidjaneZones),
+            fn() => 'Dépôt ' . $this->faker->randomElement($this->abidjaneZones) . ' ' . $uniqueId,
 
-            fn() => 'Centre de Distribution ' . $this->faker->randomElement(['Nord', 'Sud', 'Est', 'Ouest', 'Central']),
+            fn() => 'Centre de Distribution ' .
+                $this->faker->randomElement(['Nord', 'Sud', 'Est', 'Ouest', 'Central']) .
+                ' ' . $uniqueId,
 
-            fn() => 'Plateforme Logistique ' . $this->faker->randomElement($this->regionalCities),
+            fn() => 'Plateforme Logistique ' .
+                $this->faker->randomElement($this->regionalCities) .
+                ' ' . $uniqueId,
 
-            fn() => 'Magasin ' . $this->faker->randomElement($this->warehouseTypes),
+            fn() => 'Magasin ' . $this->faker->randomElement($this->warehouseTypes) . ' ' . $uniqueId,
         ];
 
         return $this->faker->randomElement($types)();
@@ -124,7 +131,9 @@ class EntrepotFactory extends Factory
     public function principal(): static
     {
         return $this->state(fn(array $attributes) => [
-            'name' => 'Entrepôt Principal ' . $this->faker->randomElement(['A', 'Central', '1']),
+            'name' => 'Entrepôt Principal ' .
+                $this->faker->randomElement(['A', 'Central', '1']) . ' ' .
+                strtoupper(Str::random(3)) . '-' . $this->faker->unique()->numberBetween(100, 999),
             'is_active' => true,
         ]);
     }

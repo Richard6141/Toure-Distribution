@@ -728,32 +728,31 @@ Route::prefix('roles-permissions')
             Route::post('/{id}/validate', [BanqueTransactionController::class, 'validate'])->name('validate');
             Route::post('/{id}/cancel', [BanqueTransactionController::class, 'cancel'])->name('cancel');
         })->middleware('auth:sanctum');
-
-        /**
-         * Routes pour la génération de factures PDF
-         * Prefix: /factures-pdf
-         * 
-         * À ajouter dans routes/api.php après les routes des ventes
-         */
-        Route::prefix('factures-pdf')->name('factures-pdf.')->group(function () {
-            // Générer une facture (avec options format et action)
-            Route::get('/{id}/generate', [FacturePDFController::class, 'generate'])
-                ->name('generate');
-
-            // Aperçu de la facture dans le navigateur
-            Route::get('/{id}/preview', [FacturePDFController::class, 'preview'])
-                ->name('preview');
-
-            // Télécharger la facture
-            Route::get('/{id}/download', [FacturePDFController::class, 'download'])
-                ->name('download');
-
-            // Envoyer la facture par email
-            Route::post('/{id}/send-email', [FacturePDFController::class, 'sendEmail'])
-                ->name('send-email');
-
-            // Générer plusieurs factures en lot (ZIP)
-            Route::post('/generate-batch', [FacturePDFController::class, 'generateBatch'])
-                ->name('generate-batch');
-        })->middleware('auth:sanctum');
     });
+/**
+ * Routes pour la génération de factures PDF
+ * Prefix: /factures-pdf
+ * 
+ * À ajouter dans routes/api.php après les routes des ventes
+ */
+Route::prefix('factures-pdf')->name('factures-pdf.')->group(function () {
+    // Générer une facture (avec options format et action)
+    Route::get('/{id}/generate', [FacturePDFController::class, 'generate'])
+        ->name('generate');
+
+    // Aperçu de la facture dans le navigateur
+    Route::get('/{id}/preview', [FacturePDFController::class, 'preview'])
+        ->name('preview');
+
+    // Télécharger la facture
+    Route::get('/{id}/download', [FacturePDFController::class, 'download'])
+        ->name('download');
+
+    // Envoyer la facture par email
+    Route::post('/{id}/send-email', [FacturePDFController::class, 'sendEmail'])
+        ->name('send-email');
+
+    // Générer plusieurs factures en lot (ZIP)
+    Route::post('/generate-batch', [FacturePDFController::class, 'generateBatch'])
+        ->name('generate-batch');
+})->middleware('auth:sanctum');

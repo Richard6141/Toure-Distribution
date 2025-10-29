@@ -6,391 +6,386 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facture {{ $numero_facture }}</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DejaVu Sans', Arial, sans-serif;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '10px': '11px'
-                }
-            }
-
-            ;
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .container {
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* En-tête */
-        .header {
-            border-bottom: 3px solid #2563eb;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-
-        .header-content {
-            display: table;
-            width: 100%;
-        }
-
-        .header-left {
-            display: table-cell;
-            width: 50%;
-            vertical-align: top;
-        }
-
-        .header-right {
-            display: table-cell;
-            width: 50%;
-            text-align: right;
-            vertical-align: top;
-        }
-
-        .company-name {
-            font-size: {
-                    {
-                    $format==='A5' ? '18px': '22px'
-                }
-            }
-
-            ;
-            font-weight: bold;
-            color: #2563eb;
-            margin-bottom: 8px;
-        }
-
-        .company-info {
-            color: #666;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '9px': '10px'
-                }
-            }
-
-            ;
-            line-height: 1.6;
-        }
-
-        .invoice-title {
-            font-size: {
-                    {
-                    $format==='A5' ? '20px': '24px'
-                }
-            }
-
-            ;
-            font-weight: bold;
-            color: #2563eb;
-            margin-bottom: 5px;
-        }
-
-        .invoice-number {
-            font-size: {
-                    {
-                    $format==='A5' ? '11px': '12px'
-                }
-            }
-
-            ;
-            color: #666;
-            font-weight: bold;
-        }
-
-        /* Section informations */
-        .info-section {
-            display: table;
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .info-box {
-            display: table-cell;
-            width: 48%;
-            padding: 15px;
-            border: 1px solid #e5e7eb;
-            border-radius: 5px;
-            background-color: #f9fafb;
-        }
-
-        .info-box:first-child {
-            margin-right: 4%;
-        }
-
-        .info-title {
-            font-size: {
-                    {
-                    $format==='A5' ? '11px': '12px'
-                }
-            }
-
-            ;
-            font-weight: bold;
-            color: #2563eb;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            border-bottom: 2px solid #2563eb;
-            padding-bottom: 5px;
-        }
-
-        .info-line {
-            margin-bottom: 5px;
-        }
-
-        .info-label {
-            font-weight: bold;
-            color: #666;
-        }
-
-        /* Tableau des produits */
-        .products-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .products-table thead {
-            background-color: #2563eb;
-            color: white;
-        }
-
-        .products-table th {
-            padding: 10px 8px;
-            text-align: left;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '9px': '10px'
-                }
-            }
-
-            ;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .products-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #e5e7eb;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '9px': '10px'
-                }
-            }
-
-            ;
-        }
-
-        .products-table tbody tr:nth-child(even) {
-            background-color: #f9fafb;
-        }
-
-        .products-table tbody tr:hover {
-            background-color: #f3f4f6;
-        }
-
-        .text-right {
-            text-align: right;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        /* Totaux */
-        .totals-section {
-            float: right;
-
-            width: {
-                    {
-                    $format==='A5' ? '55%': '45%'
-                }
-            }
-
-            ;
-            margin-top: 20px;
-        }
-
-        .totals-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .totals-table td {
-            padding: 8px 12px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .totals-table .label {
-            font-weight: bold;
-            color: #666;
-            text-align: right;
-        }
-
-        .totals-table .amount {
-            text-align: right;
-            font-weight: bold;
-        }
-
-        .totals-table tr.total-final {
-            background-color: #2563eb;
-            color: white;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '12px': '14px'
-                }
-            }
-
-            ;
-        }
-
-        .totals-table tr.total-final td {
-            padding: 12px;
-            border: none;
-        }
-
-        /* Notes */
-        .notes-section {
-            clear: both;
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            border-radius: 5px;
-        }
-
-        .notes-title {
-            font-weight: bold;
-            color: #92400e;
-            margin-bottom: 5px;
-        }
-
-        .notes-content {
-            color: #78350f;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '9px': '10px'
-                }
-            }
-
-            ;
-        }
-
-        /* Statut de paiement */
-        .payment-status {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 15px;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '8px': '9px'
-                }
-            }
-
-            ;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .status-non-paye {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .status-paye-partiellement {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-
-        .status-paye-totalement {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-
-        /* Pied de page */
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e5e7eb;
-            text-align: center;
-
-            font-size: {
-                    {
-                    $format==='A5' ? '8px': '9px'
-                }
-            }
-
-            ;
-            color: #666;
-        }
-
-        .footer-line {
-            margin-bottom: 3px;
-        }
-
-        /* Filigrane pour statut */
-        .watermark {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 80px;
-            color: rgba(239, 68, 68, 0.1);
-            font-weight: bold;
-            z-index: -1;
-            text-transform: uppercase;
-        }
-
-        /* Séparateur */
-        .separator {
-            height: 2px;
-            background: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa);
-            margin: 20px 0;
-        }
+    @page {
+        margin: 15mm 15mm 15mm 15mm;
+    }
+
+    * {
+        margin: 5px;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'DejaVu Sans', Arial, sans-serif;
+        @if($format==='A5') font-size: 8.5px;
+        @elseif($format==='A3') font-size: 12px;
+        @else font-size: 9.5px;
+        @endif color: #333;
+        line-height: 1.35;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 5px auto;
+        padding: 5px;
+    }
+
+    /* En-tête */
+    .header {
+        border-bottom: 3px solid #2563eb;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        overflow: hidden;
+    }
+
+    .header-left {
+        float: left;
+        width: 46%;
+    }
+
+    .header-right {
+        float: right;
+        width: 46%;
+        text-align: right;
+    }
+
+    .company-name {
+        @if($format==='A5') font-size: 15px;
+        @elseif($format==='A3') font-size: 24px;
+        @else font-size: 19px;
+        @endif font-weight: bold;
+        color: #2563eb;
+        margin-bottom: 4px;
+    }
+
+    .company-info {
+        color: #666;
+        @if($format==='A5') font-size: 7.5px;
+        @elseif($format==='A3') font-size: 11px;
+        @else font-size: 8.5px;
+        @endif line-height: 1.45;
+    }
+
+    .invoice-title {
+        @if($format==='A5') font-size: 17px;
+        @elseif($format==='A3') font-size: 26px;
+        @else font-size: 21px;
+        @endif font-weight: bold;
+        color: #2563eb;
+        margin-bottom: 4px;
+    }
+
+    .invoice-number {
+        @if($format==='A5') font-size: 9.5px;
+        @elseif($format==='A3') font-size: 13px;
+        @else font-size: 10.5px;
+        @endif color: #666;
+        font-weight: bold;
+    }
+
+    /* Section informations */
+    .info-section {
+        margin-bottom: 15px;
+        overflow: hidden;
+    }
+
+    .info-box {
+        float: left;
+        width: 46%;
+        padding: 10px;
+        border: 1px solid #e5e7eb;
+        border-radius: 3px;
+        background-color: #f9fafb;
+    }
+
+    .info-box:first-child {
+        margin-right: 8%;
+    }
+
+    .info-title {
+        @if($format==='A5') font-size: 9.5px;
+        @elseif($format==='A3') font-size: 13px;
+        @else font-size: 10.5px;
+        @endif font-weight: bold;
+        color: #2563eb;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #2563eb;
+        padding-bottom: 3px;
+    }
+
+    .info-line {
+        margin-bottom: 3px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .info-label {
+        font-weight: bold;
+        color: #666;
+    }
+
+    /* Séparateur */
+    .separator {
+        height: 2px;
+        background: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa);
+        margin: 12px 0;
+        clear: both;
+    }
+
+    /* Tableau des produits */
+    .products-table {
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 12px;
+        table-layout: fixed;
+    }
+
+    .products-table thead {
+        background-color: #2563eb;
+        color: white;
+    }
+
+    .products-table th {
+        padding: 5px 5px;
+        text-align: left;
+        @if($format==='A5') font-size: 7.5px;
+        @elseif($format==='A3') font-size: 11px;
+        @else font-size: 8.5px;
+        @endif font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .products-table td {
+        padding: 5px 5px;
+        border-bottom: 1px solid #e5e7eb;
+        @if($format==='A5') font-size: 7.5px;
+        @elseif($format==='A3') font-size: 11px;
+        @else font-size: 8.5px;
+        @endif word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .products-table tbody tr:nth-child(even) {
+        background-color: #f9fafb;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* Colonnes du tableau - Largeurs très précises pour éviter débordement */
+    .products-table th:nth-child(1),
+    .products-table td:nth-child(1) {
+        width: 3%;
+    }
+
+    .products-table th:nth-child(2),
+    .products-table td:nth-child(2) {
+        @if($format==='A5') width: 32%;
+        @else width: 35%;
+        @endif
+    }
+
+    .products-table th:nth-child(3),
+    .products-table td:nth-child(3) {
+        width: 6%;
+    }
+
+    .products-table th:nth-child(4),
+    .products-table td:nth-child(4) {
+        width: 12%;
+    }
+
+    .products-table th:nth-child(5),
+    .products-table td:nth-child(5) {
+        width: 11%;
+    }
+
+    .products-table th:nth-child(6),
+    .products-table td:nth-child(6) {
+        width: 7%;
+    }
+
+    .products-table th:nth-child(7),
+    .products-table td:nth-child(7) {
+        width: 14%;
+    }
+
+    /* Totaux */
+    .totals-section {
+        float: right;
+        @if($format==='A5') width: 62%;
+        @elseif($format==='A3') width: 42%;
+        @else width: 50%;
+        @endif margin-top: 12px;
+        margin-bottom: 15px;
+    }
+
+    .totals-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .totals-table td {
+        padding: 5px 6px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .totals-table .label {
+        font-weight: bold;
+        color: #666;
+        text-align: right;
+        width: 50%;
+    }
+
+    .totals-table .amount {
+        text-align: right;
+        font-weight: bold;
+        width: 50%;
+        word-wrap: break-word;
+    }
+
+    .totals-table tr.total-final {
+        background-color: #2563eb;
+        color: white;
+        @if($format==='A5') font-size: 10.5px;
+        @elseif($format==='A3') font-size: 15px;
+        @else font-size: 12.5px;
+        @endif
+    }
+
+    .totals-table tr.total-final td {
+        padding: 8px 12px;
+        border: none;
+    }
+
+    /* Notes */
+    .notes-section {
+        clear: both;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 8px;
+        background-color: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        border-radius: 3px;
+    }
+
+    .notes-title {
+        font-weight: bold;
+        color: #92400e;
+        margin-bottom: 4px;
+    }
+
+    .notes-content {
+        color: #78350f;
+        @if($format==='A5') font-size: 7.5px;
+        @elseif($format==='A3') font-size: 11px;
+        @else font-size: 8.5px;
+        @endif word-wrap: break-word;
+    }
+
+    /* Statut de paiement */
+    .payment-status {
+        display: inline-block;
+        padding: 3px 7px;
+        border-radius: 12px;
+        @if($format==='A5') font-size: 6.5px;
+        @elseif($format==='A3') font-size: 10px;
+        @else font-size: 7.5px;
+        @endif font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .status-non-paye {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+
+    .status-paye-partiellement {
+        background-color: #fef3c7;
+        color: #92400e;
+    }
+
+    .status-paye-totalement {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+
+    /* Pied de page */
+    .footer {
+        clear: both;
+        margin-top: 25px;
+        padding-top: 12px;
+        border-top: 2px solid #e5e7eb;
+        text-align: center;
+        @if($format==='A5') font-size: 6.5px;
+        @elseif($format==='A3') font-size: 10px;
+        @else font-size: 7.5px;
+        @endif color: #666;
+    }
+
+    .footer-line {
+        margin-bottom: 2px;
+    }
+
+    /* Filigrane pour statut */
+    .watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        @if($format==='A5') font-size: 60px;
+        @elseif($format==='A3') font-size: 100px;
+        @else font-size: 80px;
+        @endif color: rgba(239, 68, 68, 0.1);
+        font-weight: bold;
+        z-index: -1;
+        text-transform: uppercase;
+    }
+
+    /* Clearfix pour éviter les débordements */
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
     </style>
 </head>
 
 <body>
     <div class="container">
         <!-- En-tête -->
-        <div class="header">
-            <div class="header-content">
-                <div class="header-left">
-                    <div class="company-name">{{ $entreprise['nom'] }}</div>
-                    <div class="company-info">
-                        <div>{{ $entreprise['adresse'] }}</div>
-                        <div>Email: {{ $entreprise['email'] }}</div>
-                        <div>Tél: {{ $entreprise['telephone'] }}</div>
-                    </div>
+        <div class="header clearfix">
+            <div class="header-left">
+                <div class="company-name">{{ $entreprise['nom'] }}</div>
+                <div class="company-info">
+                    <div>{{ $entreprise['adresse'] }}</div>
+                    <div>Email: {{ $entreprise['email'] }}</div>
+                    <div>Tél: {{ $entreprise['telephone'] }}</div>
                 </div>
-                <div class="header-right">
-                    <div class="invoice-title">FACTURE</div>
-                    <div class="invoice-number">N° {{ $numero_facture }}</div>
-                    <div class="company-info" style="margin-top: 10px;">
-                        <div>Date: {{ \Carbon\Carbon::parse($vente->date_vente)->format('d/m/Y') }}</div>
-                        <div>Générée le: {{ $date_generation }}</div>
-                    </div>
+            </div>
+            <div class="header-right">
+                <div class="invoice-title">FACTURE</div>
+                <div class="invoice-number">N° {{ $numero_facture }}</div>
+                <div class="company-info" style="margin-top: 6px;">
+                    <div>Date: {{ \Carbon\Carbon::parse($vente->date_vente)->format('d/m/Y') }}</div>
+                    <div>Générée le: {{ $date_generation }}</div>
                 </div>
             </div>
         </div>
 
         <!-- Informations Client et Vente -->
-        <div class="info-section">
+        <div class="info-section clearfix">
             <div class="info-box">
                 <div class="info-title">Informations Client</div>
                 <div class="info-line">
@@ -466,27 +461,25 @@
         <table class="products-table">
             <thead>
                 <tr>
-                    <th style="width: 5%;">#</th>
-                    <th style="width: 12%;">Code</th>
-                    <th style="width: 30%;">Désignation</th>
-                    <th style="width: 8%;" class="text-center">Qté</th>
-                    <th style="width: 12%;" class="text-right">P.U. HT</th>
-                    <th style="width: 10%;" class="text-right">Remise</th>
-                    <th style="width: 8%;" class="text-center">TVA %</th>
-                    <th style="width: 15%;" class="text-right">Total TTC</th>
+                    <th style="text-align: center;">#</th>
+                    <th>Désignation</th>
+                    <th class="text-center">Qté</th>
+                    <th class="text-right">P.U. HT</th>
+                    <th class="text-right">Remise</th>
+                    <th class="text-center">TVA %</th>
+                    <th class="text-right">Total TTC</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($vente->detailVentes as $index => $detail)
                 <tr>
                     <td class="text-center">{{ $index + 1 }}</td>
-                    <td>{{ $detail->product->code }}</td>
                     <td>{{ $detail->product->name }}</td>
                     <td class="text-center">{{ number_format($detail->quantite, 0, ',', ' ') }}</td>
-                    <td class="text-right">{{ number_format($detail->prix_unitaire, 0, ',', ' ') }} FCFA</td>
-                    <td class="text-right">{{ number_format($detail->remise_ligne, 0, ',', ' ') }} FCFA</td>
-                    <td class="text-center">{{ number_format($detail->taux_taxe, 2, ',', ' ') }}%</td>
-                    <td class="text-right">{{ number_format($detail->montant_total, 0, ',', ' ') }} FCFA</td>
+                    <td class="text-right">{{ number_format($detail->prix_unitaire, 0, ',', ' ') }}</td>
+                    <td class="text-right">{{ number_format($detail->remise_ligne, 0, ',', ' ') }}</td>
+                    <td class="text-center">{{ number_format($detail->taux_taxe, 1, ',', '') }}%</td>
+                    <td class="text-right">{{ number_format($detail->montant_ttc, 0, ',', ' ') }}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -538,7 +531,7 @@
         <div class="footer">
             <div class="footer-line">{{ $entreprise['nom'] }} - {{ $entreprise['adresse'] }}</div>
             <div class="footer-line">Email: {{ $entreprise['email'] }} | Tél: {{ $entreprise['telephone'] }}</div>
-            <div class="footer-line" style="margin-top: 10px; font-style: italic;">
+            <div class="footer-line" style="margin-top: 6px; font-style: italic;">
                 Merci pour votre confiance !
             </div>
         </div>

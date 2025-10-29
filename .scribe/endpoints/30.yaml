@@ -1,23 +1,25 @@
 name: 'Génération de Factures PDF'
 description: |-
 
-  API pour générer des factures PDF à partir des ventes.
+  API pour générer des factures PDF à partir des ventes avec support A4/A5.
+  Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/roles-permissions/factures-pdf/{id}/generate'
+    uri: 'api/factures-pdf/{id}/preview'
     metadata:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes.
+        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Générer une facture PDF pour une vente'
+      title: 'Aperçu de la facture dans le navigateur'
       description: |-
-        Génère un PDF de facture professionnelle avec en-tête et pied de page.
-        Le format peut être A4 (défaut) ou A5.
+        Affiche la facture directement dans le navigateur sans téléchargement.
+        Raccourci pour `/generate?action=preview`.
       authenticated: true
       deprecated: false
       custom: []
@@ -41,19 +43,9 @@ endpoints:
     queryParameters:
       format:
         name: format
-        description: 'Format du PDF (A4 ou A5).'
+        description: 'Format du PDF. Valeurs possibles: A4, A5. Défaut: A4.'
         required: false
         example: A4
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      action:
-        name: action
-        description: "Action à effectuer: 'download' (télécharger) ou 'preview' (aperçu)."
-        required: false
-        example: download
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -61,49 +53,15 @@ endpoints:
         custom: []
     cleanQueryParameters:
       format: A4
-      action: download
-    bodyParameters:
-      format:
-        name: format
-        description: ''
-        required: false
-        example: A4
-        type: string
-        enumValues:
-          - A4
-          - A5
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      action:
-        name: action
-        description: ''
-        required: false
-        example: preview
-        type: string
-        enumValues:
-          - download
-          - preview
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      format: A4
-      action: preview
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Facture générée avec succès",
-            "data": {
-              "pdf_url": "base64_encoded_pdf_content"
-            }
-          }
+        content: '[PDF displayed in browser]'
         headers: []
-        description: ''
+        description: 'Aperçu réussi'
         custom: []
       -
         status: 404
@@ -113,7 +71,7 @@ endpoints:
             "message": "Vente non trouvée"
           }
         headers: []
-        description: ''
+        description: 'Vente non trouvée'
         custom: []
     responseFields: []
     auth:
@@ -127,73 +85,19 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/roles-permissions/factures-pdf/{id}/preview'
+    uri: 'api/factures-pdf/{id}/download'
     metadata:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Aperçu de la facture dans le navigateur'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the factures pdf.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/roles-permissions/factures-pdf/{id}/download'
-    metadata:
-      groupName: 'Génération de Factures PDF'
-      groupDescription: |-
-
-        API pour générer des factures PDF à partir des ventes.
+        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Télécharger la facture'
-      description: ''
+      description: |-
+        Télécharge directement la facture au format PDF.
+        Raccourci pour `/generate?action=download`.
       authenticated: true
       deprecated: false
       custom: []
@@ -204,30 +108,48 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the factures pdf.'
+        description: "L'UUID de la vente."
         required: true
-        example: architecto
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters:
+      format:
+        name: format
+        description: 'Format du PDF. Valeurs possibles: A4, A5. Défaut: A4.'
+        required: false
+        example: A5
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      format: A5
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        status: 200
+        content: '[Binary PDF Content]'
+        headers: []
+        description: 'Téléchargement réussi'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: 'Vente non trouvée'
         custom: []
     responseFields: []
     auth:
@@ -241,16 +163,21 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/roles-permissions/factures-pdf/{id}/send-email'
+    uri: 'api/factures-pdf/{id}/send-email'
     metadata:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes.
+        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Envoyer la facture par email au client'
-      description: ''
+      description: |-
+        Envoie la facture PDF par email au client.
+        Si l'email n'est pas fourni, utilise l'email enregistré du client.
+
+        **Note:** Cette fonctionnalité nécessite la configuration du service d'email.
       authenticated: true
       deprecated: false
       custom: []
@@ -261,57 +188,102 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the factures pdf.'
+        description: "L'UUID de la vente."
         required: true
-        example: architecto
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       email:
         name: email
-        description: "Email du destinataire (optionnel, utilise l'email du client par défaut)."
+        description: "Email du destinataire. Si non fourni, utilise l'email du client."
         required: false
-        example: gbailey@example.net
+        example: client@example.com
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       message:
         name: message
-        description: "Message personnalisé à inclure dans l'email."
+        description: "Message personnalisé à inclure dans l'email (max 1000 caractères)."
         required: false
-        example: architecto
+        example: 'Merci pour votre achat. Veuillez trouver ci-joint votre facture.'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       format:
         name: format
-        description: ''
+        description: 'Format du PDF à joindre. Valeurs possibles: A4, A5. Défaut: A4.'
         required: false
         example: A4
         type: string
-        enumValues:
-          - A4
-          - A5
-        exampleWasSpecified: false
+        enumValues: []
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      email: gbailey@example.net
-      message: architecto
+      email: client@example.com
+      message: 'Merci pour votre achat. Veuillez trouver ci-joint votre facture.'
       format: A4
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Facture envoyée par email avec succès",
+            "data": {
+              "email": "client@example.com",
+              "numero_facture": "FACT-2025-0001"
+            }
+          }
+        headers: []
+        description: 'Email envoyé avec succès'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: 'Vente non trouvée'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Aucun email disponible pour ce client"
+          }
+        headers: []
+        description: 'Aucun email disponible'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "email": ["Le champ email doit être une adresse email valide."]
+            }
+          }
+        headers: []
+        description: 'Email invalide'
+        custom: []
     responseFields: []
     auth:
       - headers
@@ -324,16 +296,21 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/roles-permissions/factures-pdf/generate-batch
+    uri: api/factures-pdf/generate-batch
     metadata:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes.
+        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
       title: 'Générer plusieurs factures en lot (ZIP)'
-      description: ''
+      description: |-
+        Génère plusieurs factures PDF et les regroupe dans un fichier ZIP.
+        Maximum 50 factures par lot.
+
+        **Note:** Cette fonctionnalité nécessite l'implémentation complète.
       authenticated: true
       deprecated: false
       custom: []
@@ -348,31 +325,85 @@ endpoints:
     bodyParameters:
       vente_ids:
         name: vente_ids
-        description: 'Liste des IDs des ventes.'
+        description: 'Liste des UUIDs des ventes (min: 1, max: 50).'
         required: true
         example:
-          - architecto
+          - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+          - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: 'string[]'
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       format:
         name: format
-        description: 'Format du PDF (A4 ou A5).'
+        description: 'Format du PDF pour toutes les factures. Valeurs possibles: A4, A5. Défaut: A4.'
         required: false
-        example: architecto
+        example: A4
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
       vente_ids:
-        - architecto
-      format: architecto
+        - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      format: A4
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Génération en lot en cours...",
+            "data": {
+              "count": 3
+            }
+          }
+        headers: []
+        description: 'Génération en cours'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "vente_ids": ["Le champ vente ids est obligatoire."]
+            }
+          }
+        headers: []
+        description: 'Validation échouée - vente_ids manquant'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "vente_ids.0": ["La vente sélectionnée est invalide."]
+            }
+          }
+        headers: []
+        description: 'Validation échouée - IDs invalides'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "vente_ids": ["Le nombre maximum de factures par lot est de 50."]
+            }
+          }
+        headers: []
+        description: 'Validation échouée - Trop de factures'
+        custom: []
     responseFields: []
     auth:
       - headers

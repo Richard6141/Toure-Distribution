@@ -1165,20 +1165,17 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                     <a href="#generation-de-factures-pdf">Génération de Factures PDF</a>
                 </li>
                                     <ul id="tocify-subheader-generation-de-factures-pdf" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--generate">
-                                <a href="#generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--generate">Générer une facture PDF pour une vente</a>
+                                                    <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-GETapi-factures-pdf--id--preview">
+                                <a href="#generation-de-factures-pdf-GETapi-factures-pdf--id--preview">Aperçu de la facture dans le navigateur</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--preview">
-                                <a href="#generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--preview">Aperçu de la facture dans le navigateur</a>
+                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-GETapi-factures-pdf--id--download">
+                                <a href="#generation-de-factures-pdf-GETapi-factures-pdf--id--download">Télécharger la facture</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--download">
-                                <a href="#generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--download">Télécharger la facture</a>
+                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-POSTapi-factures-pdf--id--send-email">
+                                <a href="#generation-de-factures-pdf-POSTapi-factures-pdf--id--send-email">Envoyer la facture par email au client</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-POSTapi-roles-permissions-factures-pdf--id--send-email">
-                                <a href="#generation-de-factures-pdf-POSTapi-roles-permissions-factures-pdf--id--send-email">Envoyer la facture par email au client</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-POSTapi-roles-permissions-factures-pdf-generate-batch">
-                                <a href="#generation-de-factures-pdf-POSTapi-roles-permissions-factures-pdf-generate-batch">Générer plusieurs factures en lot (ZIP)</a>
+                                                                                <li class="tocify-item level-2" data-unique="generation-de-factures-pdf-POSTapi-factures-pdf-generate-batch">
+                                <a href="#generation-de-factures-pdf-POSTapi-factures-pdf-generate-batch">Générer plusieurs factures en lot (ZIP)</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -4977,7 +4974,7 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
     \"is_active\": false,
-    \"with_client_type\": true,
+    \"with_client_type\": false,
     \"balance_filter\": \"positive\"
 }"
 </code></pre></div>
@@ -5023,7 +5020,7 @@ let body = {
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
     "is_active": false,
-    "with_client_type": true,
+    "with_client_type": false,
     "balance_filter": "positive"
 };
 
@@ -5071,7 +5068,7 @@ $response = $client-&gt;get(
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
             'is_active' =&gt; false,
-            'with_client_type' =&gt; true,
+            'with_client_type' =&gt; false,
             'balance_filter' =&gt; 'positive',
         ],
     ]
@@ -5501,7 +5498,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -5907,7 +5904,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client_type\": false
+    \"with_client_type\": true
 }"
 </code></pre></div>
 
@@ -5929,7 +5926,7 @@ const headers = {
 };
 
 let body = {
-    "with_client_type": false
+    "with_client_type": true
 };
 
 fetch(url, {
@@ -5953,7 +5950,7 @@ $response = $client-&gt;get(
             'with_client_type' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client_type' =&gt; false,
+            'with_client_type' =&gt; true,
         ],
     ]
 );
@@ -6123,7 +6120,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -9302,7 +9299,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-29T15:18:40\",
+    \"date_from\": \"2025-10-29T16:10:43\",
     \"date_to\": \"2051-11-22\"
 }"
 </code></pre></div>
@@ -9326,7 +9323,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-29T15:18:40",
+    "date_from": "2025-10-29T16:10:43",
     "date_to": "2051-11-22"
 };
 
@@ -9352,7 +9349,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-29T15:18:40',
+            'date_from' =&gt; '2025-10-29T16:10:43',
             'date_to' =&gt; '2051-11-22',
         ],
     ]
@@ -9483,10 +9480,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-29T15:18:40"
+               value="2025-10-29T16:10:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T15:18:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-29T16:10:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9522,10 +9519,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"partially_paid\",
-    \"date_from\": \"2025-10-29T15:18:40\",
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-29T16:10:43\",
     \"date_to\": \"2051-11-22\",
-    \"with_client\": false,
+    \"with_client\": true,
     \"with_details\": true
 }"
 </code></pre></div>
@@ -9560,10 +9557,10 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "partially_paid",
-    "date_from": "2025-10-29T15:18:40",
+    "statut": "pending",
+    "date_from": "2025-10-29T16:10:43",
     "date_to": "2051-11-22",
-    "with_client": false,
+    "with_client": true,
     "with_details": true
 };
 
@@ -9600,10 +9597,10 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'partially_paid',
-            'date_from' =&gt; '2025-10-29T15:18:40',
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-29T16:10:43',
             'date_to' =&gt; '2051-11-22',
-            'with_client' =&gt; false,
+            'with_client' =&gt; true,
             'with_details' =&gt; true,
         ],
     ]
@@ -9890,10 +9887,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="partially_paid"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>partially_paid</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9903,10 +9900,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-29T15:18:40"
+               value="2025-10-29T16:10:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T15:18:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-29T16:10:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9938,7 +9935,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10387,9 +10384,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": false,
-    \"with_details\": false,
-    \"with_payments\": true
+    \"with_client\": true,
+    \"with_details\": true,
+    \"with_payments\": false
 }"
 </code></pre></div>
 
@@ -10413,9 +10410,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": false,
-    "with_details": false,
-    "with_payments": true
+    "with_client": true,
+    "with_details": true,
+    "with_payments": false
 };
 
 fetch(url, {
@@ -10441,9 +10438,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; false,
-            'with_details' =&gt; false,
-            'with_payments' =&gt; true,
+            'with_client' =&gt; true,
+            'with_details' =&gt; true,
+            'with_payments' =&gt; false,
         ],
     ]
 );
@@ -10653,7 +10650,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10674,7 +10671,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -10695,7 +10692,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -11636,7 +11633,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-29T15:18:40\",
+    \"date_from\": \"2025-10-29T16:10:43\",
     \"date_to\": \"2051-11-22\"
 }"
 </code></pre></div>
@@ -11660,7 +11657,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-29T15:18:40",
+    "date_from": "2025-10-29T16:10:43",
     "date_to": "2051-11-22"
 };
 
@@ -11686,7 +11683,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-29T15:18:40',
+            'date_from' =&gt; '2025-10-29T16:10:43',
             'date_to' =&gt; '2051-11-22',
         ],
     ]
@@ -11826,10 +11823,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-29T15:18:40"
+               value="2025-10-29T16:10:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T15:18:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-29T16:10:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11867,10 +11864,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"completed\",
-    \"date_from\": \"2025-10-29T15:18:40\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-29T16:10:43\",
     \"date_to\": \"2051-11-22\",
-    \"with_facture\": true,
+    \"with_facture\": false,
     \"with_client\": true,
     \"with_payment_method\": true
 }"
@@ -11911,10 +11908,10 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "completed",
-    "date_from": "2025-10-29T15:18:40",
+    "statut": "failed",
+    "date_from": "2025-10-29T16:10:43",
     "date_to": "2051-11-22",
-    "with_facture": true,
+    "with_facture": false,
     "with_client": true,
     "with_payment_method": true
 };
@@ -11957,10 +11954,10 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'completed',
-            'date_from' =&gt; '2025-10-29T15:18:40',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-29T16:10:43',
             'date_to' =&gt; '2051-11-22',
-            'with_facture' =&gt; true,
+            'with_facture' =&gt; false,
             'with_client' =&gt; true,
             'with_payment_method' =&gt; true,
         ],
@@ -12307,10 +12304,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="completed"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12320,10 +12317,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-29T15:18:40"
+               value="2025-10-29T16:10:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T15:18:40</code></p>
+<p>Must be a valid date. Example: <code>2025-10-29T16:10:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12355,7 +12352,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -12728,8 +12725,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": false,
-    \"with_client\": false,
+    \"with_facture\": true,
+    \"with_client\": true,
     \"with_payment_method\": false
 }"
 </code></pre></div>
@@ -12754,8 +12751,8 @@ const headers = {
 };
 
 let body = {
-    "with_facture": false,
-    "with_client": false,
+    "with_facture": true,
+    "with_client": true,
     "with_payment_method": false
 };
 
@@ -12782,8 +12779,8 @@ $response = $client-&gt;get(
             'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; false,
-            'with_client' =&gt; false,
+            'with_facture' =&gt; true,
+            'with_client' =&gt; true,
             'with_payment_method' =&gt; false,
         ],
     ]
@@ -12996,7 +12993,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -13017,7 +13014,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -18509,7 +18506,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -18531,7 +18528,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -18555,7 +18552,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -18713,7 +18710,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -43439,7 +43436,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-29T15:18:41\",
+    \"date_livraison_prevue\": \"2025-10-29T16:10:43\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -43462,7 +43459,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-29T15:18:41",
+    "date_livraison_prevue": "2025-10-29T16:10:43",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -43490,7 +43487,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-29T15:18:41',
+            'date_livraison_prevue' =&gt; '2025-10-29T16:10:43',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -43626,10 +43623,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-29T15:18:41"
+               value="2025-10-29T16:10:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T15:18:41</code></p>
+<p>Must be a valid date. Example: <code>2025-10-29T16:10:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -43698,7 +43695,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-29T15:18:41\",
+    \"date_livraison_prevue\": \"2025-10-29T16:10:43\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -43721,7 +43718,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-29T15:18:41",
+    "date_livraison_prevue": "2025-10-29T16:10:43",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -43749,7 +43746,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-29T15:18:41',
+            'date_livraison_prevue' =&gt; '2025-10-29T16:10:43',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -43885,10 +43882,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-29T15:18:41"
+               value="2025-10-29T16:10:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T15:18:41</code></p>
+<p>Must be a valid date. Example: <code>2025-10-29T16:10:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -63763,7 +63760,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/ventes/architecto" \
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -63777,7 +63774,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
 );
 
 const headers = {
@@ -63801,7 +63798,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760';
 $response = $client-&gt;put(
     $url,
     [
@@ -63932,10 +63929,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-ventes--id-"
-               value="architecto"
+               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -63989,7 +63986,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/ventes/architecto" \
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -64003,7 +64000,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
 );
 
 const headers = {
@@ -64027,7 +64024,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760';
 $response = $client-&gt;patch(
     $url,
     [
@@ -64158,10 +64155,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHapi-ventes--id-"
-               value="architecto"
+               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -64214,7 +64211,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/ventes/architecto" \
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -64222,7 +64219,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
 );
 
 const headers = {
@@ -64239,7 +64236,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760';
 $response = $client-&gt;delete(
     $url,
     [
@@ -64344,10 +64341,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-ventes--id-"
-               value="architecto"
+               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
             </div>
                     </form>
 
@@ -64539,14 +64536,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/ventes/architecto/restore" \
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760/restore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto/restore"
+    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760/restore"
 );
 
 const headers = {
@@ -64562,7 +64559,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto/restore';
+$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760/restore';
 $response = $client-&gt;post(
     $url,
     [
@@ -64655,51 +64652,46 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-ventes--id--restore"
-               value="architecto"
+               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
             </div>
                     </form>
 
                 <h1 id="generation-de-factures-pdf">Génération de Factures PDF</h1>
 
-    <p>API pour générer des factures PDF à partir des ventes.</p>
+    <p>API pour générer des factures PDF à partir des ventes avec support A4/A5.
+Toutes les routes nécessitent une authentification via Sanctum.</p>
 
-                                <h2 id="generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--generate">Générer une facture PDF pour une vente</h2>
+                                <h2 id="generation-de-factures-pdf-GETapi-factures-pdf--id--preview">Aperçu de la facture dans le navigateur</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Génère un PDF de facture professionnelle avec en-tête et pied de page.
-Le format peut être A4 (défaut) ou A5.</p>
+<p>Affiche la facture directement dans le navigateur sans téléchargement.
+Raccourci pour <code>/generate?action=preview</code>.</p>
 
-<span id="example-requests-GETapi-roles-permissions-factures-pdf--id--generate">
+<span id="example-requests-GETapi-factures-pdf--id--preview">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles-permissions/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/generate?format=A4&amp;action=download" \
+    --get "http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/preview?format=A4" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"format\": \"A4\",
-    \"action\": \"preview\"
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles-permissions/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/generate"
+    "http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/preview"
 );
 
 const params = {
     "format": "A4",
-    "action": "download",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -64710,21 +64702,15 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "format": "A4",
-    "action": "preview"
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles-permissions/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/generate';
+$url = 'http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/preview';
 $response = $client-&gt;get(
     $url,
     [
@@ -64735,11 +64721,6 @@ $response = $client-&gt;get(
         ],
         'query' =&gt; [
             'format' =&gt; 'A4',
-            'action' =&gt; 'download',
-        ],
-        'json' =&gt; [
-            'format' =&gt; 'A4',
-            'action' =&gt; 'preview',
         ],
     ]
 );
@@ -64748,22 +64729,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-GETapi-roles-permissions-factures-pdf--id--generate">
+<span id="example-responses-GETapi-factures-pdf--id--preview">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (200, Aperçu réussi):</p>
         </blockquote>
                 <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Facture g&eacute;n&eacute;r&eacute;e avec succ&egrave;s&quot;,
-    &quot;data&quot;: {
-        &quot;pdf_url&quot;: &quot;base64_encoded_pdf_content&quot;
-    }
-}</code>
+<code class="language-json" style="max-height: 300px;">[PDF displayed in browser]</code>
  </pre>
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (404, Vente non trouvée):</p>
         </blockquote>
                 <pre>
 
@@ -64773,43 +64748,43 @@ print_r(json_decode((string) $body));</code></pre></div>
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-roles-permissions-factures-pdf--id--generate" hidden>
+<span id="execution-results-GETapi-factures-pdf--id--preview" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-roles-permissions-factures-pdf--id--generate"></span>:
+                id="execution-response-status-GETapi-factures-pdf--id--preview"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-factures-pdf--id--generate"
+    <pre class="json"><code id="execution-response-content-GETapi-factures-pdf--id--preview"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-roles-permissions-factures-pdf--id--generate" hidden>
+<span id="execution-error-GETapi-factures-pdf--id--preview" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-roles-permissions-factures-pdf--id--generate">
+    <pre><code id="execution-error-message-GETapi-factures-pdf--id--preview">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-roles-permissions-factures-pdf--id--generate" data-method="GET"
-      data-path="api/roles-permissions/factures-pdf/{id}/generate"
+<form id="form-GETapi-factures-pdf--id--preview" data-method="GET"
+      data-path="api/factures-pdf/{id}/preview"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-factures-pdf--id--generate', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-factures-pdf--id--preview', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-roles-permissions-factures-pdf--id--generate"
-                    onclick="tryItOut('GETapi-roles-permissions-factures-pdf--id--generate');">Try it out ⚡
+                    id="btn-tryout-GETapi-factures-pdf--id--preview"
+                    onclick="tryItOut('GETapi-factures-pdf--id--preview');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-roles-permissions-factures-pdf--id--generate"
-                    onclick="cancelTryOut('GETapi-roles-permissions-factures-pdf--id--generate');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-factures-pdf--id--preview"
+                    onclick="cancelTryOut('GETapi-factures-pdf--id--preview');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-roles-permissions-factures-pdf--id--generate"
+                    id="btn-executetryout-GETapi-factures-pdf--id--preview"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -64817,7 +64792,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/roles-permissions/factures-pdf/{id}/generate</code></b>
+            <b><code>api/factures-pdf/{id}/preview</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -64825,7 +64800,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-factures-pdf--id--preview"
                value="Bearer Bearer {YOUR_AUTH_TOKEN}"
                data-component="header">
     <br>
@@ -64836,7 +64811,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
+                              name="Content-Type"                data-endpoint="GETapi-factures-pdf--id--preview"
                value="application/json"
                data-component="header">
     <br>
@@ -64847,7 +64822,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
+                              name="Accept"                data-endpoint="GETapi-factures-pdf--id--preview"
                value="application/json"
                data-component="header">
     <br>
@@ -64859,7 +64834,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
+                              name="id"                data-endpoint="GETapi-factures-pdf--id--preview"
                value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
@@ -64871,407 +64846,227 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="format"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
+                              name="format"                data-endpoint="GETapi-factures-pdf--id--preview"
                value="A4"
                data-component="query">
     <br>
-<p>Format du PDF (A4 ou A5). Example: <code>A4</code></p>
+<p>Format du PDF. Valeurs possibles: A4, A5. Défaut: A4. Example: <code>A4</code></p>
             </div>
+                </form>
+
+                    <h2 id="generation-de-factures-pdf-GETapi-factures-pdf--id--download">Télécharger la facture</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Télécharge directement la facture au format PDF.
+Raccourci pour <code>/generate?action=download</code>.</p>
+
+<span id="example-requests-GETapi-factures-pdf--id--download">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/download?format=A5" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/download"
+);
+
+const params = {
+    "format": "A5",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/download';
+$response = $client-&gt;get(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'format' =&gt; 'A5',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-factures-pdf--id--download">
+            <blockquote>
+            <p>Example response (200, Téléchargement réussi):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">[Binary PDF Content]</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Vente non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Vente non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-factures-pdf--id--download" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-factures-pdf--id--download"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-factures-pdf--id--download"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-factures-pdf--id--download" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-factures-pdf--id--download">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-factures-pdf--id--download" data-method="GET"
+      data-path="api/factures-pdf/{id}/download"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-factures-pdf--id--download', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-factures-pdf--id--download"
+                    onclick="tryItOut('GETapi-factures-pdf--id--download');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-factures-pdf--id--download"
+                    onclick="cancelTryOut('GETapi-factures-pdf--id--download');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-factures-pdf--id--download"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/factures-pdf/{id}/download</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-factures-pdf--id--download"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-factures-pdf--id--download"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-factures-pdf--id--download"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-factures-pdf--id--download"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
+               data-component="url">
+    <br>
+<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>action</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>format</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="action"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
-               value="download"
+                              name="format"                data-endpoint="GETapi-factures-pdf--id--download"
+               value="A5"
                data-component="query">
     <br>
-<p>Action à effectuer: 'download' (télécharger) ou 'preview' (aperçu). Example: <code>download</code></p>
+<p>Format du PDF. Valeurs possibles: A4, A5. Défaut: A4. Example: <code>A5</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>format</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="format"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
-               value="A4"
-               data-component="body">
-    <br>
-<p>Example: <code>A4</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>A4</code></li> <li><code>A5</code></li></ul>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>action</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="action"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--generate"
-               value="preview"
-               data-component="body">
-    <br>
-<p>Example: <code>preview</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>download</code></li> <li><code>preview</code></li></ul>
-        </div>
-        </form>
+                </form>
 
-                    <h2 id="generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--preview">Aperçu de la facture dans le navigateur</h2>
+                    <h2 id="generation-de-factures-pdf-POSTapi-factures-pdf--id--send-email">Envoyer la facture par email au client</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
+<p>Envoie la facture PDF par email au client.
+Si l'email n'est pas fourni, utilise l'email enregistré du client.</p>
+<p><strong>Note:</strong> Cette fonctionnalité nécessite la configuration du service d'email.</p>
 
-
-<span id="example-requests-GETapi-roles-permissions-factures-pdf--id--preview">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles-permissions/factures-pdf/architecto/preview" \
-    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles-permissions/factures-pdf/architecto/preview"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles-permissions/factures-pdf/architecto/preview';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-roles-permissions-factures-pdf--id--preview">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-roles-permissions-factures-pdf--id--preview" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-roles-permissions-factures-pdf--id--preview"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-factures-pdf--id--preview"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-roles-permissions-factures-pdf--id--preview" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-roles-permissions-factures-pdf--id--preview">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-roles-permissions-factures-pdf--id--preview" data-method="GET"
-      data-path="api/roles-permissions/factures-pdf/{id}/preview"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-factures-pdf--id--preview', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-roles-permissions-factures-pdf--id--preview"
-                    onclick="tryItOut('GETapi-roles-permissions-factures-pdf--id--preview');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-roles-permissions-factures-pdf--id--preview"
-                    onclick="cancelTryOut('GETapi-roles-permissions-factures-pdf--id--preview');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-roles-permissions-factures-pdf--id--preview"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/roles-permissions/factures-pdf/{id}/preview</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-factures-pdf--id--preview"
-               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--preview"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--preview"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--preview"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the factures pdf. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="generation-de-factures-pdf-GETapi-roles-permissions-factures-pdf--id--download">Télécharger la facture</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-roles-permissions-factures-pdf--id--download">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/roles-permissions/factures-pdf/architecto/download" \
-    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles-permissions/factures-pdf/architecto/download"
-);
-
-const headers = {
-    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles-permissions/factures-pdf/architecto/download';
-$response = $client-&gt;get(
-    $url,
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-roles-permissions-factures-pdf--id--download">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-roles-permissions-factures-pdf--id--download" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-roles-permissions-factures-pdf--id--download"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-roles-permissions-factures-pdf--id--download"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-roles-permissions-factures-pdf--id--download" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-roles-permissions-factures-pdf--id--download">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-roles-permissions-factures-pdf--id--download" data-method="GET"
-      data-path="api/roles-permissions/factures-pdf/{id}/download"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-roles-permissions-factures-pdf--id--download', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-roles-permissions-factures-pdf--id--download"
-                    onclick="tryItOut('GETapi-roles-permissions-factures-pdf--id--download');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-roles-permissions-factures-pdf--id--download"
-                    onclick="cancelTryOut('GETapi-roles-permissions-factures-pdf--id--download');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-roles-permissions-factures-pdf--id--download"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/roles-permissions/factures-pdf/{id}/download</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="GETapi-roles-permissions-factures-pdf--id--download"
-               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--download"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--download"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="id"                data-endpoint="GETapi-roles-permissions-factures-pdf--id--download"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>The ID of the factures pdf. Example: <code>architecto</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="generation-de-factures-pdf-POSTapi-roles-permissions-factures-pdf--id--send-email">Envoyer la facture par email au client</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-roles-permissions-factures-pdf--id--send-email">
+<span id="example-requests-POSTapi-factures-pdf--id--send-email">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/roles-permissions/factures-pdf/architecto/send-email" \
+    "http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/send-email" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"gbailey@example.net\",
-    \"message\": \"architecto\",
+    \"email\": \"client@example.com\",
+    \"message\": \"Merci pour votre achat. Veuillez trouver ci-joint votre facture.\",
     \"format\": \"A4\"
 }"
 </code></pre></div>
@@ -65279,7 +65074,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles-permissions/factures-pdf/architecto/send-email"
+    "http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/send-email"
 );
 
 const headers = {
@@ -65289,8 +65084,8 @@ const headers = {
 };
 
 let body = {
-    "email": "gbailey@example.net",
-    "message": "architecto",
+    "email": "client@example.com",
+    "message": "Merci pour votre achat. Veuillez trouver ci-joint votre facture.",
     "format": "A4"
 };
 
@@ -65303,7 +65098,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles-permissions/factures-pdf/architecto/send-email';
+$url = 'http://localhost/api/factures-pdf/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/send-email';
 $response = $client-&gt;post(
     $url,
     [
@@ -65313,8 +65108,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'gbailey@example.net',
-            'message' =&gt; 'architecto',
+            'email' =&gt; 'client@example.com',
+            'message' =&gt; 'Merci pour votre achat. Veuillez trouver ci-joint votre facture.',
             'format' =&gt; 'A4',
         ],
     ]
@@ -65324,45 +65119,94 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-roles-permissions-factures-pdf--id--send-email">
-</span>
-<span id="execution-results-POSTapi-roles-permissions-factures-pdf--id--send-email" hidden>
+<span id="example-responses-POSTapi-factures-pdf--id--send-email">
+            <blockquote>
+            <p>Example response (200, Email envoyé avec succès):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Facture envoy&eacute;e par email avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;email&quot;: &quot;client@example.com&quot;,
+        &quot;numero_facture&quot;: &quot;FACT-2025-0001&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, Vente non trouvée):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Vente non trouv&eacute;e&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Aucun email disponible):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Aucun email disponible pour ce client&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Email invalide):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;Le champ email doit &ecirc;tre une adresse email valide.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-factures-pdf--id--send-email" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-roles-permissions-factures-pdf--id--send-email"></span>:
+                id="execution-response-status-POSTapi-factures-pdf--id--send-email"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-factures-pdf--id--send-email"
+    <pre class="json"><code id="execution-response-content-POSTapi-factures-pdf--id--send-email"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-roles-permissions-factures-pdf--id--send-email" hidden>
+<span id="execution-error-POSTapi-factures-pdf--id--send-email" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-roles-permissions-factures-pdf--id--send-email">
+    <pre><code id="execution-error-message-POSTapi-factures-pdf--id--send-email">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-roles-permissions-factures-pdf--id--send-email" data-method="POST"
-      data-path="api/roles-permissions/factures-pdf/{id}/send-email"
+<form id="form-POSTapi-factures-pdf--id--send-email" data-method="POST"
+      data-path="api/factures-pdf/{id}/send-email"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-factures-pdf--id--send-email', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-factures-pdf--id--send-email', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-roles-permissions-factures-pdf--id--send-email"
-                    onclick="tryItOut('POSTapi-roles-permissions-factures-pdf--id--send-email');">Try it out ⚡
+                    id="btn-tryout-POSTapi-factures-pdf--id--send-email"
+                    onclick="tryItOut('POSTapi-factures-pdf--id--send-email');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-roles-permissions-factures-pdf--id--send-email"
-                    onclick="cancelTryOut('POSTapi-roles-permissions-factures-pdf--id--send-email');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-factures-pdf--id--send-email"
+                    onclick="cancelTryOut('POSTapi-factures-pdf--id--send-email');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-roles-permissions-factures-pdf--id--send-email"
+                    id="btn-executetryout-POSTapi-factures-pdf--id--send-email"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -65370,7 +65214,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/roles-permissions/factures-pdf/{id}/send-email</code></b>
+            <b><code>api/factures-pdf/{id}/send-email</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -65378,7 +65222,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-factures-pdf--id--send-email"
                value="Bearer Bearer {YOUR_AUTH_TOKEN}"
                data-component="header">
     <br>
@@ -65389,7 +65233,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
+                              name="Content-Type"                data-endpoint="POSTapi-factures-pdf--id--send-email"
                value="application/json"
                data-component="header">
     <br>
@@ -65400,7 +65244,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
+                              name="Accept"                data-endpoint="POSTapi-factures-pdf--id--send-email"
                value="application/json"
                data-component="header">
     <br>
@@ -65412,11 +65256,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="id"                data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
-               value="architecto"
+                              name="id"                data-endpoint="POSTapi-factures-pdf--id--send-email"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
-<p>The ID of the factures pdf. Example: <code>architecto</code></p>
+<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -65424,68 +65268,69 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
-               value="gbailey@example.net"
+                              name="email"                data-endpoint="POSTapi-factures-pdf--id--send-email"
+               value="client@example.com"
                data-component="body">
     <br>
-<p>Email du destinataire (optionnel, utilise l'email du client par défaut). Example: <code>gbailey@example.net</code></p>
+<p>Email du destinataire. Si non fourni, utilise l'email du client. Example: <code>client@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="message"                data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
-               value="architecto"
+                              name="message"                data-endpoint="POSTapi-factures-pdf--id--send-email"
+               value="Merci pour votre achat. Veuillez trouver ci-joint votre facture."
                data-component="body">
     <br>
-<p>Message personnalisé à inclure dans l'email. Example: <code>architecto</code></p>
+<p>Message personnalisé à inclure dans l'email (max 1000 caractères). Example: <code>Merci pour votre achat. Veuillez trouver ci-joint votre facture.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>format</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="format"                data-endpoint="POSTapi-roles-permissions-factures-pdf--id--send-email"
+                              name="format"                data-endpoint="POSTapi-factures-pdf--id--send-email"
                value="A4"
                data-component="body">
     <br>
-<p>Example: <code>A4</code></p>
-Must be one of:
-<ul style="list-style-type: square;"><li><code>A4</code></li> <li><code>A5</code></li></ul>
+<p>Format du PDF à joindre. Valeurs possibles: A4, A5. Défaut: A4. Example: <code>A4</code></p>
         </div>
         </form>
 
-                    <h2 id="generation-de-factures-pdf-POSTapi-roles-permissions-factures-pdf-generate-batch">Générer plusieurs factures en lot (ZIP)</h2>
+                    <h2 id="generation-de-factures-pdf-POSTapi-factures-pdf-generate-batch">Générer plusieurs factures en lot (ZIP)</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
+<p>Génère plusieurs factures PDF et les regroupe dans un fichier ZIP.
+Maximum 50 factures par lot.</p>
+<p><strong>Note:</strong> Cette fonctionnalité nécessite l'implémentation complète.</p>
 
-
-<span id="example-requests-POSTapi-roles-permissions-factures-pdf-generate-batch">
+<span id="example-requests-POSTapi-factures-pdf-generate-batch">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/roles-permissions/factures-pdf/generate-batch" \
+    "http://localhost/api/factures-pdf/generate-batch" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"vente_ids\": [
-        \"architecto\"
+        \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a\",
+        \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b\"
     ],
-    \"format\": \"architecto\"
+    \"format\": \"A4\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/roles-permissions/factures-pdf/generate-batch"
+    "http://localhost/api/factures-pdf/generate-batch"
 );
 
 const headers = {
@@ -65496,9 +65341,10 @@ const headers = {
 
 let body = {
     "vente_ids": [
-        "architecto"
+        "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+        "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b"
     ],
-    "format": "architecto"
+    "format": "A4"
 };
 
 fetch(url, {
@@ -65510,7 +65356,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/roles-permissions/factures-pdf/generate-batch';
+$url = 'http://localhost/api/factures-pdf/generate-batch';
 $response = $client-&gt;post(
     $url,
     [
@@ -65521,9 +65367,10 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'vente_ids' =&gt; [
-                'architecto',
+                '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a',
+                '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b',
             ],
-            'format' =&gt; 'architecto',
+            'format' =&gt; 'A4',
         ],
     ]
 );
@@ -65532,45 +65379,103 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-roles-permissions-factures-pdf-generate-batch">
-</span>
-<span id="execution-results-POSTapi-roles-permissions-factures-pdf-generate-batch" hidden>
+<span id="example-responses-POSTapi-factures-pdf-generate-batch">
+            <blockquote>
+            <p>Example response (200, Génération en cours):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;G&eacute;n&eacute;ration en lot en cours...&quot;,
+    &quot;data&quot;: {
+        &quot;count&quot;: 3
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Validation échouée - vente_ids manquant):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;vente_ids&quot;: [
+            &quot;Le champ vente ids est obligatoire.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Validation échouée - IDs invalides):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;vente_ids.0&quot;: [
+            &quot;La vente s&eacute;lectionn&eacute;e est invalide.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Validation échouée - Trop de factures):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Erreur de validation&quot;,
+    &quot;errors&quot;: {
+        &quot;vente_ids&quot;: [
+            &quot;Le nombre maximum de factures par lot est de 50.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-factures-pdf-generate-batch" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-roles-permissions-factures-pdf-generate-batch"></span>:
+                id="execution-response-status-POSTapi-factures-pdf-generate-batch"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-roles-permissions-factures-pdf-generate-batch"
+    <pre class="json"><code id="execution-response-content-POSTapi-factures-pdf-generate-batch"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-roles-permissions-factures-pdf-generate-batch" hidden>
+<span id="execution-error-POSTapi-factures-pdf-generate-batch" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-roles-permissions-factures-pdf-generate-batch">
+    <pre><code id="execution-error-message-POSTapi-factures-pdf-generate-batch">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-roles-permissions-factures-pdf-generate-batch" data-method="POST"
-      data-path="api/roles-permissions/factures-pdf/generate-batch"
+<form id="form-POSTapi-factures-pdf-generate-batch" data-method="POST"
+      data-path="api/factures-pdf/generate-batch"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles-permissions-factures-pdf-generate-batch', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-factures-pdf-generate-batch', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-roles-permissions-factures-pdf-generate-batch"
-                    onclick="tryItOut('POSTapi-roles-permissions-factures-pdf-generate-batch');">Try it out ⚡
+                    id="btn-tryout-POSTapi-factures-pdf-generate-batch"
+                    onclick="tryItOut('POSTapi-factures-pdf-generate-batch');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-roles-permissions-factures-pdf-generate-batch"
-                    onclick="cancelTryOut('POSTapi-roles-permissions-factures-pdf-generate-batch');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-factures-pdf-generate-batch"
+                    onclick="cancelTryOut('POSTapi-factures-pdf-generate-batch');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-roles-permissions-factures-pdf-generate-batch"
+                    id="btn-executetryout-POSTapi-factures-pdf-generate-batch"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -65578,7 +65483,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/roles-permissions/factures-pdf/generate-batch</code></b>
+            <b><code>api/factures-pdf/generate-batch</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -65586,7 +65491,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-roles-permissions-factures-pdf-generate-batch"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-factures-pdf-generate-batch"
                value="Bearer Bearer {YOUR_AUTH_TOKEN}"
                data-component="header">
     <br>
@@ -65597,7 +65502,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-roles-permissions-factures-pdf-generate-batch"
+                              name="Content-Type"                data-endpoint="POSTapi-factures-pdf-generate-batch"
                value="application/json"
                data-component="header">
     <br>
@@ -65608,7 +65513,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-roles-permissions-factures-pdf-generate-batch"
+                              name="Accept"                data-endpoint="POSTapi-factures-pdf-generate-batch"
                value="application/json"
                data-component="header">
     <br>
@@ -65620,24 +65525,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string[]</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="vente_ids[0]"                data-endpoint="POSTapi-roles-permissions-factures-pdf-generate-batch"
+                              name="vente_ids[0]"                data-endpoint="POSTapi-factures-pdf-generate-batch"
                data-component="body">
         <input type="text" style="display: none"
-               name="vente_ids[1]"                data-endpoint="POSTapi-roles-permissions-factures-pdf-generate-batch"
+               name="vente_ids[1]"                data-endpoint="POSTapi-factures-pdf-generate-batch"
                data-component="body">
     <br>
-<p>Liste des IDs des ventes.</p>
+<p>Liste des UUIDs des ventes (min: 1, max: 50).</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>format</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="format"                data-endpoint="POSTapi-roles-permissions-factures-pdf-generate-batch"
-               value="architecto"
+                              name="format"                data-endpoint="POSTapi-factures-pdf-generate-batch"
+               value="A4"
                data-component="body">
     <br>
-<p>Format du PDF (A4 ou A5). Example: <code>architecto</code></p>
+<p>Format du PDF pour toutes les factures. Valeurs possibles: A4, A5. Défaut: A4. Example: <code>A4</code></p>
         </div>
         </form>
 

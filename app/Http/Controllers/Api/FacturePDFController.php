@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Validator;
 /**
  * @group Génération de Factures PDF
  * 
- * API pour générer des factures PDF à partir des ventes.
+ * API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+ * Toutes les routes nécessitent une authentification via Sanctum.
  */
 class FacturePDFController extends Controller
 {
@@ -20,34 +21,37 @@ class FacturePDFController extends Controller
      * Générer une facture PDF pour une vente
      * 
      * Génère un PDF de facture professionnelle avec en-tête et pied de page.
-     * Le format peut être A4 (défaut) ou A5.
+     * Le format peut être A3, A4 (défaut) ou A5.
      * 
      * @authenticated
      * 
      * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * @queryParam format string Format du PDF (A4 ou A5). Example: A4
-     * @queryParam action string Action à effectuer: 'download' (télécharger) ou 'preview' (aperçu). Example: download
      * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Facture générée avec succès",
-     *   "data": {
-     *     "pdf_url": "base64_encoded_pdf_content"
-     *   }
-     * }
+     * @queryParam format string Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4. Example: A4
+     * @queryParam action string Action à effectuer. Valeurs possibles: download (télécharger), preview (aperçu dans le navigateur). Défaut: download. Example: download
      * 
-     * @response 404 {
+     * @response 200 scenario="Téléchargement réussi" [Binary PDF Content]
+     * @response 404 scenario="Vente non trouvée" {
      *   "success": false,
      *   "message": "Vente non trouvée"
      * }
+     * @response 422 scenario="Format invalide" {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "format": ["Le format doit être A3, A4 ou A5"]
+     *   }
+     * }
+     * 
+     * @responseFile storage/responses/facture.pdf
      */
     public function generate(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'format' => 'nullable|in:A4,A5',
+            'format' => 'nullable|in:A3,A4,A5',
             'action' => 'nullable|in:download,preview'
         ], [
-            'format.in' => 'Le format doit être A4 ou A5',
+            'format.in' => 'Le format doit être A3, A4 ou A5',
             'action.in' => 'L\'action doit être download ou preview'
         ]);
 
@@ -117,7 +121,20 @@ class FacturePDFController extends Controller
     /**
      * Aperçu de la facture dans le navigateur
      * 
+     * Affiche la facture directement dans le navigateur sans téléchargement.
+     * Raccourci pour `/generate?action=preview`.
+     * 
      * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @queryParam format string Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4. Example: A4
+     * 
+     * @response 200 scenario="Aperçu réussi" [PDF displayed in browser]
+     * @response 404 scenario="Vente non trouvée" {
+     *   "success": false,
+     *   "message": "Vente non trouvée"
+     * }
      */
     public function preview(string $id)
     {
@@ -129,7 +146,20 @@ class FacturePDFController extends Controller
     /**
      * Télécharger la facture
      * 
+     * Télécharge directement la facture au format PDF.
+     * Raccourci pour `/generate?action=download`.
+     * 
      * @authenticated
+     * 
+     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @queryParam format string Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4. Example: A5
+     * 
+     * @response 200 scenario="Téléchargement réussi" [Binary PDF Content]
+     * @response 404 scenario="Vente non trouvée" {
+     *   "success": false,
+     *   "message": "Vente non trouvée"
+     * }
      */
     public function download(string $id)
     {
@@ -150,17 +180,53 @@ class FacturePDFController extends Controller
     /**
      * Envoyer la facture par email au client
      * 
+     * Envoie la facture PDF par email au client.
+     * Si l'email n'est pas fourni, utilise l'email enregistré du client.
+     * 
+     * **Note:** Cette fonctionnalité nécessite la configuration du service d'email.
+     * 
      * @authenticated
      * 
-     * @bodyParam email string Email du destinataire (optionnel, utilise l'email du client par défaut).
-     * @bodyParam message string Message personnalisé à inclure dans l'email.
+     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @bodyParam email string Email du destinataire. Si non fourni, utilise l'email du client. Example: client@example.com
+     * @bodyParam message string Message personnalisé à inclure dans l'email (max 1000 caractères). Example: Merci pour votre achat. Veuillez trouver ci-joint votre facture.
+     * @bodyParam format string Format du PDF à joindre. Valeurs possibles: A3, A4, A5. Défaut: A4. Example: A4
+     * 
+     * @response 200 scenario="Email envoyé avec succès" {
+     *   "success": true,
+     *   "message": "Facture envoyée par email avec succès",
+     *   "data": {
+     *     "email": "client@example.com",
+     *     "numero_facture": "FACT-2025-0001"
+     *   }
+     * }
+     * @response 404 scenario="Vente non trouvée" {
+     *   "success": false,
+     *   "message": "Vente non trouvée"
+     * }
+     * @response 422 scenario="Aucun email disponible" {
+     *   "success": false,
+     *   "message": "Aucun email disponible pour ce client"
+     * }
+     * @response 422 scenario="Email invalide" {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "email": ["Le champ email doit être une adresse email valide."]
+     *   }
+     * }
      */
     public function sendEmail(Request $request, string $id): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'email' => 'nullable|email',
             'message' => 'nullable|string|max:1000',
-            'format' => 'nullable|in:A4,A5'
+            'format' => 'nullable|in:A3,A4,A5'
+        ], [
+            'email.email' => 'L\'email fourni n\'est pas valide',
+            'message.max' => 'Le message ne peut pas dépasser 1000 caractères',
+            'format.in' => 'Le format doit être A3, A4 ou A5'
         ]);
 
         if ($validator->fails()) {
@@ -192,6 +258,7 @@ class FacturePDFController extends Controller
 
         // TODO: Implémenter l'envoi d'email
         // Vous devrez créer un Mailable et configurer votre service d'email
+        // Voir le fichier ADVANCED_FEATURES.md pour l'implémentation complète
 
         return response()->json([
             'success' => true,
@@ -206,17 +273,60 @@ class FacturePDFController extends Controller
     /**
      * Générer plusieurs factures en lot (ZIP)
      * 
+     * Génère plusieurs factures PDF et les regroupe dans un fichier ZIP.
+     * Maximum 50 factures par lot.
+     * 
+     * **Note:** Cette fonctionnalité nécessite l'implémentation complète.
+     * 
      * @authenticated
      * 
-     * @bodyParam vente_ids array required Liste des IDs des ventes.
-     * @bodyParam format string Format du PDF (A4 ou A5).
+     * @bodyParam vente_ids string[] required Liste des UUIDs des ventes (min: 1, max: 50). Example: ["9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a", "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b"]
+     * @bodyParam format string Format du PDF pour toutes les factures. Valeurs possibles: A3, A4, A5. Défaut: A4. Example: A4
+     * 
+     * @response 200 scenario="Génération en cours" {
+     *   "success": true,
+     *   "message": "Génération en lot en cours...",
+     *   "data": {
+     *     "count": 3
+     *   }
+     * }
+     * @response 422 scenario="Validation échouée - vente_ids manquant" {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "vente_ids": ["Le champ vente ids est obligatoire."]
+     *   }
+     * }
+     * @response 422 scenario="Validation échouée - IDs invalides" {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "vente_ids.0": ["La vente sélectionnée est invalide."]
+     *   }
+     * }
+     * @response 422 scenario="Validation échouée - Trop de factures" {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "vente_ids": ["Le nombre maximum de factures par lot est de 50."]
+     *   }
+     * }
      */
     public function generateBatch(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'vente_ids' => 'required|array|min:1',
+            'vente_ids' => 'required|array|min:1|max:50',
             'vente_ids.*' => 'required|uuid|exists:ventes,vente_id',
-            'format' => 'nullable|in:A4,A5'
+            'format' => 'nullable|in:A3,A4,A5'
+        ], [
+            'vente_ids.required' => 'La liste des ventes est obligatoire',
+            'vente_ids.array' => 'La liste des ventes doit être un tableau',
+            'vente_ids.min' => 'Au moins une vente est requise',
+            'vente_ids.max' => 'Le nombre maximum de factures par lot est de 50',
+            'vente_ids.*.required' => 'Chaque vente doit avoir un ID',
+            'vente_ids.*.uuid' => 'L\'ID de la vente doit être un UUID valide',
+            'vente_ids.*.exists' => 'La vente sélectionnée n\'existe pas',
+            'format.in' => 'Le format doit être A3, A4 ou A5'
         ]);
 
         if ($validator->fails()) {
@@ -228,6 +338,7 @@ class FacturePDFController extends Controller
         }
 
         // TODO: Implémenter la génération en lot avec création d'un fichier ZIP
+        // Voir le fichier ADVANCED_FEATURES.md pour l'implémentation complète
 
         return response()->json([
             'success' => true,
