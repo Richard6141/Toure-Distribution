@@ -1,24 +1,24 @@
-name: 'Génération de Factures PDF'
+name: 'Génération de Bons de Commande PDF'
 description: |-
 
-  API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+  API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/factures-pdf/{id}/generate'
+    uri: 'api/commandes-pdf/{id}/generate'
     metadata:
-      groupName: 'Génération de Factures PDF'
+      groupName: 'Génération de Bons de Commande PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Générer une facture PDF pour une vente'
+      title: 'Générer un bon de commande PDF'
       description: |-
-        Génère un PDF de facture professionnelle avec en-tête et pied de page.
+        Génère un PDF de bon de commande professionnel avec en-tête et pied de page.
         Le format peut être A3, A4 (défaut) ou A5.
       authenticated: true
       deprecated: false
@@ -30,7 +30,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -69,7 +69,7 @@ endpoints:
         name: format
         description: ''
         required: false
-        example: A3
+        example: A4
         type: string
         enumValues:
           - A3
@@ -82,7 +82,7 @@ endpoints:
         name: action
         description: ''
         required: false
-        example: preview
+        example: download
         type: string
         enumValues:
           - download
@@ -91,8 +91,8 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      format: A3
-      action: preview
+      format: A4
+      action: download
     fileParameters: []
     responses:
       -
@@ -106,10 +106,10 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Commande non trouvée"
           }
         headers: []
-        description: 'Vente non trouvée'
+        description: 'Commande non trouvée'
         custom: []
       -
         status: 422
@@ -136,18 +136,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/factures-pdf/{id}/preview'
+    uri: 'api/commandes-pdf/{id}/preview'
     metadata:
-      groupName: 'Génération de Factures PDF'
+      groupName: 'Génération de Bons de Commande PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Aperçu de la facture dans le navigateur'
+      title: 'Aperçu du bon de commande dans le navigateur'
       description: |-
-        Affiche la facture directement dans le navigateur sans téléchargement.
+        Affiche le bon de commande directement dans le navigateur sans téléchargement.
         Raccourci pour `/generate?action=preview`.
       authenticated: true
       deprecated: false
@@ -159,7 +159,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -197,10 +197,10 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Commande non trouvée"
           }
         headers: []
-        description: 'Vente non trouvée'
+        description: 'Commande non trouvée'
         custom: []
     responseFields: []
     auth:
@@ -214,18 +214,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/factures-pdf/{id}/download'
+    uri: 'api/commandes-pdf/{id}/download'
     metadata:
-      groupName: 'Génération de Factures PDF'
+      groupName: 'Génération de Bons de Commande PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Télécharger la facture'
+      title: 'Télécharger le bon de commande'
       description: |-
-        Télécharge directement la facture au format PDF.
+        Télécharge directement le bon de commande au format PDF.
         Raccourci pour `/generate?action=download`.
       authenticated: true
       deprecated: false
@@ -237,7 +237,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -275,10 +275,10 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Commande non trouvée"
           }
         headers: []
-        description: 'Vente non trouvée'
+        description: 'Commande non trouvée'
         custom: []
     responseFields: []
     auth:
@@ -292,18 +292,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/factures-pdf/{id}/print'
+    uri: 'api/commandes-pdf/{id}/print'
     metadata:
-      groupName: 'Génération de Factures PDF'
+      groupName: 'Génération de Bons de Commande PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Imprimer la facture'
+      title: 'Imprimer le bon de commande'
       description: |-
-        Affiche la facture dans le navigateur et déclenche automatiquement la boîte de dialogue d'impression.
+        Affiche le bon de commande dans le navigateur et déclenche automatiquement la boîte de dialogue d'impression.
         Idéal pour une impression directe sans téléchargement.
       authenticated: true
       deprecated: false
@@ -315,7 +315,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -367,10 +367,10 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Commande non trouvée"
           }
         headers: []
-        description: 'Vente non trouvée'
+        description: 'Commande non trouvée'
         custom: []
     responseFields: []
     auth:
@@ -384,19 +384,19 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/factures-pdf/{id}/send-email'
+    uri: 'api/commandes-pdf/{id}/send-email'
     metadata:
-      groupName: 'Génération de Factures PDF'
+      groupName: 'Génération de Bons de Commande PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Envoyer la facture par email au client'
+      title: 'Envoyer le bon de commande par email au fournisseur'
       description: |-
-        Envoie la facture PDF par email au client.
-        Si l'email n'est pas fourni, utilise l'email enregistré du client.
+        Envoie le bon de commande PDF par email au fournisseur.
+        Si l'email n'est pas fourni, utilise l'email enregistré du fournisseur.
 
         **Note:** Cette fonctionnalité nécessite la configuration du service d'email.
       authenticated: true
@@ -409,7 +409,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -424,9 +424,9 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: "Email du destinataire. Si non fourni, utilise l'email du client."
+        description: "Email du destinataire. Si non fourni, utilise l'email du fournisseur."
         required: false
-        example: client@example.com
+        example: fournisseur@example.com
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -436,7 +436,7 @@ endpoints:
         name: message
         description: "Message personnalisé à inclure dans l'email (max 1000 caractères)."
         required: false
-        example: 'Merci pour votre achat. Veuillez trouver ci-joint votre facture.'
+        example: 'Veuillez trouver ci-joint notre bon de commande.'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -453,8 +453,8 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      email: client@example.com
-      message: 'Merci pour votre achat. Veuillez trouver ci-joint votre facture.'
+      email: fournisseur@example.com
+      message: 'Veuillez trouver ci-joint notre bon de commande.'
       format: A4
     fileParameters: []
     responses:
@@ -463,10 +463,10 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Facture envoyée par email avec succès",
+            "message": "Bon de commande envoyé par email avec succès",
             "data": {
-              "email": "client@example.com",
-              "numero_facture": "FACT-2025-0001"
+              "email": "fournisseur@example.com",
+              "numero_bon_commande": "BC-2025-0001"
             }
           }
         headers: []
@@ -477,17 +477,17 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Commande non trouvée"
           }
         headers: []
-        description: 'Vente non trouvée'
+        description: 'Commande non trouvée'
         custom: []
       -
         status: 422
         content: |-
           {
             "success": false,
-            "message": "Aucun email disponible pour ce client"
+            "message": "Aucun email disponible pour ce fournisseur"
           }
         headers: []
         description: 'Aucun email disponible'
@@ -517,19 +517,19 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/factures-pdf/generate-batch
+    uri: api/commandes-pdf/generate-batch
     metadata:
-      groupName: 'Génération de Factures PDF'
+      groupName: 'Génération de Bons de Commande PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Générer plusieurs factures en lot (ZIP)'
+      title: 'Générer plusieurs bons de commande en lot (ZIP)'
       description: |-
-        Génère plusieurs factures PDF et les regroupe dans un fichier ZIP.
-        Maximum 50 factures par lot.
+        Génère plusieurs bons de commande PDF et les regroupe dans un fichier ZIP.
+        Maximum 50 bons de commande par lot.
 
         **Note:** Cette fonctionnalité nécessite l'implémentation complète.
       authenticated: true
@@ -544,9 +544,9 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      vente_ids:
-        name: vente_ids
-        description: 'Liste des UUIDs des ventes (min: 1, max: 50).'
+      commande_ids:
+        name: commande_ids
+        description: 'Liste des UUIDs des commandes (min: 1, max: 50).'
         required: true
         example:
           - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
@@ -558,7 +558,7 @@ endpoints:
         custom: []
       format:
         name: format
-        description: 'Format du PDF pour toutes les factures. Valeurs possibles: A3, A4, A5. Défaut: A4.'
+        description: 'Format du PDF pour tous les bons de commande. Valeurs possibles: A3, A4, A5. Défaut: A4.'
         required: false
         example: A4
         type: string
@@ -567,7 +567,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      vente_ids:
+      commande_ids:
         - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
       format: A4
@@ -593,11 +593,11 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "vente_ids": ["Le champ vente ids est obligatoire."]
+              "commande_ids": ["Le champ commande ids est obligatoire."]
             }
           }
         headers: []
-        description: 'Validation échouée - vente_ids manquant'
+        description: 'Validation échouée - commande_ids manquant'
         custom: []
       -
         status: 422
@@ -606,7 +606,7 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "vente_ids.0": ["La vente sélectionnée est invalide."]
+              "commande_ids.0": ["La commande sélectionnée est invalide."]
             }
           }
         headers: []
@@ -619,11 +619,11 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "vente_ids": ["Le nombre maximum de factures par lot est de 50."]
+              "commande_ids": ["Le nombre maximum de bons de commande par lot est de 50."]
             }
           }
         headers: []
-        description: 'Validation échouée - Trop de factures'
+        description: 'Validation échouée - Trop de bons de commande'
         custom: []
     responseFields: []
     auth:

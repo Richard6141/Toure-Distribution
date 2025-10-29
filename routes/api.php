@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\PaiementController;
 use App\Http\Controllers\Api\ChauffeurController;
 use App\Http\Controllers\StockMovementController;
 use App\Http\Controllers\Api\FacturePDFController;
+use App\Http\Controllers\Api\CommandePDFController;
 use App\Http\Controllers\Api\DetailVenteController;
 use App\Http\Controllers\Api\FournisseurController;
 use App\Http\Controllers\ProductCategoryController;
@@ -729,12 +730,8 @@ Route::prefix('roles-permissions')
             Route::post('/{id}/cancel', [BanqueTransactionController::class, 'cancel'])->name('cancel');
         })->middleware('auth:sanctum');
     });
-/**
- * Routes pour la génération de factures PDF
- * Prefix: /factures-pdf
- * 
- * À ajouter dans routes/api.php après les routes des ventes
- */
+
+
 Route::prefix('factures-pdf')->name('factures-pdf.')->group(function () {
     // Générer une facture (avec options format et action)
     Route::get('/{id}/generate', [FacturePDFController::class, 'generate'])
@@ -748,11 +745,44 @@ Route::prefix('factures-pdf')->name('factures-pdf.')->group(function () {
     Route::get('/{id}/download', [FacturePDFController::class, 'download'])
         ->name('download');
 
+    // ✨ NOUVEAU : Imprimer la facture (déclenche la boîte de dialogue d'impression)
+    Route::get('/{id}/print', [FacturePDFController::class, 'print'])
+        ->name('print');
+
     // Envoyer la facture par email
     Route::post('/{id}/send-email', [FacturePDFController::class, 'sendEmail'])
         ->name('send-email');
 
     // Générer plusieurs factures en lot (ZIP)
     Route::post('/generate-batch', [FacturePDFController::class, 'generateBatch'])
+        ->name('generate-batch');
+})->middleware('auth:sanctum');
+
+
+
+
+Route::prefix('commandes-pdf')->name('commandes-pdf.')->group(function () {
+    // Générer un bon de commande (avec options format et action)
+    Route::get('/{id}/generate', [CommandePDFController::class, 'generate'])
+        ->name('generate');
+
+    // Aperçu du bon de commande dans le navigateur
+    Route::get('/{id}/preview', [CommandePDFController::class, 'preview'])
+        ->name('preview');
+
+    // Télécharger le bon de commande
+    Route::get('/{id}/download', [CommandePDFController::class, 'download'])
+        ->name('download');
+
+    // ✨ NOUVEAU : Imprimer le bon de commande (déclenche la boîte de dialogue d'impression)
+    Route::get('/{id}/print', [CommandePDFController::class, 'print'])
+        ->name('print');
+
+    // Envoyer le bon de commande par email
+    Route::post('/{id}/send-email', [CommandePDFController::class, 'sendEmail'])
+        ->name('send-email');
+
+    // Générer plusieurs bons de commande en lot (ZIP)
+    Route::post('/generate-batch', [CommandePDFController::class, 'generateBatch'])
         ->name('generate-batch');
 })->middleware('auth:sanctum');

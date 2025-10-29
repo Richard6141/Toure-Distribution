@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facture {{ $numero_facture }}</title>
+    <title>Bon de Commande {{ $numero_bon_commande }}</title>
     <style>
         @page {
             margin: 15mm 15mm 15mm 15mm;
@@ -36,7 +36,7 @@
 
         /* En-tête */
         .header {
-            border-bottom: 3px solid #2563eb;
+            border-bottom: 3px solid #16a34a;
             padding-bottom: 10px;
             margin-bottom: 12px;
             overflow: hidden;
@@ -58,7 +58,7 @@
             @elseif($format==='A3') font-size: 24px;
             @else font-size: 19px;
             @endif font-weight: bold;
-            color: #2563eb;
+            color: #16a34a;
             margin-bottom: 4px;
         }
 
@@ -70,16 +70,16 @@
             @endif line-height: 1.45;
         }
 
-        .invoice-title {
+        .order-title {
             @if($format==='A5') font-size: 17px;
             @elseif($format==='A3') font-size: 26px;
             @else font-size: 21px;
             @endif font-weight: bold;
-            color: #2563eb;
+            color: #16a34a;
             margin-bottom: 4px;
         }
 
-        .invoice-number {
+        .order-number {
             @if($format==='A5') font-size: 9.5px;
             @elseif($format==='A3') font-size: 13px;
             @else font-size: 10.5px;
@@ -111,10 +111,10 @@
             @elseif($format==='A3') font-size: 13px;
             @else font-size: 10.5px;
             @endif font-weight: bold;
-            color: #2563eb;
+            color: #16a34a;
             margin-bottom: 6px;
             text-transform: uppercase;
-            border-bottom: 2px solid #2563eb;
+            border-bottom: 2px solid #16a34a;
             padding-bottom: 3px;
         }
 
@@ -132,7 +132,7 @@
         /* Séparateur */
         .separator {
             height: 2px;
-            background: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa);
+            background: linear-gradient(to right, #16a34a, #22c55e, #4ade80);
             margin: 12px 0;
             clear: both;
         }
@@ -147,7 +147,7 @@
         }
 
         .products-table thead {
-            background-color: #2563eb;
+            background-color: #16a34a;
             color: white;
         }
 
@@ -183,42 +183,32 @@
             text-align: center;
         }
 
-        /* Colonnes du tableau - Largeurs très précises pour éviter débordement */
+        /* Colonnes du tableau */
         .products-table th:nth-child(1),
         .products-table td:nth-child(1) {
-            width: 3%;
+            width: 5%;
         }
 
         .products-table th:nth-child(2),
         .products-table td:nth-child(2) {
-            @if($format==='A5') width: 32%;
-            @else width: 35%;
+            @if($format==='A5') width: 45%;
+            @else width: 50%;
             @endif
         }
 
         .products-table th:nth-child(3),
         .products-table td:nth-child(3) {
-            width: 6%;
+            width: 15%;
         }
 
         .products-table th:nth-child(4),
         .products-table td:nth-child(4) {
-            width: 12%;
+            width: 15%;
         }
 
         .products-table th:nth-child(5),
         .products-table td:nth-child(5) {
-            width: 11%;
-        }
-
-        .products-table th:nth-child(6),
-        .products-table td:nth-child(6) {
-            width: 7%;
-        }
-
-        .products-table th:nth-child(7),
-        .products-table td:nth-child(7) {
-            width: 14%;
+            width: 15%;
         }
 
         /* Totaux */
@@ -256,7 +246,7 @@
         }
 
         .totals-table tr.total-final {
-            background-color: #2563eb;
+            background-color: #16a34a;
             color: white;
             @if($format==='A5') font-size: 10.5px;
             @elseif($format==='A3') font-size: 15px;
@@ -294,8 +284,8 @@
             @endif word-wrap: break-word;
         }
 
-        /* Statut de paiement */
-        .payment-status {
+        /* Statut */
+        .status-badge {
             display: inline-block;
             padding: 3px 7px;
             border-radius: 12px;
@@ -306,19 +296,59 @@
             text-transform: uppercase;
         }
 
-        .status-non-paye {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .status-paye-partiellement {
+        .status-en-attente {
             background-color: #fef3c7;
             color: #92400e;
         }
 
-        .status-paye-totalement {
+        .status-validee {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-en-cours {
+            background-color: #e0e7ff;
+            color: #4338ca;
+        }
+
+        .status-livree {
             background-color: #d1fae5;
             color: #065f46;
+        }
+
+        .status-partiellement-livree {
+            background-color: #fed7aa;
+            color: #92400e;
+        }
+
+        .status-annulee {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Informations livraison */
+        .delivery-section {
+            clear: both;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 8px;
+            background-color: #dbeafe;
+            border-left: 4px solid #2563eb;
+            border-radius: 3px;
+        }
+
+        .delivery-title {
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 4px;
+        }
+
+        .delivery-content {
+            color: #1e3a8a;
+            @if($format==='A5') font-size: 7.5px;
+            @elseif($format==='A3') font-size: 11px;
+            @else font-size: 8.5px;
+            @endif
         }
 
         /* Pied de page */
@@ -347,7 +377,7 @@
             @if($format==='A5') font-size: 60px;
             @elseif($format==='A3') font-size: 100px;
             @else font-size: 80px;
-            @endif color: rgba(239, 68, 68, 0.1);
+            @endif color: rgba(220, 38, 38, 0.1);
             font-weight: bold;
             z-index: -1;
             text-transform: uppercase;
@@ -358,18 +388,6 @@
             content: "";
             display: table;
             clear: both;
-        }
-
-        /* Styles pour l'impression */
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            @page {
-                margin: 10mm;
-            }
         }
     </style>
 
@@ -396,81 +414,82 @@
                 </div>
             </div>
             <div class="header-right">
-                <div class="invoice-title">FACTURE</div>
-                <div class="invoice-number">N° {{ $numero_facture }}</div>
+                <div class="order-title">BON DE COMMANDE</div>
+                <div class="order-number">N° {{ $numero_bon_commande }}</div>
                 <div class="company-info" style="margin-top: 6px;">
-                    <div>Date: {{ \Carbon\Carbon::parse($vente->date_vente)->format('d/m/Y') }}</div>
+                    <div>Date: {{ \Carbon\Carbon::parse($commande->date_achat)->format('d/m/Y') }}</div>
                     <div>Générée le: {{ $date_generation }}</div>
                 </div>
             </div>
         </div>
 
-        <!-- Informations Client et Vente -->
+        <!-- Informations Fournisseur et Commande -->
         <div class="info-section clearfix">
             <div class="info-box">
-                <div class="info-title">Informations Client</div>
+                <div class="info-title">Informations Fournisseur</div>
                 <div class="info-line">
-                    <span class="info-label">Client:</span> {{ $vente->client->name_client }}
+                    <span class="info-label">Fournisseur:</span> {{ $commande->fournisseur->name }}
                 </div>
-                @if($vente->client->code)
+                @if($commande->fournisseur->code)
                 <div class="info-line">
-                    <span class="info-label">Code:</span> {{ $vente->client->code }}
-                </div>
-                @endif
-                @if($vente->client->name_representant)
-                <div class="info-line">
-                    <span class="info-label">Représentant:</span> {{ $vente->client->name_representant }}
+                    <span class="info-label">Code:</span> {{ $commande->fournisseur->code }}
                 </div>
                 @endif
-                @if($vente->client->adresse)
+                @if($commande->fournisseur->responsable)
                 <div class="info-line">
-                    <span class="info-label">Adresse:</span> {{ $vente->client->adresse }}
+                    <span class="info-label">Responsable:</span> {{ $commande->fournisseur->responsable }}
                 </div>
                 @endif
-                @if($vente->client->city)
+                @if($commande->fournisseur->adresse)
                 <div class="info-line">
-                    <span class="info-label">Ville:</span> {{ $vente->client->city }}
+                    <span class="info-label">Adresse:</span> {{ $commande->fournisseur->adresse }}
                 </div>
                 @endif
-                @if($vente->client->phonenumber)
+                @if($commande->fournisseur->city)
                 <div class="info-line">
-                    <span class="info-label">Téléphone:</span> {{ $vente->client->phonenumber }}
+                    <span class="info-label">Ville:</span> {{ $commande->fournisseur->city }}
                 </div>
                 @endif
-                @if($vente->client->email)
+                @if($commande->fournisseur->phone)
                 <div class="info-line">
-                    <span class="info-label">Email:</span> {{ $vente->client->email }}
+                    <span class="info-label">Téléphone:</span> {{ $commande->fournisseur->phone }}
                 </div>
                 @endif
-                @if($vente->client->ifu)
+                @if($commande->fournisseur->email)
                 <div class="info-line">
-                    <span class="info-label">IFU:</span> {{ $vente->client->ifu }}
+                    <span class="info-label">Email:</span> {{ $commande->fournisseur->email }}
+                </div>
+                @endif
+                @if($commande->fournisseur->payment_terms)
+                <div class="info-line">
+                    <span class="info-label">Conditions:</span> {{ $commande->fournisseur->payment_terms }}
                 </div>
                 @endif
             </div>
 
             <div class="info-box">
-                <div class="info-title">Détails de la Vente</div>
+                <div class="info-title">Détails de la Commande</div>
                 <div class="info-line">
-                    <span class="info-label">N° Vente:</span> {{ $vente->numero_vente }}
+                    <span class="info-label">N° Commande:</span> {{ $commande->numero_commande }}
                 </div>
                 <div class="info-line">
-                    <span class="info-label">Date:</span>
-                    {{ \Carbon\Carbon::parse($vente->date_vente)->format('d/m/Y à H:i') }}
+                    <span class="info-label">Date d'achat:</span>
+                    {{ \Carbon\Carbon::parse($commande->date_achat)->format('d/m/Y') }}
                 </div>
-                @if($vente->entrepot)
                 <div class="info-line">
-                    <span class="info-label">Entrepôt:</span> {{ $vente->entrepot->name }}
+                    <span class="info-label">Livraison prévue:</span>
+                    {{ \Carbon\Carbon::parse($commande->date_livraison_prevue)->format('d/m/Y') }}
+                </div>
+                @if($commande->date_livraison_effective)
+                <div class="info-line">
+                    <span class="info-label">Livraison effective:</span>
+                    {{ \Carbon\Carbon::parse($commande->date_livraison_effective)->format('d/m/Y') }}
                 </div>
                 @endif
                 <div class="info-line">
                     <span class="info-label">Statut:</span>
-                    <strong>{{ ucfirst(str_replace('_', ' ', $vente->status)) }}</strong>
-                </div>
-                <div class="info-line">
-                    <span class="info-label">Paiement:</span>
-                    <span class="payment-status status-{{ str_replace('_', '-', $vente->statut_paiement) }}">
-                        {{ ucfirst(str_replace('_', ' ', $vente->statut_paiement)) }}
+                    <span class="status-badge status-{{ str_replace('_', '-', $commande->status) }}">
+                        {{ ucfirst(str_replace('_', ' ', $commande->status)) }}
                     </span>
                 </div>
             </div>
@@ -484,23 +503,19 @@
                 <tr>
                     <th style="text-align: center;">#</th>
                     <th>Désignation</th>
-                    <th class="text-center">Qté</th>
-                    <th class="text-right">P.U. HT</th>
-                    <th class="text-right">Remise</th>
-                    <th class="text-center">TVA %</th>
-                    <th class="text-right">Total TTC</th>
+                    <th class="text-center">Quantité</th>
+                    <th class="text-right">Prix Unitaire</th>
+                    <th class="text-right">Sous-Total</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($vente->detailVentes as $index => $detail)
+                @foreach($commande->detailCommandes as $index => $detail)
                 <tr>
                     <td class="text-center">{{ $index + 1 }}</td>
                     <td>{{ $detail->product->name }}</td>
                     <td class="text-center">{{ number_format($detail->quantite, 0, ',', ' ') }}</td>
-                    <td class="text-right">{{ number_format($detail->prix_unitaire, 0, ',', ' ') }}</td>
-                    <td class="text-right">{{ number_format($detail->remise_ligne, 0, ',', ' ') }}</td>
-                    <td class="text-center">{{ number_format($detail->taux_taxe, 1, ',', '') }}%</td>
-                    <td class="text-right">{{ number_format($detail->montant_ttc, 0, ',', ' ') }}</td>
+                    <td class="text-right">{{ number_format($detail->prix_unitaire, 0, ',', ' ') }} FCFA</td>
+                    <td class="text-right">{{ number_format($detail->sous_total, 0, ',', ' ') }} FCFA</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -509,44 +524,46 @@
         <!-- Section des totaux -->
         <div class="totals-section">
             <table class="totals-table">
-                <tr>
-                    <td class="label">Total HT:</td>
-                    <td class="amount">{{ number_format($vente->montant_ht, 0, ',', ' ') }} FCFA</td>
-                </tr>
-                <tr>
-                    <td class="label">Total TVA:</td>
-                    <td class="amount">{{ number_format($vente->montant_taxe, 0, ',', ' ') }} FCFA</td>
-                </tr>
-                <tr>
-                    <td class="label">Montant Total:</td>
-                    <td class="amount">{{ number_format($vente->montant_total, 0, ',', ' ') }} FCFA</td>
-                </tr>
-                @if($vente->remise > 0)
-                <tr>
-                    <td class="label">Remise:</td>
-                    <td class="amount">- {{ number_format($vente->remise, 0, ',', ' ') }} FCFA</td>
-                </tr>
-                @endif
-                @if($vente->transport_price > 0)
-                <tr>
-                    <td class="label">Frais de transport:</td>
-                    <td class="amount">+ {{ number_format($vente->transport_price, 0, ',', ' ') }} FCFA</td>
-                </tr>
-                @endif
                 <tr class="total-final">
                     <td class="label" style="color: white;">
-                        NET À PAYER:
+                        MONTANT TOTAL:
                     </td>
-                    <td class="amount">{{ number_format($vente->montant_net, 0, ',', ' ') }} FCFA</td>
+                    <td class="amount">{{ number_format($commande->montant, 0, ',', ' ') }} FCFA</td>
                 </tr>
             </table>
         </div>
 
+        <!-- Informations de livraison (chauffeur et camion) -->
+        @if($commande->chauffeur || $commande->camion)
+        <div class="delivery-section">
+            <div class="delivery-title">🚚 Informations de Livraison</div>
+            <div class="delivery-content">
+                @if($commande->chauffeur)
+                <div style="margin-bottom: 3px;">
+                    <strong>Chauffeur:</strong> {{ $commande->chauffeur->nom }} {{ $commande->chauffeur->prenom }}
+                    @if($commande->chauffeur->telephone)
+                    - Tél: {{ $commande->chauffeur->telephone }}
+                    @endif
+                </div>
+                @endif
+                @if($commande->camion)
+                <div>
+                    <strong>Camion:</strong> {{ $commande->camion->marque }} {{ $commande->camion->modele }}
+                    - Immat: {{ $commande->camion->immatriculation }}
+                    @if($commande->camion->capacite_charge)
+                    (Capacité: {{ number_format($commande->camion->capacite_charge, 0, ',', ' ') }} kg)
+                    @endif
+                </div>
+                @endif
+            </div>
+        </div>
+        @endif
+
         <!-- Notes -->
-        @if($vente->note)
+        @if($commande->note)
         <div class="notes-section">
             <div class="notes-title">📝 Notes:</div>
-            <div class="notes-content">{{ $vente->note }}</div>
+            <div class="notes-content">{{ $commande->note }}</div>
         </div>
         @endif
 
@@ -555,13 +572,13 @@
             <div class="footer-line">{{ $entreprise['nom'] }} - {{ $entreprise['adresse'] }}</div>
             <div class="footer-line">Email: {{ $entreprise['email'] }} | Tél: {{ $entreprise['telephone'] }}</div>
             <div class="footer-line" style="margin-top: 6px; font-style: italic;">
-                Merci pour votre confiance !
+                Ce bon de commande doit être confirmé par le fournisseur
             </div>
         </div>
 
-        <!-- Filigrane si non payé -->
-        @if($vente->statut_paiement === 'non_paye')
-        <div class="watermark">IMPAYÉ</div>
+        <!-- Filigrane si annulé -->
+        @if($commande->status === 'annulee')
+        <div class="watermark">ANNULÉ</div>
         @endif
     </div>
 </body>

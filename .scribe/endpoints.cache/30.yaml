@@ -3,9 +3,138 @@
 name: 'Génération de Factures PDF'
 description: |-
 
-  API pour générer des factures PDF à partir des ventes avec support A4/A5.
+  API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/factures-pdf/{id}/generate'
+    metadata:
+      groupName: 'Génération de Factures PDF'
+      groupDescription: |-
+
+        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Générer une facture PDF pour une vente'
+      description: |-
+        Génère un PDF de facture professionnelle avec en-tête et pied de page.
+        Le format peut être A3, A4 (défaut) ou A5.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la vente."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters:
+      format:
+        name: format
+        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
+        required: false
+        example: A4
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      action:
+        name: action
+        description: 'Action à effectuer. Valeurs possibles: download (télécharger), preview (aperçu dans le navigateur). Défaut: download.'
+        required: false
+        example: download
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      format: A4
+      action: download
+    bodyParameters:
+      format:
+        name: format
+        description: ''
+        required: false
+        example: A3
+        type: string
+        enumValues:
+          - A3
+          - A4
+          - A5
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      action:
+        name: action
+        description: ''
+        required: false
+        example: preview
+        type: string
+        enumValues:
+          - download
+          - preview
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      format: A3
+      action: preview
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[Binary PDF Content]'
+        headers: []
+        description: 'Téléchargement réussi'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: 'Vente non trouvée'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "format": ["Le format doit être A3, A4 ou A5"]
+            }
+          }
+        headers: []
+        description: 'Format invalide'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
   -
     httpMethods:
       - GET
@@ -14,7 +143,7 @@ endpoints:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
@@ -45,7 +174,7 @@ endpoints:
     queryParameters:
       format:
         name: format
-        description: 'Format du PDF. Valeurs possibles: A4, A5. Défaut: A4.'
+        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
         required: false
         example: A4
         type: string
@@ -92,7 +221,7 @@ endpoints:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
@@ -123,7 +252,7 @@ endpoints:
     queryParameters:
       format:
         name: format
-        description: 'Format du PDF. Valeurs possibles: A4, A5. Défaut: A4.'
+        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
         required: false
         example: A5
         type: string
@@ -164,13 +293,105 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - GET
+    uri: 'api/factures-pdf/{id}/print'
+    metadata:
+      groupName: 'Génération de Factures PDF'
+      groupDescription: |-
+
+        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Imprimer la facture'
+      description: |-
+        Affiche la facture dans le navigateur et déclenche automatiquement la boîte de dialogue d'impression.
+        Idéal pour une impression directe sans téléchargement.
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'UUID de la vente."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters:
+      format:
+        name: format
+        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
+        required: false
+        example: A4
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      format: A4
+    bodyParameters:
+      format:
+        name: format
+        description: ''
+        required: false
+        example: A3
+        type: string
+        enumValues:
+          - A3
+          - A4
+          - A5
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      format: A3
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[HTML page with auto-print]'
+        headers: []
+        description: 'Impression déclenchée'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: 'Vente non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - POST
     uri: 'api/factures-pdf/{id}/send-email'
     metadata:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
@@ -225,7 +446,7 @@ endpoints:
         custom: []
       format:
         name: format
-        description: 'Format du PDF à joindre. Valeurs possibles: A4, A5. Défaut: A4.'
+        description: 'Format du PDF à joindre. Valeurs possibles: A3, A4, A5. Défaut: A4.'
         required: false
         example: A4
         type: string
@@ -303,7 +524,7 @@ endpoints:
       groupName: 'Génération de Factures PDF'
       groupDescription: |-
 
-        API pour générer des factures PDF à partir des ventes avec support A4/A5.
+        API pour générer des factures PDF à partir des ventes avec support A3/A4/A5.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
@@ -339,7 +560,7 @@ endpoints:
         custom: []
       format:
         name: format
-        description: 'Format du PDF pour toutes les factures. Valeurs possibles: A4, A5. Défaut: A4.'
+        description: 'Format du PDF pour toutes les factures. Valeurs possibles: A3, A4, A5. Défaut: A4.'
         required: false
         example: A4
         type: string
