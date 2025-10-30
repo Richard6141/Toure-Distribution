@@ -183,12 +183,15 @@ endpoints:
       title: 'Créer une vente'
       description: |-
         Enregistre une nouvelle vente avec ses détails.
-        Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour.
+        Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour
+        et le current_balance du client est augmenté du montant de la vente.
 
         **Options de validation automatique:**
         - Si `status` est "validee", un mouvement de stock est créé et validé automatiquement
         - Le stock de l'entrepôt source est diminué en temps réel
-        - Si le stock est insuffisant, la création échoue
+        - Le current_balance du client est augmenté du montant_net de la vente
+        - Vérification de la limite de crédit du client (credit_limit)
+        - Si le stock est insuffisant ou la limite de crédit dépassée, la création échoue
       authenticated: true
       deprecated: false
       custom: []
@@ -377,6 +380,16 @@ endpoints:
         headers: []
         description: ''
         custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Limite de crédit dépassée pour le client ABC. Limite: 100000, Solde actuel: 80000, Montant de la vente: 25000"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
@@ -410,16 +423,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the vente.'
+        description: "L'UUID de la vente."
         required: true
-        example: architecto
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -427,13 +440,32 @@ endpoints:
     fileParameters: []
     responses:
       -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détails de la vente récupérés avec succès",
+            "data": {
+              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_vente": "VTE-2025-0001",
+              "montant_total": "25000.00",
+              "montant_net": "23750.00",
+              "montant_paye": "10000.00",
+              "montant_restant": "13750.00"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 404
-        content: '{"success":false,"message":"Vente non trouv\u00e9e"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -459,8 +491,11 @@ endpoints:
       title: 'Mettre à jour une vente'
       description: |-
         Met à jour les informations d'une vente.
-        **Important:** Si le statut passe à "validee", les stocks seront mis à jour automatiquement.
-        Si le statut passe à "annulee", le mouvement de stock sera annulé et les stocks restaurés.
+
+        **Important:**
+        - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
+        - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
+        - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
       authenticated: true
       deprecated: false
       custom: []
@@ -471,16 +506,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the vente.'
+        description: "L'UUID de la vente."
         required: true
-        example: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -537,6 +572,16 @@ endpoints:
           {
             "success": false,
             "message": "Stock insuffisant pour valider cette vente"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Limite de crédit dépassée pour le client ABC"
           }
         headers: []
         description: ''
@@ -565,8 +610,11 @@ endpoints:
       title: 'Mettre à jour une vente'
       description: |-
         Met à jour les informations d'une vente.
-        **Important:** Si le statut passe à "validee", les stocks seront mis à jour automatiquement.
-        Si le statut passe à "annulee", le mouvement de stock sera annulé et les stocks restaurés.
+
+        **Important:**
+        - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
+        - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
+        - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
       authenticated: true
       deprecated: false
       custom: []
@@ -577,16 +625,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the vente.'
+        description: "L'UUID de la vente."
         required: true
-        example: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -647,6 +695,16 @@ endpoints:
         headers: []
         description: ''
         custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Limite de crédit dépassée pour le client ABC"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
@@ -671,7 +729,8 @@ endpoints:
       title: 'Supprimer une vente'
       description: |-
         Effectue une suppression logique d'une vente.
-        Si la vente est validée, le mouvement de stock sera annulé et les stocks restaurés.
+        Si la vente est validée, le mouvement de stock sera annulé, les stocks restaurés
+        et le current_balance du client sera diminué du montant de la vente.
       authenticated: true
       deprecated: false
       custom: []
@@ -682,22 +741,42 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the vente.'
+        description: "L'UUID de la vente."
         required: true
-        example: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Vente supprimée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
@@ -720,32 +799,63 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Liste des ventes supprimées'
-      description: ''
-      authenticated: false
+      description: 'Récupère la liste paginée de toutes les ventes supprimées (soft deleted).'
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"success":true,"message":"Liste des ventes supprim\u00e9es r\u00e9cup\u00e9r\u00e9e avec succ\u00e8s","data":{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/ventes\/trashed\/list?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/ventes\/trashed\/list?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/ventes\/trashed\/list?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/ventes\/trashed\/list","per_page":15,"prev_page_url":null,"to":null,"total":0}}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des ventes supprimées récupérée avec succès",
+            "data": {
+              "current_page": 1,
+              "data": []
+            }
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -763,34 +873,61 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Restaurer une vente supprimée'
-      description: ''
-      authenticated: false
+      description: |-
+        Restaure une vente supprimée logiquement.
+        Si la vente était validée, le current_balance du client sera restauré.
+      authenticated: true
       deprecated: false
       custom: []
     headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the vente.'
+        description: "L'UUID de la vente supprimée."
         required: true
-        example: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 050a70f8-a8c5-4c75-b9b2-f29d8a7db760
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Vente restaurée avec succès",
+            "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente supprimée non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null

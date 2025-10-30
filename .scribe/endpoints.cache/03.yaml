@@ -653,7 +653,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -663,7 +663,7 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -673,7 +673,7 @@ endpoints:
         name: balance_filter
         description: ''
         required: false
-        example: positive
+        example: negative
         type: string
         enumValues:
           - positive
@@ -693,9 +693,9 @@ endpoints:
       ifu: 'n'
       marketteur: i
       client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
-      is_active: true
-      with_client_type: false
-      balance_filter: positive
+      is_active: false
+      with_client_type: true
+      balance_filter: negative
     fileParameters: []
     responses:
       -

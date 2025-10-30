@@ -352,6 +352,7 @@ Route::prefix('paiements')->name('paiements.')->group(function () {
     // Routes CRUD standard
     Route::get('/', [PaiementController::class, 'index'])->name('index');
     Route::post('/', [PaiementController::class, 'store'])->name('store');
+    Route::post('/paiements/versement', [PaiementController::class, 'versement']);
     Route::get('/{id}', [PaiementController::class, 'show'])->name('show');
     Route::put('/{id}', [PaiementController::class, 'update'])->name('update');
     Route::patch('/{id}', [PaiementController::class, 'update'])->name('patch');
@@ -519,7 +520,8 @@ Route::prefix('detail-ventes')->group(function () {
  */
 Route::prefix('paiement-ventes')->group(function () {
     Route::get('/', [PaiementVenteController::class, 'index']);               // Liste des paiements
-    Route::post('/', [PaiementVenteController::class, 'store']);              // Création d'un paiement
+    Route::post('/', [PaiementVenteController::class, 'store']);
+    Route::post('/paiements/versement', [PaiementVenteController::class, 'versement']);             // Création d'un paiement
     Route::get('/{id}', [PaiementVenteController::class, 'show']);            // Afficher un paiement par ID
     Route::put('/{id}', [PaiementVenteController::class, 'update']);          // Mise à jour d'un paiement
     Route::patch('/{id}', [PaiementVenteController::class, 'update']);        // Mise à jour partielle

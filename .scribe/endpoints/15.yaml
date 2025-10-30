@@ -15,7 +15,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Statistiques des paiements'
-      description: 'Récupère des statistiques sur les paiements.'
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -53,7 +53,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-29T20:25:37'
+        example: '2025-10-30T22:29:37'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -63,45 +63,25 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-22'
+        example: '2051-11-23'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-29T20:25:37'
-      date_to: '2051-11-22'
+      date_from: '2025-10-30T22:29:37'
+      date_to: '2051-11-23'
     fileParameters: []
     responses:
       -
         status: 200
-        content: |-
-          {
-            "data": {
-              "total_paiements": 250,
-              "paiements_completed": 200,
-              "paiements_pending": 30,
-              "paiements_failed": 15,
-              "paiements_refunded": 5,
-              "total_amount": "12000000.00",
-              "average_payment_amount": "48000.00",
-              "payments_by_method": [
-                {
-                  "payment_method": "Espèces",
-                  "count": 150,
-                  "total_amount": "7000000.00"
-                },
-                {
-                  "payment_method": "Mobile Money",
-                  "count": 100,
-                  "total_amount": "5000000.00"
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
+        content: '{"data":{"total_paiements":0,"paiements_completed":0,"paiements_pending":0,"paiements_failed":0,"paiements_refunded":0,"total_amount":"0.00","average_payment_amount":"0.00","payments_by_method":[]}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
     responseFields: []
     auth: []
@@ -121,7 +101,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Liste tous les paiements'
-      description: 'Récupère la liste de tous les paiements avec pagination et filtres optionnels.'
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -133,7 +113,7 @@ endpoints:
     queryParameters:
       page:
         name: page
-        description: 'Page à récupérer (pagination).'
+        description: 'Page à récupérer.'
         required: false
         example: 1
         type: integer
@@ -153,7 +133,7 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Recherche par référence de paiement.'
+        description: 'Recherche par référence.'
         required: false
         example: PAY-2025
         type: string
@@ -163,7 +143,7 @@ endpoints:
         custom: []
       facture_id:
         name: facture_id
-        description: 'Filtrer par facture (UUID).'
+        description: 'Filtrer par facture.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -173,7 +153,7 @@ endpoints:
         custom: []
       client_id:
         name: client_id
-        description: 'Filtrer par client (UUID).'
+        description: 'Filtrer par client.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440001
         type: string
@@ -183,7 +163,7 @@ endpoints:
         custom: []
       payment_method_id:
         name: payment_method_id
-        description: 'Filtrer par méthode de paiement (UUID).'
+        description: 'Filtrer par méthode.'
         required: false
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -193,7 +173,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'Filtrer par statut (pending, completed, failed, refunded).'
+        description: 'Filtrer par statut.'
         required: false
         example: completed
         type: string
@@ -221,36 +201,6 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      with_facture:
-        name: with_facture
-        description: 'Inclure les informations de la facture.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      with_client:
-        name: with_client
-        description: 'Inclure les informations du client.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      with_payment_method:
-        name: with_payment_method
-        description: 'Inclure les informations de la méthode de paiement.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanQueryParameters:
       page: 1
       per_page: 15
@@ -261,9 +211,6 @@ endpoints:
       statut: completed
       date_from: '2025-01-01'
       date_to: '2025-12-31'
-      with_facture: true
-      with_client: true
-      with_payment_method: true
     bodyParameters:
       page:
         name: page
@@ -329,7 +276,7 @@ endpoints:
         name: statut
         description: ''
         required: false
-        example: completed
+        example: pending
         type: string
         enumValues:
           - pending
@@ -343,7 +290,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-29T20:25:37'
+        example: '2025-10-30T22:29:37'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -353,7 +300,7 @@ endpoints:
         name: date_to
         description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
         required: false
-        example: '2051-11-22'
+        example: '2051-11-23'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -363,7 +310,7 @@ endpoints:
         name: with_facture
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -373,7 +320,7 @@ endpoints:
         name: with_client
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -383,7 +330,7 @@ endpoints:
         name: with_payment_method
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -396,42 +343,22 @@ endpoints:
       facture_id: c90237e9-ced5-3af6-88ea-84aeaa148878
       client_id: a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f
       payment_method_id: 21c4122b-d554-3723-966c-6d723ea5293f
-      statut: completed
-      date_from: '2025-10-29T20:25:37'
-      date_to: '2051-11-22'
-      with_facture: true
-      with_client: false
-      with_payment_method: true
+      statut: pending
+      date_from: '2025-10-30T22:29:37'
+      date_to: '2051-11-23'
+      with_facture: false
+      with_client: true
+      with_payment_method: false
     fileParameters: []
     responses:
       -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "paiement_id": "550e8400-e29b-41d4-a716-446655440000",
-                "reference": "PAY-2025-00001",
-                "facture_id": "550e8400-e29b-41d4-a716-446655440001",
-                "client_id": "550e8400-e29b-41d4-a716-446655440002",
-                "payment_method_id": "550e8400-e29b-41d4-a716-446655440003",
-                "amount": "50000.00",
-                "payment_date": "2025-01-15T10:30:00Z",
-                "note": "Paiement partiel",
-                "statut": "completed",
-                "user_id": "550e8400-e29b-41d4-a716-446655440004",
-                "created_at": "2025-01-15T10:30:00Z",
-                "updated_at": "2025-01-15T10:30:00Z"
-              }
-            ],
-            "meta": {
-              "current_page": 1,
-              "per_page": 15,
-              "total": 1
-            }
-          }
-        headers: []
-        description: ''
+        status: 422
+        content: '{"message":"The selected facture id is invalid. (and 2 more errors)","errors":{"facture_id":["The selected facture id is invalid."],"client_id":["The selected client id is invalid."],"payment_method_id":["The selected payment method id is invalid."]}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
     responseFields: []
     auth: []
@@ -453,8 +380,7 @@ endpoints:
       title: 'Créer un nouveau paiement'
       description: |-
         Enregistre un nouveau paiement pour une facture.
-        Le montant payé de la facture sera automatiquement mis à jour.
-        La référence du paiement est générée automatiquement.
+        Le montant payé de la facture et le current_balance du client sont automatiquement mis à jour.
       authenticated: false
       deprecated: false
       custom: []
@@ -468,7 +394,7 @@ endpoints:
     bodyParameters:
       facture_id:
         name: facture_id
-        description: 'UUID de la facture à payer.'
+        description: 'UUID de la facture.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -488,7 +414,7 @@ endpoints:
         custom: []
       payment_method_id:
         name: payment_method_id
-        description: 'UUID de la méthode de paiement.'
+        description: 'UUID de la méthode.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440002
         type: string
@@ -508,7 +434,7 @@ endpoints:
         custom: []
       payment_date:
         name: payment_date
-        description: 'optionnel Date du paiement (défaut: maintenant).'
+        description: 'Date du paiement.'
         required: false
         example: '2025-01-15 10:30:00'
         type: datetime
@@ -518,7 +444,7 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'optionnel Note ou commentaire sur le paiement.'
+        description: Note.
         required: false
         example: 'Paiement en espèces'
         type: string
@@ -528,7 +454,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'optionnel Statut du paiement (pending, completed, failed, refunded, défaut: completed).'
+        description: 'Statut (défaut: completed).'
         required: false
         example: completed
         type: string
@@ -538,7 +464,7 @@ endpoints:
         custom: []
       user_id:
         name: user_id
-        description: "UUID de l'utilisateur enregistrant le paiement."
+        description: "UUID de l'utilisateur."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440003
         type: string
@@ -556,65 +482,109 @@ endpoints:
       statut: completed
       user_id: 550e8400-e29b-41d4-a716-446655440003
     fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "data": {
-              "paiement_id": "550e8400-e29b-41d4-a716-446655440000",
-              "reference": "PAY-2025-00001",
-              "facture_id": "550e8400-e29b-41d4-a716-446655440001",
-              "client_id": "550e8400-e29b-41d4-a716-446655440002",
-              "payment_method_id": "550e8400-e29b-41d4-a716-446655440003",
-              "amount": "50000.00",
-              "payment_date": "2025-01-15T10:30:00Z",
-              "note": "Paiement en espèces",
-              "statut": "completed",
-              "user_id": "550e8400-e29b-41d4-a716-446655440004",
-              "created_at": "2025-01-15T10:30:00Z",
-              "updated_at": "2025-01-15T10:30:00Z",
-              "facture": {
-                "facture_id": "550e8400-e29b-41d4-a716-446655440001",
-                "facture_number": "FACT-2025-00001",
-                "total_amount": "100000.00",
-                "paid_amount": "50000.00",
-                "statut": "partially_paid"
-              }
-            },
-            "message": "Paiement enregistré avec succès"
-          }
-        headers: []
-        description: ''
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/paiements/paiements/versement
+    metadata:
+      groupName: 'Payments Management'
+      groupDescription: |-
+
+        APIs pour gérer les paiements des factures
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Versement client'
+      description: |-
+        Enregistre un versement général du client qui sera automatiquement appliqué
+        aux factures impayées. Si le versement dépasse le total des impayés,
+        le solde sera créditeur (current_balance négatif).
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      client_id:
+        name: client_id
+        description: 'UUID du client.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
         custom: []
-      -
-        status: 400
-        content: |-
-          {
-            "message": "Le montant du paiement dépasse le solde restant de la facture",
-            "data": {
-              "facture_total": "100000.00",
-              "already_paid": "80000.00",
-              "remaining": "20000.00",
-              "attempted_payment": "30000.00"
-            }
-          }
-        headers: []
-        description: ''
+      amount:
+        name: amount
+        description: 'Montant du versement.'
+        required: true
+        example: 50000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
         custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "message": "Données de validation échouées",
-            "errors": {
-              "facture_id": ["La facture sélectionnée n'existe pas"],
-              "amount": ["Le montant est requis"]
-            }
-          }
-        headers: []
-        description: ''
+      payment_method_id:
+        name: payment_method_id
+        description: 'UUID de la méthode.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440002
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
         custom: []
+      payment_date:
+        name: payment_date
+        description: 'Date du paiement.'
+        required: false
+        example: '2025-01-15 10:30:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: Note.
+        required: false
+        example: 'Versement pour régularisation'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      user_id:
+        name: user_id
+        description: "UUID de l'utilisateur."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440003
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      client_id: 550e8400-e29b-41d4-a716-446655440001
+      amount: 50000.0
+      payment_method_id: 550e8400-e29b-41d4-a716-446655440002
+      payment_date: '2025-01-15 10:30:00'
+      note: 'Versement pour régularisation'
+      user_id: 550e8400-e29b-41d4-a716-446655440003
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -633,7 +603,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Afficher un paiement spécifique'
-      description: "Récupère les détails d'un paiement par son ID."
+      description: ''
       authenticated: false
       deprecated: false
       custom: []
@@ -643,7 +613,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: 'UUID du paiement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -653,41 +623,8 @@ endpoints:
         custom: []
     cleanUrlParameters:
       id: 550e8400-e29b-41d4-a716-446655440000
-    queryParameters:
-      with_facture:
-        name: with_facture
-        description: 'Inclure les informations de la facture.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      with_client:
-        name: with_client
-        description: 'Inclure les informations du client.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      with_payment_method:
-        name: with_payment_method
-        description: 'Inclure les informations de la méthode de paiement.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      with_facture: true
-      with_client: true
-      with_payment_method: true
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters:
       with_facture:
         name: with_facture
@@ -726,40 +663,13 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "paiement_id": "550e8400-e29b-41d4-a716-446655440000",
-              "reference": "PAY-2025-00001",
-              "facture": {
-                "facture_id": "550e8400-e29b-41d4-a716-446655440001",
-                "facture_number": "FACT-2025-00001"
-              },
-              "client": {
-                "client_id": "550e8400-e29b-41d4-a716-446655440002",
-                "name_client": "John Doe"
-              },
-              "payment_method": {
-                "payment_method_id": "550e8400-e29b-41d4-a716-446655440003",
-                "name": "Espèces"
-              },
-              "amount": "50000.00",
-              "payment_date": "2025-01-15T10:30:00Z",
-              "statut": "completed"
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
         status: 404
-        content: |-
-          {
-            "message": "Paiement non trouvé"
-          }
-        headers: []
-        description: ''
+        content: '{"message":"Paiement non trouv\u00e9"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
     responseFields: []
     auth: []
@@ -781,7 +691,7 @@ endpoints:
       title: 'Mettre à jour un paiement'
       description: |-
         Met à jour les informations d'un paiement existant.
-        Note: La modification du montant recalculera le statut de la facture.
+        Le current_balance du client est ajusté en fonction des modifications.
       authenticated: false
       deprecated: false
       custom: []
@@ -791,7 +701,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: 'UUID du paiement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -806,7 +716,7 @@ endpoints:
     bodyParameters:
       amount:
         name: amount
-        description: 'Nouveau montant du paiement.'
+        description: 'Nouveau montant.'
         required: false
         example: 60000.0
         type: number
@@ -826,7 +736,7 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'Note ou commentaire.'
+        description: Note.
         required: false
         example: 'Paiement rectifié'
         type: string
@@ -836,7 +746,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'Statut du paiement (pending, completed, failed, refunded).'
+        description: Statut.
         required: false
         example: completed
         type: string
@@ -850,32 +760,7 @@ endpoints:
       note: 'Paiement rectifié'
       statut: completed
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "paiement_id": "550e8400-e29b-41d4-a716-446655440000",
-              "reference": "PAY-2025-00001",
-              "amount": "60000.00",
-              "statut": "completed",
-              "updated_at": "2025-01-15T11:00:00Z"
-            },
-            "message": "Paiement mis à jour avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Paiement non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -896,7 +781,7 @@ endpoints:
       title: 'Mettre à jour un paiement'
       description: |-
         Met à jour les informations d'un paiement existant.
-        Note: La modification du montant recalculera le statut de la facture.
+        Le current_balance du client est ajusté en fonction des modifications.
       authenticated: false
       deprecated: false
       custom: []
@@ -906,7 +791,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: 'UUID du paiement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -921,7 +806,7 @@ endpoints:
     bodyParameters:
       amount:
         name: amount
-        description: 'Nouveau montant du paiement.'
+        description: 'Nouveau montant.'
         required: false
         example: 60000.0
         type: number
@@ -941,7 +826,7 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'Note ou commentaire.'
+        description: Note.
         required: false
         example: 'Paiement rectifié'
         type: string
@@ -951,7 +836,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'Statut du paiement (pending, completed, failed, refunded).'
+        description: Statut.
         required: false
         example: completed
         type: string
@@ -965,32 +850,7 @@ endpoints:
       note: 'Paiement rectifié'
       statut: completed
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "paiement_id": "550e8400-e29b-41d4-a716-446655440000",
-              "reference": "PAY-2025-00001",
-              "amount": "60000.00",
-              "statut": "completed",
-              "updated_at": "2025-01-15T11:00:00Z"
-            },
-            "message": "Paiement mis à jour avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Paiement non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -1009,9 +869,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: 'Supprimer un paiement'
-      description: |-
-        Supprime un paiement et met à jour le montant payé de la facture associée.
-        Cette action est irréversible.
+      description: 'Supprime un paiement et met à jour le montant payé de la facture et le current_balance du client.'
       authenticated: false
       deprecated: false
       custom: []
@@ -1021,7 +879,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: 'UUID du paiement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -1036,25 +894,7 @@ endpoints:
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Paiement supprimé avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Paiement non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -1073,7 +913,7 @@ endpoints:
       subgroup: ''
       subgroupDescription: ''
       title: "Changer le statut d'un paiement"
-      description: "Met à jour le statut d'un paiement et recalcule le montant payé de la facture."
+      description: "Met à jour le statut d'un paiement et recalcule le montant payé de la facture et le current_balance du client."
       authenticated: false
       deprecated: false
       custom: []
@@ -1083,7 +923,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: 'UUID du paiement.'
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -1098,7 +938,7 @@ endpoints:
     bodyParameters:
       statut:
         name: statut
-        description: 'Nouveau statut (pending, completed, failed, refunded).'
+        description: 'Nouveau statut.'
         required: true
         example: refunded
         type: string
@@ -1109,29 +949,7 @@ endpoints:
     cleanBodyParameters:
       statut: refunded
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "paiement_id": "550e8400-e29b-41d4-a716-446655440000",
-              "statut": "refunded"
-            },
-            "message": "Statut du paiement mis à jour avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Paiement non trouvé"
-          }
-        headers: []
-        description: ''
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null

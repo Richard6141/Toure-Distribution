@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Client;
 use App\Models\PaiementVente;
 use App\Models\Vente;
 use Illuminate\Http\JsonResponse;
@@ -43,7 +42,24 @@ class PaiementVenteController extends Controller
      *   "message": "Liste des paiements récupérée avec succès",
      *   "data": {
      *     "current_page": 1,
-     *     "data": [],
+     *     "data": [
+     *       {
+     *         "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *         "reference_paiement": "PAYV-2025-0001",
+     *         "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *         "montant": "10000.00",
+     *         "mode_paiement": "mobile_money",
+     *         "statut": "valide",
+     *         "date_paiement": "2025-01-15T14:30:00.000000Z",
+     *         "numero_transaction": "TRX123456789",
+     *         "created_at": "2025-01-15T14:30:00.000000Z",
+     *         "vente": {
+     *           "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *           "numero_vente": "VTE-2025-0001",
+     *           "montant_net": "25000.00"
+     *         }
+     *       }
+     *     ],
      *     "total": 30
      *   }
      * }
@@ -54,11 +70,13 @@ class PaiementVenteController extends Controller
 
         $query = PaiementVente::with('vente:vente_id,numero_vente,montant_net,statut_paiement');
 
+        // Recherche par référence
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where('reference_paiement', 'like', "%{$search}%");
         }
 
+        // Filtres
         if ($request->filled('vente_id')) {
             $query->parVente($request->input('vente_id'));
         }
@@ -71,6 +89,7 @@ class PaiementVenteController extends Controller
             $query->where('mode_paiement', $request->input('mode_paiement'));
         }
 
+        // Période
         if ($request->filled('date_debut') && $request->filled('date_fin')) {
             $query->whereBetween('date_paiement', [
                 $request->input('date_debut') . ' 00:00:00',
@@ -82,6 +101,7 @@ class PaiementVenteController extends Controller
             $query->where('date_paiement', '<=', $request->input('date_fin') . ' 23:59:59');
         }
 
+        // Montants
         if ($request->filled('montant_min')) {
             $query->where('montant', '>=', $request->input('montant_min'));
         }
@@ -102,26 +122,53 @@ class PaiementVenteController extends Controller
     /**
      * Créer un paiement
      * 
-     * Enregistre un nouveau paiement pour une vente spécifique.
-     * La référence de paiement est générée automatiquement.
-     * Le current_balance du client est diminué du montant payé.
+     * Enregistre un nouveau paiement pour une vente.
+     * La référence de paiement est générée automatiquement au format PAYV-YYYY-0001.
+     * Le statut de paiement de la vente est mis à jour automatiquement.
      * 
      * @authenticated
      * 
      * @bodyParam vente_id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
      * @bodyParam montant numeric required Le montant payé. Example: 10000.00
-     * @bodyParam mode_paiement string required Le mode de paiement. Example: mobile_money
-     * @bodyParam statut string Le statut du paiement. Par défaut: en_attente. Example: valide
-     * @bodyParam date_paiement datetime required La date et heure du paiement. Example: 2025-01-15 14:30:00
-     * @bodyParam numero_transaction string Le numéro de transaction. Example: TRX123456789
-     * @bodyParam numero_cheque string Le numéro de chèque. Example: CHQ987654
+     * @bodyParam mode_paiement string required Le mode de paiement (especes, cheque, virement, carte_bancaire, mobile_money, credit). Example: mobile_money
+     * @bodyParam statut string Le statut du paiement (en_attente, valide, refuse, annule). Par défaut: en_attente. Example: valide
+     * @bodyParam date_paiement datetime required La date et heure du paiement (format: Y-m-d H:i:s). Example: 2025-01-15 14:30:00
+     * @bodyParam numero_transaction string Le numéro de transaction (pour paiements électroniques). Example: TRX123456789
+     * @bodyParam numero_cheque string Le numéro de chèque (pour paiements par chèque). Example: CHQ987654
      * @bodyParam banque string La banque émettrice. Example: Bank of Africa
-     * @bodyParam note string Des notes. Example: Paiement via MTN Mobile Money
+     * @bodyParam note string Des notes ou observations. Example: Paiement via MTN Mobile Money
      * 
      * @response 201 {
      *   "success": true,
      *   "message": "Paiement enregistré avec succès",
-     *   "data": {}
+     *   "data": {
+     *     "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "reference_paiement": "PAYV-2025-0001",
+     *     "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "montant": "10000.00",
+     *     "mode_paiement": "mobile_money",
+     *     "statut": "valide",
+     *     "date_paiement": "2025-01-15T14:30:00.000000Z",
+     *     "created_at": "2025-01-15T14:30:00.000000Z",
+     *     "vente": {
+     *       "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *       "numero_vente": "VTE-2025-0001",
+     *       "montant_net": "25000.00",
+     *       "montant_paye": "10000.00",
+     *       "montant_restant": "15000.00",
+     *       "statut_paiement": "paye_partiellement"
+     *     }
+     *   }
+     * }
+     * 
+     * @response 422 {
+     *   "success": false,
+     *   "message": "Erreur de validation",
+     *   "errors": {
+     *     "montant": [
+     *       "Le montant du paiement dépasse le montant restant à payer"
+     *     ]
+     *   }
      * }
      */
     public function store(Request $request): JsonResponse
@@ -161,6 +208,7 @@ class PaiementVenteController extends Controller
             ], 422);
         }
 
+        // Vérifier que le montant ne dépasse pas le montant restant
         $vente = Vente::find($request->vente_id);
         $montantRestant = $vente->montant_restant;
 
@@ -178,17 +226,11 @@ class PaiementVenteController extends Controller
 
         DB::beginTransaction();
         try {
+            // Créer le paiement
             $paiement = PaiementVente::create($validator->validated());
-
-            // Diminuer le current_balance du client si le paiement est validé
-            if ($paiement->statut === 'valide') {
-                $client = Client::find($vente->client_id);
-                $client->current_balance -= $paiement->montant;
-                $client->save();
-            }
-
             $paiement->load('vente:vente_id,numero_vente,montant_net,statut_paiement');
 
+            // Ajouter les informations de paiement
             $vente->refresh();
             $data = $paiement->toArray();
             $data['vente']['montant_paye'] = $vente->montant_paye;
@@ -212,160 +254,6 @@ class PaiementVenteController extends Controller
     }
 
     /**
-     * Versement client
-     * 
-     * Enregistre un versement général du client qui sera automatiquement appliqué
-     * aux factures impayées. Si le versement dépasse le total des impayés,
-     * le solde sera créditeur (current_balance négatif = l'entreprise doit au client).
-     * 
-     * @authenticated
-     * 
-     * @bodyParam client_id string required L'UUID du client. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-     * @bodyParam montant numeric required Le montant du versement. Example: 50000.00
-     * @bodyParam mode_paiement string required Le mode de paiement. Example: virement
-     * @bodyParam date_paiement datetime required La date et heure du paiement. Example: 2025-01-15 14:30:00
-     * @bodyParam numero_transaction string Le numéro de transaction. Example: TRX123456789
-     * @bodyParam numero_cheque string Le numéro de chèque. Example: CHQ987654
-     * @bodyParam banque string La banque émettrice. Example: Bank of Africa
-     * @bodyParam note string Des notes. Example: Versement pour régularisation des factures
-     * 
-     * @response 201 {
-     *   "success": true,
-     *   "message": "Versement traité avec succès. 2 facture(s) payée(s).",
-     *   "data": {
-     *     "montant_verse": "50000.00",
-     *     "montant_applique": "45000.00",
-     *     "solde_restant": "-5000.00",
-     *     "client_current_balance": "-5000.00",
-     *     "paiements_crees": [
-     *       {
-     *         "paiement_vente_id": "uuid",
-     *         "reference_paiement": "PAYV-2025-0001",
-     *         "vente_id": "uuid",
-     *         "numero_vente": "VTE-2025-0001",
-     *         "montant": "25000.00"
-     *       }
-     *     ]
-     *   }
-     * }
-     */
-    public function versement(Request $request): JsonResponse
-    {
-        $validator = Validator::make($request->all(), [
-            'client_id' => 'required|uuid|exists:clients,client_id',
-            'montant' => 'required|numeric|min:0.01|max:9999999999999.99',
-            'mode_paiement' => ['required', Rule::in([
-                'especes',
-                'cheque',
-                'virement',
-                'carte_bancaire',
-                'mobile_money',
-                'credit'
-            ])],
-            'date_paiement' => 'required|date',
-            'numero_transaction' => 'nullable|string|max:255',
-            'numero_cheque' => 'nullable|string|max:255',
-            'banque' => 'nullable|string|max:255',
-            'note' => 'nullable|string',
-        ], [
-            'client_id.required' => 'Le client est requis',
-            'client_id.exists' => 'Le client sélectionné n\'existe pas',
-            'montant.required' => 'Le montant est requis',
-            'montant.min' => 'Le montant doit être supérieur à 0',
-            'mode_paiement.required' => 'Le mode de paiement est requis',
-            'date_paiement.required' => 'La date de paiement est requise',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur de validation',
-                'errors' => $validator->errors()
-            ], 422);
-        }
-
-        DB::beginTransaction();
-        try {
-            $client = Client::find($request->client_id);
-            $montantDisponible = $request->montant;
-            $paiementsCrees = [];
-
-            // Récupérer les ventes impayées ou partiellement payées, triées par date
-            $ventesImpayes = Vente::where('client_id', $client->client_id)
-                ->where('status', 'validee')
-                ->whereIn('statut_paiement', ['non_paye', 'paye_partiellement'])
-                ->orderBy('date_vente', 'asc')
-                ->get();
-
-            // Appliquer le versement aux factures impayées
-            foreach ($ventesImpayes as $vente) {
-                if ($montantDisponible <= 0) {
-                    break;
-                }
-
-                $montantRestant = $vente->montant_restant;
-                $montantAPayer = min($montantDisponible, $montantRestant);
-
-                // Créer le paiement
-                $paiement = PaiementVente::create([
-                    'vente_id' => $vente->vente_id,
-                    'montant' => $montantAPayer,
-                    'mode_paiement' => $request->mode_paiement,
-                    'statut' => 'valide',
-                    'date_paiement' => $request->date_paiement,
-                    'numero_transaction' => $request->numero_transaction,
-                    'numero_cheque' => $request->numero_cheque,
-                    'banque' => $request->banque,
-                    'note' => $request->note ?? "Paiement automatique suite au versement",
-                ]);
-
-                $paiementsCrees[] = [
-                    'paiement_vente_id' => $paiement->paiement_vente_id,
-                    'reference_paiement' => $paiement->reference_paiement,
-                    'vente_id' => $vente->vente_id,
-                    'numero_vente' => $vente->numero_vente,
-                    'montant' => $montantAPayer,
-                    'montant_restant_facture' => $montantRestant - $montantAPayer
-                ];
-
-                $montantDisponible -= $montantAPayer;
-            }
-
-            // Mettre à jour le current_balance du client
-            // Si montantDisponible > 0, le client a un crédit (current_balance négatif)
-            $montantApplique = $request->montant - $montantDisponible;
-            $client->current_balance -= $request->montant;
-            $client->save();
-
-            DB::commit();
-
-            $nombreFactures = count($paiementsCrees);
-            $message = $nombreFactures > 0
-                ? "Versement traité avec succès. {$nombreFactures} facture(s) payée(s)."
-                : "Versement enregistré. Aucune facture impayée. Le client a maintenant un crédit.";
-
-            return response()->json([
-                'success' => true,
-                'message' => $message,
-                'data' => [
-                    'montant_verse' => $request->montant,
-                    'montant_applique' => $montantApplique,
-                    'solde_restant' => $montantDisponible,
-                    'client_current_balance' => $client->current_balance,
-                    'paiements_crees' => $paiementsCrees
-                ]
-            ], 201);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors du traitement du versement',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-    /**
      * Afficher un paiement
      * 
      * Récupère les détails d'un paiement spécifique avec sa vente.
@@ -377,7 +265,28 @@ class PaiementVenteController extends Controller
      * @response 200 {
      *   "success": true,
      *   "message": "Détails du paiement récupérés avec succès",
-     *   "data": {}
+     *   "data": {
+     *     "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *     "reference_paiement": "PAYV-2025-0001",
+     *     "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *     "montant": "10000.00",
+     *     "mode_paiement": "mobile_money",
+     *     "statut": "valide",
+     *     "date_paiement": "2025-01-15T14:30:00.000000Z",
+     *     "is_valide": true,
+     *     "vente": {
+     *       "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *       "numero_vente": "VTE-2025-0001",
+     *       "montant_net": "25000.00",
+     *       "montant_paye": "10000.00",
+     *       "montant_restant": "15000.00",
+     *       "client": {
+     *         "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+     *         "code": "CLI001",
+     *         "name_client": "Entreprise ABC"
+     *       }
+     *     }
+     *   }
      * }
      * 
      * @response 404 {
@@ -398,6 +307,8 @@ class PaiementVenteController extends Controller
 
         $data = $paiement->toArray();
         $data['is_valide'] = $paiement->isValide();
+
+        // Ajouter les informations de paiement de la vente
         $data['vente']['montant_paye'] = $paiement->vente->montant_paye;
         $data['vente']['montant_restant'] = $paiement->vente->montant_restant;
 
@@ -412,11 +323,20 @@ class PaiementVenteController extends Controller
      * Mettre à jour un paiement
      * 
      * Met à jour les informations d'un paiement existant.
-     * Si le statut ou le montant change, le current_balance du client est ajusté.
+     * Note: La référence de paiement et la vente ne peuvent pas être modifiées.
      * 
      * @authenticated
      * 
      * @urlParam id string required L'UUID du paiement. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+     * 
+     * @bodyParam montant numeric Le montant payé. Example: 10000.00
+     * @bodyParam mode_paiement string Le mode de paiement. Example: mobile_money
+     * @bodyParam statut string Le statut du paiement. Example: valide
+     * @bodyParam date_paiement datetime La date et heure du paiement. Example: 2025-01-15 14:30:00
+     * @bodyParam numero_transaction string Le numéro de transaction. Example: TRX123456789
+     * @bodyParam numero_cheque string Le numéro de chèque. Example: CHQ987654
+     * @bodyParam banque string La banque émettrice. Example: Bank of Africa
+     * @bodyParam note string Des notes ou observations. Example: Paiement validé
      * 
      * @response 200 {
      *   "success": true,
@@ -451,6 +371,12 @@ class PaiementVenteController extends Controller
             'numero_cheque' => 'nullable|string|max:255',
             'banque' => 'nullable|string|max:255',
             'note' => 'nullable|string',
+        ], [
+            'montant.required' => 'Le montant est requis',
+            'montant.numeric' => 'Le montant doit être un nombre',
+            'montant.min' => 'Le montant doit être supérieur à 0',
+            'mode_paiement.required' => 'Le mode de paiement est requis',
+            'date_paiement.required' => 'La date de paiement est requise',
         ]);
 
         if ($validator->fails()) {
@@ -461,6 +387,7 @@ class PaiementVenteController extends Controller
             ], 422);
         }
 
+        // Si le montant change, vérifier qu'il ne dépasse pas le montant restant
         if ($request->has('montant') && $request->montant != $paiement->montant) {
             $vente = $paiement->vente;
             $montantRestant = $vente->montant_net - ($vente->montant_paye - $paiement->montant);
@@ -478,61 +405,21 @@ class PaiementVenteController extends Controller
             }
         }
 
-        DB::beginTransaction();
-        try {
-            $client = Client::find($paiement->vente->client_id);
-            $oldMontant = $paiement->montant;
-            $oldStatut = $paiement->statut;
+        $paiement->update($validator->validated());
+        $paiement->load('vente:vente_id,numero_vente,montant_net,statut_paiement');
 
-            $paiement->update($validator->validated());
-
-            // Ajuster le current_balance selon les changements
-            $newStatut = $paiement->statut;
-            $newMontant = $paiement->montant;
-
-            // Cas 1: Changement de statut
-            if ($oldStatut !== $newStatut) {
-                if ($oldStatut === 'valide' && $newStatut !== 'valide') {
-                    // Annulation d'un paiement validé : augmenter la dette
-                    $client->current_balance += $oldMontant;
-                } elseif ($oldStatut !== 'valide' && $newStatut === 'valide') {
-                    // Validation d'un paiement : diminuer la dette
-                    $client->current_balance -= $newMontant;
-                }
-            }
-
-            // Cas 2: Changement de montant sur paiement validé
-            if ($newStatut === 'valide' && $oldStatut === 'valide' && $oldMontant != $newMontant) {
-                $difference = $newMontant - $oldMontant;
-                $client->current_balance -= $difference;
-            }
-
-            $client->save();
-
-            $paiement->load('vente:vente_id,numero_vente,montant_net,statut_paiement');
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Paiement mis à jour avec succès',
-                'data' => $paiement->fresh(['vente'])
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la mise à jour',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Paiement mis à jour avec succès',
+            'data' => $paiement->fresh(['vente'])
+        ]);
     }
 
     /**
      * Supprimer un paiement
      * 
-     * Effectue une suppression logique d'un paiement.
-     * Si le paiement était validé, le current_balance du client est augmenté.
+     * Effectue une suppression logique (soft delete) d'un paiement.
+     * Le statut de paiement de la vente est mis à jour automatiquement.
      * 
      * @authenticated
      * 
@@ -554,31 +441,12 @@ class PaiementVenteController extends Controller
             ], 404);
         }
 
-        DB::beginTransaction();
-        try {
-            // Augmenter le current_balance si le paiement était validé
-            if ($paiement->statut === 'valide') {
-                $client = Client::find($paiement->vente->client_id);
-                $client->current_balance += $paiement->montant;
-                $client->save();
-            }
+        $paiement->delete();
 
-            $paiement->delete();
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Paiement supprimé avec succès'
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la suppression',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Paiement supprimé avec succès'
+        ]);
     }
 
     /**
@@ -618,34 +486,14 @@ class PaiementVenteController extends Controller
             ], 404);
         }
 
-        DB::beginTransaction();
-        try {
-            $paiement->restore();
+        $paiement->restore();
+        $paiement->load('vente:vente_id,numero_vente,montant_net');
 
-            // Diminuer le current_balance si le paiement était validé
-            if ($paiement->statut === 'valide') {
-                $client = Client::find($paiement->vente->client_id);
-                $client->current_balance -= $paiement->montant;
-                $client->save();
-            }
-
-            $paiement->load('vente:vente_id,numero_vente,montant_net');
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Paiement restauré avec succès',
-                'data' => $paiement->fresh(['vente'])
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la restauration',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Paiement restauré avec succès',
+            'data' => $paiement->fresh(['vente'])
+        ]);
     }
 
     /**
@@ -660,7 +508,28 @@ class PaiementVenteController extends Controller
      * @response 200 {
      *   "success": true,
      *   "message": "Paiements de la vente récupérés avec succès",
-     *   "data": {}
+     *   "data": {
+     *     "vente": {
+     *       "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+     *       "numero_vente": "VTE-2025-0001",
+     *       "montant_net": "25000.00",
+     *       "montant_paye": "15000.00",
+     *       "montant_restant": "10000.00",
+     *       "statut_paiement": "paye_partiellement",
+     *       "is_totalement_payee": false,
+     *       "is_partiellement_payee": true
+     *     },
+     *     "paiements": [
+     *       {
+     *         "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+     *         "reference_paiement": "PAYV-2025-0001",
+     *         "montant": "10000.00",
+     *         "mode_paiement": "mobile_money",
+     *         "statut": "valide",
+     *         "date_paiement": "2025-01-15T14:30:00.000000Z"
+     *       }
+     *     ]
+     *   }
      * }
      */
     public function paiementsParVente(string $venteId): JsonResponse

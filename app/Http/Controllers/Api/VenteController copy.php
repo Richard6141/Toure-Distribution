@@ -71,11 +71,13 @@ class VenteController extends Controller
             'stockMovement:stock_movement_id,reference,statut'
         ]);
 
+        // Recherche
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where('numero_vente', 'like', "%{$search}%");
         }
 
+        // Filtres
         if ($request->filled('client_id')) {
             $query->parClient($request->input('client_id'));
         }
@@ -92,6 +94,7 @@ class VenteController extends Controller
             $query->where('statut_paiement', $request->input('statut_paiement'));
         }
 
+        // Période
         if ($request->filled('date_debut') && $request->filled('date_fin')) {
             $query->parPeriode(
                 $request->input('date_debut') . ' 00:00:00',
@@ -116,15 +119,12 @@ class VenteController extends Controller
      * Créer une vente
      * 
      * Enregistre une nouvelle vente avec ses détails.
-     * Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour
-     * et le current_balance du client est augmenté du montant de la vente.
+     * Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour.
      * 
      * **Options de validation automatique:**
      * - Si `status` est "validee", un mouvement de stock est créé et validé automatiquement
      * - Le stock de l'entrepôt source est diminué en temps réel
-     * - Le current_balance du client est augmenté du montant_net de la vente
-     * - Vérification de la limite de crédit du client (credit_limit)
-     * - Si le stock est insuffisant ou la limite de crédit dépassée, la création échoue
+     * - Si le stock est insuffisant, la création échoue
      * 
      * @authenticated
      * 
@@ -152,11 +152,6 @@ class VenteController extends Controller
      * @response 422 {
      *   "success": false,
      *   "message": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
-     * }
-     * 
-     * @response 422 {
-     *   "success": false,
-     *   "message": "Limite de crédit dépassée pour le client ABC. Limite: 100000, Solde actuel: 80000, Montant de la vente: 25000"
      * }
      */
     public function store(Request $request): JsonResponse
@@ -203,6 +198,27 @@ class VenteController extends Controller
 
         DB::beginTransaction();
         try {
+            // Vérifier la disponibilité du stock si statut = validee
+            $status = $request->input('status', 'en_attente');
+            if ($status === 'validee') {
+                foreach ($request->details as $detail) {
+                    $stock = Stock::where('product_id', $detail['product_id'])
+                        ->where('entrepot_id', $request->entrepot_id)
+                        ->first();
+
+                    $disponible = $stock ? ($stock->quantite - $stock->reserved_quantity) : 0;
+
+                    if ($disponible < $detail['quantite']) {
+                        $product = Product::find($detail['product_id']);
+                        throw new \Exception(
+                            "Stock insuffisant pour le produit {$product->name}. " .
+                                "Disponible: {$disponible}, Demandé: {$detail['quantite']}"
+                        );
+                    }
+                }
+            }
+
+            // Calculer les totaux
             $montantHT = 0;
             $montantTaxe = 0;
             $montantTotal = 0;
@@ -223,42 +239,11 @@ class VenteController extends Controller
 
             $remise = $request->input('remise', 0);
             $transportPrice = $request->input('transport_price', 0);
+
+            // Montant net = Montant total - Remise + Frais de transport
             $montantNet = $montantTotal - $remise + $transportPrice;
 
-            $status = $request->input('status', 'en_attente');
-
-            // Vérifications si statut = validee
-            if ($status === 'validee') {
-                $client = Client::find($request->client_id);
-
-                // Vérifier la limite de crédit
-                if (($client->current_balance + $montantNet) > $client->credit_limit) {
-                    throw new \Exception(
-                        "Limite de crédit dépassée pour le client {$client->name_client}. " .
-                            "Limite: {$client->credit_limit}, " .
-                            "Solde actuel: {$client->current_balance}, " .
-                            "Montant de la vente: {$montantNet}"
-                    );
-                }
-
-                // Vérifier le stock
-                foreach ($request->details as $detail) {
-                    $stock = Stock::where('product_id', $detail['product_id'])
-                        ->where('entrepot_id', $request->entrepot_id)
-                        ->first();
-
-                    $disponible = $stock ? ($stock->quantite - $stock->reserved_quantity) : 0;
-
-                    if ($disponible < $detail['quantite']) {
-                        $product = Product::find($detail['product_id']);
-                        throw new \Exception(
-                            "Stock insuffisant pour le produit {$product->name}. " .
-                                "Disponible: {$disponible}, Demandé: {$detail['quantite']}"
-                        );
-                    }
-                }
-            }
-
+            // Créer la vente
             $vente = Vente::create([
                 'client_id' => $request->client_id,
                 'entrepot_id' => $request->entrepot_id,
@@ -273,6 +258,7 @@ class VenteController extends Controller
                 'note' => $request->note,
             ]);
 
+            // Créer les détails
             foreach ($request->details as $detail) {
                 $qte = $detail['quantite'];
                 $pu = $detail['prix_unitaire'];
@@ -296,13 +282,9 @@ class VenteController extends Controller
                 ]);
             }
 
+            // Si statut validee, créer le mouvement de stock
             if ($status === 'validee') {
                 $vente->createStockMovementIfNeeded();
-
-                // Mettre à jour le current_balance du client
-                $client = Client::find($vente->client_id);
-                $client->current_balance += $vente->montant_net;
-                $client->save();
             }
 
             $vente->load([
@@ -338,26 +320,6 @@ class VenteController extends Controller
      * Récupère les détails complets d'une vente.
      * 
      * @authenticated
-     * 
-     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Détails de la vente récupérés avec succès",
-     *   "data": {
-     *     "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-     *     "numero_vente": "VTE-2025-0001",
-     *     "montant_total": "25000.00",
-     *     "montant_net": "23750.00",
-     *     "montant_paye": "10000.00",
-     *     "montant_restant": "13750.00"
-     *   }
-     * }
-     * 
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Vente non trouvée"
-     * }
      */
     public function show(string $id): JsonResponse
     {
@@ -391,15 +353,10 @@ class VenteController extends Controller
      * Mettre à jour une vente
      * 
      * Met à jour les informations d'une vente.
-     * 
-     * **Important:** 
-     * - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
-     * - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
-     * - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
+     * **Important:** Si le statut passe à "validee", les stocks seront mis à jour automatiquement.
+     * Si le statut passe à "annulee", le mouvement de stock sera annulé et les stocks restaurés.
      * 
      * @authenticated
-     * 
-     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
      * 
      * @bodyParam status string Le statut de la vente. Example: validee
      * @bodyParam transport_price numeric Le prix du transport. Example: 500.00
@@ -414,11 +371,6 @@ class VenteController extends Controller
      * @response 422 {
      *   "success": false,
      *   "message": "Stock insuffisant pour valider cette vente"
-     * }
-     * 
-     * @response 422 {
-     *   "success": false,
-     *   "message": "Limite de crédit dépassée pour le client ABC"
      * }
      */
     public function update(Request $request, string $id): JsonResponse
@@ -454,31 +406,14 @@ class VenteController extends Controller
 
         DB::beginTransaction();
         try {
-            $oldStatus = $vente->status;
-            $oldMontantNet = $vente->montant_net;
-
-            // Recalculer montant_net si transport_price modifié
-            if ($request->has('transport_price')) {
-                $vente->montant_net = $vente->montant_total - $vente->remise + $request->transport_price;
-            }
-
-            // Vérifications si passage à validee
+            // Vérifier le stock si passage à validee
             if (
                 $request->has('status') &&
                 $request->status === 'validee' &&
-                $oldStatus !== 'validee' &&
+                $vente->status !== 'validee' &&
                 !$vente->stock_movement_id
             ) {
-                $client = Client::find($vente->client_id);
 
-                // Vérifier limite de crédit
-                if (($client->current_balance + $vente->montant_net) > $client->credit_limit) {
-                    throw new \Exception(
-                        "Limite de crédit dépassée pour le client {$client->name_client}"
-                    );
-                }
-
-                // Vérifier stock
                 foreach ($vente->detailVentes as $detail) {
                     $stock = Stock::where('product_id', $detail->product_id)
                         ->where('entrepot_id', $vente->entrepot_id)
@@ -495,28 +430,19 @@ class VenteController extends Controller
                 }
             }
 
+            // Si transport_price est modifié, recalculer le montant_net
+            if ($request->has('transport_price')) {
+                $oldTransportPrice = $vente->transport_price;
+                $newTransportPrice = $request->transport_price;
+
+                // Recalculer montant_net: montant_net = montant_total - remise + transport_price
+                $vente->montant_net = $vente->montant_total - $vente->remise + $newTransportPrice;
+            }
+
             $vente->update($validator->validated());
 
-            $client = Client::find($vente->client_id);
-
-            // Passage à validee
-            if ($request->has('status') && $request->status === 'validee' && $oldStatus !== 'validee') {
-                $client->current_balance += $vente->montant_net;
-                $client->save();
-            }
-
-            // Passage à annulee depuis validee
-            if ($request->has('status') && $request->status === 'annulee' && $oldStatus === 'validee') {
-                $client->current_balance -= $oldMontantNet;
-                $client->save();
-            }
-
-            // Modification du montant_net sur vente validée
-            if ($request->has('transport_price') && $vente->status === 'validee' && $oldStatus === 'validee') {
-                $difference = $vente->montant_net - $oldMontantNet;
-                $client->current_balance += $difference;
-                $client->save();
-            }
+            // Le hook updated() du modèle gère automatiquement
+            // la création/annulation du mouvement de stock
 
             $vente->load([
                 'client:client_id,code,name_client',
@@ -544,22 +470,9 @@ class VenteController extends Controller
      * Supprimer une vente
      * 
      * Effectue une suppression logique d'une vente.
-     * Si la vente est validée, le mouvement de stock sera annulé, les stocks restaurés
-     * et le current_balance du client sera diminué du montant de la vente.
+     * Si la vente est validée, le mouvement de stock sera annulé et les stocks restaurés.
      * 
      * @authenticated
-     * 
-     * @urlParam id string required L'UUID de la vente. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Vente supprimée avec succès"
-     * }
-     * 
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Vente non trouvée"
-     * }
      */
     public function destroy(string $id): JsonResponse
     {
@@ -574,13 +487,8 @@ class VenteController extends Controller
 
         DB::beginTransaction();
         try {
-            // Retirer du current_balance si vente validée
-            if ($vente->status === 'validee') {
-                $client = Client::find($vente->client_id);
-                $client->current_balance -= $vente->montant_net;
-                $client->save();
-            }
-
+            // Le hook deleting() du modèle annule automatiquement
+            // le mouvement de stock si nécessaire
             $vente->delete();
 
             DB::commit();
@@ -601,22 +509,6 @@ class VenteController extends Controller
 
     /**
      * Liste des ventes supprimées
-     * 
-     * Récupère la liste paginée de toutes les ventes supprimées (soft deleted).
-     * 
-     * @authenticated
-     * 
-     * @queryParam page integer Numéro de la page. Example: 1
-     * @queryParam per_page integer Nombre d'éléments par page (max 100). Example: 15
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Liste des ventes supprimées récupérée avec succès",
-     *   "data": {
-     *     "current_page": 1,
-     *     "data": []
-     *   }
-     * }
      */
     public function trashed(Request $request): JsonResponse
     {
@@ -636,24 +528,6 @@ class VenteController extends Controller
 
     /**
      * Restaurer une vente supprimée
-     * 
-     * Restaure une vente supprimée logiquement.
-     * Si la vente était validée, le current_balance du client sera restauré.
-     * 
-     * @authenticated
-     * 
-     * @urlParam id string required L'UUID de la vente supprimée. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-     * 
-     * @response 200 {
-     *   "success": true,
-     *   "message": "Vente restaurée avec succès",
-     *   "data": {}
-     * }
-     * 
-     * @response 404 {
-     *   "success": false,
-     *   "message": "Vente supprimée non trouvée"
-     * }
      */
     public function restore(string $id): JsonResponse
     {
@@ -666,33 +540,13 @@ class VenteController extends Controller
             ], 404);
         }
 
-        DB::beginTransaction();
-        try {
-            $vente->restore();
+        $vente->restore();
+        $vente->load('client:client_id,code,name_client');
 
-            // Restaurer le current_balance si la vente était validée
-            if ($vente->status === 'validee') {
-                $client = Client::find($vente->client_id);
-                $client->current_balance += $vente->montant_net;
-                $client->save();
-            }
-
-            $vente->load('client:client_id,code,name_client');
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Vente restaurée avec succès',
-                'data' => $vente
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la restauration',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Vente restaurée avec succès',
+            'data' => $vente
+        ]);
     }
 }

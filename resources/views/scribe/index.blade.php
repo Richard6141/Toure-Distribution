@@ -239,6 +239,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="payments-management-POSTapi-paiements">
                                 <a href="#payments-management-POSTapi-paiements">Créer un nouveau paiement</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="payments-management-POSTapi-paiements-paiements-versement">
+                                <a href="#payments-management-POSTapi-paiements-paiements-versement">Versement client</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="payments-management-GETapi-paiements--id-">
                                 <a href="#payments-management-GETapi-paiements--id-">Afficher un paiement spécifique</a>
                             </li>
@@ -919,6 +922,9 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-ventes-POSTapi-paiement-ventes">
                                 <a href="#gestion-des-paiements-de-ventes-POSTapi-paiement-ventes">Créer un paiement</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-ventes-POSTapi-paiement-ventes-paiements-versement">
+                                <a href="#gestion-des-paiements-de-ventes-POSTapi-paiement-ventes-paiements-versement">Versement client</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="gestion-des-paiements-de-ventes-GETapi-paiement-ventes--id-">
                                 <a href="#gestion-des-paiements-de-ventes-GETapi-paiement-ventes--id-">Afficher un paiement</a>
                             </li>
@@ -1241,7 +1247,7 @@ Seuls les mouvements avec le statut "validated" peuvent être annulés.
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Dernière mise à jour: 29 October 2025</li>
+        <li>Dernière mise à jour: 30 October 2025</li>
     </ul>
 </div>
 
@@ -5004,9 +5010,9 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": true,
-    \"with_client_type\": false,
-    \"balance_filter\": \"positive\"
+    \"is_active\": false,
+    \"with_client_type\": true,
+    \"balance_filter\": \"negative\"
 }"
 </code></pre></div>
 
@@ -5050,9 +5056,9 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": true,
-    "with_client_type": false,
-    "balance_filter": "positive"
+    "is_active": false,
+    "with_client_type": true,
+    "balance_filter": "negative"
 };
 
 fetch(url, {
@@ -5098,9 +5104,9 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; true,
-            'with_client_type' =&gt; false,
-            'balance_filter' =&gt; 'positive',
+            'is_active' =&gt; false,
+            'with_client_type' =&gt; true,
+            'balance_filter' =&gt; 'negative',
         ],
     ]
 );
@@ -5508,7 +5514,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -5529,7 +5535,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>balance_filter</code></b>&nbsp;&nbsp;
@@ -5537,10 +5543,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="positive"
+               value="negative"
                data-component="body">
     <br>
-<p>Example: <code>positive</code></p>
+<p>Example: <code>negative</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -7866,7 +7872,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"is_active\": true
+    \"is_active\": false
 }"
 </code></pre></div>
 
@@ -7894,7 +7900,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "is_active": true
+    "is_active": false
 };
 
 fetch(url, {
@@ -7924,7 +7930,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'is_active' =&gt; true,
+            'is_active' =&gt; false,
         ],
     ]
 );
@@ -8141,7 +8147,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -9330,8 +9336,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-29T20:25:37\",
-    \"date_to\": \"2051-11-22\"
+    \"date_from\": \"2025-10-30T22:29:36\",
+    \"date_to\": \"2051-11-23\"
 }"
 </code></pre></div>
 
@@ -9354,8 +9360,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-29T20:25:37",
-    "date_to": "2051-11-22"
+    "date_from": "2025-10-30T22:29:36",
+    "date_to": "2051-11-23"
 };
 
 fetch(url, {
@@ -9380,8 +9386,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-29T20:25:37',
-            'date_to' =&gt; '2051-11-22',
+            'date_from' =&gt; '2025-10-30T22:29:36',
+            'date_to' =&gt; '2051-11-23',
         ],
     ]
 );
@@ -9511,10 +9517,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-29T20:25:37"
+               value="2025-10-30T22:29:36"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T20:25:37</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:36</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9522,10 +9528,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2051-11-22"
+               value="2051-11-23"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-22</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-23</code></p>
         </div>
         </form>
 
@@ -9550,10 +9556,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"paid\",
-    \"date_from\": \"2025-10-29T20:25:37\",
-    \"date_to\": \"2051-11-22\",
-    \"with_client\": true,
+    \"statut\": \"partially_paid\",
+    \"date_from\": \"2025-10-30T22:29:36\",
+    \"date_to\": \"2051-11-23\",
+    \"with_client\": false,
     \"with_details\": true
 }"
 </code></pre></div>
@@ -9588,10 +9594,10 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "paid",
-    "date_from": "2025-10-29T20:25:37",
-    "date_to": "2051-11-22",
-    "with_client": true,
+    "statut": "partially_paid",
+    "date_from": "2025-10-30T22:29:36",
+    "date_to": "2051-11-23",
+    "with_client": false,
     "with_details": true
 };
 
@@ -9628,10 +9634,10 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'paid',
-            'date_from' =&gt; '2025-10-29T20:25:37',
-            'date_to' =&gt; '2051-11-22',
-            'with_client' =&gt; true,
+            'statut' =&gt; 'partially_paid',
+            'date_from' =&gt; '2025-10-30T22:29:36',
+            'date_to' =&gt; '2051-11-23',
+            'with_client' =&gt; false,
             'with_details' =&gt; true,
         ],
     ]
@@ -9918,10 +9924,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="paid"
+               value="partially_paid"
                data-component="body">
     <br>
-<p>Example: <code>paid</code></p>
+<p>Example: <code>partially_paid</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9931,10 +9937,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-29T20:25:37"
+               value="2025-10-30T22:29:36"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T20:25:37</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:36</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9942,10 +9948,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-factures"
-               value="2051-11-22"
+               value="2051-11-23"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-22</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -9966,7 +9972,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10415,9 +10421,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_client\": true,
-    \"with_details\": true,
-    \"with_payments\": true
+    \"with_client\": false,
+    \"with_details\": false,
+    \"with_payments\": false
 }"
 </code></pre></div>
 
@@ -10441,9 +10447,9 @@ const headers = {
 };
 
 let body = {
-    "with_client": true,
-    "with_details": true,
-    "with_payments": true
+    "with_client": false,
+    "with_details": false,
+    "with_payments": false
 };
 
 fetch(url, {
@@ -10469,9 +10475,9 @@ $response = $client-&gt;get(
             'with_payments' =&gt; '1',
         ],
         'json' =&gt; [
-            'with_client' =&gt; true,
-            'with_details' =&gt; true,
-            'with_payments' =&gt; true,
+            'with_client' =&gt; false,
+            'with_details' =&gt; false,
+            'with_payments' =&gt; false,
         ],
     ]
 );
@@ -10681,7 +10687,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_details</code></b>&nbsp;&nbsp;
@@ -10702,7 +10708,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -10723,7 +10729,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -11652,7 +11658,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Récupère des statistiques sur les paiements.</p>
+
 
 <span id="example-requests-GETapi-paiements-statistics-overview">
 <blockquote>Example request:</blockquote>
@@ -11664,8 +11670,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-29T20:25:37\",
-    \"date_to\": \"2051-11-22\"
+    \"date_from\": \"2025-10-30T22:29:37\",
+    \"date_to\": \"2051-11-23\"
 }"
 </code></pre></div>
 
@@ -11688,8 +11694,8 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-29T20:25:37",
-    "date_to": "2051-11-22"
+    "date_from": "2025-10-30T22:29:37",
+    "date_to": "2051-11-23"
 };
 
 fetch(url, {
@@ -11714,8 +11720,8 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-29T20:25:37',
-            'date_to' =&gt; '2051-11-22',
+            'date_from' =&gt; '2025-10-30T22:29:37',
+            'date_to' =&gt; '2051-11-23',
         ],
     ]
 );
@@ -11728,29 +11734,25 @@ print_r(json_decode((string) $body));</code></pre></div>
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
-                <pre>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;total_paiements&quot;: 250,
-        &quot;paiements_completed&quot;: 200,
-        &quot;paiements_pending&quot;: 30,
-        &quot;paiements_failed&quot;: 15,
-        &quot;paiements_refunded&quot;: 5,
-        &quot;total_amount&quot;: &quot;12000000.00&quot;,
-        &quot;average_payment_amount&quot;: &quot;48000.00&quot;,
-        &quot;payments_by_method&quot;: [
-            {
-                &quot;payment_method&quot;: &quot;Esp&egrave;ces&quot;,
-                &quot;count&quot;: 150,
-                &quot;total_amount&quot;: &quot;7000000.00&quot;
-            },
-            {
-                &quot;payment_method&quot;: &quot;Mobile Money&quot;,
-                &quot;count&quot;: 100,
-                &quot;total_amount&quot;: &quot;5000000.00&quot;
-            }
-        ]
+        &quot;total_paiements&quot;: 0,
+        &quot;paiements_completed&quot;: 0,
+        &quot;paiements_pending&quot;: 0,
+        &quot;paiements_failed&quot;: 0,
+        &quot;paiements_refunded&quot;: 0,
+        &quot;total_amount&quot;: &quot;0.00&quot;,
+        &quot;average_payment_amount&quot;: &quot;0.00&quot;,
+        &quot;payments_by_method&quot;: []
     }
 }</code>
  </pre>
@@ -11854,10 +11856,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-29T20:25:37"
+               value="2025-10-30T22:29:37"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T20:25:37</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:37</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11865,10 +11867,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2051-11-22"
+               value="2051-11-23"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-22</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-23</code></p>
         </div>
         </form>
 
@@ -11877,7 +11879,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Récupère la liste de tous les paiements avec pagination et filtres optionnels.</p>
+
 
 <span id="example-requests-GETapi-paiements">
 <blockquote>Example request:</blockquote>
@@ -11885,7 +11887,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/paiements?page=1&amp;per_page=15&amp;search=PAY-2025&amp;facture_id=550e8400-e29b-41d4-a716-446655440000&amp;client_id=550e8400-e29b-41d4-a716-446655440001&amp;payment_method_id=550e8400-e29b-41d4-a716-446655440002&amp;statut=completed&amp;date_from=2025-01-01&amp;date_to=2025-12-31&amp;with_facture=1&amp;with_client=1&amp;with_payment_method=1" \
+    --get "http://localhost/api/paiements?page=1&amp;per_page=15&amp;search=PAY-2025&amp;facture_id=550e8400-e29b-41d4-a716-446655440000&amp;client_id=550e8400-e29b-41d4-a716-446655440001&amp;payment_method_id=550e8400-e29b-41d4-a716-446655440002&amp;statut=completed&amp;date_from=2025-01-01&amp;date_to=2025-12-31" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -11895,12 +11897,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"completed\",
-    \"date_from\": \"2025-10-29T20:25:37\",
-    \"date_to\": \"2051-11-22\",
-    \"with_facture\": true,
-    \"with_client\": false,
-    \"with_payment_method\": true
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-30T22:29:37\",
+    \"date_to\": \"2051-11-23\",
+    \"with_facture\": false,
+    \"with_client\": true,
+    \"with_payment_method\": false
 }"
 </code></pre></div>
 
@@ -11920,9 +11922,6 @@ const params = {
     "statut": "completed",
     "date_from": "2025-01-01",
     "date_to": "2025-12-31",
-    "with_facture": "1",
-    "with_client": "1",
-    "with_payment_method": "1",
 };
 Object.keys(params)
     .forEach(key =&gt; url.searchParams.append(key, params[key]));
@@ -11939,12 +11938,12 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "completed",
-    "date_from": "2025-10-29T20:25:37",
-    "date_to": "2051-11-22",
-    "with_facture": true,
-    "with_client": false,
-    "with_payment_method": true
+    "statut": "pending",
+    "date_from": "2025-10-30T22:29:37",
+    "date_to": "2051-11-23",
+    "with_facture": false,
+    "with_client": true,
+    "with_payment_method": false
 };
 
 fetch(url, {
@@ -11974,9 +11973,6 @@ $response = $client-&gt;get(
             'statut' =&gt; 'completed',
             'date_from' =&gt; '2025-01-01',
             'date_to' =&gt; '2025-12-31',
-            'with_facture' =&gt; '1',
-            'with_client' =&gt; '1',
-            'with_payment_method' =&gt; '1',
         ],
         'json' =&gt; [
             'page' =&gt; 16,
@@ -11985,12 +11981,12 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'completed',
-            'date_from' =&gt; '2025-10-29T20:25:37',
-            'date_to' =&gt; '2051-11-22',
-            'with_facture' =&gt; true,
-            'with_client' =&gt; false,
-            'with_payment_method' =&gt; true,
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-30T22:29:37',
+            'date_to' =&gt; '2051-11-23',
+            'with_facture' =&gt; false,
+            'with_client' =&gt; true,
+            'with_payment_method' =&gt; false,
         ],
     ]
 );
@@ -12001,31 +11997,29 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-paiements">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (422):</p>
         </blockquote>
-                <pre>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [
-        {
-            &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-            &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
-            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-            &quot;amount&quot;: &quot;50000.00&quot;,
-            &quot;payment_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
-            &quot;note&quot;: &quot;Paiement partiel&quot;,
-            &quot;statut&quot;: &quot;completed&quot;,
-            &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440004&quot;,
-            &quot;created_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-01-15T10:30:00Z&quot;
-        }
-    ],
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;per_page&quot;: 15,
-        &quot;total&quot;: 1
+    &quot;message&quot;: &quot;The selected facture id is invalid. (and 2 more errors)&quot;,
+    &quot;errors&quot;: {
+        &quot;facture_id&quot;: [
+            &quot;The selected facture id is invalid.&quot;
+        ],
+        &quot;client_id&quot;: [
+            &quot;The selected client id is invalid.&quot;
+        ],
+        &quot;payment_method_id&quot;: [
+            &quot;The selected payment method id is invalid.&quot;
+        ]
     }
 }</code>
  </pre>
@@ -12109,7 +12103,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="query">
     <br>
-<p>Page à récupérer (pagination). Example: <code>1</code></p>
+<p>Page à récupérer. Example: <code>1</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
@@ -12131,7 +12125,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="PAY-2025"
                data-component="query">
     <br>
-<p>Recherche par référence de paiement. Example: <code>PAY-2025</code></p>
+<p>Recherche par référence. Example: <code>PAY-2025</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>facture_id</code></b>&nbsp;&nbsp;
@@ -12142,7 +12136,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="query">
     <br>
-<p>Filtrer par facture (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>Filtrer par facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
@@ -12153,7 +12147,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440001"
                data-component="query">
     <br>
-<p>Filtrer par client (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+<p>Filtrer par client. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>payment_method_id</code></b>&nbsp;&nbsp;
@@ -12164,7 +12158,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440002"
                data-component="query">
     <br>
-<p>Filtrer par méthode de paiement (UUID). Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+<p>Filtrer par méthode. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -12175,7 +12169,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="completed"
                data-component="query">
     <br>
-<p>Filtrer par statut (pending, completed, failed, refunded). Example: <code>completed</code></p>
+<p>Filtrer par statut. Example: <code>completed</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>date_from</code></b>&nbsp;&nbsp;
@@ -12198,69 +12192,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="query">
     <br>
 <p>date Paiements jusqu'à cette date. Example: <code>2025-12-31</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-paiements" style="display: none">
-            <input type="radio" name="with_facture"
-                   value="1"
-                   data-endpoint="GETapi-paiements"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-paiements" style="display: none">
-            <input type="radio" name="with_facture"
-                   value="0"
-                   data-endpoint="GETapi-paiements"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations de la facture. Example: <code>true</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-paiements" style="display: none">
-            <input type="radio" name="with_client"
-                   value="1"
-                   data-endpoint="GETapi-paiements"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-paiements" style="display: none">
-            <input type="radio" name="with_client"
-                   value="0"
-                   data-endpoint="GETapi-paiements"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations du client. Example: <code>true</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-paiements" style="display: none">
-            <input type="radio" name="with_payment_method"
-                   value="1"
-                   data-endpoint="GETapi-paiements"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-paiements" style="display: none">
-            <input type="radio" name="with_payment_method"
-                   value="0"
-                   data-endpoint="GETapi-paiements"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations de la méthode de paiement. Example: <code>true</code></p>
             </div>
                         <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -12335,10 +12266,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="completed"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>completed</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12348,10 +12279,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-29T20:25:37"
+               value="2025-10-30T22:29:37"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T20:25:37</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:37</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12359,10 +12290,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_to"                data-endpoint="GETapi-paiements"
-               value="2051-11-22"
+               value="2051-11-23"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-22</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>date_from</code>. Example: <code>2051-11-23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
@@ -12383,7 +12314,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -12404,7 +12335,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
@@ -12425,7 +12356,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -12435,8 +12366,7 @@ Must be one of:
 </p>
 
 <p>Enregistre un nouveau paiement pour une facture.
-Le montant payé de la facture sera automatiquement mis à jour.
-La référence du paiement est générée automatiquement.</p>
+Le montant payé de la facture et le current_balance du client sont automatiquement mis à jour.</p>
 
 <span id="example-requests-POSTapi-paiements">
 <blockquote>Example request:</blockquote>
@@ -12516,69 +12446,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-POSTapi-paiements">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
-        &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-        &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-        &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-        &quot;amount&quot;: &quot;50000.00&quot;,
-        &quot;payment_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
-        &quot;note&quot;: &quot;Paiement en esp&egrave;ces&quot;,
-        &quot;statut&quot;: &quot;completed&quot;,
-        &quot;user_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440004&quot;,
-        &quot;created_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-01-15T10:30:00Z&quot;,
-        &quot;facture&quot;: {
-            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-            &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;,
-            &quot;total_amount&quot;: &quot;100000.00&quot;,
-            &quot;paid_amount&quot;: &quot;50000.00&quot;,
-            &quot;statut&quot;: &quot;partially_paid&quot;
-        }
-    },
-    &quot;message&quot;: &quot;Paiement enregistr&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (400):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Le montant du paiement d&eacute;passe le solde restant de la facture&quot;,
-    &quot;data&quot;: {
-        &quot;facture_total&quot;: &quot;100000.00&quot;,
-        &quot;already_paid&quot;: &quot;80000.00&quot;,
-        &quot;remaining&quot;: &quot;20000.00&quot;,
-        &quot;attempted_payment&quot;: &quot;30000.00&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Donn&eacute;es de validation &eacute;chou&eacute;es&quot;,
-    &quot;errors&quot;: {
-        &quot;facture_id&quot;: [
-            &quot;La facture s&eacute;lectionn&eacute;e n&#039;existe pas&quot;
-        ],
-        &quot;amount&quot;: [
-            &quot;Le montant est requis&quot;
-        ]
-    }
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-POSTapi-paiements" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-paiements"></span>:
@@ -12658,7 +12526,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="body">
     <br>
-<p>UUID de la facture à payer. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID de la facture. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
@@ -12680,7 +12548,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440002"
                data-component="body">
     <br>
-<p>UUID de la méthode de paiement. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+<p>UUID de la méthode. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
@@ -12702,7 +12570,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2025-01-15 10:30:00"
                data-component="body">
     <br>
-<p>optionnel Date du paiement (défaut: maintenant). Example: <code>2025-01-15 10:30:00</code></p>
+<p>Date du paiement. Example: <code>2025-01-15 10:30:00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -12713,7 +12581,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Paiement en espèces"
                data-component="body">
     <br>
-<p>optionnel Note ou commentaire sur le paiement. Example: <code>Paiement en espèces</code></p>
+<p>Note. Example: <code>Paiement en espèces</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -12724,7 +12592,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="completed"
                data-component="body">
     <br>
-<p>optionnel Statut du paiement (pending, completed, failed, refunded, défaut: completed). Example: <code>completed</code></p>
+<p>Statut (défaut: completed). Example: <code>completed</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
@@ -12735,7 +12603,227 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440003"
                data-component="body">
     <br>
-<p>UUID de l'utilisateur enregistrant le paiement. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+<p>UUID de l'utilisateur. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
+        </div>
+        </form>
+
+                    <h2 id="payments-management-POSTapi-paiements-paiements-versement">Versement client</h2>
+
+<p>
+</p>
+
+<p>Enregistre un versement général du client qui sera automatiquement appliqué
+aux factures impayées. Si le versement dépasse le total des impayés,
+le solde sera créditeur (current_balance négatif).</p>
+
+<span id="example-requests-POSTapi-paiements-paiements-versement">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/paiements/paiements/versement" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"client_id\": \"550e8400-e29b-41d4-a716-446655440001\",
+    \"amount\": 50000,
+    \"payment_method_id\": \"550e8400-e29b-41d4-a716-446655440002\",
+    \"payment_date\": \"2025-01-15 10:30:00\",
+    \"note\": \"Versement pour régularisation\",
+    \"user_id\": \"550e8400-e29b-41d4-a716-446655440003\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiements/paiements/versement"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "client_id": "550e8400-e29b-41d4-a716-446655440001",
+    "amount": 50000,
+    "payment_method_id": "550e8400-e29b-41d4-a716-446655440002",
+    "payment_date": "2025-01-15 10:30:00",
+    "note": "Versement pour régularisation",
+    "user_id": "550e8400-e29b-41d4-a716-446655440003"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiements/paiements/versement';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'client_id' =&gt; '550e8400-e29b-41d4-a716-446655440001',
+            'amount' =&gt; 50000.0,
+            'payment_method_id' =&gt; '550e8400-e29b-41d4-a716-446655440002',
+            'payment_date' =&gt; '2025-01-15 10:30:00',
+            'note' =&gt; 'Versement pour régularisation',
+            'user_id' =&gt; '550e8400-e29b-41d4-a716-446655440003',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-paiements-paiements-versement">
+</span>
+<span id="execution-results-POSTapi-paiements-paiements-versement" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-paiements-paiements-versement"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-paiements-paiements-versement"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-paiements-paiements-versement" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-paiements-paiements-versement">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-paiements-paiements-versement" data-method="POST"
+      data-path="api/paiements/paiements/versement"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-paiements-paiements-versement', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-paiements-paiements-versement"
+                    onclick="tryItOut('POSTapi-paiements-paiements-versement');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-paiements-paiements-versement"
+                    onclick="cancelTryOut('POSTapi-paiements-paiements-versement');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-paiements-paiements-versement"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/paiements/paiements/versement</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="550e8400-e29b-41d4-a716-446655440001"
+               data-component="body">
+    <br>
+<p>UUID du client. Example: <code>550e8400-e29b-41d4-a716-446655440001</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="50000"
+               data-component="body">
+    <br>
+<p>Montant du versement. Example: <code>50000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_method_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_method_id"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="550e8400-e29b-41d4-a716-446655440002"
+               data-component="body">
+    <br>
+<p>UUID de la méthode. Example: <code>550e8400-e29b-41d4-a716-446655440002</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payment_date</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="payment_date"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="2025-01-15 10:30:00"
+               data-component="body">
+    <br>
+<p>Date du paiement. Example: <code>2025-01-15 10:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="Versement pour régularisation"
+               data-component="body">
+    <br>
+<p>Note. Example: <code>Versement pour régularisation</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="user_id"                data-endpoint="POSTapi-paiements-paiements-versement"
+               value="550e8400-e29b-41d4-a716-446655440003"
+               data-component="body">
+    <br>
+<p>UUID de l'utilisateur. Example: <code>550e8400-e29b-41d4-a716-446655440003</code></p>
         </div>
         </form>
 
@@ -12744,7 +12832,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Récupère les détails d'un paiement par son ID.</p>
+
 
 <span id="example-requests-GETapi-paiements--id-">
 <blockquote>Example request:</blockquote>
@@ -12752,7 +12840,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000?with_facture=1&amp;with_client=1&amp;with_payment_method=1" \
+    --get "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -12767,14 +12855,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/paiements/550e8400-e29b-41d4-a716-446655440000"
 );
-
-const params = {
-    "with_facture": "1",
-    "with_client": "1",
-    "with_payment_method": "1",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Content-Type": "application/json",
@@ -12804,11 +12884,6 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
-        'query' =&gt; [
-            'with_facture' =&gt; '1',
-            'with_client' =&gt; '1',
-            'with_payment_method' =&gt; '1',
-        ],
         'json' =&gt; [
             'with_facture' =&gt; true,
             'with_client' =&gt; true,
@@ -12823,36 +12898,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-paiements--id-">
             <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
-        &quot;facture&quot;: {
-            &quot;facture_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;,
-            &quot;facture_number&quot;: &quot;FACT-2025-00001&quot;
-        },
-        &quot;client&quot;: {
-            &quot;client_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440002&quot;,
-            &quot;name_client&quot;: &quot;John Doe&quot;
-        },
-        &quot;payment_method&quot;: {
-            &quot;payment_method_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440003&quot;,
-            &quot;name&quot;: &quot;Esp&egrave;ces&quot;
-        },
-        &quot;amount&quot;: &quot;50000.00&quot;,
-        &quot;payment_date&quot;: &quot;2025-01-15T10:30:00Z&quot;,
-        &quot;statut&quot;: &quot;completed&quot;
-    }
-}</code>
- </pre>
-            <blockquote>
             <p>Example response (404):</p>
         </blockquote>
-                <pre>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
@@ -12938,73 +12993,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="url">
     <br>
-<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-paiements--id-" style="display: none">
-            <input type="radio" name="with_facture"
-                   value="1"
-                   data-endpoint="GETapi-paiements--id-"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-paiements--id-" style="display: none">
-            <input type="radio" name="with_facture"
-                   value="0"
-                   data-endpoint="GETapi-paiements--id-"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations de la facture. Example: <code>true</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-paiements--id-" style="display: none">
-            <input type="radio" name="with_client"
-                   value="1"
-                   data-endpoint="GETapi-paiements--id-"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-paiements--id-" style="display: none">
-            <input type="radio" name="with_client"
-                   value="0"
-                   data-endpoint="GETapi-paiements--id-"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations du client. Example: <code>true</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>with_payment_method</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="GETapi-paiements--id-" style="display: none">
-            <input type="radio" name="with_payment_method"
-                   value="1"
-                   data-endpoint="GETapi-paiements--id-"
-                   data-component="query"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="GETapi-paiements--id-" style="display: none">
-            <input type="radio" name="with_payment_method"
-                   value="0"
-                   data-endpoint="GETapi-paiements--id-"
-                   data-component="query"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Inclure les informations de la méthode de paiement. Example: <code>true</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_facture</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
@@ -13076,7 +13067,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Met à jour les informations d'un paiement existant.
-Note: La modification du montant recalculera le statut de la facture.</p>
+Le current_balance du client est ajusté en fonction des modifications.</p>
 
 <span id="example-requests-PUTapi-paiements--id-">
 <blockquote>Example request:</blockquote>
@@ -13144,32 +13135,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-PUTapi-paiements--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
-        &quot;amount&quot;: &quot;60000.00&quot;,
-        &quot;statut&quot;: &quot;completed&quot;,
-        &quot;updated_at&quot;: &quot;2025-01-15T11:00:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Paiement mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PUTapi-paiements--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-paiements--id-"></span>:
@@ -13249,7 +13215,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="url">
     <br>
-<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -13261,7 +13227,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="60000"
                data-component="body">
     <br>
-<p>Nouveau montant du paiement. Example: <code>60000</code></p>
+<p>Nouveau montant. Example: <code>60000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>payment_date</code></b>&nbsp;&nbsp;
@@ -13283,7 +13249,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Paiement rectifié"
                data-component="body">
     <br>
-<p>Note ou commentaire. Example: <code>Paiement rectifié</code></p>
+<p>Note. Example: <code>Paiement rectifié</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -13294,7 +13260,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="completed"
                data-component="body">
     <br>
-<p>Statut du paiement (pending, completed, failed, refunded). Example: <code>completed</code></p>
+<p>Statut. Example: <code>completed</code></p>
         </div>
         </form>
 
@@ -13304,7 +13270,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Met à jour les informations d'un paiement existant.
-Note: La modification du montant recalculera le statut de la facture.</p>
+Le current_balance du client est ajusté en fonction des modifications.</p>
 
 <span id="example-requests-PATCHapi-paiements--id-">
 <blockquote>Example request:</blockquote>
@@ -13372,32 +13338,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-paiements--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;reference&quot;: &quot;PAY-2025-00001&quot;,
-        &quot;amount&quot;: &quot;60000.00&quot;,
-        &quot;statut&quot;: &quot;completed&quot;,
-        &quot;updated_at&quot;: &quot;2025-01-15T11:00:00Z&quot;
-    },
-    &quot;message&quot;: &quot;Paiement mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PATCHapi-paiements--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-paiements--id-"></span>:
@@ -13477,7 +13418,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="url">
     <br>
-<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -13489,7 +13430,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="60000"
                data-component="body">
     <br>
-<p>Nouveau montant du paiement. Example: <code>60000</code></p>
+<p>Nouveau montant. Example: <code>60000</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>payment_date</code></b>&nbsp;&nbsp;
@@ -13511,7 +13452,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Paiement rectifié"
                data-component="body">
     <br>
-<p>Note ou commentaire. Example: <code>Paiement rectifié</code></p>
+<p>Note. Example: <code>Paiement rectifié</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -13522,7 +13463,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="completed"
                data-component="body">
     <br>
-<p>Statut du paiement (pending, completed, failed, refunded). Example: <code>completed</code></p>
+<p>Statut. Example: <code>completed</code></p>
         </div>
         </form>
 
@@ -13531,8 +13472,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Supprime un paiement et met à jour le montant payé de la facture associée.
-Cette action est irréversible.</p>
+<p>Supprime un paiement et met à jour le montant payé de la facture et le current_balance du client.</p>
 
 <span id="example-requests-DELETEapi-paiements--id-">
 <blockquote>Example request:</blockquote>
@@ -13579,25 +13519,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-DELETEapi-paiements--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Paiement supprim&eacute; avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-DELETEapi-paiements--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-DELETEapi-paiements--id-"></span>:
@@ -13677,7 +13599,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="url">
     <br>
-<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                     </form>
 
@@ -13686,7 +13608,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>Met à jour le statut d'un paiement et recalcule le montant payé de la facture.</p>
+<p>Met à jour le statut d'un paiement et recalcule le montant payé de la facture et le current_balance du client.</p>
 
 <span id="example-requests-PATCHapi-paiements--id--update-status">
 <blockquote>Example request:</blockquote>
@@ -13745,29 +13667,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-paiements--id--update-status">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;paiement_id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-        &quot;statut&quot;: &quot;refunded&quot;
-    },
-    &quot;message&quot;: &quot;Statut du paiement mis &agrave; jour avec succ&egrave;s&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Paiement non trouv&eacute;&quot;
-}</code>
- </pre>
-    </span>
+</span>
 <span id="execution-results-PATCHapi-paiements--id--update-status" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-paiements--id--update-status"></span>:
@@ -13847,7 +13747,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="550e8400-e29b-41d4-a716-446655440000"
                data-component="url">
     <br>
-<p>L'UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+<p>UUID du paiement. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -13859,7 +13759,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="refunded"
                data-component="body">
     <br>
-<p>Nouveau statut (pending, completed, failed, refunded). Example: <code>refunded</code></p>
+<p>Nouveau statut. Example: <code>refunded</code></p>
         </div>
         </form>
 
@@ -43467,7 +43367,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-29T20:25:38\",
+    \"date_livraison_prevue\": \"2025-10-30T22:29:39\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -43490,7 +43390,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-29T20:25:38",
+    "date_livraison_prevue": "2025-10-30T22:29:39",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -43518,7 +43418,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-29T20:25:38',
+            'date_livraison_prevue' =&gt; '2025-10-30T22:29:39',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -43654,10 +43554,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-29T20:25:38"
+               value="2025-10-30T22:29:39"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T20:25:38</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:39</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -43726,7 +43626,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-29T20:25:38\",
+    \"date_livraison_prevue\": \"2025-10-30T22:29:39\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -43749,7 +43649,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-29T20:25:38",
+    "date_livraison_prevue": "2025-10-30T22:29:39",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -43777,7 +43677,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-29T20:25:38',
+            'date_livraison_prevue' =&gt; '2025-10-30T22:29:39',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -43913,10 +43813,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-29T20:25:38"
+               value="2025-10-30T22:29:39"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-29T20:25:38</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:39</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -49692,24 +49592,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     &quot;message&quot;: &quot;Liste des paiements r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;current_page&quot;: 1,
-        &quot;data&quot;: [
-            {
-                &quot;paiement_vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
-                &quot;reference_paiement&quot;: &quot;PAYV-2025-0001&quot;,
-                &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-                &quot;montant&quot;: &quot;10000.00&quot;,
-                &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
-                &quot;statut&quot;: &quot;valide&quot;,
-                &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
-                &quot;numero_transaction&quot;: &quot;TRX123456789&quot;,
-                &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
-                &quot;vente&quot;: {
-                    &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-                    &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
-                    &quot;montant_net&quot;: &quot;25000.00&quot;
-                }
-            }
-        ],
+        &quot;data&quot;: [],
         &quot;total&quot;: 30
     }
 }</code>
@@ -49914,9 +49797,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Enregistre un nouveau paiement pour une vente.
-La référence de paiement est générée automatiquement au format PAYV-YYYY-0001.
-Le statut de paiement de la vente est mis à jour automatiquement.</p>
+<p>Enregistre un nouveau paiement pour une vente spécifique.
+La référence de paiement est générée automatiquement.
+Le current_balance du client est diminué du montant payé.</p>
 
 <span id="example-requests-POSTapi-paiement-ventes">
 <blockquote>Example request:</blockquote>
@@ -50010,39 +49893,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Paiement enregistr&eacute; avec succ&egrave;s&quot;,
-    &quot;data&quot;: {
-        &quot;paiement_vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
-        &quot;reference_paiement&quot;: &quot;PAYV-2025-0001&quot;,
-        &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-        &quot;montant&quot;: &quot;10000.00&quot;,
-        &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
-        &quot;statut&quot;: &quot;valide&quot;,
-        &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
-        &quot;vente&quot;: {
-            &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-            &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
-            &quot;montant_net&quot;: &quot;25000.00&quot;,
-            &quot;montant_paye&quot;: &quot;10000.00&quot;,
-            &quot;montant_restant&quot;: &quot;15000.00&quot;,
-            &quot;statut_paiement&quot;: &quot;paye_partiellement&quot;
-        }
-    }
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Erreur de validation&quot;,
-    &quot;errors&quot;: {
-        &quot;montant&quot;: [
-            &quot;Le montant du paiement d&eacute;passe le montant restant &agrave; payer&quot;
-        ]
-    }
+    &quot;data&quot;: {}
 }</code>
  </pre>
     </span>
@@ -50158,7 +50009,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="mobile_money"
                data-component="body">
     <br>
-<p>Le mode de paiement (especes, cheque, virement, carte_bancaire, mobile_money, credit). Example: <code>mobile_money</code></p>
+<p>Le mode de paiement. Example: <code>mobile_money</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -50169,7 +50020,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="valide"
                data-component="body">
     <br>
-<p>Le statut du paiement (en_attente, valide, refuse, annule). Par défaut: en_attente. Example: <code>valide</code></p>
+<p>Le statut du paiement. Par défaut: en_attente. Example: <code>valide</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
@@ -50180,7 +50031,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2025-01-15 14:30:00"
                data-component="body">
     <br>
-<p>La date et heure du paiement (format: Y-m-d H:i:s). Example: <code>2025-01-15 14:30:00</code></p>
+<p>La date et heure du paiement. Example: <code>2025-01-15 14:30:00</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
@@ -50191,7 +50042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="TRX123456789"
                data-component="body">
     <br>
-<p>Le numéro de transaction (pour paiements électroniques). Example: <code>TRX123456789</code></p>
+<p>Le numéro de transaction. Example: <code>TRX123456789</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
@@ -50202,7 +50053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="CHQ987654"
                data-component="body">
     <br>
-<p>Le numéro de chèque (pour paiements par chèque). Example: <code>CHQ987654</code></p>
+<p>Le numéro de chèque. Example: <code>CHQ987654</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
@@ -50224,7 +50075,295 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="Paiement via MTN Mobile Money"
                data-component="body">
     <br>
-<p>Des notes ou observations. Example: <code>Paiement via MTN Mobile Money</code></p>
+<p>Des notes. Example: <code>Paiement via MTN Mobile Money</code></p>
+        </div>
+        </form>
+
+                    <h2 id="gestion-des-paiements-de-ventes-POSTapi-paiement-ventes-paiements-versement">Versement client</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Enregistre un versement général du client qui sera automatiquement appliqué
+aux factures impayées. Si le versement dépasse le total des impayés,
+le solde sera créditeur (current_balance négatif = l'entreprise doit au client).</p>
+
+<span id="example-requests-POSTapi-paiement-ventes-paiements-versement">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/paiement-ventes/paiements/versement" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"client_id\": \"9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c\",
+    \"montant\": \"50000.00\",
+    \"mode_paiement\": \"virement\",
+    \"date_paiement\": \"2025-01-15 14:30:00\",
+    \"numero_transaction\": \"TRX123456789\",
+    \"numero_cheque\": \"CHQ987654\",
+    \"banque\": \"Bank of Africa\",
+    \"note\": \"Versement pour régularisation des factures\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/paiement-ventes/paiements/versement"
+);
+
+const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+    "montant": "50000.00",
+    "mode_paiement": "virement",
+    "date_paiement": "2025-01-15 14:30:00",
+    "numero_transaction": "TRX123456789",
+    "numero_cheque": "CHQ987654",
+    "banque": "Bank of Africa",
+    "note": "Versement pour régularisation des factures"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$url = 'http://localhost/api/paiement-ventes/paiements/versement';
+$response = $client-&gt;post(
+    $url,
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'client_id' =&gt; '9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c',
+            'montant' =&gt; '50000.00',
+            'mode_paiement' =&gt; 'virement',
+            'date_paiement' =&gt; '2025-01-15 14:30:00',
+            'numero_transaction' =&gt; 'TRX123456789',
+            'numero_cheque' =&gt; 'CHQ987654',
+            'banque' =&gt; 'Bank of Africa',
+            'note' =&gt; 'Versement pour régularisation des factures',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-paiement-ventes-paiements-versement">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Versement trait&eacute; avec succ&egrave;s. 2 facture(s) pay&eacute;e(s).&quot;,
+    &quot;data&quot;: {
+        &quot;montant_verse&quot;: &quot;50000.00&quot;,
+        &quot;montant_applique&quot;: &quot;45000.00&quot;,
+        &quot;solde_restant&quot;: &quot;-5000.00&quot;,
+        &quot;client_current_balance&quot;: &quot;-5000.00&quot;,
+        &quot;paiements_crees&quot;: [
+            {
+                &quot;paiement_vente_id&quot;: &quot;uuid&quot;,
+                &quot;reference_paiement&quot;: &quot;PAYV-2025-0001&quot;,
+                &quot;vente_id&quot;: &quot;uuid&quot;,
+                &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
+                &quot;montant&quot;: &quot;25000.00&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-paiement-ventes-paiements-versement" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-paiement-ventes-paiements-versement"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-paiement-ventes-paiements-versement"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-paiement-ventes-paiements-versement" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-paiement-ventes-paiements-versement">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-paiement-ventes-paiements-versement" data-method="POST"
+      data-path="api/paiement-ventes/paiements/versement"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-paiement-ventes-paiements-versement', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-paiement-ventes-paiements-versement"
+                    onclick="tryItOut('POSTapi-paiement-ventes-paiements-versement');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-paiement-ventes-paiements-versement"
+                    onclick="cancelTryOut('POSTapi-paiement-ventes-paiements-versement');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-paiement-ventes-paiements-versement"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/paiement-ventes/paiements/versement</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>client_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="client_id"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c"
+               data-component="body">
+    <br>
+<p>L'UUID du client. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
+<small>numeric</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="montant"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="50000.00"
+               data-component="body">
+    <br>
+<p>Le montant du versement. Example: <code>50000.00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="mode_paiement"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="virement"
+               data-component="body">
+    <br>
+<p>Le mode de paiement. Example: <code>virement</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
+<small>datetime</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="date_paiement"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="2025-01-15 14:30:00"
+               data-component="body">
+    <br>
+<p>La date et heure du paiement. Example: <code>2025-01-15 14:30:00</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_transaction"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="TRX123456789"
+               data-component="body">
+    <br>
+<p>Le numéro de transaction. Example: <code>TRX123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="numero_cheque"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="CHQ987654"
+               data-component="body">
+    <br>
+<p>Le numéro de chèque. Example: <code>CHQ987654</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="banque"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="Bank of Africa"
+               data-component="body">
+    <br>
+<p>La banque émettrice. Example: <code>Bank of Africa</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="note"                data-endpoint="POSTapi-paiement-ventes-paiements-versement"
+               value="Versement pour régularisation des factures"
+               data-component="body">
+    <br>
+<p>Des notes. Example: <code>Versement pour régularisation des factures</code></p>
         </div>
         </form>
 
@@ -50292,28 +50431,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;D&eacute;tails du paiement r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;,
-    &quot;data&quot;: {
-        &quot;paiement_vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
-        &quot;reference_paiement&quot;: &quot;PAYV-2025-0001&quot;,
-        &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-        &quot;montant&quot;: &quot;10000.00&quot;,
-        &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
-        &quot;statut&quot;: &quot;valide&quot;,
-        &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;,
-        &quot;is_valide&quot;: true,
-        &quot;vente&quot;: {
-            &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-            &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
-            &quot;montant_net&quot;: &quot;25000.00&quot;,
-            &quot;montant_paye&quot;: &quot;10000.00&quot;,
-            &quot;montant_restant&quot;: &quot;15000.00&quot;,
-            &quot;client&quot;: {
-                &quot;client_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c&quot;,
-                &quot;code&quot;: &quot;CLI001&quot;,
-                &quot;name_client&quot;: &quot;Entreprise ABC&quot;
-            }
-        }
-    }
+    &quot;data&quot;: {}
 }</code>
  </pre>
             <blockquote>
@@ -50428,7 +50546,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Met à jour les informations d'un paiement existant.
-Note: La référence de paiement et la vente ne peuvent pas être modifiées.</p>
+Si le statut ou le montant change, le current_balance du client est ajusté.</p>
 
 <span id="example-requests-PUTapi-paiement-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -50441,14 +50559,13 @@ Note: La référence de paiement et la vente ne peuvent pas être modifiées.</p
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"montant\": \"10000.00\",
-    \"mode_paiement\": \"mobile_money\",
-    \"statut\": \"valide\",
-    \"date_paiement\": \"2025-01-15 14:30:00\",
-    \"numero_transaction\": \"TRX123456789\",
-    \"numero_cheque\": \"CHQ987654\",
-    \"banque\": \"Bank of Africa\",
-    \"note\": \"Paiement validé\"
+    \"montant\": 1,
+    \"mode_paiement\": \"architecto\",
+    \"date_paiement\": \"2025-10-30T22:29:38\",
+    \"numero_transaction\": \"n\",
+    \"numero_cheque\": \"g\",
+    \"banque\": \"z\",
+    \"note\": \"architecto\"
 }"
 </code></pre></div>
 
@@ -50465,14 +50582,13 @@ const headers = {
 };
 
 let body = {
-    "montant": "10000.00",
-    "mode_paiement": "mobile_money",
-    "statut": "valide",
-    "date_paiement": "2025-01-15 14:30:00",
-    "numero_transaction": "TRX123456789",
-    "numero_cheque": "CHQ987654",
-    "banque": "Bank of Africa",
-    "note": "Paiement validé"
+    "montant": 1,
+    "mode_paiement": "architecto",
+    "date_paiement": "2025-10-30T22:29:38",
+    "numero_transaction": "n",
+    "numero_cheque": "g",
+    "banque": "z",
+    "note": "architecto"
 };
 
 fetch(url, {
@@ -50494,14 +50610,13 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'montant' =&gt; '10000.00',
-            'mode_paiement' =&gt; 'mobile_money',
-            'statut' =&gt; 'valide',
-            'date_paiement' =&gt; '2025-01-15 14:30:00',
-            'numero_transaction' =&gt; 'TRX123456789',
-            'numero_cheque' =&gt; 'CHQ987654',
-            'banque' =&gt; 'Bank of Africa',
-            'note' =&gt; 'Paiement validé',
+            'montant' =&gt; 1,
+            'mode_paiement' =&gt; 'architecto',
+            'date_paiement' =&gt; '2025-10-30T22:29:38',
+            'numero_transaction' =&gt; 'n',
+            'numero_cheque' =&gt; 'g',
+            'banque' =&gt; 'z',
+            'note' =&gt; 'architecto',
         ],
     ]
 );
@@ -50618,25 +50733,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="montant"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="10000.00"
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="montant"                data-endpoint="PUTapi-paiement-ventes--id-"
+               value="1"
                data-component="body">
     <br>
-<p>Le montant payé. Example: <code>10000.00</code></p>
+<p>Must be at least 0.01. Must not be greater than 9999999999999.99. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="mode_paiement"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="mobile_money"
+               value="architecto"
                data-component="body">
     <br>
-<p>Le mode de paiement. Example: <code>mobile_money</code></p>
+<p>Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -50644,21 +50759,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="valide"
+               value=""
                data-component="body">
     <br>
-<p>Le statut du paiement. Example: <code>valide</code></p>
+
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
-<small>datetime</small>&nbsp;
-<i>optional</i> &nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="date_paiement"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="2025-01-15 14:30:00"
+               value="2025-10-30T22:29:38"
                data-component="body">
     <br>
-<p>La date et heure du paiement. Example: <code>2025-01-15 14:30:00</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:38</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
@@ -50666,10 +50781,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="numero_transaction"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="TRX123456789"
+               value="n"
                data-component="body">
     <br>
-<p>Le numéro de transaction. Example: <code>TRX123456789</code></p>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
@@ -50677,10 +50792,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="numero_cheque"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="CHQ987654"
+               value="g"
                data-component="body">
     <br>
-<p>Le numéro de chèque. Example: <code>CHQ987654</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
@@ -50688,10 +50803,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="banque"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="Bank of Africa"
+               value="z"
                data-component="body">
     <br>
-<p>La banque émettrice. Example: <code>Bank of Africa</code></p>
+<p>Must not be greater than 255 characters. Example: <code>z</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -50699,10 +50814,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="note"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="Paiement validé"
+               value="architecto"
                data-component="body">
     <br>
-<p>Des notes ou observations. Example: <code>Paiement validé</code></p>
+<p>Example: <code>architecto</code></p>
         </div>
         </form>
 
@@ -50713,7 +50828,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Met à jour les informations d'un paiement existant.
-Note: La référence de paiement et la vente ne peuvent pas être modifiées.</p>
+Si le statut ou le montant change, le current_balance du client est ajusté.</p>
 
 <span id="example-requests-PATCHapi-paiement-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -50726,14 +50841,13 @@ Note: La référence de paiement et la vente ne peuvent pas être modifiées.</p
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"montant\": \"10000.00\",
-    \"mode_paiement\": \"mobile_money\",
-    \"statut\": \"valide\",
-    \"date_paiement\": \"2025-01-15 14:30:00\",
-    \"numero_transaction\": \"TRX123456789\",
-    \"numero_cheque\": \"CHQ987654\",
-    \"banque\": \"Bank of Africa\",
-    \"note\": \"Paiement validé\"
+    \"montant\": 1,
+    \"mode_paiement\": \"architecto\",
+    \"date_paiement\": \"2025-10-30T22:29:38\",
+    \"numero_transaction\": \"n\",
+    \"numero_cheque\": \"g\",
+    \"banque\": \"z\",
+    \"note\": \"architecto\"
 }"
 </code></pre></div>
 
@@ -50750,14 +50864,13 @@ const headers = {
 };
 
 let body = {
-    "montant": "10000.00",
-    "mode_paiement": "mobile_money",
-    "statut": "valide",
-    "date_paiement": "2025-01-15 14:30:00",
-    "numero_transaction": "TRX123456789",
-    "numero_cheque": "CHQ987654",
-    "banque": "Bank of Africa",
-    "note": "Paiement validé"
+    "montant": 1,
+    "mode_paiement": "architecto",
+    "date_paiement": "2025-10-30T22:29:38",
+    "numero_transaction": "n",
+    "numero_cheque": "g",
+    "banque": "z",
+    "note": "architecto"
 };
 
 fetch(url, {
@@ -50779,14 +50892,13 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'montant' =&gt; '10000.00',
-            'mode_paiement' =&gt; 'mobile_money',
-            'statut' =&gt; 'valide',
-            'date_paiement' =&gt; '2025-01-15 14:30:00',
-            'numero_transaction' =&gt; 'TRX123456789',
-            'numero_cheque' =&gt; 'CHQ987654',
-            'banque' =&gt; 'Bank of Africa',
-            'note' =&gt; 'Paiement validé',
+            'montant' =&gt; 1,
+            'mode_paiement' =&gt; 'architecto',
+            'date_paiement' =&gt; '2025-10-30T22:29:38',
+            'numero_transaction' =&gt; 'n',
+            'numero_cheque' =&gt; 'g',
+            'banque' =&gt; 'z',
+            'note' =&gt; 'architecto',
         ],
     ]
 );
@@ -50903,25 +51015,25 @@ You can check the Dev Tools console for debugging information.</code></pre>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>montant</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="montant"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="10000.00"
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="montant"                data-endpoint="PATCHapi-paiement-ventes--id-"
+               value="1"
                data-component="body">
     <br>
-<p>Le montant payé. Example: <code>10000.00</code></p>
+<p>Must be at least 0.01. Must not be greater than 9999999999999.99. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>mode_paiement</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="mode_paiement"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="mobile_money"
+               value="architecto"
                data-component="body">
     <br>
-<p>Le mode de paiement. Example: <code>mobile_money</code></p>
+<p>Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>statut</code></b>&nbsp;&nbsp;
@@ -50929,21 +51041,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="valide"
+               value=""
                data-component="body">
     <br>
-<p>Le statut du paiement. Example: <code>valide</code></p>
+
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_paiement</code></b>&nbsp;&nbsp;
-<small>datetime</small>&nbsp;
-<i>optional</i> &nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
                               name="date_paiement"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="2025-01-15 14:30:00"
+               value="2025-10-30T22:29:38"
                data-component="body">
     <br>
-<p>La date et heure du paiement. Example: <code>2025-01-15 14:30:00</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:29:38</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
@@ -50951,10 +51063,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="numero_transaction"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="TRX123456789"
+               value="n"
                data-component="body">
     <br>
-<p>Le numéro de transaction. Example: <code>TRX123456789</code></p>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_cheque</code></b>&nbsp;&nbsp;
@@ -50962,10 +51074,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="numero_cheque"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="CHQ987654"
+               value="g"
                data-component="body">
     <br>
-<p>Le numéro de chèque. Example: <code>CHQ987654</code></p>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>banque</code></b>&nbsp;&nbsp;
@@ -50973,10 +51085,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="banque"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="Bank of Africa"
+               value="z"
                data-component="body">
     <br>
-<p>La banque émettrice. Example: <code>Bank of Africa</code></p>
+<p>Must not be greater than 255 characters. Example: <code>z</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>note</code></b>&nbsp;&nbsp;
@@ -50984,10 +51096,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="note"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="Paiement validé"
+               value="architecto"
                data-component="body">
     <br>
-<p>Des notes ou observations. Example: <code>Paiement validé</code></p>
+<p>Example: <code>architecto</code></p>
         </div>
         </form>
 
@@ -50997,8 +51109,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Effectue une suppression logique (soft delete) d'un paiement.
-Le statut de paiement de la vente est mis à jour automatiquement.</p>
+<p>Effectue une suppression logique d'un paiement.
+Si le paiement était validé, le current_balance du client est augmenté.</p>
 
 <span id="example-requests-DELETEapi-paiement-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -51558,28 +51670,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Paiements de la vente r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;,
-    &quot;data&quot;: {
-        &quot;vente&quot;: {
-            &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b&quot;,
-            &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
-            &quot;montant_net&quot;: &quot;25000.00&quot;,
-            &quot;montant_paye&quot;: &quot;15000.00&quot;,
-            &quot;montant_restant&quot;: &quot;10000.00&quot;,
-            &quot;statut_paiement&quot;: &quot;paye_partiellement&quot;,
-            &quot;is_totalement_payee&quot;: false,
-            &quot;is_partiellement_payee&quot;: true
-        },
-        &quot;paiements&quot;: [
-            {
-                &quot;paiement_vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
-                &quot;reference_paiement&quot;: &quot;PAYV-2025-0001&quot;,
-                &quot;montant&quot;: &quot;10000.00&quot;,
-                &quot;mode_paiement&quot;: &quot;mobile_money&quot;,
-                &quot;statut&quot;: &quot;valide&quot;,
-                &quot;date_paiement&quot;: &quot;2025-01-15T14:30:00.000000Z&quot;
-            }
-        ]
-    }
+    &quot;data&quot;: {}
 }</code>
  </pre>
     </span>
@@ -63230,12 +63321,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Enregistre une nouvelle vente avec ses détails.
-Si la vente est créée avec le statut &quot;validee&quot;, les stocks sont automatiquement mis à jour.</p>
+Si la vente est créée avec le statut &quot;validee&quot;, les stocks sont automatiquement mis à jour
+et le current_balance du client est augmenté du montant de la vente.</p>
 <p><strong>Options de validation automatique:</strong></p>
 <ul>
 <li>Si <code>status</code> est &quot;validee&quot;, un mouvement de stock est créé et validé automatiquement</li>
 <li>Le stock de l'entrepôt source est diminué en temps réel</li>
-<li>Si le stock est insuffisant, la création échoue</li>
+<li>Le current_balance du client est augmenté du montant_net de la vente</li>
+<li>Vérification de la limite de crédit du client (credit_limit)</li>
+<li>Si le stock est insuffisant ou la limite de crédit dépassée, la création échoue</li>
 </ul>
 
 <span id="example-requests-POSTapi-ventes">
@@ -63378,6 +63472,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Stock insuffisant pour le produit Produit A. Disponible: 5, Demand&eacute;: 10&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Limite de cr&eacute;dit d&eacute;pass&eacute;e pour le client ABC. Limite: 100000, Solde actuel: 80000, Montant de la vente: 25000&quot;
 }</code>
  </pre>
     </span>
@@ -63621,7 +63725,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/ventes/architecto" \
+    --get "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -63629,7 +63733,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/architecto"
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
 );
 
 const headers = {
@@ -63646,7 +63750,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/architecto';
+$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
 $response = $client-&gt;get(
     $url,
     [
@@ -63664,16 +63768,27 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <span id="example-responses-GETapi-ventes--id-">
             <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;D&eacute;tails de la vente r&eacute;cup&eacute;r&eacute;s avec succ&egrave;s&quot;,
+    &quot;data&quot;: {
+        &quot;vente_id&quot;: &quot;9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a&quot;,
+        &quot;numero_vente&quot;: &quot;VTE-2025-0001&quot;,
+        &quot;montant_total&quot;: &quot;25000.00&quot;,
+        &quot;montant_net&quot;: &quot;23750.00&quot;,
+        &quot;montant_paye&quot;: &quot;10000.00&quot;,
+        &quot;montant_restant&quot;: &quot;13750.00&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
             <p>Example response (404):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
@@ -63768,10 +63883,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETapi-ventes--id-"
-               value="architecto"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>architecto</code></p>
+<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                     </form>
 
@@ -63781,9 +63896,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Met à jour les informations d'une vente.
-<strong>Important:</strong> Si le statut passe à &quot;validee&quot;, les stocks seront mis à jour automatiquement.
-Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et les stocks restaurés.</p>
+<p>Met à jour les informations d'une vente.</p>
+<p><strong>Important:</strong></p>
+<ul>
+<li>Si le statut passe à &quot;validee&quot;, les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté</li>
+<li>Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué</li>
+<li>Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence</li>
+</ul>
 
 <span id="example-requests-PUTapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -63791,7 +63910,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760" \
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -63805,7 +63924,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
 );
 
 const headers = {
@@ -63829,7 +63948,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760';
+$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
 $response = $client-&gt;put(
     $url,
     [
@@ -63870,6 +63989,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Stock insuffisant pour valider cette vente&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Limite de cr&eacute;dit d&eacute;pass&eacute;e pour le client ABC&quot;
 }</code>
  </pre>
     </span>
@@ -63960,10 +64089,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-ventes--id-"
-               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
+<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -64007,9 +64136,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small class="badge badge-darkred">requires authentication</small>
 </p>
 
-<p>Met à jour les informations d'une vente.
-<strong>Important:</strong> Si le statut passe à &quot;validee&quot;, les stocks seront mis à jour automatiquement.
-Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et les stocks restaurés.</p>
+<p>Met à jour les informations d'une vente.</p>
+<p><strong>Important:</strong></p>
+<ul>
+<li>Si le statut passe à &quot;validee&quot;, les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté</li>
+<li>Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué</li>
+<li>Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence</li>
+</ul>
 
 <span id="example-requests-PATCHapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -64017,7 +64150,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760" \
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -64031,7 +64164,7 @@ Si le statut passe à &quot;annulee&quot;, le mouvement de stock sera annulé et
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
 );
 
 const headers = {
@@ -64055,7 +64188,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760';
+$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
 $response = $client-&gt;patch(
     $url,
     [
@@ -64096,6 +64229,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: false,
     &quot;message&quot;: &quot;Stock insuffisant pour valider cette vente&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Limite de cr&eacute;dit d&eacute;pass&eacute;e pour le client ABC&quot;
 }</code>
  </pre>
     </span>
@@ -64186,10 +64329,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHapi-ventes--id-"
-               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
+<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -64234,7 +64377,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </p>
 
 <p>Effectue une suppression logique d'une vente.
-Si la vente est validée, le mouvement de stock sera annulé et les stocks restaurés.</p>
+Si la vente est validée, le mouvement de stock sera annulé, les stocks restaurés
+et le current_balance du client sera diminué du montant de la vente.</p>
 
 <span id="example-requests-DELETEapi-ventes--id-">
 <blockquote>Example request:</blockquote>
@@ -64242,7 +64386,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760" \
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a" \
     --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -64250,7 +64394,7 @@ Si la vente est validée, le mouvement de stock sera annulé et les stocks resta
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
 );
 
 const headers = {
@@ -64267,7 +64411,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760';
+$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a';
 $response = $client-&gt;delete(
     $url,
     [
@@ -64284,7 +64428,27 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-DELETEapi-ventes--id-">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Vente supprim&eacute;e avec succ&egrave;s&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Vente non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-DELETEapi-ventes--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-DELETEapi-ventes--id-"></span>:
@@ -64372,19 +64536,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-ventes--id-"
-               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
+<p>L'UUID de la vente. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                     </form>
 
                     <h2 id="gestion-des-ventes-GETapi-ventes-trashed-list">Liste des ventes supprimées</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Récupère la liste paginée de toutes les ventes supprimées (soft deleted).</p>
 
 <span id="example-requests-GETapi-ventes-trashed-list">
 <blockquote>Example request:</blockquote>
@@ -64392,7 +64557,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/ventes/trashed/list" \
+    --get "http://localhost/api/ventes/trashed/list?page=1&amp;per_page=15" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -64402,7 +64568,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
     "http://localhost/api/ventes/trashed/list"
 );
 
+const params = {
+    "page": "1",
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -64420,8 +64594,13 @@ $response = $client-&gt;get(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+        ],
+        'query' =&gt; [
+            'page' =&gt; '1',
+            'per_page' =&gt; '15',
         ],
     ]
 );
@@ -64434,51 +64613,14 @@ print_r(json_decode((string) $body));</code></pre></div>
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;message&quot;: &quot;Liste des ventes supprim&eacute;es r&eacute;cup&eacute;r&eacute;e avec succ&egrave;s&quot;,
     &quot;data&quot;: {
         &quot;current_page&quot;: 1,
-        &quot;data&quot;: [],
-        &quot;first_page_url&quot;: &quot;http://localhost/api/ventes/trashed/list?page=1&quot;,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;last_page_url&quot;: &quot;http://localhost/api/ventes/trashed/list?page=1&quot;,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;http://localhost/api/ventes/trashed/list?page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;next_page_url&quot;: null,
-        &quot;path&quot;: &quot;http://localhost/api/ventes/trashed/list&quot;,
-        &quot;per_page&quot;: 15,
-        &quot;prev_page_url&quot;: null,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
+        &quot;data&quot;: []
     }
 }</code>
  </pre>
@@ -64500,7 +64642,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-ventes-trashed-list" data-method="GET"
       data-path="api/ventes/trashed/list"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -64531,6 +64673,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ventes-trashed-list"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -64552,14 +64705,39 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-ventes-trashed-list"
+               value="1"
+               data-component="query">
+    <br>
+<p>Numéro de la page. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-ventes-trashed-list"
+               value="15"
+               data-component="query">
+    <br>
+<p>Nombre d'éléments par page (max 100). Example: <code>15</code></p>
+            </div>
+                </form>
 
                     <h2 id="gestion-des-ventes-POSTapi-ventes--id--restore">Restaurer une vente supprimée</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Restaure une vente supprimée logiquement.
+Si la vente était validée, le current_balance du client sera restauré.</p>
 
 <span id="example-requests-POSTapi-ventes--id--restore">
 <blockquote>Example request:</blockquote>
@@ -64567,17 +64745,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760/restore" \
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/restore" \
+    --header "Authorization: Bearer Bearer {YOUR_AUTH_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760/restore"
+    "http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/restore"
 );
 
 const headers = {
+    "Authorization": "Bearer Bearer {YOUR_AUTH_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -64590,11 +64770,12 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/ventes/050a70f8-a8c5-4c75-b9b2-f29d8a7db760/restore';
+$url = 'http://localhost/api/ventes/9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a/restore';
 $response = $client-&gt;post(
     $url,
     [
         'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Bearer {YOUR_AUTH_TOKEN}',
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
@@ -64606,7 +64787,28 @@ print_r(json_decode((string) $body));</code></pre></div>
 </span>
 
 <span id="example-responses-POSTapi-ventes--id--restore">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Vente restaur&eacute;e avec succ&egrave;s&quot;,
+    &quot;data&quot;: {}
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Vente supprim&eacute;e non trouv&eacute;e&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-ventes--id--restore" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-ventes--id--restore"></span>:
@@ -64624,7 +64826,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-ventes--id--restore" data-method="POST"
       data-path="api/ventes/{id}/restore"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -64655,6 +64857,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ventes--id--restore"
+               value="Bearer Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -64683,10 +64896,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-ventes--id--restore"
-               value="050a70f8-a8c5-4c75-b9b2-f29d8a7db760"
+               value="9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a"
                data-component="url">
     <br>
-<p>The ID of the vente. Example: <code>050a70f8-a8c5-4c75-b9b2-f29d8a7db760</code></p>
+<p>L'UUID de la vente supprimée. Example: <code>9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a</code></p>
             </div>
                     </form>
 
@@ -64716,7 +64929,7 @@ Le format peut être A3, A4 (défaut) ou A5.</p>
     --header "Accept: application/json" \
     --data "{
     \"format\": \"A4\",
-    \"action\": \"download\"
+    \"action\": \"preview\"
 }"
 </code></pre></div>
 
@@ -64741,7 +64954,7 @@ const headers = {
 
 let body = {
     "format": "A4",
-    "action": "download"
+    "action": "preview"
 };
 
 fetch(url, {
@@ -64768,7 +64981,7 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'format' =&gt; 'A4',
-            'action' =&gt; 'download',
+            'action' =&gt; 'preview',
         ],
     ]
 );
@@ -64946,10 +65159,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="action"                data-endpoint="GETapi-commandes-pdf--id--generate"
-               value="download"
+               value="preview"
                data-component="body">
     <br>
-<p>Example: <code>download</code></p>
+<p>Example: <code>preview</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>download</code></li> <li><code>preview</code></li></ul>
         </div>
@@ -65355,7 +65568,7 @@ Idéal pour une impression directe sans téléchargement.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"format\": \"A3\"
+    \"format\": \"A5\"
 }"
 </code></pre></div>
 
@@ -65378,7 +65591,7 @@ const headers = {
 };
 
 let body = {
-    "format": "A3"
+    "format": "A5"
 };
 
 fetch(url, {
@@ -65403,7 +65616,7 @@ $response = $client-&gt;get(
             'format' =&gt; 'A4',
         ],
         'json' =&gt; [
-            'format' =&gt; 'A3',
+            'format' =&gt; 'A5',
         ],
     ]
 );
@@ -65542,10 +65755,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="format"                data-endpoint="GETapi-commandes-pdf--id--print"
-               value="A3"
+               value="A5"
                data-component="body">
     <br>
-<p>Example: <code>A3</code></p>
+<p>Example: <code>A5</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>A3</code></li> <li><code>A4</code></li> <li><code>A5</code></li></ul>
         </div>
@@ -66079,7 +66292,7 @@ Le format peut être A3, A4 (défaut) ou A5.</p>
     --header "Accept: application/json" \
     --data "{
     \"format\": \"A3\",
-    \"action\": \"preview\"
+    \"action\": \"download\"
 }"
 </code></pre></div>
 
@@ -66104,7 +66317,7 @@ const headers = {
 
 let body = {
     "format": "A3",
-    "action": "preview"
+    "action": "download"
 };
 
 fetch(url, {
@@ -66131,7 +66344,7 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'format' =&gt; 'A3',
-            'action' =&gt; 'preview',
+            'action' =&gt; 'download',
         ],
     ]
 );
@@ -66309,10 +66522,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="action"                data-endpoint="GETapi-factures-pdf--id--generate"
-               value="preview"
+               value="download"
                data-component="body">
     <br>
-<p>Example: <code>preview</code></p>
+<p>Example: <code>download</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>download</code></li> <li><code>preview</code></li></ul>
         </div>
@@ -66718,7 +66931,7 @@ Idéal pour une impression directe sans téléchargement.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"format\": \"A3\"
+    \"format\": \"A4\"
 }"
 </code></pre></div>
 
@@ -66741,7 +66954,7 @@ const headers = {
 };
 
 let body = {
-    "format": "A3"
+    "format": "A4"
 };
 
 fetch(url, {
@@ -66766,7 +66979,7 @@ $response = $client-&gt;get(
             'format' =&gt; 'A4',
         ],
         'json' =&gt; [
-            'format' =&gt; 'A3',
+            'format' =&gt; 'A4',
         ],
     ]
 );
@@ -66905,10 +67118,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="format"                data-endpoint="GETapi-factures-pdf--id--print"
-               value="A3"
+               value="A4"
                data-component="body">
     <br>
-<p>Example: <code>A3</code></p>
+<p>Example: <code>A4</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>A3</code></li> <li><code>A4</code></li> <li><code>A5</code></li></ul>
         </div>

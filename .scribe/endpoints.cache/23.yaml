@@ -153,24 +153,7 @@ endpoints:
             "message": "Liste des paiements récupérée avec succès",
             "data": {
               "current_page": 1,
-              "data": [
-                {
-                  "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "reference_paiement": "PAYV-2025-0001",
-                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "montant": "10000.00",
-                  "mode_paiement": "mobile_money",
-                  "statut": "valide",
-                  "date_paiement": "2025-01-15T14:30:00.000000Z",
-                  "numero_transaction": "TRX123456789",
-                  "created_at": "2025-01-15T14:30:00.000000Z",
-                  "vente": {
-                    "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                    "numero_vente": "VTE-2025-0001",
-                    "montant_net": "25000.00"
-                  }
-                }
-              ],
+              "data": [],
               "total": 30
             }
           }
@@ -200,9 +183,9 @@ endpoints:
       subgroupDescription: ''
       title: 'Créer un paiement'
       description: |-
-        Enregistre un nouveau paiement pour une vente.
-        La référence de paiement est générée automatiquement au format PAYV-YYYY-0001.
-        Le statut de paiement de la vente est mis à jour automatiquement.
+        Enregistre un nouveau paiement pour une vente spécifique.
+        La référence de paiement est générée automatiquement.
+        Le current_balance du client est diminué du montant payé.
       authenticated: true
       deprecated: false
       custom: []
@@ -237,7 +220,7 @@ endpoints:
         custom: []
       mode_paiement:
         name: mode_paiement
-        description: 'Le mode de paiement (especes, cheque, virement, carte_bancaire, mobile_money, credit).'
+        description: 'Le mode de paiement.'
         required: true
         example: mobile_money
         type: string
@@ -247,7 +230,7 @@ endpoints:
         custom: []
       statut:
         name: statut
-        description: 'Le statut du paiement (en_attente, valide, refuse, annule). Par défaut: en_attente.'
+        description: 'Le statut du paiement. Par défaut: en_attente.'
         required: false
         example: valide
         type: string
@@ -257,7 +240,7 @@ endpoints:
         custom: []
       date_paiement:
         name: date_paiement
-        description: 'La date et heure du paiement (format: Y-m-d H:i:s).'
+        description: 'La date et heure du paiement.'
         required: true
         example: '2025-01-15 14:30:00'
         type: datetime
@@ -267,7 +250,7 @@ endpoints:
         custom: []
       numero_transaction:
         name: numero_transaction
-        description: 'Le numéro de transaction (pour paiements électroniques).'
+        description: 'Le numéro de transaction.'
         required: false
         example: TRX123456789
         type: string
@@ -277,7 +260,7 @@ endpoints:
         custom: []
       numero_cheque:
         name: numero_cheque
-        description: 'Le numéro de chèque (pour paiements par chèque).'
+        description: 'Le numéro de chèque.'
         required: false
         example: CHQ987654
         type: string
@@ -297,7 +280,7 @@ endpoints:
         custom: []
       note:
         name: note
-        description: 'Des notes ou observations.'
+        description: 'Des notes.'
         required: false
         example: 'Paiement via MTN Mobile Money'
         type: string
@@ -323,37 +306,159 @@ endpoints:
           {
             "success": true,
             "message": "Paiement enregistré avec succès",
-            "data": {
-              "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "reference_paiement": "PAYV-2025-0001",
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "montant": "10000.00",
-              "mode_paiement": "mobile_money",
-              "statut": "valide",
-              "date_paiement": "2025-01-15T14:30:00.000000Z",
-              "created_at": "2025-01-15T14:30:00.000000Z",
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "montant_net": "25000.00",
-                "montant_paye": "10000.00",
-                "montant_restant": "15000.00",
-                "statut_paiement": "paye_partiellement"
-              }
-            }
+            "data": {}
           }
         headers: []
         description: ''
         custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/paiement-ventes/paiements/versement
+    metadata:
+      groupName: 'Gestion des Paiements de Ventes'
+      groupDescription: |-
+
+        API pour gérer les paiements des ventes.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Versement client'
+      description: |-
+        Enregistre un versement général du client qui sera automatiquement appliqué
+        aux factures impayées. Si le versement dépasse le total des impayés,
+        le solde sera créditeur (current_balance négatif = l'entreprise doit au client).
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      client_id:
+        name: client_id
+        description: "L'UUID du client."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant:
+        name: montant
+        description: 'Le montant du versement.'
+        required: true
+        example: '50000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      mode_paiement:
+        name: mode_paiement
+        description: 'Le mode de paiement.'
+        required: true
+        example: virement
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_paiement:
+        name: date_paiement
+        description: 'La date et heure du paiement.'
+        required: true
+        example: '2025-01-15 14:30:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      numero_transaction:
+        name: numero_transaction
+        description: 'Le numéro de transaction.'
+        required: false
+        example: TRX123456789
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      numero_cheque:
+        name: numero_cheque
+        description: 'Le numéro de chèque.'
+        required: false
+        example: CHQ987654
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      banque:
+        name: banque
+        description: 'La banque émettrice.'
+        required: false
+        example: 'Bank of Africa'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: 'Des notes.'
+        required: false
+        example: 'Versement pour régularisation des factures'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+      montant: '50000.00'
+      mode_paiement: virement
+      date_paiement: '2025-01-15 14:30:00'
+      numero_transaction: TRX123456789
+      numero_cheque: CHQ987654
+      banque: 'Bank of Africa'
+      note: 'Versement pour régularisation des factures'
+    fileParameters: []
+    responses:
       -
-        status: 422
+        status: 201
         content: |-
           {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {
-              "montant": [
-                "Le montant du paiement dépasse le montant restant à payer"
+            "success": true,
+            "message": "Versement traité avec succès. 2 facture(s) payée(s).",
+            "data": {
+              "montant_verse": "50000.00",
+              "montant_applique": "45000.00",
+              "solde_restant": "-5000.00",
+              "client_current_balance": "-5000.00",
+              "paiements_crees": [
+                {
+                  "paiement_vente_id": "uuid",
+                  "reference_paiement": "PAYV-2025-0001",
+                  "vente_id": "uuid",
+                  "numero_vente": "VTE-2025-0001",
+                  "montant": "25000.00"
+                }
               ]
             }
           }
@@ -415,28 +520,7 @@ endpoints:
           {
             "success": true,
             "message": "Détails du paiement récupérés avec succès",
-            "data": {
-              "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "reference_paiement": "PAYV-2025-0001",
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "montant": "10000.00",
-              "mode_paiement": "mobile_money",
-              "statut": "valide",
-              "date_paiement": "2025-01-15T14:30:00.000000Z",
-              "is_valide": true,
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "montant_net": "25000.00",
-                "montant_paye": "10000.00",
-                "montant_restant": "15000.00",
-                "client": {
-                  "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "code": "CLI001",
-                  "name_client": "Entreprise ABC"
-                }
-              }
-            }
+            "data": {}
           }
         headers: []
         description: ''
@@ -475,7 +559,7 @@ endpoints:
       title: 'Mettre à jour un paiement'
       description: |-
         Met à jour les informations d'un paiement existant.
-        Note: La référence de paiement et la vente ne peuvent pas être modifiées.
+        Si le statut ou le montant change, le current_balance du client est ajusté.
       authenticated: true
       deprecated: false
       custom: []
@@ -501,93 +585,92 @@ endpoints:
     bodyParameters:
       montant:
         name: montant
-        description: 'Le montant payé.'
-        required: false
-        example: '10000.00'
-        type: numeric
+        description: 'Must be at least 0.01. Must not be greater than 9999999999999.99.'
+        required: true
+        example: 1
+        type: number
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       mode_paiement:
         name: mode_paiement
-        description: 'Le mode de paiement.'
-        required: false
-        example: mobile_money
+        description: ''
+        required: true
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       statut:
         name: statut
-        description: 'Le statut du paiement.'
+        description: ''
         required: false
-        example: valide
+        example: null
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       date_paiement:
         name: date_paiement
-        description: 'La date et heure du paiement.'
-        required: false
-        example: '2025-01-15 14:30:00'
-        type: datetime
+        description: 'Must be a valid date.'
+        required: true
+        example: '2025-10-30T22:29:38'
+        type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       numero_transaction:
         name: numero_transaction
-        description: 'Le numéro de transaction.'
+        description: 'Must not be greater than 255 characters.'
         required: false
-        example: TRX123456789
+        example: 'n'
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       numero_cheque:
         name: numero_cheque
-        description: 'Le numéro de chèque.'
+        description: 'Must not be greater than 255 characters.'
         required: false
-        example: CHQ987654
+        example: g
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       banque:
         name: banque
-        description: 'La banque émettrice.'
+        description: 'Must not be greater than 255 characters.'
         required: false
-        example: 'Bank of Africa'
+        example: z
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       note:
         name: note
-        description: 'Des notes ou observations.'
+        description: ''
         required: false
-        example: 'Paiement validé'
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      montant: '10000.00'
-      mode_paiement: mobile_money
-      statut: valide
-      date_paiement: '2025-01-15 14:30:00'
-      numero_transaction: TRX123456789
-      numero_cheque: CHQ987654
-      banque: 'Bank of Africa'
-      note: 'Paiement validé'
+      montant: 1
+      mode_paiement: architecto
+      date_paiement: '2025-10-30T22:29:38'
+      numero_transaction: 'n'
+      numero_cheque: g
+      banque: z
+      note: architecto
     fileParameters: []
     responses:
       -
@@ -625,7 +708,7 @@ endpoints:
       title: 'Mettre à jour un paiement'
       description: |-
         Met à jour les informations d'un paiement existant.
-        Note: La référence de paiement et la vente ne peuvent pas être modifiées.
+        Si le statut ou le montant change, le current_balance du client est ajusté.
       authenticated: true
       deprecated: false
       custom: []
@@ -651,93 +734,92 @@ endpoints:
     bodyParameters:
       montant:
         name: montant
-        description: 'Le montant payé.'
-        required: false
-        example: '10000.00'
-        type: numeric
+        description: 'Must be at least 0.01. Must not be greater than 9999999999999.99.'
+        required: true
+        example: 1
+        type: number
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       mode_paiement:
         name: mode_paiement
-        description: 'Le mode de paiement.'
-        required: false
-        example: mobile_money
+        description: ''
+        required: true
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       statut:
         name: statut
-        description: 'Le statut du paiement.'
+        description: ''
         required: false
-        example: valide
+        example: null
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       date_paiement:
         name: date_paiement
-        description: 'La date et heure du paiement.'
-        required: false
-        example: '2025-01-15 14:30:00'
-        type: datetime
+        description: 'Must be a valid date.'
+        required: true
+        example: '2025-10-30T22:29:38'
+        type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: false
         custom: []
       numero_transaction:
         name: numero_transaction
-        description: 'Le numéro de transaction.'
+        description: 'Must not be greater than 255 characters.'
         required: false
-        example: TRX123456789
+        example: 'n'
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       numero_cheque:
         name: numero_cheque
-        description: 'Le numéro de chèque.'
+        description: 'Must not be greater than 255 characters.'
         required: false
-        example: CHQ987654
+        example: g
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       banque:
         name: banque
-        description: 'La banque émettrice.'
+        description: 'Must not be greater than 255 characters.'
         required: false
-        example: 'Bank of Africa'
+        example: z
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
       note:
         name: note
-        description: 'Des notes ou observations.'
+        description: ''
         required: false
-        example: 'Paiement validé'
+        example: architecto
         type: string
         enumValues: []
-        exampleWasSpecified: true
+        exampleWasSpecified: false
         nullable: true
         custom: []
     cleanBodyParameters:
-      montant: '10000.00'
-      mode_paiement: mobile_money
-      statut: valide
-      date_paiement: '2025-01-15 14:30:00'
-      numero_transaction: TRX123456789
-      numero_cheque: CHQ987654
-      banque: 'Bank of Africa'
-      note: 'Paiement validé'
+      montant: 1
+      mode_paiement: architecto
+      date_paiement: '2025-10-30T22:29:38'
+      numero_transaction: 'n'
+      numero_cheque: g
+      banque: z
+      note: architecto
     fileParameters: []
     responses:
       -
@@ -774,8 +856,8 @@ endpoints:
       subgroupDescription: ''
       title: 'Supprimer un paiement'
       description: |-
-        Effectue une suppression logique (soft delete) d'un paiement.
-        Le statut de paiement de la vente est mis à jour automatiquement.
+        Effectue une suppression logique d'un paiement.
+        Si le paiement était validé, le current_balance du client est augmenté.
       authenticated: true
       deprecated: false
       custom: []
@@ -963,28 +1045,7 @@ endpoints:
           {
             "success": true,
             "message": "Paiements de la vente récupérés avec succès",
-            "data": {
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "montant_net": "25000.00",
-                "montant_paye": "15000.00",
-                "montant_restant": "10000.00",
-                "statut_paiement": "paye_partiellement",
-                "is_totalement_payee": false,
-                "is_partiellement_payee": true
-              },
-              "paiements": [
-                {
-                  "paiement_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "reference_paiement": "PAYV-2025-0001",
-                  "montant": "10000.00",
-                  "mode_paiement": "mobile_money",
-                  "statut": "valide",
-                  "date_paiement": "2025-01-15T14:30:00.000000Z"
-                }
-              ]
-            }
+            "data": {}
           }
         headers: []
         description: ''
