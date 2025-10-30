@@ -82,7 +82,7 @@ endpoints:
         name: action
         description: ''
         required: false
-        example: download
+        example: preview
         type: string
         enumValues:
           - download
@@ -92,7 +92,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       format: A3
-      action: download
+      action: preview
     fileParameters: []
     responses:
       -
@@ -343,7 +343,7 @@ endpoints:
         name: format
         description: ''
         required: false
-        example: A4
+        example: A5
         type: string
         enumValues:
           - A3
@@ -353,7 +353,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      format: A4
+      format: A5
     fileParameters: []
     responses:
       -

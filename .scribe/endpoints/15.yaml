@@ -53,7 +53,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-30T22:29:37'
+        example: '2025-10-30T22:36:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -70,7 +70,7 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      date_from: '2025-10-30T22:29:37'
+      date_from: '2025-10-30T22:36:43'
       date_to: '2051-11-23'
     fileParameters: []
     responses:
@@ -276,7 +276,7 @@ endpoints:
         name: statut
         description: ''
         required: false
-        example: pending
+        example: failed
         type: string
         enumValues:
           - pending
@@ -290,7 +290,7 @@ endpoints:
         name: date_from
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-30T22:29:37'
+        example: '2025-10-30T22:36:43'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -310,7 +310,7 @@ endpoints:
         name: with_facture
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -343,10 +343,10 @@ endpoints:
       facture_id: c90237e9-ced5-3af6-88ea-84aeaa148878
       client_id: a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f
       payment_method_id: 21c4122b-d554-3723-966c-6d723ea5293f
-      statut: pending
-      date_from: '2025-10-30T22:29:37'
+      statut: failed
+      date_from: '2025-10-30T22:36:43'
       date_to: '2051-11-23'
-      with_facture: false
+      with_facture: true
       with_client: true
       with_payment_method: false
     fileParameters: []
@@ -630,7 +630,7 @@ endpoints:
         name: with_facture
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -650,16 +650,16 @@ endpoints:
         name: with_payment_method
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_facture: true
+      with_facture: false
       with_client: true
-      with_payment_method: false
+      with_payment_method: true
     fileParameters: []
     responses:
       -

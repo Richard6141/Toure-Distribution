@@ -5010,9 +5010,9 @@ Vous pouvez filtrer par nom, email, code, ville, IFU, marketteur, statut et type
     \"ifu\": \"n\",
     \"marketteur\": \"i\",
     \"client_type_id\": \"51c7cf5e-fac2-3ac6-8ef8-61e6050503af\",
-    \"is_active\": false,
+    \"is_active\": true,
     \"with_client_type\": true,
-    \"balance_filter\": \"negative\"
+    \"balance_filter\": \"zero\"
 }"
 </code></pre></div>
 
@@ -5056,9 +5056,9 @@ let body = {
     "ifu": "n",
     "marketteur": "i",
     "client_type_id": "51c7cf5e-fac2-3ac6-8ef8-61e6050503af",
-    "is_active": false,
+    "is_active": true,
     "with_client_type": true,
-    "balance_filter": "negative"
+    "balance_filter": "zero"
 };
 
 fetch(url, {
@@ -5104,9 +5104,9 @@ $response = $client-&gt;get(
             'ifu' =&gt; 'n',
             'marketteur' =&gt; 'i',
             'client_type_id' =&gt; '51c7cf5e-fac2-3ac6-8ef8-61e6050503af',
-            'is_active' =&gt; false,
+            'is_active' =&gt; true,
             'with_client_type' =&gt; true,
-            'balance_filter' =&gt; 'negative',
+            'balance_filter' =&gt; 'zero',
         ],
     ]
 );
@@ -5514,7 +5514,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client_type</code></b>&nbsp;&nbsp;
@@ -5543,10 +5543,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="balance_filter"                data-endpoint="GETapi-clients"
-               value="negative"
+               value="zero"
                data-component="body">
     <br>
-<p>Example: <code>negative</code></p>
+<p>Example: <code>zero</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>positive</code></li> <li><code>negative</code></li> <li><code>zero</code></li></ul>
         </div>
@@ -9336,7 +9336,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-30T22:29:36\",
+    \"date_from\": \"2025-10-30T22:36:43\",
     \"date_to\": \"2051-11-23\"
 }"
 </code></pre></div>
@@ -9360,7 +9360,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-30T22:29:36",
+    "date_from": "2025-10-30T22:36:43",
     "date_to": "2051-11-23"
 };
 
@@ -9386,7 +9386,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-30T22:29:36',
+            'date_from' =&gt; '2025-10-30T22:36:43',
             'date_to' =&gt; '2051-11-23',
         ],
     ]
@@ -9517,10 +9517,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures-statistics-overview"
-               value="2025-10-30T22:29:36"
+               value="2025-10-30T22:36:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:36</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9556,11 +9556,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"per_page\": 22,
     \"search\": \"g\",
     \"client_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
-    \"statut\": \"partially_paid\",
-    \"date_from\": \"2025-10-30T22:29:36\",
+    \"statut\": \"pending\",
+    \"date_from\": \"2025-10-30T22:36:43\",
     \"date_to\": \"2051-11-23\",
     \"with_client\": false,
-    \"with_details\": true
+    \"with_details\": false
 }"
 </code></pre></div>
 
@@ -9594,11 +9594,11 @@ let body = {
     "per_page": 22,
     "search": "g",
     "client_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
-    "statut": "partially_paid",
-    "date_from": "2025-10-30T22:29:36",
+    "statut": "pending",
+    "date_from": "2025-10-30T22:36:43",
     "date_to": "2051-11-23",
     "with_client": false,
-    "with_details": true
+    "with_details": false
 };
 
 fetch(url, {
@@ -9634,11 +9634,11 @@ $response = $client-&gt;get(
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
             'client_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
-            'statut' =&gt; 'partially_paid',
-            'date_from' =&gt; '2025-10-30T22:29:36',
+            'statut' =&gt; 'pending',
+            'date_from' =&gt; '2025-10-30T22:36:43',
             'date_to' =&gt; '2051-11-23',
             'with_client' =&gt; false,
-            'with_details' =&gt; true,
+            'with_details' =&gt; false,
         ],
     ]
 );
@@ -9924,10 +9924,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-factures"
-               value="partially_paid"
+               value="pending"
                data-component="body">
     <br>
-<p>Example: <code>partially_paid</code></p>
+<p>Example: <code>pending</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>paid</code></li> <li><code>partially_paid</code></li> <li><code>cancelled</code></li> <li><code>overdue</code></li></ul>
         </div>
@@ -9937,10 +9937,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-factures"
-               value="2025-10-30T22:29:36"
+               value="2025-10-30T22:36:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:36</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -9993,7 +9993,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -10422,7 +10422,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"with_client\": false,
-    \"with_details\": false,
+    \"with_details\": true,
     \"with_payments\": false
 }"
 </code></pre></div>
@@ -10448,7 +10448,7 @@ const headers = {
 
 let body = {
     "with_client": false,
-    "with_details": false,
+    "with_details": true,
     "with_payments": false
 };
 
@@ -10476,7 +10476,7 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'with_client' =&gt; false,
-            'with_details' =&gt; false,
+            'with_details' =&gt; true,
             'with_payments' =&gt; false,
         ],
     ]
@@ -10708,7 +10708,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_payments</code></b>&nbsp;&nbsp;
@@ -11670,7 +11670,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date_from\": \"2025-10-30T22:29:37\",
+    \"date_from\": \"2025-10-30T22:36:43\",
     \"date_to\": \"2051-11-23\"
 }"
 </code></pre></div>
@@ -11694,7 +11694,7 @@ const headers = {
 };
 
 let body = {
-    "date_from": "2025-10-30T22:29:37",
+    "date_from": "2025-10-30T22:36:43",
     "date_to": "2051-11-23"
 };
 
@@ -11720,7 +11720,7 @@ $response = $client-&gt;get(
             'date_to' =&gt; '2025-12-31',
         ],
         'json' =&gt; [
-            'date_from' =&gt; '2025-10-30T22:29:37',
+            'date_from' =&gt; '2025-10-30T22:36:43',
             'date_to' =&gt; '2051-11-23',
         ],
     ]
@@ -11856,10 +11856,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements-statistics-overview"
-               value="2025-10-30T22:29:37"
+               value="2025-10-30T22:36:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:37</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -11897,10 +11897,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"facture_id\": \"c90237e9-ced5-3af6-88ea-84aeaa148878\",
     \"client_id\": \"a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f\",
     \"payment_method_id\": \"21c4122b-d554-3723-966c-6d723ea5293f\",
-    \"statut\": \"pending\",
-    \"date_from\": \"2025-10-30T22:29:37\",
+    \"statut\": \"failed\",
+    \"date_from\": \"2025-10-30T22:36:43\",
     \"date_to\": \"2051-11-23\",
-    \"with_facture\": false,
+    \"with_facture\": true,
     \"with_client\": true,
     \"with_payment_method\": false
 }"
@@ -11938,10 +11938,10 @@ let body = {
     "facture_id": "c90237e9-ced5-3af6-88ea-84aeaa148878",
     "client_id": "a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f",
     "payment_method_id": "21c4122b-d554-3723-966c-6d723ea5293f",
-    "statut": "pending",
-    "date_from": "2025-10-30T22:29:37",
+    "statut": "failed",
+    "date_from": "2025-10-30T22:36:43",
     "date_to": "2051-11-23",
-    "with_facture": false,
+    "with_facture": true,
     "with_client": true,
     "with_payment_method": false
 };
@@ -11981,10 +11981,10 @@ $response = $client-&gt;get(
             'facture_id' =&gt; 'c90237e9-ced5-3af6-88ea-84aeaa148878',
             'client_id' =&gt; 'a1a0a47d-e8c3-3cf0-8e6e-c1ff9dca5d1f',
             'payment_method_id' =&gt; '21c4122b-d554-3723-966c-6d723ea5293f',
-            'statut' =&gt; 'pending',
-            'date_from' =&gt; '2025-10-30T22:29:37',
+            'statut' =&gt; 'failed',
+            'date_from' =&gt; '2025-10-30T22:36:43',
             'date_to' =&gt; '2051-11-23',
-            'with_facture' =&gt; false,
+            'with_facture' =&gt; true,
             'with_client' =&gt; true,
             'with_payment_method' =&gt; false,
         ],
@@ -12266,10 +12266,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="statut"                data-endpoint="GETapi-paiements"
-               value="pending"
+               value="failed"
                data-component="body">
     <br>
-<p>Example: <code>pending</code></p>
+<p>Example: <code>failed</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>completed</code></li> <li><code>failed</code></li> <li><code>refunded</code></li></ul>
         </div>
@@ -12279,10 +12279,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_from"                data-endpoint="GETapi-paiements"
-               value="2025-10-30T22:29:37"
+               value="2025-10-30T22:36:43"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:37</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:43</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>date_to</code></b>&nbsp;&nbsp;
@@ -12314,7 +12314,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -12844,9 +12844,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_facture\": true,
+    \"with_facture\": false,
     \"with_client\": true,
-    \"with_payment_method\": false
+    \"with_payment_method\": true
 }"
 </code></pre></div>
 
@@ -12862,9 +12862,9 @@ const headers = {
 };
 
 let body = {
-    "with_facture": true,
+    "with_facture": false,
     "with_client": true,
-    "with_payment_method": false
+    "with_payment_method": true
 };
 
 fetch(url, {
@@ -12885,9 +12885,9 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'with_facture' =&gt; true,
+            'with_facture' =&gt; false,
             'with_client' =&gt; true,
-            'with_payment_method' =&gt; false,
+            'with_payment_method' =&gt; true,
         ],
     ]
 );
@@ -13015,7 +13015,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>with_client</code></b>&nbsp;&nbsp;
@@ -13057,7 +13057,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -17917,7 +17917,7 @@ Vous pouvez filtrer par label en utilisant le paramètre de recherche.</p>
     \"page\": 16,
     \"per_page\": 22,
     \"search\": \"g\",
-    \"with_clients\": false
+    \"with_clients\": true
 }"
 </code></pre></div>
 
@@ -17945,7 +17945,7 @@ let body = {
     "page": 16,
     "per_page": 22,
     "search": "g",
-    "with_clients": false
+    "with_clients": true
 };
 
 fetch(url, {
@@ -17975,7 +17975,7 @@ $response = $client-&gt;get(
             'page' =&gt; 16,
             'per_page' =&gt; 22,
             'search' =&gt; 'g',
-            'with_clients' =&gt; false,
+            'with_clients' =&gt; true,
         ],
     ]
 );
@@ -18208,7 +18208,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -18437,7 +18437,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"with_clients\": true
+    \"with_clients\": false
 }"
 </code></pre></div>
 
@@ -18459,7 +18459,7 @@ const headers = {
 };
 
 let body = {
-    "with_clients": true
+    "with_clients": false
 };
 
 fetch(url, {
@@ -18483,7 +18483,7 @@ $response = $client-&gt;get(
             'with_clients' =&gt; '0',
         ],
         'json' =&gt; [
-            'with_clients' =&gt; true,
+            'with_clients' =&gt; false,
         ],
     ]
 );
@@ -18641,7 +18641,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -43367,7 +43367,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-30T22:29:39\",
+    \"date_livraison_prevue\": \"2025-10-30T22:36:44\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -43390,7 +43390,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-30T22:29:39",
+    "date_livraison_prevue": "2025-10-30T22:36:44",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -43418,7 +43418,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-30T22:29:39',
+            'date_livraison_prevue' =&gt; '2025-10-30T22:36:44',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -43554,10 +43554,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PUTapi-deliveries--id-"
-               value="2025-10-30T22:29:39"
+               value="2025-10-30T22:36:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:39</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -43626,7 +43626,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"chauffeur_id\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
     \"camion_id\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"date_livraison_prevue\": \"2025-10-30T22:29:39\",
+    \"date_livraison_prevue\": \"2025-10-30T22:36:44\",
     \"adresse_livraison\": \"m\",
     \"contact_livraison\": \"i\",
     \"telephone_livraison\": \"yvdljnikhwaykcmy\",
@@ -43649,7 +43649,7 @@ const headers = {
 let body = {
     "chauffeur_id": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
     "camion_id": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "date_livraison_prevue": "2025-10-30T22:29:39",
+    "date_livraison_prevue": "2025-10-30T22:36:44",
     "adresse_livraison": "m",
     "contact_livraison": "i",
     "telephone_livraison": "yvdljnikhwaykcmy",
@@ -43677,7 +43677,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'chauffeur_id' =&gt; '6ff8f7f6-1eb3-3525-be4a-3932c805afed',
             'camion_id' =&gt; '6b72fe4a-5b40-307c-bc24-f79acf9a1bb9',
-            'date_livraison_prevue' =&gt; '2025-10-30T22:29:39',
+            'date_livraison_prevue' =&gt; '2025-10-30T22:36:44',
             'adresse_livraison' =&gt; 'm',
             'contact_livraison' =&gt; 'i',
             'telephone_livraison' =&gt; 'yvdljnikhwaykcmy',
@@ -43813,10 +43813,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_livraison_prevue"                data-endpoint="PATCHapi-deliveries--id-"
-               value="2025-10-30T22:29:39"
+               value="2025-10-30T22:36:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:39</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>adresse_livraison</code></b>&nbsp;&nbsp;
@@ -50561,7 +50561,7 @@ Si le statut ou le montant change, le current_balance du client est ajusté.</p>
     --data "{
     \"montant\": 1,
     \"mode_paiement\": \"architecto\",
-    \"date_paiement\": \"2025-10-30T22:29:38\",
+    \"date_paiement\": \"2025-10-30T22:36:44\",
     \"numero_transaction\": \"n\",
     \"numero_cheque\": \"g\",
     \"banque\": \"z\",
@@ -50584,7 +50584,7 @@ const headers = {
 let body = {
     "montant": 1,
     "mode_paiement": "architecto",
-    "date_paiement": "2025-10-30T22:29:38",
+    "date_paiement": "2025-10-30T22:36:44",
     "numero_transaction": "n",
     "numero_cheque": "g",
     "banque": "z",
@@ -50612,7 +50612,7 @@ $response = $client-&gt;put(
         'json' =&gt; [
             'montant' =&gt; 1,
             'mode_paiement' =&gt; 'architecto',
-            'date_paiement' =&gt; '2025-10-30T22:29:38',
+            'date_paiement' =&gt; '2025-10-30T22:36:44',
             'numero_transaction' =&gt; 'n',
             'numero_cheque' =&gt; 'g',
             'banque' =&gt; 'z',
@@ -50770,10 +50770,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_paiement"                data-endpoint="PUTapi-paiement-ventes--id-"
-               value="2025-10-30T22:29:38"
+               value="2025-10-30T22:36:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:38</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
@@ -50843,7 +50843,7 @@ Si le statut ou le montant change, le current_balance du client est ajusté.</p>
     --data "{
     \"montant\": 1,
     \"mode_paiement\": \"architecto\",
-    \"date_paiement\": \"2025-10-30T22:29:38\",
+    \"date_paiement\": \"2025-10-30T22:36:44\",
     \"numero_transaction\": \"n\",
     \"numero_cheque\": \"g\",
     \"banque\": \"z\",
@@ -50866,7 +50866,7 @@ const headers = {
 let body = {
     "montant": 1,
     "mode_paiement": "architecto",
-    "date_paiement": "2025-10-30T22:29:38",
+    "date_paiement": "2025-10-30T22:36:44",
     "numero_transaction": "n",
     "numero_cheque": "g",
     "banque": "z",
@@ -50894,7 +50894,7 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'montant' =&gt; 1,
             'mode_paiement' =&gt; 'architecto',
-            'date_paiement' =&gt; '2025-10-30T22:29:38',
+            'date_paiement' =&gt; '2025-10-30T22:36:44',
             'numero_transaction' =&gt; 'n',
             'numero_cheque' =&gt; 'g',
             'banque' =&gt; 'z',
@@ -51052,10 +51052,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_paiement"                data-endpoint="PATCHapi-paiement-ventes--id-"
-               value="2025-10-30T22:29:38"
+               value="2025-10-30T22:36:44"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-30T22:29:38</code></p>
+<p>Must be a valid date. Example: <code>2025-10-30T22:36:44</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>numero_transaction</code></b>&nbsp;&nbsp;
@@ -64928,7 +64928,7 @@ Le format peut être A3, A4 (défaut) ou A5.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"format\": \"A4\",
+    \"format\": \"A3\",
     \"action\": \"preview\"
 }"
 </code></pre></div>
@@ -64953,7 +64953,7 @@ const headers = {
 };
 
 let body = {
-    "format": "A4",
+    "format": "A3",
     "action": "preview"
 };
 
@@ -64980,7 +64980,7 @@ $response = $client-&gt;get(
             'action' =&gt; 'download',
         ],
         'json' =&gt; [
-            'format' =&gt; 'A4',
+            'format' =&gt; 'A3',
             'action' =&gt; 'preview',
         ],
     ]
@@ -65146,10 +65146,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="format"                data-endpoint="GETapi-commandes-pdf--id--generate"
-               value="A4"
+               value="A3"
                data-component="body">
     <br>
-<p>Example: <code>A4</code></p>
+<p>Example: <code>A3</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>A3</code></li> <li><code>A4</code></li> <li><code>A5</code></li></ul>
         </div>
@@ -66292,7 +66292,7 @@ Le format peut être A3, A4 (défaut) ou A5.</p>
     --header "Accept: application/json" \
     --data "{
     \"format\": \"A3\",
-    \"action\": \"download\"
+    \"action\": \"preview\"
 }"
 </code></pre></div>
 
@@ -66317,7 +66317,7 @@ const headers = {
 
 let body = {
     "format": "A3",
-    "action": "download"
+    "action": "preview"
 };
 
 fetch(url, {
@@ -66344,7 +66344,7 @@ $response = $client-&gt;get(
         ],
         'json' =&gt; [
             'format' =&gt; 'A3',
-            'action' =&gt; 'download',
+            'action' =&gt; 'preview',
         ],
     ]
 );
@@ -66522,10 +66522,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="action"                data-endpoint="GETapi-factures-pdf--id--generate"
-               value="download"
+               value="preview"
                data-component="body">
     <br>
-<p>Example: <code>download</code></p>
+<p>Example: <code>preview</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>download</code></li> <li><code>preview</code></li></ul>
         </div>
@@ -66931,7 +66931,7 @@ Idéal pour une impression directe sans téléchargement.</p>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"format\": \"A4\"
+    \"format\": \"A5\"
 }"
 </code></pre></div>
 
@@ -66954,7 +66954,7 @@ const headers = {
 };
 
 let body = {
-    "format": "A4"
+    "format": "A5"
 };
 
 fetch(url, {
@@ -66979,7 +66979,7 @@ $response = $client-&gt;get(
             'format' =&gt; 'A4',
         ],
         'json' =&gt; [
-            'format' =&gt; 'A4',
+            'format' =&gt; 'A5',
         ],
     ]
 );
@@ -67118,10 +67118,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="format"                data-endpoint="GETapi-factures-pdf--id--print"
-               value="A4"
+               value="A5"
                data-component="body">
     <br>
-<p>Example: <code>A4</code></p>
+<p>Example: <code>A5</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>A3</code></li> <li><code>A4</code></li> <li><code>A5</code></li></ul>
         </div>
