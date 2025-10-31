@@ -571,11 +571,37 @@ class VenteController extends Controller
                 'message' => 'Vente non trouvée'
             ], 404);
         }
+        // Vérifier le statut de la vente
+        if ($vente->status !== 'en_attente') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une vente validée, livrée ou annulée',
+                'hint' => 'Seules les ventes en attente peuvent être supprimées. Statut actuel : ' . $vente->status
+            ], 422);
+        }
+
+        // Vérifier s'il y a des paiements associés
+        if ($vente->paiementVentes()->where('statut', 'valide')->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une vente avec des paiements validés',
+                'hint' => 'Veuillez d\'abord annuler tous les paiements associés'
+            ], 422);
+        }
+
+        // Vérifier s'il y a des livraisons en cours
+        if ($vente->deliveries()->whereNotIn('statut', ['annulee'])->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une vente avec des livraisons en cours',
+                'hint' => 'Veuillez d\'abord annuler toutes les livraisons associées'
+            ], 422);
+        }
 
         DB::beginTransaction();
         try {
             // Retirer du current_balance si vente validée
-            if ($vente->status === 'validee') {
+            if ($vente->status) {
                 $client = Client::find($vente->client_id);
                 $client->current_balance -= $vente->montant_net;
                 $client->save();
