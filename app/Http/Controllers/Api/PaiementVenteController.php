@@ -658,11 +658,18 @@ class PaiementVenteController extends Controller
                 'message' => 'Paiement non trouvé'
             ], 404);
         }
+        if (!in_array($paiement->statut, ['en_attente', 'refuse'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer un paiement validé ou annulé. Statut actuel : ' . $paiement->statut,
+                'hint' => 'Seuls les paiements en attente ou refusés peuvent être supprimés'
+            ], 422);
+        }
 
         DB::beginTransaction();
         try {
             // Augmenter le current_balance si le paiement était validé
-            if ($paiement->statut === 'valide') {
+            if ($paiement->statut) {
                 $client = Client::find($paiement->vente->client_id);
                 $client->current_balance += $paiement->montant;
                 $client->save();
