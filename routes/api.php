@@ -521,19 +521,21 @@ Route::prefix('detail-ventes')->group(function () {
 Route::prefix('paiement-ventes')->group(function () {
     Route::get('/', [PaiementVenteController::class, 'index']);
     Route::post('/', [PaiementVenteController::class, 'store']);
-    Route::post('/versement', [PaiementVenteController::class, 'versement']); // ici
 
-    // Routes spécifiques AVANT {id}
+    // ⚠️ Mettre cette ligne avant les routes dynamiques
+    Route::post('/versement', [PaiementVenteController::class, 'versement']);
+
     Route::get('/trashed/list', [PaiementVenteController::class, 'trashed']);
     Route::get('/vente/{vente_id}', [PaiementVenteController::class, 'paiementsParVente']);
 
-    // Routes avec {id} à la fin
+    // Routes dynamiques à la fin
     Route::get('/{id}', [PaiementVenteController::class, 'show']);
     Route::put('/{id}', [PaiementVenteController::class, 'update']);
     Route::patch('/{id}', [PaiementVenteController::class, 'update']);
     Route::delete('/{id}', [PaiementVenteController::class, 'destroy']);
     Route::post('/{id}/restore', [PaiementVenteController::class, 'restore']);
 })->middleware('auth:sanctum');
+
 
 Route::prefix('deliveries')->group(function () {
     // Routes CRUD principales
