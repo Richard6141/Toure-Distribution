@@ -523,7 +523,7 @@ Route::prefix('paiement-ventes')->group(function () {
     Route::post('/', [PaiementVenteController::class, 'store']);
 
     // ⚠️ Mettre cette ligne avant les routes dynamiques
-    Route::post('/versement', [PaiementVenteController::class, 'versement']);
+    Route::post('/versement-vente', [PaiementVenteController::class, 'versement']);
 
     Route::get('/trashed/list', [PaiementVenteController::class, 'trashed']);
     Route::get('/vente/{vente_id}', [PaiementVenteController::class, 'paiementsParVente']);
