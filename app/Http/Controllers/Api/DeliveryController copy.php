@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Delivery;
 use App\Models\DeliveryDetail;
 use App\Models\Vente;
-use App\Models\Camion;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +46,7 @@ class DeliveryController extends Controller
             'client:client_id,code,name_client,phonenumber',
             'entrepot:entrepot_id,code,name',
             'chauffeur:chauffeur_id,name,phone',
-            'camion:camion_id,numero_immat,marque,modele,status',
+            'camion:camion_id,numero_immat,marque,modele',
         ]);
 
         // Recherche
@@ -109,7 +108,6 @@ class DeliveryController extends Controller
      * 
      * Crée une nouvelle livraison à partir d'une vente validée.
      * Les détails de livraison sont créés automatiquement à partir des détails de vente.
-     * Le camion assigné passe automatiquement en statut "en_mission".
      * 
      * @authenticated
      * 
@@ -171,24 +169,6 @@ class DeliveryController extends Controller
             ], 422);
         }
 
-        // Vérifier que le camion est disponible
-        if ($request->filled('camion_id')) {
-            $camion = Camion::find($request->camion_id);
-
-            if (!$camion->isDisponible()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Le camion sélectionné n\'est pas disponible',
-                    'hint' => "Statut actuel du camion : {$camion->status}",
-                    'data' => [
-                        'camion_id' => $camion->camion_id,
-                        'numero_immat' => $camion->numero_immat,
-                        'status' => $camion->status
-                    ]
-                ], 422);
-            }
-        }
-
         DB::beginTransaction();
         try {
             // Créer la livraison
@@ -206,13 +186,6 @@ class DeliveryController extends Controller
                 'statut' => 'en_preparation',
                 'created_by' => auth()->user()->user_id ?? null,
             ]);
-
-            // Mettre le camion en mission si assigné
-            if ($request->filled('camion_id')) {
-                $camion = Camion::find($request->camion_id);
-                $camion->status = 'en_mission';
-                $camion->save();
-            }
 
             // Créer les détails de livraison à partir des détails de vente
             foreach ($vente->detailVentes as $detailVente) {
@@ -300,7 +273,6 @@ class DeliveryController extends Controller
      * Mettre à jour une livraison
      * 
      * Met à jour les informations d'une livraison.
-     * Si le camion est changé, l'ancien camion redevient disponible et le nouveau passe en mission.
      * 
      * @authenticated
      */
@@ -353,24 +325,6 @@ class DeliveryController extends Controller
             ], 422);
         }
 
-        // Vérifier que le nouveau camion est disponible
-        if ($request->filled('camion_id') && $request->camion_id !== $delivery->camion_id) {
-            $newCamion = Camion::find($request->camion_id);
-
-            if (!$newCamion->isDisponible()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Le nouveau camion sélectionné n\'est pas disponible',
-                    'hint' => "Statut actuel du camion : {$newCamion->status}",
-                    'data' => [
-                        'camion_id' => $newCamion->camion_id,
-                        'numero_immat' => $newCamion->numero_immat,
-                        'status' => $newCamion->status
-                    ]
-                ], 422);
-            }
-        }
-
         // Validation supplémentaire pour les transitions de statut
         if ($request->filled('statut')) {
             $newStatut = $request->statut;
@@ -395,54 +349,20 @@ class DeliveryController extends Controller
             }
         }
 
-        DB::beginTransaction();
-        try {
-            $oldCamionId = $delivery->camion_id;
+        $delivery->update($validator->validated());
+        $delivery->load(['chauffeur', 'camion']);
 
-            // Mettre à jour la livraison
-            $delivery->update($validator->validated());
-
-            // Gérer le changement de camion
-            if ($request->filled('camion_id') && $oldCamionId !== $request->camion_id) {
-                // Libérer l'ancien camion
-                if ($oldCamionId) {
-                    $oldCamion = Camion::find($oldCamionId);
-                    if ($oldCamion && $oldCamion->isEnMission()) {
-                        $oldCamion->status = 'disponible';
-                        $oldCamion->save();
-                    }
-                }
-
-                // Assigner le nouveau camion
-                $newCamion = Camion::find($request->camion_id);
-                $newCamion->status = 'en_mission';
-                $newCamion->save();
-            }
-
-            $delivery->load(['chauffeur', 'camion']);
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Livraison mise à jour avec succès',
-                'data' => $delivery
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la mise à jour',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Livraison mise à jour avec succès',
+            'data' => $delivery
+        ]);
     }
 
     /**
      * Démarrer une livraison
      * 
      * Passe le statut à "en_transit" et enregistre l'heure de départ.
-     * Le camion reste en statut "en_mission".
      * 
      * @authenticated
      */
@@ -467,19 +387,10 @@ class DeliveryController extends Controller
         try {
             $delivery->startDelivery();
 
-            // S'assurer que le camion est bien en mission
-            if ($delivery->camion_id) {
-                $camion = Camion::find($delivery->camion_id);
-                if ($camion && !$camion->isEnMission()) {
-                    $camion->status = 'en_mission';
-                    $camion->save();
-                }
-            }
-
             return response()->json([
                 'success' => true,
                 'message' => 'Livraison démarrée avec succès',
-                'data' => $delivery->fresh(['camion'])
+                'data' => $delivery->fresh()
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -494,7 +405,6 @@ class DeliveryController extends Controller
      * Terminer une livraison
      * 
      * Passe le statut à "livree" et enregistre les informations de livraison.
-     * Le camion redevient automatiquement "disponible".
      * 
      * @authenticated
      * 
@@ -535,28 +445,15 @@ class DeliveryController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
         try {
             $delivery->completeDelivery($validator->validated());
 
-            // Libérer le camion (le remettre disponible)
-            if ($delivery->camion_id) {
-                $camion = Camion::find($delivery->camion_id);
-                if ($camion) {
-                    $camion->status = 'disponible';
-                    $camion->save();
-                }
-            }
-
-            DB::commit();
-
             return response()->json([
                 'success' => true,
-                'message' => 'Livraison terminée avec succès. Le camion est maintenant disponible.',
-                'data' => $delivery->fresh(['deliveryDetails', 'camion'])
+                'message' => 'Livraison terminée avec succès',
+                'data' => $delivery->fresh(['deliveryDetails'])
             ]);
         } catch (\Exception $e) {
-            DB::rollBack();
             return response()->json([
                 'success' => false,
                 'message' => 'Erreur lors de la finalisation de la livraison',
@@ -569,7 +466,6 @@ class DeliveryController extends Controller
      * Annuler une livraison
      * 
      * Annule une livraison en cours.
-     * Le camion redevient automatiquement "disponible".
      * 
      * @authenticated
      * 
@@ -605,30 +501,15 @@ class DeliveryController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
         try {
-            $camionId = $delivery->camion_id;
-
             $delivery->cancel($request->raison);
-
-            // Libérer le camion
-            if ($camionId) {
-                $camion = Camion::find($camionId);
-                if ($camion && $camion->isEnMission()) {
-                    $camion->status = 'disponible';
-                    $camion->save();
-                }
-            }
-
-            DB::commit();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Livraison annulée avec succès. Le camion est maintenant disponible.',
-                'data' => $delivery->fresh(['camion'])
+                'message' => 'Livraison annulée avec succès',
+                'data' => $delivery->fresh()
             ]);
         } catch (\Exception $e) {
-            DB::rollBack();
             return response()->json([
                 'success' => false,
                 'message' => 'Erreur lors de l\'annulation de la livraison',
@@ -641,7 +522,6 @@ class DeliveryController extends Controller
      * Supprimer une livraison
      * 
      * Effectue une suppression logique.
-     * Le camion redevient automatiquement "disponible" s'il était en mission.
      * 
      * @authenticated
      */
@@ -656,40 +536,17 @@ class DeliveryController extends Controller
             ], 404);
         }
 
-        DB::beginTransaction();
-        try {
-            $camionId = $delivery->camion_id;
-
-            // Annuler avant suppression si pas encore fait
-            if (!in_array($delivery->statut, ['annulee', 'livree'])) {
-                $delivery->cancel('Suppression de la livraison');
-            }
-
-            // Libérer le camion s'il était assigné et en mission
-            if ($camionId) {
-                $camion = Camion::find($camionId);
-                if ($camion && $camion->isEnMission()) {
-                    $camion->status = 'disponible';
-                    $camion->save();
-                }
-            }
-
-            $delivery->delete();
-
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Livraison supprimée avec succès'
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur lors de la suppression',
-                'error' => $e->getMessage()
-            ], 500);
+        // Annuler avant suppression si pas encore fait
+        if (!in_array($delivery->statut, ['annulee'])) {
+            $delivery->cancel('Suppression de la livraison');
         }
+
+        $delivery->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Livraison supprimée avec succès'
+        ]);
     }
 
     /**
