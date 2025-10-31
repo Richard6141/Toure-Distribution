@@ -228,7 +228,7 @@ class VenteController extends Controller
             $status = $request->input('status', 'en_attente');
 
             // Vérifications si statut = validee
-            if ($status === 'validee') {
+            if ($status) {
                 $client = Client::find($request->client_id);
 
                 // Vérifier la limite de crédit
@@ -296,7 +296,7 @@ class VenteController extends Controller
                 ]);
             }
 
-            if ($status === 'validee') {
+            if ($status) {
                 $vente->createStockMovementIfNeeded();
 
                 // Mettre à jour le current_balance du client
