@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Camion;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Gestion des Camions
@@ -357,12 +358,37 @@ class CamionController extends Controller
             ], 404);
         }
 
-        $camion->delete();
+        // Interdire la suppression si le camion est en_mission ou en_maintenance
+        if (in_array($camion->status, ['en_mission', 'en_maintenance'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer ce camion',
+                'hint' => "Le camion est actuellement '{$camion->status}'. Seuls les camions 'disponible' ou 'hors_service' peuvent être supprimés.",
+                'data' => [
+                    'camion_id' => $camion->camion_id,
+                    'numero_immat' => $camion->numero_immat,
+                    'status' => $camion->status
+                ]
+            ], 422);
+        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Camion supprimé avec succès'
-        ]);
+        DB::beginTransaction();
+        try {
+            $camion->delete();
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Camion supprimé avec succès'
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la suppression du camion',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
