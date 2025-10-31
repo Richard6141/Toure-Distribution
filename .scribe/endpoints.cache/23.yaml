@@ -323,7 +323,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/paiement-ventes/versement
+    uri: api/paiement-ventes/versement-vente
     metadata:
       groupName: 'Gestion des Paiements de Ventes'
       groupDescription: |-
@@ -724,7 +724,7 @@ endpoints:
         name: date_paiement
         description: 'Must be a valid date.'
         required: true
-        example: '2025-10-31T08:50:55'
+        example: '2025-10-31T09:35:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -773,7 +773,7 @@ endpoints:
     cleanBodyParameters:
       montant: 1
       mode_paiement: architecto
-      date_paiement: '2025-10-31T08:50:55'
+      date_paiement: '2025-10-31T09:35:42'
       numero_transaction: 'n'
       numero_cheque: g
       banque: z
@@ -873,7 +873,7 @@ endpoints:
         name: date_paiement
         description: 'Must be a valid date.'
         required: true
-        example: '2025-10-31T08:50:55'
+        example: '2025-10-31T09:35:42'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -922,7 +922,7 @@ endpoints:
     cleanBodyParameters:
       montant: 1
       mode_paiement: architecto
-      date_paiement: '2025-10-31T08:50:55'
+      date_paiement: '2025-10-31T09:35:42'
       numero_transaction: 'n'
       numero_cheque: g
       banque: z

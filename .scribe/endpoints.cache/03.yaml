@@ -86,7 +86,7 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -95,7 +95,7 @@ endpoints:
     cleanBodyParameters:
       page: 16
       per_page: 22
-      with_client_type: false
+      with_client_type: true
     fileParameters: []
     responses:
       -
@@ -653,7 +653,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -693,7 +693,7 @@ endpoints:
       ifu: 'n'
       marketteur: i
       client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
-      is_active: false
+      is_active: true
       with_client_type: false
       balance_filter: zero
     fileParameters: []
@@ -1007,14 +1007,14 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_client_type: true
+      with_client_type: false
     fileParameters: []
     responses:
       -

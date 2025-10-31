@@ -71,7 +71,7 @@ endpoints:
         name: format
         description: ''
         required: false
-        example: A3
+        example: A4
         type: string
         enumValues:
           - A3
@@ -84,7 +84,7 @@ endpoints:
         name: action
         description: ''
         required: false
-        example: download
+        example: preview
         type: string
         enumValues:
           - download
@@ -93,8 +93,8 @@ endpoints:
         nullable: true
         custom: []
     cleanBodyParameters:
-      format: A3
-      action: download
+      format: A4
+      action: preview
     fileParameters: []
     responses:
       -
