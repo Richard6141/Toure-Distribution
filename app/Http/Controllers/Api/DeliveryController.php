@@ -46,7 +46,7 @@ class DeliveryController extends Controller
             'client:client_id,code,name_client,phonenumber',
             'entrepot:entrepot_id,code,name',
             'chauffeur:chauffeur_id,name,phone',
-            'camion:camion_id,immatriculation,marque,modele',
+            'camion:camion_id,numero_immat,marque,modele',
         ]);
 
         // Recherche
