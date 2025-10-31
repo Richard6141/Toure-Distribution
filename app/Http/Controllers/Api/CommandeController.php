@@ -692,12 +692,77 @@ class CommandeController extends Controller
             ], 404);
         }
 
-        $commande->delete();
+        // Vérifier le statut - seules les commandes en_attente ou annulee peuvent être supprimées
+        if (!in_array($commande->status, ['en_attente', 'annulee'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer cette commande',
+                'hint' => "Seules les commandes 'en_attente' ou 'annulee' peuvent être supprimées. Statut actuel : {$commande->status}",
+                'data' => [
+                    'commande_id' => $commande->commande_id,
+                    'numero_commande' => $commande->numero_commande,
+                    'status' => $commande->status
+                ]
+            ], 422);
+        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Commande supprimée avec succès'
-        ]);
+        // Vérifier s'il y a des paiements validés
+        if ($commande->paiements()->where('statut', 'valide')->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une commande avec des paiements validés',
+                'hint' => 'Veuillez d\'abord annuler tous les paiements associés'
+            ], 422);
+        }
+
+        // Vérifier s'il y a des mouvements de stock validés (répartitions)
+        if ($commande->stockMovements()->where('statut', 'validated')->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer une commande avec des répartitions de stock validées',
+                'hint' => 'Des mouvements de stock ont déjà été effectués pour cette commande'
+            ], 422);
+        }
+
+        DB::beginTransaction();
+        try {
+            // Libérer le camion s'il était assigné
+            if ($commande->camion_id) {
+                $camion = Camion::find($commande->camion_id);
+                if ($camion && $camion->isEnMission()) {
+                    $camion->status = 'disponible';
+                    $camion->save();
+                }
+            }
+
+            // Libérer le chauffeur s'il était assigné (si vous avez un statut sur le chauffeur)
+            // Décommentez si votre modèle Chauffeur a un champ status
+            /*
+        if ($commande->chauffeur_id) {
+            $chauffeur = Chauffeur::find($commande->chauffeur_id);
+            if ($chauffeur && $chauffeur->status === 'en_mission') {
+                $chauffeur->status = 'disponible';
+                $chauffeur->save();
+            }
+        }
+        */
+
+            $commande->delete();
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Commande supprimée avec succès'
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la suppression de la commande',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**
