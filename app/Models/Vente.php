@@ -210,6 +210,11 @@ class Vente extends Model
         return false;
     }
 
+    public function deliveries(): HasMany
+    {
+        return $this->hasMany(Delivery::class, 'vente_id', 'vente_id');
+    }
+
     /**
      * Annule le mouvement de stock associé
      */
