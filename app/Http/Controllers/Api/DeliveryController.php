@@ -296,6 +296,18 @@ class DeliveryController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
+            'statut' => [
+                'sometimes',
+                Rule::in([
+                    'en_preparation',
+                    'prete',
+                    'en_transit',
+                    'livree',
+                    'livree_partiellement',
+                    'annulee',
+                    'retournee'
+                ])
+            ],
             'chauffeur_id' => 'nullable|uuid|exists:chauffeurs,chauffeur_id',
             'camion_id' => 'nullable|uuid|exists:camions,camion_id',
             'date_livraison_prevue' => 'nullable|date',
@@ -311,6 +323,30 @@ class DeliveryController extends Controller
                 'message' => 'Erreur de validation',
                 'errors' => $validator->errors()
             ], 422);
+        }
+
+        // Validation supplémentaire pour les transitions de statut
+        if ($request->filled('statut')) {
+            $newStatut = $request->statut;
+            $currentStatut = $delivery->statut;
+
+            // Règles de transition de statut
+            $validTransitions = [
+                'en_preparation' => ['prete', 'annulee'],
+                'prete' => ['en_transit', 'annulee'],
+                'en_transit' => ['livree', 'livree_partiellement', 'annulee'],
+                'livree_partiellement' => ['livree', 'annulee'],
+            ];
+
+            if (
+                isset($validTransitions[$currentStatut]) &&
+                !in_array($newStatut, $validTransitions[$currentStatut])
+            ) {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Transition de statut invalide : {$currentStatut} → {$newStatut}"
+                ], 422);
+            }
         }
 
         $delivery->update($validator->validated());
