@@ -358,12 +358,12 @@ class CamionController extends Controller
             ], 404);
         }
 
-        // Interdire la suppression si le camion est en_mission ou en_maintenance
-        if (in_array($camion->status, ['en_mission', 'en_maintenance'])) {
+        // Vérifier le statut avant suppression
+        if ($camion->status === 'en_mission') {
             return response()->json([
                 'success' => false,
-                'message' => 'Impossible de supprimer ce camion',
-                'hint' => "Le camion est actuellement '{$camion->status}'. Seuls les camions 'disponible' ou 'hors_service' peuvent être supprimés.",
+                'message' => 'Impossible de supprimer un camion en mission',
+                'hint' => 'Veuillez attendre la fin de la mission ou réassigner le camion avant de le supprimer',
                 'data' => [
                     'camion_id' => $camion->camion_id,
                     'numero_immat' => $camion->numero_immat,
@@ -372,6 +372,20 @@ class CamionController extends Controller
             ], 422);
         }
 
+        if ($camion->status === 'en_maintenance') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de supprimer un camion en maintenance',
+                'hint' => 'Veuillez terminer la maintenance avant de supprimer le camion',
+                'data' => [
+                    'camion_id' => $camion->camion_id,
+                    'numero_immat' => $camion->numero_immat,
+                    'status' => $camion->status
+                ]
+            ], 422);
+        }
+
+        // Seuls les camions "disponible" ou "hors_service" peuvent être supprimés
         DB::beginTransaction();
         try {
             $camion->delete();
@@ -379,7 +393,11 @@ class CamionController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Camion supprimé avec succès'
+                'message' => 'Camion supprimé avec succès',
+                'data' => [
+                    'camion_id' => $id,
+                    'numero_immat' => $camion->numero_immat
+                ]
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
