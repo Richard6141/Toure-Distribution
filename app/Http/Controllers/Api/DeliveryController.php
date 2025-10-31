@@ -45,7 +45,7 @@ class DeliveryController extends Controller
             'vente:vente_id,numero_vente,montant_net',
             'client:client_id,code,name_client,phonenumber',
             'entrepot:entrepot_id,code,name',
-            'chauffeur:chauffeur_id,nom,prenom,telephone',
+            'chauffeur:chauffeur_id,name,phone',
             'camion:camion_id,immatriculation,marque,modele',
         ]);
 
