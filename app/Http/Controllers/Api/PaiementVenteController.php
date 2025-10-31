@@ -529,6 +529,111 @@ class PaiementVenteController extends Controller
     }
 
     /**
+     * Paiements d'un client
+     * 
+     * Récupère tous les paiements associés à un client spécifique avec statistiques.
+     * 
+     * @authenticated
+     * 
+     * @urlParam client_id string required L'UUID du client. Example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+     * @queryParam statut string Filtrer par statut (en_attente, valide, refuse, annule). Example: valide
+     * @queryParam mode_paiement string Filtrer par mode de paiement. Example: mobile_money
+     * @queryParam date_debut date Filtrer par date minimum. Example: 2025-01-01
+     * @queryParam date_fin date Filtrer par date maximum. Example: 2025-12-31
+     * 
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Paiements du client récupérés avec succès",
+     *   "data": {
+     *     "client": {
+     *       "client_id": "uuid",
+     *       "code": "CLI-001",
+     *       "name_client": "Nom du client",
+     *       "current_balance": 50000.00
+     *     },
+     *     "statistiques": {
+     *       "nombre_paiements": 15,
+     *       "total_paye": 150000.00,
+     *       "total_valide": 140000.00,
+     *       "total_en_attente": 10000.00
+     *     },
+     *     "paiements": []
+     *   }
+     * }
+     */
+    public function paiementsParClient(Request $request, string $clientId): JsonResponse
+    {
+        $client = Client::find($clientId);
+
+        if (!$client) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Client non trouvé'
+            ], 404);
+        }
+
+        // Construire la requête de base
+        $query = PaiementVente::whereHas('vente', function ($q) use ($clientId) {
+            $q->where('client_id', $clientId);
+        })->with(['vente:vente_id,numero_vente,montant_net,statut_paiement,client_id']);
+
+        // Appliquer les filtres optionnels
+        if ($request->filled('statut')) {
+            $query->where('statut', $request->input('statut'));
+        }
+
+        if ($request->filled('mode_paiement')) {
+            $query->where('mode_paiement', $request->input('mode_paiement'));
+        }
+
+        if ($request->filled('date_debut') && $request->filled('date_fin')) {
+            $query->whereBetween('date_paiement', [
+                $request->input('date_debut') . ' 00:00:00',
+                $request->input('date_fin') . ' 23:59:59'
+            ]);
+        } elseif ($request->filled('date_debut')) {
+            $query->where('date_paiement', '>=', $request->input('date_debut') . ' 00:00:00');
+        } elseif ($request->filled('date_fin')) {
+            $query->where('date_paiement', '<=', $request->input('date_fin') . ' 23:59:59');
+        }
+
+        $paiements = $query->orderBy('date_paiement', 'desc')->get();
+
+        // Calculer les statistiques
+        $statistiques = [
+            'nombre_paiements' => $paiements->count(),
+            'total_paye' => $paiements->sum('montant'),
+            'total_valide' => $paiements->where('statut', 'valide')->sum('montant'),
+            'total_en_attente' => $paiements->where('statut', 'en_attente')->sum('montant'),
+            'total_refuse' => $paiements->where('statut', 'refuse')->sum('montant'),
+            'total_annule' => $paiements->where('statut', 'annule')->sum('montant'),
+            'par_mode_paiement' => $paiements->groupBy('mode_paiement')->map(function ($group) {
+                return [
+                    'nombre' => $group->count(),
+                    'montant' => $group->sum('montant')
+                ];
+            })
+        ];
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Paiements du client récupérés avec succès',
+            'data' => [
+                'client' => [
+                    'client_id' => $client->client_id,
+                    'code' => $client->code,
+                    'name_client' => $client->name_client,
+                    'current_balance' => $client->current_balance,
+                    'email' => $client->email,
+                    'telephone' => $client->telephone
+                ],
+                'statistiques' => $statistiques,
+                'paiements' => $paiements
+            ]
+        ]);
+    }
+
+    /**
      * Supprimer un paiement
      * 
      * Effectue une suppression logique d'un paiement.

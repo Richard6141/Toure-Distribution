@@ -617,7 +617,7 @@ endpoints:
         name: date_paiement
         description: 'Must be a valid date.'
         required: true
-        example: '2025-10-30T22:36:44'
+        example: '2025-10-31T02:02:26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -666,7 +666,7 @@ endpoints:
     cleanBodyParameters:
       montant: 1
       mode_paiement: architecto
-      date_paiement: '2025-10-30T22:36:44'
+      date_paiement: '2025-10-31T02:02:26'
       numero_transaction: 'n'
       numero_cheque: g
       banque: z
@@ -766,7 +766,7 @@ endpoints:
         name: date_paiement
         description: 'Must be a valid date.'
         required: true
-        example: '2025-10-30T22:36:44'
+        example: '2025-10-31T02:02:26'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -815,7 +815,7 @@ endpoints:
     cleanBodyParameters:
       montant: 1
       mode_paiement: architecto
-      date_paiement: '2025-10-30T22:36:44'
+      date_paiement: '2025-10-31T02:02:26'
       numero_transaction: 'n'
       numero_cheque: g
       banque: z
@@ -1046,6 +1046,124 @@ endpoints:
             "success": true,
             "message": "Paiements de la vente récupérés avec succès",
             "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/paiement-ventes/client/{client_id}'
+    metadata:
+      groupName: 'Gestion des Paiements de Ventes'
+      groupDescription: |-
+
+        API pour gérer les paiements des ventes.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Paiements d'un client"
+      description: 'Récupère tous les paiements associés à un client spécifique avec statistiques.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      client_id:
+        name: client_id
+        description: "L'UUID du client."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+    queryParameters:
+      statut:
+        name: statut
+        description: 'Filtrer par statut (en_attente, valide, refuse, annule).'
+        required: false
+        example: valide
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      mode_paiement:
+        name: mode_paiement
+        description: 'Filtrer par mode de paiement.'
+        required: false
+        example: mobile_money
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_debut:
+        name: date_debut
+        description: 'date Filtrer par date minimum.'
+        required: false
+        example: '2025-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_fin:
+        name: date_fin
+        description: 'date Filtrer par date maximum.'
+        required: false
+        example: '2025-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      statut: valide
+      mode_paiement: mobile_money
+      date_debut: '2025-01-01'
+      date_fin: '2025-12-31'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Paiements du client récupérés avec succès",
+            "data": {
+              "client": {
+                "client_id": "uuid",
+                "code": "CLI-001",
+                "name_client": "Nom du client",
+                "current_balance": 50000.00
+              },
+              "statistiques": {
+                "nombre_paiements": 15,
+                "total_paye": 150000.00,
+                "total_valide": 140000.00,
+                "total_en_attente": 10000.00
+              },
+              "paiements": []
+            }
           }
         headers: []
         description: ''

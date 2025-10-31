@@ -519,21 +519,25 @@ Route::prefix('detail-ventes')->group(function () {
  * Prefix: /paiement-ventes
  */
 Route::prefix('paiement-ventes')->group(function () {
-    Route::get('/', [PaiementVenteController::class, 'index']);               // Liste des paiements
+    Route::get('/', [PaiementVenteController::class, 'index']);
     Route::post('/', [PaiementVenteController::class, 'store']);
-    Route::post('/paiements/versement', [PaiementVenteController::class, 'versement']);             // Création d'un paiement
-    Route::get('/{id}', [PaiementVenteController::class, 'show']);            // Afficher un paiement par ID
-    Route::put('/{id}', [PaiementVenteController::class, 'update']);          // Mise à jour d'un paiement
-    Route::patch('/{id}', [PaiementVenteController::class, 'update']);        // Mise à jour partielle
-    Route::delete('/{id}', [PaiementVenteController::class, 'destroy']);      // Suppression logique
+    Route::post('/paiements/versement', [PaiementVenteController::class, 'versement']);
+    Route::get('/{id}', [PaiementVenteController::class, 'show']);
+    Route::put('/{id}', [PaiementVenteController::class, 'update']);
+    Route::patch('/{id}', [PaiementVenteController::class, 'update']);
+    Route::delete('/{id}', [PaiementVenteController::class, 'destroy']);
 
     // Routes pour gestion soft delete
-    Route::get('/trashed/list', [PaiementVenteController::class, 'trashed']); // Liste des paiements supprimés
-    Route::post('/{id}/restore', [PaiementVenteController::class, 'restore']); // Restaurer un paiement
+    Route::get('/trashed/list', [PaiementVenteController::class, 'trashed']);
+    Route::post('/{id}/restore', [PaiementVenteController::class, 'restore']);
 
-    // Route spéciale pour les paiements d'une vente
-    Route::get('/vente/{vente_id}', [PaiementVenteController::class, 'paiementsParVente']); // Paiements d'une vente
+    // Routes spéciales
+    Route::get('/vente/{vente_id}', [PaiementVenteController::class, 'paiementsParVente']);
+
+    // 🆕 NOUVELLE ROUTE : Paiements d'un client
+    Route::get('/client/{client_id}', [PaiementVenteController::class, 'paiementsParClient']);
 })->middleware('auth:sanctum');
+
 Route::prefix('deliveries')->group(function () {
     // Routes CRUD principales
     Route::get('/', [DeliveryController::class, 'index'])->name('deliveries.index');
