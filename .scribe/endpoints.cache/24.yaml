@@ -410,7 +410,7 @@ endpoints:
         name: date_livraison_prevue
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-31T09:35:42'
+        example: '2025-10-31T09:39:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -459,7 +459,7 @@ endpoints:
     cleanBodyParameters:
       chauffeur_id: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
       camion_id: 6b72fe4a-5b40-307c-bc24-f79acf9a1bb9
-      date_livraison_prevue: '2025-10-31T09:35:42'
+      date_livraison_prevue: '2025-10-31T09:39:28'
       adresse_livraison: m
       contact_livraison: i
       telephone_livraison: yvdljnikhwaykcmy
@@ -536,7 +536,7 @@ endpoints:
         name: date_livraison_prevue
         description: 'Must be a valid date.'
         required: false
-        example: '2025-10-31T09:35:42'
+        example: '2025-10-31T09:39:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -585,7 +585,7 @@ endpoints:
     cleanBodyParameters:
       chauffeur_id: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
       camion_id: 6b72fe4a-5b40-307c-bc24-f79acf9a1bb9
-      date_livraison_prevue: '2025-10-31T09:35:42'
+      date_livraison_prevue: '2025-10-31T09:39:28'
       adresse_livraison: m
       contact_livraison: i
       telephone_livraison: yvdljnikhwaykcmy

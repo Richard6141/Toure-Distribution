@@ -352,7 +352,7 @@ Route::prefix('paiements')->name('paiements.')->group(function () {
     // Routes CRUD standard
     Route::get('/', [PaiementController::class, 'index'])->name('index');
     Route::post('/', [PaiementController::class, 'store'])->name('store');
-    Route::post('/paiements/versement', [PaiementController::class, 'versement']);
+    Route::post('/versement-general', [PaiementController::class, 'versement']);
     Route::get('/{id}', [PaiementController::class, 'show'])->name('show');
     Route::put('/{id}', [PaiementController::class, 'update'])->name('update');
     Route::patch('/{id}', [PaiementController::class, 'update'])->name('patch');

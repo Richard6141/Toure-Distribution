@@ -724,7 +724,7 @@ endpoints:
         name: date_paiement
         description: 'Must be a valid date.'
         required: true
-        example: '2025-10-31T09:35:42'
+        example: '2025-10-31T09:39:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -773,7 +773,7 @@ endpoints:
     cleanBodyParameters:
       montant: 1
       mode_paiement: architecto
-      date_paiement: '2025-10-31T09:35:42'
+      date_paiement: '2025-10-31T09:39:28'
       numero_transaction: 'n'
       numero_cheque: g
       banque: z
@@ -873,7 +873,7 @@ endpoints:
         name: date_paiement
         description: 'Must be a valid date.'
         required: true
-        example: '2025-10-31T09:35:42'
+        example: '2025-10-31T09:39:28'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -922,7 +922,7 @@ endpoints:
     cleanBodyParameters:
       montant: 1
       mode_paiement: architecto
-      date_paiement: '2025-10-31T09:35:42'
+      date_paiement: '2025-10-31T09:39:28'
       numero_transaction: 'n'
       numero_cheque: g
       banque: z
