@@ -564,13 +564,13 @@ class VenteController extends Controller
     public function destroy(string $id): JsonResponse
     {
         $vente = Vente::find($id);
-
         if (!$vente) {
             return response()->json([
                 'success' => false,
                 'message' => 'Vente non trouvée'
             ], 404);
         }
+
         // Vérifier le statut de la vente
         if ($vente->status !== 'en_attente') {
             return response()->json([
@@ -580,8 +580,8 @@ class VenteController extends Controller
             ], 422);
         }
 
-        // Vérifier s'il y a des paiements associés
-        if ($vente->paiementVentes()->where('statut', 'valide')->exists()) {
+        // ✅ Changez paiementVentes() en paiements()
+        if ($vente->paiements()->where('statut', 'valide')->exists()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Impossible de supprimer une vente avec des paiements validés',
@@ -608,7 +608,6 @@ class VenteController extends Controller
             }
 
             $vente->delete();
-
             DB::commit();
 
             return response()->json([
