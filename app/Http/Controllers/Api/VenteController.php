@@ -68,7 +68,8 @@ class VenteController extends Controller
         $query = Vente::with([
             'client:client_id,code,name_client,phonenumber,email',
             'entrepot:entrepot_id,code,name,adresse',
-            'stockMovement:stock_movement_id,reference,statut'
+            'stockMovement:stock_movement_id,reference,statut',
+            'detailVentes.product:product_id,code,name,unit_of_measure'
         ]);
 
         if ($request->filled('search')) {
