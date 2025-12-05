@@ -469,7 +469,11 @@ class VenteController extends Controller
                 $oldStatus !== 'validee' &&
                 !$vente->stock_movement_id
             ) {
-                $client = Client::find($vente->client_id);
+                $client = Client::withTrashed()->find($vente->client_id);
+
+                if (!$client) {
+                    throw new \Exception("Client introuvable pour cette vente");
+                }
 
                 // Vérifier limite de crédit
                 if (($client->current_balance + $vente->montant_net) > $client->credit_limit) {
@@ -497,7 +501,11 @@ class VenteController extends Controller
 
             $vente->update($validator->validated());
 
-            $client = Client::find($vente->client_id);
+            $client = Client::withTrashed()->find($vente->client_id);
+
+            if (!$client) {
+                throw new \Exception("Client introuvable pour cette vente");
+            }
 
             // Passage à validee
             if ($request->has('status') && $request->status === 'validee' && $oldStatus !== 'validee') {
@@ -601,10 +609,12 @@ class VenteController extends Controller
         DB::beginTransaction();
         try {
             // Retirer du current_balance si vente validée
-            if ($vente->status) {
-                $client = Client::find($vente->client_id);
-                $client->current_balance -= $vente->montant_net;
-                $client->save();
+            if ($vente->status === 'validee') {
+                $client = Client::withTrashed()->find($vente->client_id);
+                if ($client) {
+                    $client->current_balance -= $vente->montant_net;
+                    $client->save();
+                }
             }
 
             $vente->delete();
@@ -697,7 +707,10 @@ class VenteController extends Controller
 
             // Restaurer le current_balance si la vente était validée
             if ($vente->status === 'validee') {
-                $client = Client::find($vente->client_id);
+                $client = Client::withTrashed()->find($vente->client_id);
+                if (!$client) {
+                    throw new \Exception("Client introuvable pour cette vente");
+                }
                 $client->current_balance += $vente->montant_net;
                 $client->save();
             }

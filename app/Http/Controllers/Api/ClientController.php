@@ -450,13 +450,54 @@ class ClientController extends Controller
     {
         try {
             $client = Client::where('client_id', $client_id)->firstOrFail();
+
+            // Vérifier si le client a des ventes actives (non supprimées)
+            $ventesActives = $client->ventes()->count();
+            if ($ventesActives > 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Impossible de supprimer ce client car il possède des ventes associées',
+                    'data' => [
+                        'ventes_count' => $ventesActives
+                    ]
+                ], 422);
+            }
+
+            // Vérifier si le client a des paiements
+            $paiementsActifs = \App\Models\PaiementVente::whereHas('vente', function ($query) use ($client_id) {
+                $query->where('client_id', $client_id);
+            })->count();
+
+            if ($paiementsActifs > 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Impossible de supprimer ce client car il possède des paiements associés',
+                    'data' => [
+                        'paiements_count' => $paiementsActifs
+                    ]
+                ], 422);
+            }
+
+            // Vérifier si le client a un solde non nul
+            if ($client->current_balance != 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Impossible de supprimer ce client car son solde n\'est pas nul',
+                    'data' => [
+                        'current_balance' => $client->current_balance
+                    ]
+                ], 422);
+            }
+
             $client->delete();
 
             return response()->json([
+                'success' => true,
                 'message' => 'Client supprimé avec succès'
             ]);
         } catch (ModelNotFoundException $e) {
             return response()->json([
+                'success' => false,
                 'message' => 'Client non trouvé'
             ], 404);
         }
