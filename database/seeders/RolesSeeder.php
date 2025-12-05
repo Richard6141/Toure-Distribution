@@ -426,6 +426,33 @@ class RolesSeeder extends Seeder
                 'delivery_details.preparer_tout',
             ],
 
+            // === CAISSIER / CAISSIÈRE ===
+            'Caissier' => [
+                // Caisse - permissions complètes
+                'caisse.view',
+                'caisse.create',
+                'caisse.delete',
+                'caisse.restore',
+                'caisse.search_client',
+                'caisse.view_client_info',
+                'caisse.view_client_history',
+                'caisse.stats',
+                'caisse.trashed',
+                'caisse.debtors',
+
+                // Clients (consultation)
+                'clients.view',
+                'clients.search',
+
+                // Produits (consultation pour information)
+                'products.view',
+
+                // Rapports
+                'rapports.view',
+                'rapports.financier',
+                'export.pdf',
+            ],
+
             // === DIRECTEUR GÉNÉRAL ===
             'Directeur général' => [
                 // Vue d'ensemble complète (lecture seule principalement)
@@ -575,6 +602,7 @@ class RolesSeeder extends Seeder
             'Livreur' => '🚚',
             'Agent commercial' => '🤝',
             'Magasinier' => '📋',
+            'Caissier' => '💳',
             'Directeur général' => '🎯',
         ];
 

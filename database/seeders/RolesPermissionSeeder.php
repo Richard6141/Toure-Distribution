@@ -247,6 +247,18 @@ class RolesPermissionSeeder extends Seeder
             ['name' => 'export.excel', 'libelle' => 'Exporter en Excel'],
             ['name' => 'export.csv', 'libelle' => 'Exporter en CSV'],
 
+            // === CAISSE - PAIEMENTS CLIENTS ===
+            ['name' => 'caisse.view', 'libelle' => 'Consulter les paiements caisse'],
+            ['name' => 'caisse.create', 'libelle' => 'Enregistrer un paiement client'],
+            ['name' => 'caisse.delete', 'libelle' => 'Annuler un paiement client'],
+            ['name' => 'caisse.restore', 'libelle' => 'Restaurer un paiement annulé'],
+            ['name' => 'caisse.search_client', 'libelle' => 'Rechercher un client (caisse)'],
+            ['name' => 'caisse.view_client_info', 'libelle' => 'Voir les infos client (caisse)'],
+            ['name' => 'caisse.view_client_history', 'libelle' => 'Voir l\'historique paiements client'],
+            ['name' => 'caisse.stats', 'libelle' => 'Voir les statistiques caisse'],
+            ['name' => 'caisse.trashed', 'libelle' => 'Voir les paiements annulés'],
+            ['name' => 'caisse.debtors', 'libelle' => 'Voir la liste des débiteurs'],
+
             // === SYSTÈME (Super Admin uniquement) ===
             ['name' => 'system.settings', 'libelle' => 'Modifier les paramètres système'],
             ['name' => 'system.logs', 'libelle' => 'Consulter les logs système'],

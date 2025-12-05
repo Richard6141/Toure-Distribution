@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\ClientPhone;
+use App\Models\ClientPayment;
+use App\Models\ClientBalanceAdjustment;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -219,5 +221,120 @@ class Client extends Model
             ->sum(function ($vente) {
                 return $vente->montant_restant;
             });
+    }
+
+    /**
+     * Relation avec les ajustements de solde
+     */
+    public function balanceAdjustments(): HasMany
+    {
+        return $this->hasMany(ClientBalanceAdjustment::class, 'client_id', 'client_id');
+    }
+
+    /**
+     * Relation avec les paiements caisse
+     */
+    public function clientPayments(): HasMany
+    {
+        return $this->hasMany(ClientPayment::class, 'client_id', 'client_id');
+    }
+
+    /**
+     * Récupère la dette initiale migrée (si existante)
+     * Note: Les dettes sont stockées en négatif, on retourne la valeur absolue
+     */
+    public function getDetteInitialeAttribute(): float
+    {
+        $montant = $this->balanceAdjustments()
+            ->where('type', 'dette_initiale')
+            ->where('source', 'migration')
+            ->sum('montant');
+
+        return abs($montant);
+    }
+
+    /**
+     * Récupère la dette initiale formatée
+     */
+    public function getFormattedDetteInitialeAttribute(): string
+    {
+        return number_format($this->dette_initiale, 2, ',', ' ') . ' FCFA';
+    }
+
+    /**
+     * Récupère la dette actuelle du client (solde négatif = dette)
+     */
+    public function getDetteActuelleAttribute(): float
+    {
+        return $this->current_balance < 0 ? abs($this->current_balance) : 0;
+    }
+
+    /**
+     * Récupère la dette actuelle formatée
+     */
+    public function getFormattedDetteActuelleAttribute(): string
+    {
+        return number_format($this->dette_actuelle, 2, ',', ' ') . ' FCFA';
+    }
+
+    /**
+     * Vérifie si le client a une dette (solde négatif)
+     */
+    public function hasDebt(): bool
+    {
+        return $this->current_balance < 0;
+    }
+
+    /**
+     * Vérifie si le client a un crédit/avance (solde positif)
+     */
+    public function hasCredit(): bool
+    {
+        return $this->current_balance > 0;
+    }
+
+    /**
+     * Vérifie si le client a une dette de migration
+     */
+    public function hasMigrationDebt(): bool
+    {
+        return $this->balanceAdjustments()
+            ->where('type', 'dette_initiale')
+            ->where('source', 'migration')
+            ->exists();
+    }
+
+    /**
+     * Scope : clients avec dette de migration
+     */
+    public function scopeWithMigrationDebt($query)
+    {
+        return $query->whereHas('balanceAdjustments', function ($q) {
+            $q->where('type', 'dette_initiale')->where('source', 'migration');
+        });
+    }
+
+    /**
+     * Retourne le total des ajustements (positifs et négatifs)
+     */
+    public function getTotalAdjustmentsAttribute(): float
+    {
+        return $this->balanceAdjustments()->sum('montant');
+    }
+
+    /**
+     * Retourne le total des paiements caisse effectués par le client
+     */
+    public function getTotalClientPaymentsAttribute(): float
+    {
+        return $this->clientPayments()->sum('montant');
+    }
+
+    /**
+     * Retourne le total des paiements caisse formaté
+     */
+    public function getFormattedTotalClientPaymentsAttribute(): string
+    {
+        return number_format($this->total_client_payments, 2, ',', ' ') . ' FCFA';
     }
 }

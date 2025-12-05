@@ -32,6 +32,8 @@ use App\Http\Controllers\Api\RolePermissionController;
 use App\Http\Controllers\StockMovementDetailController;
 use App\Http\Controllers\Api\PaiementCommandeController;
 use App\Http\Controllers\Api\BanqueTransactionController;
+use App\Http\Controllers\Api\ClientBalanceAdjustmentController;
+use App\Http\Controllers\Api\CaisseController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -93,6 +95,7 @@ Route::prefix('clients')->group(function () {
     // ✅ Routes avec segments FIXES en premier
     Route::get('/trashed/list', [ClientController::class, 'trashed'])->name('clients.trashed');
     Route::get('/statistics/overview', [ClientController::class, 'statistics'])->name('clients.statistics');
+    Route::get('/debtors/list', [ClientController::class, 'debtors'])->name('clients.debtors');
     Route::post('/search', [ClientController::class, 'search'])->name('clients.search');
 
     // ✅ Routes CRUD principales (avec paramètres dynamiques)
@@ -108,7 +111,68 @@ Route::prefix('clients')->group(function () {
     Route::patch('/{client_id}/toggle-status', [ClientController::class, 'toggleStatus'])->name('clients.toggle-status');
     Route::patch('/{client_id}/update-balance', [ClientController::class, 'updateBalance'])->name('clients.update-balance');
 })->middleware('auth:sanctum');
+
 /*
+|--------------------------------------------------------------------------
+| Client Balance Adjustments API Routes (Gestion des dettes)
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('client-balance-adjustments')->name('client-adjustments.')->group(function () {
+    // Routes fixes d'abord
+    Route::get('/trashed/list', [ClientBalanceAdjustmentController::class, 'trashed'])->name('trashed');
+    Route::get('/statistics/overview', [ClientBalanceAdjustmentController::class, 'statistics'])->name('statistics');
+    Route::get('/types/list', [ClientBalanceAdjustmentController::class, 'types'])->name('types');
+    Route::post('/bulk-store', [ClientBalanceAdjustmentController::class, 'bulkStore'])->name('bulk-store');
+    Route::get('/client/{client_id}/history', [ClientBalanceAdjustmentController::class, 'clientHistory'])->name('client-history');
+
+    // Routes CRUD standard
+    Route::get('/', [ClientBalanceAdjustmentController::class, 'index'])->name('index');
+    Route::post('/', [ClientBalanceAdjustmentController::class, 'store'])->name('store');
+    Route::get('/{id}', [ClientBalanceAdjustmentController::class, 'show'])->name('show');
+    Route::put('/{id}', [ClientBalanceAdjustmentController::class, 'update'])->name('update');
+    Route::patch('/{id}', [ClientBalanceAdjustmentController::class, 'update'])->name('patch');
+    Route::delete('/{id}', [ClientBalanceAdjustmentController::class, 'destroy'])->name('destroy');
+
+    // Route pour restaurer un ajustement supprimé
+    Route::post('/{id}/restore', [ClientBalanceAdjustmentController::class, 'restore'])->name('restore');
+})->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| Caisse API Routes - Paiements clients
+|--------------------------------------------------------------------------
+| Ces routes permettent à la caissière de :
+| - Rechercher un client
+| - Voir les informations et le solde du client
+| - Enregistrer un paiement qui ajuste automatiquement le solde
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('caisse')->name('caisse.')->group(function () {
+    // Routes fixes d'abord (pour éviter les conflits avec les routes dynamiques)
+    Route::get('/trashed/list', [CaisseController::class, 'trashed'])->name('trashed');
+    Route::get('/statistics/overview', [CaisseController::class, 'statistics'])->name('statistics');
+    Route::get('/debtors/list', [CaisseController::class, 'debtors'])->name('debtors');
+
+    // Recherche de client (route principale pour la caissière)
+    Route::get('/search-client', [CaisseController::class, 'searchClient'])->name('search-client');
+
+    // Informations détaillées d'un client
+    Route::get('/client/{client_id}/info', [CaisseController::class, 'getClientInfo'])->name('client-info');
+
+    // Historique des paiements d'un client
+    Route::get('/client/{client_id}/history', [CaisseController::class, 'clientHistory'])->name('client-history');
+
+    // Routes CRUD pour les paiements
+    Route::get('/', [CaisseController::class, 'index'])->name('index');
+    Route::post('/', [CaisseController::class, 'storePayment'])->name('store');
+    Route::get('/{id}', [CaisseController::class, 'show'])->name('show');
+    Route::delete('/{id}', [CaisseController::class, 'destroy'])->name('destroy');
+
+    // Restaurer un paiement annulé
+    Route::post('/{id}/restore', [CaisseController::class, 'restore'])->name('restore');
+})->middleware('auth:sanctum');
 
 /*
 |--------------------------------------------------------------------------

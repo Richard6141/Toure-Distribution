@@ -737,6 +737,186 @@ class ClientController extends Controller
     }
 
     /**
+     * Lister les clients débiteurs
+     *
+     * Récupère la liste des clients qui doivent de l'argent à l'entreprise (solde négatif).
+     * Les résultats sont triés par dette décroissante (plus gros débiteurs en premier).
+     *
+     * @queryParam page integer Page à récupérer. Example: 1
+     * @queryParam per_page integer Nombre d'éléments par page (max: 100). Example: 15
+     * @queryParam min_debt numeric Montant minimum de dette pour filtrer. Example: 50000
+     * @queryParam max_debt numeric Montant maximum de dette pour filtrer. Example: 500000
+     * @queryParam client_type_id string Filtrer par type de client (UUID). Example: 550e8400-e29b-41d4-a716-446655440000
+     * @queryParam city string Filtrer par ville. Example: Cotonou
+     * @queryParam marketteur string Filtrer par marketteur. Example: Marie Dupont
+     * @queryParam search string Recherche par nom, code ou téléphone. Example: John
+     * @queryParam is_active boolean Filtrer par statut actif. Example: true
+     * @queryParam sort_by string Colonne de tri (debt, name_client, created_at). Example: debt
+     * @queryParam sort_order string Ordre de tri (asc, desc). Example: desc
+     * @queryParam with_adjustments boolean Inclure l'historique des ajustements. Example: false
+     *
+     * @response 200 {
+     *   "success": true,
+     *   "message": "Liste des clients débiteurs",
+     *   "data": {
+     *     "current_page": 1,
+     *     "data": [
+     *       {
+     *         "client_id": "550e8400-e29b-41d4-a716-446655440000",
+     *         "code": "CLI00001",
+     *         "name_client": "John Doe",
+     *         "phonenumber": "+229 12 34 56 78",
+     *         "city": "Cotonou",
+     *         "current_balance": "-150000.00",
+     *         "dette_actuelle": 150000,
+     *         "formatted_dette": "150 000,00 FCFA",
+     *         "credit_limit": "500000.00",
+     *         "is_active": true,
+     *         "client_type": { "label": "Détaillant" }
+     *       }
+     *     ],
+     *     "per_page": 15,
+     *     "total": 45
+     *   },
+     *   "summary": {
+     *     "total_debtors": 45,
+     *     "total_debt": 5000000,
+     *     "formatted_total_debt": "5 000 000,00 FCFA",
+     *     "average_debt": 111111.11,
+     *     "formatted_average_debt": "111 111,11 FCFA",
+     *     "biggest_debtor": {
+     *       "client_id": "...",
+     *       "name_client": "Client XYZ",
+     *       "dette": 500000
+     *     }
+     *   }
+     * }
+     */
+    public function debtors(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'page' => 'integer|min:1',
+            'per_page' => 'integer|min:1|max:100',
+            'min_debt' => 'nullable|numeric|min:0',
+            'max_debt' => 'nullable|numeric|min:0',
+            'client_type_id' => 'nullable|uuid|exists:client_types,client_type_id',
+            'city' => 'nullable|string|max:255',
+            'marketteur' => 'nullable|string|max:255',
+            'search' => 'nullable|string|max:255',
+            'is_active' => 'nullable|boolean',
+            'sort_by' => 'nullable|in:debt,name_client,created_at,current_balance',
+            'sort_order' => 'nullable|in:asc,desc',
+            'with_adjustments' => 'nullable|boolean',
+        ]);
+
+        // Requête de base : clients avec solde négatif (ils doivent à l'entreprise)
+        $query = Client::where('current_balance', '<', 0);
+
+        // Filtre par montant minimum de dette
+        if (isset($validated['min_debt'])) {
+            $query->where('current_balance', '<=', -$validated['min_debt']);
+        }
+
+        // Filtre par montant maximum de dette
+        if (isset($validated['max_debt'])) {
+            $query->where('current_balance', '>=', -$validated['max_debt']);
+        }
+
+        // Filtre par type de client
+        if (isset($validated['client_type_id'])) {
+            $query->where('client_type_id', $validated['client_type_id']);
+        }
+
+        // Filtre par ville
+        if (isset($validated['city'])) {
+            $query->where('city', 'like', "%{$validated['city']}%");
+        }
+
+        // Filtre par marketteur
+        if (isset($validated['marketteur'])) {
+            $query->where('marketteur', 'like', "%{$validated['marketteur']}%");
+        }
+
+        // Recherche globale
+        if (isset($validated['search'])) {
+            $search = $validated['search'];
+            $query->where(function ($q) use ($search) {
+                $q->where('name_client', 'like', "%{$search}%")
+                  ->orWhere('code', 'like', "%{$search}%")
+                  ->orWhere('phonenumber', 'like', "%{$search}%")
+                  ->orWhere('name_representant', 'like', "%{$search}%");
+            });
+        }
+
+        // Filtre par statut actif
+        if (isset($validated['is_active'])) {
+            $query->where('is_active', $validated['is_active']);
+        }
+
+        // Tri
+        $sortBy = $validated['sort_by'] ?? 'debt';
+        $sortOrder = $validated['sort_order'] ?? 'desc';
+
+        if ($sortBy === 'debt') {
+            // Trier par dette (solde le plus négatif en premier si desc)
+            $query->orderBy('current_balance', $sortOrder === 'desc' ? 'asc' : 'desc');
+        } else {
+            $query->orderBy($sortBy, $sortOrder);
+        }
+
+        // Inclure les relations
+        $query->with('clientType');
+
+        if (isset($validated['with_adjustments']) && $validated['with_adjustments']) {
+            $query->with(['balanceAdjustments' => function ($q) {
+                $q->orderBy('date_ajustement', 'desc')->limit(5);
+            }]);
+        }
+
+        // Pagination
+        $perPage = $validated['per_page'] ?? 15;
+        $debtors = $query->paginate($perPage);
+
+        // Calculer les statistiques globales (sur tous les débiteurs, pas seulement la page courante)
+        $allDebtorsQuery = Client::where('current_balance', '<', 0);
+        $totalDebt = abs($allDebtorsQuery->sum('current_balance'));
+        $totalDebtors = $allDebtorsQuery->count();
+        $averageDebt = $totalDebtors > 0 ? $totalDebt / $totalDebtors : 0;
+
+        // Plus gros débiteur
+        $biggestDebtor = Client::where('current_balance', '<', 0)
+            ->orderBy('current_balance', 'asc')
+            ->first(['client_id', 'name_client', 'code', 'current_balance']);
+
+        // Transformer les données pour ajouter le montant de dette en positif
+        $debtors->getCollection()->transform(function ($client) {
+            $client->dette_actuelle = abs($client->current_balance);
+            $client->formatted_dette = number_format(abs($client->current_balance), 2, ',', ' ') . ' FCFA';
+            return $client;
+        });
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Liste des clients débiteurs',
+            'data' => $debtors,
+            'summary' => [
+                'total_debtors' => $totalDebtors,
+                'total_debt' => $totalDebt,
+                'formatted_total_debt' => number_format($totalDebt, 2, ',', ' ') . ' FCFA',
+                'average_debt' => round($averageDebt, 2),
+                'formatted_average_debt' => number_format($averageDebt, 2, ',', ' ') . ' FCFA',
+                'biggest_debtor' => $biggestDebtor ? [
+                    'client_id' => $biggestDebtor->client_id,
+                    'code' => $biggestDebtor->code,
+                    'name_client' => $biggestDebtor->name_client,
+                    'dette' => abs($biggestDebtor->current_balance),
+                    'formatted_dette' => number_format(abs($biggestDebtor->current_balance), 2, ',', ' ') . ' FCFA',
+                ] : null,
+            ]
+        ]);
+    }
+
+    /**
      * Rechercher des clients
      *
      * Recherche avancée de clients avec de multiples critères.
