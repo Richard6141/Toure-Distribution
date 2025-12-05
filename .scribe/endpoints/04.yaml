@@ -1,21 +1,75 @@
-name: Fournisseurs
+name: 'Gestion des Ajustements de Solde Client'
 description: |-
 
-  APIs pour la gestion des fournisseurs
+  API pour gérer les ajustements de solde des clients.
+  Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+  depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+  ## Convention du solde client (current_balance)
+
+  | Situation | Valeur |
+  |-----------|--------|
+  | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+  | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+  ## Types d'ajustement disponibles
+
+  | Type | Description | Effet sur le solde |
+  |------|-------------|-------------------|
+  | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+  | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+  | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+  | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+  | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+  ## Sources possibles
+
+  | Source | Description |
+  |--------|-------------|
+  | `migration` | Données importées lors de la migration système |
+  | `manuel` | Saisie manuelle par un utilisateur |
+  | `import` | Import via fichier (Excel/CSV) |
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/fournisseurs
+    uri: api/client-balance-adjustments/trashed/list
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des fournisseurs'
-      description: 'Récupère la liste paginée des fournisseurs avec possibilité de filtrage.'
+      title: 'Lister les ajustements annulés'
+      description: 'Récupère la liste des ajustements qui ont été annulés (soft deleted).'
       authenticated: false
       deprecated: false
       custom: []
@@ -25,95 +79,29 @@ endpoints:
     urlParameters: []
     cleanUrlParameters: []
     queryParameters:
-      page:
-        name: page
-        description: 'Numéro de la page.'
+      client_id:
+        name: client_id
+        description: 'UUID du client pour filtrer.'
         required: false
-        example: 1
-        type: integer
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
       per_page:
         name: per_page
-        description: "Nombre d'éléments par page (max 100)."
+        description: "Nombre d'éléments par page (défaut: 15)."
         required: false
-        example: 15
+        example: 20
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      search:
-        name: search
-        description: 'Recherche par nom, code ou email.'
-        required: false
-        example: ACME
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      city:
-        name: city
-        description: 'Filtrer par ville.'
-        required: false
-        example: Paris
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Filtrer par statut actif (true/false).'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      sort_by:
-        name: sort_by
-        description: 'Champ de tri (name, code, created_at).'
-        required: false
-        example: name
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      sort_order:
-        name: sort_order
-        description: 'Ordre de tri (asc, desc).'
-        required: false
-        example: asc
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      with_trashed:
-        name: with_trashed
-        description: 'Inclure les fournisseurs supprimés.'
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanQueryParameters:
-      page: 1
-      per_page: 15
-      search: ACME
-      city: Paris
-      is_active: true
-      sort_by: name
-      sort_order: asc
-      with_trashed: false
+      client_id: 550e8400-e29b-41d4-a716-446655440000
+      per_page: 20
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -122,36 +110,214 @@ endpoints:
         status: 200
         content: |-
           {
-            "data": [
-              {
-                "fournisseur_id": "550e8400-e29b-41d4-a716-446655440000",
-                "code": "FRN-ABC123",
-                "name": "ACME Corporation",
-                "responsable": "John Doe",
-                "adresse": "123 Main Street",
-                "city": "Paris",
-                "phone": "+33123456789",
-                "email": "contact@acme.com",
-                "payment_terms": "30 jours",
-                "is_active": true,
-                "created_at": "2023-01-01T00:00:00.000000Z",
-                "updated_at": "2023-01-01T00:00:00.000000Z",
-                "deleted_at": null
-              }
-            ],
-            "links": {
-              "first": "http://api.example.com/fournisseurs?page=1",
-              "last": "http://api.example.com/fournisseurs?page=10",
-              "prev": null,
-              "next": "http://api.example.com/fournisseurs?page=2"
-            },
-            "meta": {
+            "success": true,
+            "message": "Liste des ajustements supprimés",
+            "data": {
               "current_page": 1,
-              "from": 1,
-              "last_page": 10,
+              "data": [ ... ],
               "per_page": 15,
-              "to": 15,
-              "total": 150
+              "total": 5
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/client-balance-adjustments/statistics/overview
+    metadata:
+      groupName: 'Gestion des Ajustements de Solde Client'
+      groupDescription: |-
+
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Statistiques des ajustements'
+      description: 'Récupère des statistiques globales sur les ajustements de solde.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      date_debut:
+        name: date_debut
+        description: 'date Date de début pour filtrer (format: Y-m-d).'
+        required: false
+        example: '2024-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_fin:
+        name: date_fin
+        description: 'date Date de fin pour filtrer (format: Y-m-d).'
+        required: false
+        example: '2024-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      date_debut: '2024-01-01'
+      date_fin: '2024-12-31'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Statistiques des ajustements",
+            "data": {
+              "total_adjustments": 150,
+              "total_dettes_initiales": 5000000,
+              "total_credits": 200000,
+              "total_debits": -150000,
+              "total_corrections": 50000,
+              "total_remises": -100000,
+              "by_source": {
+                "migration": 100,
+                "manuel": 45,
+                "import": 5
+              },
+              "clients_with_migration_debt": 80,
+              "total_client_balance": 4800000,
+              "formatted_total_dettes_initiales": "5 000 000,00 FCFA",
+              "formatted_total_client_balance": "4 800 000,00 FCFA"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/client-balance-adjustments/types/list
+    metadata:
+      groupName: 'Gestion des Ajustements de Solde Client'
+      groupDescription: |-
+
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Types et sources disponibles'
+      description: |-
+        Retourne la liste des types d'ajustement et des sources disponibles.
+        Utile pour alimenter les listes déroulantes dans l'interface utilisateur.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "types": {
+                "dette_initiale": "Dette initiale (Migration)",
+                "ajustement_credit": "Ajustement crédit",
+                "ajustement_debit": "Ajustement débit",
+                "correction": "Correction",
+                "remise_exceptionnelle": "Remise exceptionnelle"
+              },
+              "sources": {
+                "migration": "Migration système",
+                "manuel": "Saisie manuelle",
+                "import": "Import fichier"
+              },
+              "type_effects": {
+                "dette_initiale": "Augmente le solde (+)",
+                "ajustement_credit": "Augmente le solde (+)",
+                "ajustement_debit": "Diminue le solde (-)",
+                "correction": "Selon le signe du montant",
+                "remise_exceptionnelle": "Diminue le solde (-)"
+              }
             }
           }
         headers: []
@@ -166,16 +332,49 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/fournisseurs
+    uri: api/client-balance-adjustments/bulk-store
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer un fournisseur'
-      description: 'Crée un nouveau fournisseur dans le système.'
+      title: 'Import en masse des dettes (Migration)'
+      description: |-
+        Permet d'importer plusieurs dettes initiales en une seule requête.
+        Idéal pour la migration des données depuis l'ancien système.
+
+        Toutes les dettes sont enregistrées avec :
+        - type: `dette_initiale`
+        - source: `migration`
       authenticated: false
       deprecated: false
       custom: []
@@ -187,114 +386,94 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Nom du fournisseur.'
+      adjustments:
+        name: adjustments
+        description: 'Liste des ajustements à créer.'
         required: true
-        example: 'ACME Corporation'
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'adjustments[].client_id':
+        name: 'adjustments[].client_id'
+        description: 'UUID du client.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      responsable:
-        name: responsable
-        description: 'Personne responsable.'
-        required: false
-        example: 'John Doe'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      adresse:
-        name: adresse
-        description: 'Adresse du fournisseur.'
-        required: false
-        example: '123 Main Street'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      city:
-        name: city
-        description: Ville.
-        required: false
-        example: Paris
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      phone:
-        name: phone
-        description: 'Numéro de téléphone.'
-        required: false
-        example: '+33123456789'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      email:
-        name: email
-        description: 'Email (doit être unique).'
-        required: false
-        example: contact@acme.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      payment_terms:
-        name: payment_terms
-        description: 'Conditions de paiement.'
-        required: false
-        example: '30 jours'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Statut actif (par défaut: true).'
-        required: false
-        example: true
-        type: boolean
+      'adjustments[].montant':
+        name: 'adjustments[].montant'
+        description: 'Montant de la dette (sera converti en positif).'
+        required: true
+        example: '150000'
+        type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
+        custom: []
+      'adjustments[].motif':
+        name: 'adjustments[].motif'
+        description: 'Motif personnalisé (défaut: "Dette migrée de l''ancien système").'
+        required: false
+        example: 'Dette 2023'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
         custom: []
     cleanBodyParameters:
-      name: 'ACME Corporation'
-      responsable: 'John Doe'
-      adresse: '123 Main Street'
-      city: Paris
-      phone: '+33123456789'
-      email: contact@acme.com
-      payment_terms: '30 jours'
-      is_active: true
+      adjustments:
+        - architecto
     fileParameters: []
     responses:
       -
         status: 201
         content: |-
           {
-            "fournisseur_id": "550e8400-e29b-41d4-a716-446655440000",
-            "code": "FRN-ABC123",
-            "name": "ACME Corporation",
-            "responsable": "John Doe",
-            "adresse": "123 Main Street",
-            "city": "Paris",
-            "phone": "+33123456789",
-            "email": "contact@acme.com",
-            "payment_terms": "30 jours",
-            "is_active": true,
-            "created_at": "2023-01-01T00:00:00.000000Z",
-            "updated_at": "2023-01-01T00:00:00.000000Z",
-            "deleted_at": null
+            "success": true,
+            "message": "Import des dettes terminé",
+            "data": {
+              "total_processed": 3,
+              "total_errors": 0,
+              "results": [
+                {
+                  "client_id": "...",
+                  "client_name": "Client ABC",
+                  "adjustment_id": "...",
+                  "montant": 150000,
+                  "nouveau_solde": 150000
+                }
+              ],
+              "errors": []
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 207
+        content: |-
+          {
+            "success": true,
+            "message": "Import des dettes terminé",
+            "data": {
+              "total_processed": 2,
+              "total_errors": 1,
+              "results": [ ... ],
+              "errors": [
+                {
+                  "index": 2,
+                  "client_id": "invalid-uuid",
+                  "error": "Client non trouvé"
+                }
+              ]
+            }
           }
         headers: []
         description: ''
@@ -303,11 +482,9 @@ endpoints:
         status: 422
         content: |-
           {
-            "message": "Les données fournies ne sont pas valides.",
-            "errors": {
-              "name": ["Le nom est obligatoire."],
-              "email": ["Cette adresse email est déjà utilisée."]
-            }
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": { ... }
           }
         headers: []
         description: ''
@@ -321,16 +498,552 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/fournisseurs/{id}'
+    uri: 'api/client-balance-adjustments/client/{client_id}/history'
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un fournisseur'
-      description: "Récupère les détails d'un fournisseur spécifique."
+      title: "Historique des ajustements d'un client"
+      description: |-
+        Récupère l'historique complet des ajustements de solde pour un client spécifique,
+        avec un résumé de son solde actuel et de sa dette initiale.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      client_id:
+        name: client_id
+        description: 'UUID du client.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      client_id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Historique des ajustements du client",
+            "data": {
+              "client": {
+                "client_id": "550e8400-e29b-41d4-a716-446655440000",
+                "code": "CLI001",
+                "name_client": "Client ABC",
+                "current_balance": 150000,
+                "formatted_current_balance": "150 000,00 FCFA"
+              },
+              "adjustments": [
+                {
+                  "adjustment_id": "...",
+                  "reference": "ADJ-2024-0001",
+                  "type": "dette_initiale",
+                  "montant": "150000.00",
+                  "motif": "Dette migrée",
+                  "date_ajustement": "2024-01-15T10:30:00.000000Z",
+                  "user": { "name": "Admin" }
+                }
+              ],
+              "total_adjustments": 1,
+              "total_dette_initiale": 150000
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Client non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/client-balance-adjustments
+    metadata:
+      groupName: 'Gestion des Ajustements de Solde Client'
+      groupDescription: |-
+
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les ajustements de solde'
+      description: 'Récupère la liste paginée des ajustements de solde avec possibilité de filtrage.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      client_id:
+        name: client_id
+        description: 'UUID du client pour filtrer.'
+        required: false
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: "Type d'ajustement (dette_initiale, ajustement_credit, ajustement_debit, correction, remise_exceptionnelle)."
+        required: false
+        example: dette_initiale
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      source:
+        name: source
+        description: "Source de l'ajustement (migration, manuel, import)."
+        required: false
+        example: migration
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_debut:
+        name: date_debut
+        description: 'date Date de début pour filtrer par période (format: Y-m-d).'
+        required: false
+        example: '2024-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_fin:
+        name: date_fin
+        description: 'date Date de fin pour filtrer par période (format: Y-m-d).'
+        required: false
+        example: '2024-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Recherche par référence, motif ou nom/code client.'
+        required: false
+        example: ADJ-2024
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Colonne de tri (created_at, date_ajustement, montant).'
+        required: false
+        example: created_at
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc).'
+        required: false
+        example: desc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (défaut: 15)."
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      client_id: 550e8400-e29b-41d4-a716-446655440000
+      type: dette_initiale
+      source: migration
+      date_debut: '2024-01-01'
+      date_fin: '2024-12-31'
+      search: ADJ-2024
+      sort_by: created_at
+      sort_order: desc
+      per_page: 20
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des ajustements de solde",
+            "data": {
+              "current_page": 1,
+              "data": [
+                {
+                  "adjustment_id": "550e8400-e29b-41d4-a716-446655440000",
+                  "reference": "ADJ-2024-0001",
+                  "client_id": "...",
+                  "type": "dette_initiale",
+                  "montant": "150000.00",
+                  "ancien_solde": "0.00",
+                  "nouveau_solde": "150000.00",
+                  "motif": "Dette migrée de l'ancien système",
+                  "source": "migration",
+                  "date_ajustement": "2024-01-15T10:30:00.000000Z",
+                  "client": { "client_id": "...", "name_client": "Client ABC" },
+                  "user": { "user_id": "...", "name": "Admin" }
+                }
+              ],
+              "per_page": 15,
+              "total": 50
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/client-balance-adjustments
+    metadata:
+      groupName: 'Gestion des Ajustements de Solde Client'
+      groupDescription: |-
+
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer un ajustement de solde'
+      description: |-
+        Enregistre un nouvel ajustement de solde pour un client.
+        Le solde du client est automatiquement mis à jour.
+
+        ## Comportement selon le type
+
+        - **dette_initiale** / **ajustement_credit** : Diminue le solde (le client doit plus)
+        - **ajustement_debit** / **remise_exceptionnelle** : Augmente le solde (le client doit moins)
+        - **correction** : Le signe du montant est conservé tel que saisi
+
+        > **Note** : Le montant saisi est toujours en valeur absolue. Le système applique automatiquement le signe correct.
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      client_id:
+        name: client_id
+        description: 'UUID du client.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      type:
+        name: type
+        description: "Type d'ajustement."
+        required: true
+        example: dette_initiale
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant:
+        name: montant
+        description: "Montant de l'ajustement (différent de 0)."
+        required: true
+        example: '150000'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      motif:
+        name: motif
+        description: "Raison de l'ajustement (max 255 caractères)."
+        required: true
+        example: "Dette migrée de l'ancien système"
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Informations supplémentaires (max 1000 caractères).'
+        required: false
+        example: 'Référence ancien système: CLI-2023-456'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      source:
+        name: source
+        description: "Source de l'ajustement (migration, manuel, import). Défaut: manuel."
+        required: false
+        example: migration
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      date_ajustement:
+        name: date_ajustement
+        description: "Date de l'ajustement. Défaut: maintenant."
+        required: false
+        example: '2024-01-15 10:30:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      client_id: 550e8400-e29b-41d4-a716-446655440000
+      type: dette_initiale
+      montant: '150000'
+      motif: "Dette migrée de l'ancien système"
+      note: 'Référence ancien système: CLI-2023-456'
+      source: migration
+      date_ajustement: '2024-01-15 10:30:00'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Ajustement de solde enregistré avec succès",
+            "data": {
+              "adjustment": {
+                "adjustment_id": "550e8400-e29b-41d4-a716-446655440000",
+                "reference": "ADJ-2024-0001",
+                "client_id": "...",
+                "type": "dette_initiale",
+                "montant": "150000.00",
+                "ancien_solde": "0.00",
+                "nouveau_solde": "150000.00",
+                "motif": "Dette migrée de l'ancien système",
+                "source": "migration",
+                "date_ajustement": "2024-01-15T10:30:00.000000Z"
+              },
+              "client": {
+                "client_id": "...",
+                "name_client": "Client ABC",
+                "ancien_solde": 0,
+                "nouveau_solde": 150000,
+                "formatted_ancien_solde": "0,00 FCFA",
+                "formatted_nouveau_solde": "150 000,00 FCFA"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation des données",
+            "errors": {
+              "client_id": ["Le client sélectionné n'existe pas"],
+              "montant": ["Le montant ne peut pas être égal à zéro"]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de l'enregistrement de l'ajustement",
+            "error": "Message d'erreur détaillé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/client-balance-adjustments/{id}'
+    metadata:
+      groupName: 'Gestion des Ajustements de Solde Client'
+      groupDescription: |-
+
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher un ajustement'
+      description: "Récupère les détails d'un ajustement de solde spécifique."
       authenticated: false
       deprecated: false
       custom: []
@@ -340,7 +1053,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'ID du fournisseur."
+        description: "UUID de l'ajustement."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -350,19 +1063,8 @@ endpoints:
         custom: []
     cleanUrlParameters:
       id: 550e8400-e29b-41d4-a716-446655440000
-    queryParameters:
-      with_trashed:
-        name: with_trashed
-        description: 'Inclure même si supprimé.'
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      with_trashed: false
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -371,19 +1073,22 @@ endpoints:
         status: 200
         content: |-
           {
-            "fournisseur_id": "550e8400-e29b-41d4-a716-446655440000",
-            "code": "FRN-ABC123",
-            "name": "ACME Corporation",
-            "responsable": "John Doe",
-            "adresse": "123 Main Street",
-            "city": "Paris",
-            "phone": "+33123456789",
-            "email": "contact@acme.com",
-            "payment_terms": "30 jours",
-            "is_active": true,
-            "created_at": "2023-01-01T00:00:00.000000Z",
-            "updated_at": "2023-01-01T00:00:00.000000Z",
-            "deleted_at": null
+            "success": true,
+            "data": {
+              "adjustment_id": "550e8400-e29b-41d4-a716-446655440000",
+              "reference": "ADJ-2024-0001",
+              "client_id": "...",
+              "type": "dette_initiale",
+              "montant": "150000.00",
+              "ancien_solde": "0.00",
+              "nouveau_solde": "150000.00",
+              "motif": "Dette migrée de l'ancien système",
+              "note": "Référence ancien système: CLI-2023-456",
+              "source": "migration",
+              "date_ajustement": "2024-01-15T10:30:00.000000Z",
+              "client": { "client_id": "...", "name_client": "Client ABC", "code": "CLI001" },
+              "user": { "user_id": "...", "name": "Admin" }
+            }
           }
         headers: []
         description: ''
@@ -392,7 +1097,8 @@ endpoints:
         status: 404
         content: |-
           {
-            "message": "Fournisseur non trouvé."
+            "success": false,
+            "message": "Ajustement non trouvé"
           }
         headers: []
         description: ''
@@ -406,16 +1112,48 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/fournisseurs/{id}'
+    uri: 'api/client-balance-adjustments/{id}'
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un fournisseur'
-      description: "Met à jour les informations d'un fournisseur existant."
+      title: 'Modifier un ajustement'
+      description: |-
+        Met à jour les informations d'un ajustement existant.
+
+        **Important** : Seuls le motif et la note peuvent être modifiés.
+        Le montant et le type ne peuvent pas être changés pour préserver l'intégrité comptable.
+        Pour corriger un montant erroné, annulez l'ajustement et créez-en un nouveau.
       authenticated: false
       deprecated: false
       custom: []
@@ -425,7 +1163,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'ID du fournisseur."
+        description: "UUID de l'ajustement."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -438,114 +1176,45 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Nom du fournisseur.'
+      motif:
+        name: motif
+        description: "Nouvelle raison de l'ajustement (max 255 caractères)."
         required: false
-        example: 'ACME Corporation'
+        example: 'Correction du motif'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      responsable:
-        name: responsable
-        description: 'Personne responsable.'
+      note:
+        name: note
+        description: 'Nouvelles informations supplémentaires (max 1000 caractères).'
         required: false
-        example: 'John Doe'
+        example: 'Note mise à jour'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
-      adresse:
-        name: adresse
-        description: 'Adresse du fournisseur.'
-        required: false
-        example: '123 Main Street'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      city:
-        name: city
-        description: Ville.
-        required: false
-        example: Paris
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      phone:
-        name: phone
-        description: 'Numéro de téléphone.'
-        required: false
-        example: '+33123456789'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      email:
-        name: email
-        description: 'Email (doit être unique).'
-        required: false
-        example: contact@acme.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      payment_terms:
-        name: payment_terms
-        description: 'Conditions de paiement.'
-        required: false
-        example: '30 jours'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Statut actif.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
         custom: []
     cleanBodyParameters:
-      name: 'ACME Corporation'
-      responsable: 'John Doe'
-      adresse: '123 Main Street'
-      city: Paris
-      phone: '+33123456789'
-      email: contact@acme.com
-      payment_terms: '30 jours'
-      is_active: true
+      motif: 'Correction du motif'
+      note: 'Note mise à jour'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "fournisseur_id": "550e8400-e29b-41d4-a716-446655440000",
-            "code": "FRN-ABC123",
-            "name": "ACME Corporation Updated",
-            "responsable": "Jane Doe",
-            "adresse": "456 New Street",
-            "city": "Lyon",
-            "phone": "+33987654321",
-            "email": "contact@acme.com",
-            "payment_terms": "45 jours",
-            "is_active": true,
-            "created_at": "2023-01-01T00:00:00.000000Z",
-            "updated_at": "2023-01-02T00:00:00.000000Z",
-            "deleted_at": null
+            "success": true,
+            "message": "Ajustement mis à jour avec succès",
+            "data": {
+              "adjustment_id": "...",
+              "reference": "ADJ-2024-0001",
+              "motif": "Correction du motif",
+              "note": "Note mise à jour",
+              "client": { ... },
+              "user": { ... }
+            }
           }
         headers: []
         description: ''
@@ -554,19 +1223,8 @@ endpoints:
         status: 404
         content: |-
           {
-            "message": "Fournisseur non trouvé."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "message": "Les données fournies ne sont pas valides.",
-            "errors": {
-              "email": ["Cette adresse email est déjà utilisée."]
-            }
+            "success": false,
+            "message": "Ajustement non trouvé"
           }
         headers: []
         description: ''
@@ -580,16 +1238,48 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/fournisseurs/{id}'
+    uri: 'api/client-balance-adjustments/{id}'
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un fournisseur'
-      description: "Met à jour les informations d'un fournisseur existant."
+      title: 'Modifier un ajustement'
+      description: |-
+        Met à jour les informations d'un ajustement existant.
+
+        **Important** : Seuls le motif et la note peuvent être modifiés.
+        Le montant et le type ne peuvent pas être changés pour préserver l'intégrité comptable.
+        Pour corriger un montant erroné, annulez l'ajustement et créez-en un nouveau.
       authenticated: false
       deprecated: false
       custom: []
@@ -599,7 +1289,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'ID du fournisseur."
+        description: "UUID de l'ajustement."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -612,194 +1302,55 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Nom du fournisseur.'
+      motif:
+        name: motif
+        description: "Nouvelle raison de l'ajustement (max 255 caractères)."
         required: false
-        example: 'ACME Corporation'
+        example: 'Correction du motif'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      responsable:
-        name: responsable
-        description: 'Personne responsable.'
+      note:
+        name: note
+        description: 'Nouvelles informations supplémentaires (max 1000 caractères).'
         required: false
-        example: 'John Doe'
+        example: 'Note mise à jour'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
-      adresse:
-        name: adresse
-        description: 'Adresse du fournisseur.'
-        required: false
-        example: '123 Main Street'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      city:
-        name: city
-        description: Ville.
-        required: false
-        example: Paris
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      phone:
-        name: phone
-        description: 'Numéro de téléphone.'
-        required: false
-        example: '+33123456789'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      email:
-        name: email
-        description: 'Email (doit être unique).'
-        required: false
-        example: contact@acme.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      payment_terms:
-        name: payment_terms
-        description: 'Conditions de paiement.'
-        required: false
-        example: '30 jours'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      is_active:
-        name: is_active
-        description: 'Statut actif.'
-        required: false
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
         custom: []
     cleanBodyParameters:
-      name: 'ACME Corporation'
-      responsable: 'John Doe'
-      adresse: '123 Main Street'
-      city: Paris
-      phone: '+33123456789'
-      email: contact@acme.com
-      payment_terms: '30 jours'
-      is_active: true
+      motif: 'Correction du motif'
+      note: 'Note mise à jour'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "fournisseur_id": "550e8400-e29b-41d4-a716-446655440000",
-            "code": "FRN-ABC123",
-            "name": "ACME Corporation Updated",
-            "responsable": "Jane Doe",
-            "adresse": "456 New Street",
-            "city": "Lyon",
-            "phone": "+33987654321",
-            "email": "contact@acme.com",
-            "payment_terms": "45 jours",
-            "is_active": true,
-            "created_at": "2023-01-01T00:00:00.000000Z",
-            "updated_at": "2023-01-02T00:00:00.000000Z",
-            "deleted_at": null
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "Fournisseur non trouvé."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "message": "Les données fournies ne sont pas valides.",
-            "errors": {
-              "email": ["Cette adresse email est déjà utilisée."]
+            "success": true,
+            "message": "Ajustement mis à jour avec succès",
+            "data": {
+              "adjustment_id": "...",
+              "reference": "ADJ-2024-0001",
+              "motif": "Correction du motif",
+              "note": "Note mise à jour",
+              "client": { ... },
+              "user": { ... }
             }
           }
         headers: []
         description: ''
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/fournisseurs/{id}'
-    metadata:
-      groupName: Fournisseurs
-      groupDescription: |-
-
-        APIs pour la gestion des fournisseurs
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Supprimer un fournisseur'
-      description: 'Supprime définitivement un fournisseur (soft delete).'
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'ID du fournisseur."
-        required: true
-        example: 550e8400-e29b-41d4-a716-446655440000
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 550e8400-e29b-41d4-a716-446655440000
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 204
-        content: '{}'
-        headers: []
-        description: ''
-        custom: []
       -
         status: 404
         content: |-
           {
-            "message": "Fournisseur non trouvé."
+            "success": false,
+            "message": "Ajustement non trouvé"
           }
         headers: []
         description: ''
@@ -812,17 +1363,48 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PATCH
-    uri: 'api/fournisseurs/{id}/restore'
+      - DELETE
+    uri: 'api/client-balance-adjustments/{id}'
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer un fournisseur'
-      description: 'Restaure un fournisseur précédemment supprimé.'
+      title: 'Annuler un ajustement'
+      description: |-
+        Annule un ajustement de solde (soft delete).
+        Le solde du client est automatiquement recalculé pour annuler l'effet de l'ajustement.
+
+        **Attention** : Cette action inverse l'effet de l'ajustement sur le solde du client.
       authenticated: false
       deprecated: false
       custom: []
@@ -832,7 +1414,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'ID du fournisseur."
+        description: "UUID de l'ajustement à annuler."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -852,19 +1434,12 @@ endpoints:
         status: 200
         content: |-
           {
-            "fournisseur_id": "550e8400-e29b-41d4-a716-446655440000",
-            "code": "FRN-ABC123",
-            "name": "ACME Corporation",
-            "responsable": "John Doe",
-            "adresse": "123 Main Street",
-            "city": "Paris",
-            "phone": "+33123456789",
-            "email": "contact@acme.com",
-            "payment_terms": "30 jours",
-            "is_active": true,
-            "created_at": "2023-01-01T00:00:00.000000Z",
-            "updated_at": "2023-01-02T00:00:00.000000Z",
-            "deleted_at": null
+            "success": true,
+            "message": "Ajustement annulé avec succès",
+            "data": {
+              "adjustment_id": "550e8400-e29b-41d4-a716-446655440000",
+              "client_nouveau_solde": 0
+            }
           }
         headers: []
         description: ''
@@ -873,7 +1448,19 @@ endpoints:
         status: 404
         content: |-
           {
-            "message": "Fournisseur non trouvé."
+            "success": false,
+            "message": "Ajustement non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de l'annulation de l'ajustement",
+            "error": "Message d'erreur détaillé"
           }
         headers: []
         description: ''
@@ -886,17 +1473,44 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - DELETE
-    uri: 'api/fournisseurs/{id}/force'
+      - POST
+    uri: 'api/client-balance-adjustments/{id}/restore'
     metadata:
-      groupName: Fournisseurs
+      groupName: 'Gestion des Ajustements de Solde Client'
       groupDescription: |-
 
-        APIs pour la gestion des fournisseurs
+        API pour gérer les ajustements de solde des clients.
+        Cette fonctionnalité permet d'enregistrer les dettes des clients migrés
+        depuis l'ancien système et de faire des ajustements de solde avec traçabilité complète.
+
+        ## Convention du solde client (current_balance)
+
+        | Situation | Valeur |
+        |-----------|--------|
+        | Le client **doit** à l'entreprise (dette) | **Négatif** (-) |
+        | L'entreprise **doit** au client (avance/crédit) | **Positif** (+) |
+
+        ## Types d'ajustement disponibles
+
+        | Type | Description | Effet sur le solde |
+        |------|-------------|-------------------|
+        | `dette_initiale` | Dette importée de l'ancien système | Diminue le solde (-) |
+        | `ajustement_credit` | Augmentation de la dette client | Diminue le solde (-) |
+        | `ajustement_debit` | Diminution de la dette (paiement, avoir) | Augmente le solde (+) |
+        | `correction` | Correction d'erreur (+ ou -) | Selon le signe du montant |
+        | `remise_exceptionnelle` | Remise accordée au client | Augmente le solde (+) |
+
+        ## Sources possibles
+
+        | Source | Description |
+        |--------|-------------|
+        | `migration` | Données importées lors de la migration système |
+        | `manuel` | Saisie manuelle par un utilisateur |
+        | `import` | Import via fichier (Excel/CSV) |
       subgroup: ''
       subgroupDescription: ''
-      title: 'Suppression définitive'
-      description: 'Supprime définitivement un fournisseur de la base de données.'
+      title: 'Restaurer un ajustement annulé'
+      description: 'Restaure un ajustement précédemment annulé et ré-applique son effet sur le solde du client.'
       authenticated: false
       deprecated: false
       custom: []
@@ -906,7 +1520,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'ID du fournisseur."
+        description: "UUID de l'ajustement à restaurer."
         required: true
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
@@ -923,8 +1537,28 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 204
-        content: '{}'
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Ajustement restauré avec succès",
+            "data": {
+              "adjustment_id": "...",
+              "reference": "ADJ-2024-0001",
+              "client": { ... },
+              "user": { ... }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "Cet ajustement n'est pas supprimé"
+          }
         headers: []
         description: ''
         custom: []
@@ -932,7 +1566,8 @@ endpoints:
         status: 404
         content: |-
           {
-            "message": "Fournisseur non trouvé."
+            "success": false,
+            "message": "Ajustement non trouvé"
           }
         headers: []
         description: ''

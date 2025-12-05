@@ -1,23 +1,23 @@
-name: 'Gestion des Détails de Ventes'
+name: 'Gestion des Paiements de Commandes'
 description: |-
 
-  API pour gérer les lignes de détails des ventes (produits vendus).
+  API pour gérer les paiements des commandes d'achat.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/detail-ventes
+    uri: api/paiement-commandes
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des détails de ventes'
-      description: 'Récupère la liste paginée de tous les détails de ventes avec leurs produits.'
+      title: 'Liste des paiements'
+      description: 'Récupère la liste paginée de tous les paiements avec leurs commandes.'
       authenticated: true
       deprecated: false
       custom: []
@@ -48,9 +48,19 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      vente_id:
-        name: vente_id
-        description: 'Filtrer par ID de vente.'
+      search:
+        name: search
+        description: 'Rechercher par référence de paiement.'
+        required: false
+        example: PAY-2025-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      commande_id:
+        name: commande_id
+        description: 'Filtrer par ID de commande.'
         required: false
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -58,11 +68,61 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      product_id:
-        name: product_id
-        description: 'Filtrer par ID de produit.'
+      statut:
+        name: statut
+        description: 'Filtrer par statut (en_attente, valide, refuse, annule).'
         required: false
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        example: valide
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      mode_paiement:
+        name: mode_paiement
+        description: 'Filtrer par mode (especes, cheque, virement, carte_bancaire, mobile_money).'
+        required: false
+        example: mobile_money
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_debut:
+        name: date_debut
+        description: 'date Filtrer par date minimum (format: Y-m-d).'
+        required: false
+        example: '2025-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_fin:
+        name: date_fin
+        description: 'date Filtrer par date maximum (format: Y-m-d).'
+        required: false
+        example: '2025-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant_min:
+        name: montant_min
+        description: 'numeric Filtrer par montant minimum.'
+        required: false
+        example: '1000'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant_max:
+        name: montant_max
+        description: 'numeric Filtrer par montant maximum.'
+        required: false
+        example: '50000'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -71,8 +131,14 @@ endpoints:
     cleanQueryParameters:
       page: 1
       per_page: 15
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      search: PAY-2025-001
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      statut: valide
+      mode_paiement: mobile_money
+      date_debut: '2025-01-01'
+      date_fin: '2025-12-31'
+      montant_min: '1000'
+      montant_max: '50000'
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -82,33 +148,36 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des détails de ventes récupérée avec succès",
+            "message": "Liste des paiements récupérée avec succès",
             "data": {
               "current_page": 1,
               "data": [
                 {
-                  "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "remise_ligne": "0.00",
-                  "montant_ht": "25000.00",
-                  "taux_taxe": "18.00",
-                  "montant_taxe": "4500.00",
-                  "montant_ttc": "29500.00",
-                  "vente": {
-                    "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                    "numero_vente": "VTE-2025-0001"
-                  },
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                    "code": "PROD001",
-                    "name": "Produit A"
+                  "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "reference_paiement": "PAY-2025-0001",
+                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "montant": "10000.00",
+                  "mode_paiement": "mobile_money",
+                  "statut": "valide",
+                  "date_paiement": "2025-01-15T14:30:00.000000Z",
+                  "numero_transaction": "TRX123456789",
+                  "note": "Paiement via MTN Mobile Money",
+                  "created_at": "2025-01-15T14:30:00.000000Z",
+                  "updated_at": "2025-01-15T14:30:00.000000Z",
+                  "commande": {
+                    "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                    "numero_commande": "CMD-2025-0001",
+                    "montant": "25000.00",
+                    "status": "en_cours"
                   }
                 }
               ],
-              "total": 25
+              "first_page_url": "http://localhost/api/paiement-commandes?page=1",
+              "from": 1,
+              "last_page": 2,
+              "per_page": 15,
+              "to": 15,
+              "total": 30
             }
           }
         headers: []
@@ -126,19 +195,19 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/detail-ventes
+    uri: api/paiement-commandes
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer un détail de vente'
+      title: 'Créer un paiement'
       description: |-
-        Ajoute une ligne de produit à une vente existante.
-        Les montants sont calculés automatiquement.
+        Enregistre un nouveau paiement pour une commande.
+        La référence de paiement est générée automatiquement au format PAY-YYYY-0001.
       authenticated: true
       deprecated: false
       custom: []
@@ -151,9 +220,9 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      vente_id:
-        name: vente_id
-        description: "L'UUID de la vente."
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
@@ -161,63 +230,96 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      product_id:
-        name: product_id
-        description: "L'UUID du produit."
+      montant:
+        name: montant
+        description: 'Le montant payé.'
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+        example: '10000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      mode_paiement:
+        name: mode_paiement
+        description: 'Le mode de paiement (especes, cheque, virement, carte_bancaire, mobile_money).'
+        required: true
+        example: mobile_money
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      quantite:
-        name: quantite
-        description: 'La quantité vendue.'
-        required: true
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      prix_unitaire:
-        name: prix_unitaire
-        description: 'Le prix unitaire.'
-        required: true
-        example: '2500.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      remise_ligne:
-        name: remise_ligne
-        description: 'La remise sur la ligne.'
+      statut:
+        name: statut
+        description: 'Le statut du paiement (en_attente, valide, refuse, annule). Par défaut: en_attente.'
         required: false
-        example: '0'
-        type: numeric
+        example: valide
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_paiement:
+        name: date_paiement
+        description: 'La date et heure du paiement (format: Y-m-d H:i:s).'
+        required: true
+        example: '2025-01-15 14:30:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      numero_transaction:
+        name: numero_transaction
+        description: 'Le numéro de transaction (pour paiements électroniques).'
+        required: false
+        example: TRX123456789
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
-      taux_taxe:
-        name: taux_taxe
-        description: 'Le taux de taxe en %.'
+      numero_cheque:
+        name: numero_cheque
+        description: 'Le numéro de chèque (pour paiements par chèque).'
         required: false
-        example: '18'
-        type: numeric
+        example: CHQ987654
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      banque:
+        name: banque
+        description: 'La banque émettrice.'
+        required: false
+        example: 'Bank of Africa'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations.'
+        required: false
+        example: 'Paiement via MTN Mobile Money'
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-      quantite: 10
-      prix_unitaire: '2500.00'
-      remise_ligne: '0'
-      taux_taxe: '18'
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      montant: '10000.00'
+      mode_paiement: mobile_money
+      statut: valide
+      date_paiement: '2025-01-15 14:30:00'
+      numero_transaction: TRX123456789
+      numero_cheque: CHQ987654
+      banque: 'Bank of Africa'
+      note: 'Paiement via MTN Mobile Money'
     fileParameters: []
     responses:
       -
@@ -225,23 +327,25 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détail de vente créé avec succès",
+            "message": "Paiement enregistré avec succès",
             "data": {
-              "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-              "quantite": 10,
-              "prix_unitaire": "2500.00",
-              "remise_ligne": "0.00",
-              "montant_ht": "25000.00",
-              "taux_taxe": "18.00",
-              "montant_taxe": "4500.00",
-              "montant_ttc": "29500.00",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "montant_total": "54500.00"
+              "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "reference_paiement": "PAY-2025-0001",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "montant": "10000.00",
+              "mode_paiement": "mobile_money",
+              "statut": "valide",
+              "date_paiement": "2025-01-15T14:30:00.000000Z",
+              "numero_transaction": "TRX123456789",
+              "note": "Paiement via MTN Mobile Money",
+              "created_at": "2025-01-15T14:30:00.000000Z",
+              "updated_at": "2025-01-15T14:30:00.000000Z",
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001",
+                "montant": "25000.00",
+                "montant_paye": "10000.00",
+                "montant_restant": "15000.00"
               }
             }
           }
@@ -255,228 +359,8 @@ endpoints:
             "success": false,
             "message": "Erreur de validation",
             "errors": {
-              "product_id": [
-                "Le produit sélectionné n'existe pas"
-              ]
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/detail-ventes/multiple
-    metadata:
-      groupName: 'Gestion des Détails de Ventes'
-      groupDescription: |-
-
-        API pour gérer les lignes de détails des ventes (produits vendus).
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Créer plusieurs détails de vente'
-      description: |-
-        Ajoute plusieurs lignes de produits à une vente existante en une seule opération.
-        Les montants sont calculés automatiquement pour chaque ligne.
-        Les totaux de la vente sont recalculés une seule fois à la fin.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      vente_id:
-        name: vente_id
-        description: "L'UUID de la vente."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      details:
-        name: details
-        description: 'Les détails de la vente (produits).'
-        required: true
-        example:
-          -
-            product_id: uuid
-            quantite: 10
-            prix_unitaire: 2500
-            remise_ligne: 0
-            taux_taxe: 18
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details[].product_id':
-        name: 'details[].product_id'
-        description: "L'UUID du produit."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details[].quantite':
-        name: 'details[].quantite'
-        description: 'La quantité vendue.'
-        required: true
-        example: 10
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details[].prix_unitaire':
-        name: 'details[].prix_unitaire'
-        description: 'Le prix unitaire.'
-        required: true
-        example: '2500.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details[].remise_ligne':
-        name: 'details[].remise_ligne'
-        description: 'La remise sur la ligne.'
-        required: false
-        example: '0'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      'details[].taux_taxe':
-        name: 'details[].taux_taxe'
-        description: 'Le taux de taxe en %.'
-        required: false
-        example: '18'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      details:
-        -
-          product_id: uuid
-          quantite: 10
-          prix_unitaire: 2500
-          remise_ligne: 0
-          taux_taxe: 18
-    fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "success": true,
-            "message": "3 détails de vente créés avec succès",
-            "data": {
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "montant_total": "79000.00",
-                "montant_net": "75050.00"
-              },
-              "details": [
-                {
-                  "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "remise_ligne": "0.00",
-                  "montant_ht": "25000.00",
-                  "taux_taxe": "18.00",
-                  "montant_taxe": "4500.00",
-                  "montant_ttc": "29500.00",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                    "code": "PROD001",
-                    "name": "Produit A"
-                  }
-                },
-                {
-                  "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
-                  "quantite": 5,
-                  "prix_unitaire": "3500.00",
-                  "remise_ligne": "500.00",
-                  "montant_ht": "17000.00",
-                  "taux_taxe": "18.00",
-                  "montant_taxe": "3060.00",
-                  "montant_ttc": "20060.00",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
-                    "code": "PROD002",
-                    "name": "Produit B"
-                  }
-                },
-                {
-                  "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2f",
-                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a",
-                  "quantite": 8,
-                  "prix_unitaire": "1800.00",
-                  "remise_ligne": "200.00",
-                  "montant_ht": "14200.00",
-                  "taux_taxe": "18.00",
-                  "montant_taxe": "2556.00",
-                  "montant_ttc": "16756.00",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f3a",
-                    "code": "PROD003",
-                    "name": "Produit C"
-                  }
-                }
-              ]
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {
-              "vente_id": [
-                "La vente sélectionnée n'existe pas"
-              ],
-              "details.1.product_id": [
-                "Le produit sélectionné n'existe pas"
-              ],
-              "details.2.quantite": [
-                "La quantité doit être au moins 1"
+              "montant": [
+                "Le montant du paiement dépasse le montant restant à payer"
               ]
             }
           }
@@ -495,17 +379,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/detail-ventes/{id}'
+    uri: 'api/paiement-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un détail de vente'
-      description: "Récupère les détails d'une ligne de vente spécifique."
+      title: 'Afficher un paiement'
+      description: "Récupère les détails d'un paiement spécifique avec sa commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -516,7 +400,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du détail de vente."
+        description: "L'UUID du paiement."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -537,25 +421,33 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détails du détail de vente récupérés avec succès",
+            "message": "Détails du paiement récupérés avec succès",
             "data": {
-              "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-              "quantite": 10,
-              "prix_unitaire": "2500.00",
-              "montant_ht": "25000.00",
-              "montant_ttc": "29500.00",
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "date_vente": "2025-01-15T10:00:00.000000Z"
-              },
-              "product": {
-                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                "code": "PROD001",
-                "name": "Produit A",
-                "unit_price": "2500.00"
+              "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "reference_paiement": "PAY-2025-0001",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "montant": "10000.00",
+              "mode_paiement": "mobile_money",
+              "statut": "valide",
+              "date_paiement": "2025-01-15T14:30:00.000000Z",
+              "numero_transaction": "TRX123456789",
+              "banque": null,
+              "note": "Paiement via MTN Mobile Money",
+              "created_at": "2025-01-15T14:30:00.000000Z",
+              "updated_at": "2025-01-15T14:30:00.000000Z",
+              "is_valide": true,
+              "is_electronique": true,
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001",
+                "montant": "25000.00",
+                "montant_paye": "10000.00",
+                "montant_restant": "15000.00",
+                "fournisseur": {
+                  "fournisseur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "code": "FOUR001",
+                  "name": "Fournisseur ABC"
+                }
               }
             }
           }
@@ -567,7 +459,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Détail de vente non trouvé"
+            "message": "Paiement non trouvé"
           }
         headers: []
         description: ''
@@ -584,19 +476,19 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/detail-ventes/{id}'
+    uri: 'api/paiement-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un détail de vente'
+      title: 'Mettre à jour un paiement'
       description: |-
-        Met à jour une ligne de vente existante.
-        Les montants sont recalculés automatiquement.
+        Met à jour les informations d'un paiement existant.
+        Note: La référence de paiement et la commande ne peuvent pas être modifiées.
       authenticated: true
       deprecated: false
       custom: []
@@ -607,7 +499,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du détail de vente."
+        description: "L'UUID du paiement."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -620,51 +512,95 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      quantite:
-        name: quantite
-        description: 'La quantité vendue.'
+      montant:
+        name: montant
+        description: 'Le montant payé.'
         required: false
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      prix_unitaire:
-        name: prix_unitaire
-        description: 'Le prix unitaire.'
-        required: false
-        example: '2300.00'
+        example: '10000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      remise_ligne:
-        name: remise_ligne
-        description: 'La remise sur la ligne.'
+      mode_paiement:
+        name: mode_paiement
+        description: 'Le mode de paiement.'
         required: false
-        example: '500.00'
-        type: numeric
+        example: mobile_money
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: 'Le statut du paiement.'
+        required: false
+        example: valide
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_paiement:
+        name: date_paiement
+        description: 'La date et heure du paiement.'
+        required: false
+        example: '2025-01-15 14:30:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      numero_transaction:
+        name: numero_transaction
+        description: 'Le numéro de transaction.'
+        required: false
+        example: TRX123456789
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
-      taux_taxe:
-        name: taux_taxe
-        description: 'Le taux de taxe en %.'
+      numero_cheque:
+        name: numero_cheque
+        description: 'Le numéro de chèque.'
         required: false
-        example: '18'
-        type: numeric
+        example: CHQ987654
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      banque:
+        name: banque
+        description: 'La banque émettrice.'
+        required: false
+        example: 'Bank of Africa'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations.'
+        required: false
+        example: 'Paiement validé'
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      quantite: 15
-      prix_unitaire: '2300.00'
-      remise_ligne: '500.00'
-      taux_taxe: '18'
+      montant: '10000.00'
+      mode_paiement: mobile_money
+      statut: valide
+      date_paiement: '2025-01-15 14:30:00'
+      numero_transaction: TRX123456789
+      numero_cheque: CHQ987654
+      banque: 'Bank of Africa'
+      note: 'Paiement validé'
     fileParameters: []
     responses:
       -
@@ -672,26 +608,18 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détail de vente mis à jour avec succès",
+            "message": "Paiement mis à jour avec succès",
             "data": {
-              "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "quantite": 15,
-              "prix_unitaire": "2300.00",
-              "remise_ligne": "500.00",
-              "montant_ttc": "40270.00",
-              "updated_at": "2025-01-15T14:30:00.000000Z"
+              "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "reference_paiement": "PAY-2025-0001",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "montant": "10000.00",
+              "mode_paiement": "mobile_money",
+              "statut": "valide",
+              "date_paiement": "2025-01-15T14:30:00.000000Z",
+              "created_at": "2025-01-15T14:30:00.000000Z",
+              "updated_at": "2025-01-15T15:00:00.000000Z"
             }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Détail de vente non trouvé"
           }
         headers: []
         description: ''
@@ -708,19 +636,19 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/detail-ventes/{id}'
+    uri: 'api/paiement-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un détail de vente'
+      title: 'Mettre à jour un paiement'
       description: |-
-        Met à jour une ligne de vente existante.
-        Les montants sont recalculés automatiquement.
+        Met à jour les informations d'un paiement existant.
+        Note: La référence de paiement et la commande ne peuvent pas être modifiées.
       authenticated: true
       deprecated: false
       custom: []
@@ -731,7 +659,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du détail de vente."
+        description: "L'UUID du paiement."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -744,51 +672,95 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      quantite:
-        name: quantite
-        description: 'La quantité vendue.'
+      montant:
+        name: montant
+        description: 'Le montant payé.'
         required: false
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      prix_unitaire:
-        name: prix_unitaire
-        description: 'Le prix unitaire.'
-        required: false
-        example: '2300.00'
+        example: '10000.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      remise_ligne:
-        name: remise_ligne
-        description: 'La remise sur la ligne.'
+      mode_paiement:
+        name: mode_paiement
+        description: 'Le mode de paiement.'
         required: false
-        example: '500.00'
-        type: numeric
+        example: mobile_money
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: 'Le statut du paiement.'
+        required: false
+        example: valide
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_paiement:
+        name: date_paiement
+        description: 'La date et heure du paiement.'
+        required: false
+        example: '2025-01-15 14:30:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      numero_transaction:
+        name: numero_transaction
+        description: 'Le numéro de transaction.'
+        required: false
+        example: TRX123456789
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
-      taux_taxe:
-        name: taux_taxe
-        description: 'Le taux de taxe en %.'
+      numero_cheque:
+        name: numero_cheque
+        description: 'Le numéro de chèque.'
         required: false
-        example: '18'
-        type: numeric
+        example: CHQ987654
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      banque:
+        name: banque
+        description: 'La banque émettrice.'
+        required: false
+        example: 'Bank of Africa'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: 'Des notes ou observations.'
+        required: false
+        example: 'Paiement validé'
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      quantite: 15
-      prix_unitaire: '2300.00'
-      remise_ligne: '500.00'
-      taux_taxe: '18'
+      montant: '10000.00'
+      mode_paiement: mobile_money
+      statut: valide
+      date_paiement: '2025-01-15 14:30:00'
+      numero_transaction: TRX123456789
+      numero_cheque: CHQ987654
+      banque: 'Bank of Africa'
+      note: 'Paiement validé'
     fileParameters: []
     responses:
       -
@@ -796,26 +768,18 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détail de vente mis à jour avec succès",
+            "message": "Paiement mis à jour avec succès",
             "data": {
-              "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-              "quantite": 15,
-              "prix_unitaire": "2300.00",
-              "remise_ligne": "500.00",
-              "montant_ttc": "40270.00",
-              "updated_at": "2025-01-15T14:30:00.000000Z"
+              "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "reference_paiement": "PAY-2025-0001",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "montant": "10000.00",
+              "mode_paiement": "mobile_money",
+              "statut": "valide",
+              "date_paiement": "2025-01-15T14:30:00.000000Z",
+              "created_at": "2025-01-15T14:30:00.000000Z",
+              "updated_at": "2025-01-15T15:00:00.000000Z"
             }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Détail de vente non trouvé"
           }
         headers: []
         description: ''
@@ -832,19 +796,17 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/detail-ventes/{id}'
+    uri: 'api/paiement-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un détail de vente'
-      description: |-
-        Effectue une suppression logique (soft delete) d'une ligne de vente.
-        Les totaux de la vente sont recalculés automatiquement.
+      title: 'Supprimer un paiement'
+      description: "Effectue une suppression logique (soft delete) d'un paiement."
       authenticated: true
       deprecated: false
       custom: []
@@ -855,7 +817,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du détail de vente."
+        description: "L'UUID du paiement."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -876,7 +838,7 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détail de vente supprimé avec succès"
+            "message": "Paiement supprimé avec succès"
           }
         headers: []
         description: ''
@@ -886,7 +848,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Détail de vente non trouvé"
+            "message": "Paiement non trouvé"
           }
         headers: []
         description: ''
@@ -903,17 +865,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/detail-ventes/trashed/list
+    uri: api/paiement-commandes/trashed/list
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des détails supprimés'
-      description: 'Récupère la liste paginée de tous les détails de ventes supprimés.'
+      title: 'Liste des paiements supprimés'
+      description: 'Récupère la liste paginée de tous les paiements supprimés.'
       authenticated: true
       deprecated: false
       custom: []
@@ -956,7 +918,7 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des détails de ventes supprimés récupérée avec succès",
+            "message": "Liste des paiements supprimés récupérée avec succès",
             "data": {
               "current_page": 1,
               "data": [],
@@ -978,19 +940,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/detail-ventes/{id}/restore'
+    uri: 'api/paiement-commandes/{id}/restore'
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer un détail de vente supprimé'
-      description: |-
-        Restaure une ligne de vente précédemment supprimée.
-        Les totaux de la vente sont recalculés automatiquement.
+      title: 'Restaurer un paiement supprimé'
+      description: 'Restaure un paiement précédemment supprimé.'
       authenticated: true
       deprecated: false
       custom: []
@@ -1001,7 +961,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du détail supprimé."
+        description: "L'UUID du paiement supprimé."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -1022,9 +982,10 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détail de vente restauré avec succès",
+            "message": "Paiement restauré avec succès",
             "data": {
-              "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "reference_paiement": "PAY-2025-0001",
               "deleted_at": null
             }
           }
@@ -1043,17 +1004,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/detail-ventes/vente/{vente_id}'
+    uri: 'api/paiement-commandes/commande/{commande_id}'
     metadata:
-      groupName: 'Gestion des Détails de Ventes'
+      groupName: 'Gestion des Paiements de Commandes'
       groupDescription: |-
 
-        API pour gérer les lignes de détails des ventes (produits vendus).
+        API pour gérer les paiements des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: "Détails d'une vente"
-      description: 'Récupère tous les détails (lignes) associés à une vente spécifique.'
+      title: "Paiements d'une commande"
+      description: 'Récupère tous les paiements associés à une commande spécifique.'
       authenticated: true
       deprecated: false
       custom: []
@@ -1062,9 +1023,9 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      vente_id:
-        name: vente_id
-        description: "L'UUID de la vente."
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
@@ -1073,7 +1034,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1085,26 +1046,33 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détails de la vente récupérés avec succès",
+            "message": "Paiements de la commande récupérés avec succès",
             "data": {
-              "vente": {
-                "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                "numero_vente": "VTE-2025-0001",
-                "montant_total": "54500.00",
-                "montant_net": "52000.00"
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001",
+                "montant": "25000.00",
+                "montant_paye": "15000.00",
+                "montant_restant": "10000.00",
+                "is_totalement_payee": false,
+                "is_partiellement_payee": true
               },
-              "details": [
+              "paiements": [
                 {
-                  "detail_vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "quantite": 10,
-                  "prix_unitaire": "2500.00",
-                  "montant_ttc": "29500.00",
-                  "product": {
-                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                    "code": "PROD001",
-                    "name": "Produit A"
-                  }
+                  "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "reference_paiement": "PAY-2025-0001",
+                  "montant": "10000.00",
+                  "mode_paiement": "mobile_money",
+                  "statut": "valide",
+                  "date_paiement": "2025-01-15T14:30:00.000000Z"
+                },
+                {
+                  "paiement_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "reference_paiement": "PAY-2025-0002",
+                  "montant": "5000.00",
+                  "mode_paiement": "especes",
+                  "statut": "valide",
+                  "date_paiement": "2025-01-20T10:00:00.000000Z"
                 }
               ]
             }

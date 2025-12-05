@@ -1,509 +1,268 @@
-name: 'Génération de Bons de Commande PDF'
-description: |-
-
-  API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-  Toutes les routes nécessitent une authentification via Sanctum.
+name: 'Gestion des Transactions Bancaires'
+description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/commandes-pdf/{id}/generate'
+    uri: api/roles-permissions/banque-transactions/trashed/list
     metadata:
-      groupName: 'Génération de Bons de Commande PDF'
-      groupDescription: |-
-
-        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-        Toutes les routes nécessitent une authentification via Sanctum.
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Générer un bon de commande PDF'
-      description: |-
-        Génère un PDF de bon de commande professionnel avec en-tête et pied de page.
-        Le format peut être A3, A4 (défaut) ou A5.
+      title: 'Lister les transactions supprimées'
+      description: 'Récupère la liste de toutes les transactions supprimées logiquement.'
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters:
-      format:
-        name: format
-        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
-        required: false
-        example: A4
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      action:
-        name: action
-        description: 'Action à effectuer. Valeurs possibles: download (télécharger), preview (aperçu dans le navigateur). Défaut: download.'
-        required: false
-        example: download
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      format: A4
-      action: download
-    bodyParameters:
-      format:
-        name: format
-        description: ''
-        required: false
-        example: A3
-        type: string
-        enumValues:
-          - A3
-          - A4
-          - A5
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      action:
-        name: action
-        description: ''
-        required: false
-        example: download
-        type: string
-        enumValues:
-          - download
-          - preview
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      format: A3
-      action: download
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '[Binary PDF Content]'
-        headers: []
-        description: 'Téléchargement réussi'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {
-              "format": ["Le format doit être A3, A4 ou A5"]
-            }
-          }
-        headers: []
-        description: 'Format invalide'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/commandes-pdf/{id}/preview'
-    metadata:
-      groupName: 'Génération de Bons de Commande PDF'
-      groupDescription: |-
-
-        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Aperçu du bon de commande dans le navigateur'
-      description: |-
-        Affiche le bon de commande directement dans le navigateur sans téléchargement.
-        Raccourci pour `/generate?action=preview`.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters:
-      format:
-        name: format
-        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
-        required: false
-        example: A4
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      format: A4
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '[PDF displayed in browser]'
-        headers: []
-        description: 'Aperçu réussi'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/commandes-pdf/{id}/download'
-    metadata:
-      groupName: 'Génération de Bons de Commande PDF'
-      groupDescription: |-
-
-        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Télécharger le bon de commande'
-      description: |-
-        Télécharge directement le bon de commande au format PDF.
-        Raccourci pour `/generate?action=download`.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters:
-      format:
-        name: format
-        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
-        required: false
-        example: A5
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      format: A5
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '[Binary PDF Content]'
-        headers: []
-        description: 'Téléchargement réussi'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/commandes-pdf/{id}/print'
-    metadata:
-      groupName: 'Génération de Bons de Commande PDF'
-      groupDescription: |-
-
-        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Imprimer le bon de commande'
-      description: |-
-        Affiche le bon de commande dans le navigateur et déclenche automatiquement la boîte de dialogue d'impression.
-        Idéal pour une impression directe sans téléchargement.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters:
-      format:
-        name: format
-        description: 'Format du PDF. Valeurs possibles: A3, A4, A5. Défaut: A4.'
-        required: false
-        example: A4
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      format: A4
-    bodyParameters:
-      format:
-        name: format
-        description: ''
-        required: false
-        example: A3
-        type: string
-        enumValues:
-          - A3
-          - A4
-          - A5
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      format: A3
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '[HTML page with auto-print]'
-        headers: []
-        description: 'Impression déclenchée'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "success": false,
-            "message": "Commande non trouvée"
-          }
-        headers: []
-        description: 'Commande non trouvée'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/commandes-pdf/{id}/send-email'
-    metadata:
-      groupName: 'Génération de Bons de Commande PDF'
-      groupDescription: |-
-
-        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Envoyer le bon de commande par email au fournisseur'
-      description: |-
-        Envoie le bon de commande PDF par email au fournisseur.
-        Si l'email n'est pas fourni, utilise l'email enregistré du fournisseur.
-
-        **Note:** Cette fonctionnalité nécessite la configuration du service d'email.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: "L'UUID de la commande."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    urlParameters: []
+    cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: "Email du destinataire. Si non fourni, utilise l'email du fournisseur."
-        required: false
-        example: fournisseur@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      message:
-        name: message
-        description: "Message personnalisé à inclure dans l'email (max 1000 caractères)."
-        required: false
-        example: 'Veuillez trouver ci-joint notre bon de commande.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      format:
-        name: format
-        description: 'Format du PDF à joindre. Valeurs possibles: A3, A4, A5. Défaut: A4.'
-        required: false
-        example: A4
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      email: fournisseur@example.com
-      message: 'Veuillez trouver ci-joint notre bon de commande.'
-      format: A4
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Bon de commande envoyé par email avec succès",
-            "data": {
-              "email": "fournisseur@example.com",
-              "numero_bon_commande": "BC-2025-0001"
-            }
+            "data": [],
+            "message": "Liste des transactions supprimées"
           }
         headers: []
-        description: 'Email envoyé avec succès'
+        description: Succès
         custom: []
       -
-        status: 404
+        status: 401
         content: |-
           {
-            "success": false,
-            "message": "Commande non trouvée"
+            "message": "Unauthenticated."
           }
         headers: []
-        description: 'Commande non trouvée'
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/banque-transactions/account/{accountId}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les transactions par compte'
+      description: "Récupère toutes les transactions d'un compte spécifique."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      accountId:
+        name: accountId
+        description: 'UUID du compte.'
+        required: true
+        example: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      accountId: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "transaction_number": "TRX-2025-001",
+                "transaction_date": "2025-01-15",
+                "transaction_type": "credit",
+                "montant": 5000000.00,
+                "status": "valide"
+              }
+            ],
+            "message": "Transactions du compte"
+          }
+        headers: []
+        description: Succès
         custom: []
       -
-        status: 422
+        status: 401
         content: |-
           {
-            "success": false,
-            "message": "Aucun email disponible pour ce fournisseur"
+            "message": "Unauthenticated."
           }
         headers: []
-        description: 'Aucun email disponible'
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/banque-transactions/type/{type}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les transactions par type'
+      description: "Récupère toutes les transactions d'un type spécifique."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      type:
+        name: type
+        description: 'Type de transaction (debit, credit, virement, cheque, retrait, depot).'
+        required: true
+        example: credit
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      type: credit
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "transaction_number": "TRX-2025-001",
+                "transaction_type": "credit",
+                "montant": 5000000.00
+              }
+            ],
+            "message": "Transactions de type: credit"
+          }
+        headers: []
+        description: Succès
         custom: []
       -
-        status: 422
+        status: 401
         content: |-
           {
-            "success": false,
-            "message": "Erreur de validation",
-            "errors": {
-              "email": ["Le champ email doit être une adresse email valide."]
-            }
+            "message": "Unauthenticated."
           }
         headers: []
-        description: 'Email invalide'
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/banque-transactions/status/{status}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les transactions par statut'
+      description: 'Récupère toutes les transactions ayant un statut spécifique.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      status:
+        name: status
+        description: 'Statut (en_attente, valide, rejete, annule).'
+        required: true
+        example: valide
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      status: valide
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "transaction_number": "TRX-2025-001",
+                "status": "valide",
+                "montant": 5000000.00
+              }
+            ],
+            "message": "Transactions avec le statut: valide"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
         custom: []
     responseFields: []
     auth:
@@ -517,26 +276,19 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/commandes-pdf/generate-batch
+    uri: api/roles-permissions/banque-transactions/period
     metadata:
-      groupName: 'Génération de Bons de Commande PDF'
-      groupDescription: |-
-
-        API pour générer des bons de commande PDF à partir des commandes avec support A3/A4/A5.
-        Toutes les routes nécessitent une authentification via Sanctum.
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Générer plusieurs bons de commande en lot (ZIP)'
-      description: |-
-        Génère plusieurs bons de commande PDF et les regroupe dans un fichier ZIP.
-        Maximum 50 bons de commande par lot.
-
-        **Note:** Cette fonctionnalité nécessite l'implémentation complète.
+      title: 'Lister les transactions par période'
+      description: 'Récupère toutes les transactions entre deux dates.'
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -544,86 +296,1138 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      commande_ids:
-        name: commande_ids
-        description: 'Liste des UUIDs des commandes (min: 1, max: 50).'
+      start_date:
+        name: start_date
+        description: 'Date de début (YYYY-MM-DD).'
         required: true
-        example:
-          - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-          - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-        type: 'string[]'
+        example: '"2025-01-01"'
+        type: date
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      format:
-        name: format
-        description: 'Format du PDF pour tous les bons de commande. Valeurs possibles: A3, A4, A5. Défaut: A4.'
-        required: false
-        example: A4
-        type: string
+      end_date:
+        name: end_date
+        description: 'Date de fin (YYYY-MM-DD).'
+        required: true
+        example: '"2025-01-31"'
+        type: date
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
-      commande_ids:
-        - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        - 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      format: A4
+      start_date: '"2025-01-01"'
+      end_date: '"2025-01-31"'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Génération en lot en cours...",
+            "data": [
+              {
+                "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "transaction_number": "TRX-2025-001",
+                "transaction_date": "2025-01-15",
+                "montant": 5000000.00
+              }
+            ],
+            "message": "Transactions entre 2025-01-01 et 2025-01-31"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "start_date": ["La date de début est obligatoire"],
+              "end_date": ["La date de fin est obligatoire"]
+            }
+          }
+        headers: []
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/roles-permissions/banque-transactions
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister toutes les transactions'
+      description: 'Récupère la liste complète de toutes les transactions avec leurs comptes associés.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+                "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "transaction_number": "TRX-2025-001",
+                "transaction_date": "2025-01-15",
+                "transaction_type": "credit",
+                "montant": 5000000.00,
+                "libelle": "Virement reçu - Facture #FAC-2025-001",
+                "reference_externe": "VIR123456789",
+                "tiers": "Client ABC SARL",
+                "status": "valide",
+                "created_at": "2025-01-15T10:30:00.000000Z",
+                "updated_at": "2025-01-15T10:30:00.000000Z",
+                "deleted_at": null,
+                "account": {
+                  "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                  "account_number": "BJ066001010100100100100100",
+                  "account_name": "Compte Principal"
+                }
+              }
+            ],
+            "message": "Liste des transactions"
+          }
+        headers: []
+        description: Succès
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/roles-permissions/banque-transactions
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une nouvelle transaction'
+      description: 'Crée une nouvelle transaction bancaire et met à jour le solde du compte.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      banque_account_id:
+        name: banque_account_id
+        description: 'UUID du compte bancaire.'
+        required: true
+        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_number:
+        name: transaction_number
+        description: 'Numéro unique de la transaction.'
+        required: true
+        example: '"TRX-2025-001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_date:
+        name: transaction_date
+        description: 'Date de la transaction (YYYY-MM-DD).'
+        required: true
+        example: '"2025-01-15"'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_type:
+        name: transaction_type
+        description: 'Type (debit, credit, virement, cheque, retrait, depot).'
+        required: true
+        example: '"credit"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant:
+        name: montant
+        description: 'Montant de la transaction.'
+        required: true
+        example: '5000000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      libelle:
+        name: libelle
+        description: 'Description de la transaction.'
+        required: true
+        example: '"Virement reçu - Facture #FAC-2025-001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      reference_externe:
+        name: reference_externe
+        description: 'optional Référence externe (numéro chèque, référence virement).'
+        required: false
+        example: '"VIR123456789"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      tiers:
+        name: tiers
+        description: 'optional Nom du tiers (destinataire ou émetteur).'
+        required: false
+        example: '"Client ABC SARL"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      status:
+        name: status
+        description: 'optional Statut (en_attente, valide, rejete, annule).'
+        required: false
+        example: '"valide"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      banque_account_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+      transaction_number: '"TRX-2025-001"'
+      transaction_date: '"2025-01-15"'
+      transaction_type: '"credit"'
+      montant: '5000000.00'
+      libelle: '"Virement reçu - Facture #FAC-2025-001"'
+      reference_externe: '"VIR123456789"'
+      tiers: '"Client ABC SARL"'
+      status: '"valide"'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
             "data": {
-              "count": 3
-            }
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "transaction_number": "TRX-2025-001",
+              "transaction_date": "2025-01-15",
+              "transaction_type": "credit",
+              "montant": 5000000.00,
+              "libelle": "Virement reçu - Facture #FAC-2025-001",
+              "reference_externe": "VIR123456789",
+              "tiers": "Client ABC SARL",
+              "status": "valide",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "deleted_at": null,
+              "account": {
+                "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "account_number": "BJ066001010100100100100100",
+                "balance": 20500000.00
+              }
+            },
+            "message": "Transaction créée avec succès"
           }
         headers: []
-        description: 'Génération en cours'
+        description: 'Transaction créée avec succès'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
         custom: []
       -
         status: 422
         content: |-
           {
-            "success": false,
-            "message": "Erreur de validation",
             "errors": {
-              "commande_ids": ["Le champ commande ids est obligatoire."]
+              "transaction_number": ["Ce numéro de transaction existe déjà"],
+              "banque_account_id": ["Le compte bancaire sélectionné n'existe pas"]
             }
           }
         headers: []
-        description: 'Validation échouée - commande_ids manquant'
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/banque-transactions/{id}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher une transaction spécifique'
+      description: "Récupère les détails complets d'une transaction."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "transaction_number": "TRX-2025-001",
+              "transaction_date": "2025-01-15",
+              "transaction_type": "credit",
+              "montant": 5000000.00,
+              "libelle": "Virement reçu - Facture #FAC-2025-001",
+              "reference_externe": "VIR
+          123456789",
+              "tiers": "Client ABC SARL",
+              "status": "valide",
+              "account": {
+                "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+                "account_number": "BJ066001010100100100100100",
+                "account_name": "Compte Principal",
+                "balance": 20500000.00
+              }
+            },
+            "message": "Détails de la transaction"
+          }
+        headers: []
+        description: 'Transaction trouvée'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/roles-permissions/banque-transactions/{id}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une transaction'
+      description: "Met à jour les informations d'une transaction existante."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction à mettre à jour.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      banque_account_id:
+        name: banque_account_id
+        description: 'UUID du compte bancaire.'
+        required: true
+        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_number:
+        name: transaction_number
+        description: 'Numéro de transaction (unique).'
+        required: true
+        example: '"TRX-2025-001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_date:
+        name: transaction_date
+        description: 'Date de la transaction.'
+        required: true
+        example: '"2025-01-15"'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_type:
+        name: transaction_type
+        description: 'Type de transaction.'
+        required: true
+        example: '"credit"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant:
+        name: montant
+        description: Montant.
+        required: true
+        example: '5500000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      libelle:
+        name: libelle
+        description: Description.
+        required: true
+        example: '"Virement reçu - Facture #FAC-2025-001 (modifié)"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      reference_externe:
+        name: reference_externe
+        description: 'optional Référence externe.'
+        required: false
+        example: '"VIR123456789"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      tiers:
+        name: tiers
+        description: 'optional Tiers.'
+        required: false
+        example: '"Client ABC SARL"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      status:
+        name: status
+        description: 'optional Statut.'
+        required: false
+        example: '"valide"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      banque_account_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+      transaction_number: '"TRX-2025-001"'
+      transaction_date: '"2025-01-15"'
+      transaction_type: '"credit"'
+      montant: '5500000.00'
+      libelle: '"Virement reçu - Facture #FAC-2025-001 (modifié)"'
+      reference_externe: '"VIR123456789"'
+      tiers: '"Client ABC SARL"'
+      status: '"valide"'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "transaction_number": "TRX-2025-001",
+              "transaction_date": "2025-01-15",
+              "transaction_type": "credit",
+              "montant": 5500000.00,
+              "libelle": "Virement reçu - Facture #FAC-2025-001 (modifié)",
+              "status": "valide",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T15:45:00.000000Z"
+            },
+            "message": "Transaction mise à jour avec succès"
+          }
+        headers: []
+        description: 'Mise à jour réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
         custom: []
       -
         status: 422
         content: |-
           {
-            "success": false,
-            "message": "Erreur de validation",
             "errors": {
-              "commande_ids.0": ["La commande sélectionnée est invalide."]
+              "transaction_number": ["Ce numéro de transaction existe déjà"]
             }
           }
         headers: []
-        description: 'Validation échouée - IDs invalides'
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/roles-permissions/banque-transactions/{id}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une transaction'
+      description: "Met à jour les informations d'une transaction existante."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction à mettre à jour.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      banque_account_id:
+        name: banque_account_id
+        description: 'UUID du compte bancaire.'
+        required: true
+        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_number:
+        name: transaction_number
+        description: 'Numéro de transaction (unique).'
+        required: true
+        example: '"TRX-2025-001"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_date:
+        name: transaction_date
+        description: 'Date de la transaction.'
+        required: true
+        example: '"2025-01-15"'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transaction_type:
+        name: transaction_type
+        description: 'Type de transaction.'
+        required: true
+        example: '"credit"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      montant:
+        name: montant
+        description: Montant.
+        required: true
+        example: '5500000.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      libelle:
+        name: libelle
+        description: Description.
+        required: true
+        example: '"Virement reçu - Facture #FAC-2025-001 (modifié)"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      reference_externe:
+        name: reference_externe
+        description: 'optional Référence externe.'
+        required: false
+        example: '"VIR123456789"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      tiers:
+        name: tiers
+        description: 'optional Tiers.'
+        required: false
+        example: '"Client ABC SARL"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      status:
+        name: status
+        description: 'optional Statut.'
+        required: false
+        example: '"valide"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      banque_account_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+      transaction_number: '"TRX-2025-001"'
+      transaction_date: '"2025-01-15"'
+      transaction_type: '"credit"'
+      montant: '5500000.00'
+      libelle: '"Virement reçu - Facture #FAC-2025-001 (modifié)"'
+      reference_externe: '"VIR123456789"'
+      tiers: '"Client ABC SARL"'
+      status: '"valide"'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "banque_account_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
+              "transaction_number": "TRX-2025-001",
+              "transaction_date": "2025-01-15",
+              "transaction_type": "credit",
+              "montant": 5500000.00,
+              "libelle": "Virement reçu - Facture #FAC-2025-001 (modifié)",
+              "status": "valide",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-16T15:45:00.000000Z"
+            },
+            "message": "Transaction mise à jour avec succès"
+          }
+        headers: []
+        description: 'Mise à jour réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
         custom: []
       -
         status: 422
         content: |-
           {
-            "success": false,
-            "message": "Erreur de validation",
             "errors": {
-              "commande_ids": ["Le nombre maximum de bons de commande par lot est de 50."]
+              "transaction_number": ["Ce numéro de transaction existe déjà"]
             }
           }
         headers: []
-        description: 'Validation échouée - Trop de bons de commande'
+        description: 'Erreurs de validation'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/roles-permissions/banque-transactions/{id}'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer une transaction (soft delete)'
+      description: 'Effectue une suppression logique de la transaction.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction à supprimer.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Transaction supprimée avec succès"
+          }
+        headers: []
+        description: 'Suppression réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/roles-permissions/banque-transactions/{id}/restore'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Restaurer une transaction supprimée'
+      description: 'Restaure une transaction supprimée logiquement.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction à restaurer.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "transaction_number": "TRX-2025-001",
+              "montant": 5000000.00,
+              "deleted_at": null
+            },
+            "message": "Transaction restaurée avec succès"
+          }
+        headers: []
+        description: 'Restauration réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/roles-permissions/banque-transactions/{id}/validate'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Valider une transaction'
+      description: 'Change le statut d''une transaction en "valide" et met à jour le solde du compte.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "transaction_number": "TRX-2025-001",
+              "status": "valide",
+              "account": {
+                "balance": 20500000.00
+              }
+            },
+            "message": "Transaction validée avec succès"
+          }
+        headers: []
+        description: 'Validation réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Cette transaction est déjà validée"
+          }
+        headers: []
+        description: 'Transaction déjà validée'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/roles-permissions/banque-transactions/{id}/cancel'
+    metadata:
+      groupName: 'Gestion des Transactions Bancaires'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Annuler une transaction'
+      description: 'Change le statut d''une transaction en "annule" et ajuste le solde du compte si nécessaire.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'UUID de la transaction.'
+        required: true
+        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "banque_transaction_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
+              "transaction_number": "TRX-2025-001",
+              "status": "annule"
+            },
+            "message": "Transaction annulée avec succès"
+          }
+        headers: []
+        description: 'Annulation réussie'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: 'Non authentifié'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [App\\Models\\BanqueTransaction]"
+          }
+        headers: []
+        description: 'Transaction non trouvée'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Cette transaction est déjà annulée"
+          }
+        headers: []
+        description: 'Transaction déjà annulée'
         custom: []
     responseFields: []
     auth:

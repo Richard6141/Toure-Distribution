@@ -1,23 +1,23 @@
-name: 'Gestion des Ventes'
+name: 'Gestion des Détails de Commandes'
 description: |-
 
-  API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+  API pour gérer les lignes de produits (détails) des commandes d'achat.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/ventes
+    uri: api/detail-commandes
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des ventes'
-      description: 'Récupère la liste paginée de toutes les ventes avec leurs clients.'
+      title: 'Liste des détails de commandes'
+      description: 'Récupère la liste paginée de tous les détails de commandes avec leurs produits.'
       authenticated: true
       deprecated: false
       custom: []
@@ -48,19 +48,9 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      search:
-        name: search
-        description: 'Rechercher par numéro de vente.'
-        required: false
-        example: VTE-2025-001
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      client_id:
-        name: client_id
-        description: 'Filtrer par ID du client.'
+      commande_id:
+        name: commande_id
+        description: 'Filtrer par ID de commande.'
         required: false
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -68,51 +58,11 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      entrepot_id:
-        name: entrepot_id
-        description: "Filtrer par ID de l'entrepôt."
+      product_id:
+        name: product_id
+        description: 'Filtrer par ID de produit.'
         required: false
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      status:
-        name: status
-        description: 'Filtrer par statut.'
-        required: false
-        example: validee
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      statut_paiement:
-        name: statut_paiement
-        description: 'Filtrer par statut de paiement.'
-        required: false
-        example: paye_partiellement
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_debut:
-        name: date_debut
-        description: 'date Filtrer par date minimum.'
-        required: false
-        example: '2025-01-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_fin:
-        name: date_fin
-        description: 'date Filtrer par date maximum.'
-        required: false
-        example: '2025-12-31'
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -121,13 +71,8 @@ endpoints:
     cleanQueryParameters:
       page: 1
       per_page: 15
-      search: VTE-2025-001
-      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-      entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-      status: validee
-      statut_paiement: paye_partiellement
-      date_debut: '2025-01-01'
-      date_fin: '2025-12-31'
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -137,22 +82,166 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des ventes récupérée avec succès",
+            "message": "Liste des détails de commandes récupérée avec succès",
             "data": {
               "current_page": 1,
               "data": [
                 {
-                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "numero_vente": "VTE-2025-0001",
-                  "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
-                  "entrepot_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
-                  "date_vente": "2025-01-15T10:00:00.000000Z",
-                  "montant_total": "25000.00",
-                  "montant_net": "23750.00",
-                  "transport_price": "500.00",
-                  "status": "validee",
-                  "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                  "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00",
+                  "created_at": "2025-01-15T10:30:00.000000Z",
+                  "updated_at": "2025-01-15T10:30:00.000000Z",
+                  "commande": {
+                    "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                    "numero_commande": "CMD-2025-0001",
+                    "date_achat": "2025-01-15"
+                  },
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "code": "PROD001",
+                    "name": "Produit ABC",
+                    "unit_price": "2500.00"
+                  }
                 }
+              ],
+              "first_page_url": "http://localhost/api/detail-commandes?page=1",
+              "from": 1,
+              "last_page": 2,
+              "per_page": 15,
+              "to": 15,
+              "total": 30
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/detail-commandes
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer un détail de commande'
+      description: 'Ajoute une ligne de produit à une commande existante.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      product_id:
+        name: product_id
+        description: "L'UUID du produit."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
+        required: true
+        example: '2500.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      product_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      quantite: 10
+      prix_unitaire: '2500.00'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Détail de commande créé avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001"
+              },
+              "product": {
+                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                "code": "PROD001",
+                "name": "Produit ABC"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "commande_id": [
+                "La commande sélectionnée n'existe pas"
+              ],
+              "product_id": [
+                "Le produit sélectionné n'existe pas"
               ]
             }
           }
@@ -171,27 +260,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/ventes
+    uri: api/detail-commandes/multiple
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer une vente'
-      description: |-
-        Enregistre une nouvelle vente avec ses détails.
-        Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour
-        et le current_balance du client est augmenté du montant de la vente.
-
-        **Options de validation automatique:**
-        - Si `status` est "validee", un mouvement de stock est créé et validé automatiquement
-        - Le stock de l'entrepôt source est diminué en temps réel
-        - Le current_balance du client est augmenté du montant_net de la vente
-        - Vérification de la limite de crédit du client (credit_limit)
-        - Si le stock est insuffisant ou la limite de crédit dépassée, la création échoue
+      title: 'Créer plusieurs détails de commande en une seule fois'
+      description: 'Ajoute plusieurs lignes de produits à une commande existante.'
       authenticated: true
       deprecated: false
       custom: []
@@ -204,9 +283,30 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      client_id:
-        name: client_id
-        description: "L'UUID du client."
+      commande_id:
+        name: commande_id
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      details:
+        name: details
+        description: 'Liste des détails à ajouter.'
+        required: true
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'details[].product_id':
+        name: 'details[].product_id'
+        description: "L'UUID du produit."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
@@ -214,143 +314,30 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      entrepot_id:
-        name: entrepot_id
-        description: "L'UUID de l'entrepôt source."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_vente:
-        name: date_vente
-        description: 'La date et heure de la vente.'
-        required: true
-        example: '2025-01-15 10:00:00'
-        type: datetime
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      remise:
-        name: remise
-        description: 'La remise globale.'
-        required: false
-        example: '1250.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      transport_price:
-        name: transport_price
-        description: 'Le prix du transport.'
-        required: false
-        example: '500.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      status:
-        name: status
-        description: 'Le statut (en_attente par défaut, validee pour mise à jour automatique des stocks).'
-        required: false
-        example: validee
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      note:
-        name: note
-        description: 'Des notes.'
-        required: false
-        example: 'Vente avec remise spéciale'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      details:
-        name: details
-        description: 'Les détails de la vente.'
-        required: true
-        example:
-          -
-            product_id: uuid
-            quantite: 10
-            prix_unitaire: 2500
-        type: 'string[]'
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      'details[].product_id':
-        name: 'details[].product_id'
-        description: 'Must be a valid UUID. The <code>product_id</code> of an existing record in the products table.'
-        required: true
-        example: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
       'details[].quantite':
         name: 'details[].quantite'
-        description: 'Must be at least 1.'
+        description: 'La quantité commandée.'
         required: true
-        example: 67
+        example: 10
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       'details[].prix_unitaire':
         name: 'details[].prix_unitaire'
-        description: 'Must be at least 0.'
+        description: 'Le prix unitaire.'
         required: true
-        example: 12
-        type: number
+        example: '2500.00'
+        type: numeric
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
-      'details[].remise_ligne':
-        name: 'details[].remise_ligne'
-        description: 'Must be at least 0.'
-        required: false
-        example: 77
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      'details[].taux_taxe':
-        name: 'details[].taux_taxe'
-        description: 'Must be at least 0. Must not be greater than 100.'
-        required: false
-        example: 15
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
     cleanBodyParameters:
-      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-      date_vente: '2025-01-15 10:00:00'
-      remise: '1250.00'
-      transport_price: '500.00'
-      status: validee
-      note: 'Vente avec remise spéciale'
+      commande_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
       details:
-        -
-          product_id: uuid
-          quantite: 10
-          prix_unitaire: 2500
+        - architecto
     fileParameters: []
     responses:
       -
@@ -358,34 +345,21 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Vente créée avec succès et stocks mis à jour",
+            "message": "3 détails de commande créés avec succès",
             "data": {
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_vente": "VTE-2025-0001",
-              "transport_price": "500.00",
-              "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
-              "status": "validee"
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "details_count": 3,
+              "total": "75000.00",
+              "details": [
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00"
+                }
+              ]
             }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Limite de crédit dépassée pour le client ABC. Limite: 100000, Solde actuel: 80000, Montant de la vente: 25000"
           }
         headers: []
         description: ''
@@ -402,17 +376,121 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/ventes/{id}'
+    uri: 'api/detail-commandes/commande/{commandeId}'
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher une vente'
-      description: "Récupère les détails complets d'une vente."
+      title: "Liste des détails d'une commande spécifique"
+      description: "Récupère tous les détails (lignes de produits) d'une commande donnée."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      commandeId:
+        name: commandeId
+        description: "L'UUID de la commande."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      commandeId: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Détails de la commande récupérés avec succès",
+            "data": {
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                "numero_commande": "CMD-2025-0001",
+                "date_achat": "2025-01-15",
+                "montant": "50000.00"
+              },
+              "details": [
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "quantite": 10,
+                  "prix_unitaire": "2500.00",
+                  "sous_total": "25000.00",
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "code": "PROD001",
+                    "name": "Produit ABC"
+                  }
+                },
+                {
+                  "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+                  "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                  "quantite": 5,
+                  "prix_unitaire": "5000.00",
+                  "sous_total": "25000.00",
+                  "product": {
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                    "code": "PROD002",
+                    "name": "Produit XYZ"
+                  }
+                }
+              ],
+              "total": "50000.00"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Commande non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/detail-commandes/{id}'
+    metadata:
+      groupName: 'Gestion des Détails de Commandes'
+      groupDescription: |-
+
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Afficher un détail de commande'
+      description: "Récupère les informations d'une ligne de commande spécifique avec tous les produits de la commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -423,7 +501,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -444,14 +522,55 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détails de la vente récupérés avec succès",
+            "message": "Détail de commande récupéré avec succès",
             "data": {
-              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "numero_vente": "VTE-2025-0001",
-              "montant_total": "25000.00",
-              "montant_net": "23750.00",
-              "montant_paye": "10000.00",
-              "montant_restant": "13750.00"
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T10:30:00.000000Z",
+              "commande": {
+                "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                "numero_commande": "CMD-2025-0001",
+                "date_achat": "2025-01-15",
+                "details": [
+                  {
+                    "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                    "quantite": 10,
+                    "prix_unitaire": "2500.00",
+                    "sous_total": "25000.00",
+                    "product": {
+                      "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                      "code": "PROD001",
+                      "name": "Produit ABC",
+                      "unit_price": "2500.00"
+                    }
+                  },
+                  {
+                    "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+                    "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                    "quantite": 5,
+                    "prix_unitaire": "5000.00",
+                    "sous_total": "25000.00",
+                    "product": {
+                      "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2e",
+                      "code": "PROD002",
+                      "name": "Produit XYZ",
+                      "unit_price": "5000.00"
+                    }
+                  }
+                ]
+              },
+              "product": {
+                "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                "code": "PROD001",
+                "name": "Produit ABC",
+                "unit_price": "2500.00"
+              }
             }
           }
         headers: []
@@ -462,7 +581,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -479,23 +598,17 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/ventes/{id}'
+    uri: 'api/detail-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour une vente'
-      description: |-
-        Met à jour les informations d'une vente.
-
-        **Important:**
-        - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
-        - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
-        - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
+      title: 'Mettre à jour un détail de commande'
+      description: "Modifie la quantité ou le prix unitaire d'une ligne de commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -506,7 +619,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -519,40 +632,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      status:
-        name: status
-        description: 'Le statut de la vente.'
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
         required: false
-        example: validee
-        type: string
+        example: 15
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      transport_price:
-        name: transport_price
-        description: 'Le prix du transport.'
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
         required: false
-        example: '500.00'
+        example: '2300.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
-        custom: []
-      note:
-        name: note
-        description: 'Des notes.'
-        required: false
-        example: 'Livraison effectuée'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
-      status: validee
-      transport_price: '500.00'
-      note: 'Livraison effectuée'
+      quantite: 15
+      prix_unitaire: '2300.00'
     fileParameters: []
     responses:
       -
@@ -560,28 +662,27 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Vente mise à jour avec succès",
-            "data": {}
+            "message": "Détail de commande mis à jour avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 15,
+              "prix_unitaire": "2300.00",
+              "sous_total": "34500.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T14:30:00.000000Z"
+            }
           }
         headers: []
         description: ''
         custom: []
       -
-        status: 422
+        status: 404
         content: |-
           {
             "success": false,
-            "message": "Stock insuffisant pour valider cette vente"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Limite de crédit dépassée pour le client ABC"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -598,23 +699,17 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/ventes/{id}'
+    uri: 'api/detail-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour une vente'
-      description: |-
-        Met à jour les informations d'une vente.
-
-        **Important:**
-        - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
-        - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
-        - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
+      title: 'Mettre à jour un détail de commande'
+      description: "Modifie la quantité ou le prix unitaire d'une ligne de commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -625,7 +720,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -638,40 +733,29 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      status:
-        name: status
-        description: 'Le statut de la vente.'
+      quantite:
+        name: quantite
+        description: 'La quantité commandée.'
         required: false
-        example: validee
-        type: string
+        example: 15
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      transport_price:
-        name: transport_price
-        description: 'Le prix du transport.'
+      prix_unitaire:
+        name: prix_unitaire
+        description: 'Le prix unitaire du produit.'
         required: false
-        example: '500.00'
+        example: '2300.00'
         type: numeric
         enumValues: []
         exampleWasSpecified: true
-        nullable: true
-        custom: []
-      note:
-        name: note
-        description: 'Des notes.'
-        required: false
-        example: 'Livraison effectuée'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
+        nullable: false
         custom: []
     cleanBodyParameters:
-      status: validee
-      transport_price: '500.00'
-      note: 'Livraison effectuée'
+      quantite: 15
+      prix_unitaire: '2300.00'
     fileParameters: []
     responses:
       -
@@ -679,28 +763,27 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Vente mise à jour avec succès",
-            "data": {}
+            "message": "Détail de commande mis à jour avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 15,
+              "prix_unitaire": "2300.00",
+              "sous_total": "34500.00",
+              "created_at": "2025-01-15T10:30:00.000000Z",
+              "updated_at": "2025-01-15T14:30:00.000000Z"
+            }
           }
         headers: []
         description: ''
         custom: []
       -
-        status: 422
+        status: 404
         content: |-
           {
             "success": false,
-            "message": "Stock insuffisant pour valider cette vente"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "success": false,
-            "message": "Limite de crédit dépassée pour le client ABC"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -717,20 +800,17 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/ventes/{id}'
+    uri: 'api/detail-commandes/{id}'
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer une vente'
-      description: |-
-        Effectue une suppression logique d'une vente.
-        Si la vente est validée, le mouvement de stock sera annulé, les stocks restaurés
-        et le current_balance du client sera diminué du montant de la vente.
+      title: 'Supprimer un détail de commande'
+      description: "Effectue une suppression logique (soft delete) d'une ligne de commande."
       authenticated: true
       deprecated: false
       custom: []
@@ -741,7 +821,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente."
+        description: "L'UUID du détail de commande."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -762,7 +842,7 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Vente supprimée avec succès"
+            "message": "Détail de commande supprimé avec succès"
           }
         headers: []
         description: ''
@@ -772,7 +852,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente non trouvée"
+            "message": "Détail de commande non trouvé"
           }
         headers: []
         description: ''
@@ -789,17 +869,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/ventes/trashed/list
+    uri: api/detail-commandes/trashed/list
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des ventes supprimées'
-      description: 'Récupère la liste paginée de toutes les ventes supprimées (soft deleted).'
+      title: 'Liste des détails supprimés'
+      description: 'Récupère la liste paginée de tous les détails de commandes supprimés.'
       authenticated: true
       deprecated: false
       custom: []
@@ -842,10 +922,11 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des ventes supprimées récupérée avec succès",
+            "message": "Liste des détails supprimés récupérée avec succès",
             "data": {
               "current_page": 1,
-              "data": []
+              "data": [],
+              "total": 0
             }
           }
         headers: []
@@ -863,19 +944,17 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/ventes/{id}/restore'
+    uri: 'api/detail-commandes/{id}/restore'
     metadata:
-      groupName: 'Gestion des Ventes'
+      groupName: 'Gestion des Détails de Commandes'
       groupDescription: |-
 
-        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        API pour gérer les lignes de produits (détails) des commandes d'achat.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer une vente supprimée'
-      description: |-
-        Restaure une vente supprimée logiquement.
-        Si la vente était validée, le current_balance du client sera restauré.
+      title: 'Restaurer un détail supprimé'
+      description: 'Restaure un détail de commande précédemment supprimé.'
       authenticated: true
       deprecated: false
       custom: []
@@ -886,7 +965,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID de la vente supprimée."
+        description: "L'UUID du détail supprimé."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -907,8 +986,16 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Vente restaurée avec succès",
-            "data": {}
+            "message": "Détail de commande restauré avec succès",
+            "data": {
+              "detail_commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "commande_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+              "product_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+              "quantite": 10,
+              "prix_unitaire": "2500.00",
+              "sous_total": "25000.00",
+              "deleted_at": null
+            }
           }
         headers: []
         description: ''
@@ -918,7 +1005,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Vente supprimée non trouvée"
+            "message": "Détail supprimé non trouvé"
           }
         headers: []
         description: ''

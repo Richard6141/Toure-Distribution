@@ -1,28 +1,130 @@
-name: 'Gestion des Produits'
-description: ''
+name: Entrepôts
+description: |-
+
+  APIs pour la gestion des entrepôts et l'attribution des responsables
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/products
+    uri: api/entrepots
     metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
       subgroup: ''
       subgroupDescription: ''
-      title: 'Lister tous les produits'
-      description: 'Récupère la liste complète de tous les produits avec leurs catégories associées.'
-      authenticated: true
+      title: 'Liste des entrepôts'
+      description: 'Récupère la liste paginée des entrepôts avec possibilité de filtrage.'
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Recherche par nom, code ou adresse.'
+        required: false
+        example: Central
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Filtrer par statut actif (true/false).'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      user_id:
+        name: user_id
+        description: 'Filtrer par responsable (UUID).'
+        required: false
+        example: 550e8400-e29b-41d4-a716-446655440001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      has_user:
+        name: has_user
+        description: 'Filtrer les entrepôts avec/sans responsable.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Champ de tri (name, code, created_at).'
+        required: false
+        example: name
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc).'
+        required: false
+        example: asc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_user:
+        name: with_user
+        description: 'Inclure les informations du responsable.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+      search: Central
+      is_active: true
+      user_id: 550e8400-e29b-41d4-a716-446655440001
+      has_user: true
+      sort_by: name
+      sort_order: asc
+      with_user: true
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -33,48 +135,41 @@ endpoints:
           {
             "data": [
               {
-                "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-                "code": "PRO-ABC123",
-                "name": "Ciment Portland",
-                "description": "Ciment de qualité supérieure pour construction",
-                "unit_price": 45000.00,
-                "unit_of_measure": "sac",
-                "unit_weight": 50.0000,
-                "cost": 35000.00,
-                "minimum_cost": 30000.00,
-                "min_stock_level": 100,
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+                "code": "ENT001",
+                "name": "Entrepôt Central",
+                "adresse": "123 Rue de l'Industrie",
                 "is_active": true,
-                "picture": "ciment-portland.jpg",
-                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "created_at": "2025-01-15T10:30:00.000000Z",
-                "updated_at": "2025-01-15T10:30:00.000000Z",
-                "deleted_at": null,
-                "category": {
-                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                  "label": "Matériaux de construction",
-                  "description": "Matériaux pour le bâtiment"
+                "user_id": "550e8400-e29b-41d4-a716-446655440001",
+                "created_at": "2023-01-01T00:00:00.000000Z",
+                "updated_at": "2023-01-01T00:00:00.000000Z",
+                "user": {
+                  "user_id": "550e8400-e29b-41d4-a716-446655440001",
+                  "name": "Jean Dupont",
+                  "email": "jean.dupont@example.com"
                 }
               }
             ],
-            "message": "Liste des produits"
+            "links": {
+              "first": "http://api.example.com/entrepots?page=1",
+              "last": "http://api.example.com/entrepots?page=5",
+              "prev": null,
+              "next": "http://api.example.com/entrepots?page=2"
+            },
+            "meta": {
+              "current_page": 1,
+              "from": 1,
+              "last_page": 5,
+              "per_page": 15,
+              "to": 15,
+              "total": 75
+            }
           }
         headers: []
-        description: Succès
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -82,21 +177,20 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/products
+    uri: api/entrepots
     metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer un nouveau produit'
-      description: |-
-        Crée un nouveau produit dans le système. Le code produit est généré automatiquement
-        si non fourni (format: PRO-XXXXXX où X est un caractère aléatoire).
-      authenticated: true
+      title: 'Créer un entrepôt'
+      description: 'Crée un nouvel entrepôt dans le système. Le code est généré automatiquement.'
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -106,97 +200,27 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Nom du produit (max 255 caractères, doit être unique).'
+        description: "Nom de l'entrepôt."
         required: true
-        example: '"Ciment Portland"'
+        example: 'Entrepôt Central'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      description:
-        name: description
-        description: 'optional Description détaillée du produit.'
+      adresse:
+        name: adresse
+        description: "Adresse de l'entrepôt."
         required: false
-        example: '"Ciment de qualité supérieure pour construction"'
+        example: "123 Rue de l'Industrie"
         type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      product_category_id:
-        name: product_category_id
-        description: 'UUID de la catégorie du produit (doit exister dans product_categories).'
-        required: true
-        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      unit_price:
-        name: unit_price
-        description: 'Prix de vente unitaire (doit être >= 0).'
-        required: true
-        example: '45000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      unit_of_measure:
-        name: unit_of_measure
-        description: 'optional Unité de mesure (kg, t, l, pcs, sac, m, m², m³, etc.).'
-        required: false
-        example: '"sac"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      unit_weight:
-        name: unit_weight
-        description: 'optional Poids unitaire en kilogrammes pour le calcul du tonnage.'
-        required: false
-        example: '50.0000'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      cost:
-        name: cost
-        description: "optional Coût d'achat du produit (doit être >= 0)."
-        required: false
-        example: '35000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      minimum_cost:
-        name: minimum_cost
-        description: 'optional Coût minimum acceptable (doit être >= 0).'
-        required: false
-        example: '30000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      min_stock_level:
-        name: min_stock_level
-        description: 'optional Quantité minimale en stock déclenchant une alerte (doit être >= 0).'
-        required: false
-        example: 100
-        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
       is_active:
         name: is_active
-        description: 'optional Indique si le produit est actif (par défaut: true).'
+        description: 'Statut actif (par défaut: true).'
         required: false
         example: true
         type: boolean
@@ -204,132 +228,58 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      picture:
-        name: picture
-        description: 'optional URL ou nom du fichier image (max 255 caractères).'
+      user_id:
+        name: user_id
+        description: 'UUID du responsable (optionnel).'
         required: false
-        example: '"ciment-portland.jpg"'
+        example: 550e8400-e29b-41d4-a716-446655440001
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
-      image:
-        name: image
-        description: "optional Alternative pour l'image du produit."
-        required: false
-        example: '"image.jpg"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
     cleanBodyParameters:
-      name: '"Ciment Portland"'
-      description: '"Ciment de qualité supérieure pour construction"'
-      product_category_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      unit_price: '45000.00'
-      unit_of_measure: '"sac"'
-      unit_weight: '50.0000'
-      cost: '35000.00'
-      minimum_cost: '30000.00'
-      min_stock_level: 100
+      name: 'Entrepôt Central'
+      adresse: "123 Rue de l'Industrie"
       is_active: true
-      picture: '"ciment-portland.jpg"'
-      image: '"image.jpg"'
+      user_id: 550e8400-e29b-41d4-a716-446655440001
     fileParameters: []
     responses:
       -
         status: 201
         content: |-
           {
-            "data": {
-              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "code": "PRO-A7B9C2",
-              "name": "Ciment Portland",
-              "description": "Ciment de qualité supérieure pour construction",
-              "unit_price": 45000.00,
-              "unit_of_measure": "sac",
-              "unit_weight": 50.0000,
-              "cost": 35000.00,
-              "minimum_cost": 30000.00,
-              "min_stock_level": 100,
-              "is_active": true,
-              "picture": "ciment-portland.jpg",
-              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "deleted_at": null,
-              "category": {
-                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "label": "Matériaux de construction",
-                "description": "Matériaux pour le bâtiment"
-              }
-            },
-            "message": "Produit créé avec succès"
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT-ABC123",
+            "name": "Entrepôt Central",
+            "adresse": "123 Rue de l'Industrie",
+            "is_active": true,
+            "user_id": "550e8400-e29b-41d4-a716-446655440001",
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-01T00:00:00.000000Z",
+            "user": {
+              "user_id": "550e8400-e29b-41d4-a716-446655440001",
+              "name": "Jean Dupont",
+              "email": "jean.dupont@example.com"
+            }
           }
         headers: []
-        description: 'Produit créé avec succès'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
       -
         status: 422
         content: |-
           {
+            "message": "Les données fournies ne sont pas valides.",
             "errors": {
-              "name": [
-                "Le nom du produit est obligatoire"
-              ],
-              "product_category_id": [
-                "La catégorie est obligatoire"
-              ],
-              "unit_price": [
-                "Le prix unitaire est obligatoire"
-              ]
+              "name": ["Le nom est obligatoire."]
             }
           }
         headers: []
-        description: 'Erreurs de validation'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "errors": {
-              "name": [
-                "Ce nom de produit existe déjà"
-              ]
-            }
-          }
-        headers: []
-        description: 'Nom de produit déjà existant'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "errors": {
-              "product_category_id": [
-                "La catégorie sélectionnée n'existe pas"
-              ]
-            }
-          }
-        headers: []
-        description: 'Catégorie invalide'
+        description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -337,36 +287,48 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/products/{id}'
+    uri: 'api/entrepots/{id}'
     metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un produit spécifique'
-      description: "Récupère les détails complets d'un produit spécifique avec sa catégorie associée."
-      authenticated: true
+      title: 'Afficher un entrepôt'
+      description: "Récupère les détails d'un entrepôt spécifique."
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du produit.'
+        description: "L'ID de l'entrepôt."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-    queryParameters: []
-    cleanQueryParameters: []
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters:
+      with_user:
+        name: with_user
+        description: 'Inclure les informations du responsable.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      with_user: true
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -375,57 +337,34 @@ endpoints:
         status: 200
         content: |-
           {
-            "data": {
-              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "code": "PRO-ABC123",
-              "name": "Ciment Portland",
-              "description": "Ciment de qualité supérieure pour construction",
-              "unit_price": 45000.00,
-              "unit_of_measure": "sac",
-              "unit_weight": 50.0000,
-              "cost": 35000.00,
-              "minimum_cost": 30000.00,
-              "min_stock_level": 100,
-              "is_active": true,
-              "picture": "ciment-portland.jpg",
-              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "deleted_at": null,
-              "category": {
-                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "label": "Matériaux de construction",
-                "description": "Matériaux pour le bâtiment"
-              }
-            },
-            "message": "Détails du produit"
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT001",
+            "name": "Entrepôt Central",
+            "adresse": "123 Rue de l'Industrie",
+            "is_active": true,
+            "user_id": "550e8400-e29b-41d4-a716-446655440001",
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-01T00:00:00.000000Z",
+            "user": {
+              "user_id": "550e8400-e29b-41d4-a716-446655440001",
+              "name": "Jean Dupont",
+              "email": "jean.dupont@example.com"
+            }
           }
         headers: []
-        description: 'Produit trouvé'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "No query results for model [App\\Models\\Product]"
+            "message": "Entrepôt non trouvé."
           }
         headers: []
-        description: 'Produit non trouvé'
+        description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -433,130 +372,61 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/products/{id}'
+    uri: 'api/entrepots/{id}'
     metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un produit'
-      description: "Met à jour les informations d'un produit existant. Le nom du produit doit rester unique."
-      authenticated: true
+      title: 'Mettre à jour un entrepôt'
+      description: "Met à jour les informations d'un entrepôt existant. Le code ne peut pas être modifié."
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du produit à mettre à jour.'
+        description: "L'ID de l'entrepôt."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       name:
         name: name
-        description: 'Nom du produit (max 255 caractères, doit être unique).'
-        required: true
-        example: '"Ciment Portland Premium"'
+        description: "Nom de l'entrepôt."
+        required: false
+        example: 'Entrepôt Central'
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      description:
-        name: description
-        description: 'optional Description détaillée du produit.'
+      adresse:
+        name: adresse
+        description: "Adresse de l'entrepôt."
         required: false
-        example: '"Ciment de qualité supérieure renforcé"'
+        example: "123 Rue de l'Industrie"
         type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      product_category_id:
-        name: product_category_id
-        description: 'UUID de la catégorie du produit.'
-        required: true
-        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      unit_price:
-        name: unit_price
-        description: 'Prix de vente unitaire (>= 0).'
-        required: true
-        example: '48000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      unit_of_measure:
-        name: unit_of_measure
-        description: 'optional Unité de mesure.'
-        required: false
-        example: '"sac"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      unit_weight:
-        name: unit_weight
-        description: 'optional Poids unitaire en kg.'
-        required: false
-        example: '50.0000'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      cost:
-        name: cost
-        description: "optional Coût d'achat (>= 0)."
-        required: false
-        example: '38000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      minimum_cost:
-        name: minimum_cost
-        description: 'optional Coût minimum (>= 0).'
-        required: false
-        example: '32000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      min_stock_level:
-        name: min_stock_level
-        description: 'optional Quantité minimale en stock (>= 0).'
-        required: false
-        example: 80
-        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
       is_active:
         name: is_active
-        description: 'optional Statut actif du produit.'
+        description: 'Statut actif.'
         required: false
         example: true
         type: boolean
@@ -564,560 +434,744 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      picture:
-        name: picture
-        description: 'optional URL ou nom du fichier image (max 255 caractères).'
+      user_id:
+        name: user_id
+        description: 'UUID du responsable.'
         required: false
-        example: '"ciment-premium.jpg"'
+        example: 550e8400-e29b-41d4-a716-446655440001
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      name: '"Ciment Portland Premium"'
-      description: '"Ciment de qualité supérieure renforcé"'
-      product_category_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      unit_price: '48000.00'
-      unit_of_measure: '"sac"'
-      unit_weight: '50.0000'
-      cost: '38000.00'
-      minimum_cost: '32000.00'
-      min_stock_level: 80
+      name: 'Entrepôt Central'
+      adresse: "123 Rue de l'Industrie"
       is_active: true
-      picture: '"ciment-premium.jpg"'
+      user_id: 550e8400-e29b-41d4-a716-446655440001
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "data": {
-              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "code": "PRO-ABC123",
-              "name": "Ciment Portland Premium",
-              "description": "Ciment de qualité supérieure renforcé",
-              "unit_price": 48000.00,
-              "unit_of_measure": "sac",
-              "unit_weight": 50.0000,
-              "cost": 38000.00,
-              "minimum_cost": 32000.00,
-              "min_stock_level": 80,
-              "is_active": true,
-              "picture": "ciment-premium.jpg",
-              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-16T15:45:00.000000Z",
-              "deleted_at": null,
-              "category": {
-                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "label": "Matériaux de construction",
-                "description": "Matériaux pour le bâtiment"
-              }
-            },
-            "message": "Produit mis à jour avec succès"
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT-ABC123",
+            "name": "Entrepôt Central Mis à Jour",
+            "adresse": "456 Nouvelle Adresse",
+            "is_active": true,
+            "user_id": "550e8400-e29b-41d4-a716-446655440001",
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-02T00:00:00.000000Z",
+            "user": {
+              "user_id": "550e8400-e29b-41d4-a716-446655440001",
+              "name": "Jean Dupont",
+              "email": "jean.dupont@example.com"
+            }
           }
         headers: []
-        description: 'Mise à jour réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "No query results for model [App\\Models\\Product]"
+            "message": "Entrepôt non trouvé."
           }
         headers: []
-        description: 'Produit non trouvé'
+        description: ''
         custom: []
       -
         status: 422
         content: |-
           {
-            "errors": {
-              "name": [
-                "Ce nom de produit existe déjà"
-              ],
-              "unit_price": [
-                "Le prix unitaire est obligatoire"
-              ]
-            }
+            "message": "Les données fournies ne sont pas valides."
           }
         headers: []
-        description: 'Erreurs de validation'
+        description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
     custom: []
   -
     httpMethods:
-      - DELETE
-    uri: 'api/products/{id}'
+      - PATCH
+    uri: 'api/entrepots/{id}'
     metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un produit (soft delete)'
-      description: |-
-        Effectue une suppression logique (soft delete) du produit. Le produit n'est pas supprimé
-        de la base de données mais marqué comme supprimé. Il peut être restauré ultérieurement.
-      authenticated: true
+      title: 'Mettre à jour un entrepôt'
+      description: "Met à jour les informations d'un entrepôt existant. Le code ne peut pas être modifié."
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du produit à supprimer.'
+        description: "L'ID de l'entrepôt."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Produit supprimé avec succès"
-          }
-        headers: []
-        description: 'Suppression réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\Product]"
-          }
-        headers: []
-        description: 'Produit non trouvé'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/products/category/{categoryId}'
-    metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lister les produits par catégorie'
-      description: 'Récupère la liste de tous les produits appartenant à une catégorie spécifique.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      categoryId:
-        name: categoryId
-        description: 'UUID de la catégorie.'
-        required: true
-        example: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      categoryId: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-                "code": "PRO-ABC123",
-                "name": "Ciment Portland",
-                "description": "Ciment de qualité supérieure",
-                "unit_price": 45000.00,
-                "unit_of_measure": "sac",
-                "unit_weight": 50.0000,
-                "cost": 35000.00,
-                "minimum_cost": 30000.00,
-                "min_stock_level": 100,
-                "is_active": true,
-                "picture": "ciment-portland.jpg",
-                "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "created_at": "2025-01-16T14:20:00.000000Z",
-                "updated_at": "2025-01-16T14:20:00.000000Z",
-                "deleted_at": null,
-                "category": {
-                  "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                  "label": "Matériaux de construction",
-                  "description": "Matériaux pour le bâtiment"
-                }
-              }
-            ],
-            "message": "Produits de la catégorie"
-          }
-        headers: []
-        description: Succès
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "data": [],
-            "message": "Produits de la catégorie"
-          }
-        headers: []
-        description: 'Aucun produit dans la catégorie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/products/{id}/restore'
-    metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Restaurer un produit supprimé'
-      description: |-
-        Restaure un produit qui a été supprimé logiquement (soft delete).
-        Le produit redevient actif et visible dans les listes.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID du produit à restaurer.'
-        required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "code": "PRO-ABC123",
-              "name": "Ciment Portland",
-              "description": "Ciment de qualité supérieure",
-              "unit_price": 45000.00,
-              "unit_of_measure": "sac",
-              "unit_weight": 50.0000,
-              "cost": 35000.00,
-              "minimum_cost": 30000.00,
-              "min_stock_level": 100,
-              "is_active": true,
-              "picture": "ciment-portland.jpg",
-              "product_category_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-16T16:20:00.000000Z",
-              "deleted_at": null
-            },
-            "message": "Produit restauré avec succès"
-          }
-        headers: []
-        description: 'Restauration réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\Product]"
-          }
-        headers: []
-        description: 'Produit non trouvé'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/products/{id}/force'
-    metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Supprimer définitivement un produit'
-      description: |-
-        Supprime définitivement un produit de la base de données (force delete).
-        Cette action est irréversible. Le produit ne pourra plus être restauré.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID du produit à supprimer définitivement.'
-        required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "message": "Produit supprimé définitivement"
-          }
-        headers: []
-        description: 'Suppression définitive réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\Product]"
-          }
-        headers: []
-        description: 'Produit non trouvé'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/products/{id}/calculate-tonnage'
-    metadata:
-      groupName: 'Gestion des Produits'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Calculer le tonnage pour une quantité de produit'
-      description: |-
-        Calcule le tonnage total pour une quantité donnée d'un produit spécifique.
-        Le produit doit avoir un unit_weight défini.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'UUID du produit.'
-        required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      quantity:
-        name: quantity
-        description: 'Quantité de produit.'
+      name:
+        name: name
+        description: "Nom de l'entrepôt."
+        required: false
+        example: 'Entrepôt Central'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      adresse:
+        name: adresse
+        description: "Adresse de l'entrepôt."
+        required: false
+        example: "123 Rue de l'Industrie"
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Statut actif.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      user_id:
+        name: user_id
+        description: 'UUID du responsable.'
+        required: false
+        example: 550e8400-e29b-41d4-a716-446655440001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: 'Entrepôt Central'
+      adresse: "123 Rue de l'Industrie"
+      is_active: true
+      user_id: 550e8400-e29b-41d4-a716-446655440001
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT-ABC123",
+            "name": "Entrepôt Central Mis à Jour",
+            "adresse": "456 Nouvelle Adresse",
+            "is_active": true,
+            "user_id": "550e8400-e29b-41d4-a716-446655440001",
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-02T00:00:00.000000Z",
+            "user": {
+              "user_id": "550e8400-e29b-41d4-a716-446655440001",
+              "name": "Jean Dupont",
+              "email": "jean.dupont@example.com"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Entrepôt non trouvé."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Les données fournies ne sont pas valides."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/entrepots/{id}'
+    metadata:
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer un entrepôt'
+      description: 'Supprime définitivement un entrepôt.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de l'entrepôt."
         required: true
-        example: '500'
-        type: numeric
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 204
+        content: '{}'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Entrepôt non trouvé."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/entrepots/{id}/assign-user'
+    metadata:
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Attribuer un responsable à un entrepôt'
+      description: "Assigne un utilisateur comme responsable d'un entrepôt."
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de l'entrepôt."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        name: user_id
+        description: 'UUID du responsable à attribuer.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440001
+        type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      quantity: '500'
+      user_id: 550e8400-e29b-41d4-a716-446655440001
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "data": {
-              "product_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "product_name": "Ciment Portland",
-              "quantity": 500,
-              "unit_weight_kg": 50.0000,
-              "total_weight_kg": 25000.0000,
-              "tonnage_t": 25.0000,
-              "unit_of_measure": "sac"
-            },
-            "message": "Tonnage calculé avec succès"
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT001",
+            "name": "Entrepôt Central",
+            "adresse": "123 Rue de l'Industrie",
+            "is_active": true,
+            "user_id": "550e8400-e29b-41d4-a716-446655440001",
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-02T00:00:00.000000Z",
+            "user": {
+              "user_id": "550e8400-e29b-41d4-a716-446655440001",
+              "name": "Jean Dupont",
+              "email": "jean.dupont@example.com"
+            }
           }
         headers: []
-        description: 'Calcul réussi'
+        description: ''
         custom: []
       -
-        status: 401
+        status: 400
         content: |-
           {
-            "message": "Unauthenticated."
+            "message": "Cet entrepôt a déjà un responsable attribué."
           }
         headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "No query results for model [App\\Models\\Product]"
+            "message": "Entrepôt non trouvé."
           }
         headers: []
-        description: 'Produit non trouvé'
+        description: ''
         custom: []
       -
         status: 422
         content: |-
           {
-            "message": "Ce produit n'a pas de poids unitaire défini pour le calcul du tonnage"
-          }
-        headers: []
-        description: 'Produit sans poids unitaire'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
+            "message": "Les données fournies ne sont pas valides.",
             "errors": {
-              "quantity": [
-                "La quantité est obligatoire"
-              ]
+              "user_id": ["L'utilisateur sélectionné n'existe pas."]
             }
           }
         headers: []
-        description: 'Quantité invalide'
+        description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/entrepots/{id}/unassign-user'
+    metadata:
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Désattribuer le responsable d'un entrepôt"
+      description: 'Retire le responsable assigné à un entrepôt.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de l'entrepôt."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT001",
+            "name": "Entrepôt Central",
+            "adresse": "123 Rue de l'Industrie",
+            "is_active": true,
+            "user_id": null,
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-02T00:00:00.000000Z",
+            "user": null
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Aucun responsable n'est attribué à cet entrepôt."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Entrepôt non trouvé."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/entrepots/{id}/change-user'
+    metadata:
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Changer le responsable d'un entrepôt"
+      description: 'Remplace le responsable actuel par un nouveau responsable.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de l'entrepôt."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        name: user_id
+        description: 'UUID du nouveau responsable.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440002
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      user_id: 550e8400-e29b-41d4-a716-446655440002
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+            "code": "ENT001",
+            "name": "Entrepôt Central",
+            "adresse": "123 Rue de l'Industrie",
+            "is_active": true,
+            "user_id": "550e8400-e29b-41d4-a716-446655440002",
+            "created_at": "2023-01-01T00:00:00.000000Z",
+            "updated_at": "2023-01-02T00:00:00.000000Z",
+            "user": {
+              "user_id": "550e8400-e29b-41d4-a716-446655440002",
+              "name": "Marie Martin",
+              "email": "marie.martin@example.com"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Entrepôt non trouvé."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "Les données fournies ne sont pas valides.",
+            "errors": {
+              "user_id": ["L'utilisateur sélectionné n'existe pas."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/entrepots/{id}/products-stocks'
+    metadata:
+      groupName: Entrepôts
+      groupDescription: |-
+
+        APIs pour la gestion des entrepôts et l'attribution des responsables
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Obtenir tous les produits avec leurs stocks pour un entrepôt spécifique'
+      description: |-
+        Récupère la liste complète des produits avec leurs informations de stock
+        dans un entrepôt donné. Inclut également les produits sans stock (quantité 0).
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de l'entrepôt."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters:
+      with_category:
+        name: with_category
+        description: 'Inclure les informations de catégorie des produits.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      only_in_stock:
+        name: only_in_stock
+        description: 'Afficher uniquement les produits en stock (quantité > 0).'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      only_active:
+        name: only_active
+        description: 'Afficher uniquement les produits actifs.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Rechercher par nom ou code de produit.'
+        required: false
+        example: Laptop
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Champ de tri (name, quantite, available_quantity).'
+        required: false
+        example: name
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc).'
+        required: false
+        example: asc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      with_category: true
+      only_in_stock: false
+      only_active: true
+      search: Laptop
+      sort_by: name
+      sort_order: asc
+      per_page: 20
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "entrepot": {
+                "entrepot_id": "550e8400-e29b-41d4-a716-446655440000",
+                "code": "ENT001",
+                "name": "Entrepôt Central",
+                "adresse": "123 Rue de l'Industrie",
+                "is_active": true
+              },
+              "products": {
+                "current_page": 1,
+                "data": [
+                  {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440003",
+                    "code": "PRO-ABC123",
+                    "name": "Laptop Dell XPS 15",
+                    "description": "Ordinateur portable haute performance",
+                    "unit_price": 1500000.00,
+                    "cost": 1200000.00,
+                    "min_stock_level": 5,
+                    "is_active": true,
+                    "picture": "laptop-dell-xps.jpg",
+                    "category": {
+                      "product_category_id": "550e8400-e29b-41d4-a716-446655440010",
+                      "label": "Informatique"
+                    },
+                    "stock": {
+                      "stock_id": "550e8400-e29b-41d4-a716-446655440020",
+                      "quantite": 50,
+                      "reserved_quantity": 5,
+                      "available_quantity": 45,
+                      "is_below_minimum": false,
+                      "last_updated": "2024-10-15T10:30:00.000000Z"
+                    }
+                  },
+                  {
+                    "product_id": "550e8400-e29b-41d4-a716-446655440004",
+                    "code": "PRO-XYZ789",
+                    "name": "Souris Logitech",
+                    "description": "Souris sans fil ergonomique",
+                    "unit_price": 25000.00,
+                    "cost": 18000.00,
+                    "min_stock_level": 20,
+                    "is_active": true,
+                    "picture": "souris-logitech.jpg",
+                    "category": {
+                      "product_category_id": "550e8400-e29b-41d4-a716-446655440010",
+                      "label": "Informatique"
+                    },
+                    "stock": {
+                      "stock_id": null,
+                      "quantite": 0,
+                      "reserved_quantity": 0,
+                      "available_quantity": 0,
+                      "is_below_minimum": true,
+                      "last_updated": null
+                    }
+                  }
+                ],
+                "per_page": 20,
+                "total": 2
+              },
+              "summary": {
+                "total_products": 2,
+                "products_in_stock": 1,
+                "products_out_of_stock": 1,
+                "products_below_minimum": 1,
+                "total_stock_value": 60000000.00
+              }
+            },
+            "message": "Produits de l'entrepôt récupérés avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Entrepôt non trouvé."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
     controller: null
     method: null
     route: null

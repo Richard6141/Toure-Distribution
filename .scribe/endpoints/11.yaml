@@ -1,37 +1,242 @@
-name: 'Stock Movements'
+name: 'Stock Movement Types'
 description: ''
 endpoints:
   -
     httpMethods:
-      - DELETE
-    uri: 'api/stock-movements/{id}'
+      - GET
+    uri: api/stock-movement-types
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Stock Movement Types'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Récupère la liste des types de mouvements de stock'
       description: ''
-      authenticated: true
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      direction:
+        name: direction
+        description: 'Filtrer par direction (in, out, transfer).'
+        required: false
+        example: in
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Rechercher par nom.'
+        required: false
+        example: Réception
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Champ de tri.'
+        required: false
+        example: created_at
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc).'
+        required: false
+        example: desc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      direction: in
+      search: Réception
+      sort_by: created_at
+      sort_order: desc
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "data": [
+                {
+                  "stock_movement_type_id": "uuid",
+                  "name": "Réception",
+                  "direction": "in",
+                  "created_at": "2024-01-01 10:00:00",
+                  "updated_at": "2024-01-01 10:00:00",
+                  "stock_movements_count": 5
+                }
+              ],
+              "current_page": 1,
+              "per_page": 15,
+              "total": 1
+            },
+            "message": "Types de mouvements de stock récupérés avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur lors de la récupération des types de mouvements de stock",
+            "error": "Message d'erreur"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/stock-movement-types
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Crée un nouveau type de mouvement de stock'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom du type de mouvement.'
+        required: true
+        example: Réception
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      direction:
+        name: direction
+        description: 'Direction du mouvement (in, out, transfer).'
+        required: true
+        example: in
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Réception
+      direction: in
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
+            },
+            "message": "Type de mouvement de stock créé avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "name": ["Le nom du type de mouvement est obligatoire."],
+              "direction": ["La direction est obligatoire."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Récupère un type de mouvement de stock spécifique'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du mouvement de stock à supprimer.'
+        description: 'ID du type de mouvement de stock.'
         required: true
-        example: 550e8400-e29b-41d4-a716-446655440030
+        example: uuid
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 550e8400-e29b-41d4-a716-446655440030
+      id: uuid
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -43,16 +248,15 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Mouvement de stock supprimé avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00",
+              "stock_movements_count": 5
+            },
+            "message": "Type de mouvement de stock récupéré avec succès"
           }
         headers: []
         description: ''
@@ -62,16 +266,283 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Mouvement de stock non trouvé"
+            "message": "Type de mouvement de stock non trouvé"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Met à jour un type de mouvement de stock'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom du type de mouvement.'
+        required: true
+        example: Réception
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      direction:
+        name: direction
+        description: 'Direction du mouvement (in, out, transfer).'
+        required: true
+        example: in
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Réception
+      direction: in
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
+            },
+            "message": "Type de mouvement de stock mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "name": ["Le nom du type de mouvement est obligatoire."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Met à jour un type de mouvement de stock'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nom du type de mouvement.'
+        required: true
+        example: Réception
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      direction:
+        name: direction
+        description: 'Direction du mouvement (in, out, transfer).'
+        required: true
+        example: in
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Réception
+      direction: in
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "data": {
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
+            },
+            "message": "Type de mouvement de stock mis à jour avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Erreur de validation",
+            "errors": {
+              "name": ["Le nom du type de mouvement est obligatoire."]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/stock-movement-types/{id}'
+    metadata:
+      groupName: 'Stock Movement Types'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprime un type de mouvement de stock (soft delete)'
+      description: ''
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'ID du type de mouvement de stock.'
+        required: true
+        example: uuid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: uuid
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Type de mouvement de stock supprimé avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Type de mouvement de stock non trouvé"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
     controller: null
     method: null
     route: null
@@ -79,19 +550,18 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/stock-movements/trashed/list
+    uri: api/stock-movement-types/trashed/list
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Stock Movement Types'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Récupère la liste des types de mouvements de stock supprimés'
       description: ''
-      authenticated: true
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -108,30 +578,27 @@ endpoints:
           {
             "success": true,
             "data": {
-              "data": [],
+              "data": [
+                {
+                  "stock_movement_type_id": "uuid",
+                  "name": "Réception",
+                  "direction": "in",
+                  "created_at": "2024-01-01 10:00:00",
+                  "updated_at": "2024-01-01 10:00:00",
+                  "deleted_at": "2024-01-01 12:00:00"
+                }
+              ],
               "current_page": 1,
               "per_page": 15,
-              "total": 0
+              "total": 1
             },
-            "message": "Mouvements de stock supprimés récupérés avec succès"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
+            "message": "Types de mouvements de stock supprimés récupérés avec succès"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -139,34 +606,33 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/stock-movements/{id}/restore'
+    uri: 'api/stock-movement-types/{id}/restore'
     metadata:
-      groupName: 'Stock Movements'
+      groupName: 'Stock Movement Types'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Restaure un type de mouvement de stock supprimé'
       description: ''
-      authenticated: true
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer token. Example: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du mouvement de stock à restaurer.'
+        description: 'ID du type de mouvement de stock.'
         required: true
-        example: 550e8400-e29b-41d4-a716-446655440030
+        example: uuid
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 550e8400-e29b-41d4-a716-446655440030
+      id: uuid
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -179,20 +645,23 @@ endpoints:
           {
             "success": true,
             "data": {
-              "stock_movement_id": "550e8400-e29b-41d4-a716-446655440030",
-              "reference": "MV-2024-00003",
-              "deleted_at": null
+              "stock_movement_type_id": "uuid",
+              "name": "Réception",
+              "direction": "in",
+              "created_at": "2024-01-01 10:00:00",
+              "updated_at": "2024-01-01 10:00:00"
             },
-            "message": "Mouvement de stock restauré avec succès"
+            "message": "Type de mouvement de stock restauré avec succès"
           }
         headers: []
         description: ''
         custom: []
       -
-        status: 401
+        status: 400
         content: |-
           {
-            "message": "Unauthenticated."
+            "success": false,
+            "message": "Ce type de mouvement de stock n'est pas supprimé"
           }
         headers: []
         description: ''
@@ -202,16 +671,13 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Mouvement de stock non trouvé"
+            "message": "Type de mouvement de stock non trouvé"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null

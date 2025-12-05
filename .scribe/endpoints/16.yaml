@@ -1,28 +1,122 @@
-name: 'Gestion des Chauffeurs'
+name: 'Invoices Management'
 description: |-
 
-  API pour gérer les chauffeurs (conducteurs) de l'application.
-  Toutes les routes nécessitent une authentification via Sanctum.
+  APIs pour gérer les factures et leurs détails
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/chauffeurs
+    uri: api/factures/statistics/overview
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des chauffeurs'
-      description: 'Récupère la liste paginée de tous les chauffeurs actifs.'
-      authenticated: true
+      title: 'Statistiques des factures'
+      description: 'Récupère des statistiques sur les factures.'
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      date_from:
+        name: date_from
+        description: 'date Statistiques à partir de cette date.'
+        required: false
+        example: '2025-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_to:
+        name: date_to
+        description: "date Statistiques jusqu'à cette date."
+        required: false
+        example: '2025-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      date_from: '2025-01-01'
+      date_to: '2025-12-31'
+    bodyParameters:
+      date_from:
+        name: date_from
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-12-05T13:26:16'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      date_to:
+        name: date_to
+        description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
+        required: false
+        example: '2051-12-29'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      date_from: '2025-12-05T13:26:16'
+      date_to: '2051-12-29'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": {
+              "total_factures": 150,
+              "factures_pending": 30,
+              "factures_paid": 100,
+              "factures_partially_paid": 15,
+              "factures_cancelled": 3,
+              "factures_overdue": 2,
+              "total_amount": "15000000.00",
+              "total_paid": "12000000.00",
+              "total_pending": "3000000.00",
+              "average_invoice_amount": "100000.00"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/factures
+    metadata:
+      groupName: 'Invoices Management'
+      groupDescription: |-
+
+        APIs pour gérer les factures et leurs détails
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste toutes les factures'
+      description: 'Récupère la liste de toutes les factures avec pagination et filtres optionnels.'
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -30,7 +124,7 @@ endpoints:
     queryParameters:
       page:
         name: page
-        description: 'Numéro de la page.'
+        description: 'Page à récupérer (pagination).'
         required: false
         example: 1
         type: integer
@@ -40,7 +134,7 @@ endpoints:
         custom: []
       per_page:
         name: per_page
-        description: "Nombre d'éléments par page (max 100)."
+        description: "Nombre d'éléments par page (max: 100)."
         required: false
         example: 15
         type: integer
@@ -50,27 +144,67 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Rechercher par nom ou numéro de téléphone.'
+        description: 'Recherche par numéro de facture ou référence.'
         required: false
-        example: Jean
+        example: FACT-2025
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      status:
-        name: status
-        description: 'Filtrer par statut (actif, inactif, en_conge).'
+      client_id:
+        name: client_id
+        description: 'Filtrer par client (UUID).'
         required: false
-        example: actif
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      permis_valide:
-        name: permis_valide
-        description: 'Filtrer par permis valide (1 ou 0).'
+      statut:
+        name: statut
+        description: 'Filtrer par statut (pending, paid, partially_paid, cancelled, overdue).'
+        required: false
+        example: paid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_from:
+        name: date_from
+        description: 'date Factures à partir de cette date.'
+        required: false
+        example: '2025-01-01'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_to:
+        name: date_to
+        description: "date Factures jusqu'à cette date."
+        required: false
+        example: '2025-12-31'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_client:
+        name: with_client
+        description: 'Inclure les informations du client.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_details:
+        name: with_details
+        description: 'Inclure les détails de la facture.'
         required: false
         example: true
         type: boolean
@@ -81,53 +215,158 @@ endpoints:
     cleanQueryParameters:
       page: 1
       per_page: 15
-      search: Jean
-      status: actif
-      permis_valide: true
-    bodyParameters: []
-    cleanBodyParameters: []
+      search: FACT-2025
+      client_id: 550e8400-e29b-41d4-a716-446655440000
+      statut: paid
+      date_from: '2025-01-01'
+      date_to: '2025-12-31'
+      with_client: true
+      with_details: true
+    bodyParameters:
+      page:
+        name: page
+        description: 'Must be at least 1.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      client_id:
+        name: client_id
+        description: 'Must be a valid UUID. The <code>client_id</code> of an existing record in the clients table.'
+        required: false
+        example: c90237e9-ced5-3af6-88ea-84aeaa148878
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: ''
+        required: false
+        example: paid
+        type: string
+        enumValues:
+          - pending
+          - paid
+          - partially_paid
+          - cancelled
+          - overdue
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      date_from:
+        name: date_from
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-12-05T13:26:16'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      date_to:
+        name: date_to
+        description: 'Must be a valid date. Must be a date after or equal to <code>date_from</code>.'
+        required: false
+        example: '2051-12-29'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      with_client:
+        name: with_client
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      with_details:
+        name: with_details
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      page: 16
+      per_page: 22
+      search: g
+      client_id: c90237e9-ced5-3af6-88ea-84aeaa148878
+      statut: paid
+      date_from: '2025-12-05T13:26:16'
+      date_to: '2051-12-29'
+      with_client: false
+      with_details: false
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Liste des chauffeurs récupérée avec succès",
-            "data": {
+            "data": [
+              {
+                "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+                "facture_number": "FACT-2025-00001",
+                "reference": "REF-001",
+                "client_id": "550e8400-e29b-41d4-a716-446655440001",
+                "facture_date": "2025-01-15T10:30:00Z",
+                "due_date": "2025-02-15",
+                "montant_ht": "100000.00",
+                "taxe_rate": "18.00",
+                "transport_cost": "5000.00",
+                "discount_amount": "2000.00",
+                "total_amount": "121000.00",
+                "paid_amount": "121000.00",
+                "statut": "paid",
+                "delivery_adresse": "123 Rue de la Paix, Cotonou",
+                "note": "Livraison express",
+                "user_id": "550e8400-e29b-41d4-a716-446655440002",
+                "created_at": "2025-01-15T10:30:00Z",
+                "updated_at": "2025-01-15T10:30:00Z"
+              }
+            ],
+            "meta": {
               "current_page": 1,
-              "data": [
-                {
-                  "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "name": "Jean Dupont",
-                  "phone": "+229 97 00 00 00",
-                  "numero_permis": "PERM123456",
-                  "date_expiration_permis": "2026-12-31",
-                  "status": "actif",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "updated_at": "2025-01-15T10:30:00.000000Z"
-                }
-              ],
-              "first_page_url": "http://localhost/api/chauffeurs?page=1",
-              "from": 1,
-              "last_page": 1,
-              "last_page_url": "http://localhost/api/chauffeurs?page=1",
-              "next_page_url": null,
-              "path": "http://localhost/api/chauffeurs",
               "per_page": 15,
-              "prev_page_url": null,
-              "to": 5,
-              "total": 5
+              "total": 1
             }
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -135,22 +374,22 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/chauffeurs
+    uri: api/factures
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer un chauffeur'
-      description: 'Enregistre un nouveau chauffeur dans le système.'
-      authenticated: true
+      title: 'Créer une nouvelle facture'
+      description: |-
+        Crée une nouvelle facture avec ses détails.
+        Le numéro de facture (facture_number) est généré automatiquement.
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -158,80 +397,218 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Le nom complet du chauffeur.'
+      reference:
+        name: reference
+        description: 'optionnel Référence personnalisée de la facture.'
+        required: false
+        example: REF-2025-001
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      client_id:
+        name: client_id
+        description: 'UUID du client.'
         required: true
-        example: 'Jean Dupont'
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phone:
-        name: phone
-        description: 'Le numéro de téléphone du chauffeur.'
-        required: true
-        example: '+229 97 00 00 00'
-        type: string
+      facture_date:
+        name: facture_date
+        description: 'optionnel Date de la facture (défaut: maintenant).'
+        required: false
+        example: '2025-01-15 10:30:00'
+        type: datetime
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
-      numero_permis:
-        name: numero_permis
-        description: 'Le numéro unique du permis de conduire.'
-        required: true
-        example: PERM123456
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_expiration_permis:
-        name: date_expiration_permis
-        description: "La date d'expiration du permis (format: Y-m-d)."
-        required: true
-        example: '2026-12-31'
+      due_date:
+        name: due_date
+        description: "optionnel Date d'échéance."
+        required: false
+        example: '2025-02-15'
         type: date
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
-      status:
-        name: status
-        description: 'Le statut du chauffeur (actif, inactif, en_conge). Par défaut: actif.'
+      taxe_rate:
+        name: taxe_rate
+        description: 'optionnel Taux de taxe en pourcentage (défaut: 0).'
         required: false
-        example: actif
+        example: 18.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      transport_cost:
+        name: transport_cost
+        description: 'optionnel Coût de transport (défaut: 0).'
+        required: false
+        example: 5000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      discount_amount:
+        name: discount_amount
+        description: 'optionnel Montant de réduction (défaut: 0).'
+        required: false
+        example: 2000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      delivery_adresse:
+        name: delivery_adresse
+        description: 'optionnel Adresse de livraison.'
+        required: false
+        example: '123 Rue de la Paix, Cotonou'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: 'optionnel Note ou commentaire.'
+        required: false
+        example: 'Livraison express'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      user_id:
+        name: user_id
+        description: "UUID de l'utilisateur créant la facture. Idéalement l'utilisateur connecté."
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440001
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
+      details:
+        name: details
+        description: 'Détails de la facture (lignes de produits).'
+        required: true
+        example:
+          - architecto
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'details[].product_id':
+        name: 'details[].product_id'
+        description: 'UUID du produit.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440002
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details[].quantite':
+        name: 'details[].quantite'
+        description: 'Quantité du produit.'
+        required: true
+        example: 10.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details[].prix_unitaire':
+        name: 'details[].prix_unitaire'
+        description: 'Prix unitaire.'
+        required: true
+        example: 10000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details[].taxe_rate':
+        name: 'details[].taxe_rate'
+        description: 'optionnel Taux de taxe pour ce produit (défaut: 0).'
+        required: false
+        example: 18.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      'details[].discount_amount':
+        name: 'details[].discount_amount'
+        description: 'optionnel Réduction pour ce produit (défaut: 0).'
+        required: false
+        example: 500.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
     cleanBodyParameters:
-      name: 'Jean Dupont'
-      phone: '+229 97 00 00 00'
-      numero_permis: PERM123456
-      date_expiration_permis: '2026-12-31'
-      status: actif
+      reference: REF-2025-001
+      client_id: 550e8400-e29b-41d4-a716-446655440000
+      facture_date: '2025-01-15 10:30:00'
+      due_date: '2025-02-15'
+      taxe_rate: 18.0
+      transport_cost: 5000.0
+      discount_amount: 2000.0
+      delivery_adresse: '123 Rue de la Paix, Cotonou'
+      note: 'Livraison express'
+      user_id: 550e8400-e29b-41d4-a716-446655440001
+      details:
+        - architecto
     fileParameters: []
     responses:
       -
         status: 201
         content: |-
           {
-            "success": true,
-            "message": "Chauffeur créé avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "actif",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z"
-            }
+              "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+              "facture_number": "FACT-2025-00001",
+              "reference": "REF-2025-001",
+              "client_id": "550e8400-e29b-41d4-a716-446655440001",
+              "facture_date": "2025-01-15T10:30:00Z",
+              "due_date": "2025-02-15",
+              "montant_ht": "100000.00",
+              "taxe_rate": "18.00",
+              "transport_cost": "5000.00",
+              "discount_amount": "2000.00",
+              "total_amount": "121000.00",
+              "paid_amount": "0.00",
+              "statut": "pending",
+              "delivery_adresse": "123 Rue de la Paix, Cotonou",
+              "note": "Livraison express",
+              "user_id": "550e8400-e29b-41d4-a716-446655440002",
+              "created_at": "2025-01-15T10:30:00Z",
+              "updated_at": "2025-01-15T10:30:00Z",
+              "details": [
+                {
+                  "facture_detail_id": "550e8400-e29b-41d4-a716-446655440003",
+                  "product_id": "550e8400-e29b-41d4-a716-446655440004",
+                  "quantite": 10,
+                  "prix_unitaire": "10000.00",
+                  "montant_total": "99500.00",
+                  "taxe_rate": "18.00",
+                  "discount_amount": "500.00"
+                }
+              ]
+            },
+            "message": "Facture créée avec succès"
           }
         headers: []
         description: ''
@@ -240,22 +617,17 @@ endpoints:
         status: 422
         content: |-
           {
-            "success": false,
-            "message": "Erreur de validation",
+            "message": "Données de validation échouées",
             "errors": {
-              "numero_permis": [
-                "Ce numéro de permis existe déjà"
-              ]
+              "client_id": ["Le client sélectionné n'existe pas"],
+              "details": ["Les détails de la facture sont requis"]
             }
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -263,60 +635,127 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/factures/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un chauffeur'
-      description: "Récupère les détails d'un chauffeur spécifique."
-      authenticated: true
+      title: 'Afficher une facture spécifique'
+      description: "Récupère les détails d'une facture par son ID."
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID de la facture."
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+      id: 550e8400-e29b-41d4-a716-446655440000
+    queryParameters:
+      with_client:
+        name: with_client
+        description: 'Inclure les informations du client.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_details:
+        name: with_details
+        description: 'Inclure les détails de la facture.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_payments:
+        name: with_payments
+        description: 'Inclure les paiements associés.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      with_client: true
+      with_details: true
+      with_payments: true
+    bodyParameters:
+      with_client:
+        name: with_client
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      with_details:
+        name: with_details
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      with_payments:
+        name: with_payments
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      with_client: true
+      with_details: true
+      with_payments: false
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Détails du chauffeur récupérés avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "actif",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "is_permis_expire": false,
-              "is_actif": true
+              "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+              "facture_number": "FACT-2025-00001",
+              "reference": "REF-2025-001",
+              "client": {
+                "client_id": "550e8400-e29b-41d4-a716-446655440001",
+                "name_client": "John Doe",
+                "email": "john@example.com"
+              },
+              "facture_date": "2025-01-15T10:30:00Z",
+              "due_date": "2025-02-15",
+              "total_amount": "121000.00",
+              "paid_amount": "50000.00",
+              "statut": "partially_paid",
+              "details": [],
+              "payments": []
             }
           }
         headers: []
@@ -326,17 +765,13 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Facture non trouvée"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -344,114 +779,144 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/factures/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un chauffeur'
-      description: "Met à jour les informations d'un chauffeur existant."
-      authenticated: true
+      title: 'Mettre à jour une facture'
+      description: |-
+        Met à jour les informations d'une facture existante.
+        Note: Les détails de la facture doivent être mis à jour séparément.
+        Le numéro de facture (facture_number) ne peut pas être modifié.
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID de la facture."
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Le nom complet du chauffeur.'
+      reference:
+        name: reference
+        description: 'Référence de la facture.'
         required: false
-        example: 'Jean Dupont'
+        example: REF-2025-001-UPDATED
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phone:
-        name: phone
-        description: 'Le numéro de téléphone du chauffeur.'
+      due_date:
+        name: due_date
+        description: "Date d'échéance."
         required: false
-        example: '+229 97 00 00 00'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      numero_permis:
-        name: numero_permis
-        description: 'Le numéro unique du permis de conduire.'
-        required: false
-        example: PERM123456
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_expiration_permis:
-        name: date_expiration_permis
-        description: "La date d'expiration du permis (format: Y-m-d)."
-        required: false
-        example: '2026-12-31'
+        example: '2025-03-15'
         type: date
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      status:
-        name: status
-        description: 'Le statut du chauffeur (actif, inactif, en_conge).'
+      taxe_rate:
+        name: taxe_rate
+        description: 'Taux de taxe.'
         required: false
-        example: inactif
+        example: 20.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transport_cost:
+        name: transport_cost
+        description: 'Coût de transport.'
+        required: false
+        example: 7000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      discount_amount:
+        name: discount_amount
+        description: 'Montant de réduction.'
+        required: false
+        example: 3000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      delivery_adresse:
+        name: delivery_adresse
+        description: 'Adresse de livraison.'
+        required: false
+        example: '456 Avenue des Palmiers'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Note ou commentaire.'
+        required: false
+        example: 'Livraison urgente'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: 'Statut de la facture (pending, paid, partially_paid, cancelled, overdue).'
+        required: false
+        example: paid
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: 'Jean Dupont'
-      phone: '+229 97 00 00 00'
-      numero_permis: PERM123456
-      date_expiration_permis: '2026-12-31'
-      status: inactif
+      reference: REF-2025-001-UPDATED
+      due_date: '2025-03-15'
+      taxe_rate: 20.0
+      transport_cost: 7000.0
+      discount_amount: 3000.0
+      delivery_adresse: '456 Avenue des Palmiers'
+      note: 'Livraison urgente'
+      statut: paid
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Chauffeur mis à jour avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "inactif",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T11:30:00.000000Z"
-            }
+              "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+              "facture_number": "FACT-2025-00001",
+              "reference": "REF-2025-001-UPDATED",
+              "statut": "paid",
+              "updated_at": "2025-01-15T11:00:00Z"
+            },
+            "message": "Facture mise à jour avec succès"
           }
         headers: []
         description: ''
@@ -460,17 +925,13 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Facture non trouvée"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -478,114 +939,144 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/factures/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un chauffeur'
-      description: "Met à jour les informations d'un chauffeur existant."
-      authenticated: true
+      title: 'Mettre à jour une facture'
+      description: |-
+        Met à jour les informations d'une facture existante.
+        Note: Les détails de la facture doivent être mis à jour séparément.
+        Le numéro de facture (facture_number) ne peut pas être modifié.
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID de la facture."
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
-        description: 'Le nom complet du chauffeur.'
+      reference:
+        name: reference
+        description: 'Référence de la facture.'
         required: false
-        example: 'Jean Dupont'
+        example: REF-2025-001-UPDATED
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      phone:
-        name: phone
-        description: 'Le numéro de téléphone du chauffeur.'
+      due_date:
+        name: due_date
+        description: "Date d'échéance."
         required: false
-        example: '+229 97 00 00 00'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      numero_permis:
-        name: numero_permis
-        description: 'Le numéro unique du permis de conduire.'
-        required: false
-        example: PERM123456
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_expiration_permis:
-        name: date_expiration_permis
-        description: "La date d'expiration du permis (format: Y-m-d)."
-        required: false
-        example: '2026-12-31'
+        example: '2025-03-15'
         type: date
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      status:
-        name: status
-        description: 'Le statut du chauffeur (actif, inactif, en_conge).'
+      taxe_rate:
+        name: taxe_rate
+        description: 'Taux de taxe.'
         required: false
-        example: inactif
+        example: 20.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      transport_cost:
+        name: transport_cost
+        description: 'Coût de transport.'
+        required: false
+        example: 7000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      discount_amount:
+        name: discount_amount
+        description: 'Montant de réduction.'
+        required: false
+        example: 3000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      delivery_adresse:
+        name: delivery_adresse
+        description: 'Adresse de livraison.'
+        required: false
+        example: '456 Avenue des Palmiers'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      note:
+        name: note
+        description: 'Note ou commentaire.'
+        required: false
+        example: 'Livraison urgente'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut:
+        name: statut
+        description: 'Statut de la facture (pending, paid, partially_paid, cancelled, overdue).'
+        required: false
+        example: paid
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: 'Jean Dupont'
-      phone: '+229 97 00 00 00'
-      numero_permis: PERM123456
-      date_expiration_permis: '2026-12-31'
-      status: inactif
+      reference: REF-2025-001-UPDATED
+      due_date: '2025-03-15'
+      taxe_rate: 20.0
+      transport_cost: 7000.0
+      discount_amount: 3000.0
+      delivery_adresse: '456 Avenue des Palmiers'
+      note: 'Livraison urgente'
+      statut: paid
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Chauffeur mis à jour avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "inactif",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T11:30:00.000000Z"
-            }
+              "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+              "facture_number": "FACT-2025-00001",
+              "reference": "REF-2025-001-UPDATED",
+              "statut": "paid",
+              "updated_at": "2025-01-15T11:00:00Z"
+            },
+            "message": "Facture mise à jour avec succès"
           }
         headers: []
         description: ''
@@ -594,17 +1085,13 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Facture non trouvée"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
@@ -612,39 +1099,37 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/chauffeurs/{id}'
+    uri: 'api/factures/{id}'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un chauffeur'
+      title: 'Supprimer une facture'
       description: |-
-        Effectue une suppression logique (soft delete) d'un chauffeur.
-        Le chauffeur reste dans la base mais est marqué comme supprimé.
-      authenticated: true
+        Supprime une facture et tous ses détails.
+        Cette action est irréversible.
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur."
+        description: "L'UUID de la facture."
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -655,8 +1140,16 @@ endpoints:
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Chauffeur supprimé avec succès"
+            "message": "Facture supprimée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "message": "Impossible de supprimer une facture déjà payée"
           }
         headers: []
         description: ''
@@ -665,170 +1158,75 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": false,
-            "message": "Chauffeur non trouvé"
+            "message": "Facture non trouvée"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null
     custom: []
   -
     httpMethods:
-      - GET
-    uri: api/chauffeurs/trashed/list
+      - PATCH
+    uri: 'api/factures/{id}/update-status'
     metadata:
-      groupName: 'Gestion des Chauffeurs'
+      groupName: 'Invoices Management'
       groupDescription: |-
 
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
+        APIs pour gérer les factures et leurs détails
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des chauffeurs supprimés'
-      description: 'Récupère la liste paginée de tous les chauffeurs supprimés (soft deleted).'
-      authenticated: true
+      title: "Changer le statut d'une facture"
+      description: "Met à jour le statut d'une facture."
+      authenticated: false
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      page:
-        name: page
-        description: 'Numéro de la page.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      per_page:
-        name: per_page
-        description: "Nombre d'éléments par page (max 100)."
-        required: false
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanQueryParameters:
-      page: 1
-      per_page: 15
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "success": true,
-            "message": "Liste des chauffeurs supprimés récupérée avec succès",
-            "data": {
-              "current_page": 1,
-              "data": [
-                {
-                  "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-                  "name": "Jean Dupont",
-                  "phone": "+229 97 00 00 00",
-                  "numero_permis": "PERM123456",
-                  "date_expiration_permis": "2026-12-31",
-                  "status": "actif",
-                  "created_at": "2025-01-15T10:30:00.000000Z",
-                  "updated_at": "2025-01-15T10:30:00.000000Z",
-                  "deleted_at": "2025-01-20T14:30:00.000000Z"
-                }
-              ],
-              "first_page_url": "http://localhost/api/chauffeurs/trashed/list?page=1",
-              "from": 1,
-              "last_page": 1,
-              "per_page": 15,
-              "to": 3,
-              "total": 3
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/chauffeurs/{id}/restore'
-    metadata:
-      groupName: 'Gestion des Chauffeurs'
-      groupDescription: |-
-
-        API pour gérer les chauffeurs (conducteurs) de l'application.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Restaurer un chauffeur supprimé'
-      description: 'Restaure un chauffeur précédemment supprimé (soft deleted).'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: "L'UUID du chauffeur supprimé."
+        description: "L'UUID de la facture."
         required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+        example: 550e8400-e29b-41d4-a716-446655440000
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      id: 550e8400-e29b-41d4-a716-446655440000
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      statut:
+        name: statut
+        description: 'Nouveau statut (pending, paid, partially_paid, cancelled, overdue).'
+        required: true
+        example: cancelled
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      statut: cancelled
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-            "success": true,
-            "message": "Chauffeur restauré avec succès",
             "data": {
-              "chauffeur_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
-              "name": "Jean Dupont",
-              "phone": "+229 97 00 00 00",
-              "numero_permis": "PERM123456",
-              "date_expiration_permis": "2026-12-31",
-              "status": "actif",
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "deleted_at": null
-            }
+              "facture_id": "550e8400-e29b-41d4-a716-446655440000",
+              "statut": "cancelled"
+            },
+            "message": "Statut de la facture mis à jour avec succès"
           }
         headers: []
         description: ''
@@ -837,17 +1235,13 @@ endpoints:
         status: 404
         content: |-
           {
-            "success": false,
-            "message": "Chauffeur supprimé non trouvé"
+            "message": "Facture non trouvée"
           }
         headers: []
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    auth: []
     controller: null
     method: null
     route: null

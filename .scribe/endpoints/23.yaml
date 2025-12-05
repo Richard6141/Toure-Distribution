@@ -1,23 +1,23 @@
-name: 'Gestion des Paiements de Ventes'
+name: 'Gestion des Ventes'
 description: |-
 
-  API pour gérer les paiements des ventes.
+  API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
   Toutes les routes nécessitent une authentification via Sanctum.
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/paiement-ventes
+    uri: api/ventes
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des paiements'
-      description: 'Récupère la liste paginée de tous les paiements avec leurs ventes.'
+      title: 'Liste des ventes'
+      description: 'Récupère la liste paginée de toutes les ventes avec leurs clients.'
       authenticated: true
       deprecated: false
       custom: []
@@ -50,17 +50,17 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'Rechercher par référence de paiement.'
+        description: 'Rechercher par numéro de vente.'
         required: false
-        example: PAYV-2025-001
+        example: VTE-2025-001
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      vente_id:
-        name: vente_id
-        description: 'Filtrer par ID de vente.'
+      client_id:
+        name: client_id
+        description: 'Filtrer par ID du client.'
         required: false
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -68,21 +68,31 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-      statut:
-        name: statut
-        description: 'Filtrer par statut (en_attente, valide, refuse, annule).'
+      entrepot_id:
+        name: entrepot_id
+        description: "Filtrer par ID de l'entrepôt."
         required: false
-        example: valide
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      mode_paiement:
-        name: mode_paiement
-        description: 'Filtrer par mode (especes, cheque, virement, carte_bancaire, mobile_money, credit).'
+      status:
+        name: status
+        description: 'Filtrer par statut.'
         required: false
-        example: mobile_money
+        example: validee
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      statut_paiement:
+        name: statut_paiement
+        description: 'Filtrer par statut de paiement.'
+        required: false
+        example: paye_partiellement
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -90,7 +100,7 @@ endpoints:
         custom: []
       date_debut:
         name: date_debut
-        description: 'date Filtrer par date minimum (format: Y-m-d).'
+        description: 'date Filtrer par date minimum.'
         required: false
         example: '2025-01-01'
         type: string
@@ -100,29 +110,9 @@ endpoints:
         custom: []
       date_fin:
         name: date_fin
-        description: 'date Filtrer par date maximum (format: Y-m-d).'
+        description: 'date Filtrer par date maximum.'
         required: false
         example: '2025-12-31'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant_min:
-        name: montant_min
-        description: 'numeric Filtrer par montant minimum.'
-        required: false
-        example: '1000'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant_max:
-        name: montant_max
-        description: 'numeric Filtrer par montant maximum.'
-        required: false
-        example: '50000'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -131,14 +121,13 @@ endpoints:
     cleanQueryParameters:
       page: 1
       per_page: 15
-      search: PAYV-2025-001
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
-      statut: valide
-      mode_paiement: mobile_money
+      search: VTE-2025-001
+      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
+      status: validee
+      statut_paiement: paye_partiellement
       date_debut: '2025-01-01'
       date_fin: '2025-12-31'
-      montant_min: '1000'
-      montant_max: '50000'
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -148,314 +137,21 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Liste des paiements récupérée avec succès",
+            "message": "Liste des ventes récupérée avec succès",
             "data": {
               "current_page": 1,
-              "data": [],
-              "total": 30
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/paiement-ventes
-    metadata:
-      groupName: 'Gestion des Paiements de Ventes'
-      groupDescription: |-
-
-        API pour gérer les paiements des ventes.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Créer un paiement'
-      description: |-
-        Enregistre un nouveau paiement pour une vente spécifique.
-        La référence de paiement est générée automatiquement.
-        Le current_balance du client est diminué du montant payé.
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      vente_id:
-        name: vente_id
-        description: "L'UUID de la vente."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant:
-        name: montant
-        description: 'Le montant payé.'
-        required: true
-        example: '10000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      mode_paiement:
-        name: mode_paiement
-        description: 'Le mode de paiement.'
-        required: true
-        example: mobile_money
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      statut:
-        name: statut
-        description: 'Le statut du paiement. Par défaut: en_attente.'
-        required: false
-        example: valide
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_paiement:
-        name: date_paiement
-        description: 'La date et heure du paiement.'
-        required: true
-        example: '2025-01-15 14:30:00'
-        type: datetime
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      numero_transaction:
-        name: numero_transaction
-        description: 'Le numéro de transaction.'
-        required: false
-        example: TRX123456789
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      numero_cheque:
-        name: numero_cheque
-        description: 'Le numéro de chèque.'
-        required: false
-        example: CHQ987654
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      banque:
-        name: banque
-        description: 'La banque émettrice.'
-        required: false
-        example: 'Bank of Africa'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      note:
-        name: note
-        description: 'Des notes.'
-        required: false
-        example: 'Paiement via MTN Mobile Money'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-      montant: '10000.00'
-      mode_paiement: mobile_money
-      statut: valide
-      date_paiement: '2025-01-15 14:30:00'
-      numero_transaction: TRX123456789
-      numero_cheque: CHQ987654
-      banque: 'Bank of Africa'
-      note: 'Paiement via MTN Mobile Money'
-    fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "success": true,
-            "message": "Paiement enregistré avec succès",
-            "data": {}
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/paiement-ventes/versement-vente
-    metadata:
-      groupName: 'Gestion des Paiements de Ventes'
-      groupDescription: |-
-
-        API pour gérer les paiements des ventes.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Versement client'
-      description: |-
-        Enregistre un versement général du client qui sera automatiquement appliqué
-        aux factures impayées. Si le versement dépasse le total des impayés,
-        le solde sera créditeur (current_balance négatif = l'entreprise doit au client).
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      client_id:
-        name: client_id
-        description: "L'UUID du client."
-        required: true
-        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      montant:
-        name: montant
-        description: 'Le montant du versement.'
-        required: true
-        example: '50000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      mode_paiement:
-        name: mode_paiement
-        description: 'Le mode de paiement.'
-        required: true
-        example: virement
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      date_paiement:
-        name: date_paiement
-        description: 'La date et heure du paiement.'
-        required: true
-        example: '2025-01-15 14:30:00'
-        type: datetime
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      numero_transaction:
-        name: numero_transaction
-        description: 'Le numéro de transaction.'
-        required: false
-        example: TRX123456789
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      numero_cheque:
-        name: numero_cheque
-        description: 'Le numéro de chèque.'
-        required: false
-        example: CHQ987654
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      banque:
-        name: banque
-        description: 'La banque émettrice.'
-        required: false
-        example: 'Bank of Africa'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      note:
-        name: note
-        description: 'Des notes.'
-        required: false
-        example: 'Versement pour régularisation des factures'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
-      montant: '50000.00'
-      mode_paiement: virement
-      date_paiement: '2025-01-15 14:30:00'
-      numero_transaction: TRX123456789
-      numero_cheque: CHQ987654
-      banque: 'Bank of Africa'
-      note: 'Versement pour régularisation des factures'
-    fileParameters: []
-    responses:
-      -
-        status: 201
-        content: |-
-          {
-            "success": true,
-            "message": "Versement traité avec succès. 2 facture(s) payée(s).",
-            "data": {
-              "montant_verse": "50000.00",
-              "montant_applique": "45000.00",
-              "solde_restant": "-5000.00",
-              "client_current_balance": "-5000.00",
-              "paiements_crees": [
+              "data": [
                 {
-                  "paiement_vente_id": "uuid",
-                  "reference_paiement": "PAYV-2025-0001",
-                  "vente_id": "uuid",
+                  "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
                   "numero_vente": "VTE-2025-0001",
-                  "montant": "25000.00"
+                  "client_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b",
+                  "entrepot_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c",
+                  "date_vente": "2025-01-15T10:00:00.000000Z",
+                  "montant_total": "25000.00",
+                  "montant_net": "23750.00",
+                  "transport_price": "500.00",
+                  "status": "validee",
+                  "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d"
                 }
               ]
             }
@@ -474,18 +170,28 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: api/paiement-ventes/trashed/list
+      - POST
+    uri: api/ventes
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Liste des paiements supprimés'
-      description: ''
+      title: 'Créer une vente'
+      description: |-
+        Enregistre une nouvelle vente avec ses détails.
+        Si la vente est créée avec le statut "validee", les stocks sont automatiquement mis à jour
+        et le current_balance du client est augmenté du montant de la vente.
+
+        **Options de validation automatique:**
+        - Si `status` est "validee", un mouvement de stock est créé et validé automatiquement
+        - Le stock de l'entrepôt source est diminué en temps réel
+        - Le current_balance du client est augmenté du montant_net de la vente
+        - Vérification de la limite de crédit du client (credit_limit)
+        - Si le stock est insuffisant ou la limite de crédit dépassée, la création échoue
       authenticated: true
       deprecated: false
       custom: []
@@ -497,53 +203,10 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"success":true,"message":"Liste des paiements supprim\u00e9s r\u00e9cup\u00e9r\u00e9e avec succ\u00e8s","data":{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/paiement-ventes\/trashed\/list","per_page":15,"prev_page_url":null,"to":null,"total":0}}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/paiement-ventes/vente/{vente_id}'
-    metadata:
-      groupName: 'Gestion des Paiements de Ventes'
-      groupDescription: |-
-
-        API pour gérer les paiements des ventes.
-        Toutes les routes nécessitent une authentification via Sanctum.
-      subgroup: ''
-      subgroupDescription: ''
-      title: "Paiements d'une vente"
-      description: 'Récupère tous les paiements associés à une vente spécifique.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      vente_id:
-        name: vente_id
-        description: "L'UUID de la vente."
+    bodyParameters:
+      client_id:
+        name: client_id
+        description: "L'UUID du client."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
         type: string
@@ -551,21 +214,178 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
-    cleanUrlParameters:
-      vente_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+      entrepot_id:
+        name: entrepot_id
+        description: "L'UUID de l'entrepôt source."
+        required: true
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      date_vente:
+        name: date_vente
+        description: 'La date et heure de la vente.'
+        required: true
+        example: '2025-01-15 10:00:00'
+        type: datetime
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      remise:
+        name: remise
+        description: 'La remise globale.'
+        required: false
+        example: '1250.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      transport_price:
+        name: transport_price
+        description: 'Le prix du transport.'
+        required: false
+        example: '500.00'
+        type: numeric
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      status:
+        name: status
+        description: 'Le statut (en_attente par défaut, validee pour mise à jour automatique des stocks).'
+        required: false
+        example: validee
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      note:
+        name: note
+        description: 'Des notes.'
+        required: false
+        example: 'Vente avec remise spéciale'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      details:
+        name: details
+        description: 'Les détails de la vente.'
+        required: true
+        example:
+          -
+            product_id: uuid
+            quantite: 10
+            prix_unitaire: 2500
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      'details[].product_id':
+        name: 'details[].product_id'
+        description: 'Must be a valid UUID. The <code>product_id</code> of an existing record in the products table.'
+        required: true
+        example: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'details[].quantite':
+        name: 'details[].quantite'
+        description: 'Must be at least 1.'
+        required: true
+        example: 67
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'details[].prix_unitaire':
+        name: 'details[].prix_unitaire'
+        description: 'Must be at least 0.'
+        required: true
+        example: 12
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      'details[].remise_ligne':
+        name: 'details[].remise_ligne'
+        description: 'Must be at least 0.'
+        required: false
+        example: 77
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      'details[].taux_taxe':
+        name: 'details[].taux_taxe'
+        description: 'Must be at least 0. Must not be greater than 100.'
+        required: false
+        example: 15
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      client_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2b
+      entrepot_id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2c
+      date_vente: '2025-01-15 10:00:00'
+      remise: '1250.00'
+      transport_price: '500.00'
+      status: validee
+      note: 'Vente avec remise spéciale'
+      details:
+        -
+          product_id: uuid
+          quantite: 10
+          prix_unitaire: 2500
     fileParameters: []
     responses:
       -
-        status: 200
+        status: 201
         content: |-
           {
             "success": true,
-            "message": "Paiements de la vente récupérés avec succès",
-            "data": {}
+            "message": "Vente créée avec succès et stocks mis à jour",
+            "data": {
+              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_vente": "VTE-2025-0001",
+              "transport_price": "500.00",
+              "stock_movement_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2d",
+              "status": "validee"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Stock insuffisant pour le produit Produit A. Disponible: 5, Demandé: 10"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Limite de crédit dépassée pour le client ABC. Limite: 100000, Solde actuel: 80000, Montant de la vente: 25000"
           }
         headers: []
         description: ''
@@ -582,17 +402,17 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/paiement-ventes/{id}'
+    uri: 'api/ventes/{id}'
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un paiement'
-      description: "Récupère les détails d'un paiement spécifique avec sa vente."
+      title: 'Afficher une vente'
+      description: "Récupère les détails complets d'une vente."
       authenticated: true
       deprecated: false
       custom: []
@@ -603,7 +423,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: "L'UUID de la vente."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -624,8 +444,15 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Détails du paiement récupérés avec succès",
-            "data": {}
+            "message": "Détails de la vente récupérés avec succès",
+            "data": {
+              "vente_id": "9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a",
+              "numero_vente": "VTE-2025-0001",
+              "montant_total": "25000.00",
+              "montant_net": "23750.00",
+              "montant_paye": "10000.00",
+              "montant_restant": "13750.00"
+            }
           }
         headers: []
         description: ''
@@ -635,7 +462,7 @@ endpoints:
         content: |-
           {
             "success": false,
-            "message": "Paiement non trouvé"
+            "message": "Vente non trouvée"
           }
         headers: []
         description: ''
@@ -652,19 +479,23 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/paiement-ventes/{id}'
+    uri: 'api/ventes/{id}'
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un paiement'
+      title: 'Mettre à jour une vente'
       description: |-
-        Met à jour les informations d'un paiement existant.
-        Si le statut ou le montant change, le current_balance du client est ajusté.
+        Met à jour les informations d'une vente.
+
+        **Important:**
+        - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
+        - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
+        - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
       authenticated: true
       deprecated: false
       custom: []
@@ -675,7 +506,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: "L'UUID de la vente."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -688,94 +519,40 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      montant:
-        name: montant
-        description: 'Must be at least 0.01. Must not be greater than 9999999999999.99.'
-        required: true
-        example: 1
-        type: number
+      status:
+        name: status
+        description: 'Le statut de la vente.'
+        required: false
+        example: validee
+        type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
-      mode_paiement:
-        name: mode_paiement
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      statut:
-        name: statut
-        description: ''
+      transport_price:
+        name: transport_price
+        description: 'Le prix du transport.'
         required: false
-        example: null
-        type: string
+        example: '500.00'
+        type: numeric
         enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      date_paiement:
-        name: date_paiement
-        description: 'Must be a valid date.'
-        required: true
-        example: '2025-10-31T09:39:28'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      numero_transaction:
-        name: numero_transaction
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      numero_cheque:
-        name: numero_cheque
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: g
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      banque:
-        name: banque
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: z
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       note:
         name: note
-        description: ''
+        description: 'Des notes.'
         required: false
-        example: architecto
+        example: 'Livraison effectuée'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      montant: 1
-      mode_paiement: architecto
-      date_paiement: '2025-10-31T09:39:28'
-      numero_transaction: 'n'
-      numero_cheque: g
-      banque: z
-      note: architecto
+      status: validee
+      transport_price: '500.00'
+      note: 'Livraison effectuée'
     fileParameters: []
     responses:
       -
@@ -783,8 +560,28 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Paiement mis à jour avec succès",
+            "message": "Vente mise à jour avec succès",
             "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Stock insuffisant pour valider cette vente"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Limite de crédit dépassée pour le client ABC"
           }
         headers: []
         description: ''
@@ -801,19 +598,23 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/paiement-ventes/{id}'
+    uri: 'api/ventes/{id}'
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un paiement'
+      title: 'Mettre à jour une vente'
       description: |-
-        Met à jour les informations d'un paiement existant.
-        Si le statut ou le montant change, le current_balance du client est ajusté.
+        Met à jour les informations d'une vente.
+
+        **Important:**
+        - Si le statut passe à "validee", les stocks seront mis à jour automatiquement et le current_balance du client sera augmenté
+        - Si le statut passe à "annulee", le mouvement de stock sera annulé, les stocks restaurés et le current_balance du client sera diminué
+        - Si le transport_price est modifié sur une vente validée, le current_balance du client sera ajusté en conséquence
       authenticated: true
       deprecated: false
       custom: []
@@ -824,7 +625,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: "L'UUID de la vente."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -837,94 +638,40 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      montant:
-        name: montant
-        description: 'Must be at least 0.01. Must not be greater than 9999999999999.99.'
-        required: true
-        example: 1
-        type: number
+      status:
+        name: status
+        description: 'Le statut de la vente.'
+        required: false
+        example: validee
+        type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
-      mode_paiement:
-        name: mode_paiement
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      statut:
-        name: statut
-        description: ''
+      transport_price:
+        name: transport_price
+        description: 'Le prix du transport.'
         required: false
-        example: null
-        type: string
+        example: '500.00'
+        type: numeric
         enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      date_paiement:
-        name: date_paiement
-        description: 'Must be a valid date.'
-        required: true
-        example: '2025-10-31T09:39:28'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      numero_transaction:
-        name: numero_transaction
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      numero_cheque:
-        name: numero_cheque
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: g
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      banque:
-        name: banque
-        description: 'Must not be greater than 255 characters.'
-        required: false
-        example: z
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
       note:
         name: note
-        description: ''
+        description: 'Des notes.'
         required: false
-        example: architecto
+        example: 'Livraison effectuée'
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: true
         custom: []
     cleanBodyParameters:
-      montant: 1
-      mode_paiement: architecto
-      date_paiement: '2025-10-31T09:39:28'
-      numero_transaction: 'n'
-      numero_cheque: g
-      banque: z
-      note: architecto
+      status: validee
+      transport_price: '500.00'
+      note: 'Livraison effectuée'
     fileParameters: []
     responses:
       -
@@ -932,8 +679,28 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Paiement mis à jour avec succès",
+            "message": "Vente mise à jour avec succès",
             "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Stock insuffisant pour valider cette vente"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "success": false,
+            "message": "Limite de crédit dépassée pour le client ABC"
           }
         headers: []
         description: ''
@@ -950,19 +717,20 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/paiement-ventes/{id}'
+    uri: 'api/ventes/{id}'
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un paiement'
+      title: 'Supprimer une vente'
       description: |-
-        Effectue une suppression logique d'un paiement.
-        Si le paiement était validé, le current_balance du client est augmenté.
+        Effectue une suppression logique d'une vente.
+        Si la vente est validée, le mouvement de stock sera annulé, les stocks restaurés
+        et le current_balance du client sera diminué du montant de la vente.
       authenticated: true
       deprecated: false
       custom: []
@@ -973,7 +741,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: "L'UUID du paiement."
+        description: "L'UUID de la vente."
         required: true
         example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
@@ -994,7 +762,91 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "Paiement supprimé avec succès"
+            "message": "Vente supprimée avec succès"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/ventes/trashed/list
+    metadata:
+      groupName: 'Gestion des Ventes'
+      groupDescription: |-
+
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
+        Toutes les routes nécessitent une authentification via Sanctum.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des ventes supprimées'
+      description: 'Récupère la liste paginée de toutes les ventes supprimées (soft deleted).'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Numéro de la page.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des ventes supprimées récupérée avec succès",
+            "data": {
+              "current_page": 1,
+              "data": []
+            }
           }
         headers: []
         description: ''
@@ -1011,17 +863,19 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/paiement-ventes/{id}/restore'
+    uri: 'api/ventes/{id}/restore'
     metadata:
-      groupName: 'Gestion des Paiements de Ventes'
+      groupName: 'Gestion des Ventes'
       groupDescription: |-
 
-        API pour gérer les paiements des ventes.
+        API pour gérer les ventes aux clients avec mise à jour automatique des stocks.
         Toutes les routes nécessitent une authentification via Sanctum.
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer un paiement supprimé'
-      description: ''
+      title: 'Restaurer une vente supprimée'
+      description: |-
+        Restaure une vente supprimée logiquement.
+        Si la vente était validée, le current_balance du client sera restauré.
       authenticated: true
       deprecated: false
       custom: []
@@ -1032,22 +886,43 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the paiement vente.'
+        description: "L'UUID de la vente supprimée."
         required: true
-        example: architecto
+        example: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 9d0e8f5a-3b2c-4d1e-8f6a-7b8c9d0e1f2a
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Vente restaurée avec succès",
+            "data": {}
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "success": false,
+            "message": "Vente supprimée non trouvée"
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers

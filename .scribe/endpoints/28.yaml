@@ -1,22 +1,26 @@
-name: 'Gestion des Comptes Bancaires'
-description: ''
+name: 'Gestion des Rôles et Permissions'
+description: |-
+
+  API pour gérer les rôles, permissions et leurs assignations
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/roles-permissions/banque-accounts/trashed/list
+    uri: api/roles-permissions/statistics
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Lister les comptes supprimés'
-      description: 'Récupère la liste de tous les comptes supprimés logiquement.'
+      title: 'Statistiques globales'
+      description: 'Récupère les statistiques générales sur les rôles et permissions.'
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -31,240 +35,150 @@ endpoints:
         status: 200
         content: |-
           {
-            "data": [],
-            "message": "Liste des comptes supprimés"
-          }
-        headers: []
-        description: Succès
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/roles-permissions/banque-accounts/banque/{banqueId}'
-    metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lister les comptes par banque'
-      description: "Récupère tous les comptes d'une banque spécifique."
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      banqueId:
-        name: banqueId
-        description: 'UUID de la banque.'
-        required: true
-        example: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      banqueId: 8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-                "account_number": "BJ066001010100100100100100",
-                "account_name": "Compte Principal",
-                "balance": 15500000.00,
-                "statut": "actif"
-              }
-            ],
-            "message": "Comptes de la banque"
-          }
-        headers: []
-        description: Succès
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/roles-permissions/banque-accounts/statut/{statut}'
-    metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lister les comptes par statut'
-      description: 'Récupère tous les comptes ayant un statut spécifique.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      statut:
-        name: statut
-        description: 'Statut du compte (actif, inactif, suspendu, cloture).'
-        required: true
-        example: actif
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      statut: actif
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-                "account_number": "BJ066001010100100100100100",
-                "account_name": "Compte Principal",
-                "statut": "actif"
-              }
-            ],
-            "message": "Comptes avec le statut: actif"
-          }
-        headers: []
-        description: Succès
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/roles-permissions/banque-accounts
-    metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Lister tous les comptes bancaires'
-      description: 'Récupère la liste complète de tous les comptes avec leurs banques associées.'
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-                "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "account_number": "BJ066001010100100100100100",
-                "account_name": "Compte Principal",
-                "account_type": "courant",
-                "titulaire": "Entreprise ABC SARL",
-                "balance": 15500000.00,
-                "statut": "actif",
-                "date_ouverture": "2024-01-15",
-                "isActive": true,
-                "created_at": "2025-01-15T10:30:00.000000Z",
-                "updated_at": "2025-01-15T10:30:00.000000Z",
-                "deleted_at": null,
-                "banque": {
-                  "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                  "name": "Ecobank Bénin",
-                  "code": "BNQ-ECO001"
+            "success": true,
+            "message": "Statistiques récupérées avec succès",
+            "data": {
+              "total_roles": 11,
+              "total_permissions": 161,
+              "total_users_with_roles": 45,
+              "roles_breakdown": [
+                {
+                  "role": "Super Admin",
+                  "users_count": 2,
+                  "permissions_count": 161
+                },
+                {
+                  "role": "Comptable",
+                  "users_count": 5,
+                  "permissions_count": 30
                 }
+              ],
+              "permissions_by_module": {
+                "users": 8,
+                "clients": 9,
+                "stocks": 15
               }
-            ],
-            "message": "Liste des comptes bancaires"
+            }
           }
         headers: []
-        description: Succès
+        description: ''
         custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/roles-permissions/roles
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des rôles'
+      description: 'Récupère la liste de tous les rôles avec leurs permissions et statistiques.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        name: search
+        description: 'Rechercher un rôle par nom.'
+        required: false
+        example: Admin
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_permissions:
+        name: with_permissions
+        description: 'Inclure les permissions de chaque rôle.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_users_count:
+        name: with_users_count
+        description: "Inclure le nombre d'utilisateurs par rôle."
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      search: Admin
+      per_page: 15
+      with_permissions: true
+      with_users_count: true
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
       -
-        status: 401
+        status: 200
         content: |-
           {
-            "message": "Unauthenticated."
+            "success": true,
+            "message": "Liste des rôles récupérée avec succès",
+            "data": {
+              "roles": [
+                {
+                  "id": 1,
+                  "name": "Super Admin",
+                  "guard_name": "web",
+                  "created_at": "2025-01-15T10:30:00.000000Z",
+                  "updated_at": "2025-01-15T10:30:00.000000Z",
+                  "permissions_count": 161,
+                  "users_count": 2,
+                  "permissions": [
+                    {
+                      "id": 1,
+                      "name": "users.view",
+                      "libelle": "Consulter les utilisateurs"
+                    }
+                  ]
+                }
+              ],
+              "pagination": {
+                "total": 11,
+                "per_page": 15,
+                "current_page": 1,
+                "last_page": 1
+              }
+            }
           }
         headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -278,19 +192,21 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/roles-permissions/banque-accounts
+    uri: api/roles-permissions/roles
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créer un nouveau compte bancaire'
-      description: 'Crée un nouveau compte bancaire dans le système.'
+      title: 'Créer un rôle'
+      description: 'Crée un nouveau rôle avec ou sans permissions.'
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -298,157 +214,75 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      banque_id:
-        name: banque_id
-        description: 'UUID de la banque.'
+      name:
+        name: name
+        description: 'Le nom du rôle.'
         required: true
-        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        example: Superviseur
         type: string
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      account_number:
-        name: account_number
-        description: 'Numéro de compte (unique).'
-        required: true
-        example: '"BJ066001010100100100100100"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_name:
-        name: account_name
-        description: 'Nom du compte.'
-        required: true
-        example: '"Compte Principal"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_type:
-        name: account_type
-        description: 'optional Type de compte (courant, epargne, depot).'
+      permissions:
+        name: permissions
+        description: 'Les IDs des permissions à assigner.'
         required: false
-        example: '"courant"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      titulaire:
-        name: titulaire
-        description: 'Nom du titulaire du compte.'
-        required: true
-        example: '"Entreprise ABC SARL"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      balance:
-        name: balance
-        description: 'optional Solde initial (par défaut: 0).'
-        required: false
-        example: '15500000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      statut:
-        name: statut
-        description: 'optional Statut (actif, inactif, suspendu, cloture).'
-        required: false
-        example: '"actif"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      date_ouverture:
-        name: date_ouverture
-        description: "Date d'ouverture du compte (format: YYYY-MM-DD)."
-        required: true
-        example: '"2024-01-15"'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      isActive:
-        name: isActive
-        description: 'optional Indique si le compte est actif (par défaut: true).'
-        required: false
-        example: true
-        type: boolean
+        example:
+          - 1
+          - 2
+          - 3
+        type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      banque_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      account_number: '"BJ066001010100100100100100"'
-      account_name: '"Compte Principal"'
-      account_type: '"courant"'
-      titulaire: '"Entreprise ABC SARL"'
-      balance: '15500000.00'
-      statut: '"actif"'
-      date_ouverture: '"2024-01-15"'
-      isActive: true
+      name: Superviseur
+      permissions:
+        - 1
+        - 2
+        - 3
     fileParameters: []
     responses:
       -
         status: 201
         content: |-
           {
+            "success": true,
+            "message": "Rôle créé avec succès",
             "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "account_number": "BJ066001010100100100100100",
-              "account_name": "Compte Principal",
-              "account_type": "courant",
-              "titulaire": "Entreprise ABC SARL",
-              "balance": 15500000.00,
-              "statut": "actif",
-              "date_ouverture": "2024-01-15",
-              "isActive": true,
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-15T10:30:00.000000Z",
-              "deleted_at": null,
-              "banque": {
-                "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "name": "Ecobank Bénin",
-                "code": "BNQ-ECO001"
+              "role": {
+                "id": 12,
+                "name": "Superviseur",
+                "guard_name": "web",
+                "created_at": "2025-10-18T15:30:00.000000Z",
+                "updated_at": "2025-10-18T15:30:00.000000Z",
+                "permissions": [
+                  {
+                    "id": 1,
+                    "name": "users.view",
+                    "libelle": "Consulter les utilisateurs"
+                  }
+                ]
               }
-            },
-            "message": "Compte bancaire créé avec succès"
+            }
           }
         headers: []
-        description: 'Compte créé avec succès'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
       -
         status: 422
         content: |-
           {
+            "success": false,
+            "message": "Erreur de validation",
             "errors": {
-              "account_number": ["Ce numéro de compte existe déjà"],
-              "banque_id": ["La banque sélectionnée n'existe pas"]
+              "name": ["Le nom du rôle est obligatoire"]
             }
           }
         headers: []
-        description: 'Erreurs de validation'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -462,34 +296,36 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/roles-permissions/banque-accounts/{id}'
+    uri: 'api/roles-permissions/roles/{id}'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Afficher un compte bancaire spécifique'
-      description: "Récupère les détails complets d'un compte avec ses transactions."
+      title: "Détails d'un rôle"
+      description: "Récupère les informations détaillées d'un rôle spécifique."
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du compte bancaire.'
+        description: "L'ID du rôle."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 1
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -500,45 +336,34 @@ endpoints:
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Rôle récupéré avec succès",
             "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "account_number": "BJ066001010100100100100100",
-              "account_name": "Compte Principal",
-              "account_type": "courant",
-              "titulaire": "Entreprise ABC SARL",
-              "balance": 15500000.00,
-              "statut": "actif",
-              "date_ouverture": "2024-01-15",
-              "isActive": true,
-              "banque": {
-                "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-                "name": "Ecobank Bénin"
-              },
-              "transactions": []
-            },
-            "message": "Détails du compte bancaire"
+              "role": {
+                "id": 1,
+                "name": "Super Admin",
+                "guard_name": "web",
+                "created_at": "2025-01-15T10:30:00.000000Z",
+                "updated_at": "2025-01-15T10:30:00.000000Z",
+                "permissions_count": 161,
+                "users_count": 2,
+                "permissions": [],
+                "users": []
+              }
+            }
           }
         headers: []
-        description: 'Compte trouvé'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
+        description: ''
         custom: []
       -
         status: 404
         content: |-
           {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
+            "success": false,
+            "message": "Rôle non trouvé"
           }
         headers: []
-        description: 'Compte non trouvé'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -552,191 +377,70 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'api/roles-permissions/banque-accounts/{id}'
+    uri: 'api/roles-permissions/roles/{id}'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un compte bancaire'
-      description: "Met à jour les informations d'un compte bancaire existant."
+      title: 'Mettre à jour un rôle'
+      description: "Met à jour le nom d'un rôle existant."
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du compte bancaire à mettre à jour.'
+        description: "L'ID du rôle."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 1
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      banque_id:
-        name: banque_id
-        description: 'UUID de la banque.'
+      name:
+        name: name
+        description: 'Le nouveau nom du rôle.'
         required: true
-        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        example: 'Super Administrateur'
         type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_number:
-        name: account_number
-        description: 'Numéro de compte (unique).'
-        required: true
-        example: '"BJ066001010100100100100100"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_name:
-        name: account_name
-        description: 'Nom du compte.'
-        required: true
-        example: '"Compte Principal Modifié"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_type:
-        name: account_type
-        description: 'optional Type de compte.'
-        required: false
-        example: '"courant"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      titulaire:
-        name: titulaire
-        description: 'Titulaire du compte.'
-        required: true
-        example: '"Entreprise ABC SARL"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      balance:
-        name: balance
-        description: 'optional Solde du compte.'
-        required: false
-        example: '16000000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      statut:
-        name: statut
-        description: 'optional Statut du compte.'
-        required: false
-        example: '"actif"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      date_ouverture:
-        name: date_ouverture
-        description: "Date d'ouverture."
-        required: true
-        example: '"2024-01-15"'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      isActive:
-        name: isActive
-        description: 'optional Statut actif.'
-        required: false
-        example: true
-        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      banque_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      account_number: '"BJ066001010100100100100100"'
-      account_name: '"Compte Principal Modifié"'
-      account_type: '"courant"'
-      titulaire: '"Entreprise ABC SARL"'
-      balance: '16000000.00'
-      statut: '"actif"'
-      date_ouverture: '"2024-01-15"'
-      isActive: true
+      name: 'Super Administrateur'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Rôle mis à jour avec succès",
             "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "account_number": "BJ066001010100100100100100",
-              "account_name": "Compte Principal Modifié",
-              "account_type": "courant",
-              "titulaire": "Entreprise ABC SARL",
-              "balance": 16000000.00,
-              "statut": "actif",
-              "date_ouverture": "2024-01-15",
-              "isActive": true,
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-16T15:45:00.000000Z",
-              "deleted_at": null
-            },
-            "message": "Compte bancaire mis à jour avec succès"
-          }
-        headers: []
-        description: 'Mise à jour réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
-          }
-        headers: []
-        description: 'Compte non trouvé'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "errors": {
-              "account_number": ["Ce numéro de compte existe déjà"]
+              "role": {
+                "id": 1,
+                "name": "Super Administrateur",
+                "guard_name": "web",
+                "updated_at": "2025-10-18T15:35:00.000000Z"
+              }
             }
           }
         headers: []
-        description: 'Erreurs de validation'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -750,191 +454,70 @@ endpoints:
   -
     httpMethods:
       - PATCH
-    uri: 'api/roles-permissions/banque-accounts/{id}'
+    uri: 'api/roles-permissions/roles/{id}'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Mettre à jour un compte bancaire'
-      description: "Met à jour les informations d'un compte bancaire existant."
+      title: 'Mettre à jour un rôle'
+      description: "Met à jour le nom d'un rôle existant."
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du compte bancaire à mettre à jour.'
+        description: "L'ID du rôle."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 1
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      banque_id:
-        name: banque_id
-        description: 'UUID de la banque.'
+      name:
+        name: name
+        description: 'Le nouveau nom du rôle.'
         required: true
-        example: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
+        example: 'Super Administrateur'
         type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_number:
-        name: account_number
-        description: 'Numéro de compte (unique).'
-        required: true
-        example: '"BJ066001010100100100100100"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_name:
-        name: account_name
-        description: 'Nom du compte.'
-        required: true
-        example: '"Compte Principal Modifié"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      account_type:
-        name: account_type
-        description: 'optional Type de compte.'
-        required: false
-        example: '"courant"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      titulaire:
-        name: titulaire
-        description: 'Titulaire du compte.'
-        required: true
-        example: '"Entreprise ABC SARL"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      balance:
-        name: balance
-        description: 'optional Solde du compte.'
-        required: false
-        example: '16000000.00'
-        type: numeric
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      statut:
-        name: statut
-        description: 'optional Statut du compte.'
-        required: false
-        example: '"actif"'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      date_ouverture:
-        name: date_ouverture
-        description: "Date d'ouverture."
-        required: true
-        example: '"2024-01-15"'
-        type: date
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      isActive:
-        name: isActive
-        description: 'optional Statut actif.'
-        required: false
-        example: true
-        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      banque_id: '"8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b"'
-      account_number: '"BJ066001010100100100100100"'
-      account_name: '"Compte Principal Modifié"'
-      account_type: '"courant"'
-      titulaire: '"Entreprise ABC SARL"'
-      balance: '16000000.00'
-      statut: '"actif"'
-      date_ouverture: '"2024-01-15"'
-      isActive: true
+      name: 'Super Administrateur'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Rôle mis à jour avec succès",
             "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "banque_id": "8c3e1d7a-2b4c-5d6e-7f8a-9b0c1d2e3f4b",
-              "account_number": "BJ066001010100100100100100",
-              "account_name": "Compte Principal Modifié",
-              "account_type": "courant",
-              "titulaire": "Entreprise ABC SARL",
-              "balance": 16000000.00,
-              "statut": "actif",
-              "date_ouverture": "2024-01-15",
-              "isActive": true,
-              "created_at": "2025-01-15T10:30:00.000000Z",
-              "updated_at": "2025-01-16T15:45:00.000000Z",
-              "deleted_at": null
-            },
-            "message": "Compte bancaire mis à jour avec succès"
-          }
-        headers: []
-        description: 'Mise à jour réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
-          }
-        headers: []
-        description: 'Compte non trouvé'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "errors": {
-              "account_number": ["Ce numéro de compte existe déjà"]
+              "role": {
+                "id": 1,
+                "name": "Super Administrateur",
+                "guard_name": "web",
+                "updated_at": "2025-10-18T15:35:00.000000Z"
+              }
             }
           }
         headers: []
-        description: 'Erreurs de validation'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -948,34 +531,36 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/roles-permissions/banque-accounts/{id}'
+    uri: 'api/roles-permissions/roles/{id}'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Supprimer un compte bancaire (soft delete)'
-      description: 'Effectue une suppression logique du compte bancaire.'
+      title: 'Supprimer un rôle'
+      description: 'Supprime un rôle. Impossible si des utilisateurs sont assignés à ce rôle.'
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'UUID du compte à supprimer.'
+        description: "L'ID du rôle."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 12
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      id: 12
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -986,28 +571,21 @@ endpoints:
         status: 200
         content: |-
           {
-            "message": "Compte bancaire supprimé avec succès"
+            "success": true,
+            "message": "Rôle supprimé avec succès"
           }
         headers: []
-        description: 'Suppression réussie'
+        description: ''
         custom: []
       -
-        status: 401
+        status: 409
         content: |-
           {
-            "message": "Unauthenticated."
+            "success": false,
+            "message": "Impossible de supprimer ce rôle car 5 utilisateur(s) y sont assignés"
           }
         headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
-          }
-        headers: []
-        description: 'Compte non trouvé'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -1021,34 +599,645 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/roles-permissions/banque-accounts/{id}/restore'
+    uri: 'api/roles-permissions/roles/{roleId}/permissions/assign'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Restaurer un compte bancaire supprimé'
-      description: 'Restaure un compte bancaire supprimé logiquement.'
+      title: 'Assigner des permissions à un rôle'
+      description: "Attribue ou retire des permissions à/d'un rôle spécifique."
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
-        description: 'UUID du compte à restaurer.'
+      roleId:
+        name: roleId
+        description: "L'ID du rôle."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 5
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      roleId: 5
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      permissions:
+        name: permissions
+        description: 'Les IDs des permissions à assigner.'
+        required: true
+        example:
+          - 1
+          - 2
+          - 3
+          - 10
+          - 15
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sync:
+        name: sync
+        description: 'Remplacer toutes les permissions (true) ou ajouter (false).'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      permissions:
+        - 1
+        - 2
+        - 3
+        - 10
+        - 15
+      sync: true
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Permissions assignées avec succès",
+            "data": {
+              "role": "Comptable",
+              "permissions_count": 30,
+              "permissions": []
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/roles-permissions/roles/{roleId}/permissions/revoke'
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Retirer des permissions d'un rôle"
+      description: "Retire des permissions spécifiques d'un rôle."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      roleId:
+        name: roleId
+        description: "L'ID du rôle."
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      roleId: 5
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      permissions:
+        name: permissions
+        description: 'Les IDs des permissions à retirer.'
+        required: true
+        example:
+          - 1
+          - 2
+          - 3
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      permissions:
+        - 1
+        - 2
+        - 3
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Permissions retirées avec succès",
+            "data": {
+              "role": "Comptable",
+              "permissions_removed": 3,
+              "permissions_remaining": 27
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/roles/{roleId}/users'
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Utilisateurs par rôle'
+      description: 'Récupère la liste des utilisateurs ayant un rôle spécifique.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      roleId:
+        name: roleId
+        description: "L'ID du rôle."
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      roleId: 5
+    queryParameters:
+      per_page:
+        name: per_page
+        description: "Nombre d'utilisateurs par page."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      per_page: 15
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Utilisateurs du rôle récupérés avec succès",
+            "data": {
+              "role": "Comptable",
+              "users": [
+                {
+                  "id": 5,
+                  "name": "John Doe",
+                  "email": "john@example.com",
+                  "created_at": "2025-01-10T08:00:00.000000Z"
+                }
+              ],
+              "total": 3
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/roles-permissions/permissions
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Liste des permissions'
+      description: 'Récupère la liste de toutes les permissions, optionnellement groupées par module.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        name: search
+        description: 'Rechercher une permission.'
+        required: false
+        example: clients
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      grouped:
+        name: grouped
+        description: 'Grouper par module (prefix).'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (ignoré si grouped=true)."
+        required: false
+        example: 50
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      search: clients
+      grouped: true
+      per_page: 50
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des permissions récupérée avec succès",
+            "data": {
+              "permissions": [
+                {
+                  "id": 1,
+                  "name": "users.view",
+                  "libelle": "Consulter les utilisateurs",
+                  "guard_name": "web",
+                  "created_at": "2025-01-15T10:30:00.000000Z"
+                }
+              ],
+              "total": 161
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des permissions groupées récupérée avec succès",
+            "data": {
+              "permissions": {
+                "users": [
+                  {
+                    "id": 1,
+                    "name": "users.view",
+                    "libelle": "Consulter les utilisateurs"
+                  }
+                ],
+                "clients": [
+                  {
+                    "id": 9,
+                    "name": "clients.view",
+                    "libelle": "Consulter les clients"
+                  }
+                ]
+              },
+              "total": 161
+            }
+          }
+        headers: []
+        description: 'Groupé par module'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/roles-permissions/permissions
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Créer une permission'
+      description: 'Crée une nouvelle permission dans le système.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Le nom de la permission (format: module.action).'
+        required: true
+        example: rapports.custom
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      libelle:
+        name: libelle
+        description: 'Le libellé descriptif de la permission.'
+        required: true
+        example: 'Générer des rapports personnalisés'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: rapports.custom
+      libelle: 'Générer des rapports personnalisés'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "success": true,
+            "message": "Permission créée avec succès",
+            "data": {
+              "permission": {
+                "id": 162,
+                "name": "rapports.custom",
+                "libelle": "Générer des rapports personnalisés",
+                "guard_name": "web",
+                "created_at": "2025-10-18T15:40:00.000000Z"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/roles-permissions/permissions/{id}'
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une permission'
+      description: "Met à jour le libellé d'une permission existante."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de la permission."
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      libelle:
+        name: libelle
+        description: 'Le nouveau libellé.'
+        required: true
+        example: 'Voir tous les utilisateurs'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      libelle: 'Voir tous les utilisateurs'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Permission mise à jour avec succès",
+            "data": {
+              "permission": {
+                "id": 1,
+                "name": "users.view",
+                "libelle": "Voir tous les utilisateurs",
+                "updated_at": "2025-10-18T15:45:00.000000Z"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/roles-permissions/permissions/{id}'
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mettre à jour une permission'
+      description: "Met à jour le libellé d'une permission existante."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de la permission."
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      libelle:
+        name: libelle
+        description: 'Le nouveau libellé.'
+        required: true
+        example: 'Voir tous les utilisateurs'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      libelle: 'Voir tous les utilisateurs'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Permission mise à jour avec succès",
+            "data": {
+              "permission": {
+                "id": 1,
+                "name": "users.view",
+                "libelle": "Voir tous les utilisateurs",
+                "updated_at": "2025-10-18T15:45:00.000000Z"
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/roles-permissions/permissions/{id}'
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Supprimer une permission'
+      description: 'Supprime une permission du système.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: "L'ID de la permission."
+        required: true
+        example: 162
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 162
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1059,35 +1248,11 @@ endpoints:
         status: 200
         content: |-
           {
-            "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "account_number": "BJ066001010100100100100100",
-              "account_name": "Compte Principal",
-              "balance": 15500000.00,
-              "deleted_at": null
-            },
-            "message": "Compte bancaire restauré avec succès"
+            "success": true,
+            "message": "Permission supprimée avec succès"
           }
         headers: []
-        description: 'Restauration réussie'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
-          }
-        headers: []
-        description: 'Compte non trouvé'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -1101,95 +1266,86 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/roles-permissions/banque-accounts/{id}/debit'
+    uri: 'api/roles-permissions/users/{userId}/roles/assign'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Débiter un compte'
-      description: 'Effectue un débit sur le compte bancaire.'
+      title: 'Assigner des rôles à un utilisateur'
+      description: 'Attribue un ou plusieurs rôles à un utilisateur.'
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
-        description: 'UUID du compte.'
+      userId:
+        name: userId
+        description: "L'ID de l'utilisateur."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 5
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      userId: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      montant:
-        name: montant
-        description: 'Montant à débiter.'
+      roles:
+        name: roles
+        description: 'Les IDs ou noms des rôles à assigner.'
         required: true
-        example: '500000.00'
-        type: numeric
+        example:
+          - 1
+          - Comptable
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sync:
+        name: sync
+        description: 'Remplacer tous les rôles (true) ou ajouter (false).'
+        required: false
+        example: false
+        type: boolean
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      montant: '500000.00'
+      roles:
+        - 1
+        - Comptable
+      sync: false
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Rôles assignés avec succès",
             "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "account_number": "BJ066001010100100100100100",
-              "balance": 15000000.00,
-              "previous_balance": 15500000.00,
-              "montant_debite": 500000.00
-            },
-            "message": "Compte débité avec succès"
-          }
-        headers: []
-        description: 'Débit réussi'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
-          }
-        headers: []
-        description: 'Compte non trouvé'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "errors": {
-              "montant": ["Le montant est obligatoire"]
+              "user": {
+                "id": 5,
+                "name": "John Doe",
+                "email": "john@example.com"
+              },
+              "roles": ["Comptable", "Agent commercial"],
+              "all_permissions_count": 45
             }
           }
         headers: []
-        description: 'Erreurs de validation'
+        description: ''
         custom: []
     responseFields: []
     auth:
@@ -1203,95 +1359,144 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/roles-permissions/banque-accounts/{id}/credit'
+    uri: 'api/roles-permissions/users/{userId}/roles/revoke'
     metadata:
-      groupName: 'Gestion des Comptes Bancaires'
-      groupDescription: ''
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
       subgroup: ''
       subgroupDescription: ''
-      title: 'Créditer un compte'
-      description: 'Effectue un crédit sur le compte bancaire.'
+      title: "Retirer des rôles d'un utilisateur"
+      description: "Retire un ou plusieurs rôles d'un utilisateur."
       authenticated: true
       deprecated: false
       custom: []
     headers:
-      Authorization: 'required Bearer Token. Example: Bearer 1|abc123xyz456'
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
-        description: 'UUID du compte.'
+      userId:
+        name: userId
+        description: "L'ID de l'utilisateur."
         required: true
-        example: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
-        type: string
+        example: 5
+        type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a
+      userId: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      montant:
-        name: montant
-        description: 'Montant à créditer.'
+      roles:
+        name: roles
+        description: 'Les IDs ou noms des rôles à retirer.'
         required: true
-        example: '750000.00'
-        type: numeric
+        example:
+          - 'Agent commercial'
+        type: 'string[]'
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      montant: '750000.00'
+      roles:
+        - 'Agent commercial'
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
+            "success": true,
+            "message": "Rôles retirés avec succès",
             "data": {
-              "banque_account_id": "9d4f2e8a-1b3c-4d5e-6f7a-8b9c0d1e2f3a",
-              "account_number": "BJ066001010100100100100100",
-              "balance": 16250000.00,
-              "previous_balance": 15500000.00,
-              "montant_credite": 750000.00
-            },
-            "message": "Compte crédité avec succès"
-          }
-        headers: []
-        description: 'Crédit réussi'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-            "message": "Unauthenticated."
-          }
-        headers: []
-        description: 'Non authentifié'
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-            "message": "No query results for model [App\\Models\\BanqueAccount]"
-          }
-        headers: []
-        description: 'Compte non trouvé'
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-            "errors": {
-              "montant": ["Le montant est obligatoire"]
+              "user": "John Doe",
+              "roles_removed": 1,
+              "roles_remaining": ["Comptable"]
             }
           }
         headers: []
-        description: 'Erreurs de validation'
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles-permissions/users/{userId}/permissions'
+    metadata:
+      groupName: 'Gestion des Rôles et Permissions'
+      groupDescription: |-
+
+        API pour gérer les rôles, permissions et leurs assignations
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Permissions d'un utilisateur"
+      description: "Récupère toutes les permissions d'un utilisateur (directes + via rôles)."
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer Bearer {YOUR_AUTH_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      userId:
+        name: userId
+        description: "L'ID de l'utilisateur."
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      userId: 5
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Permissions de l'utilisateur récupérées avec succès",
+            "data": {
+              "user": {
+                "id": 5,
+                "name": "John Doe",
+                "email": "john@example.com"
+              },
+              "roles": ["Comptable", "Agent commercial"],
+              "permissions": [
+                {
+                  "id": 1,
+                  "name": "users.view",
+                  "libelle": "Consulter les utilisateurs",
+                  "source": "role:Comptable"
+                }
+              ],
+              "total_permissions": 45
+            }
+          }
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth:

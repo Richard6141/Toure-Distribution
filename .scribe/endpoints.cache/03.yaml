@@ -181,6 +181,353 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - GET
+    uri: api/clients/debtors/list
+    metadata:
+      groupName: 'Clients Management'
+      groupDescription: |-
+
+        APIs pour gérer les clients
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Lister les clients débiteurs'
+      description: |-
+        Récupère la liste des clients qui doivent de l'argent à l'entreprise (solde négatif).
+        Les résultats sont triés par dette décroissante (plus gros débiteurs en premier).
+      authenticated: false
+      deprecated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Page à récupérer.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: "Nombre d'éléments par page (max: 100)."
+        required: false
+        example: 15
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      min_debt:
+        name: min_debt
+        description: 'numeric Montant minimum de dette pour filtrer.'
+        required: false
+        example: '50000'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      max_debt:
+        name: max_debt
+        description: 'numeric Montant maximum de dette pour filtrer.'
+        required: false
+        example: '500000'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      client_type_id:
+        name: client_type_id
+        description: 'Filtrer par type de client (UUID).'
+        required: false
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      city:
+        name: city
+        description: 'Filtrer par ville.'
+        required: false
+        example: Cotonou
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'Filtrer par marketteur.'
+        required: false
+        example: 'Marie Dupont'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Recherche par nom, code ou téléphone.'
+        required: false
+        example: John
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Filtrer par statut actif.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_by:
+        name: sort_by
+        description: 'Colonne de tri (debt, name_client, created_at).'
+        required: false
+        example: debt
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Ordre de tri (asc, desc).'
+        required: false
+        example: desc
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      with_adjustments:
+        name: with_adjustments
+        description: "Inclure l'historique des ajustements."
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 15
+      min_debt: '50000'
+      max_debt: '500000'
+      client_type_id: 550e8400-e29b-41d4-a716-446655440000
+      city: Cotonou
+      marketteur: 'Marie Dupont'
+      search: John
+      is_active: true
+      sort_by: debt
+      sort_order: desc
+      with_adjustments: false
+    bodyParameters:
+      page:
+        name: page
+        description: 'Must be at least 1.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1. Must not be greater than 100.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      min_debt:
+        name: min_debt
+        description: 'Must be at least 0.'
+        required: false
+        example: 84
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      max_debt:
+        name: max_debt
+        description: 'Must be at least 0.'
+        required: false
+        example: 12
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      client_type_id:
+        name: client_type_id
+        description: 'Must be a valid UUID. The <code>client_type_id</code> of an existing record in the client_types table.'
+        required: false
+        example: 977e5426-8d13-3824-86aa-b092f8ae52c5
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      city:
+        name: city
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'y'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      marketteur:
+        name: marketteur
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: v
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      search:
+        name: search
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: d
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      sort_by:
+        name: sort_by
+        description: ''
+        required: false
+        example: created_at
+        type: string
+        enumValues:
+          - debt
+          - name_client
+          - created_at
+          - current_balance
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      sort_order:
+        name: sort_order
+        description: ''
+        required: false
+        example: desc
+        type: string
+        enumValues:
+          - asc
+          - desc
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      with_adjustments:
+        name: with_adjustments
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      page: 16
+      per_page: 22
+      min_debt: 84
+      max_debt: 12
+      client_type_id: 977e5426-8d13-3824-86aa-b092f8ae52c5
+      city: 'y'
+      marketteur: v
+      search: d
+      is_active: false
+      sort_by: created_at
+      sort_order: desc
+      with_adjustments: true
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Liste des clients débiteurs",
+            "data": {
+              "current_page": 1,
+              "data": [
+                {
+                  "client_id": "550e8400-e29b-41d4-a716-446655440000",
+                  "code": "CLI00001",
+                  "name_client": "John Doe",
+                  "phonenumber": "+229 12 34 56 78",
+                  "city": "Cotonou",
+                  "current_balance": "-150000.00",
+                  "dette_actuelle": 150000,
+                  "formatted_dette": "150 000,00 FCFA",
+                  "credit_limit": "500000.00",
+                  "is_active": true,
+                  "client_type": { "label": "Détaillant" }
+                }
+              ],
+              "per_page": 15,
+              "total": 45
+            },
+            "summary": {
+              "total_debtors": 45,
+              "total_debt": 5000000,
+              "formatted_total_debt": "5 000 000,00 FCFA",
+              "average_debt": 111111.11,
+              "formatted_average_debt": "111 111,11 FCFA",
+              "biggest_debtor": {
+                "client_id": "...",
+                "name_client": "Client XYZ",
+                "dette": 500000
+              }
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - POST
     uri: api/clients/search
     metadata:
@@ -663,7 +1010,7 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -694,7 +1041,7 @@ endpoints:
       marketteur: i
       client_type_id: 51c7cf5e-fac2-3ac6-8ef8-61e6050503af
       is_active: false
-      with_client_type: false
+      with_client_type: true
       balance_filter: positive
     fileParameters: []
     responses:
@@ -1007,14 +1354,14 @@ endpoints:
         name: with_client_type
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      with_client_type: true
+      with_client_type: false
     fileParameters: []
     responses:
       -
